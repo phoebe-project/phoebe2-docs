@@ -85,8 +85,10 @@ To download via the `github repository <https://github.com/phoebe-project/phoebe
 
 ::
 
-   git clone https://github.com/phoebe-project/phoebe2.git
+   git clone --depth=1 https://github.com/phoebe-project/phoebe2.git
 
+
+Note: developers should exclude the depth=1 to get the entire git history (download size will be larger).
 
 Dependencies
 --------------------------------
