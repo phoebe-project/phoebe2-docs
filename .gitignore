@@ -6,3 +6,10 @@
 /tutorials/*.py
 /tutorials/*.phoebe
 /tutorials/*.bundle
+*_tmp*
+*after.phoebe
+*.ipynb_checkpoints*
+*.pyc*
+*.active
+*.profile
+*.log
