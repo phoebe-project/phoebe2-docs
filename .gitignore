@@ -1,0 +1,8 @@
+/_build
+/api
+/examples/*.rst
+/examples/*.py
+/tutorials/*.rst
+/tutorials/*.py
+/tutorials/*.phoebe
+/tutorials/*.bundle

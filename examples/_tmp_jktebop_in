@@ -1,0 +1,23 @@
+    2         5.0 Task to do (from 1 to 9)   Integ. ring size (deg)
+ 0.25         1.0 Sum of the radii           Ratio of the radii
+ 90.0         0.7 Orbital inclination (deg)  Mass ratio of the system
+  0.0         0.0 Orbital eccentricity       Periastron longitude deg
+ 0.32        0.32 Gravity darkening (starA)  Grav darkening (starB)
+  1.0         0.0 Surface brightness ratio   Amount of third light
+log   log         LD law type for star A     LD law type for star B
+  0.0         0.0 LD star A (linear coeff)   LD star B (linear coeff)
+  0.0         0.0 LD star A (nonlin coeff)   LD star B (nonlin coeff)
+  0.0         0.0 Reflection effect star A   Reflection effect star B
+  0.0 -3.50059964922 Phase of primary eclipse   Light scale factor (mag)
+          3.0      Orbital period of eclipsing binary system (days)
+          0.0      Reference time of primary minimum (HJD)
+ 0  0             Adjust RADII SUM or RADII RATIO (0, 1, 2, 3)
+ 0  0             Adjust INCLINATION or MASSRATIO (0, 1, 2, 3)
+ 0  0             Adjust ECCENTRICITY or OMEGA (0, 1, 2, 3)
+ 0  0             Adjust GRAVDARK1 or GRAVDARK2 (0, 1, 2, 3)
+ 0  0             Adjust SURFACEBRIGH2 or THIRDLIGHT (0, 1, 2, 3)
+ 0  0             Adjust LD-lin1 or LD-lin2 (0, 1, 2, 3)
+ 0  0             Adjust LD-nonlin1 or LD-nonlin2 (0, 1, 2, 3)
+ 0  0             Adjust REFLECTION COEFFS 1 and 2 (-1, 0, 1, 2, 3)
+ 0  0             Adjust PHASESHIFT or SCALE FACTOR (0, 1, 2, 3)
+ 0  0             Adjust PERIOD or TZERO (min light) (0, 1, 2, 3)
