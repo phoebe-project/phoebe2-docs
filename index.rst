@@ -97,6 +97,12 @@ Note for **mac users**: it is suggested to use `homebrew to install a parallel v
 of python <https://joernhees.de/blog/2014/02/25/scientific-python-on-mac-os-x-10-9-with-homebrew/>`_.
 PHOEBE has currently been tested to compile correctly using homebrew on El Capitan.
 
+The C++ code in PHOEBE requires a compiler that supports C++11, either of the following
+should build correctly:
+* g++5 (or newer)
+* clang3.3 (or newer)
+
+
 PHOEBE requires python 2.7+ (not yet fully tested on python 3.x) with the following packages:
 
 * numpy (may need 1.10+)
