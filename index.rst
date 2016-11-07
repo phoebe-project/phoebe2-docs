@@ -99,11 +99,12 @@ PHOEBE has currently been tested to compile correctly using homebrew on El Capit
 
 The C++ code in PHOEBE requires a compiler that supports C++11, either of the following
 should build correctly:
+
 * g++5 (or newer)
 * clang3.3 (or newer)
 
 Note for **Ubuntu 14.04 users**: g++5 is not installed by default.  You'll likely
-need to to do the following in order to install phoebe:
+need to to do the following in order to install PHOEBE:
 ::
 
    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
