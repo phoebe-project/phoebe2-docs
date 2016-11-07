@@ -102,6 +102,14 @@ should build correctly:
 * g++5 (or newer)
 * clang3.3 (or newer)
 
+Note for **Ubuntu 14.04 users**: g++5 is not installed by default.  You'll likely
+need to to do the following in order to install phoebe:
+::
+
+   sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+   sudo apt-get install g++-5 gcc-5 libstdc++-5-dev
+   export CXX=g++-5
+
 
 PHOEBE requires python 2.7+ (not yet fully tested on python 3.x) with the following packages:
 
