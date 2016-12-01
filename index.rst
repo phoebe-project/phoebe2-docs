@@ -38,8 +38,8 @@ Unsupported Physics (from PHOEBE 1.0)
 
 PHOEBE 2.0 can not yet handle:
 
-* overcontact systems (in development)
-* semi-detached/contact systems (planned future development)
+* contact systems (in development)
+* semi-detached/single contact systems (planned future development)
 * X-ray binaries
 
 
@@ -323,7 +323,7 @@ Detached Binary Stars
 
 
 
-Overcontact Binary Stars (NOT YET SUPPORTED)
+Contact Binary Stars (NOT YET SUPPORTED)
 ----------------------------------------------------------
 
 
@@ -331,8 +331,8 @@ Overcontact Binary Stars (NOT YET SUPPORTED)
    :maxdepth: 1
    :titlesonly:
 
-   Minimal Overcontact System (TESTING - not yet supported)<examples/minimal_overcontact>
-   Comparing Overcontact System PHOEBE 2.0 vs PHOEBE Legacy (TESTING - not yet supported)<examples/legacy_overcontact>
+   Minimal Contact Binary System (TESTING - not yet supported)<examples/minimal_contact_binary>
+   Comparing Contact Binary System PHOEBE 2.0 vs PHOEBE Legacy (TESTING - not yet supported)<examples/legacy_contact_binary>
 
 
 
@@ -423,7 +423,7 @@ Alternate Backends
    :titlesonly:
 
    Comparing PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy>
-   Comparing Overcontact System PHOEBE 2.0 vs PHOEBE Legacy (TESTING - not yet supported)<examples/legacy_overcontact>
+   Comparing Contact Binary System PHOEBE 2.0 vs PHOEBE Legacy (TESTING - not yet supported)<examples/legacy_contact_binary>
    Comparing Spots in PHOEBE 2.0 vs PHOEBE Legacy (TESTING - not yet supported)<examples/legacy_spots>
    Comparing PHOEBE 2.0 vs Photodynam (Binary)<examples/photodynam>
    Comparing PHOEBE 2.0 vs Photodynam (Hierarchical Triple)<examples/hierarchical_triple_pd>
