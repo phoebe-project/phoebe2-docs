@@ -3,7 +3,7 @@
 Getting Started
 ==================================
 
-The PHOEBE 2.0-beta release aims to provide fully-tested functionality that
+The PHOEBE 2.0 release aims to provide fully-tested functionality that
 matches that of the legacy PHOEBE 1.0 (light curve and radial velocity forward
 models of binary star systems) but with improved precision and a python
 interface.
@@ -56,14 +56,14 @@ Unsupported Convenience Functionality
 Planned Physics Support
 ------------------------------------------
 More advanced physics can be found in the PHOEBE 2.0-alpha releases
-and will be ported to beta as soon as they can be tested robustly.
+and will be ported to future official releases as soon as they can be tested robustly.
 
 Planned (new) future features include:
 
 * heating (heat redistribution)
 * triple and N-body systems (in development)
 * N-body dynamics (in development)
-* misaligned binaries
+* misaligned binaries (in development)
 * pulsations (in development)
 * bayesian (MCMC) fitting
 * synthetic spectra
@@ -133,10 +133,12 @@ And optional packages (used for less commonly used features):
 Installation
 -------------------------------
 
-NOTE: the beta version now builds to a python module named 'phoebe' which may
+NOTE:  PHOEBE 2.0 builds to a python module named 'phoebe' which may
 conflict with the alpha version if you have that installed (but will not
 conflict with PHOEBE 0.2x, 0.3x, or 1.0).  If you do have PHOEBE 2.0-alpha
-installed, please uninstall before attempting to install PHOEBE 2.0-beta.
+installed, please uninstall before attempting to install PHOEBE 2.0.  If you
+have a previous version of PHOEBE 2.x (including PHOEBE 2.0-beta), installing
+will overwrite that version (unless you use a virtual environment).
 
 
 To install without admin rights for a single-user:
@@ -480,13 +482,18 @@ Development Information
 Citing PHOEBE 2.0
 ================================
 
-COMING SOON - the paper for PHOEBE 2.0-beta will be submitted soon.
+If using PHOEBE 2.0, please consider citing the following papers, as appropriate:
+
+  * `PHOEBE 2.0 release paper <http://adsabs.harvard.edu/abs/2016arXiv160908135P>`_
+  * `PHOEBE 1.0 release paper <http://adsabs.harvard.edu/abs/2005ApJ...628..426P>`_
+
+See also the full up-to-date list of `PHOEBE publications <http://phoebe-project.org/publications>`_
 
 FAQ
 ================================
 
 
-*Q: Is PHOEBE 2.0 beta backwards compatible with PHOEBE 2.0 alpha releases?*
+*Q: Is PHOEBE 2.0 backwards compatible with PHOEBE 2.0 alpha releases?*
 
 A: Unfortunately, no.  We simply learned too much from the alpha-release that
 we decided that a complete rewrite was needed.  However, many of the syntax
@@ -502,16 +509,14 @@ but do this before importing Phoebe.
 A: You will need a table of intensities that you can download from the PHOEBE homepage.
 Then you should follow the instructions available :class:`phoebe.atmospheres.passbands.Passband`
 
-*Q: Is Phoebe 2.x Python 3.x ready?*
+*Q: Is PHOEBE 2.x Python 3.x ready?*
 
-A: Some effort has been done to make Phoebe 2.x Python 3.x compliant. In fact,
-Phoebe should load when imported in Python 3.x. The essential dependencies
-(i.e. numpy, scipy, matplotlib, pyfits...) are Python 3.x ready, as are most of
-the nonessential dependencies. Syntactically, Also the C extensions are not
-Python 3.x compatible as of yet.
+A: PHOEBE has been tested on Python 2.7 with various compilers.  We are working
+towards testing PHOEBE on Python 3.x.
 
 *Q: Is it safe to use Phoebe?*
 
 A: For the most part, yes.  If you do not have sympy installed, then constraints
 will be evaluated using the 'eval' command - which could potentially be dangerous
-if you blindly open a bundle from an untrusted source.  So long as you have
+if you blindly open a bundle from an untrusted source.  To avoid this, simply
+install the sympy optional dependency.
