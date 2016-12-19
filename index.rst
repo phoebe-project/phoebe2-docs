@@ -28,6 +28,7 @@ Supported Physics (from PHOEBE 1.0)
 * reflection (heating without redistribution)
 * finite integration time via oversampling
 * circular spots
+* contact systems (to mimic WD)
 
 New Physics (not in PHOEBE 1.0)
 ----------------------------------------
@@ -41,7 +42,7 @@ Unsupported Physics (from PHOEBE 1.0)
 
 PHOEBE 2.0 can not yet handle:
 
-* contact systems (in development)
+* full support for contact systems
 * semi-detached/single contact systems (planned future development)
 * X-ray binaries
 
@@ -167,9 +168,9 @@ Testing
 The following additional dependencies are required
 to run the nosetests:
 
-  * `nose <http://nose.readthedocs.io/en/latest/>`_
-  * `PHOEBE 1.0 <https://github.com/phoebe-project/phoebe1>`_ with the phoebe-py wrapper
-  * `photodynam <https://github.com/phoebe-project/photodynam>`_
+* `nose <http://nose.readthedocs.io/en/latest/>`_
+* `PHOEBE 1.0 <https://github.com/phoebe-project/phoebe1>`_ with the phoebe-py wrapper
+* `photodynam <https://github.com/phoebe-project/photodynam>`_
 
 To run all tests locally on your machine, run the following in the 'tests'
 directory in the source.
