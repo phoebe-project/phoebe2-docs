@@ -14,17 +14,17 @@ to be skeptical of all results and `report any issues or bugs
 <https://github.com/phoebe-project/phoebe2/issues>`_ or any `documentation
 issues or bugs <https://github.com/phoebe-project/phoebe2-docs/issues>`_.
 
-See below for installation instructions as well as a listing of all available
-tutorials and example scripts.
+Below we provide installation instructions, tutorials and example scripts for
+a facilitated experience with PHOEBE.
 
 Supported Physics (from PHOEBE 1.0)
 ----------------------------------------
 
-* detached roche binaries
+* detached and semi-detached roche binaries
 * keplerian orbits (including eccentric orbits with volume conservation)
 * passbands/atmospheres
-* limb-darkening
-* gravity brightening
+* limb darkening
+* gravity darkening
 * reflection (heating without redistribution)
 * finite integration time via oversampling
 * circular spots
@@ -33,9 +33,9 @@ Supported Physics (from PHOEBE 1.0)
 New Physics (not in PHOEBE 1.0)
 ----------------------------------------
 
-* beaming/boosting
+* Doppler boosting
 * single rotating stars
-
+* Lambert scattering
 
 Unsupported Physics (from PHOEBE 1.0)
 ----------------------------------------
@@ -46,7 +46,6 @@ PHOEBE 2.0 can not yet handle:
 * semi-detached/single contact systems (planned future development)
 * X-ray binaries
 
-
 Unsupported Convenience Functionality
 -----------------------------------------
 
@@ -54,25 +53,24 @@ Unsupported Convenience Functionality
 * GUI (in development)
 * data in magnitudes (dropping support - convert manually)
 * data in phases (dropping support - but function provided to convert during import)
-* phase shifts
-
 
 Planned Physics Support
 ------------------------------------------
 More advanced physics can be found in the PHOEBE 2.0-alpha releases
 and will be ported to future official releases as soon as they can be tested robustly.
 
-Planned (new) future features include:
+Planned future features include:
 
-* heating (heat redistribution)
-* triple and N-body systems (in development)
+* heat redistribution (in progress)
+* triple and N-body systems (in progress)
+* advanced overcontact models (in progress)
 * N-body dynamics (in development)
 * misaligned binaries (in development)
 * pulsations (in development)
-* bayesian (MCMC) fitting
-* synthetic spectra
-* synthetic eclipse timing variations (ETVs) (in development)
-* synthetic interferometry
+* bayesian (MCMC) fitting (in development)
+* synthetic spectra (planning)
+* synthetic eclipse timing variations (ETVs) (planning)
+* synthetic interferometry (planning)
 
 
 Download and Installation
@@ -81,9 +79,8 @@ Download and Installation
 Download
 --------------------------------
 
-PHOEBE 2.0 is now hosted on GitHub.  Once released, it will be packaged for installation
-via pip, but for now requires manually downloading and installing through
-SVN or git.
+PHOEBE 2.0 is hosted on GitHub. Once officially released, it will be packaged
+for installation via pip, but for now requires manually downloading and installing through git.
 
 To download via the `github repository <https://github.com/phoebe-project/phoebe2/>`_:
 
@@ -118,14 +115,14 @@ need to to do the following in order to install PHOEBE:
 
 PHOEBE requires python 2.7+ (not yet fully tested on python 3.x) with the following packages:
 
-* numpy (may need 1.10+)
+* numpy (1.10+)
 * scipy
 * astropy (1.0+)
 
-And suggested packages (required for some optional but commonly used features):
+Suggested packages (required for some optional but commonly used features):
 
 * matplotlib (suggested for plotting)
-* sympy (for safer and more flexible constraints)
+* sympy (for more flexible constraints)
 
 
 
@@ -139,9 +136,6 @@ installed, please uninstall before attempting to install PHOEBE 2.0.  If you
 have a previous version of PHOEBE 2.x (including PHOEBE 2.0-beta), installing
 will overwrite that version (unless you use a virtual environment).
 
-
-To install without admin rights for a single-user:
-
 ::
 
    python setup.py build
@@ -149,12 +143,17 @@ To install without admin rights for a single-user:
 
 
 
-or to install system-wide with admin rights:
+or to install system-wide (with root priviliges):
 
 ::
 
    python setup.py build
    sudo python setup.py install
+
+NOTE: the beta version builds a python module named 'phoebe' which will
+conflict with the alpha version if you have it installed (but will not
+conflict with PHOEBE 0.2x, 0.3x, or 1.0). If you do have PHOEBE 2.0-alpha
+installed, please uninstall before attempting to install PHOEBE 2.0-beta.
 
 
 Testing
@@ -175,6 +174,8 @@ directory in the source.
 
    python run_tests nosetests
 
+NOTE: you need to enable the development mode to run all the tests. You do so
+by creating an empty file ~/.phoebe_devel_enabled.
 
 Please `report any issues or bugs <https://github.com/phoebe-project/phoebe2/issues>`_.
 
@@ -274,9 +275,8 @@ synthetic models, but expect a comfortable understanding of using PHOEBE and pyt
    Distance<tutorials/distance>
    Limb Darkening<tutorials/limb_darkening>
    Gravitational Redshift (RVs)<tutorials/grav_redshift>
-   Reddening and Extinction (not yet implemented)<tutorials/reddening_extinction>
    Reflection and Heating<tutorials/reflection_heating>
-   Beaming and Boosting (not yet implemented)<tutorials/beaming_boosting>
+   Beaming and Boosting<tutorials/beaming_boosting>
    Eclipse Detection<tutorials/eclipse>
    Intensity Weighting<tutorials/intens_weighting>
 
@@ -313,7 +313,7 @@ Detached Binary Stars
    Complete Binary Animation<examples/animation_binary_complete>
    Rossiter-McLaughlin Effect (RVs)<examples/rossiter_mclaughlin>
    Wilson-Devinney Style Meshing<examples/mesh_wd>
-   Detached Binary: Roche vs Rotstar <examples/detached_rotstar>
+   Detached Binary: Roche vs Rotstar<examples/detached_rotstar>
    Binary with Spots<examples/binary_spots>
 
 
@@ -363,45 +363,6 @@ Alternate Backends
    Comparing Spots in PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy_spots>
 
 
-Frontend API Docs
-===============================
-
-.. toctree::
-   :maxdepth: 2
-
-   Frontend <api/phoebe.frontend>
-   Parameters <api/phoebe.parameters>
-
-
-Backend (Advanced) API Docs
-===============================
-
-.. toctree::
-   :maxdepth: 2
-
-   Backend <api/phoebe.backend>
-   Atmospheres <api/phoebe.atmospheres>
-   Constraints <api/phoebe.constraints>
-   Dynamics <api/phoebe.dynamics>
-   Distortions <api/phoebe.distortions>
-
-
-Development Information
-================================
-
-.. toctree::
-   :maxdepth: 1
-   :titlesonly:
-
-   Style Guidelines (coming soon)<development/style>
-   Development in the Frontend (coming soon)<development/devel_frontend>
-   Development in the Backend (coming soon)<development/devel_backend>
-   Tutorials and Scripts<development/tutorials_scripts>
-   API Documentation (coming soon)<development/api>
-   Testing (coming soon)<development/testing>
-   Benchmarking (coming soon)<development/benchmark>
-   Committing Code (coming soon)<development/committing>
-   Releasing a New Version (coming soon)<development/release>
 
 Citing PHOEBE 2.0
 ================================
