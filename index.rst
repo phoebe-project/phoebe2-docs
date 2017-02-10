@@ -127,11 +127,6 @@ And suggested packages (required for some optional but commonly used features):
 * matplotlib (suggested for plotting)
 * sympy (for safer and more flexible constraints)
 
-And optional packages (used for less commonly used features):
-
-* mpld3 (alternate plotting - devel version only)
-* bokeh (alternate plotting - devel version only)
-
 
 
 Installation
@@ -232,7 +227,6 @@ be read in any particular order.
 
    Advanced: Settings<tutorials/settings>
    Advanced: Animations<tutorials/animations>
-   Advanced: Alternate Plotting Backends<tutorials/alternate_plotting>
    Advanced: Alternate Backends<tutorials/alternate_backends>
    Advanced: Detaching from Run Compute<tutorials/detach>
    Advanced: Digging into the Backend<tutorials/backend>
