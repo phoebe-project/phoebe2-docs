@@ -21,7 +21,7 @@ if __name__ == '__main__':
     else:
         phoebe_api_dir = '../phoebe2/'
 
-    print "phoebe installation directory (for api docs): ".format(phoebe_dir)
+    print "phoebe installation directory (for api docs): ".format(phoebe_api_dir)
     print "to change installation directory, pass as first argv"
 
     if 'runtests' in sys.argv:
