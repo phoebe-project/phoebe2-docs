@@ -228,13 +228,7 @@ be read in any particular order.
    Advanced: Settings<tutorials/settings>
    Advanced: Animations<tutorials/animations>
    Advanced: Alternate Backends<tutorials/alternate_backends>
-   Advanced: Detaching from Run Compute<tutorials/detach>
    Advanced: Digging into the Backend<tutorials/backend>
-   Advanced (coming soon): Creating Custom Parameters<tutorials/custom_parameters>
-   Advanced (coming soon): Creating Custom Constraints<tutorials/constraint_create>
-   Advanced (coming soon): Time Derivatives<tutorials/time_derivatives>
-   Advanced (coming soon): Undo/Redo<tutorials/undo_redo>
-
 
 
 Datasets and Observables
@@ -256,7 +250,6 @@ expect a comfortable understanding of using PHOEBE and python
    Meshes (mesh)<tutorials/MESH>
    Light Curves (lc)<tutorials/LC>
    Radial Velocities (rv)<tutorials/RV>
-   Eclipse Timing Variations (etv)<tutorials/ETV>
 
 
 Explanations of Individual Parameters
@@ -287,8 +280,6 @@ synthetic models, but expect a comfortable understanding of using PHOEBE and pyt
    Eclipse Detection<tutorials/eclipse>
    Intensity Weighting<tutorials/intens_weighting>
 
-COMING SOON (differences between various t0s and phasing)
-
 
 Example Scripts
 ===============================
@@ -308,8 +299,6 @@ Single Stars
    :titlesonly:
 
    Sun (rotating single star)<examples/sun>
-   Single Star with Pulsations (TESTING - not yet supported)<examples/rotstar_pulsations>
-
 
 
 Detached Binary Stars
@@ -326,11 +315,10 @@ Detached Binary Stars
    Wilson-Devinney Style Meshing<examples/mesh_wd>
    Detached Binary: Roche vs Rotstar <examples/detached_rotstar>
    Binary with Spots<examples/binary_spots>
-   Binary with Pulsations (TESTING - not yet supported)<examples/binary_pulsations>
 
 
 
-Contact Binary Stars (NOT YET SUPPORTED)
+Contact Binary Stars (NOT FULLY SUPPORTED)
 ----------------------------------------------------------
 
 
@@ -338,47 +326,8 @@ Contact Binary Stars (NOT YET SUPPORTED)
    :maxdepth: 1
    :titlesonly:
 
-   Minimal Contact Binary System (TESTING - not yet supported)<examples/minimal_contact_binary>
-   Comparing Contact Binary System PHOEBE 2.0 vs PHOEBE Legacy (TESTING - not yet supported)<examples/legacy_contact_binary>
-
-
-
-Triple Stars (NOT YET SUPPORTED)
--------------------------------
-
-.. toctree::
-   :maxdepth: 1
-   :titlesonly:
-
-   Minimal Hierarchical Triple (TESTING - not yet supported)<examples/hierarchical_triple>
-   Minimal Dynamical Triple (TESTING - not yet supported)<examples/dynamical_triple>
-   Hierarchical Triple vs Photodynam (TESTING - not yet supported) <examples/hierarchical_triple_pd>
-   LTTE ETVs in a Hierarchical Triple (TESTING - not yet supported) <examples/hierarchical_triple_etvs>
-   KOI 126 (TESTING - not yet supported)<examples/koi126>
-
-
-
-Planetary System (NOT YET SUPPORTED)
--------------------------------
-
-.. toctree::
-   :maxdepth: 1
-   :titlesonly:
-
-   Sun-Earth (TESTING - not yet supported)<examples/sun_earth>
-
-
-
-Circumbinary Planets (NOT YET SUPPORTED)
-------------------------------------------------------
-
-.. toctree::
-   :maxdepth: 1
-   :titlesonly:
-
-   Kepler 16 (TESTING - not yet supported)<examples/kepler16>
-
-
+   Minimal Contact Binary System (NOT FULLY SUPPORTED)<examples/minimal_contact_binary>
+   Comparing Contact Binary System PHOEBE 2.0 vs PHOEBE Legacy (NOT FULLY SUPPORTED)<examples/legacy_contact_binary>
 
 Spots
 ------------------------------------
@@ -389,26 +338,6 @@ Spots
 
    Binary with Spots<examples/binary_spots>
    Comparing Spots in PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy_spots>
-
-
-
-Pulsations (NOT YET SUPPORTED)
-------------------------------------------
-
-.. toctree::
-   :maxdepth: 1
-   :titlesonly:
-
-   Single Star with Pulsations (TESTING - not yet supported)<examples/rotstar_pulsations>
-   Binary with Pulsations (TESTING - not yet supported)<examples/binary_pulsations>
-
-
-
-Advanced Constraints (NOT YET SUPPORTED)
-------------------------------
-
-COMING SOON (creating custom constraints, main-sequence, etc)
-
 
 
 Advanced Plotting
@@ -430,11 +359,8 @@ Alternate Backends
    :titlesonly:
 
    Comparing PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy>
-   Comparing Contact Binary System PHOEBE 2.0 vs PHOEBE Legacy (TESTING - not yet supported)<examples/legacy_contact_binary>
-   Comparing Spots in PHOEBE 2.0 vs PHOEBE Legacy (TESTING - not yet supported)<examples/legacy_spots>
-   Comparing PHOEBE 2.0 vs Photodynam (Binary)<examples/photodynam>
-   Comparing PHOEBE 2.0 vs Photodynam (Hierarchical Triple)<examples/hierarchical_triple_pd>
-   Comparing PHOEBE 2.0 vs JKTEBOP <examples/jktebop>
+   Comparing Contact Binary System PHOEBE 2.0 vs PHOEBE Legacy (NOT FULLY SUPPORTED)<examples/legacy_contact_binary>
+   Comparing Spots in PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy_spots>
 
 
 Frontend API Docs
