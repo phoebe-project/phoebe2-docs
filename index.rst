@@ -210,7 +210,6 @@ and making alterations to see how they change the output.
    Computing Observables<tutorials/compute>
    Plotting<tutorials/plotting>
    Accessing and Plotting Meshes<tutorials/meshes>
-   Fitting<tutorials/fitting>
 
 
 Advanced Tutorials
