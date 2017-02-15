@@ -237,9 +237,6 @@ directory in the source.
 
    python run_tests nosetests
 
-NOTE: you need to enable the development mode to run all the tests. You do so
-by creating an empty file ~/.phoebe_devel_enabled.
-
 Please `report any issues or bugs <https://github.com/phoebe-project/phoebe2/issues>`_.
 
 
