@@ -78,22 +78,6 @@ Planned (new) future features include:
 Download and Installation
 ===============================
 
-Download
---------------------------------
-
-PHOEBE 2.0 is now hosted on GitHub.  Once released, it will be packaged for installation
-via pip, but for now requires manually downloading and installing through
-SVN or git.
-
-To download via the `github repository <https://github.com/phoebe-project/phoebe2/>`_:
-
-::
-
-   git clone --depth=1 https://github.com/phoebe-project/phoebe2.git
-
-
-Note: developers should exclude the depth=1 to get the entire git history (download size will be larger).
-
 Dependencies
 --------------------------------
 
@@ -132,10 +116,86 @@ And optional packages (used for less commonly used features):
 * mpld3 (alternate plotting - devel version only)
 * bokeh (alternate plotting - devel version only)
 
+From PIP
+------------------------------
+
+Installing PHOEBE from PIP is probably the easiest.  To install the latest version:
+
+::
+   
+   pip install phoebe
+
+To update a previous installation:
+
+::
+
+   pip install -U phoebe
+   
+And to uninstall:
+
+::
+
+   pip uninstall phoebe
+   
+If pip gives any problems automatically installing dependencies, install them manually first:
+
+::
+
+   pip install numpy scipy astropy matplotlib
+  
+Please check the version of PHOEBE you have installed to make sure you are using the corresponding version of the documentation.  You can check the version once PHOEBE is imported via :code:`phoebe.__version__`
+   
+
+Virtual Environments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If installing in a virtual environment, PHOEBE sets the matplotlib backend to 'TkAgg' instead of 'Agg' by default.  To override this, set the backend yourself before importing PHOEBE.  To use 'TkAgg', you may need to have python-tk installed on your system.  See `<http://matplotlib.org/faq/virtualenv_faq.html>`_ for more information.
+
+To create a virtual environment and install PHOEBE, do the following, replacing "<myphoebedir>" with your (perferably empty or not existing) directory of choice:
+
+::
+
+   pip install virtualenv
+   virtualenv <myphoebedir>
+   source <myphoebedir>/bin/activate
+   pip install numpy scipy astropy matplotlib phoebe
+   
+  
+
+To leave the virtual environment:
+ 
+::
+ 
+   deactivate
+   
+ 
+And to destroy the virtual environment permanently:
+  
+::
+  
+   rm -rf <myphoebedir>
+
+
+
+From Source
+--------------------------------
+
+Download Source Code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To download via the `github repository <https://github.com/phoebe-project/phoebe2/>`_:
+
+::
+
+   git clone --depth=1 https://github.com/phoebe-project/phoebe2.git
+
+
+Note: developers should exclude the depth=1 to get the entire git history (download size will be larger).
+
 
 
 Installation
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 NOTE:  PHOEBE 2.0 builds to a python module named 'phoebe' which may
 conflict with the alpha version if you have that installed (but will not
