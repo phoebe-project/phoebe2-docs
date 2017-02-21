@@ -122,7 +122,7 @@ From PIP
 Installing PHOEBE from PIP is probably the easiest.  To install the latest version:
 
 ::
-   
+
    pip install phoebe
 
 To update a previous installation:
@@ -130,21 +130,21 @@ To update a previous installation:
 ::
 
    pip install -U phoebe
-   
+
 And to uninstall:
 
 ::
 
    pip uninstall phoebe
-   
+
 If pip gives any problems automatically installing dependencies, install them manually first:
 
 ::
 
    pip install numpy scipy astropy matplotlib
-  
+
 Please check the version of PHOEBE you have installed to make sure you are using the corresponding version of the documentation.  You can check the version once PHOEBE is imported via :code:`phoebe.__version__`
-   
+
 
 Virtual Environments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -159,20 +159,20 @@ To create a virtual environment and install PHOEBE, do the following, replacing 
    virtualenv <myphoebedir>
    source <myphoebedir>/bin/activate
    pip install numpy scipy astropy matplotlib phoebe
-   
-  
+
+
 
 To leave the virtual environment:
- 
+
 ::
- 
+
    deactivate
-   
- 
+
+
 And to destroy the virtual environment permanently:
-  
+
 ::
-  
+
    rm -rf <myphoebedir>
 
 
@@ -422,6 +422,8 @@ Triple Stars (NOT YET SUPPORTED)
    Hierarchical Triple vs Photodynam (TESTING - not yet supported) <examples/hierarchical_triple_pd>
    LTTE ETVs in a Hierarchical Triple (TESTING - not yet supported) <examples/hierarchical_triple_etvs>
    KOI 126 (TESTING - not yet supported)<examples/koi126>
+   Comparing Roche Distortion for Nbody vs Keplerian (Binary) <examples/hybrid_binary>
+
 
 
 
