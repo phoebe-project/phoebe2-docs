@@ -3,7 +3,7 @@
 Getting Started
 ==================================
 
-The `PHOEBE 2.0 <https://github.com/phoebe-project/phoebe2/releases/tag/2.0.0>`_
+The `PHOEBE 2.0 <https://github.com/phoebe-project/phoebe2/releases/tag/2.0.1>`_
 release aims to provide fully-tested functionality that matches that of the
 legacy `PHOEBE 1.0 <https://github.com/phoebe-project/phoebe1/>`_ (light curve
 and radial velocity forward models of binary star systems) but with improved
@@ -117,7 +117,7 @@ From PIP
 Installing PHOEBE from PIP is probably the easiest.  To install the latest version:
 
 ::
-   
+
    pip install phoebe
 
 To update a previous installation:
@@ -125,21 +125,21 @@ To update a previous installation:
 ::
 
    pip install -U phoebe
-   
+
 And to uninstall:
 
 ::
 
    pip uninstall phoebe
-   
+
 If pip gives any problems automatically installing dependencies, install them manually first:
 
 ::
 
    pip install numpy scipy astropy matplotlib
-  
+
 Please check the version of PHOEBE you have installed to make sure you are using the corresponding version of the documentation.  You can check the version once PHOEBE is imported via :code:`phoebe.__version__`
-   
+
 
 Virtual Environments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -154,20 +154,20 @@ To create a virtual environment and install PHOEBE, do the following, replacing 
    virtualenv <myphoebedir>
    source <myphoebedir>/bin/activate
    pip install numpy scipy astropy matplotlib phoebe
-   
-  
+
+
 
 To leave the virtual environment:
- 
+
 ::
- 
+
    deactivate
-   
- 
+
+
 And to destroy the virtual environment permanently:
-  
+
 ::
-  
+
    rm -rf <myphoebedir>
 
 
