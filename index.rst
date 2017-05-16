@@ -551,7 +551,7 @@ Citing PHOEBE 2.0
 
 If using PHOEBE 2.0, please consider citing the following papers, as appropriate:
 
-* `PHOEBE 2.0 release paper <http://adsabs.harvard.edu/abs/2016arXiv160908135P>`_
+* `PHOEBE 2.0 release paper <http://adsabs.harvard.edu/abs/2016ApJS..227...29P>`_
 * `PHOEBE 1.0 release paper <http://adsabs.harvard.edu/abs/2005ApJ...628..426P>`_
 
 See also the full up-to-date list of `PHOEBE publications <http://phoebe-project.org/publications>`_
