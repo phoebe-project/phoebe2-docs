@@ -290,6 +290,7 @@ be read in any particular order.
    Advanced: Animations<tutorials/animations>
    Advanced: Alternate Backends<tutorials/alternate_backends>
    Advanced: Digging into the Backend<tutorials/backend>
+   Advanced: Adding Custom Passband Tables<tutorials/passbands>
 
 
 Datasets and Observables
