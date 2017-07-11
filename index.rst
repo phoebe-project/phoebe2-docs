@@ -458,6 +458,7 @@ Spots
    :titlesonly:
 
    Binary with Spots<examples/binary_spots>
+   Single Star with Spots<examples/single_spots>
    Comparing Spots in PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy_spots>
 
 
