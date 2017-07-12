@@ -3,7 +3,7 @@
 Getting Started
 ==================================
 
-The `PHOEBE 2.0 <https://github.com/phoebe-project/phoebe2/releases/tag/2.0.0>`_
+The `PHOEBE 2.0 <https://github.com/phoebe-project/phoebe2/releases/tag/2.0.2>`_
 release aims to provide fully-tested functionality that matches that of the
 legacy `PHOEBE 1.0 <https://github.com/phoebe-project/phoebe1/>`_ (light curve
 and radial velocity forward models of binary star systems) but with improved
@@ -117,7 +117,7 @@ From PIP
 Installing PHOEBE from PIP is probably the easiest.  To install the latest version:
 
 ::
-   
+
    pip install phoebe
 
 To update a previous installation:
@@ -125,21 +125,21 @@ To update a previous installation:
 ::
 
    pip install -U phoebe
-   
+
 And to uninstall:
 
 ::
 
    pip uninstall phoebe
-   
+
 If pip gives any problems automatically installing dependencies, install them manually first:
 
 ::
 
    pip install numpy scipy astropy matplotlib
-  
+
 Please check the version of PHOEBE you have installed to make sure you are using the corresponding version of the documentation.  You can check the version once PHOEBE is imported via :code:`phoebe.__version__`
-   
+
 
 Virtual Environments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -154,20 +154,20 @@ To create a virtual environment and install PHOEBE, do the following, replacing 
    virtualenv <myphoebedir>
    source <myphoebedir>/bin/activate
    pip install numpy scipy astropy matplotlib phoebe
-   
-  
+
+
 
 To leave the virtual environment:
- 
+
 ::
- 
+
    deactivate
-   
- 
+
+
 And to destroy the virtual environment permanently:
-  
+
 ::
-  
+
    rm -rf <myphoebedir>
 
 
@@ -290,6 +290,7 @@ be read in any particular order.
    Advanced: Animations<tutorials/animations>
    Advanced: Alternate Backends<tutorials/alternate_backends>
    Advanced: Digging into the Backend<tutorials/backend>
+   Advanced: Adding Custom Passband Tables<tutorials/passbands>
 
 
 Datasets and Observables
@@ -397,6 +398,7 @@ Spots
    :titlesonly:
 
    Binary with Spots<examples/binary_spots>
+   Single Star with Spots<examples/single_spots>
    Comparing Spots in PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy_spots>
 
 
@@ -429,7 +431,7 @@ Citing PHOEBE 2.0
 
 If using PHOEBE 2.0, please consider citing the following papers, as appropriate:
 
-* `PHOEBE 2.0 release paper <http://adsabs.harvard.edu/abs/2016arXiv160908135P>`_
+* `PHOEBE 2.0 release paper <http://adsabs.harvard.edu/abs/2016ApJS..227...29P>`_
 * `PHOEBE 1.0 release paper <http://adsabs.harvard.edu/abs/2005ApJ...628..426P>`_
 
 See also the full up-to-date list of `PHOEBE publications <http://phoebe-project.org/publications>`_
