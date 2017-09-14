@@ -340,6 +340,7 @@ synthetic models, but expect a comfortable understanding of using PHOEBE and pyt
    :titlesonly:
 
 
+   Various t0s<tutorials/t0s>
    Potentials<tutorials/pot>
    Eccentricity (Volume Conservation)<tutorials/ecc>
    Apsidal Motion<tutorials/apsidal_motion>
