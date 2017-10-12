@@ -3,7 +3,7 @@
 Getting Started
 ==================================
 
-The `PHOEBE 2.0 <https://github.com/phoebe-project/phoebe2/releases/tag/2.0.2>`_
+The `PHOEBE 2.0 <https://github.com/phoebe-project/phoebe2/releases/tag/2.0.3>`_
 release aims to provide fully-tested functionality that matches that of the
 legacy `PHOEBE 1.0 <https://github.com/phoebe-project/phoebe1/>`_ (light curve
 and radial velocity forward models of binary star systems) but with improved
@@ -327,6 +327,7 @@ synthetic models, but expect a comfortable understanding of using PHOEBE and pyt
    :titlesonly:
 
 
+   Various t0s<tutorials/t0s>
    Potentials<tutorials/pot>
    Eccentricity (Volume Conservation)<tutorials/ecc>
    Apsidal Motion<tutorials/apsidal_motion>
