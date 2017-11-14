@@ -100,6 +100,7 @@ need to to do the following in order to install PHOEBE:
 
 PHOEBE requires python 2.7+ (not yet fully tested on python 3.x) with the following packages:
 
+* python-dev or python3-dev (Python.h needed to compile C-sources)
 * numpy (1.10+)
 * scipy
 * astropy (1.0+)
@@ -137,6 +138,14 @@ If pip gives any problems automatically installing dependencies, install them ma
 ::
 
    pip install numpy scipy astropy matplotlib
+
+
+If pip cannot build the C-sources, make sure you have Python.h headers for the correct version of Python, by installing python-dev or python3-dev via your package manager.  For debian systems, the following should work:
+
+::
+
+   sudo apt-get install python-dev
+
 
 Please check the version of PHOEBE you have installed to make sure you are using the corresponding version of the documentation.  You can check the version once PHOEBE is imported via :code:`phoebe.__version__`
 
