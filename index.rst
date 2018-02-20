@@ -20,7 +20,7 @@ tutorials and example scripts.
 Supported Physics (from PHOEBE 1.0)
 ----------------------------------------
 
-* detached roche binaries
+* detached and semi-detached roche binaries
 * keplerian orbits (including eccentric orbits with volume conservation)
 * passbands/atmospheres
 * limb-darkening
@@ -43,7 +43,6 @@ Unsupported Physics (from PHOEBE 1.0)
 PHOEBE 2.0 can not yet handle:
 
 * full support for contact systems
-* semi-detached/single contact systems (planned future development)
 * X-ray binaries
 
 
