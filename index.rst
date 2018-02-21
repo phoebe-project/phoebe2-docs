@@ -222,10 +222,6 @@ or to install system-wide (with root priviliges):
    python setup.py build
    sudo python setup.py install
 
-NOTE: the beta version builds a python module named 'phoebe' which will
-conflict with the alpha version if you have it installed (but will not
-conflict with PHOEBE 0.2x, 0.3x, or 1.0). If you do have PHOEBE 2.0-alpha
-installed, please uninstall before attempting to install PHOEBE 2.0-beta.
 
 
 Testing
