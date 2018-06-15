@@ -3,7 +3,7 @@
 Getting Started
 ==================================
 
-The `PHOEBE 2.0 <https://github.com/phoebe-project/phoebe2/releases/tag/2.0.5>`_
+The `PHOEBE 2.0 <https://github.com/phoebe-project/phoebe2/releases/tag/2.0.8>`_
 release aims to provide fully-tested functionality that matches that of the
 legacy `PHOEBE 1.0 <https://github.com/phoebe-project/phoebe1/>`_ (light curve
 and radial velocity forward models of binary star systems) but with improved
@@ -20,7 +20,7 @@ a facilitated experience with PHOEBE.
 Supported Physics (from PHOEBE 1.0)
 ----------------------------------------
 
-* detached and semi-detached roche binaries
+* detached and semi-detached (since 2.0.5) roche binaries
 * keplerian orbits (including eccentric orbits with volume conservation)
 * passbands/atmospheres
 * limb darkening
@@ -43,7 +43,6 @@ Unsupported Physics (from PHOEBE 1.0)
 PHOEBE 2.0 can not yet handle:
 
 * full support for contact systems
-* semi-detached/single contact systems (planned future development)
 * X-ray binaries
 
 Unsupported Convenience Functionality
@@ -222,10 +221,6 @@ or to install system-wide (with root priviliges):
    python setup.py build
    sudo python setup.py install
 
-NOTE: the beta version builds a python module named 'phoebe' which will
-conflict with the alpha version if you have it installed (but will not
-conflict with PHOEBE 0.2x, 0.3x, or 1.0). If you do have PHOEBE 2.0-alpha
-installed, please uninstall before attempting to install PHOEBE 2.0-beta.
 
 
 Testing
