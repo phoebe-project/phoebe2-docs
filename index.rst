@@ -305,6 +305,7 @@ be read in any particular order.
    Advanced: Alternate Backends<tutorials/alternate_backends>
    Advanced: Detaching from Run Compute<tutorials/detach>
    Advanced: Digging into the Backend<tutorials/backend>
+   Advanced: Passband files and model atmospheres in PHOEBE<tutorials/passbands_in_phoebe>
    Advanced: Adding Custom Passband Tables<tutorials/passbands>
    Advanced (coming soon): Creating Custom Parameters<tutorials/custom_parameters>
    Advanced (coming soon): Creating Custom Constraints<tutorials/constraint_create>
