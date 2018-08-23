@@ -104,7 +104,7 @@ PHOEBE requires python 2.7+ (not yet fully tested on python 3.x) with the follow
 * python-dev or python3-dev (Python.h needed to compile C-sources)
 * numpy (1.10+)
 * scipy
-* astropy (1.0+)
+* astropy (1.0+ but not 3.0+ as that requires Python 3)
 
 And suggested packages (required for some optional but commonly used features):
 
@@ -141,7 +141,15 @@ If pip gives any problems automatically installing dependencies, install them ma
 
 ::
 
-   pip install numpy scipy astropy matplotlib
+   pip install numpy scipy matplotlib
+
+
+If installing astropy gives you an error saying it requires Python 3, then explicitly request the `latest release in the 2.0.X branch <https://github.com/astropy/astropy/releases/>`_.
+
+::
+
+   pip install astropy==2.0.8
+
 
 
 If pip cannot build the C-sources, make sure you have Python.h headers for the correct version of Python, by installing python-dev or python3-dev via your package manager.  For debian systems, the following should work:
