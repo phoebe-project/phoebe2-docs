@@ -558,30 +558,14 @@ Backend (Advanced) API Docs
    Distortions <api/phoebe.distortions>
 
 
-Development Information
+Citing PHOEBE 2
 ================================
 
-.. toctree::
-   :maxdepth: 1
-   :titlesonly:
+If using PHOEBE 2, please consider citing the following papers, as appropriate:
 
-   Style Guidelines (coming soon)<development/style>
-   Development in the Frontend (coming soon)<development/devel_frontend>
-   Development in the Backend (coming soon)<development/devel_backend>
-   Tutorials and Scripts<development/tutorials_scripts>
-   API Documentation (coming soon)<development/api>
-   Testing (coming soon)<development/testing>
-   Benchmarking (coming soon)<development/benchmark>
-   Committing Code (coming soon)<development/committing>
-   Releasing a New Version (coming soon)<development/release>
-
-Citing PHOEBE 2.0
-================================
-
-If using PHOEBE 2.0, please consider citing the following papers, as appropriate:
-
-* `PHOEBE 2.0 release paper <http://adsabs.harvard.edu/abs/2016ApJS..227...29P>`_
-* `PHOEBE 1.0 release paper <http://adsabs.harvard.edu/abs/2005ApJ...628..426P>`_
+* `PHOEBE 2.1 (misalignment) release paper <https://ui.adsabs.harvard.edu/#abs/2018ApJS..237...26H>`_
+* `PHOEBE 2.0 release paper <https://ui.adsabs.harvard.edu/#abs/2016ApJS..227...29P>`_
+* `PHOEBE 1.0 release paper <https://ui.adsabs.harvard.edu/#abs/2005ApJ...628..426P>`_
 
 See also the full up-to-date list of `PHOEBE publications <http://phoebe-project.org/publications>`_
 
