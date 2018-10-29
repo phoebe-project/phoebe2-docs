@@ -476,13 +476,14 @@ Backend (Advanced) API Docs
    Distortions <api/phoebe.distortions>
 
 
-Citing PHOEBE 2.0
+Citing PHOEBE 2
 ================================
 
-If using PHOEBE 2.0, please consider citing the following papers, as appropriate:
+If using PHOEBE 2, please consider citing the following papers, as appropriate:
 
-* `PHOEBE 2.0 release paper <http://adsabs.harvard.edu/abs/2016ApJS..227...29P>`_
-* `PHOEBE 1.0 release paper <http://adsabs.harvard.edu/abs/2005ApJ...628..426P>`_
+* `PHOEBE 2.1 (misalignment) release paper <https://ui.adsabs.harvard.edu/#abs/2018ApJS..237...26H>`_
+* `PHOEBE 2.0 release paper <https://ui.adsabs.harvard.edu/#abs/2016ApJS..227...29P>`_
+* `PHOEBE 1.0 release paper <https://ui.adsabs.harvard.edu/#abs/2005ApJ...628..426P>`_
 
 See also the full up-to-date list of `PHOEBE publications <http://phoebe-project.org/publications>`_
 
