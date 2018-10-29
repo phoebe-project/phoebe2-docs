@@ -35,6 +35,7 @@ New Physics (not in PHOEBE 1.0)
 
 * beaming/boosting
 * single rotating stars
+* misaligned binaries
 
 
 Unsupported Physics (from PHOEBE 1.0)
@@ -66,7 +67,6 @@ Planned (new) future features include:
 * heating (heat redistribution)
 * triple and N-body systems (in development)
 * N-body dynamics (in development)
-* misaligned binaries (in development)
 * pulsations (in development)
 * bayesian (MCMC) fitting
 * synthetic spectra
@@ -285,6 +285,23 @@ and making alterations to see how they change the output.
    Accessing and Plotting Meshes<tutorials/meshes>
    Fitting<tutorials/fitting>
 
+Migrating from PHOEBE 2.0 to PHOEBE 2.1
+======================
+
+These tutorials highlight the major changes between versions 2.0.x and 2.1+
+in the following topics:
+
+.. toctree::
+   :maxdepth: 1
+   :titlesonly:
+
+   Potential/Rpole to Requiv<tutorials/20_21_requiv>
+   Semidetached Constraints<tutorials/20_21_semidetached>
+   Plotting<tutorials/20_21_plotting>
+   Meshes<tutorials/20_21_meshes>
+   nparray<tutorials/20_21_nparray>
+
+
 
 Advanced Tutorials
 =======================
@@ -304,7 +321,6 @@ be read in any particular order.
    Advanced: Alternate Plotting Backends<tutorials/alternate_plotting>
    Advanced: Alternate Backends<tutorials/alternate_backends>
    Advanced: Detaching from Run Compute<tutorials/detach>
-   Advanced: Digging into the Backend<tutorials/backend>
    Advanced: Passband files and model atmospheres in PHOEBE<tutorials/passbands_in_phoebe>
    Advanced: Adding Custom Passband Tables<tutorials/passbands>
    Advanced (coming soon): Creating Custom Parameters<tutorials/custom_parameters>
@@ -333,7 +349,7 @@ expect a comfortable understanding of using PHOEBE and python
    Meshes (mesh)<tutorials/MESH>
    Light Curves (lc)<tutorials/LC>
    Radial Velocities (rv)<tutorials/RV>
-   Eclipse Timing Variations (etv)<tutorials/ETV>
+   Line Profiles (lp)<tutorials/LP>
 
 
 Explanations of Individual Parameters
@@ -350,7 +366,8 @@ synthetic models, but expect a comfortable understanding of using PHOEBE and pyt
 
 
    Various t0s<tutorials/t0s>
-   Potentials<tutorials/pot>
+   Equivalent Radius<tutorials/requiv>
+   Potentials (replaced by Equivalent Radius in PHOEBE 2.1+)<tutorials/pot>
    Eccentricity (Volume Conservation)<tutorials/ecc>
    Apsidal Motion<tutorials/apsidal_motion>
    Systemic Velocity<tutorials/vgamma>
