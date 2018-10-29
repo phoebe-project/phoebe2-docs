@@ -3,7 +3,7 @@
 Getting Started
 ==================================
 
-The `PHOEBE 2.0 <https://github.com/phoebe-project/phoebe2/releases/tag/2.0>`_
+The `PHOEBE 2.1 <https://github.com/phoebe-project/phoebe2/releases/tag/2.1.0>`_
 release aims to provide fully-tested functionality that matches that of the
 legacy `PHOEBE 1.0 <https://github.com/phoebe-project/phoebe1/>`_ (light curve
 and radial velocity forward models of binary star systems) but with improved
@@ -205,14 +205,6 @@ Note: developers should exclude the depth=1 to get the entire git history (downl
 Installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-NOTE:  PHOEBE 2.0 builds to a python module named 'phoebe' which may
-conflict with the alpha version if you have that installed (but will not
-conflict with PHOEBE 0.2x, 0.3x, or 1.0).  If you do have PHOEBE 2.0-alpha
-installed, please uninstall before attempting to install PHOEBE 2.0.  If you
-have a previous version of PHOEBE 2.x (including PHOEBE 2.0-beta), installing
-will overwrite that version (unless you use a virtual environment).
-
-
 To install without admin rights for a single-user:
 
 ::
@@ -323,10 +315,6 @@ be read in any particular order.
    Advanced: Detaching from Run Compute<tutorials/detach>
    Advanced: Passband files and model atmospheres in PHOEBE<tutorials/passbands_in_phoebe>
    Advanced: Adding Custom Passband Tables<tutorials/passbands>
-   Advanced (coming soon): Creating Custom Parameters<tutorials/custom_parameters>
-   Advanced (coming soon): Creating Custom Constraints<tutorials/constraint_create>
-   Advanced (coming soon): Time Derivatives<tutorials/time_derivatives>
-   Advanced (coming soon): Undo/Redo<tutorials/undo_redo>
 
 
 
@@ -382,13 +370,11 @@ synthetic models, but expect a comfortable understanding of using PHOEBE and pyt
    Eclipse Detection<tutorials/eclipse>
    Intensity Weighting<tutorials/intens_weighting>
 
-COMING SOON (differences between various t0s and phasing)
-
 
 Example Scripts
 ===============================
 
-These example scripts are generally focussed to show a single advanced feature
+These example scripts are generally focused to show a single advanced feature
 or a specific science use-case.  They are generally less verbose than the tutorials
 and assume you're comfortable with the general concepts and syntax of both
 Python and PHOEBE.  Some scripts may be listed under different sections if they
@@ -421,7 +407,6 @@ Detached Binary Stars
    Wilson-Devinney Style Meshing<examples/mesh_wd>
    Detached Binary: Roche vs Rotstar <examples/detached_rotstar>
    Binary with Spots<examples/binary_spots>
-   Binary with Pulsations (TESTING - not yet supported)<examples/binary_pulsations>
 
 
 
@@ -433,48 +418,8 @@ Contact Binary Stars (NOT YET SUPPORTED)
    :maxdepth: 1
    :titlesonly:
 
-   Minimal Contact Binary System (TESTING - not yet supported)<examples/minimal_contact_binary>
-   Comparing Contact Binary System PHOEBE 2.0 vs PHOEBE Legacy (TESTING - not yet supported)<examples/legacy_contact_binary>
-
-
-
-Triple Stars (NOT YET SUPPORTED)
--------------------------------
-
-.. toctree::
-   :maxdepth: 1
-   :titlesonly:
-
-   Minimal Hierarchical Triple (TESTING - not yet supported)<examples/hierarchical_triple>
-   Minimal Dynamical Triple (TESTING - not yet supported)<examples/dynamical_triple>
-   Hierarchical Triple vs Photodynam (TESTING - not yet supported) <examples/hierarchical_triple_pd>
-   LTTE ETVs in a Hierarchical Triple (TESTING - not yet supported) <examples/hierarchical_triple_etvs>
-   KOI 126 (TESTING - not yet supported)<examples/koi126>
-   Comparing Roche Distortion for Nbody vs Keplerian (Binary) <examples/hybrid_binary>
-
-
-
-
-Planetary System (NOT YET SUPPORTED)
--------------------------------
-
-.. toctree::
-   :maxdepth: 1
-   :titlesonly:
-
-   Sun-Earth (TESTING - not yet supported)<examples/sun_earth>
-
-
-
-Circumbinary Planets (NOT YET SUPPORTED)
-------------------------------------------------------
-
-.. toctree::
-   :maxdepth: 1
-   :titlesonly:
-
-   Kepler 16 (TESTING - not yet supported)<examples/kepler16>
-
+   Minimal Contact Binary System<examples/minimal_contact_binary>
+   Comparing Contact Binary System PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy_contact_binary>
 
 
 Spots
@@ -487,26 +432,6 @@ Spots
    Binary with Spots<examples/binary_spots>
    Single Star with Spots<examples/single_spots>
    Comparing Spots in PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy_spots>
-
-
-
-Pulsations (NOT YET SUPPORTED)
-------------------------------------------
-
-.. toctree::
-   :maxdepth: 1
-   :titlesonly:
-
-   Single Star with Pulsations (TESTING - not yet supported)<examples/rotstar_pulsations>
-   Binary with Pulsations (TESTING - not yet supported)<examples/binary_pulsations>
-
-
-
-Advanced Constraints (NOT YET SUPPORTED)
-------------------------------
-
-COMING SOON (creating custom constraints, main-sequence, etc)
-
 
 
 Advanced Plotting
@@ -528,11 +453,8 @@ Alternate Backends
    :titlesonly:
 
    Comparing PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy>
-   Comparing Contact Binary System PHOEBE 2.0 vs PHOEBE Legacy (TESTING - not yet supported)<examples/legacy_contact_binary>
-   Comparing Spots in PHOEBE 2.0 vs PHOEBE Legacy (TESTING - not yet supported)<examples/legacy_spots>
-   Comparing PHOEBE 2.0 vs Photodynam (Binary)<examples/photodynam>
-   Comparing PHOEBE 2.0 vs Photodynam (Hierarchical Triple)<examples/hierarchical_triple_pd>
-   Comparing PHOEBE 2.0 vs JKTEBOP <examples/jktebop>
+   Comparing Contact Binary System PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy_contact_binary>
+   Comparing Spots in PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy_spots>
 
 
 Frontend API Docs
@@ -557,23 +479,6 @@ Backend (Advanced) API Docs
    Dynamics <api/phoebe.dynamics>
    Distortions <api/phoebe.distortions>
 
-
-Development Information
-================================
-
-.. toctree::
-   :maxdepth: 1
-   :titlesonly:
-
-   Style Guidelines (coming soon)<development/style>
-   Development in the Frontend (coming soon)<development/devel_frontend>
-   Development in the Backend (coming soon)<development/devel_backend>
-   Tutorials and Scripts<development/tutorials_scripts>
-   API Documentation (coming soon)<development/api>
-   Testing (coming soon)<development/testing>
-   Benchmarking (coming soon)<development/benchmark>
-   Committing Code (coming soon)<development/committing>
-   Releasing a New Version (coming soon)<development/release>
 
 Citing PHOEBE 2.0
 ================================
