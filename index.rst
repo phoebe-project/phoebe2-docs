@@ -433,8 +433,8 @@ Contact Binary Stars (NOT YET SUPPORTED)
    :maxdepth: 1
    :titlesonly:
 
-   Minimal Contact Binary System (TESTING - not yet supported)<examples/minimal_contact_binary>
-   Comparing Contact Binary System PHOEBE 2.0 vs PHOEBE Legacy (TESTING - not yet supported)<examples/legacy_contact_binary>
+   Minimal Contact Binary System<examples/minimal_contact_binary>
+   Comparing Contact Binary System PHOEBE 2 vs PHOEBE Legacy<examples/legacy_contact_binary>
 
 
 
@@ -486,7 +486,7 @@ Spots
 
    Binary with Spots<examples/binary_spots>
    Single Star with Spots<examples/single_spots>
-   Comparing Spots in PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy_spots>
+   Comparing Spots in PHOEBE 2 vs PHOEBE Legacy<examples/legacy_spots>
 
 
 
@@ -527,12 +527,12 @@ Alternate Backends
    :maxdepth: 1
    :titlesonly:
 
-   Comparing PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy>
-   Comparing Contact Binary System PHOEBE 2.0 vs PHOEBE Legacy (TESTING - not yet supported)<examples/legacy_contact_binary>
-   Comparing Spots in PHOEBE 2.0 vs PHOEBE Legacy (TESTING - not yet supported)<examples/legacy_spots>
-   Comparing PHOEBE 2.0 vs Photodynam (Binary)<examples/photodynam>
-   Comparing PHOEBE 2.0 vs Photodynam (Hierarchical Triple)<examples/hierarchical_triple_pd>
-   Comparing PHOEBE 2.0 vs JKTEBOP <examples/jktebop>
+   Comparing PHOEBE 2 vs PHOEBE Legacy<examples/legacy>
+   Comparing Contact Binary System PHOEBE 2 vs PHOEBE Legacy (TESTING - not yet supported)<examples/legacy_contact_binary>
+   Comparing Spots in PHOEBE 2 vs PHOEBE Legacy (TESTING - not yet supported)<examples/legacy_spots>
+   Comparing PHOEBE 2 vs Photodynam (Binary)<examples/photodynam>
+   Comparing PHOEBE 2 vs Photodynam (Hierarchical Triple)<examples/hierarchical_triple_pd>
+   Comparing PHOEBE 2 vs JKTEBOP <examples/jktebop>
 
 
 Frontend API Docs
@@ -589,7 +589,7 @@ FAQ
 ================================
 
 
-*Q: Is PHOEBE 2.0 backwards compatible with PHOEBE 2.0 alpha releases?*
+*Q: Is PHOEBE 2.x backwards compatible with PHOEBE 2.0 alpha releases?*
 
 A: Unfortunately, no.  We simply learned too much from the alpha-release that
 we decided that a complete rewrite was needed.  However, many of the syntax
