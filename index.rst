@@ -275,7 +275,6 @@ and making alterations to see how they change the output.
    Computing Observables<tutorials/compute>
    Plotting<tutorials/plotting>
    Accessing and Plotting Meshes<tutorials/meshes>
-   Fitting<tutorials/fitting>
 
 Migrating from PHOEBE 2.0 to PHOEBE 2.1
 ======================
@@ -310,7 +309,6 @@ be read in any particular order.
 
    Advanced: Settings<tutorials/settings>
    Advanced: Animations<tutorials/animations>
-   Advanced: Alternate Plotting Backends<tutorials/alternate_plotting>
    Advanced: Alternate Backends<tutorials/alternate_backends>
    Advanced: Detaching from Run Compute<tutorials/detach>
    Advanced: Passband files and model atmospheres in PHOEBE<tutorials/passbands_in_phoebe>
@@ -389,8 +387,6 @@ Single Stars
    :titlesonly:
 
    Sun (rotating single star)<examples/sun>
-   Single Star with Pulsations (TESTING - not yet supported)<examples/rotstar_pulsations>
-
 
 
 Detached Binary Stars
