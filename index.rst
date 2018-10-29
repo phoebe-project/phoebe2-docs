@@ -419,7 +419,7 @@ Contact Binary Stars (NOT YET SUPPORTED)
    :titlesonly:
 
    Minimal Contact Binary System<examples/minimal_contact_binary>
-   Comparing Contact Binary System PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy_contact_binary>
+   Comparing Contact Binary System PHOEBE 2 vs PHOEBE Legacy<examples/legacy_contact_binary>
 
 
 Spots
@@ -431,7 +431,7 @@ Spots
 
    Binary with Spots<examples/binary_spots>
    Single Star with Spots<examples/single_spots>
-   Comparing Spots in PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy_spots>
+   Comparing Spots in PHOEBE 2 vs PHOEBE Legacy<examples/legacy_spots>
 
 
 Advanced Plotting
@@ -452,9 +452,9 @@ Alternate Backends
    :maxdepth: 1
    :titlesonly:
 
-   Comparing PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy>
-   Comparing Contact Binary System PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy_contact_binary>
-   Comparing Spots in PHOEBE 2.0 vs PHOEBE Legacy<examples/legacy_spots>
+   Comparing PHOEBE 2 vs PHOEBE Legacy<examples/legacy>
+   Comparing Contact Binary System PHOEBE 2 vs PHOEBE Legacy<examples/legacy_contact_binary>
+   Comparing Spots in PHOEBE 2 vs PHOEBE Legacy<examples/legacy_spots>
 
 
 Frontend API Docs
@@ -494,7 +494,7 @@ FAQ
 ================================
 
 
-*Q: Is PHOEBE 2.0 backwards compatible with PHOEBE 2.0 alpha releases?*
+*Q: Is PHOEBE 2.x backwards compatible with PHOEBE 2.0 alpha releases?*
 
 A: Unfortunately, no.  We simply learned too much from the alpha-release that
 we decided that a complete rewrite was needed.  However, many of the syntax
