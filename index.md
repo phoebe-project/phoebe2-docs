@@ -1,4 +1,4 @@
-## Getting Started<a name="getting-started"></a>
+## Getting Started
 
 The [PHOEBE 2.1](https://github.com/phoebe-project/phoebe2/releases/tag/2.1.0) release aims to provide fully-tested functionality that matches that of the legacy [PHOEBE 1.0](https://github.com/phoebe-project/phoebe1/) (light curve and radial velocity forward models of binary star systems) but with improved precision and a python interface.
 
@@ -10,11 +10,11 @@ See below for installation instructions as well as a listing of all available tu
 
 
 
-## Download and Installation<a name="install"></a>
+## Download and Installation
 
 download and installation instructions here
 
-## Tutorials<a name="tutorials"></a>
+## Tutorials
 
 Each of the following tutorials builds upon previous tutorials, so it will be most efficient to work through them sequentially at first. However, each should run independently, so feel free to jump in at any point to review a specific concept.
 
@@ -31,7 +31,7 @@ Any of these tutorials can be downloaded as an IPython Notebook or a python scri
 7. [Plotting](tutorials/plotting)
 8. [Accessing and Plotting Meshes](tutorials/meshes)
 
-### Migrating from PHOEBE 2.0 to PHOEBE 2.1<a name="tutorials-migration"></a>
+### Migrating from PHOEBE 2.0 to PHOEBE 2.1
 
 These tutorials highlight the major changes between versions 2.0.x and 2.1+ in the following topics:
 
@@ -41,21 +41,21 @@ These tutorials highlight the major changes between versions 2.0.x and 2.1+ in t
 * [Meshes](tutorials/20_21_meshes)
 * [nparray](tutorials/20_21_nparray)
 
-## Example Scripts<a name="examples"></a>
+## Example Scripts
 
 These example scripts are generally focused to show a single advanced feature or a specific science use-case. They are generally less verbose than the tutorials and assume you’re comfortable with the general concepts and syntax of both Python and PHOEBE. Some scripts may be listed under different sections if they fall under multiple categories.
 
 
-### Single Stars<a name="examples-single-stars"></a>
+### Single Stars
 
 * [Sun (rotating single star)](examples/sun)
 
 
-## API Documentation<a name="api"></a>
+## API Documentation
 
 [API Docs](api)
 
-## FAQ<a name="FAQ"></a>
+## FAQ
 
 Q: Is PHOEBE 2.x backwards compatible with PHOEBE 2.0 alpha releases?
 
