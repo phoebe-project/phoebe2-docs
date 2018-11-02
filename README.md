@@ -1,3 +1,3 @@
 # phoebe2-docs
 
-This is the current development version of the PHOEBE documentation and should not be considered stable and corresponds to the [development branch of PHOEBE](https://github.com/phoebe-project/phoebe2/tree/development).
+To start, see the [index page](index.md) or the live-version of the docs at [phoebe-project.org](http://phoebe-project.org)

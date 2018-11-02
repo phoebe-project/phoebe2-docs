@@ -22,24 +22,24 @@ For more specific use-cases, see the example scripts below.
 
 Any of these tutorials can be downloaded as an IPython Notebook or a python script. (see the link at the top of any tutorial). To run these you’ll need PHOEBE installed on your system as well, and for the IPython notebooks you’ll also need IPython (sudo pip install jupyter; sudo apt-get install ipython-notebook). Then simply start the notebook service (ipython notebook [downloaded_tutorial.ipynb]). This will allow you to interact with the tutorial - running it line-by-line and making alterations to see how they change the output.
 
-1. [General Concepts](tutorials/general_concepts)
-2. [Building a System](tutorials/building_a_system)
-3. [Saving and Loading](tutorials/saving_and_loading)
-4. [Constraints](tutorials/constraints)
-5. [Datasets](tutorials/datasets)
-6. [Computing Observables](tutorials/compute)
-7. [Plotting](tutorials/plotting)
-8. [Accessing and Plotting Meshes](tutorials/meshes)
+1. [General Concepts](tutorials/general_concepts.ipynb)
+2. [Building a System](tutorials/building_a_system.ipynb)
+3. [Saving and Loading](tutorials/saving_and_loading.ipynb)
+4. [Constraints](tutorials/constraints.ipynb)
+5. [Datasets](tutorials/datasets.ipynb)
+6. [Computing Observables](tutorials/compute.ipynb)
+7. [Plotting](tutorials/plotting.ipynb)
+8. [Accessing and Plotting Meshes](tutorials/meshes.ipynb)
 
 ### Migrating from PHOEBE 2.0 to PHOEBE 2.1
 
 These tutorials highlight the major changes between versions 2.0.x and 2.1+ in the following topics:
 
-* [Potential/Rpole to Requiv](tutorials/20_21_requiv/)
-* [Semidetached Constraints](tutorials/20_21_semidetached)
-* [Plotting](tutorials/20_21_plotting)
-* [Meshes](tutorials/20_21_meshes)
-* [nparray](tutorials/20_21_nparray)
+* [Potential/Rpole to Requiv](tutorials/20_21_requiv.ipynb)
+* [Semidetached Constraints](tutorials/20_21_semidetached.ipynb)
+* [Plotting](tutorials/20_21_plotting.ipynb)
+* [Meshes](tutorials/20_21_meshes.ipynb)
+* [nparray](tutorials/20_21_nparray.ipynb)
 
 ## Example Scripts
 
@@ -48,12 +48,12 @@ These example scripts are generally focused to show a single advanced feature or
 
 ### Single Stars
 
-* [Sun (rotating single star)](examples/sun)
+* [Sun (rotating single star)](examples/sun.ipynb)
 
 
 ## API Documentation
 
-[API Docs](api)
+[API Docs](api.md)
 
 ## FAQ
 
