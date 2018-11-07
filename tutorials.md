@@ -4,8 +4,6 @@ Each of the following tutorials builds upon previous tutorials, so it will be mo
 
 For more specific use-cases, see the example scripts below.
 
-Any of these tutorials can be downloaded as an IPython/Jupyter Notebook or a python script. (see the link at the top of any tutorial). To run these you’ll need PHOEBE installed on your system as well, and for the IPython/Jupyter notebooks you’ll also need IPython (`sudo pip install jupyter; sudo apt-get install ipython-notebook`). Then simply start the notebook service (`ipython notebook` or `jupyter notebook`). This will allow you to interact with the tutorial - running it line-by-line and making alterations to see how they change the output.
-
 1. [General Concepts](tutorials/general_concepts.ipynb)
 2. [Building a System](tutorials/building_a_system.ipynb)
 3. [Saving and Loading](tutorials/saving_and_loading.ipynb)
@@ -36,35 +34,3 @@ These all assume comfort with the tutorials listed above, but should not need to
 * [Advanced: Alternate Backends](tutorials/alternate_backends.ipynb)
 * [Advanced: Detaching from Run Compute](tutorials/detach.ipynb)
 * [Advanced: Adding Custom Passband Tables](tutorials/passbands.ipynb)
-
-## Datasets and Observables
-The following tutorials aim to both explain the general logic that PHOEBE uses to compute observables as well as explaining the parameters, fields, and options for each observable type.
-
-These aim to be quite thorough and may not be best for light-reading. They expect a comfortable understanding of using PHOEBE and python
-
-* [How does PHOEBE compute observables](tutorials/phoebe_logic.ipynb)
-* [Orbits (orb)](tutorials/ORB.ipynb)
-* [Meshes (mesh)](tutorials/MESH.ipynb)
-* [Light Curves (lc)](tutorials/LC.ipynb)
-* [Radial Velocities (rv)](tutorials/RV.ipynb)
-* [Line Profiles (lp)](tutorials/LP.ipynb)
-
-## Explanations of Individual Parameters
-
-The following tutorials aim to explain the implementation and usage of some of the physical effects that are incorporated in PHOEBE. These explain the relevant parameters and try to demonstrate how they affect the resulting synthetic models, but expect a comfortable understanding of using PHOEBE and python
-
-* [Various t0s](tutorials/t0s.ipynb)
-* [Equivalent Radius](tutorials/requiv.ipynb)
-* [Potentials (replaced by Equivalent Radius in PHOEBE 2.1+)](tutorials/pot.ipynb)
-* [Eccentricity (Volume Conservation)](tutorials/ecc.ipynb)
-* [Apsidal Motion](tutorials/apsidal_motion.ipynb)
-* [Systemic Velocity (vgamma)](tutorials/vgamma.ipynb)
-* [Passband Luminosity](tutorials/pblum.ipynb)
-* [Third Light](tutorials/l3.ipynb)
-* [Distance](tutorials/distance.ipynb)
-* [Limb Darkening](tutorials/limb_darkening.ipynb)
-* [Gravitational Redshift (RVs)](tutorials/grav_redshift.ipynb)
-* [Reflection and Heating](tutorials/reflection_heating.ipynb)
-* [Beaming and Boosting (not yet implemented)](tutorials/beaming_boosting.ipynb)
-* [Eclipse Detection](tutorials/eclipse.ipynb)
-* [Intensity Weighting](tutorials/intens_weighting.ipynb)
