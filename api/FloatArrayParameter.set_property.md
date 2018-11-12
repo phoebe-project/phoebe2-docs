@@ -1,0 +1,12 @@
+### FloatArrayParameter.set_property
+
+```py
+
+def set_property(self, **kwargs)
+
+```
+
+
+
+set any property of the underlying nparray object
+
