@@ -2,10 +2,6 @@
 adapted from https://medium.com/python-pandemonium/python-introspection-with-the-inspect-module-2c85d5aa5a48 and https://gist.github.com/dvirsky/30ffbd3c7d8f37d4831b30671b681c24#file-gendocs-py
 """
 
-# This script generates mkdocs friendly Markdown documentation from a python package.
-# It is based on the the following blog post by Christian Medina
-# https://medium.com/python-pandemonium/python-introspection-with-the-inspect-module-2c85d5aa5a48#.twcmlyack 
-
 import pydoc
 import os, sys
 
@@ -16,21 +12,21 @@ function_header = "### {}"
 
 def getmarkdown(module):
     output = [ module_header.format(module.__name__) ]
-    
+
     if module.__doc__:
         output.append(module.__doc__)
-    
+
     output.extend(getclasses(module))
     return "\n".join((str(x) for x in output))
 
 def getclasses(item):
     output = list()
     for cl in pydoc.inspect.getmembers(item, pydoc.inspect.isclass):
-        
+
         if cl[0] != "__class__" and not cl[0].startswith("_"):
             # Consider anything that starts with _ private
             # and don't document it
-            output.append( class_header.format(cl[0])) 
+            output.append( class_header.format(cl[0]))
             # Get the docstring
             output.append(pydoc.inspect.getdoc(cl[1]))
             # Get the functions
@@ -45,7 +41,7 @@ def getfunctions(item):
     output = list()
     #print item
     for func in pydoc.inspect.getmembers(item, pydoc.inspect.ismethod):
-        
+
         if func[0].startswith('_') and func[0] != '__init__':
             continue
 
@@ -71,14 +67,84 @@ def generatedocs(module):
         mod = pydoc.safeimport(module)
         if mod is None:
            print("Module not found")
-        
+
         # Module imported correctly, let's create the docs
         return getmarkdown(mod)
+
     except pydoc.ErrorDuringImport as e:
         print("Error while trying to import " + module)
 
+
+def api_docs_for_class(cls):
+    output = list()
+    for func in pydoc.inspect.getmembers(cls, pydoc.inspect.ismethod):
+
+        if func[0].startswith('_') and func[0] != '__init__':
+            continue
+
+        output.append(function_header.format(func[0].replace('_', '\\_')))
+
+        # Get the signature
+        output.append ('```py\n')
+        output.append('def %s%s\n' % (func[0], pydoc.inspect.formatargspec(*pydoc.inspect.getargspec(func[1]))))
+        output.append ('```\n')
+
+        # get the docstring
+        if pydoc.inspect.getdoc(func[1]):
+            output.append('\n')
+            output.append(pydoc.inspect.getdoc(func[1]))
+
+        output.append('\n')
+    return output
+
+
 if __name__ == '__main__':
-    f = open('api.md', 'w')
-    f.write(generatedocs('phoebe'))
-    f.close()
-    print("api docs written to api.md")
+    import phoebe
+
+    skip = ['add_feedback', 'add_fitting', 'add_plugin', 'add_prior',
+            'as_client', 'client_update', 'default_triple',
+            'disable_prior', 'draw_from_posterior', 'draw_from_prior',
+            'enable_prior', 'from_catalog', 'from_server', 'get_adjust',
+            'get_feedback', 'get_fitting', 'get_plotting', 'get_plugin',
+            'get_posterior', 'get_prior', 'remove_feedback', 'remove_fitting',
+            'remove_plugin', 'remove_posterior', 'remove_prior', 'run_plugin',
+            'set_adjust', 'set_adjust_all', 'ui']
+
+
+    f_bundle = open('./api/bundle.md', 'w')
+
+    f_bundle.write("Bundle class (all methods)\n")
+
+    for func in pydoc.inspect.getmembers(phoebe.Bundle, pydoc.inspect.ismethod):
+        output = list()
+
+        if func[0] in skip or (func[0].startswith('_') and func[0] != '__init__'):
+            continue
+
+        output.append(function_header.format(func[0].replace('_', '\\_')))
+
+        # Get the signature
+        output.append ('```py\n')
+        output.append('def %s%s\n' % (func[0], pydoc.inspect.formatargspec(*pydoc.inspect.getargspec(func[1]))))
+        output.append ('```\n')
+
+        # get the docstring
+        if pydoc.inspect.getdoc(func[1]):
+            output.append('\n')
+            docstring = pydoc.inspect.getdoc(func[1])
+            docstring.replace(':meth:', '')
+            output.append(docstring)
+
+        output.append('\n')
+
+        f_bundle.write("* [{}](bundle.{})\n".format(func[0], func[0]))
+
+
+        filename = './api/bundle.{}.md'.format(func[0])
+        print "writing docs to {}".format(filename)
+        f_method = open(filename, 'w')
+        f_method.write("\n".join(output))
+        f_method.close()
+
+
+    f_bundle.close()
