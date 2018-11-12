@@ -1,4 +1,4 @@
-### Bundle.get_component
+### [Bundle](Bundle.md).get_component
 
 ```py
 

@@ -1,4 +1,4 @@
-### Bundle.remove_envelope
+### [Bundle](Bundle.md).remove_envelope
 
 ```py
 

@@ -1,4 +1,4 @@
-### Bundle.to_time
+### [Bundle](Bundle.md).to_time
 
 ```py
 

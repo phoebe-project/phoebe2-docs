@@ -1,4 +1,4 @@
-### ParameterSet.get_meta
+### [ParameterSet](ParameterSet.md).get_meta
 
 ```py
 

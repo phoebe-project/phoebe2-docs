@@ -26,39 +26,39 @@ See the full alphabetical lists for the following modules/classes, or see below 
 
 ### Settings
 
-* [logger]
-* [mpi_on]
-* [mpi_off]
-* [interactive_on]
-* [interactive_off]
-* [interactive_checks_on]
-* [interactive_checks_off]
-* [interactive_constraints_on]
-* [interactive_constraints_off]
-* [reset_settings]
+* logger
+* mpi_on
+* mpi_off
+* interactive_on
+* interactive_off
+* interactive_checks_on
+* interactive_checks_off
+* interactive_constraints_on
+* interactive_constraints_off
+* reset_settings
 
 ### Units and Constants
 
-* [u (units)]
-* [c (constants)]
+* u (units)
+* c (constants)
 
 ### Atmospheres and Passbands
 
-* [list_passbands]
-* [list_passband_directories]
-* [list_installed_passbands]
-* [list_online_passbands]
-* [download_passband]
-* [get_passband]
-* [install_passband]
+* list_passbands
+* list_passband_directories
+* list_installed_passbands
+* list_online_passbands
+* download_passband
+* get_passband
+* install_passband
 
 ### Arrays
 
-* [array]
-* [arange]
-* [linspace]
-* [logspace]
-* [geomspace]
+* array
+* arange
+* linspace
+* logspace
+* geomspace
 
 
 ## Bundle & ParameterSets

@@ -1,4 +1,4 @@
-### ParameterSet.set_quantity
+### [ParameterSet](ParameterSet.md).set_quantity
 
 ```py
 

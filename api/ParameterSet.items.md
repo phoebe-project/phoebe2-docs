@@ -1,4 +1,4 @@
-### ParameterSet.items
+### [ParameterSet](ParameterSet.md).items
 
 ```py
 

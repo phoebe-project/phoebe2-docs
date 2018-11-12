@@ -1,4 +1,4 @@
-### Bundle.remove_computes_all
+### [Bundle](Bundle.md).remove_computes_all
 
 ```py
 

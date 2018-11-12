@@ -1,4 +1,4 @@
-### Bundle.rename_component
+### [Bundle](Bundle.md).rename_component
 
 ```py
 

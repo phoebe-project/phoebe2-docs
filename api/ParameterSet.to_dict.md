@@ -1,4 +1,4 @@
-### ParameterSet.to_dict
+### [ParameterSet](ParameterSet.md).to_dict
 
 ```py
 

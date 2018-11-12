@@ -1,4 +1,4 @@
-### Bundle.add_envelope
+### [Bundle](Bundle.md).add_envelope
 
 ```py
 

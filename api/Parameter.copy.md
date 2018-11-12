@@ -1,4 +1,4 @@
-### Parameter.copy
+### [Parameter](Parameter.md).copy
 
 ```py
 

@@ -1,4 +1,4 @@
-### IntParameter.set_limits
+### [IntParameter](IntParameter.md).set_limits
 
 ```py
 

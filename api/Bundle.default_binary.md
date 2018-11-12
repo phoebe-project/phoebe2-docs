@@ -1,4 +1,4 @@
-### Bundle.default_binary
+### [Bundle](Bundle.md).default_binary
 
 ```py
 

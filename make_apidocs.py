@@ -10,7 +10,7 @@ def api_docs_for_class(cls, skip=[], subclass_of=None, write=True):
         if func[0] in skip or (func[0].startswith('_') and func[0] != '__init__'):
             continue
 
-        output.append("### {}.{}\n".format(cls.__name__, func[0]))
+        output.append("### [{}]({}.md).{}\n".format(cls.__name__, cls.__name__, func[0]))
 
         # Get the signature
         output.append ('```py\n')
@@ -43,7 +43,7 @@ def api_docs_for_class(cls, skip=[], subclass_of=None, write=True):
         if subclass_of is not None:
             f_class.write("{} is a subclass of {} and therefore also includes all [{} methods]({}.md)\n\n".format(cls.__name__, subclass_of, subclass_of, subclass_of))
         for func in stored_funcs:
-            f_class.write("* [{}]({}.{})\n".format(func, cls.__name__, func))
+            f_class.write("* [{}]({}.{}.md)\n".format(func, cls.__name__, func))
         f_class.close()
 
     return stored_funcs
@@ -71,17 +71,17 @@ if __name__ == '__main__':
 
 
 
-    # funcs_ps = api_docs_for_class(phoebe.parameters.ParameterSet, skip=skip_ps)
-    # funcs_bundle = api_docs_for_class(phoebe.Bundle, skip=skip_ps+funcs_ps, subclass_of='ParameterSet')
-    #
-    # funcs_param = api_docs_for_class(phoebe.parameters.Parameter, skip=skip_param)
-    # funcs = api_docs_for_class(phoebe.parameters.IntParameter, skip=skip_param+funcs_param, subclass_of='Parameter')
-    # funcs = api_docs_for_class(phoebe.parameters.BoolParameter, skip=skip_param+funcs_param, subclass_of='Parameter')
-    # funcs = api_docs_for_class(phoebe.parameters.StringParameter, skip=skip_param+funcs_param, subclass_of='Parameter')
-    # funcs = api_docs_for_class(phoebe.parameters.ChoiceParameter, skip=skip_param+funcs_param, subclass_of='Parameter')
-    # funcs = api_docs_for_class(phoebe.parameters.SelectParameter, skip=skip_param+funcs_param, subclass_of='Parameter')
-    # funcs_float_param = api_docs_for_class(phoebe.parameters.FloatParameter, skip=skip_param+funcs_param, subclass_of='Parameter')
-    # funcs = api_docs_for_class(phoebe.parameters.FloatArrayParameter, skip=skip_param+funcs_param+funcs_float_param, subclass_of='FloatParameter')
+    funcs_ps = api_docs_for_class(phoebe.parameters.ParameterSet, skip=skip_ps)
+    funcs_bundle = api_docs_for_class(phoebe.Bundle, skip=skip_ps+funcs_ps, subclass_of='ParameterSet')
 
-    funcs_phoebe = api_docs_for_class(phoebe, skip=[], write=False)
-    print funcs_phoebe
+    funcs_param = api_docs_for_class(phoebe.parameters.Parameter, skip=skip_param)
+    funcs = api_docs_for_class(phoebe.parameters.IntParameter, skip=skip_param+funcs_param, subclass_of='Parameter')
+    funcs = api_docs_for_class(phoebe.parameters.BoolParameter, skip=skip_param+funcs_param, subclass_of='Parameter')
+    funcs = api_docs_for_class(phoebe.parameters.StringParameter, skip=skip_param+funcs_param, subclass_of='Parameter')
+    funcs = api_docs_for_class(phoebe.parameters.ChoiceParameter, skip=skip_param+funcs_param, subclass_of='Parameter')
+    funcs = api_docs_for_class(phoebe.parameters.SelectParameter, skip=skip_param+funcs_param, subclass_of='Parameter')
+    funcs_float_param = api_docs_for_class(phoebe.parameters.FloatParameter, skip=skip_param+funcs_param, subclass_of='Parameter')
+    funcs = api_docs_for_class(phoebe.parameters.FloatArrayParameter, skip=skip_param+funcs_param+funcs_float_param, subclass_of='FloatParameter')
+
+    # funcs_phoebe = api_docs_for_class(phoebe, skip=[], write=False)
+    # print funcs_phoebe

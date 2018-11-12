@@ -1,4 +1,4 @@
-### Bundle.remove_features_all
+### [Bundle](Bundle.md).remove_features_all
 
 ```py
 

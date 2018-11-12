@@ -1,4 +1,4 @@
-### Bundle.rename_feature
+### [Bundle](Bundle.md).rename_feature
 
 ```py
 

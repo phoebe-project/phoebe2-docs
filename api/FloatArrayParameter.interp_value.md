@@ -1,4 +1,4 @@
-### FloatArrayParameter.interp_value
+### [FloatArrayParameter](FloatArrayParameter.md).interp_value
 
 ```py
 

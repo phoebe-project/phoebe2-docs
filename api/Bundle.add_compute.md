@@ -1,8 +1,8 @@
-### Bundle.add_compute
+### [Bundle](Bundle.md).add_compute
 
 ```py
 
-def add_compute(self, kind=<function phoebe at 0x7f5171245140>, **kwargs)
+def add_compute(self, kind=<function phoebe at 0x7f04e4e7c0c8>, **kwargs)
 
 ```
 

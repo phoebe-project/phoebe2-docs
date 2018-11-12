@@ -1,4 +1,4 @@
-### ParameterSet.get_enabled
+### [ParameterSet](ParameterSet.md).get_enabled
 
 ```py
 

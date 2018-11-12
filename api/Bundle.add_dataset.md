@@ -1,4 +1,4 @@
-### Bundle.add_dataset
+### [Bundle](Bundle.md).add_dataset
 
 ```py
 

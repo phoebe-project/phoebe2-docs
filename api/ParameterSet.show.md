@@ -1,4 +1,4 @@
-### ParameterSet.show
+### [ParameterSet](ParameterSet.md).show
 
 ```py
 

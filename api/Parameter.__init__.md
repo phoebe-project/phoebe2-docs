@@ -1,4 +1,4 @@
-### Parameter.__init__
+### [Parameter](Parameter.md).__init__
 
 ```py
 

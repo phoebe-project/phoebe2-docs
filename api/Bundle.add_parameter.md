@@ -1,4 +1,4 @@
-### Bundle.add_parameter
+### [Bundle](Bundle.md).add_parameter
 
 ```py
 

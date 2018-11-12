@@ -1,4 +1,4 @@
-### Bundle.run_compute
+### [Bundle](Bundle.md).run_compute
 
 ```py
 

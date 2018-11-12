@@ -1,4 +1,4 @@
-### SelectParameter.expand_value
+### [SelectParameter](SelectParameter.md).expand_value
 
 ```py
 

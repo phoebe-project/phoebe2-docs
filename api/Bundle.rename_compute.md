@@ -1,4 +1,4 @@
-### Bundle.rename_compute
+### [Bundle](Bundle.md).rename_compute
 
 ```py
 

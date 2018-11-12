@@ -1,4 +1,4 @@
-### Parameter.get_parent_ps
+### [Parameter](Parameter.md).get_parent_ps
 
 ```py
 

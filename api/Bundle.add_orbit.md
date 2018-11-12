@@ -1,4 +1,4 @@
-### Bundle.add_orbit
+### [Bundle](Bundle.md).add_orbit
 
 ```py
 

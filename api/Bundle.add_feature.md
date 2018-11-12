@@ -1,4 +1,4 @@
-### Bundle.add_feature
+### [Bundle](Bundle.md).add_feature
 
 ```py
 

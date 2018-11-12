@@ -1,4 +1,4 @@
-### Bundle.remove_constraint
+### [Bundle](Bundle.md).remove_constraint
 
 ```py
 

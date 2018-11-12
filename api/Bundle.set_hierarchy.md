@@ -1,4 +1,4 @@
-### Bundle.set_hierarchy
+### [Bundle](Bundle.md).set_hierarchy
 
 ```py
 

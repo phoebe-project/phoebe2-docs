@@ -1,4 +1,4 @@
-### Bundle.compute_pblums
+### [Bundle](Bundle.md).compute_pblums
 
 ```py
 

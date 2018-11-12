@@ -1,4 +1,4 @@
-### ParameterSet.plot
+### [ParameterSet](ParameterSet.md).plot
 
 ```py
 

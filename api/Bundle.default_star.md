@@ -1,4 +1,4 @@
-### Bundle.default_star
+### [Bundle](Bundle.md).default_star
 
 ```py
 

@@ -1,4 +1,4 @@
-### Bundle.remove_component
+### [Bundle](Bundle.md).remove_component
 
 ```py
 

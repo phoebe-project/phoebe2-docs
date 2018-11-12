@@ -1,4 +1,4 @@
-### Parameter.get_value
+### [Parameter](Parameter.md).get_value
 
 ```py
 

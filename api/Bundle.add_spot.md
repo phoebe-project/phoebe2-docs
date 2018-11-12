@@ -1,4 +1,4 @@
-### Bundle.add_spot
+### [Bundle](Bundle.md).add_spot
 
 ```py
 

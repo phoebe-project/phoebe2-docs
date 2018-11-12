@@ -1,4 +1,4 @@
-### FloatParameter.get_quantity
+### [FloatParameter](FloatParameter.md).get_quantity
 
 ```py
 

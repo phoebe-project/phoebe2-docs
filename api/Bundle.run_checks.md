@@ -1,4 +1,4 @@
-### Bundle.run_checks
+### [Bundle](Bundle.md).run_checks
 
 ```py
 

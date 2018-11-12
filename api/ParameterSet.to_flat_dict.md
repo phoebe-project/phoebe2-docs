@@ -1,4 +1,4 @@
-### ParameterSet.to_flat_dict
+### [ParameterSet](ParameterSet.md).to_flat_dict
 
 ```py
 

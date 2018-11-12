@@ -1,4 +1,4 @@
-### ParameterSet.get
+### [ParameterSet](ParameterSet.md).get
 
 ```py
 

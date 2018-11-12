@@ -1,4 +1,4 @@
-### Bundle.rename_dataset
+### [Bundle](Bundle.md).rename_dataset
 
 ```py
 

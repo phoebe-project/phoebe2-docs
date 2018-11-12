@@ -1,4 +1,4 @@
-### Bundle.get_star
+### [Bundle](Bundle.md).get_star
 
 ```py
 

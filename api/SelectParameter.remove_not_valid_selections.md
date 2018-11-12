@@ -1,4 +1,4 @@
-### SelectParameter.remove_not_valid_selections
+### [SelectParameter](SelectParameter.md).remove_not_valid_selections
 
 ```py
 

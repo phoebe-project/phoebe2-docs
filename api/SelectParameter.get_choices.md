@@ -1,4 +1,4 @@
-### SelectParameter.get_choices
+### [SelectParameter](SelectParameter.md).get_choices
 
 ```py
 

@@ -1,4 +1,4 @@
-### Bundle.remove_compute
+### [Bundle](Bundle.md).remove_compute
 
 ```py
 

@@ -1,4 +1,4 @@
-### ParameterSet.remove_parameter
+### [ParameterSet](ParameterSet.md).remove_parameter
 
 ```py
 

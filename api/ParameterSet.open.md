@@ -1,4 +1,4 @@
-### ParameterSet.open
+### [ParameterSet](ParameterSet.md).open
 
 ```py
 

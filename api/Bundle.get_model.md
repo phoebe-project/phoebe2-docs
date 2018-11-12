@@ -1,4 +1,4 @@
-### Bundle.get_model
+### [Bundle](Bundle.md).get_model
 
 ```py
 

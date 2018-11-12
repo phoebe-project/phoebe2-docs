@@ -1,4 +1,4 @@
-### Bundle.remove_spot
+### [Bundle](Bundle.md).remove_spot
 
 ```py
 

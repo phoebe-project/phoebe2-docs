@@ -1,4 +1,4 @@
-### Bundle.get_setting
+### [Bundle](Bundle.md).get_setting
 
 ```py
 

@@ -1,4 +1,4 @@
-### SelectParameter.valid_selection
+### [SelectParameter](SelectParameter.md).valid_selection
 
 ```py
 

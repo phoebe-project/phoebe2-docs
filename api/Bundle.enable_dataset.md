@@ -1,4 +1,4 @@
-### Bundle.enable_dataset
+### [Bundle](Bundle.md).enable_dataset
 
 ```py
 

@@ -1,4 +1,4 @@
-### IntParameter.within_limits
+### [IntParameter](IntParameter.md).within_limits
 
 ```py
 

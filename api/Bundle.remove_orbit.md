@@ -1,4 +1,4 @@
-### Bundle.remove_orbit
+### [Bundle](Bundle.md).remove_orbit
 
 ```py
 

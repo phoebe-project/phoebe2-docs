@@ -1,4 +1,4 @@
-### Bundle.remove_dataset
+### [Bundle](Bundle.md).remove_dataset
 
 ```py
 

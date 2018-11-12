@@ -1,4 +1,4 @@
-### Bundle.remove_models_all
+### [Bundle](Bundle.md).remove_models_all
 
 ```py
 

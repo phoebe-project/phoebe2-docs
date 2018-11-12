@@ -1,4 +1,4 @@
-### Bundle.from_legacy
+### [Bundle](Bundle.md).from_legacy
 
 ```py
 

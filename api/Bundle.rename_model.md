@@ -1,4 +1,4 @@
-### Bundle.rename_model
+### [Bundle](Bundle.md).rename_model
 
 ```py
 

@@ -1,4 +1,4 @@
-### FloatParameter.set_quantity
+### [FloatParameter](FloatParameter.md).set_quantity
 
 ```py
 
