@@ -1,11 +1,13 @@
 ## phoebe module
 
+* [Bundle](phoebe.Bundle.md)
 * [arange](phoebe.arange.md)
 * [array](phoebe.array.md)
 * [default_binary](phoebe.default_binary.md)
 * [default_star](phoebe.default_star.md)
 * [download_passband](phoebe.download_passband.md)
 * [from_legacy](phoebe.from_legacy.md)
+* [frontend](phoebe.frontend.md)
 * [geomspace](phoebe.geomspace.md)
 * [get_passband](phoebe.get_passband.md)
 * [install_passband](phoebe.install_passband.md)
@@ -26,4 +28,5 @@
 * [mpi_off](phoebe.mpi_off.md)
 * [mpi_on](phoebe.mpi_on.md)
 * [open](phoebe.open.md)
+* [parameters](phoebe.parameters.md)
 * [reset_settings](phoebe.reset_settings.md)

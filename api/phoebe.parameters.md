@@ -19,6 +19,5 @@
 * [dataset](phoebe.parameters.dataset.md)
 * [feature](phoebe.parameters.feature.md)
 * [hierarchy](phoebe.parameters.hierarchy.md)
-* [parameters](phoebe.parameters.parameters.md)
 * [setting](phoebe.parameters.setting.md)
 * [system](phoebe.parameters.system.md)

@@ -98,7 +98,12 @@ if __name__ == '__main__':
 
     skip_param = ['set_uniqueid']
 
-    skip_phoebe = ['default_triple', 'devel_off', 'devel_on']
+    skip_phoebe = ['default_triple', 'devel_off', 'devel_on',
+                   'algorithms', 'atmospheres', 'backend', 'c',
+                   'component', 'compute', 'constraint', 'constraints',
+                   'dataset', 'dependencies', 'distortions', 'dynamics',
+                   'hierarchy', 'libphoebe', 'u', 'utils']
+
     skip_frontend = ['io', 'tabcomplete']
 
     skip_frontend_bundle = ['ArrayParameter',
@@ -139,9 +144,10 @@ if __name__ == '__main__':
     skip_units = ['add_enabled_equivalencies', 'add_enabled_units', 'def_physical_type', 'def_unit']
 
 
-    fms_phoebe = api_docs(phoebe, skip=skip_phoebe)
+    fms_phoebe = api_docs(phoebe, skip=skip_phoebe, members=[pydoc.inspect.ismodule, pydoc.inspect.isfunction, pydoc.inspect.isclass])
+
     fms_frontend = api_docs(phoebe.frontend, skip=skip_frontend+fms_phoebe, prefix='phoebe', members=[pydoc.inspect.ismodule])
-    fms_frontend_bundle = api_docs(phoebe.frontend.bundle, skip=skip_frontend_bundle+fms_phoebe, prefix='phoebe.frontend', members=[pydoc.inspect.isfunction, pydoc.inspect.isclass])
+    fms_frontend_bundle = api_docs(phoebe.frontend.bundle, skip=skip_frontend_bundle+[s for s in fms_phoebe if s!='Bundle'], prefix='phoebe.frontend', members=[pydoc.inspect.isfunction, pydoc.inspect.isclass])
     fms_parameters = api_docs(phoebe.parameters, skip=skip_parameters+fms_phoebe, prefix='phoebe', members=[pydoc.inspect.ismodule, pydoc.inspect.isfunction, pydoc.inspect.isclass])
 
     fms_component = api_docs(phoebe.parameters.component, skip=skip_parameters_type, prefix='phoebe.parameters')
