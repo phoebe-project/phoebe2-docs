@@ -25,7 +25,7 @@ Arguments
     ephemeris retrieved by component (ie period, t0, dpdt).
     Note: be careful about units - input values will not be converted.
 
-Returns:
+Returns
 ----------
 * (float/array) times in same type as input phases (except lists become arrays).
 

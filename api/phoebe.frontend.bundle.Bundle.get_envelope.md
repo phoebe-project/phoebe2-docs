@@ -18,6 +18,7 @@ Arguments
 * `twig`: (string, optional, default=None): the twig used for filtering
 * `**kwargs`: any other tags to do the filtering (excluding twig, kind, and context)
 
-Returns:
+Returns
+----------
 * a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) object.
 

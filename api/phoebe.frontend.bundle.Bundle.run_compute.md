@@ -8,7 +8,7 @@ def run_compute(self, *args, **kwargs)
 
 
 
-Run a forward model of the system on the enabled dataset using
+Run a forward model of the system on the enabled dataset(s) using
 a specified set of compute options.
 
 To attach and set custom values for compute options, including choosing
