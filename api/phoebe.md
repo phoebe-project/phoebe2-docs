@@ -1,4 +1,4 @@
-## phoebe module (all public functions)
+## phoebe module (all public members)
 
 * [arange](phoebe.arange.md)
 * [array](phoebe.array.md)

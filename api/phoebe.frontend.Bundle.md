@@ -1,4 +1,4 @@
-## Bundle class (all public methods)
+## Bundle class (all public members)
 
 Bundle is a subclass of ParameterSet and therefore also includes all [ParameterSet methods](ParameterSet.md)
 

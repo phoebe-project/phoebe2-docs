@@ -1,4 +1,4 @@
-## FloatArrayParameter class (all public methods)
+## FloatArrayParameter class (all public members)
 
 FloatArrayParameter is a subclass of phoebe.parameters.FloatParameter and therefore also includes all [phoebe.parameters.FloatParameter methods](phoebe.parameters.FloatParameter.md)
 

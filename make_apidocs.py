@@ -2,21 +2,29 @@ import pydoc
 import os, sys
 # import re
 
+def api_docs(item, skip=[], prefix='', subclass_of=None, write=True, members=[pydoc.inspect.ismethod, pydoc.inspect.isfunction]):
+    def check_member(item):
+        for member in members:
+            if member(item):
+                return True
 
-def is_func_or_meth(item):
-    return pydoc.inspect.ismethod(item) or pydoc.inspect.isfunction(item)
+        return False
 
-def api_docs(item, skip=[], prefix='', subclass_of=None, write=True):
     # item is either a module or class
     stored_fms = []
 
-    for fm in pydoc.inspect.getmembers(item, is_func_or_meth):
+    for fm in pydoc.inspect.getmembers(item, check_member):
         output = list()
 
         if fm[0] in skip or (fm[0].startswith('_') and fm[0] != '__init__'):
             continue
 
-        path = [p for p in prefix.split(".")+[item.__name__] if len(p)]
+        if pydoc.inspect.ismodule(fm[1]) or pydoc.inspect.isclass(fm[1]):
+            stored_fms.append(fm[0])
+            # don't write its own page, make a manual call to api_docs to do that... but we will create the link
+            continue
+
+        path = [p for p in prefix.split(".")+[item.__name__.split(".")[-1]] if len(p)]
         path_md = ".".join(["[{}]({}.md)".format(p, ".".join(path[:i+1])) for i,p in enumerate(path)])
         # print "***", path, path_md
         output.append("### {}.{}\n".format(path_md, fm[0]))
@@ -52,7 +60,7 @@ def api_docs(item, skip=[], prefix='', subclass_of=None, write=True):
         print("writing {}".format(filename_class))
         f_class = open(filename_class, 'w')
         kind = 'class' if pydoc.inspect.isclass(item) else 'module' if pydoc.inspect.ismodule(item) else ''
-        f_class.write("## {} {} (all public {})\n\n".format(item.__name__, kind, 'methods' if kind=='class' else 'functions'))
+        f_class.write("## {} {} (all public {})\n\n".format(item.__name__, kind, 'members'))
         if subclass_of is not None:
             f_class.write("{} is a subclass of {} and therefore also includes all [{} methods]({}.md)\n\n".format(item.__name__, subclass_of, subclass_of, subclass_of))
         for fm in stored_fms:
@@ -84,13 +92,29 @@ if __name__ == '__main__':
     skip_param = ['set_uniqueid']
 
     skip_phoebe = ['default_triple', 'devel_off', 'devel_on']
+    skip_frontend = ['io', 'tabcomplete']
+
+    skip_frontend_bundle = ['ArrayParameter',
+                            'BaseNamespace', 'BoolParameter', 'ChoiceParameter',
+                            'ConstraintParameter', 'DictParameter',
+                            'FloatArrayParameter', 'FloatParameter',
+                            'HierarchyParameter', 'HistoryParameter',
+                            'IntArrayParameter', 'IntParameter',
+                            'JobParameter', 'OrderedDict', 'Parameter',
+                            'ParameterSet', 'SelectParameter', 'SocketIO',
+                            'StrictVersion', 'StringParameter', 'TwigParameter',
+                            'datetime', 'deepcopy', 'fnmatch',
+                            'parameter_from_json', 'parse_json', 'send_if_client',
+                            'update_if_client', 'ConstraintVar']
+
     skip_parameters = ['deepcopy', 'fnmatch', 'send_if_client', 'update_if_client']
     skip_units = ['add_enabled_equivalencies', 'add_enabled_units', 'def_physical_type', 'def_unit']
 
 
     fms_phoebe = api_docs(phoebe, skip=skip_phoebe)
-    fms_frontend = api_docs(phoebe.frontend, prefix='phoebe')
-    fms_parameters = api_docs(phoebe.parameters, skip=skip_parameters, prefix='phoebe')
+    fms_frontend = api_docs(phoebe.frontend, skip=skip_frontend+fms_phoebe, prefix='phoebe', members=[pydoc.inspect.ismodule])
+    fms_frontend_bundle = api_docs(phoebe.frontend.bundle, skip=skip_frontend_bundle+fms_phoebe, prefix='phoebe.frontend', members=[pydoc.inspect.isfunction, pydoc.inspect.isclass])
+    fms_parameters = api_docs(phoebe.parameters, skip=skip_parameters+fms_phoebe, prefix='phoebe')
 
     fms_ps = api_docs(phoebe.parameters.ParameterSet, skip=skip_ps, prefix='phoebe.parameters')
     fms_bundle = api_docs(phoebe.Bundle, skip=skip_ps+fms_ps, subclass_of='ParameterSet', prefix='phoebe.frontend')
@@ -101,5 +125,6 @@ if __name__ == '__main__':
     fms = api_docs(phoebe.parameters.StringParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
     fms = api_docs(phoebe.parameters.ChoiceParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
     fms = api_docs(phoebe.parameters.SelectParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
+    fms = api_docs(phoebe.parameters.ConstraintParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
     fms_float_param = api_docs(phoebe.parameters.FloatParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
     fms = api_docs(phoebe.parameters.FloatArrayParameter, skip=skip_param+fms_param+fms_float_param, subclass_of='phoebe.parameters.FloatParameter', prefix='phoebe.parameters')

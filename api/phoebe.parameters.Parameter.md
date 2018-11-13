@@ -1,4 +1,4 @@
-## Parameter class (all public methods)
+## Parameter class (all public members)
 
 * [__init__](phoebe.parameters.Parameter.__init__.md)
 * [copy](phoebe.parameters.Parameter.copy.md)

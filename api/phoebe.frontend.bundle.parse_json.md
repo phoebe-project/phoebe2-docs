@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).parse_json
+### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).parse_json
 
 ```py
 

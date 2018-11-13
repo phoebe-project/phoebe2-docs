@@ -13,6 +13,7 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 * [phoebe.parameters.StringParameter](api/phoebe.parameters.StringParameter.md)
 * [phoebe.parameters.ChoiceParameter](api/phoebe.parameters.ChoiceParameter.md)
 * [phoebe.parameters.SelectParameter](api/phoebe.parameters.SelectParameter.md)
+* [phoebe.parameters.ConstraintParameter](api/phoebe.parameters.ConstraintParameter.md)
 * [phoebe.parameters.FloatParameter](api/phoebe.parameters.FloatParameter.md)
 * [phoebe.parameters.FloatArrayParameter](api/phoebe.parameters.FloatArrayParameter.md)
 
@@ -151,6 +152,5 @@ Dealing with time/phase:
 * [plot](api/phoebe.parameters.ParameterSet.plot.md)
 * [show](api/phoebe.parameters.ParameterSet.show.md)
 * [savefig](api/phoebe.parameters.ParameterSet.savefig.md)
-* [animate](api/phoebe.parameters.ParameterSet.animate.md)
 * [clf](api/phoebe.parameters.ParameterSet.clf.md)
 * [gcf](api/phoebe.parameters.ParameterSet.gcf.md)
