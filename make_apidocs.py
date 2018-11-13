@@ -102,7 +102,7 @@ if __name__ == '__main__':
                    'algorithms', 'atmospheres', 'backend', 'c',
                    'component', 'compute', 'constraint', 'constraints',
                    'dataset', 'dependencies', 'distortions', 'dynamics',
-                   'hierarchy', 'libphoebe', 'u', 'utils']
+                   'hierarchy', 'libphoebe', 'u', 'utils', 'Bundle']
 
     skip_frontend = ['io', 'tabcomplete']
 

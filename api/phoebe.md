@@ -1,6 +1,5 @@
 ## phoebe module
 
-* [Bundle](phoebe.Bundle.md)
 * [arange](phoebe.arange.md)
 * [array](phoebe.array.md)
 * [default_binary](phoebe.default_binary.md)

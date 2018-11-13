@@ -2,7 +2,7 @@
 
 ```py
 
-def add_compute(self, kind=<function phoebe at 0x7f566e8e5410>, **kwargs)
+def add_compute(self, kind=<function phoebe at 0x7fbb16614410>, **kwargs)
 
 ```
 
