@@ -1,0 +1,19 @@
+### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[Bundle](phoebe.frontend.bundle.Bundle.md).rename_dataset
+
+```py
+
+def rename_dataset(self, old_dataset, new_dataset)
+
+```
+
+
+
+Change the label of a dataset attached to the Bundle
+
+:parameter str old_dataset: the current name of the dataset
+    (must exist)
+:parameter str new_dataset: the desired new name of the dataset
+    (must not exist)
+:return: None
+:raises ValueError: if the new_dataset is forbidden
+

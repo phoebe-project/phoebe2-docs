@@ -4,7 +4,7 @@
 See the full alphabetical lists for the following modules/classes, or keep scrolling for an organized breakdown of the most used functions and methods.
 
 * [phoebe](api/phoebe.md)
-* [phoebe.frontend.Bundle](api/phoebe.frontend.Bundle.md)
+* [phoebe.frontend.bundle.Bundle](api/phoebe.frontend.bundle.Bundle.md)
 * [phoebe.parameters](api/phoebe.parameters.md)
 * [phoebe.parameter.component](api/phoebe.parameters.component.md)
 * [phoebe.parameter.compute](api/phoebe.parameters.compute.md)
@@ -27,11 +27,11 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 
 ### Creating Bundles
 
-* [Bundle](api/phoebe.frontend.Bundle.__init__.md)
-* [default_binary](api/phoebe.frontend.Bundle.default_binary.md)
-* [default_star](api/phoebe.frontend.Bundle.default_star.md)
+* [Bundle](api/phoebe.frontend.bundle.Bundle.__init__.md)
+* [default_binary](api/phoebe.frontend.bundle.Bundle.default_binary.md)
+* [default_star](api/phoebe.frontend.bundle.Bundle.default_star.md)
 * [open](api/phoebe.parameters.ParameterSet.open.md)
-* [from_legacy](api/phoebe.frontend.Bundle.from_legacy.md)
+* [from_legacy](api/phoebe.frontend.bundle.Bundle.from_legacy.md)
 
 ### Settings
 
@@ -67,25 +67,25 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 
 ## Bundle & ParameterSets
 
-See alphabetical list of [all Bundle methods](api/phoebe.frontend.Bundle.md) and [all ParameterSet methods](api/phoebe.parameters.ParameterSet.md).
+See alphabetical list of [all Bundle methods](api/phoebe.frontend.bundle.Bundle.md) and [all ParameterSet methods](api/phoebe.parameters.ParameterSet.md).
 
 ### Saving/Loading
 
-* [__init__](api/phoebe.frontend.Bundle.__init__.md)
+* [__init__](api/phoebe.frontend.bundle.Bundle.__init__.md)
 * [open](api/phoebe.parameters.ParameterSet.open.md)
 * [save](api/phoebe.parameters.ParameterSet.save.md)
 
 Importing/exporting from other codes:
 
-* [from_legacy](api/phoebe.frontend.Bundle.from_legacy.md)
-* [export_legacy](api/phoebe.frontend.Bundle.export_legacy.md)
+* [from_legacy](api/phoebe.frontend.bundle.Bundle.from_legacy.md)
+* [export_legacy](api/phoebe.frontend.bundle.Bundle.export_legacy.md)
 
 ### Initializing New Bundles
 
-* [default_binary](api/phoebe.frontend.Bundle.default_binary.md)
-* [default_star](api/phoebe.frontend.Bundle.default_star.md)
+* [default_binary](api/phoebe.frontend.bundle.Bundle.default_binary.md)
+* [default_star](api/phoebe.frontend.bundle.Bundle.default_star.md)
 * [open](api/phoebe.parameters.ParameterSet.open.md)
-* [from_legacy](api/phoebe.frontend.Bundle.from_legacy.md)
+* [from_legacy](api/phoebe.frontend.bundle.Bundle.from_legacy.md)
 
 ### Filtering
 
@@ -95,63 +95,63 @@ Importing/exporting from other codes:
 
 ### Hierarchy
 
-* [set_hierarchy](api/phoebe.frontend.Bundle.set_hierarchy.md)
-* [get_hierarchy](api/phoebe.frontend.Bundle.get_hierarchy.md)
+* [set_hierarchy](api/phoebe.frontend.bundle.Bundle.set_hierarchy.md)
+* [get_hierarchy](api/phoebe.frontend.bundle.Bundle.get_hierarchy.md)
 
 ### Constraints
 
-* [get_constraint](api/phoebe.frontend.Bundle.get_constraint.md)
-* [run_constraint](api/phoebe.frontend.Bundle.run_constraint.md)
-* [flip_constraint](api/phoebe.frontend.Bundle.flip_constraint.md)
+* [get_constraint](api/phoebe.frontend.bundle.Bundle.get_constraint.md)
+* [run_constraint](api/phoebe.frontend.bundle.Bundle.run_constraint.md)
+* [flip_constraint](api/phoebe.frontend.bundle.Bundle.flip_constraint.md)
 
 ### Components
 
-* [add_component](api/phoebe.frontend.Bundle.add_component.md)
-* [get_component](api/phoebe.frontend.Bundle.get_component.md)
-* [rename_component](api/phoebe.frontend.Bundle.rename_component.md)
-* [add_orbit](api/phoebe.frontend.Bundle.add_orbit.md)
-* [get_orbit](api/phoebe.frontend.Bundle.get_orbit.md)
-* [add_star](api/phoebe.frontend.Bundle.add_star.md)
-* [get_star](api/phoebe.frontend.Bundle.get_star.md)
-* [add_envelope](api/phoebe.frontend.Bundle.add_envelope.md)
-* [get_envelope](api/phoebe.frontend.Bundle.get_envelope.md)
+* [add_component](api/phoebe.frontend.bundle.Bundle.add_component.md)
+* [get_component](api/phoebe.frontend.bundle.Bundle.get_component.md)
+* [rename_component](api/phoebe.frontend.bundle.Bundle.rename_component.md)
+* [add_orbit](api/phoebe.frontend.bundle.Bundle.add_orbit.md)
+* [get_orbit](api/phoebe.frontend.bundle.Bundle.get_orbit.md)
+* [add_star](api/phoebe.frontend.bundle.Bundle.add_star.md)
+* [get_star](api/phoebe.frontend.bundle.Bundle.get_star.md)
+* [add_envelope](api/phoebe.frontend.bundle.Bundle.add_envelope.md)
+* [get_envelope](api/phoebe.frontend.bundle.Bundle.get_envelope.md)
 
 ### Features
 
-* [add_feature](api/phoebe.frontend.Bundle.add_feature.md)
-* [get_feature](api/phoebe.frontend.Bundle.get_feature.md)
-* [rename_feature](api/phoebe.frontend.Bundle.rename_feature.md)
-* [add_spot](api/phoebe.frontend.Bundle.add_spot.md)
-* [get_spot](api/phoebe.frontend.Bundle.get_spot.md)
+* [add_feature](api/phoebe.frontend.bundle.Bundle.add_feature.md)
+* [get_feature](api/phoebe.frontend.bundle.Bundle.get_feature.md)
+* [rename_feature](api/phoebe.frontend.bundle.Bundle.rename_feature.md)
+* [add_spot](api/phoebe.frontend.bundle.Bundle.add_spot.md)
+* [get_spot](api/phoebe.frontend.bundle.Bundle.get_spot.md)
 
 ### Datasets
 
-* [add_dataset](api/phoebe.frontend.Bundle.add_dataset.md)
-* [get_dataset](api/phoebe.frontend.Bundle.get_dataset.md)
-* [rename_dataset](api/phoebe.frontend.Bundle.rename_dataset.md)
-* [remove_dataset](api/phoebe.frontend.Bundle.remove_dataset.md)
-* [enable_dataset](api/phoebe.frontend.Bundle.enable_dataset.md)
-* [disable_dataset](api/phoebe.frontend.Bundle.disable_dataset.md)
+* [add_dataset](api/phoebe.frontend.bundle.Bundle.add_dataset.md)
+* [get_dataset](api/phoebe.frontend.bundle.Bundle.get_dataset.md)
+* [rename_dataset](api/phoebe.frontend.bundle.Bundle.rename_dataset.md)
+* [remove_dataset](api/phoebe.frontend.bundle.Bundle.remove_dataset.md)
+* [enable_dataset](api/phoebe.frontend.bundle.Bundle.enable_dataset.md)
+* [disable_dataset](api/phoebe.frontend.bundle.Bundle.disable_dataset.md)
 
 Dealing with time/phase:
 
-* [get_ephemeris](api/phoebe.frontend.Bundle.get_ephemeris.md)
-* [to_time](api/phoebe.frontend.Bundle.to_time.md)
-* [to_phase](api/phoebe.frontend.Bundle.to_phase.md)
+* [get_ephemeris](api/phoebe.frontend.bundle.Bundle.get_ephemeris.md)
+* [to_time](api/phoebe.frontend.bundle.Bundle.to_time.md)
+* [to_phase](api/phoebe.frontend.bundle.Bundle.to_phase.md)
 
 ### Compute
 
-* [add_compute](api/phoebe.frontend.Bundle.add_compute.md)
-* [get_compute](api/phoebe.frontend.Bundle.get_compute.md)
-* [rename_compute](api/phoebe.frontend.Bundle.rename_compute.md)
-* [remove_compute](api/phoebe.frontend.Bundle.remove_compute.md)
-* [run_compute](api/phoebe.frontend.Bundle.run_compute.md)
+* [add_compute](api/phoebe.frontend.bundle.Bundle.add_compute.md)
+* [get_compute](api/phoebe.frontend.bundle.Bundle.get_compute.md)
+* [rename_compute](api/phoebe.frontend.bundle.Bundle.rename_compute.md)
+* [remove_compute](api/phoebe.frontend.bundle.Bundle.remove_compute.md)
+* [run_compute](api/phoebe.frontend.bundle.Bundle.run_compute.md)
 
 ### Model
 
-* [get_model](api/phoebe.frontend.Bundle.get_model.md)
-* [rename_model](api/phoebe.frontend.Bundle.rename_model.md)
-* [remove_model](api/phoebe.frontend.Bundle.remove_model.md)
+* [get_model](api/phoebe.frontend.bundle.Bundle.get_model.md)
+* [rename_model](api/phoebe.frontend.bundle.Bundle.rename_model.md)
+* [remove_model](api/phoebe.frontend.bundle.Bundle.remove_model.md)
 
 ### Plotting
 
