@@ -8,5 +8,13 @@ def export_legacy(self, filename)
 
 
 
-TODO: add docs
+Export the Bundle to a file readable by PHOEBE legacy
+
+Arguments
+-----------
+* `filename` (string): relative or full path to the file
+
+Returns
+------------
+* the filename (string)
 

@@ -8,5 +8,6 @@ def remove_features_all(self)
 
 
 
-Remove all features from the bundle
+Remove all features from the bundle.  To remove a single feature, see
+[phoebe.frontend.bundle.Bundle.remove_feature](phoebe.frontend.bundle.Bundle.remove_feature.md).
 

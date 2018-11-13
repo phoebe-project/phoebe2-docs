@@ -8,7 +8,16 @@ def get_envelope(self, component=None, **kwargs)
 
 
 
-[NOT SUPPORTED]
+Shortcut to [phoebe.frontend.bundle.Bundle.get_component](phoebe.frontend.bundle.Bundle.get_component.md) but with kind='envelope'.
 
-Shortcut to :meth:`get_component` but with kind='envelope'
+See also:
+* [phoebe.parameters.ParameterSet.filter](phoebe.parameters.ParameterSet.filter.md)
+
+Arguments
+----------
+* `twig`: (string, optional, default=None): the twig used for filtering
+* `**kwargs`: any other tags to do the filtering (excluding twig, kind, and context)
+
+Returns:
+* a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) object.
 

@@ -35,6 +35,7 @@ Bundle is a subclass of phoebe.parameters.ParameterSet and therefore also includ
 * [get_spot](phoebe.frontend.bundle.Bundle.get_spot.md)
 * [get_star](phoebe.frontend.bundle.Bundle.get_star.md)
 * [get_system](phoebe.frontend.bundle.Bundle.get_system.md)
+* [open](phoebe.frontend.bundle.Bundle.open.md)
 * [remove_component](phoebe.frontend.bundle.Bundle.remove_component.md)
 * [remove_compute](phoebe.frontend.bundle.Bundle.remove_compute.md)
 * [remove_computes_all](phoebe.frontend.bundle.Bundle.remove_computes_all.md)

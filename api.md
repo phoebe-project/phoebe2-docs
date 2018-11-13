@@ -72,8 +72,8 @@ See alphabetical list of [all Bundle methods](api/phoebe.frontend.bundle.Bundle.
 ### Saving/Loading
 
 * [__init__](api/phoebe.frontend.bundle.Bundle.__init__.md)
-* [open](api/phoebe.parameters.ParameterSet.open.md)
-* [save](api/phoebe.parameters.ParameterSet.save.md)
+* [open](api/phoebe.frontend.bundle.Bundle.open.md)
+* [save](api/phoebe.frontend.bundle.Bundle.save.md)
 
 Importing/exporting from other codes:
 
@@ -84,7 +84,7 @@ Importing/exporting from other codes:
 
 * [default_binary](api/phoebe.frontend.bundle.Bundle.default_binary.md)
 * [default_star](api/phoebe.frontend.bundle.Bundle.default_star.md)
-* [open](api/phoebe.parameters.ParameterSet.open.md)
+* [open](api/phoebe.frontend.bundle.Bundle.open.md)
 * [from_legacy](api/phoebe.frontend.bundle.Bundle.from_legacy.md)
 
 ### Filtering
@@ -92,6 +92,8 @@ Importing/exporting from other codes:
 * [filter](api/phoebe.paramters.ParameterSet.filter.md)
 * [exclude](api/phoebe.parameters.ParameterSet.exclude.md)
 * [get_parameter](api/phoebe.parameters.ParameterSet.get_parameter.md)
+* [get_value](api/phoebe.parameters.ParameterSet.get_value.md)
+* [set_value](api/phoebe.parameters.ParameterSet.set_value.md)
 
 ### Hierarchy
 

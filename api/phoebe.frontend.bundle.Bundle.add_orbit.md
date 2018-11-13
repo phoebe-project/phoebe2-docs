@@ -8,5 +8,5 @@ def add_orbit(self, component=None, **kwargs)
 
 
 
-Shortcut to :meth:`add_component` but with kind='orbit'
+Shortcut to [phoebe.frontend.bundle.Bundle.add_component](phoebe.frontend.bundle.Bundle.add_component.md) but with kind='orbit'.
 

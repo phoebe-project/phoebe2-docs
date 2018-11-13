@@ -8,17 +8,29 @@ def get_ephemeris(self, component=None, t0='t0_supconj', **kwargs)
 
 
 
-Get the ephemeris of a component (star or orbit)
+Get the ephemeris of a component (star or orbit).
 
-:parameter str component: name of the component.  If not given,
+NOTE: support for `shift` and `phshift` was removed as of version 2.1.
+Please pass `t0` instead.
+
+Arguments
+---------------
+* `component` (str, optional): name of the component.  If not given,
     component will default to the top-most level of the current
-    hierarchy
-:parameter t0: qualifier of the parameter to be used for t0
-:type t0: str
-:parameter **kwargs: any value passed through kwargs will override the
+    hierarchy.  See [phoebe.parameters.HierarchyParameter.get_top](phoebe.parameters.HierarchyParameter.get_top.md).
+* `t0` (str, optional, default='t0_supconj'): qualifier of the parameter
+    to be used for t0
+* `**kwargs`: any value passed through kwargs will override the
     ephemeris retrieved by component (ie period, t0, dpdt).
     Note: be careful about units - input values will not be converted.
-:return: dictionary containing period, t0 (t0_supconj if orbit),
+
+Returns
+-----------
+* (dict): dictionary containing period, t0 (t0_supconj if orbit),
     dpdt (as applicable)
-:rtype: dict
+
+Raises
+---------
+* ValueError: if `shift` is passed to `**kwargs`.
+* NotImplementedError: if the component kind is not recognized or supported.
 

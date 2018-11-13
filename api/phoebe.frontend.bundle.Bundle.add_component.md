@@ -9,32 +9,43 @@ def add_component(self, kind, **kwargs)
 
 
 Add a new component (star or orbit) to the system.  If not provided,
-'component' (the name of the new star or orbit) will be created for
-you and can be accessed by the 'component' attribute of the returned
-ParameterSet.
+`component` (the name of the new star or orbit) will be created for
+you and can be accessed by the `component` attribute of the returned
+[phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md).
 
-&gt;&gt;&gt; b.add_component(component.star)
+```py
+b.add_component(component.star)
+```
 
 or
 
-&gt;&gt;&gt; b.add_component('orbit', period=2.5)
+```py
+b.add_component('orbit', period=2.5)
+```
 
-Available kinds include:
-    * :func:`phoebe.parameters.component.star`
-    * :func:`phoebe.parameters.component.orbit`
+Available kinds can be found in [phoebe.parameters.component](phoebe.parameters.component.md) and include:
+* [phoebe.parameters.component.star](phoebe.parameters.component.star.md)
+* [phoebe.parmaeters.component.orbit](phoebe.parmaeters.component.orbit.md)
+* [phoebe.parameters.component.envelope](phoebe.parameters.component.envelope.md)
 
-:parameter kind: function to call that returns a
-    ParameterSet or list of parameters.  This must either be
-    a callable function that accepts nothing but default
-    values, or the name of a function (as a string) that can
-    be found in the :mod:`phoebe.parameters.component` module
-    (ie. 'star', 'orbit')
-:type kind: str or callable
-:parameter str component: (optional) name of the newly-created
-    component
-:parameter **kwargs: default values for any of the newly-created
-    parameters
-:return: :class:`phoebe.parameters.parameters.ParameterSet` of
-    all parameters that have been added
-:raises NotImplementedError: if required constraint is not implemented
+Arguments
+----------
+* `kind` (string): function to call that returns a
+     [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) or list of
+     [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) objects.  This must either be a
+     callable function that accepts only default values, or the name
+     of a function (as a string) that can be found in the
+     [phoebe.parameters.compute](phoebe.parameters.compute.md) module.
+* `component` (string, optional): name of the newly-created feature.
+* `**kwargs`: default values for any of the newly-created parameters
+    (passed directly to the matched callabled function).
+
+Returns
+---------
+* [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) of all parameters that have been added
+
+
+Raises
+----------
+* NotImplementedError: if a required constraint is not implemented.
 

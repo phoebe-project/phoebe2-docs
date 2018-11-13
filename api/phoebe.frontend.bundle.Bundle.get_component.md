@@ -10,8 +10,14 @@ def get_component(self, component=None, **kwargs)
 
 Filter in the 'component' context
 
-:parameter str component: name of the component (optional)
-:parameter **kwargs: any other tags to do the filter
-    (except component or context)
-:return: :class:`phoebe.parameters.parameters.ParameterSet`
+See also:
+* [phoebe.parameters.ParameterSet.filter](phoebe.parameters.ParameterSet.filter.md)
+
+Arguments
+----------
+* `twig`: (string, optional, default=None): the twig used for filtering
+* `**kwargs`: any other tags to do the filtering (excluding twig and context)
+
+Returns:
+* a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) object.
 

@@ -166,7 +166,7 @@ if __name__ == '__main__':
     fms_system = api_docs(phoebe.parameters.system, skip=skip_parameters_system, prefix='phoebe.parameters')
 
     fms_ps = api_docs(phoebe.parameters.ParameterSet, skip=skip_ps, prefix='phoebe.parameters')
-    fms_bundle = api_docs(phoebe.frontend.bundle.Bundle, skip=skip_ps+[s for s in fms_ps if s!='__init__'], subclass_of='phoebe.parameters.ParameterSet', prefix='phoebe.frontend.bundle')
+    fms_bundle = api_docs(phoebe.frontend.bundle.Bundle, skip=skip_ps+[s for s in fms_ps if s not in ['__init__', 'open', 'load']], subclass_of='phoebe.parameters.ParameterSet', prefix='phoebe.frontend.bundle')
 
     fms_param = api_docs(phoebe.parameters.Parameter, skip=skip_param, prefix='phoebe.parameters')
     fms = api_docs(phoebe.parameters.IntParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')

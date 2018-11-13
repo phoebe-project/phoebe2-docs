@@ -14,7 +14,16 @@ sun
 
 This is a constructor, so should be called as:
 
-&gt;&gt;&gt; b = Bundle.default_binary()
+```py
+b = Bundle.default_binary()
+```
 
-:return: instatiated :class`Bundle` object
+Arguments
+-----------
+* `starA` (string, optional, default='starA'): the label to be set for
+    starA.
+
+Returns
+-----------
+* an instantiated [phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundle.md) object.
 

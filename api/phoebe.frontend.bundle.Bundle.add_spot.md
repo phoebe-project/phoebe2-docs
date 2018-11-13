@@ -8,5 +8,5 @@ def add_spot(self, component=None, feature=None, **kwargs)
 
 
 
-Shortcut to :meth:`add_feature` but with kind='spot'
+Shortcut to [phoebe.frontend.bundle.Bundle.add_feature](phoebe.frontend.bundle.Bundle.add_feature.md) but with kind='spot'.
 

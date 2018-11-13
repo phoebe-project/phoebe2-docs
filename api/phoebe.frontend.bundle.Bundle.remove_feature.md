@@ -8,9 +8,19 @@ def remove_feature(self, feature=None, **kwargs)
 
 
 
-[NOT IMPLEMENTED]
+Remove a 'feature' from the bundle.
 
-Remove a 'feature' from the bundle
+See also:
+* [phoebe.parameters.ParameterSet.remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md)
 
-:raises NotImplementedError: because this isn't implemented yet
+Arguments
+----------
+* `feature` (string, optional): the label of the feature to be removed.
+* `**kwargs`: other filter arguments to be sent to
+    [phoebe.parameters.ParameterSet.remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md).  The following
+    will be ignored: feature, qualifier.
+
+Raises
+--------
+* ValueError: if `feature` is not provided AND no `kwargs` are provided.
 

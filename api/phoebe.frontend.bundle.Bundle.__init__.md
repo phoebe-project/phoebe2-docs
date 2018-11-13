@@ -14,12 +14,18 @@ Initializing a new bundle without a constructor is possible, but not
 advised.  It is suggested that you use one of the constructors below.
 
 Available constructors:
-    * :meth:`open`
-    * :meth:`from_legacy`
-    * :meth:`default_binary`
+* [phoebe.frontend.bundle.Bundle.open](phoebe.frontend.bundle.Bundle.open.md)
+* [phoebe.frontend.bundle.Bundle.from_legacy](phoebe.frontend.bundle.Bundle.from_legacy.md)
+* [phoebe.frontend.bundle.Bundle.default_binary](phoebe.frontend.bundle.Bundle.default_binary.md)
+* [phoebe.frontend.bundle.Bundle.default_star](phoebe.frontend.bundle.Bundle.default_star.md)
 
-:param list parameters: list of
-    :class:`phoebe.parameters.parameters.Parameter` to create the
-    Bundle (optional)
-:return: instantiated :class:`Bundle` object
+Arguments
+---------
+* `params` (list, optional): list of [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md)
+    objects to create the Bundle
+
+
+Returns
+--------
+* an instantiated Bundle object
 

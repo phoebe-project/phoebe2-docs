@@ -8,9 +8,15 @@ def remove_model(self, model, **kwargs)
 
 
 
-Remove a 'model' from the bundle
+Remove a 'model' from the bundle.
 
-:parameter str twig: twig to filter for the model
-:parameter **kwargs: any other tags to do the filter
-    (except twig or context)
+See also:
+* [phoebe.parameters.ParameterSet.remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md)
+
+Arguments
+----------
+* `model` (string): the label of the model to be removed.
+* `**kwargs`: other filter arguments to be sent to
+    [phoebe.parameters.ParameterSet.remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md).  The following
+    will be ignored: model, context.
 

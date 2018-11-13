@@ -8,10 +8,15 @@ def remove_compute(self, compute, **kwargs)
 
 
 
-Remove a 'compute' from the bundle
+Remove a 'compute' from the bundleself.
 
-:parameter str compute: name of the compute options
-:parameter **kwargs: any other tags to do the filter
-    (except twig or context)
-:raise NotImplementedError: because it isn't
+See also:
+* [phoebe.parameters.ParameterSet.remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md)
+
+Arguments
+----------
+* `compute` (string): the label of the compute options to be removed.
+* `**kwargs`: other filter arguments to be sent to
+    [phoebe.parameters.ParameterSet.remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md).  The following
+    will be ignored: context, compute.
 

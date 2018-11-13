@@ -14,7 +14,23 @@ primary - secondary
 
 This is a constructor, so should be called as:
 
-&gt;&gt;&gt; b = Bundle.default_binary()
+```py
+b = Bundle.default_binary()
+```
 
-:return: instantiated :class:`Bundle` object
+Arguments
+-----------
+* `starA` (string, optional, default='primary'): the label to be set for
+    the primary component.
+* `starB` (string, optional, default='secondary'): the label to be set for
+    the secondary component.
+* `orbit` (string, optional, default='binary'): the label to be set for
+    the binary component.
+* `contact_binary` (bool, optional, default=False): whether to also
+    add an envelope (with component='contact_envelope') and set the
+    hierarchy to a contact binary system.
+
+Returns
+-----------
+* an instantiated [phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundle.md) object.
 

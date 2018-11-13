@@ -9,30 +9,44 @@ def add_feature(self, kind, component=None, **kwargs)
 
 
 Add a new feature (spot, etc) to a component in the system.  If not
-provided, 'feature' (the name of the new feature) will be created
-for you and can be accessed by the 'feature' attribute of the returned
-ParameterSet
+provided, `feature` (the name of the new feature) will be created
+for you and can be accessed by the `feature` attribute of the returned
+[phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md).
 
-&gt;&gt;&gt; b.add_feature(feature.spot, component='mystar')
+```py
+b.add_feature(feature.spot, component='mystar')
+```
 
 or
 
-&gt;&gt;&gt; b.add_feature('spot', 'mystar', colat=90)
+```py
+b.add_feature('spot', 'mystar', colat=90)
+```
 
-Available kinds include:
-    * :func:`phoebe.parameters.feature.spot`
+Available kinds can be found in [phoebe.parameters.feature](phoebe.parameters.feature.md) and include:
+* [phoebe.parameters.feature.spot](phoebe.parameters.feature.spot.md)
 
-:parameter kind: function to call that returns a
-    ParameterSet or list of parameters.  This must either be
-    a callable function that accepts nothing but default values,
-    or the name of a function (as a string) that can be found in the
-    :mod:`phoebe.parameters.feature` module (ie. 'spot')
-:type kind: str or callable
-:parameter str component: name of the component to attach the feature
-:parameter str feature: (optional) name of the newly-created feature
-:parameter **kwargs: default value for any of the newly-created
-    parameters
-:return: :class:`phoebe.parameters.parameters.ParameterSet` of
-    all parameters that have been added
-:raises NotImplementedError: if required constraint is not implemented
+Arguments
+-----------
+* `kind` (string): function to call that returns a
+     [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) or list of
+     [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) objects.  This must either be a
+     callable function that accepts only default values, or the name
+     of a function (as a string) that can be found in the
+     [phoebe.parameters.compute](phoebe.parameters.compute.md) module.
+* `component` (string, optional): name of the component to attach the
+    feature.  Note: only optional if only a single possibility otherwise.
+* `feature` (string, optional): name of the newly-created feature.
+* `**kwargs`: default values for any of the newly-created parameters
+    (passed directly to the matched callabled function).
+
+Returns
+---------
+* [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) of all parameters that have been added
+
+
+Raises
+----------
+* NotImplementedError: if a required constraint is not implemented.
+* ValueError: if `component` is required but is not provided.
 

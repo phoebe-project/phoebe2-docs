@@ -8,9 +8,15 @@ def remove_component(self, component, **kwargs)
 
 
 
-[NOT IMPLEMENTED]
+Remove a 'component' from the bundle.
 
-Remove a 'component' from the bundle
+See also:
+* [phoebe.parameters.ParameterSet.remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md)
 
-:raises NotImplementedError: because this isn't implemented yet
+Arguments
+----------
+* `component` (string): the label of the component to be removed.
+* `**kwargs`: other filter arguments to be sent to
+    [phoebe.parameters.ParameterSet.remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md).  The following
+    will be ignored: component, context
 

@@ -10,6 +10,7 @@ def get_hierarchy(self)
 
 Get the hierarchy parameter
 
-:return: the hierarcy :class:`phoebe.parameters.parameters.Parameter`
-    or None (if no hierarchy exists)
+Returns
+--------
+* the [phoebe.parameters.HierarchyParameter](phoebe.parameters.HierarchyParameter.md) or None (if no hierarchy exists)
 

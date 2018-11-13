@@ -8,8 +8,5 @@ def remove_envelope(self, component=None, **kwargs)
 
 
 
-[NOT SUPPORTED]
-[NOT IMPLEMENTED]
-
-Shortcut to :meth:`remove_component` but with kind='envelope'
+Shortcut to [phoebe.frontend.bundle.Bundle.remove_component](phoebe.frontend.bundle.Bundle.remove_component.md) but with kind='envelope'.
 

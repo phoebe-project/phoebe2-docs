@@ -8,12 +8,16 @@ def flip_constraint(self, twig=None, solve_for=None, **kwargs)
 
 
 
-Flip an existing constraint to solve for a different parameter
+Flip an existing constraint to solve for a different parameter.
 
-:parameter str twig: twig to filter the constraint
-:parameter solve_for: twig or actual parameter object of the new
-    parameter which this constraint should constraint (solve for).
-:type solve_for: str or :class:`phoebe.parameters.parameters.Parameter
-:parameter **kwargs: any other tags to do the filter
-    (except twig or context)
+Arguments
+----------
+* `twig` (string, optional, default=None): twig to filter the constraint
+* `solve_for` (string or Parameter, optional, default=None): twig or
+    [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) object of the new parameter for which
+    this constraint should constrain (solve for).
+
+Returns
+---------
+* The [phoebe.parameters.ConstraintParameter](phoebe.parameters.ConstraintParameter.md).
 

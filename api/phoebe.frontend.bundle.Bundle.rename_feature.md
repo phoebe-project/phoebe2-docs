@@ -8,12 +8,15 @@ def rename_feature(self, old_feature, new_feature)
 
 
 
-Change the label of a feature attached to the Bundle
+Change the label of a feature attached to the Bundle.
 
-:parameter str old_feature: the current name of the feature
-    (must exist)
-:parameter str new_feature: the desired new name of the feature
-    (must not exist)
-:return: None
-:raises ValueError: if the new_feature is forbidden
+Arguments
+----------
+* `old_feature` (string): current label of the feature (must exist)
+* `new_feature` (string): the desired new label of the feature
+    (must not yet exist)
+
+Raises
+--------
+* ValueError: if the value of `new_feature` is forbidden or already exists.
 

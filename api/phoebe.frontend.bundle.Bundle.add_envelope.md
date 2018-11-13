@@ -8,7 +8,5 @@ def add_envelope(self, component=None, **kwargs)
 
 
 
-[NOT SUPPORTED]
-
-Shortcut to :meth:`add_component` but with kind='envelope'
+Shortcut to [phoebe.frontend.bundle.Bundle.add_component](phoebe.frontend.bundle.Bundle.add_component.md) but with kind='envelope'.
 

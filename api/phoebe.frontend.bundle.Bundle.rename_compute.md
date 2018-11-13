@@ -8,12 +8,15 @@ def rename_compute(self, old_compute, new_compute)
 
 
 
-Change the label of a compute attached to the Bundle
+Change the label of compute options attached to the Bundle.
 
-:parameter str old_compute: the current name of the compute options
-    (must exist)
-:parameter str new_compute: the desired new name of the compute options
-    (must not exist)
-:return: None
-:raises ValueError: if the new_compute is forbidden
+Arguments
+----------
+* `old_compute` (string): current label of the compute options (must exist)
+* `new_compute` (string): the desired new label of the compute options
+    (must not yet exist)
+
+Raises
+--------
+* ValueError: if the value of `new_compute` is forbidden or already exists.
 

@@ -8,5 +8,6 @@ def remove_models_all(self)
 
 
 
-Remove all models from the bundle
+Remove all models from the bundle.  To remove a single model see
+[phoebe.frontend.bundle.Bundle.remove_model](phoebe.frontend.bundle.Bundle.remove_model.md).
 

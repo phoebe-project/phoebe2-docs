@@ -8,9 +8,15 @@ def remove_constraint(self, twig=None, **kwargs)
 
 
 
-Remove a 'constraint' from the bundle
+Remove a 'constraint' from the bundle.
 
-:parameter str twig: twig to filter for the constraint
-:parameter **kwargs: any other tags to do the filter
-    (except twig or context)
+See also:
+* [phoebe.parameters.ParameterSet.remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md)
+
+Arguments
+----------
+* `twig` (string, optional): twig to filter for the constraint.
+* `**kwargs`: other filter arguments to be sent to
+    [phoebe.parameters.ParameterSet.remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md).  The following
+    will be ignored: context, twig.
 

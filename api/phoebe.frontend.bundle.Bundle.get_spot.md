@@ -8,5 +8,13 @@ def get_spot(self, feature=None, **kwargs)
 
 
 
-Shortcut to :meth:`get_feature` but with kind='spot'
+Shortcut to [phoebe.frontend.bundle.Bundle.get_feature](phoebe.frontend.bundle.Bundle.get_feature.md) but with kind='spot'.
+
+Arguments
+----------
+* `twig`: (string, optional, default=None): the twig used for filtering
+* `**kwargs`: any other tags to do the filtering (excluding twig, kind, and context)
+
+Returns:
+* a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) object.
 

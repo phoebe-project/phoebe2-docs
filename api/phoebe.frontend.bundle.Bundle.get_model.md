@@ -10,8 +10,14 @@ def get_model(self, model=None, **kwargs)
 
 Filter in the 'model' context
 
-:parameter str model: name of the model (optional)
-:parameter **kwargs: any other tags to do the filter
-    (except model or context)
-:return: :class:`phoebe.parameters.parameters.ParameterSet`
+See also:
+* [phoebe.parameters.ParameterSet.filter](phoebe.parameters.ParameterSet.filter.md)
+
+Arguments
+----------
+* `twig`: (string, optional, default=None): the twig used for filtering
+* `**kwargs`: any other tags to do the filtering (excluding twig and context)
+
+Returns:
+* a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) object.
 

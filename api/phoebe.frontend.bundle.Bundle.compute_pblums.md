@@ -17,14 +17,20 @@ This method is only for convenience and will be recomputed internally
 within run_compute.  Alternatively, you can create a mesh dataset
 and request any specific pblum to be exposed (per-time).
 
-:parameter str compute: label of the compute options (note required if
-    only one is attached to the bundle)
-:parameter component: (optional) label of the component(s) requested
-:type component: str or list of strings
-:parameter dataset: (optional) label of the dataset(s) requested
-:type dataset: str or list of strings
-:parameter component: (optional) label of the component(s) requested
-:type component: str or list of strings
-:return: dictionary with keys &lt;component&gt;@&lt;dataset&gt; and computed pblums
-    as values (as quantity objects, default units of W)
+Arguments
+------------
+* `compute` (string, optional, default=None): label of the compute
+    options (note required if only one is attached to the bundle).
+* `component` (string or list of strings, optional): label of the
+    component(s) requested. If not provided, will be provided for all
+    components in the hierarchy.
+* `dataset` (string or list of strings, optional): label of the
+    dataset(s) requested.  If not provided, will be provided for all
+    datasets attached to the bundle.
+
+Returns
+----------
+* (dict) computed pblums in a dictionary with keys formatted as
+    component@dataset and the pblums as values (as quantity objects with
+    default units of W).
 

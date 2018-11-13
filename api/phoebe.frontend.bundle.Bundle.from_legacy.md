@@ -12,8 +12,23 @@ Load a bundle from a PHOEBE 1.0 Legacy file.
 
 This is a constructor so should be called as:
 
-&gt;&gt;&gt; b = Bundle.from_legacy('myfile.phoebe')
+```py
+b = Bundle.from_legacy('myfile.phoebe')
+```
 
-:parameter str filename: relative or full path to the file
-:return: instantiated :class:`Bundle` object
+Arguments
+------------
+* `filename` (string): relative or full path to the file
+* `add_compute_legacy` (bool, optional, default=True): whether to add
+    a set of compute options for the legacy backend.  See also
+    [phoebe.frontend.bundle.Bundle.add_compute](phoebe.frontend.bundle.Bundle.add_compute.md) and
+    [phoebe.parameters.compute.legacy](phoebe.parameters.compute.legacy.md) to add manually after.
+* `add_compute_phoebe` (bool, optional, default=True): whether to add
+    a set of compute options for the phoebe backend.  See also
+    [phoebe.frontend.bundle.Bundle.add_compute](phoebe.frontend.bundle.Bundle.add_compute.md) and
+    [phoebe.parameters.compute.phoebe](phoebe.parameters.compute.phoebe.md) to add manually after
+
+Returns
+---------
+* an instantiated [phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundle.md) object.
 

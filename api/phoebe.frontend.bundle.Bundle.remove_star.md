@@ -8,7 +8,5 @@ def remove_star(self, component=None, **kwargs)
 
 
 
-[NOT IMPLEMENTED]
-
-Shortcut to :meth:`remove_component` but with kind='star'
+Shortcut to [phoebe.frontend.bundle.Bundle.remove_component](phoebe.frontend.bundle.Bundle.remove_component.md) but with kind='star'.
 

@@ -8,12 +8,15 @@ def rename_dataset(self, old_dataset, new_dataset)
 
 
 
-Change the label of a dataset attached to the Bundle
+Change the label of a dataset attached to the Bundle.
 
-:parameter str old_dataset: the current name of the dataset
-    (must exist)
-:parameter str new_dataset: the desired new name of the dataset
-    (must not exist)
-:return: None
-:raises ValueError: if the new_dataset is forbidden
+Arguments
+----------
+* `old_dataset` (string): current label of the dataset (must exist)
+* `new_dataset` (string): the desired new label of the dataset
+    (must not yet exist)
+
+Raises
+--------
+* ValueError: if the value of `new_dataset` is forbidden or already exists.
 
