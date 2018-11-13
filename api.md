@@ -14,6 +14,7 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 * [phoebe.parameters.ChoiceParameter](api/phoebe.parameters.ChoiceParameter.md)
 * [phoebe.parameters.SelectParameter](api/phoebe.parameters.SelectParameter.md)
 * [phoebe.parameters.ConstraintParameter](api/phoebe.parameters.ConstraintParameter.md)
+* [phoebe.parameters.HierarchyParameter](api/phoebe.parameters.HierarchyParameter.md)
 * [phoebe.parameters.FloatParameter](api/phoebe.parameters.FloatParameter.md)
 * [phoebe.parameters.FloatArrayParameter](api/phoebe.parameters.FloatArrayParameter.md)
 

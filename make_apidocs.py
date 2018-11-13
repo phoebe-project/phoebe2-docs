@@ -114,14 +114,44 @@ if __name__ == '__main__':
                             'parameter_from_json', 'parse_json', 'send_if_client',
                             'update_if_client', 'ConstraintVar']
 
-    skip_parameters = ['deepcopy', 'fnmatch', 'send_if_client', 'update_if_client']
+    skip_parameters = ['deepcopy', 'fnmatch', 'send_if_client', 'update_if_client',
+                       'JobParameter', 'ConstraintVar', 'DictParameter',
+                       'IntArrayParameter', 'TwigParameter', 'autofig', 'datetime',
+                       'difflib', 'functools', 'itertools', 'json', 'logging',
+                       'np', 'nparray', 'os', 'parameter_from_json', 'parse_json',
+                       'random', 're', 'readline', 'requests', 'string', 'sympy',
+                       'sys', 'tabcomplete', 'time', 'twighelpers', 'types', 'u',
+                       'json', 'ujson', 'webbrowser', 'OrderedDict']
+
+    skip_parameters_type = ['deepcopy', 'download_passband', 'fnmatch',
+                            'list_installed_passbands', 'list_online_passbands',
+                            'list_passbands', 'parameter_from_json', 'parse_json',
+                            'send_if_client', 'update_if_client']
+
+    skip_parameters_compute = skip_parameters_type + ['jktebop', 'photodynam']
+    skip_parameters_constraint = skip_parameters_type + ['keplers_third_law_hierarchical', 'etv', 'time_ephem', 'passband_ratio', 'ph_infconj', 'ph_perpass', 'ph_supconj']
+    skip_parameters_dataset = skip_parameters_type + ['etv', 'etv_dep', 'etv_syn', 'lc_dep', 'lc_syn', 'lp_dep', 'lp_syn', 'mesh_dep', 'mesh_syn', 'orb_dep', 'orb_syn', 'rv_dep', 'rv_syn']
+    skip_parameters_feature = skip_parameters_type + []
+    skip_parameters_hierarchy = skip_parameters_type + []
+    skip_parameters_setting = skip_parameters_type + []
+    skip_parameters_system = skip_parameters_type + []
+
     skip_units = ['add_enabled_equivalencies', 'add_enabled_units', 'def_physical_type', 'def_unit']
 
 
     fms_phoebe = api_docs(phoebe, skip=skip_phoebe)
     fms_frontend = api_docs(phoebe.frontend, skip=skip_frontend+fms_phoebe, prefix='phoebe', members=[pydoc.inspect.ismodule])
     fms_frontend_bundle = api_docs(phoebe.frontend.bundle, skip=skip_frontend_bundle+fms_phoebe, prefix='phoebe.frontend', members=[pydoc.inspect.isfunction, pydoc.inspect.isclass])
-    fms_parameters = api_docs(phoebe.parameters, skip=skip_parameters+fms_phoebe, prefix='phoebe')
+    fms_parameters = api_docs(phoebe.parameters, skip=skip_parameters+fms_phoebe, prefix='phoebe', members=[pydoc.inspect.ismodule, pydoc.inspect.isfunction, pydoc.inspect.isclass])
+
+    fms_component = api_docs(phoebe.parameters.component, skip=skip_parameters_type, prefix='phoebe.parameters')
+    fms_compute = api_docs(phoebe.parameters.compute, skip=skip_parameters_compute, prefix='phoebe.parameters')
+    fms_constraint = api_docs(phoebe.parameters.constraint, skip=skip_parameters_constraint, prefix='phoebe.parameters')
+    fms_dataset = api_docs(phoebe.parameters.dataset, skip=skip_parameters_dataset, prefix='phoebe.parameters')
+    fms_feature = api_docs(phoebe.parameters.feature, skip=skip_parameters_feature, prefix='phoebe.parameters')
+    fms_hierarchy = api_docs(phoebe.parameters.hierarchy, skip=skip_parameters_hierarchy, prefix='phoebe.parameters')
+    fms_setting = api_docs(phoebe.parameters.setting, skip=skip_parameters_setting, prefix='phoebe.parameters')
+    fms_system = api_docs(phoebe.parameters.system, skip=skip_parameters_system, prefix='phoebe.parameters')
 
     fms_ps = api_docs(phoebe.parameters.ParameterSet, skip=skip_ps, prefix='phoebe.parameters')
     fms_bundle = api_docs(phoebe.Bundle, skip=skip_ps+[s for s in fms_ps if s!='__init__'], subclass_of='phoebe.parameters.ParameterSet', prefix='phoebe.frontend')
@@ -133,5 +163,6 @@ if __name__ == '__main__':
     fms = api_docs(phoebe.parameters.ChoiceParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
     fms = api_docs(phoebe.parameters.SelectParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
     fms = api_docs(phoebe.parameters.ConstraintParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
+    fms = api_docs(phoebe.parameters.HierarchyParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
     fms_float_param = api_docs(phoebe.parameters.FloatParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
     fms = api_docs(phoebe.parameters.FloatArrayParameter, skip=skip_param+fms_param+fms_float_param, subclass_of='phoebe.parameters.FloatParameter', prefix='phoebe.parameters')
