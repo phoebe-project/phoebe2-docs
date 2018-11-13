@@ -35,34 +35,34 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 
 ### Settings
 
-* [logger](phoebe.logger.md)
-* [mpi_on](phoebe.mpi_on.md)
-* [mpi_off](phoebe.mpi_off.md)
-* [interactive_on](phoebe.interactive_on.md)
-* [interactive_off](phoebe.interactive_off.md)
-* [interactive_checks_on](phoebe.interactive_checks_on.md)
-* [interactive_checks_off](phoebe.interactive_checks_off.md)
-* [interactive_constraints_on](phoebe.interactive_constraints_on.md)
-* [interactive_constraints_off](phoebe.interactive_constraints_off.md)
-* [reset_settings](phoebe.reset_settings.md)
+* [logger](api/phoebe.logger.md)
+* [mpi_on](api/phoebe.mpi_on.md)
+* [mpi_off](api/phoebe.mpi_off.md)
+* [interactive_on](api/phoebe.interactive_on.md)
+* [interactive_off](api/phoebe.interactive_off.md)
+* [interactive_checks_on](api/phoebe.interactive_checks_on.md)
+* [interactive_checks_off](api/phoebe.interactive_checks_off.md)
+* [interactive_constraints_on](api/phoebe.interactive_constraints_on.md)
+* [interactive_constraints_off](api/phoebe.interactive_constraints_off.md)
+* [reset_settings](api/phoebe.reset_settings.md)
 
 ### Atmospheres and Passbands
 
-* [list_passbands](phoebe.list_passbands.md)
-* [list_passband_directories](phoebe.list_passband_directories.md)
-* [list_installed_passbands](phoebe.list_installed_passbands.md)
-* [list_online_passbands](phoebe.list_online_passbands.md)
-* [download_passband](phoebe.download_passband.md)
-* [get_passband](phoebe.get_passband.md)
-* [install_passband](phoebe.install_passband.md)
+* [list_passbands](api/phoebe.list_passbands.md)
+* [list_passband_directories](api/phoebe.list_passband_directories.md)
+* [list_installed_passbands](api/phoebe.list_installed_passbands.md)
+* [list_online_passbands](api/phoebe.list_online_passbands.md)
+* [download_passband](api/phoebe.download_passband.md)
+* [get_passband](api/phoebe.get_passband.md)
+* [install_passband](api/phoebe.install_passband.md)
 
 ### Arrays
 
-* [array](phoebe.array.md)
-* [arange](phoebe.arange.md)
-* [linspace](phoebe.linspace.md)
-* [logspace](phoebe.logspace.md)
-* [geomspace](phoebe.geomspace.md)
+* [array](api/phoebe.array.md)
+* [arange](api/phoebe.arange.md)
+* [linspace](api/phoebe.linspace.md)
+* [logspace](api/phoebe.logspace.md)
+* [geomspace](api/phoebe.geomspace.md)
 
 
 ## Bundle & ParameterSets
