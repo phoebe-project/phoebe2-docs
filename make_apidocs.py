@@ -1,6 +1,11 @@
 import pydoc
 import os, sys
-# import re
+import re
+
+def md_internal_link(matchobj):
+    text = matchobj.group(0)
+    path = text[4:-4]
+    return "[{}]({}.md)".format(path, path)
 
 def api_docs(item, skip=[], prefix='', subclass_of=None, write=True, members=[pydoc.inspect.ismethod, pydoc.inspect.isfunction]):
     def check_member(item):
@@ -38,6 +43,7 @@ def api_docs(item, skip=[], prefix='', subclass_of=None, write=True, members=[py
         if pydoc.inspect.getdoc(fm[1]):
             output.append('\n')
             docstring = pydoc.HTMLDoc().markup(pydoc.inspect.getdoc(fm[1]))
+            docstring = re.sub(r"(?P<name>&lt;[a-zA-Z_\.]*&gt;)", md_internal_link, docstring)
             output.append(docstring)
 
         output.append('\n')

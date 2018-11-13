@@ -2,36 +2,39 @@
 
 ```py
 
-def add_compute(self, kind=<function phoebe at 0x7fc7e5610410>, **kwargs)
+def add_compute(self, kind='phoebe', **kwargs)
 
 ```
 
 
 
 Add a set of computeoptions for a given backend to the bundle.
-The label ('compute') can then be sent to :meth:`run_compute`.
+The label (`compute`) can then be sent to [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md).
 
-If not provided, 'compute' will be created for you and can be
-accessed by the 'compute' attribute of the returned
-ParameterSet.
+If not provided, `compute` will be created for you and can be
+accessed by the `compute` attribute of the returned
+[phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md).
 
 Available kinds include:
-    * :func:`phoebe.parameters.compute.phoebe`
-    * :func:`phoebe.parameters.compute.legacy`
-    * :func:`phoebe.parameters.compute.photodynam`
-    * :func:`phoebe.parameters.compute.jktebop`
+* [phoebe.parameters.compute.phoebe](phoebe.parameters.compute.phoebe.md)
+* [phoebe.parameters.compute.legacy](phoebe.parameters.compute.legacy.md)
 
-:parameter kind: function to call that returns a
-    ParameterSet or list of parameters.  This must either be
-    a callable function that accepts nothing but default
-    values, or the name of a function (as a string) that can
-    be found in the :mod:`phoebe.parameters.compute` module
-:type kind: str or callable
-:parameter str compute: (optional) name of the newly-created
-    compute optins
-:parameter **kwargs: default values for any of the newly-created
-    parameters
-:return: :class:`phoebe.parameters.parameters.ParameterSet` of
-    all parameters that have been added
-:raises NotImplementedError: if required constraint is not implemented
+Parameters
+----------
+* `kind` (string): function to call that returns a
+     [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) or list of
+     [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) objects.  This must either be a
+     callable function that accepts only default values, or the name
+     of a function (as a string) that can be found in the
+     [phoebe.parameters.compute](phoebe.parameters.compute.md) module.
+* `compute` (string, optional): name of the newly-created compute options.
+* `**kwargs`: default values for any of the newly-created parameters
+
+Returns
+---------
+* [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) of all parameters that have been added
+
+Raises
+--------
+* NotImplementedError: if a required constraint is not implemented
 
