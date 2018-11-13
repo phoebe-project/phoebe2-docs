@@ -2,6 +2,7 @@
 
 Bundle is a subclass of phoebe.parameters.ParameterSet and therefore also includes all [phoebe.parameters.ParameterSet methods](phoebe.parameters.ParameterSet.md)
 
+* [__init__](phoebe.frontend.Bundle.__init__.md)
 * [add_component](phoebe.frontend.Bundle.add_component.md)
 * [add_compute](phoebe.frontend.Bundle.add_compute.md)
 * [add_constraint](phoebe.frontend.Bundle.add_constraint.md)
