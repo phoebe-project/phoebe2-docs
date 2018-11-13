@@ -57,12 +57,17 @@ def api_docs(item, skip=[], prefix='', subclass_of=None, write=True, members=[py
     if write:
         path = [p for p in prefix.split(".")+[item.__name__.split(".")[-1]] if len(p)]
         path_md = ".".join(["[{}]({}.md)".format(p, ".".join(path[:i+1])) for i,p in enumerate(path[:-1])])
+        if len(path_md):
+            path_md += ".{}".format(item.__name__.split(".")[-1])
+        else:
+            path_md = item.__name__.split(".")[-1]
+
         path = ".".join(path)
         filename_class = './api/{}.md'.format(path)
         print("writing {}".format(filename_class))
         f_class = open(filename_class, 'w')
         kind = 'class' if pydoc.inspect.isclass(item) else 'module' if pydoc.inspect.ismodule(item) else ''
-        f_class.write("## {}.{} {} (all public {})\n\n".format(path_md, item.__name__, kind, 'members'))
+        f_class.write("## {} {} (all public {})\n\n".format(path_md, kind, 'members'))
         if subclass_of is not None:
             f_class.write("{} is a subclass of {} and therefore also includes all [{} methods]({}.md)\n\n".format(item.__name__, subclass_of, subclass_of, subclass_of))
         for fm in stored_fms:
@@ -119,7 +124,7 @@ if __name__ == '__main__':
     fms_parameters = api_docs(phoebe.parameters, skip=skip_parameters+fms_phoebe, prefix='phoebe')
 
     fms_ps = api_docs(phoebe.parameters.ParameterSet, skip=skip_ps, prefix='phoebe.parameters')
-    fms_bundle = api_docs(phoebe.Bundle, skip=skip_ps+fms_ps, subclass_of='ParameterSet', prefix='phoebe.frontend')
+    fms_bundle = api_docs(phoebe.Bundle, skip=skip_ps+fms_ps, subclass_of='phoebe.parameters.ParameterSet', prefix='phoebe.frontend')
 
     fms_param = api_docs(phoebe.parameters.Parameter, skip=skip_param, prefix='phoebe.parameters')
     fms = api_docs(phoebe.parameters.IntParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')

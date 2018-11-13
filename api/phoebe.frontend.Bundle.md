@@ -1,6 +1,6 @@
 ## [phoebe](phoebe.md).[frontend](phoebe.frontend.md).Bundle class (all public members)
 
-Bundle is a subclass of ParameterSet and therefore also includes all [ParameterSet methods](ParameterSet.md)
+Bundle is a subclass of phoebe.parameters.ParameterSet and therefore also includes all [phoebe.parameters.ParameterSet methods](phoebe.parameters.ParameterSet.md)
 
 * [add_component](phoebe.frontend.Bundle.add_component.md)
 * [add_compute](phoebe.frontend.Bundle.add_compute.md)
