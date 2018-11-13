@@ -1,4 +1,4 @@
-## [phoebe](phoebe.md).[frontend](phoebe.frontend.md).Bundle class (all public members)
+## [phoebe](phoebe.md).[frontend](phoebe.frontend.md).Bundle class
 
 Bundle is a subclass of phoebe.parameters.ParameterSet and therefore also includes all [phoebe.parameters.ParameterSet methods](phoebe.parameters.ParameterSet.md)
 

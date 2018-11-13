@@ -1,4 +1,4 @@
-## [phoebe](phoebe.md).[parameters](phoebe.parameters.md).ConstraintParameter class (all public members)
+## [phoebe](phoebe.md).[parameters](phoebe.parameters.md).ConstraintParameter class
 
 ConstraintParameter is a subclass of phoebe.parameters.Parameter and therefore also includes all [phoebe.parameters.Parameter methods](phoebe.parameters.Parameter.md)
 
