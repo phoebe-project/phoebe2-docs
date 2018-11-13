@@ -16,8 +16,8 @@ def api_docs(item, skip=[], prefix='', subclass_of=None, write=True):
         if fm[0] in skip or (fm[0].startswith('_') and fm[0] != '__init__'):
             continue
 
-        path = prefix.split(".")+[item.__name__]
-        path_md = ".".join(["[{}]({}.md)".format(p, p) for p in path if len(p)])
+        path = [p for p in prefix.split(".")+[item.__name__] if len(p)]
+        path_md = ".".join(["[{}]({}.md)".format(p, ".".join(path[:i+1])) for i,p in enumerate(path)])
         # print "***", path, path_md
         output.append("### {}.{}\n".format(path_md, fm[0]))
 

@@ -1,8 +1,8 @@
-### [phoebe](phoebe.md).[frontend](frontend.md).[Bundle](Bundle.md).add_compute
+### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[Bundle](phoebe.frontend.Bundle.md).add_compute
 
 ```py
 
-def add_compute(self, kind=<function phoebe at 0x7f74887b00c8>, **kwargs)
+def add_compute(self, kind=<function phoebe at 0x7f5983ec8050>, **kwargs)
 
 ```
 

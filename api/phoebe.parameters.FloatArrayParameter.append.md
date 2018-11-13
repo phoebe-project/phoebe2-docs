@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[parameters](parameters.md).[FloatArrayParameter](FloatArrayParameter.md).append
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[FloatArrayParameter](phoebe.parameters.FloatArrayParameter.md).append
 
 ```py
 

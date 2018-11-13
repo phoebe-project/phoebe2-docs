@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[parameters](parameters.md).[FloatArrayParameter](FloatArrayParameter.md).interp_value
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[FloatArrayParameter](phoebe.parameters.FloatArrayParameter.md).interp_value
 
 ```py
 

@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[frontend](frontend.md).[Bundle](Bundle.md).compute_pblums
+### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[Bundle](phoebe.frontend.Bundle.md).compute_pblums
 
 ```py
 

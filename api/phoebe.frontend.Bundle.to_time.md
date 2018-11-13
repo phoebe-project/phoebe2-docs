@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[frontend](frontend.md).[Bundle](Bundle.md).to_time
+### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[Bundle](phoebe.frontend.Bundle.md).to_time
 
 ```py
 

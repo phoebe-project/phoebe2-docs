@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[parameters](parameters.md).[ParameterSet](ParameterSet.md).set_value_all
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[ParameterSet](phoebe.parameters.ParameterSet.md).set_value_all
 
 ```py
 

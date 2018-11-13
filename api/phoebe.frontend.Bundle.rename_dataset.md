@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[frontend](frontend.md).[Bundle](Bundle.md).rename_dataset
+### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[Bundle](phoebe.frontend.Bundle.md).rename_dataset
 
 ```py
 

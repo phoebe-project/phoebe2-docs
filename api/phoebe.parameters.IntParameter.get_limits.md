@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[parameters](parameters.md).[IntParameter](IntParameter.md).get_limits
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[IntParameter](phoebe.parameters.IntParameter.md).get_limits
 
 ```py
 

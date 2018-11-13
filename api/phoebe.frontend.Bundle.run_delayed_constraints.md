@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[frontend](frontend.md).[Bundle](Bundle.md).run_delayed_constraints
+### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[Bundle](phoebe.frontend.Bundle.md).run_delayed_constraints
 
 ```py
 

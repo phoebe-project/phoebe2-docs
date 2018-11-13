@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[parameters](parameters.md).[ParameterSet](ParameterSet.md).get_default_unit
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[ParameterSet](phoebe.parameters.ParameterSet.md).get_default_unit
 
 ```py
 

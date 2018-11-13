@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[parameters](parameters.md).[Parameter](Parameter.md).open
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[Parameter](phoebe.parameters.Parameter.md).open
 
 ```py
 

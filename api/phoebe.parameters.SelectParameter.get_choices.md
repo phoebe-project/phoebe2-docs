@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[parameters](parameters.md).[SelectParameter](SelectParameter.md).get_choices
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[SelectParameter](phoebe.parameters.SelectParameter.md).get_choices
 
 ```py
 

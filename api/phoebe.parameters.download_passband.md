@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[phoebe.parameters](phoebe.parameters.md).download_passband
+### [phoebe](phoebe.md).[phoebe.parameters](phoebe.phoebe.parameters.md).download_passband
 
 ```py
 

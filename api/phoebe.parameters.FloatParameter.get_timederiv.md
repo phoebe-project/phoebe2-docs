@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[parameters](parameters.md).[FloatParameter](FloatParameter.md).get_timederiv
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[FloatParameter](phoebe.parameters.FloatParameter.md).get_timederiv
 
 ```py
 

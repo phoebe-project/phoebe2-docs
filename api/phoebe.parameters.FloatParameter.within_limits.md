@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[parameters](parameters.md).[FloatParameter](FloatParameter.md).within_limits
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[FloatParameter](phoebe.parameters.FloatParameter.md).within_limits
 
 ```py
 
