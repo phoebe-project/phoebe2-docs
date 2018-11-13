@@ -1,4 +1,4 @@
-## ParameterSet class (all public members)
+## [phoebe](phoebe.md).[parameters](phoebe.parameters.md).ParameterSet class (all public members)
 
 * [__init__](phoebe.parameters.ParameterSet.__init__.md)
 * [clf](phoebe.parameters.ParameterSet.clf.md)

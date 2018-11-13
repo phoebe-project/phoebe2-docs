@@ -1,4 +1,4 @@
-## IntParameter class (all public members)
+## [phoebe](phoebe.md).[parameters](phoebe.parameters.md).IntParameter class (all public members)
 
 IntParameter is a subclass of phoebe.parameters.Parameter and therefore also includes all [phoebe.parameters.Parameter methods](phoebe.parameters.Parameter.md)
 

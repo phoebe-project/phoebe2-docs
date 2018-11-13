@@ -55,12 +55,14 @@ def api_docs(item, skip=[], prefix='', subclass_of=None, write=True, members=[py
             f_method.close()
 
     if write:
-        path = ".".join([p for p in prefix.split(".") if len(p)]+[item.__name__.split(".")[-1]])
+        path = [p for p in prefix.split(".")+[item.__name__.split(".")[-1]] if len(p)]
+        path_md = ".".join(["[{}]({}.md)".format(p, ".".join(path[:i+1])) for i,p in enumerate(path[:-1])])
+        path = ".".join(path)
         filename_class = './api/{}.md'.format(path)
         print("writing {}".format(filename_class))
         f_class = open(filename_class, 'w')
         kind = 'class' if pydoc.inspect.isclass(item) else 'module' if pydoc.inspect.ismodule(item) else ''
-        f_class.write("## {} {} (all public {})\n\n".format(item.__name__, kind, 'members'))
+        f_class.write("## {}.{} {} (all public {})\n\n".format(path_md, item.__name__, kind, 'members'))
         if subclass_of is not None:
             f_class.write("{} is a subclass of {} and therefore also includes all [{} methods]({}.md)\n\n".format(item.__name__, subclass_of, subclass_of, subclass_of))
         for fm in stored_fms:
