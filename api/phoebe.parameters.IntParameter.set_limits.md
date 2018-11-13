@@ -1,0 +1,9 @@
+### [phoebe](phoebe.md).[parameters](parameters.md).[IntParameter](IntParameter.md).set_limits
+
+```py
+
+def set_limits(self, limits=(None, None))
+
+```
+
+

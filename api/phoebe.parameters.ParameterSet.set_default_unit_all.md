@@ -1,0 +1,12 @@
+### [phoebe](phoebe.md).[parameters](parameters.md).[ParameterSet](ParameterSet.md).set_default_unit_all
+
+```py
+
+def set_default_unit_all(self, twig=None, unit=None, **kwargs)
+
+```
+
+
+
+TODO: add documentation
+

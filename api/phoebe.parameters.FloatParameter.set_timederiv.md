@@ -1,0 +1,12 @@
+### [phoebe](phoebe.md).[parameters](parameters.md).[FloatParameter](FloatParameter.md).set_timederiv
+
+```py
+
+def set_timederiv(self, timederiv)
+
+```
+
+
+
+        
+
