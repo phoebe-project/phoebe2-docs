@@ -7,7 +7,7 @@ def md_internal_link(matchobj):
     path = text[4:-4]
     return "[{}]({}.md)".format(path, path)
 
-def api_docs(item, skip=[], prefix='', subclass_of=None, write=True, members=[pydoc.inspect.ismethod, pydoc.inspect.isfunction]):
+def api_docs(item, skip=[], prefix='', subclass_of=None, write=True, members=[pydoc.inspect.ismethod, pydoc.inspect.isfunction, pydoc.inspect.isdatadescriptor]):
     def check_member(item):
         for member in members:
             if member(item):
@@ -35,9 +35,10 @@ def api_docs(item, skip=[], prefix='', subclass_of=None, write=True, members=[py
         output.append("### {}.{}\n".format(path_md, fm[0]))
 
         # Get the signature
-        output.append ('```py\n')
-        output.append('def %s%s\n' % (fm[0], pydoc.inspect.formatargspec(*pydoc.inspect.getargspec(fm[1]))))
-        output.append ('```\n')
+        if pydoc.inspect.ismethod(fm[1]) or pydoc.inspect.isfunction(fm[1]):
+            output.append ('```py\n')
+            output.append('def %s%s\n' % (fm[0], pydoc.inspect.formatargspec(*pydoc.inspect.getargspec(fm[1]))))
+            output.append ('```\n')
 
         # get the docstring
         if pydoc.inspect.getdoc(fm[1]):
@@ -72,8 +73,16 @@ def api_docs(item, skip=[], prefix='', subclass_of=None, write=True, members=[py
         filename_class = './api/{}.md'.format(path)
         print("writing {}".format(filename_class))
         f_class = open(filename_class, 'w')
-        kind = 'class' if pydoc.inspect.isclass(item) else 'module' if pydoc.inspect.ismodule(item) else ''
-        f_class.write("## {} {}\n\n".format(path_md, kind))
+        kind = ''
+        if pydoc.inspect.isclass(item):
+            kind = 'class'
+        elif pydoc.inspect.ismodule(item):
+            kind = 'module'
+        elif pydoc.inspect.ismethod(item):
+            kind = 'method'
+        elif pydoc.inspect.isdatadescriptor(item):
+            kind = 'property'
+        f_class.write("## {} ({})\n\n".format(path_md, kind))
         if subclass_of is not None:
             f_class.write("{} is a subclass of {} and therefore also includes all [{} methods]({}.md)\n\n".format(item.__name__, subclass_of, subclass_of, subclass_of))
         for fm in stored_fms:
@@ -100,9 +109,11 @@ if __name__ == '__main__':
                'run_fitting', 'run_plugin',
                'set_adjust', 'set_adjust_all', 'set_meta',
                'set_prior', 'ui', 'get_plotting_info',
-               'undo', 'redo', 'get_history', 'enable_history', 'disable_history']
+               'undo', 'redo', 'get_history', 'enable_history', 'disable_history',
+               'feedback', 'feedbacks', 'fitting', 'fittings', 'history', 'historys',
+               'plugin', 'plugins', 'is_client']
 
-    skip_param = ['set_uniqueid']
+    skip_param = ['set_uniqueid', 'feedback', 'fitting', 'history']
 
     skip_phoebe = ['default_triple', 'devel_off', 'devel_on',
                    'algorithms', 'atmospheres', 'backend', 'c',
