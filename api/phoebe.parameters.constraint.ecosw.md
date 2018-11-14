@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[constraint](phoebe.parameters.constraint.md).ecosw
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[constraint](phoebe.parameters.constraint.md).ecosw (function)
+
 
 ```py
 

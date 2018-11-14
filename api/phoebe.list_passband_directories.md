@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).list_passband_directories
+### [phoebe](phoebe.md).list_passband_directories (function)
+
 
 ```py
 

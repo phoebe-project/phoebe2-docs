@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[Parameter](phoebe.parameters.Parameter.md).get_parent_ps
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[Parameter](phoebe.parameters.Parameter.md).get_parent_ps (method)
+
 
 ```py
 

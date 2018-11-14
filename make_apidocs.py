@@ -7,6 +7,21 @@ def md_internal_link(matchobj):
     path = text[4:-4]
     return "[{}]({}.md)".format(path, path)
 
+def get_kind(item):
+    kind = ''
+    if pydoc.inspect.isclass(item):
+        kind = 'class'
+    elif pydoc.inspect.ismodule(item):
+        kind = 'module'
+    elif pydoc.inspect.ismethod(item):
+        kind = 'method'
+    elif pydoc.inspect.isfunction(item):
+        kind = 'function'
+    elif pydoc.inspect.isdatadescriptor(item):
+        kind = 'property'
+
+    return kind
+
 def api_docs(item, skip=[], prefix='', subclass_of=None, write=True, members=[pydoc.inspect.ismethod, pydoc.inspect.isfunction, pydoc.inspect.isdatadescriptor]):
     def check_member(item):
         for member in members:
@@ -32,7 +47,7 @@ def api_docs(item, skip=[], prefix='', subclass_of=None, write=True, members=[py
         path = [p for p in prefix.split(".")+[item.__name__.split(".")[-1]] if len(p)]
         path_md = ".".join(["[{}]({}.md)".format(p, ".".join(path[:i+1])) for i,p in enumerate(path)])
         # print "***", path, path_md
-        output.append("### {}.{}\n".format(path_md, fm[0]))
+        output.append("### {}.{} ({})\n\n".format(path_md, fm[0], get_kind(fm[1])))
 
         # Get the signature
         if pydoc.inspect.ismethod(fm[1]) or pydoc.inspect.isfunction(fm[1]):
@@ -73,16 +88,7 @@ def api_docs(item, skip=[], prefix='', subclass_of=None, write=True, members=[py
         filename_class = './api/{}.md'.format(path)
         print("writing {}".format(filename_class))
         f_class = open(filename_class, 'w')
-        kind = ''
-        if pydoc.inspect.isclass(item):
-            kind = 'class'
-        elif pydoc.inspect.ismodule(item):
-            kind = 'module'
-        elif pydoc.inspect.ismethod(item):
-            kind = 'method'
-        elif pydoc.inspect.isdatadescriptor(item):
-            kind = 'property'
-        f_class.write("## {} ({})\n\n".format(path_md, kind))
+        f_class.write("## {} ({})\n\n".format(path_md, get_kind(item)))
         if subclass_of is not None:
             f_class.write("{} is a subclass of {} and therefore also includes all [{} methods]({}.md)\n\n".format(item.__name__, subclass_of, subclass_of, subclass_of))
         for fm in stored_fms:

@@ -1,4 +1,4 @@
-## [phoebe](phoebe.md).[parameters](phoebe.parameters.md).Parameter class
+## [phoebe](phoebe.md).[parameters](phoebe.parameters.md).Parameter (class)
 
 * [__init__](phoebe.parameters.Parameter.__init__.md)
 * [attributes](phoebe.parameters.Parameter.attributes.md)

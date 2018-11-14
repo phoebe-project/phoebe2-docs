@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).arange
+### [phoebe](phoebe.md).arange (function)
+
 
 ```py
 

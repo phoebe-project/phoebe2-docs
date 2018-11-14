@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[hierarchy](phoebe.parameters.hierarchy.md).blank
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[hierarchy](phoebe.parameters.hierarchy.md).blank (function)
+
 
 ```py
 

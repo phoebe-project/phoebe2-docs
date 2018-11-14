@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).geomspace
+### [phoebe](phoebe.md).geomspace (function)
+
 
 ```py
 

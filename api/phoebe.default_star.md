@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).default_star
+### [phoebe](phoebe.md).default_star (function)
+
 
 ```py
 

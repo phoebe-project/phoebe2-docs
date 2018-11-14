@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).default_binary
+### [phoebe](phoebe.md).default_binary (function)
+
 
 ```py
 

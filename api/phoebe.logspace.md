@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).logspace
+### [phoebe](phoebe.md).logspace (function)
+
 
 ```py
 

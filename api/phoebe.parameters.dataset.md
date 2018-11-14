@@ -1,4 +1,4 @@
-## [phoebe](phoebe.md).[parameters](phoebe.parameters.md).dataset module
+## [phoebe](phoebe.md).[parameters](phoebe.parameters.md).dataset (module)
 
 * [lc](phoebe.parameters.dataset.lc.md)
 * [lp](phoebe.parameters.dataset.lp.md)

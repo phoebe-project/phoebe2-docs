@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).logger
+### [phoebe](phoebe.md).logger (function)
+
 
 ```py
 

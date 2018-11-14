@@ -1,4 +1,4 @@
-## [phoebe](phoebe.md).[parameters](phoebe.parameters.md).constraint module
+## [phoebe](phoebe.md).[parameters](phoebe.parameters.md).constraint (module)
 
 * [abs](phoebe.parameters.constraint.abs.md)
 * [arccos](phoebe.parameters.constraint.arccos.md)

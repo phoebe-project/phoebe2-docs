@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).mpi_off
+### [phoebe](phoebe.md).mpi_off (function)
+
 
 ```py
 

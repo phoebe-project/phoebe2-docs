@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).array
+### [phoebe](phoebe.md).array (function)
+
 
 ```py
 

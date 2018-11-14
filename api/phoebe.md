@@ -1,4 +1,4 @@
-## phoebe module
+## phoebe (module)
 
 * [arange](phoebe.arange.md)
 * [array](phoebe.array.md)

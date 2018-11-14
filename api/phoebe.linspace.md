@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).linspace
+### [phoebe](phoebe.md).linspace (function)
+
 
 ```py
 

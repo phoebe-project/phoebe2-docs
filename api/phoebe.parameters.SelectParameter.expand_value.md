@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[SelectParameter](phoebe.parameters.SelectParameter.md).expand_value
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[SelectParameter](phoebe.parameters.SelectParameter.md).expand_value (method)
+
 
 ```py
 

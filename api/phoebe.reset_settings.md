@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).reset_settings
+### [phoebe](phoebe.md).reset_settings (function)
+
 
 ```py
 

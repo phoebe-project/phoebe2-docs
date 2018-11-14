@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).interactive_constraints_off
+### [phoebe](phoebe.md).interactive_constraints_off (function)
+
 
 ```py
 

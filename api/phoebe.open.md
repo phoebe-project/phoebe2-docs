@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).open
+### [phoebe](phoebe.md).open (function)
+
 
 ```py
 

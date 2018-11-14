@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[IntParameter](phoebe.parameters.IntParameter.md).set_limits
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[IntParameter](phoebe.parameters.IntParameter.md).set_limits (method)
+
 
 ```py
 

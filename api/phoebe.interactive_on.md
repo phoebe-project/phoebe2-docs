@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).interactive_on
+### [phoebe](phoebe.md).interactive_on (function)
+
 
 ```py
 

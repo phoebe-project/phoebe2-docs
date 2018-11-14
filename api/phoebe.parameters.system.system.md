@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[system](phoebe.parameters.system.md).system
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[system](phoebe.parameters.system.md).system (function)
+
 
 ```py
 

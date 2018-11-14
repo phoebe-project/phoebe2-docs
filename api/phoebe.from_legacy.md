@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).from_legacy
+### [phoebe](phoebe.md).from_legacy (function)
+
 
 ```py
 

@@ -1,4 +1,5 @@
-### [phoebe](phoebe.md).get_passband
+### [phoebe](phoebe.md).get_passband (function)
+
 
 ```py
 

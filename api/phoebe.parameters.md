@@ -1,4 +1,4 @@
-## [phoebe](phoebe.md).parameters module
+## [phoebe](phoebe.md).parameters (module)
 
 * [ArrayParameter](phoebe.parameters.ArrayParameter.md)
 * [BoolParameter](phoebe.parameters.BoolParameter.md)
