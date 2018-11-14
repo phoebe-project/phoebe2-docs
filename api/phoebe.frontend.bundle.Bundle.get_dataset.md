@@ -15,8 +15,8 @@ See also:
 
 Arguments
 ----------
-* `twig`: (string, optional, default=None): the twig used for filtering
-* `**kwargs`: any other tags to do the filtering (excluding twig and context)
+* `dataset`: (string, optional, default=None): the name of the dataset
+* `**kwargs`: any other tags to do the filtering (excluding dataset and context)
 
 Returns
 --------

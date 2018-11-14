@@ -15,8 +15,8 @@ See also:
 
 Arguments
 ----------
-* `twig`: (string, optional, default=None): the twig used for filtering
-* `**kwargs`: any other tags to do the filtering (excluding twig, kind, and context)
+* `component`: (string, optional, default=None): the name of the component
+* `**kwargs`: any other tags to do the filtering (excluding component, kind, and context)
 
 Returns
 ----------

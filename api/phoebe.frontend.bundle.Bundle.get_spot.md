@@ -12,8 +12,8 @@ Shortcut to [phoebe.frontend.bundle.Bundle.get_feature](phoebe.frontend.bundle.B
 
 Arguments
 ----------
-* `twig`: (string, optional, default=None): the twig used for filtering
-* `**kwargs`: any other tags to do the filtering (excluding twig, kind, and context)
+* `feature`: (string, optional, default=None): the name of the feature
+* `**kwargs`: any other tags to do the filtering (excluding feature, kind, and context)
 
 Returns:
 * a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) object.
