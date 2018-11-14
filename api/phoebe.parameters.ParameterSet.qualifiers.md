@@ -9,7 +9,7 @@ See also:
 * [phoebe.parameters.ParameterSet.tags](phoebe.parameters.ParameterSet.tags.md)
 
 For the singular version, see:
-* [phoebe.parameters.qualifier](phoebe.parameters.qualifier.md)
+* [phoebe.parameters.ParameterSet.qualifier](phoebe.parameters.ParameterSet.qualifier.md)
 
 Returns
 --------

@@ -9,7 +9,7 @@ See also:
 * [phoebe.parameters.ParameterSet.tags](phoebe.parameters.ParameterSet.tags.md)
 
 For the singular version, see:
-* [phoebe.parameters.compute](phoebe.parameters.compute.md)
+* [phoebe.parameters.ParameterSet.compute](phoebe.parameters.ParameterSet.compute.md)
 
 Returns
 --------
