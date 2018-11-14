@@ -9,9 +9,19 @@ def to_flat_dict(self, **kwargs)
 
 
 
-Convert the :class:`ParameterSet` to a flat dictionary, with keys being
-uniquetwigs to access the parameter and values being the :class:`Parameter`
-objects themselves.
+Convert the [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) to a flat dictionary, with
+keys being uniquetwigs to access the parameter and values being the
+[phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) objects themselves.
 
-:return: dict of :class:`Parameter`s
+See also:
+* [phoebe.parameters.Parameter.uniquetwig](phoebe.parameters.Parameter.uniquetwig.md)
+
+Arguments
+----------
+* `**kwargs`: filter arguments sent to
+    [phoebe.parameters.ParameterSet.filter](phoebe.parameters.ParameterSet.filter.md)
+
+Returns
+--------
+* (dict) uniquetwig: Parameter pairs.
 

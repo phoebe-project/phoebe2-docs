@@ -13,12 +13,33 @@ Set the value of a :class:`Parameter` in this ParameterSet
 
 Note: setting the value of a Parameter in a ParameterSet WILL
 change that Parameter across any parent ParameterSets (including
-the :class:`phoebe.frontend.bundle.Bundle`)
+the [phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundle.md)).
 
-:parameter set twig: the twig to search for the parameter
-:parameter value: the value to set.  Provide units, if necessary, by
-    sending a Quantity object (ie 2.4*u.rad)
-:parameter **kwargs: meta-tags to search
-:raises ValueError:  if 0 or more than 1 results are found matching
-    the search criteria.
+See also:
+* [phoebe.parameters.ParameterSet.get_quantity](phoebe.parameters.ParameterSet.get_quantity.md)
+* [phoebe.parameters.ParameterSet.set_quantity](phoebe.parameters.ParameterSet.set_quantity.md)
+* [phoebe.parameters.ParameterSet.get_value](phoebe.parameters.ParameterSet.get_value.md)
+* [phoebe.parameters.ParameterSet.set_value_all](phoebe.parameters.ParameterSet.set_value_all.md)
+* [phoebe.parameters.ParameterSet.get_default_unit](phoebe.parameters.ParameterSet.get_default_unit.md)
+* [phoebe.parameters.ParameterSet.set_default_unit](phoebe.parameters.ParameterSet.set_default_unit.md)
+* [phoebe.parameters.ParameterSet.set_default_unit_all](phoebe.parameters.ParameterSet.set_default_unit_all.md)
+
+Arguments
+----------
+* `twig` (string, optional, default=None): twig to be used to access
+    the Parameter.  See [phoebe.parameters.ParameterSet.get_parameter](phoebe.parameters.ParameterSet.get_parameter.md).
+* `value` (optional, default=None): valid value to set for the
+    matched Parameter.
+* `index` (int, optional): only applicable for
+    [phoebe.parmaeters.FloatArrayParameter](phoebe.parmaeters.FloatArrayParameter.md).  Passing `index` will call
+    [phoebe.parameters.FloatArrayParameter.set_index_value](phoebe.parameters.FloatArrayParameter.set_index_value.md) and pass
+    `index` instead of [phoebe.parameters.FloatArrayParameter.set_value](phoebe.parameters.FloatArrayParameter.set_value.md).
+* `**kwargs`: filter options to be passed along to
+    [phoebe.parameters.ParameterSet.get_parameter](phoebe.parameters.ParameterSet.get_parameter.md) and
+    [phoebe.parameters.Parameter.set_value](phoebe.parameters.Parameter.set_value.md).
+
+Raises
+--------
+* ValueError: if a unique match could not be found via
+    [phoebe.parameters.ParameterSet.get_parameter](phoebe.parameters.ParameterSet.get_parameter.md)
 

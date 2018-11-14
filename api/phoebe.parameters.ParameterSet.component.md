@@ -6,7 +6,13 @@
 Return the value for component if shared by ALL Parameters.
 
 If the value is not shared by ALL, then None will be returned.  To see
-all the components of all parameters, see :func:`components`.
+all the qualifiers of all parameters, see [phoebe.parameters.ParameterSet.components](phoebe.parameters.ParameterSet.components.md).
 
-:return: str or None
+To see the value of a single [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) object, see
+[phoebe.parameters.Parameter.component](phoebe.parameters.Parameter.component.md).
+
+Returns
+--------
+(string or None) the value if shared by ALL [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md)
+    objects in the [phoebe.parmaters.ParameterSet](phoebe.parmaters.ParameterSet.md), otherwise None
 

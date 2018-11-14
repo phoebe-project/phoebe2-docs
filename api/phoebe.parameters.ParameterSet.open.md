@@ -12,10 +12,15 @@ def open(cls, filename)
 Open a ParameterSet from a JSON-formatted file.
 This is a constructor so should be called as:
 
+```py
+ps = ParameterSet.open('test.json')
+```
 
-&gt;&gt;&gt; b = ParameterSet.open('test.json')
+Arguments
+---------
+* `filename` (string): relative or full path to the file
 
-
-:parameter str filename: relative or full path to the file
-:return: instantiated :class:`ParameterSet` object
+Returns
+---------
+* an instantiated [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) object
 

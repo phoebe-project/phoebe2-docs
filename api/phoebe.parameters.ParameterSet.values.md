@@ -9,7 +9,10 @@ def values(self)
 
 
 
-Return the values from :func:`to_dict`
+Return the values from [phoebe.parmaeters.ParameterSet.to_dict](phoebe.parmaeters.ParameterSet.to_dict.md)
 
-:return: list of :class:`Parameter`s or :class:`ParameterSet`s
+Returns
+-------
+* (list) list of [phoebe.paramters.ParameterSet](phoebe.paramters.ParameterSet.md) or
+    [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) objects.
 

@@ -5,5 +5,14 @@
 
 Return a list of all qualifiers in this ParameterSet.
 
-:return: list of strings
+See also:
+* [phoebe.parameters.ParameterSet.tags](phoebe.parameters.ParameterSet.tags.md)
+
+For the singular version, see:
+* [phoebe.parameters.qualifier](phoebe.parameters.qualifier.md)
+
+Returns
+--------
+* (list) a list of all qualifiers for each [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md)
+    in this [phoebe.parmaeters.ParameterSet](phoebe.parmaeters.ParameterSet.md)
 

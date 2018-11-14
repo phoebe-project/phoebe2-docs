@@ -9,12 +9,24 @@ def to_dict(self, field=None, **kwargs)
 
 
 
-Convert the ParameterSet to a structured (nested) dictionary
-to allow traversing the structure from the bottom up
+Convert the [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) to a structured (nested)
+dictionary to allow traversing the structure from the bottom up.
 
-:parameter str field: (optional) build the dictionary with keys at
-    a given level/field.  Can be any of the keys in
-    :func:`meta`.  If None, the keys will be the lowest
-    level in which Parameters have different values.
-:return: dict of :class:`Parameter`s or :class:`ParameterSet`s
+See also:
+* [phoebe.parameters.ParameterSet.to_json](phoebe.parameters.ParameterSet.to_json.md)
+* [phoebe.parameters.ParameterSet.keys](phoebe.parameters.ParameterSet.keys.md)
+* [phoebe.parameters.ParameterSet.values](phoebe.parameters.ParameterSet.values.md)
+* [phoebe.parameters.ParameterSet.items](phoebe.parameters.ParameterSet.items.md)
+
+Arguments
+----------
+* `field` (string, optional, default=None): build the dictionary with
+    keys at a given level/field.  Can be any of the keys in
+    [phoebe.parameters.ParameterSet.meta](phoebe.parameters.ParameterSet.meta.md).  If None, the keys will be
+    the lowest level in which Parameters have different values.
+
+Returns
+---------
+* (dict) dictionary of [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) or
+    [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) objects.
 

@@ -6,7 +6,13 @@
 Return the value for model if shared by ALL Parameters.
 
 If the value is not shared by ALL, then None will be returned.  To see
-all the models of all parameters, see :func:`models`.
+all the qualifiers of all parameters, see [phoebe.parameters.ParameterSet.models](phoebe.parameters.ParameterSet.models.md).
 
-:return: str or None
+To see the value of a single [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) object, see
+[phoebe.parameters.Parameter.model](phoebe.parameters.Parameter.model.md).
+
+Returns
+--------
+(string or None) the value if shared by ALL [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md)
+    objects in the [phoebe.parmaters.ParameterSet](phoebe.parmaters.ParameterSet.md), otherwise None
 

@@ -38,7 +38,6 @@
 * [models](phoebe.parameters.ParameterSet.models.md)
 * [open](phoebe.parameters.ParameterSet.open.md)
 * [plot](phoebe.parameters.ParameterSet.plot.md)
-* [properties](phoebe.parameters.ParameterSet.properties.md)
 * [qualifier](phoebe.parameters.ParameterSet.qualifier.md)
 * [qualifiers](phoebe.parameters.ParameterSet.qualifiers.md)
 * [remove_parameter](phoebe.parameters.ParameterSet.remove_parameter.md)

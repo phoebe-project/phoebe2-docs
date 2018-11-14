@@ -9,14 +9,22 @@ def remove_parameter(self, twig=None, **kwargs)
 
 
 
-Remove a :class:`Parameter` from the ParameterSet
+Remove a [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) from the
+[phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md).
 
 Note: removing Parameters from a ParameterSet will not remove
 them from any parent ParameterSets
-(including the :class:`phoebe.frontend.bundle.Bundle`)
+(including the [phoebe.fontend.bundle.Bundle](phoebe.fontend.bundle.Bundle.md)).
 
-:parameter str twig: the twig to search for the parameter
-:parameter **kwargs: meta-tags to search
-:raises ValueError: if 0 or more than 1 results are found using the
-        provided search criteria.
+Arguments
+--------
+* `twig` (string, optional, default=None): the twig to search for the
+    parameter (see [phoebe.parameters.ParameterSet.get](phoebe.parameters.ParameterSet.get.md))
+* `**kwargs`: meta-tags to use when filtering, including `check_visible` and
+    `check_default`.  See [phoebe.parameters.ParameterSet.get](phoebe.parameters.ParameterSet.get.md).
+
+Raises
+------
+* ValueError: if 0 or more than 1 results are found using the
+        provided filter criteria.
 

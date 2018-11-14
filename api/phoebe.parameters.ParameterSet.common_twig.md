@@ -5,9 +5,12 @@
 
 The twig that is common between all items in this ParameterSet.
 This twig gives a single string which can point back to this ParameterSet
-(but may include other entries as well)
+(but may include other entries as well).
 
-see also :meth:`uniquetwig`
+See also:
+* [phoebe.parameters.ParameterSet.twigs](phoebe.parameters.ParameterSet.twigs.md)
 
-:return: twig (full) of this Parameter
+Returns
+-----------
+* (string) common twig of Parameters in the ParameterSet
 

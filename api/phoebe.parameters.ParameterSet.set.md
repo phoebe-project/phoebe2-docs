@@ -9,19 +9,25 @@ def set(self, key, value, **kwargs)
 
 
 
-Set the value of a Parameter in the ParameterSet.
+Set the value of a [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) in the
+[phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md).
 
-If :func:`get` would retrieve a Parameter, this will set the
-value of that parameter.
+If [phoebe.parameters.ParameterSet.get](phoebe.parameters.ParameterSet.get.md) with the same value for
+`key`/`twig` and `**kwargs` would retrieve a single Parameter,
+this will set the value of that parameter.
 
 Or you can provide 'value@...' or 'default_unit@...', etc
 to specify what attribute to set.
 
-:parameter str key: the twig (called key here to be analagous
-    to a normal dict)
-:parameter value: value to set
-:parameter **kwargs: other filter parameters (must result in
-    returning a single :class:`Parameter`)
-:return: the value of the :class:`Parameter` after setting the
-    new value (including converting units if applicable)
+Arguments
+-----------
+* `key` (string): the twig (called key here to be analagous to a python
+    dictionary) used for filtering.
+* `value` (valid value for the matching Parameter): value to set
+* `**kwargs`: other filter parameters
+
+Returns
+--------
+* (float/array/string/etc): the value of the [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md)
+    after setting the value (including converting units if applicable).
 

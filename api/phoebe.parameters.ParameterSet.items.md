@@ -9,7 +9,8 @@ def items(self)
 
 
 
-Returns the items (key, value pairs) from :func:`to_dict`
+Returns the items (key, value pairs) from
+[phoebe.parmaeters.ParameterSet.to_dict](phoebe.parmaeters.ParameterSet.to_dict.md).
 
 :return: string, :class:`Parameter` or :class:`ParameterSet` pairs
 

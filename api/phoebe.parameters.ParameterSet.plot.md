@@ -17,110 +17,139 @@ Individual lines are each given a label (automatic if not provided),
 to see these in a legend, pass legend=True (and optionally any
 keyword arguments to be passed along to plt.legend() as legend_kwargs).
 
-:parameter str twig: twig to use for filtering
-:parameter float time: Current time.  For spectra and meshes, time
-    is required to determine at which time to draw.  For other types,
-    time will only be used for higlight and uncover (if enabled)
+See also:
+* [phoebe.parameters.ParameterSet.show](phoebe.parameters.ParameterSet.show.md)
+* [phoebe.parameters.ParameterSet.savefig](phoebe.parameters.ParameterSet.savefig.md)
+* [phoebe.parameters.ParameterSet.gcf](phoebe.parameters.ParameterSet.gcf.md)
+* [phoebe.parameters.ParameterSet.clf](phoebe.parameters.ParameterSet.clf.md)
 
-:parameter bool highlight: whether to highlight the current time
-    (defaults to True)
-:parameter str highlight_marker: if highlight==True - what marker-type
-    to use for highlighting the current time (defaults to 'o')
-:parameter int highlight_ms: if highlight==Ture - what marker-size
-    to use for highlighting the current time
-:parameter str highlight_color: if highlight==True: what marker-color
-    to use for highlighting the current time
-:parameter bool uncover: whether to only show data up to the current time
-    (defaults to False)
+Note: not all options are listed below.  See the [autofig](https://github.com/kecnry/autofig/tree/1.0.0)
+tutorials and documentation for more options which are passed along
+via `**kwargs`.
 
-:parameter ax: axes to plot on (defaults to plt.gca())
-:type ax: mpl.axes
+Arguments
+----------
+* `twig` (string, optional, default=None): twig to use for filtering
+    prior to plotting.  See [phoebe.parameters.ParameterSet.filter](phoebe.parameters.ParameterSet.filter.md)
+* `time` (float, optional): time to use for plotting/animating.
+* `times` (list/array, optional): times to use for animating (will
+    override any value sent to `time`).
+* `t0` (string/float, optional): qualifier/twig or float of the t0 that
+    should be used for phasing, if applicable.  If provided as a string,
+    `b.get_value(t0)` needs to provide a valid float.
 
-:parameter str x: qualifier or twig of the array to plot on the x-axis (will
-    default based on the kind if not provided).  Must be a valid
-    qualifier with the exception of phase.  To plot phase along the
-    x-axis set x to 'phases' or 'phases:[component]'.  This will use
-    the ephemeris from :meth:`phoebe.frontend.bundle.Bundle.get_ephemeris` if possible.
-:parameter str y: qualifier or twig of the array to plot on the y-axis
-    (see details for x above)
-:parameter str z: qualifier or twig of the array to plot on the z-axis if both
-    the backend and ax support 3d plotting (see details for x above)
-:parameter t0: qualifier or float of the t0 that should be used for
-    phasing, if applicable
-:type t0: string or float
-:parameter str xerror: qualifier of the array to plot as x-errors (will
-    default based on x if not provided)
-:parameter str yerror: qualifier of the array to plot as y-errors (will
-    default based on y if not provided)
-:parameter str zerror: qualifier of the array to plot as z-errors (will
-    default based on z if not provided)
+* `x` (string/float/array, optional): qualifier/twig of the array to plot on the
+    x-axis (will default based on the dataset-kind if not provided).
+    With the exception of phase, `b.get_value(x)` needs to provide a
+    valid float or array.  To plot phase along the x-axis, pass
+    `x='phases'` or `x=phases:[component]`.  This will use the ephemeris
+    from &lt;phoebe.frontend.bundle.Bundle.get_ephemeris(component) if
+    possible to phase the applicable times array.
+* `y` (string/float/array, optional): qualifier/twig of the array to plot on the
+    y-axis (will default based on the dataset-kind if not provided).
+* `z` (string/float/array, optional): qualifier/twig of the array to plot on the
+    z-axis.  By default, this will just order the points on a 2D plot.
+    To plot in 3D, also pass `projection='3d'`.
+* `s` (strong/float/array, optional): qualifier/twig of the array to use
+    for size.  See the [autofig tutorial on size](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/size_modes.ipynb)
+    for more information.
+* `c` (string/float/array, optional): qualifier/twig of the array to use
+    for color.
+* `fc` (string/float/array, optional): qualifier/twig of the array to use
+    for facecolor (only applicable for mesh plots).
+* `ec` (string/float/array, optional): qualifier/twig of the array to use
+    for edgecolor (only applicable for mesh plots).
 
-:parameter xunit: unit to plot the x-array (will default based on x if not provided)
-:type xunit: str or astropy.unit.Unit
-:parameter yunit: unit to plot the y-array (will default based on y if not provided)
-:type yunit: str or astropy.unit.Unit
-:parameter zunit: unit to plot the z-array (will default based on z if not provided)
-:type zunit: str or astropy.unit.Unit
+* `xerror` (string/float/array, optional): qualifier/twig of the array to plot as
+    x-errors (will default based on `x` if not provided).
+* `yerror` (string/float/array, optional): qualifier/twig of the array to plot as
+    y-errors (will default based on `y` if not provided).
+* `zerror` (string/float/array, optional): qualifier/twig of the array to plot as
+    z-errors (will default based on `z` if not provided).
 
+* `xunit` (string/unit, optional): unit to plot on the x-axis (will
+    default on `x` if not provided).
+* `yunit` (string/unit, optional): unit to plot on the y-axis (will
+    default on `y` if not provided).
+* `zunit` (string/unit, optional): unit to plot on the z-axis (will
+    default on `z` if not provided).
+* `cunit` (string/unit, optional): unit to plot on the color-axis (will
+    default on `c` if not provided).
+* `fcunit` (string/unit, optional): unit to plot on the facecolor-axis (will
+    default on `fc` if not provided, only applicable for mesh plots).
+* `ecunit` (string/unit, optional): unit to plot on the edgecolor-axis (will
+    default on `ec` if not provided, only applicable for mesh plots).
 
-:parameter str xlabel: label for the x-axis (will default based on x if not provided, but
-    will not set if ax already has an xlabel)
-:parameter str ylabel: label for the y-axis (will default based on y if not provided, but
-    will not set if ax already has an ylabel)
-:parameter str zlabel: label for the z-axis (will default based on z if not provided, but
-    will not set if ax already has an zlabel)
+* `xlabel` (string, optional): label for the x-axis (will default on `x`
+    if not provided, but will not set if the axes already has an xlabel).
+* `ylabel` (string, optional): label for the y-axis (will default on `y`
+    if not provided, but will not set if the axes already has an ylabel).
+* `zlabel` (string, optional): label for the z-axis (will default on `z`
+    if not provided, but will not set if the axes already has an zlabel).
+* `slabel` (string, optional): label for the size-axis (will default on `s`
+    if not provided, but will not set if the axes already has an slabel).
+* `clabel` (string, optional): label for the color-axis (will default on `c`
+    if not provided, but will not set if the axes already has an clabel).
+* `fclabel` (string, optional): label for the facecolor-axis (will default on `fc`
+    if not provided, but will not set if the axes already has an fclabel,
+    only applicable for mesh plots).
+* `eclabel` (string, optional): label for the edgecolor-axis (will default on `ec`
+    if not provided, but will not set if the axes already has an eclabel,
+    only applicable for mesh plots).
 
+* `xlim` (tuple/string, optional): limits for the x-axis (will default on
+    data if not provided).  See [autofig tutorial on limits](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/limits.ipynb)
+    for more information/choices.
+* `ylim` (tuple/string, optional): limits for the y-axis (will default on
+    data if not provided).  See [autofig tutorial on limits](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/limits.ipynb)
+    for more information/choices.
+* `zlim` (tuple/string, optional): limits for the z-axis (will default on
+    data if not provided).  See [autofig tutorial on limits](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/limits.ipynb)
+    for more information/choices.
+* `slim` (tuple/string, optional): limits for the size-axis (will default on
+    data if not provided).  See [autofig tutorial on limits](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/limits.ipynb)
+    for more information/choices.
+* `clim` (tuple/string, optional): limits for the color-axis (will default on
+    data if not provided).  See [autofig tutorial on limits](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/limits.ipynb)
+    for more information/choices.
+* `fclim` (tuple/string, optional): limits for the facecolor-axis (will default on
+    data if not provided).  See [autofig tutorial on limits](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/limits.ipynb)
+    for more information/choices.
+* `eclim` (tuple/string, optional): limits for the edgecolor-axis (will default on
+    data if not provided).  See [autofig tutorial on limits](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/limits.ipynb)
+    for more information/choices.
 
-:parameter tuple xlim: limits for the x-axis (will default based on data if not provided)
-:parameter tuple ylim: limits for the x-axis (will default based on data if not provided)
-:parameter tuple zlim: limits for the x-axis (will default based on data if not provided)
+* `smode` (string, optional): size mode.  See the [autofig tutorial on sizes](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/size_modes.ipynb)
+    for more information.
 
-:parameter str label: label to give to ALL lines in this single plotting call (each
-    line with get automatic default labels if not provided)
+* `highlight` (bool, optional, default=True): whether to highlight at the
+    current time.  Only applicable if `time` or `times` provided.
+* `highlight_marker` (string, optional): marker to use for highlighting.
+    Only applicable if `highlight=True` and `time` or `times` provided.
+* `highlight_color` (string, optional): color to use for highlighting.
+    Only applicable if `highlight=True` and `time` or `times` provided.
 
-:parameter str c: matplotlib recognized color string or the qualifier/twig
-    of an array to use for color (will apply to facecolor and edgecolor for meshes
-    unless those are provided)
-:parameter str cmap: matplotlib recognized cmap to use if color is
-    a qualifier pointing to an array (will be ignored otherwise)
-:parameter bool cbar: whether to display the colorbar (will default to False)
-:parameter cunit: unit to plot the color-array (will default based on color if not provided)
-:type cunit: str or astropy.unit.Unit
-:parameter tuple clim: limit for the colorbar (in same units as cunit)
-:parameter str clabel: label for the colorbar, if applicable (will default based on
-    color if not provided)
+* `uncover` (bool, optional): whether to uncover data based on the current
+    time.  Only applicable if `time` or `times` provided.
 
-:parameter str fc: matplotlib recognized color string or the qualifier/twig
-    of an array to use for facecolor (mesh plots only - takes precedence over color)
-:parameter str fcmap: matplotlib recognized cmap to use if facecolor is
-    a qualifier pointing to an array (will be ignored otherwise)
-:parameter fcunit: unit to plot the facecolor-array (will default based on facecolor if not provided)
-:type fcunit: str or astropy.unit.Unit
-:parameter tuple fclim: limit for the facecolorbar (in same units as facecolorunit)
-:parameter str fclabel: label for the facecolorbar, if applicable (will default based on
-    facecolor if not provided)
+* `save` (string, optional, default=False): filename to save the
+    figure (or False to not save).
+* `show` (bool, optional, default=False): whether to show the plot
+* `animate` (bool, optional, default=False): whether to animate the figure.
+* `draw_sidebars` (bool, optional, default=True): whether to include
+    any applicable sidebars (colorbar, sizebar, etc).
+* `draw_title` (bool, optional, default=True): whether to draw axes
+    titles.
+* `subplot_grid` (tuple, optional, default=None): override the subplot
+    grid used (see [autofig tutorial on subplots](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/subplot_positioning.ipynb)
+    for more details).
 
-:parameter str ec: matplotlib recognized color string or the qualifier/twig
-    of an array to use for edgecolor (mesh plots only - takes precedence over color)
-:parameter str ecmap: matplotlib recognized cmap to use if edgecolor is
-    a qualifier pointing to an array (will be ignored otherwise
-:parameter ecunit: unit to plot the edgecolor-array (will default based on ed if not provided)
-:type ecunit: str or astropy.unit.Unit
-:parameter tuple eclim: limit for the edgecolorbar (in same units as ecunit)
-:parameter str eclabel: label for the edgecolorbar, if applicable (will default based on
-    edgecolor if not provided)
+* `save_kwargs` (dict, optional): any kwargs necessary to pass on to
+    save (only applicable if `animate=True`).
 
-:parameter str save: filename of the resulting animation.  If provided,
-    the animation will be saved automatically.  Either way, the animation
-    object is returned (so you can always call anim.save(fname)).
-:parameter dict save_kwargs: any additional keyword arguments that need
-    to be sent to the anim.save call (as **save_kwargs, see
-    https://matplotlib.org/2.0.0/api/_as_gen/matplotlib.animation.Animation.save.html#matplotlib.animation.Animation.save)
-:parameter bool show: whether to automatically show the animation (defaults
-    to False).  Either way, the animation object is returned (so you can
-    always call b.show() or plt.show())
-:parameter **kwargs: additional kwargs to filter the ParameterSet OR to pass along
-    to the backend plotting call
+* `**kwargs`: additional keyword arguments are sent along to [autofig](https://github.com/kecnry/autofig/tree/1.0.0).
 
-:returns: the matplotlib axes
+Returns
+--------
+* (autofig figure, matplotlib figure)
 

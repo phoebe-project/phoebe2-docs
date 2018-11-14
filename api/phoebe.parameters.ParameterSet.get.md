@@ -9,29 +9,46 @@ def get(self, twig=None, check_visible=True, check_default=True, **kwargs)
 
 
 
-Get a single parameter from this ParameterSet.  This works exactly the
-same as filter except there must be only a single result, and the Parameter
-itself is returned instead of a ParameterSet.
+Get a single [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) from this
+[phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md).  This works exactly the
+same as [phoebe.parameters.ParameterSet.filter](phoebe.parameters.ParameterSet.filter.md) except there must be only
+a single result, and the Parameter itself is returned instead of a
+ParameterSet.
 
-Also see :meth:`get_parameter` (which is simply an alias of this method)
+This is identical to [phoebe.parameters.ParameterSet.get_parameter](phoebe.parameters.ParameterSet.get_parameter.md)
 
-:parameter str twig: (optional) the search twig - essentially a single
-        string with any delimiter (ie '@') that will be parsed
-        into any of the meta-tags.  Example: instead of
-        b.filter(context='component', component='starA'), you
-        could do b.filter('starA@component').
-:parameter bool check_visible: whether to hide invisible
-        parameters.  These are usually parameters that do not
-        play a role unless the value of another parameter meets
-        some condition.
-:parameter bool check_default: whether to exclude parameters which
-        have a _default tag (these are parameters which solely exist
-        to provide defaults for when new parameters or datasets are
-        added and the parameter needs to be copied appropriately).
-        Defaults to True.
-:parameter **kwargs: meta-tags to search (ie. 'context', 'component',
-        'model', etc).  See :func:`meta` for all possible options.
-:return: the resulting :class:`Parameter`
-:raises ValueError: if either 0 or more than 1 results are found
-        matching the search.
+See also:
+* [phoebe.parameters.ParameterSet.filter](phoebe.parameters.ParameterSet.filter.md)
+* [phoebe.parameters.ParameterSet.filter_or_get](phoebe.parameters.ParameterSet.filter_or_get.md)
+* [phoebe.parameters.ParameterSet.exclude](phoebe.parameters.ParameterSet.exclude.md)
+* [phoebe.parameters.ParameterSet.get_or_create](phoebe.parameters.ParameterSet.get_or_create.md)
+
+Arguments
+-----------
+* `twig` (str, optional, default=None): the search twig - essentially a single
+    string with any delimiter (ie '@') that will be parsed
+    into any of the meta-tags.  Example: instead of
+    `b.filter(context='component', component='starA')`, you
+    could do `b.filter('starA@component')`.
+* `check_visible` (bool, optional, default=True): whether to hide invisible
+    parameters.  These are usually parameters that do not
+    play a role unless the value of another parameter meets
+    some condition.
+* `check_default` (bool, optional, default=True): whether to exclude parameters which
+    have a _default tag (these are parameters which solely exist
+    to provide defaults for when new parameters or datasets are
+    added and the parameter needs to be copied appropriately).
+    Defaults to True.
+* `**kwargs`:  meta-tags to search (ie. 'context', 'component',
+    'model', etc).  See [phoebe.parameters.ParameterSet.meta](phoebe.parameters.ParameterSet.meta.md)
+    for all possible options.
+
+Returns
+--------
+* the resulting [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md).
+
+Raises
+-------
+* ValueError: if either 0 or more than 1 results are found
+    matching the search.
 

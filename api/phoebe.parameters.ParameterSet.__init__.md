@@ -11,7 +11,12 @@ def __init__(self, params=[])
 
 Initialize a new ParameterSet.
 
-:parameter list params: list of :class:`Parameter` to
-    create the ParameterSet (optional)
-:return: instantiated :class:`ParameterSet`
+Arguments
+---------
+* `params` (list, optional, default=[]): list of
+    [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) objects.
+
+Returns:
+--------
+* an instantiated [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md).
 

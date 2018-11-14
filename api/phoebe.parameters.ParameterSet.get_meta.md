@@ -16,7 +16,19 @@ If a given value is 'None', that means that it is not shared
 among ALL Parameters.  To see the different values among the
 Parameters, you can access that attribute.
 
-:parameter list ignore: list of keys to exclude from the returned
-    dictionary
-:return: an ordered dictionary of tag properties
+For example: if `ps.meta['context'] == None`, you can see all values
+through `ps.contexts`.
+
+See also:
+* [phoebe.parameters.ParameterSet.meta](phoebe.parameters.ParameterSet.meta.md)
+* [phoebe.parameters.ParameterSet.tags](phoebe.parameters.ParameterSet.tags.md)
+
+Arguments
+-----------
+* `ignore` (list, optional, default=['uniqueid']): list of keys to exclude
+    from the returned dictionary.
+
+Returns
+----------
+* (dict) an ordered dictionary of all tag properties
 

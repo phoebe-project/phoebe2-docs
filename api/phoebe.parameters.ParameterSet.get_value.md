@@ -9,21 +9,34 @@ def get_value(self, twig=None, unit=None, default=None, t=None, **kwargs)
 
 
 
-Get the value of a :class:`Parameter` in this ParameterSet
+Get the value of a [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) in this
+[phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md).
 
-:parameter str twig: the twig to search for the parameter
-:parameter unit: units for the returned result (if
-    applicable).  If None or not provided, the value will
-    be returned in that Parameter's default_unit (if
-    applicable)
-:type unit: str or astropy.units.Unit
-:parameter default: what to return if the parameter cannot be found.
-    If this is None (default) then an error will be raised instead.
-    Note that the units of default will not be converted.
-:parameter time: time at which to compute the
-    value (will only affect time-dependent parameters).  If provided
-    as a float it is assumed that the units are the same as t0.
-    NOTE: this is not fully supported yet, use with caution.
-:parameter **kwargs: meta-tags to search
-:return: value (type depeding on the type of the :class:`Parameter`)
+See also:
+* [phoebe.parameters.ParameterSet.get_quantity](phoebe.parameters.ParameterSet.get_quantity.md)
+* [phoebe.parameters.ParameterSet.set_quantity](phoebe.parameters.ParameterSet.set_quantity.md)
+* [phoebe.parameters.ParameterSet.set_value](phoebe.parameters.ParameterSet.set_value.md)
+* [phoebe.parameters.ParameterSet.set_value_all](phoebe.parameters.ParameterSet.set_value_all.md)
+* [phoebe.parameters.ParameterSet.get_default_unit](phoebe.parameters.ParameterSet.get_default_unit.md)
+* [phoebe.parameters.ParameterSet.set_default_unit](phoebe.parameters.ParameterSet.set_default_unit.md)
+* [phoebe.parameters.ParameterSet.set_default_unit_all](phoebe.parameters.ParameterSet.set_default_unit_all.md)
+
+Arguments
+----------
+* `twig` (string, optional, default=None): twig to be used to access
+    the Parameter.  See [phoebe.parameters.ParameterSet.get_parameter](phoebe.parameters.ParameterSet.get_parameter.md).
+* `unit` (string or unit, optional, default=None): unit to convert the
+    value.  If not provided or None, will use the default unit.  See
+    [phoebe.parameters.ParameterSet.get_default_unit](phoebe.parameters.ParameterSet.get_default_unit.md). `unit` will
+    be ignored for Parameters that do not store quantities.
+* `default` (quantity, optional, default=None): value to return if
+    no results are returned by [phoebe.parameters.ParameterSet.get_parameter](phoebe.parameters.ParameterSet.get_parameter.md)
+    given the value of `twig` and `**kwargs`.
+* `**kwargs`: filter options to be passed along to
+    [phoebe.parameters.ParameterSet.get_parameter](phoebe.parameters.ParameterSet.get_parameter.md).
+
+Returns
+--------
+* (float/array/string) the value of the filtered
+    [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md).
 

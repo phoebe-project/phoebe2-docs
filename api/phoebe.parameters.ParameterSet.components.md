@@ -5,5 +5,14 @@
 
 Return a list of all the components of the Parameters.
 
-:return: list of strings
+See also:
+* [phoebe.parameters.ParameterSet.tags](phoebe.parameters.ParameterSet.tags.md)
+
+For the singular version, see:
+* [phoebe.parameters.component](phoebe.parameters.component.md)
+
+Returns
+--------
+* (list) a list of all components for each [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md)
+    in this [phoebe.parmaeters.ParameterSet](phoebe.parmaeters.ParameterSet.md)
 

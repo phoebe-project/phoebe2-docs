@@ -5,5 +5,14 @@
 
 Return a list of all the computes of the Parameters.
 
-:return: list of strings
+See also:
+* [phoebe.parameters.ParameterSet.tags](phoebe.parameters.ParameterSet.tags.md)
+
+For the singular version, see:
+* [phoebe.parameters.compute](phoebe.parameters.compute.md)
+
+Returns
+--------
+* (list) a list of all computes for each [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md)
+    in this [phoebe.parmaeters.ParameterSet](phoebe.parmaeters.ParameterSet.md)
 

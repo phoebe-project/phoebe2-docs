@@ -9,7 +9,9 @@ def keys(self)
 
 
 
-Return the keys from :func:`to_dict`
+Return the keys from [phoebe.parameters.ParameterSet.to_dict](phoebe.parameters.ParameterSet.to_dict.md)
 
-:return: list of strings
+Returns
+---------
+* (list) list of strings
 

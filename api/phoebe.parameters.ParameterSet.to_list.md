@@ -9,7 +9,15 @@ def to_list(self, **kwargs)
 
 
 
-Convert the :class:`ParameterSet` to a list of :class:`Parameter`s
+Convert the [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) to a list of
+[phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) objects.
 
-:return: list of class:`Parameter` objects
+Arguments
+---------
+* `**kwargs`: filter arguments sent to
+    [phoebe.parameters.ParameterSet.filter](phoebe.parameters.ParameterSet.filter.md)
+
+Returns
+--------
+* (list) list of [phoebe.parameter.Parameter](phoebe.parameter.Parameter.md) objects
 
