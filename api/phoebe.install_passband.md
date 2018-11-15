@@ -11,7 +11,21 @@ def install_passband(fname, local=True)
 
 Install a passband from a local file.  This simply copies the file into the
 install path - but beware that clearing the installation will clear the
-passband as well
+passband as well.
 
-If local=False, you must have permissions to access the installation directory
+The local and global installation directories can be listed by calling
+[phoebe.list_passband_directories](phoebe.list_passband_directories.md).  The local (`local=True`) directory
+is generally at `~/.phoebe/atmospheres/tables/passbands`, and the global
+(`local=False`) directory is in the PHOEBE installation directory.
+
+See also:
+* [phoebe.uninstall_all_passbands](phoebe.uninstall_all_passbands.md)
+
+Arguments
+----------
+* `fname` (string) the filename of the local passband.
+* `local` (bool, optional, default=True): whether to install to the local/user
+    directory or the PHOEBE installation directory.  If `local=False`, you
+    must have the necessary permissions to write to the installation
+    directory.
 
