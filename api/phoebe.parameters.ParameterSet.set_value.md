@@ -9,7 +9,8 @@ def set_value(self, twig=None, value=None, **kwargs)
 
 
 
-Set the value of a :class:`Parameter` in this ParameterSet
+Set the value of a [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) in this
+[phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md).
 
 Note: setting the value of a Parameter in a ParameterSet WILL
 change that Parameter across any parent ParameterSets (including

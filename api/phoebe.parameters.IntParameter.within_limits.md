@@ -9,8 +9,17 @@ def within_limits(self, value)
 
 
 
-check whether a value falls within the set limits
+Check whether a value falls within the set limits.
 
-:parameter value: float or Quantity to test.  If value is a float, it is
-    assumed that it has the same units as default_units
+See also:
+* [phoebe.parameters.IntParameter.get_limits](phoebe.parameters.IntParameter.get_limits.md)
+* [phoebe.parameters.IntParameter.set_limits](phoebe.parameters.IntParameter.set_limits.md)
+
+Arguments
+--------
+* `value` (int): the value to check against the current limits.
+
+Returns
+--------
+* (bool): whether `value` is valid according to the limits.
 

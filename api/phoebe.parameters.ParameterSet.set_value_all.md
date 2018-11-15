@@ -9,7 +9,7 @@ def set_value_all(self, twig=None, value=None, check_default=False, **kwargs)
 
 
 
-Set the value of all returned [phoebe.parameters.Parmeter](phoebe.parameters.Parmeter.md) objects
+Set the value of all returned [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) objects
 in this [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md).
 
 Any Parameter that would be included in the resulting ParameterSet

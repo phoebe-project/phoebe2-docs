@@ -3,5 +3,9 @@
 
 
 
-        
+Access the keyword arguments sent to the constraint.
+
+Returns
+------
+* (dict)
 

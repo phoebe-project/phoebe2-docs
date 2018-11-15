@@ -2,3 +2,6 @@
 
 
 
+
+Shortcut to [phoebe.parameters.FloatParameter.get_quantity](phoebe.parameters.FloatParameter.get_quantity.md)
+

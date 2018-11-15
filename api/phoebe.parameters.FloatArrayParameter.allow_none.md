@@ -3,5 +3,9 @@
 
 
 
-        
+Return whether None is an acceptable value in addition to an array
+
+Returns
+--------
+* (bool)
 

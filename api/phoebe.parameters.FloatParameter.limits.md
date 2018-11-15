@@ -2,3 +2,16 @@
 
 
 
+
+Return the current valid limits for the [phoebe.parameters.FloatParameter](phoebe.parameters.FloatParameter.md).
+
+This is identical to [phoebe.parameters.FloatParameter.get_limits](phoebe.parameters.FloatParameter.get_limits.md).
+
+See also:
+* [phoebe.parameters.FloatParameter.set_limits](phoebe.parameters.FloatParameter.set_limits.md)
+* [phoebe.parameters.FloatParameter.within_limits](phoebe.parameters.FloatParameter.within_limits.md)
+
+Returns
+--------
+* (tuple): the current limits, where `None` means no lower/upper limits.
+

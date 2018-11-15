@@ -9,12 +9,11 @@ def get_value(self, unit=None, t=None, **kwargs)
 
 
 
-@param unit: astropy unit
-@type unit: astropy.units.Unit
-@param time: time at which to compute the value (will only affect
-    time-dependent parameters)
-@type time: float (assumes days in same convention as t0) or astropy.Quantity
-    (will handle appropriate unit conversion)
-@return: value in requested unit
-@rtype: depends on cast_type
+Get the current value of the [phoebe.parameters.FloatParameter](phoebe.parameters.FloatParameter.md) or
+[phoebe.parameters.FloatArrayParameter](phoebe.parameters.FloatArrayParameter.md).
+
+This is identical to [phoebe.parameters.FloatParameter.get_quantity](phoebe.parameters.FloatParameter.get_quantity.md)
+and is just included to match the method names of most other Parameter
+types.  See the documentation of [phoebe.parameters.FloatParameter.get_quantity](phoebe.parameters.FloatParameter.get_quantity.md)
+for full details.
 
