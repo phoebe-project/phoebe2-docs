@@ -89,7 +89,7 @@ Importing/exporting from other codes:
 
 ### Filtering
 
-* [filter](api/phoebe.paramters.ParameterSet.filter.md)
+* [filter](api/phoebe.parameters.ParameterSet.filter.md)
 * [exclude](api/phoebe.parameters.ParameterSet.exclude.md)
 * [get_parameter](api/phoebe.parameters.ParameterSet.get_parameter.md)
 * [get_value](api/phoebe.parameters.ParameterSet.get_value.md)
