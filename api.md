@@ -30,7 +30,7 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 * [Bundle](api/phoebe.frontend.bundle.Bundle.__init__.md)
 * [default_binary](api/phoebe.frontend.bundle.Bundle.default_binary.md)
 * [default_star](api/phoebe.frontend.bundle.Bundle.default_star.md)
-* [open](api/phoebe.parameters.ParameterSet.open.md)
+* [open](api/phoebe.frontend.bundle.Bundle.open.md)
 * [from_legacy](api/phoebe.frontend.bundle.Bundle.from_legacy.md)
 
 ### Settings

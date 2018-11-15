@@ -9,7 +9,7 @@ def run_delayed_constraints(self)
 
 
 
-Run any delayed constraints.  See also:
+Manually run any delayed constraints.  See also:
 * [phoebe.interactive_constraints_on](phoebe.interactive_constraints_on.md)
 * [phoebe.interactive_constraints_off](phoebe.interactive_constraints_off.md)
 

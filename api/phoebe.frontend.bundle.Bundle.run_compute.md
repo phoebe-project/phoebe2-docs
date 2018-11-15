@@ -24,6 +24,10 @@ To disable or enable existing datasets see:
 * [phoebe.frontend.bundle.Bundle.enable_dataset](phoebe.frontend.bundle.Bundle.enable_dataset.md)
 * [phoebe.frontend.bundle.Bundle.disable_dataset](phoebe.frontend.bundle.Bundle.disable_dataset.md)
 
+See also:
+* [phoebe.mpi_on](phoebe.mpi_on.md)
+* [phoebe.mpi_off](phoebe.mpi_off.md)
+
 Arguments
 ------------
 * `compute` (string, optional): name of the compute options to use.

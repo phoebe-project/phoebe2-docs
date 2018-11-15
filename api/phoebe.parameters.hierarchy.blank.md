@@ -9,13 +9,19 @@ def blank(*args)
 
 
 
-Build the string representation of a blank hierarchy.
-
-Generally, this will be used as an input to :func:`Bundle.set_hierarchy`
+Create the string representation of a blank hierarchy.
 
 Generally, this will be used as an input to the kind argument in
-:meth:`phoebe.frontend.bundle.Bundle.set_hierarchy`
+[phoebe.frontend.bundle.Bundle.set_hierarchy](phoebe.frontend.bundle.Bundle.set_hierarchy.md).  If attaching through
+[phoebe.frontend.bundle.Bundle.set_hierarchy](phoebe.frontend.bundle.Bundle.set_hierarchy.md), all `**kwargs` will be
+passed on to set the values as described in the arguments below.
 
-:parameter **kwargs: defaults for the values of any of the parameters
-:return: the string representation of the hierarchy
+Arguments
+----------
+* `*args`: IGNORED
+
+Returns
+--------
+* (str): the string representation of the hierarchy, ready to be sent to
+    [phoebe.frontend.bundle.Bundle.set_hierarchy](phoebe.frontend.bundle.Bundle.set_hierarchy.md).
 
