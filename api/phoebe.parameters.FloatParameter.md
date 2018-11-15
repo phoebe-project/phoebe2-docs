@@ -9,6 +9,7 @@ FloatParameter is a subclass of phoebe.parameters.Parameter and therefore also i
 * [get_limits](phoebe.parameters.FloatParameter.get_limits.md)
 * [get_quantity](phoebe.parameters.FloatParameter.get_quantity.md)
 * [get_timederiv](phoebe.parameters.FloatParameter.get_timederiv.md)
+* [get_value](phoebe.parameters.FloatParameter.get_value.md)
 * [in_constraints](phoebe.parameters.FloatParameter.in_constraints.md)
 * [is_constraint](phoebe.parameters.FloatParameter.is_constraint.md)
 * [limits](phoebe.parameters.FloatParameter.limits.md)

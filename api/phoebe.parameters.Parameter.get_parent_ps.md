@@ -9,9 +9,14 @@ def get_parent_ps(self)
 
 
 
-Return a :class:`ParameterSet` of all Parameters in the same
-:class:`phoebe.frontend.bundle.Bundle` which share the same
-meta-tags (except qualifier, twig, uniquetwig)
+Return a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) of all Parameters in the same
+[phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundle.md) which share the same
+meta-tags (except qualifier, twig, uniquetwig).
 
-:return: the parent :class:`ParameterSet`
+See also:
+* [phoebe.parameters.Parameter.meta](phoebe.parameters.Parameter.meta.md)
+
+Returns
+----------
+* ([phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md)): the parent ParameterSet.
 

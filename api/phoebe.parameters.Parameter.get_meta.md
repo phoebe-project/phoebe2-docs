@@ -9,9 +9,18 @@ def get_meta(self, ignore=['uniqueid'])
 
 
 
-See all the meta-tag properties for this Parameter
+See all the meta-tag properties for this [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md).
 
-:parameter list ignore: list of keys to exclude from the returned
-    dictionary
-:return: an ordered dictionary of tag properties
+See also:
+* [phoebe.parameters.Parameter.meta](phoebe.parameters.Parameter.meta.md)
+* [phoebe.parameters.ParameterSet.get_meta](phoebe.parameters.ParameterSet.get_meta.md)
+
+Arguments
+---------
+* `ignore` (list, optional, default=['uniqueid']): list of keys to
+    exclude from the returned dictionary
+
+Returns
+----------
+* (dict) an ordered dictionary of tag properties
 

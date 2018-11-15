@@ -16,6 +16,10 @@ This is a constructor so should be called as:
 ps = ParameterSet.open('test.json')
 ```
 
+See also:
+* [phoebe.parameters.Parameter.open](phoebe.parameters.Parameter.open.md)
+* [phoebe.frontend.bundle.Bundle.open](phoebe.frontend.bundle.Bundle.open.md)
+
 Arguments
 ---------
 * `filename` (string): relative or full path to the file

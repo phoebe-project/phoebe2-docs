@@ -17,6 +17,7 @@ being the json representation of that Parameter from
 [phoebe.parameters.Parameter.to_json](phoebe.parameters.Parameter.to_json.md).
 
 See also:
+* [phoebe.parameters.Parameter.to_json](phoebe.parameters.Parameter.to_json.md)
 * [phoebe.parameters.ParameterSet.to_dict](phoebe.parameters.ParameterSet.to_dict.md)
 * [phoebe.parameters.ParameterSet.save](phoebe.parameters.ParameterSet.save.md)
 

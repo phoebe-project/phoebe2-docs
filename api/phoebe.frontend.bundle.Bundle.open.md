@@ -18,6 +18,10 @@ This is a constructor so should be called as:
 b = Bundle.open('test.phoebe')
 ```
 
+See also:
+* [phoebe.parameters.ParameterSet.open](phoebe.parameters.ParameterSet.open.md)
+* [phoebe.parameters.Parameter.open](phoebe.parameters.Parameter.open.md)
+
 Arguments
 ----------
 * `filename` (string): relative or full path to the file

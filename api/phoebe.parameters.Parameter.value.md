@@ -3,9 +3,21 @@
 
 
 
-return the value
+Return the value of the [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md).  For more options,
+including units when applicable, use the appropriate `get_value`
+method instead:
 
-see :meth:`get_value` for more options, including units when applicable
+* [phoebe.parameters.FloatParameter.get_value](phoebe.parameters.FloatParameter.get_value.md)
+* [phoebe.parameters.FloatArrayParameter.get_value](phoebe.parameters.FloatArrayParameter.get_value.md)
+* [phoebe.parameters.HierarchyParameter.get_value](phoebe.parameters.HierarchyParameter.get_value.md)
+* [phoebe.parameters.IntParameter.get_value](phoebe.parameters.IntParameter.get_value.md)
+* [phoebe.parameters.BoolParameter.get_value](phoebe.parameters.BoolParameter.get_value.md)
+* [phoebe.parameters.ChoiceParameter.get_value](phoebe.parameters.ChoiceParameter.get_value.md)
+* [phoebe.parameters.SelectParameter.get_value](phoebe.parameters.SelectParameter.get_value.md)
+* [phoebe.parameters.ConstraintParameter.get_value](phoebe.parameters.ConstraintParameter.get_value.md)
+* [phoebe.parameters.HistoryParameter.get_value](phoebe.parameters.HistoryParameter.get_value.md)
 
-:return: the value
+Returns
+---------
+* (float/int/string/bool): the current value of the Parameter.
 

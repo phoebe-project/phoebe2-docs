@@ -9,8 +9,12 @@ def to_constraint(self)
 
 
 
-Convert this Parameter to a :class:`ConstraintParameter`.  Use
-with caution.
+Convert this [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) to a
+[phoebe.parameters.ConstraintParameter](phoebe.parameters.ConstraintParameter.md).
 
-:return: the :class:`ConstraintParameter`
+**NOTE**: this is an advanced functionality: use with caution.
+
+Returns
+--------
+* (&lt;phoebe.parameters.ConstraintParameter): the ConstraintParameter
 

@@ -9,13 +9,9 @@ def plot(self, twig=None, **kwargs)
 
 
 
-High-level wrapper around matplotlib (by default, but also has some support
-for other plotting backends).  This function smartly makes one
-or multiple calls to the plotting backend based on the type of data.
-
-Individual lines are each given a label (automatic if not provided),
-to see these in a legend, pass legend=True (and optionally any
-keyword arguments to be passed along to plt.legend() as legend_kwargs).
+High-level wrapper around matplotlib that uses
+[autofig 1.0.0](https://github.com/kecnry/autofig/tree/1.0.0)
+under-the-hood for automated figure and animation production.
 
 See also:
 * [phoebe.parameters.ParameterSet.show](phoebe.parameters.ParameterSet.show.md)
@@ -23,7 +19,8 @@ See also:
 * [phoebe.parameters.ParameterSet.gcf](phoebe.parameters.ParameterSet.gcf.md)
 * [phoebe.parameters.ParameterSet.clf](phoebe.parameters.ParameterSet.clf.md)
 
-Note: not all options are listed below.  See the [autofig](https://github.com/kecnry/autofig/tree/1.0.0)
+Note: not all options are listed below.  See the
+[autofig](https://github.com/kecnry/autofig/tree/1.0.0)
 tutorials and documentation for more options which are passed along
 via `**kwargs`.
 

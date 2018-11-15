@@ -9,7 +9,12 @@ def to_string(self)
 
 
 
-see also :meth:`to_string_short`
+Return the string representation of the [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md).
 
-:return: the string representation of the parameter
+See also:
+* [phoebe.parameters.Parameter.to_string_short](phoebe.parameters.Parameter.to_string_short.md)
+
+Returns
+-------
+* (str): the string representation
 

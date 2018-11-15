@@ -12,6 +12,7 @@ ConstraintParameter is a subclass of phoebe.parameters.Parameter and therefore a
 * [get_default_unit](phoebe.parameters.ConstraintParameter.get_default_unit.md)
 * [get_parameter](phoebe.parameters.ConstraintParameter.get_parameter.md)
 * [get_result](phoebe.parameters.ConstraintParameter.get_result.md)
+* [get_value](phoebe.parameters.ConstraintParameter.get_value.md)
 * [result](phoebe.parameters.ConstraintParameter.result.md)
 * [set_default_unit](phoebe.parameters.ConstraintParameter.set_default_unit.md)
 * [vars](phoebe.parameters.ConstraintParameter.vars.md)

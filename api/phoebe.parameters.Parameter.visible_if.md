@@ -3,5 +3,12 @@
 
 
 
-:return: the visible_if expression for this Parameter
+Return the `visible_if` expression for this [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md).
+
+See also:
+* [phoebe.parameters.Parameter.is_visible](phoebe.parameters.Parameter.is_visible.md)
+
+Returns
+--------
+* (str): the `visible_if` expression for this Parameter
 

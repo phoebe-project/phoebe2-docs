@@ -22,6 +22,7 @@ through `ps.contexts`.
 See also:
 * [phoebe.parameters.ParameterSet.meta](phoebe.parameters.ParameterSet.meta.md)
 * [phoebe.parameters.ParameterSet.tags](phoebe.parameters.ParameterSet.tags.md)
+* [phoebe.parameters.Parameter.get_meta](phoebe.parameters.Parameter.get_meta.md)
 
 Arguments
 -----------

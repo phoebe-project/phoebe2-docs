@@ -9,7 +9,11 @@ def save(self, filename, incl_uniqueid=False, compact=False)
 
 
 
-Save the ParameterSet to a JSON-formatted ASCII file
+Save the ParameterSet to a JSON-formatted ASCII file.
+
+See also:
+* [phoebe.parameters.Parameter.save](phoebe.parameters.Parameter.save.md)
+* [phoebe.frontend.bundle.Bundle.save](phoebe.frontend.bundle.Bundle.save.md)
 
 Arguments
 ----------

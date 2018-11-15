@@ -3,5 +3,13 @@
 
 
 
-Uniquetwig but truncated if necessary to be &lt;=12 characters
+Return the uniquetwig but truncated if necessary to be &lt;=12 characters.
+
+See also:
+* [phoebe.parameters.Parameter.uniquetwig](phoebe.parameters.Parameter.uniquetwig.md)
+* [phoebe.parameters.Parameter.twig](phoebe.parameters.Parameter.twig.md)
+
+Returns
+--------
+* (str) the uniquetwig, truncated to 12 characters
 

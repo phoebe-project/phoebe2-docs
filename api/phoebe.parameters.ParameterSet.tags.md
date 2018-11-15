@@ -8,6 +8,7 @@ for further filtering.
 
 See also:
 * [phoebe.parameters.ParameterSet.meta](phoebe.parameters.ParameterSet.meta.md)
+* [phoebe.parameters.Parameter.meta](phoebe.parameters.Parameter.meta.md)
 
 Will include entries from the plural attributes:
 * [phoebe.parameters.ParameterSet.contexts](phoebe.parameters.ParameterSet.contexts.md)

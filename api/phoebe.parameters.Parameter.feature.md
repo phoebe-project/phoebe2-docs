@@ -3,5 +3,13 @@
 
 
 
-:return: feature tag of this Parameter
+Return the feature of this [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md).
+
+See also:
+* [phoebe.parameters.ParameterSet.feature](phoebe.parameters.ParameterSet.feature.md)
+* [phoebe.parameters.ParameterSet.features](phoebe.parameters.ParameterSet.features.md)
+
+Returns
+-------
+* (str) the feature tag of this Parameter.
 

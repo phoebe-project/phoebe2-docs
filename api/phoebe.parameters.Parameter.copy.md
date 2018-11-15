@@ -9,9 +9,15 @@ def copy(self)
 
 
 
-Deepcopy the parameter (with a new uniqueid).  All other tags will remain
-the same... so some other tag should be changed before attaching back to
-a ParameterSet or Bundle.
+Deepcopy the [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) (with a new uniqueid).
+All other tags will remain the same... so some other tag should be
+changed before attaching back to a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) or
+[phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundle.md).
 
-:return: the copied :class:`Parameter` object
+See also:
+* [phoebe.parameters.Parameter.uniqueid](phoebe.parameters.Parameter.uniqueid.md)
+
+Returns
+---------
+* ([phoebe.parameters.Parameter](phoebe.parameters.Parameter.md)): the copied Parameter object
 

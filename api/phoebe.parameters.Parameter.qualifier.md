@@ -3,5 +3,13 @@
 
 
 
-:return: qualifier tag of this Parameter
+Return the qualifier of this [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md).
+
+See also:
+* [phoebe.parameters.ParameterSet.qualifier](phoebe.parameters.ParameterSet.qualifier.md)
+* [phoebe.parameters.ParameterSet.qualifiers](phoebe.parameters.ParameterSet.qualifiers.md)
+
+Returns
+-------
+* (str) the qualifier tag of this Parameter.
 

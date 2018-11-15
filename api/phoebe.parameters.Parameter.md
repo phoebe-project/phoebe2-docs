@@ -15,7 +15,7 @@
 * [get_description](phoebe.parameters.Parameter.get_description.md)
 * [get_meta](phoebe.parameters.Parameter.get_meta.md)
 * [get_parent_ps](phoebe.parameters.Parameter.get_parent_ps.md)
-* [get_value](phoebe.parameters.Parameter.get_value.md)
+* [get_uniquetwig](phoebe.parameters.Parameter.get_uniquetwig.md)
 * [is_visible](phoebe.parameters.Parameter.is_visible.md)
 * [kind](phoebe.parameters.Parameter.kind.md)
 * [meta](phoebe.parameters.Parameter.meta.md)

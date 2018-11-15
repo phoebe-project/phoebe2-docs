@@ -3,11 +3,15 @@
 
 
 
-The twig of a Parameter is a single string with the individual
-:meth:`meta` tags separated by '@' symbols.  This twig gives
-a single string which can point back to this Parameter.
+The twig of a [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) is a single string with the
+individual [phoebe.parameters.Parameter.meta](phoebe.parameters.Parameter.meta.md) tags separated by '@' symbols.
+This twig gives a single string which can point back to this Parameter.
 
-see also :meth:`uniquetwig`
+See also:
+* [phoebe.parameters.Parameter.uniquetwig](phoebe.parameters.Parameter.uniquetwig.md)
+* [phoebe.parameters.ParameterSet.twigs](phoebe.parameters.ParameterSet.twigs.md)
 
-:return: twig (full) of this Parameter
+Returns
+--------
+* (str): the full twig of this Parameter.
 

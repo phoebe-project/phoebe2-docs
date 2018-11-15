@@ -9,5 +9,9 @@ def to_dict(self)
 
 
 
-:return: the dictionary representation of the parameter
+Return the dictionary representation of the [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md).
+
+Returns
+-------
+* (dict): the dictionary representation of the Parameter.
 

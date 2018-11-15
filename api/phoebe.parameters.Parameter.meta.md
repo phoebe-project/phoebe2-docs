@@ -3,9 +3,12 @@
 
 
 
-See all the meta-tag properties for this Parameter
+See all the meta-tag properties for this [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md).
 
-See :meth:`get_meta` for the ability to ignore certain keys
+See [phoebe.parameters.Parameter.get_meta](phoebe.parameters.Parameter.get_meta.md) for the ability to ignore
+certain keys.
 
-:return: an ordered dictionary of all tag properties
+Returns
+-------
+* (dict) an ordered dictionary of all tag properties.
 
