@@ -7,10 +7,10 @@
 # * providing a passband transmission function;
 # * defining and registering parameters of the passband;
 # * computing blackbody response for the passband;
-# * [optional] computing Castelli & Kurucz (2004) response for the passband;
-# * [optional] computing Castelli & Kurucz (2004) limb darkening coefficients;
-# * [optional] computing Castelli & Kurucz (2004) limb darkening integrals;
-# * [optional] if the passband is one of the passbands included in the Wilson-Devinney code, importing the WD response; and
+# * \[optional\] computing Castelli & Kurucz (2004) response for the passband;
+# * \[optional\] computing Castelli & Kurucz (2004) limb darkening coefficients;
+# * \[optional\] computing Castelli & Kurucz (2004) limb darkening integrals;
+# * \[optional\] if the passband is one of the passbands included in the Wilson-Devinney code, importing the WD response; and
 # * saving the generated passband file.
 # 
 # I don't care about the details, just show/remind me how it's done
