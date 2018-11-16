@@ -9,4 +9,3 @@ These aim to be quite thorough and may not be best for light-reading. They expec
 * [Meshes (mesh)](tutorials/MESH.ipynb)
 * [Light Curves (lc)](tutorials/LC.ipynb)
 * [Radial Velocities (rv)](tutorials/RV.ipynb)
-* [Line Profiles (lp)](tutorials/LP.ipynb)

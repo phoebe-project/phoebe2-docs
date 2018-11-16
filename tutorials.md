@@ -13,16 +13,6 @@ For more specific use-cases, see the example scripts below.
 7. [Plotting](tutorials/plotting.ipynb)
 8. [Accessing and Plotting Meshes](tutorials/meshes.ipynb)
 
-## Migrating from PHOEBE 2.0 to PHOEBE 2.1
-
-These tutorials highlight the major changes between versions 2.0.x and 2.1+ in the following topics:
-
-* [Potential/Rpole to Requiv](tutorials/20_21_requiv.ipynb)
-* [Semidetached Constraints](tutorials/20_21_semidetached.ipynb)
-* [Plotting](tutorials/20_21_plotting.ipynb)
-* [Meshes](tutorials/20_21_meshes.ipynb)
-* [nparray](tutorials/20_21_nparray.ipynb)
-
 ## Advanced tutorials
 
 The following set of advanced tutorials follow the same format as the tutorials above, but cover individual advanced topics and do not depend on each other.
