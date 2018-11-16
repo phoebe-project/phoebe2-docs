@@ -9,8 +9,8 @@ before_install:
   - pip install jupyter
 
 script: |
-  if [ "$TRAVIS_COMMIT_MESSAGE" != "updating .md and .py sources" ] && [ -n $GITHUB_API_KEY ]; then
-    git checkout -b $TRAVIS_BRANCH --depth=1
+  if [ "$TRAVIS_COMMIT_MESSAGE" != "TRAVIS: updating ipynb->py sources" ] && [ -n $GITHUB_API_KEY ]; then
+    git checkout -b $TRAVIS_BRANCH
     git remote rm origin
     git remote add origin https://kecnry:${GITHUB_API_KEY}@github.com/phoebe-project/phoebe2-docs.git > /dev/null 2>&1
     git -c user.name='travis' -c user.email='travis'
@@ -18,6 +18,6 @@ script: |
     jupyter nbconvert --to python examples/*ipynb --output-dir=examples/py
     git add tutorials/py/*py
     git add examples/py/*py
-    git commit -m 'updating .md and .py sources'
+    git commit -m 'TRAVIS: updating ipynb->py sources'
     git push -q -f origin $TRAVIS_BRANCH > /dev/null 2>&1
   fi
