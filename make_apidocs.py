@@ -151,6 +151,12 @@ if __name__ == '__main__':
                        'sys', 'tabcomplete', 'time', 'twighelpers', 'types', 'u',
                        'json', 'ujson', 'webbrowser', 'OrderedDict']
 
+    skip_passbands = ['Inorm_bol_bb', 'c', 'cfit', 'glob', 'h', 'integrate',
+                      'interpolate', 'json', 'k_B', 'libphoebe', 'logger', 'logging',
+                      'marshal', 'np', 'os', 'parse_json', 'shutil', 'sigma_sb',
+                      'sys', 'types', 'u', 'urllib', 'urllib2',
+                      'init_passband', 'init_passbands']
+
     skip_parameters_type = ['deepcopy', 'download_passband', 'fnmatch',
                             'list_installed_passbands', 'list_online_passbands',
                             'list_passbands', 'parameter_from_json', 'parse_json',
@@ -166,12 +172,16 @@ if __name__ == '__main__':
 
     skip_units = ['add_enabled_equivalencies', 'add_enabled_units', 'def_physical_type', 'def_unit']
 
+    skip_passband = []
+
 
     fms_phoebe = api_docs(phoebe, skip=skip_phoebe, members=[pydoc.inspect.ismodule, pydoc.inspect.isfunction, pydoc.inspect.isclass])
 
     fms_frontend = api_docs(phoebe.frontend, skip=skip_frontend+fms_phoebe, prefix='phoebe', members=[pydoc.inspect.ismodule])
     fms_frontend_bundle = api_docs(phoebe.frontend.bundle, skip=skip_frontend_bundle+[s for s in fms_phoebe if s!='Bundle'], prefix='phoebe.frontend', members=[pydoc.inspect.isfunction, pydoc.inspect.isclass])
     fms_parameters = api_docs(phoebe.parameters, skip=skip_parameters+fms_phoebe, prefix='phoebe', members=[pydoc.inspect.ismodule, pydoc.inspect.isfunction, pydoc.inspect.isclass])
+    fms_atm = api_docs(phoebe.atmospheres, skip=[], prefix='phoebe', members=[pydoc.inspect.ismodule])
+    fms_passbands = api_docs(phoebe.atmospheres.passbands, skip=skip_passbands, prefix='phoebe.atmospheres', members=[pydoc.inspect.isfunction, pydoc.inspect.isclass])
 
     fms_component = api_docs(phoebe.parameters.component, skip=skip_parameters_type, prefix='phoebe.parameters')
     fms_compute = api_docs(phoebe.parameters.compute, skip=skip_parameters_compute, prefix='phoebe.parameters')
@@ -195,3 +205,5 @@ if __name__ == '__main__':
     fms = api_docs(phoebe.parameters.HierarchyParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
     fms_float_param = api_docs(phoebe.parameters.FloatParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
     fms = api_docs(phoebe.parameters.FloatArrayParameter, skip=skip_param+fms_param+fms_float_param, subclass_of='phoebe.parameters.FloatParameter', prefix='phoebe.parameters')
+
+    fms = api_docs(phoebe.atmospheres.passbands.Passband, skip=skip_passband, prefix='phoebe.atmospheres.passbands')

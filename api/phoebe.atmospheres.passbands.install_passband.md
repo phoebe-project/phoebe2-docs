@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).install_passband (function)
+### [phoebe](phoebe.md).[atmospheres](phoebe.atmospheres.md).[passbands](phoebe.atmospheres.passbands.md).install_passband (function)
 
 
 ```py

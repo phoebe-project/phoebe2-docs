@@ -22,6 +22,8 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 * [phoebe.parameters.HierarchyParameter](api/phoebe.parameters.HierarchyParameter.md)
 * [phoebe.parameters.FloatParameter](api/phoebe.parameters.FloatParameter.md)
 * [phoebe.parameters.FloatArrayParameter](api/phoebe.parameters.FloatArrayParameter.md)
+* [phoebe.atmospheres.passbands](api/phoebe.atmospheres.passbands.md)
+* [phoebe.atmospheres.passbands.Passband](api/phoebe.atmospheres.passbands.Passband.md)
 
 ## Package-Level Convenience Functions
 
@@ -48,13 +50,13 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 
 ### Atmospheres and Passbands
 
-* [list_passbands](api/phoebe.list_passbands.md)
-* [list_passband_directories](api/phoebe.list_passband_directories.md)
-* [list_installed_passbands](api/phoebe.list_installed_passbands.md)
-* [list_online_passbands](api/phoebe.list_online_passbands.md)
-* [download_passband](api/phoebe.download_passband.md)
-* [get_passband](api/phoebe.get_passband.md)
-* [install_passband](api/phoebe.install_passband.md)
+* [list_passbands](api/phoebe.atmospheres.passbands.list_passbands.md)
+* [list_passband_directories](api/phoebe.atmospheres.passbands.list_passband_directories.md)
+* [list_installed_passbands](api/phoebe.atmospheres.passbands.list_installed_passbands.md)
+* [list_online_passbands](api/phoebe.atmospheres.passbands.list_online_passbands.md)
+* [download_passband](api/phoebe.atmospheres.passbands.download_passband.md)
+* [get_passband](api/phoebe.atmospheres.passbands.get_passband.md)
+* [install_passband](api/phoebe.atmospheres.passbands.install_passband.md)
 
 ### Arrays
 

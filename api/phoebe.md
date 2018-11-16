@@ -29,3 +29,4 @@
 * [open](phoebe.open.md)
 * [parameters](phoebe.parameters.md)
 * [reset_settings](phoebe.reset_settings.md)
+* [uninstall_all_passbands](phoebe.uninstall_all_passbands.md)

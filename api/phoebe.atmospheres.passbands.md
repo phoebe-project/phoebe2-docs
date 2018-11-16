@@ -1,0 +1,11 @@
+## [phoebe](phoebe.md).[atmospheres](phoebe.atmospheres.md).passbands (module)
+
+* [Passband](phoebe.atmospheres.passbands.Passband.md)
+* [download_passband](phoebe.atmospheres.passbands.download_passband.md)
+* [get_passband](phoebe.atmospheres.passbands.get_passband.md)
+* [install_passband](phoebe.atmospheres.passbands.install_passband.md)
+* [list_installed_passbands](phoebe.atmospheres.passbands.list_installed_passbands.md)
+* [list_online_passbands](phoebe.atmospheres.passbands.list_online_passbands.md)
+* [list_passband_directories](phoebe.atmospheres.passbands.list_passband_directories.md)
+* [list_passbands](phoebe.atmospheres.passbands.list_passbands.md)
+* [uninstall_all_passbands](phoebe.atmospheres.passbands.uninstall_all_passbands.md)
