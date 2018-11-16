@@ -52,7 +52,7 @@ pb.save('my_passband.pb')
 # 
 # Let us start by importing phoebe, numpy and matplotlib:
 
-# In[ ]:
+# In[1]:
 
 
 get_ipython().magic(u'matplotlib inline')
@@ -69,7 +69,7 @@ logger = phoebe.logger(clevel='WARNING')
 # 
 # The passband transmission function is typically a user-provided two-column file. The first column is wavelength, and the second column is passband transmission. For the purposes of this tutorial, we will simulate the passband as a uniform box.
 
-# In[ ]:
+# In[2]:
 
 
 wl = np.linspace(300, 360, 61)
@@ -79,7 +79,7 @@ ptf[(wl>=320) & (wl<=340)] = 1.0
 
 # Let us plot this simulated passband transmission function to see what it looks like:
 
-# In[ ]:
+# In[3]:
 
 
 plt.xlabel('Wavelength [nm]')
@@ -90,7 +90,7 @@ plt.show()
 
 # Let us now save these data in a file that we will use to register a new passband.
 
-# In[ ]:
+# In[4]:
 
 
 np.savetxt('my_passband.ptf', np.vstack((wl, ptf)).T)
@@ -101,7 +101,7 @@ np.savetxt('my_passband.ptf', np.vstack((wl, ptf)).T)
 # 
 # The first step in introducing a new passband into PHOEBE is registering it with the system. We use the Passband class for that.
 
-# In[ ]:
+# In[5]:
 
 
 pb = phoebe.atmospheres.passbands.Passband(
@@ -133,7 +133,7 @@ pb = phoebe.atmospheres.passbands.Passband(
 # 
 # To significantly speed up calculations, passband coefficients are stored in lookup tables instead of computing the intensities over and over again on the fly. Computed passband tables are tagged in the `content` property of the class:
 
-# In[ ]:
+# In[6]:
 
 
 print pb.content
@@ -141,7 +141,7 @@ print pb.content
 
 # Since we have not computed any tables yet, the list is empty for now. Blackbody functions for computing the lookup tables are built into PHOEBE and you do not need any auxiliary files to generate them. The lookup tables are defined for effective temperatures between 300K and 500,000K. To compute the blackbody response, issue:
 
-# In[ ]:
+# In[7]:
 
 
 pb.compute_blackbody_response()
@@ -149,7 +149,7 @@ pb.compute_blackbody_response()
 
 # Checking the `content` property again shows that the table has been successfully computed:
 
-# In[ ]:
+# In[8]:
 
 
 print pb.content
@@ -157,7 +157,7 @@ print pb.content
 
 # We can now test-drive the blackbody lookup table we just created. For this we will use a low-level `Passband` class method that computes normal emergent passband intensity, `Inorm()`. For the sake of simplicity, we will turn off limb darkening by setting `ld_func` to `'linear'` and `ld_coeffs` to `'[0.0]'`:
 
-# In[ ]:
+# In[9]:
 
 
 print pb.Inorm(Teff=5772, atm='blackbody', ld_func='linear', ld_coeffs=[0.0])
@@ -165,7 +165,7 @@ print pb.Inorm(Teff=5772, atm='blackbody', ld_func='linear', ld_coeffs=[0.0])
 
 # Let us now plot a range of temperatures, to make sure that normal emergent passband intensities do what they are supposed to do. While at it, let us compare what we get for the Johnson:V passband.
 
-# In[ ]:
+# In[10]:
 
 
 jV = phoebe.get_passband('Johnson:V')
@@ -197,7 +197,7 @@ plt.show()
 # 
 # Once the database is unpacked, you are ready to compute the tables. We start with the ck2004 response table:
 
-# In[ ]:
+# In[11]:
 
 
 pb.compute_ck2004_response(path='ck2004i', verbose=False)
@@ -205,7 +205,7 @@ pb.compute_ck2004_response(path='ck2004i', verbose=False)
 
 # Note, of course, that you will need to change the `path` to point to the directory where you unpacked the ck2004 database. The verbosity parameter `verbose` will report on the progress as computation is being done. Depending on your computer speed, this step will take ~10 minutes to complete. We can now check the passband's `content` attribute again:
 
-# In[ ]:
+# In[12]:
 
 
 print pb.content
@@ -213,7 +213,7 @@ print pb.content
 
 # Let us now use the same low-level function as before to compare normal emergent passband intensity for our custom passband for blackbody and ck2004 model atmospheres. One other complication is that, unlike blackbody model that depends only on the temperature, the ck2004 model depends on surface gravity (log g) and heavy metal abundances as well, so we need to pass those arrays.
 
-# In[ ]:
+# In[13]:
 
 
 loggs = np.ones(len(teffs))*4.43
@@ -228,7 +228,7 @@ plt.show()
 
 # Quite a difference. That is why using model atmospheres is superior when accuracy is of importance. Next, we need to compute direction-dependent intensities for all our limb darkening and boosting needs. This is a step that takes a long time; depending on your computer speed, it can take a few hours to complete.
 
-# In[ ]:
+# In[14]:
 
 
 pb.compute_ck2004_intensities(path='ck2004i', verbose=False)
@@ -236,7 +236,7 @@ pb.compute_ck2004_intensities(path='ck2004i', verbose=False)
 
 # This step will allow PHOEBE to compute all direction-dependent intensities on the fly, including the interpolation of the limb darkening coefficients that is model-independent. When limb darkening models are preferred (for example, when you don't quite trust direction-dependent intensities from the model atmosphere), we need to calculate two more tables: one for limb darkening coefficients and the other for the integrated limb darkening. That is done by two methods that do not take appreciable time to complete:
 
-# In[ ]:
+# In[15]:
 
 
 pb.compute_ck2004_ldcoeffs()
@@ -252,7 +252,7 @@ pb.compute_ck2004_ldints()
 # 
 # To import a set of WD atmospheric coefficients, you need to know the corresponding index of the passband (you can look it up in the WD user manual available [here](ftp://ftp.astro.ufl.edu/pub/wilson/lcdc2003/ebdoc2003.2feb2004.pdf.gz)) and you need to grab the files [atmcofplanck.dat](ftp://ftp.astro.ufl.edu/pub/wilson/lcdc2003/atmcofplanck.dat.gz) and [atmcof.dat](ftp://ftp.astro.ufl.edu/pub/wilson/lcdc2003/atmcof.dat.gz) from Bob Wilson's webpage. For this particular passband the index is 22. To import, issue:
 
-# In[ ]:
+# In[16]:
 
 
 pb.import_wd_atmcof('atmcofplanck.dat', 'atmcof.dat', 22)
@@ -260,13 +260,13 @@ pb.import_wd_atmcof('atmcofplanck.dat', 'atmcof.dat', 22)
 
 # We can consult the `content` attribute to see the entire set of supported tables, and plot different atmosphere models for comparison purposes:
 
-# In[ ]:
+# In[17]:
 
 
 print pb.content
 
 
-# In[ ]:
+# In[18]:
 
 
 plt.xlabel('Temperature [K]')
@@ -285,7 +285,7 @@ plt.show()
 # 
 # The final step of all this (computer's) hard work is to save the passband file so that these steps do not need to be ever repeated. From now on you will be able to load the passband file explicitly and PHOEBE will have full access to all of its tables. Your new passband will be identified as `'Custom:mypb'`.
 
-# In[ ]:
+# In[19]:
 
 
 pb.save('my_passband.pb')
