@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](requiv.ipynb) |  [Python Script](requiv.py)
-
 # Equivalent Radius
 # ============================
 # 

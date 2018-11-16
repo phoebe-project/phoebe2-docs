@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](phoebe_logic.ipynb) |  [Python Script](phoebe_logic.py)
-
 # PHOEBE Logic for Computing Observables
 # ============================
 # 

@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](rossiter_mclaughlin.ipynb) |  [Python Script](rossiter_mclaughlin.py)
-
 # Rossiter-McLaughlin Effect
 # ============================
 # 

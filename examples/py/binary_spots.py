@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](binary_spots.ipynb) |  [Python Script](binary_spots.py)
-
 # Binary with Spots
 # ============================
 # 

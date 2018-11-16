@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](undo_redo.ipynb) |  [Python Script](undo_redo.py)
-
 # Advanced: Undo/Redo
 # ============================
 # 

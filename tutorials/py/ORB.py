@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](ORB.ipynb) |  [Python Script](ORB.py)
-
 # 'orb' Datasets and Options
 # ============================
 # 

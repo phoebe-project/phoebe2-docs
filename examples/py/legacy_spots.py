@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](legacy_spots.ipynb) |  [Python Script](legacy_spots.py)
-
 # Comparing Spots in PHOEBE 2 vs PHOEBE Legacy
 # ============================
 # 

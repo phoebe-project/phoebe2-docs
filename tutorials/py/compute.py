@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](compute.ipynb) |  [Python Script](compute.py)
-
 # Compute
 # ============================
 # 
@@ -295,6 +293,11 @@ print b.get_value(qualifier='us', dataset='orb01', component='primary', model='r
 # * [Light Curves/Fluxes (lc)](LC)
 # * [Radial Velocities (rv)](RV)
 # * [Line Profiles (lp)](LP)
+
+# Next
+# ----------
+# 
+# Next up: let's start [plotting](plotting.ipynb) our synthetic model.
 
 # In[ ]:
 

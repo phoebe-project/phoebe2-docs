@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](minimal_contact_binary.ipynb) |  [Python Script](minimal_contact_binary.py)
-
 # Minimal Contact Binary System
 # ============================
 # 

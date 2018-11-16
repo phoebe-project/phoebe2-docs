@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](binary_pulsations.ipynb) |  [Python Script](binary_pulsations.py)
-
 # Binary with Pulsations
 # ============================
 # 

@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](RV.ipynb) |  [Python Script](RV.py)
-
 # 'rv' Datasets and Options
 # ============================
 # 

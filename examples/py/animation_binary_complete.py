@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](animation_binary_complete.ipynb) |  [Python Script](animation_binary_complete.py)
-
 # Complete Binary Animation
 # ============================
 # 

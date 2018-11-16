@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](LP.ipynb) |  [Python Script](LP.py)
-
 # 'lp' (Line Profile) Datasets and Options
 # ============================
 # 

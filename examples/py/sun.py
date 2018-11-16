@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](sun.ipynb) |  [Python Script](sun.py)
-
 # Sun (single rotating star)
 # ============================
 # 

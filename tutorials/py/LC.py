@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](LC.ipynb) |  [Python Script](LC.py)
-
 # 'lc' Datasets and Options
 # ============================
 # 

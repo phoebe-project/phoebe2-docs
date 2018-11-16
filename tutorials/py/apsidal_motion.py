@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](apsidal_motion.ipynb) |  [Python Script](apsidal_motion.py)
-
 # Apsidal Motion
 # ============================
 # 

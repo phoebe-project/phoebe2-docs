@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](grav_redshift.ipynb) |  [Python Script](grav_redshift.py)
-
 # Gravitational Redshift (RVs)
 # ============================
 # 

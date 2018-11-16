@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](limb_darkening.ipynb) |  [Python Script](limb_darkening.py)
-
 # Limb Darkening
 # ============================
 # 

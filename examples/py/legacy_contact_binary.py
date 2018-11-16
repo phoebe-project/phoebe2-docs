@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](legacy_contact_binary.ipynb) |  [Python Script](legacy_contact_binary.py)
-
 # Comparing Contacts Binaries in PHOEBE 2 vs PHOEBE Legacy
 # ============================
 # 

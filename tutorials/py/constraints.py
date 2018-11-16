@@ -402,6 +402,11 @@ print "M1: {}, M2: {}, period: {}, q: {}".format(b.get_value('mass@primary@compo
                                                  b.get_value('q@binary@component'))
 
 
+# Next
+# ----------
+# 
+# Next up: let's add a [dataset](datasets.ipynb) to our Bundle.
+
 # In[ ]:
 
 

@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](general_concepts.ipynb) |  [Python Script](general_concepts.py)
-
 # General Concepts
 # ======================
 # 
@@ -878,6 +876,9 @@ b['ys'].interp_value(xs=0.2)
 
 # **NOTE**: interp_value does not (yet) support passing a unit.. it will always return a value (not a quantity) and will always be in the default_unit.
 
-# ### Coming Up...
+# Next
+# ----------
+# 
+# Next up: let's [build a system](building_a_system.ipynb)
 
-# In the next few tutorials, you'll learn how to use the Bundle to [build a system](building_a_system), [save and load Bundles](saving_and_loading), and eventually how to [compute](compute) and [plot](plotting) your synthetic models.
+# 

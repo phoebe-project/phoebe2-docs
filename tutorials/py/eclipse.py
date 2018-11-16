@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](eclipse.ipynb) |  [Python Script](eclipse.py)
-
 # Eclipse Detection
 # ============================
 # 

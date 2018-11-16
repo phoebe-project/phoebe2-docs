@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](single_spots.ipynb) |  [Python Script](single_spots.py)
-
 # Single Star with Spots
 # ============================
 # 

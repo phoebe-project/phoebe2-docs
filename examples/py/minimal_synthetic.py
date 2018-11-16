@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](minimal_synthetic.ipynb) |  [Python Script](minimal_synthetic.py)
-
 # Minimal Example to Produce a Synthetic Light Curve
 # ============================
 # 

@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](intens_weighting.ipynb) |  [Python Script](intens_weighting.py)
-
 # Intensity Weighting
 # ============================
 # 

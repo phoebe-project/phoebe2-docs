@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](sun_earth.ipynb) |  [Python Script](sun_earth.py)
-
 # Sun-Earth System
 # ============================
 # 

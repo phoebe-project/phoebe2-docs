@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](MESH.ipynb) |  [Python Script](MESH.py)
-
 # 'mesh' Datasets and Options
 # ============================
 # 

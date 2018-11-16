@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](ETV.ipynb) |  [Python Script](ETV.py)
-
 # ETV Datasets and Options
 # ============================
 # 

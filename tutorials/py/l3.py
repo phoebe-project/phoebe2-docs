@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](l3.ipynb) |  [Python Script](l3.py)
-
 # "Third" Light
 # ============================
 # 

@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](datasets.ipynb) |  [Python Script](datasets.py)
-
 # Datasets
 # ============================
 # 
@@ -331,6 +329,11 @@ b.datasets
 # * [lc dataset](LC)
 # * [rv dataset](RV)
 # * [lp dataset](LP)
+
+# Next
+# ----------
+# 
+# Next up: let's learn how to [compute observables](compute.ipynb) and create our first synthetic model.
 
 # In[ ]:
 

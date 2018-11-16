@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](20_21_meshes.ipynb) |  [Python Script](20_21_meshes.py)
-
 # 2.0 - 2.1 Migration: Meshes
 # ============================
 

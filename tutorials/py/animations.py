@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](animations.ipynb) |  [Python Script](animations.py)
-
 # Advanced: Animations
 # ============================
 # 

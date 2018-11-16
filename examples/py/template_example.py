@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](template_tutorial.ipynb) |  [Python Script](template_tutorial.py)
-
 # Template Tutorial
 # ============================
 # 

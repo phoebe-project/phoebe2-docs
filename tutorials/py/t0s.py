@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](t0s.ipynb) |  [Python Script](t0s.py)
-
 # Various t0s
 # ============================
 # 

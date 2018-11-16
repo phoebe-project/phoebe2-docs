@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](passbands.ipynb) |  [Python Script](passbands.py)
-
 # # Adding new passbands to PHOEBE
 # 
 # In this tutorial we will show you how to add your own passband to PHOEBE. Adding a passband involves:
@@ -20,7 +18,7 @@
 # 
 # Makes sense, and we don't judge: you want to get to science. Provided that you have the passband transmission file available and the ck2004 database already downloaded, the sequence that will generate/register a new passband is:
 
-# In[1]:
+# In[ ]:
 
 
 import phoebe

@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](ecc.ipynb) |  [Python Script](ecc.py)
-
 # Eccentricity (Volume Conservation)
 # ============================
 # 

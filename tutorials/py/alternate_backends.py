@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](alternate_backends.ipynb) |  [Python Script](alternate_backends.py)
-
 # Advanced: Alternate Backends
 # ============================
 # 

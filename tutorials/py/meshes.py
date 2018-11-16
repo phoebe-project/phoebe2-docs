@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](meshes.ipynb) |  [Python Script](meshes.py)
-
 # Accessing and Plotting Meshes
 # ============================
 # 

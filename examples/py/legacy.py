@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](legacy.ipynb) |  [Python Script](legacy.py)
-
 # Comparing PHOEBE 2 vs PHOEBE Legacy
 # ============================
 # 

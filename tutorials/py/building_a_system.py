@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](building_a_system.ipynb) |  [Python Script](building_a_system.py)
-
 # Building a System
 # ============================
 # 
@@ -248,4 +246,15 @@ print b.hierarchy.get_sibling_of('primary')
 
 
 print b.hierarchy.get_primary_or_secondary('secondary')
+
+
+# Next
+# ----------
+# 
+# Next up: let's learn about [saving and loading](saving_and_loading.ipynb)
+
+# In[ ]:
+
+
+
 

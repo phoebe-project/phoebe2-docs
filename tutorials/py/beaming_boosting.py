@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](beaming_boosting.ipynb) |  [Python Script](beaming_boosting.py)
-
 # Beaming and Boosting
 # ============================
 # 

@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](rotstar_pulsations.ipynb) |  [Python Script](rotstar_pulsations.py)
-
 # Single Star with Pulsations
 # ============================
 # 

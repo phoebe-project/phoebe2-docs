@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](saving_and_loading.ipynb) |  [Python Script](saving_and_loading.py)
-
 # Saving and Loading
 # ============================
 # 
@@ -104,6 +102,11 @@ b.export_legacy('legacy_export.phoebe')
 
 get_ipython().system(u'head -n 30 legacy_export.phoebe')
 
+
+# Next
+# ---------
+# 
+# Next up: let's learn all about [constraints](constraints.ipynb)
 
 # In[ ]:
 

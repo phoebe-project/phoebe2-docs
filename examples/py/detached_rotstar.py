@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](detached_rotstar.ipynb) |  [Python Script](detached_rotstar.py)
-
 # Detached Binary: Roche vs Rotstar
 # ============================
 # 

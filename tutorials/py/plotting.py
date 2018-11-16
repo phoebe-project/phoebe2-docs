@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](plotting.ipynb) |  [Python Script](plotting.py)
-
 # Plotting
 # ============================
 # 
@@ -367,8 +365,7 @@ afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(linestyle=':', s=0.1, sh
 afig, mplfig = b['orb@run_with_incl_80'].plot(time=0, projection='3d', show=True)
 
 
-# In[ ]:
-
-
-
-
+# Next
+# ----------
+# 
+# Next (and last) up: let's [plot meshes](meshes.ipynb).

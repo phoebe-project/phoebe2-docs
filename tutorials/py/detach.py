@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](detach.ipynb) |  [Python Script](detach.py)
-
 # Advanced: Detaching from Run Compute
 # ============================
 # 

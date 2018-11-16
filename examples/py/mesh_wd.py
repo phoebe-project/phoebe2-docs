@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](mesh_wd.ipynb) |  [Python Script](mesh_wd.py)
-
 # Wilson-Devinney Style Meshing
 # ============================
 # 

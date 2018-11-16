@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# [IPython Notebook](settings.ipynb) |  [Python Script](settings.py)
-
 # Advanced: Settings
 # ============================
 # 
