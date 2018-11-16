@@ -1,22 +1,21 @@
-# https://travis-ci.org/phoebe-project/phoebe2-docs
+# https://travis-ci.com/phoebe-project/phoebe2-docs
 
 language: python
 
 os: linux
 dist: trusty
-sudo: required
 
 before_install:
-  - sudo apt-get install pandoc
   - pip install jupyter
 
 script: |
   if [ "$TRAVIS_COMMIT_MESSAGE" != "updating .md and .py sources" ] && [ -n $GITHUB_API_KEY ]; then
-    jupyter nbconvert --to python tutorials/*ipynb --output-dir=tutorials/py
-    jupyter nbconvert --to python examples/*ipynb --output-dir=examples/py
+    git checkout -b $TRAVIS_BRANCH --depth=1
     git remote rm origin
     git remote add origin https://kecnry:${GITHUB_API_KEY}@github.com/phoebe-project/phoebe2-docs.git > /dev/null 2>&1
     git -c user.name='travis' -c user.email='travis'
+    jupyter nbconvert --to python tutorials/*ipynb --output-dir=tutorials/py
+    jupyter nbconvert --to python examples/*ipynb --output-dir=examples/py
     git add tutorials/py/*py
     git add examples/py/*py
     git commit -m 'updating .md and .py sources'
