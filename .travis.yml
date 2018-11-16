@@ -4,6 +4,7 @@ language: python
 
 os: linux
 dist: trusty
+sudo: required
 
 before_install:
   - apt-get install pandoc
