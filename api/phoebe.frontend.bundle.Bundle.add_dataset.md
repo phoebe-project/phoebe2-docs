@@ -22,7 +22,6 @@ for which values should be computed.
 Available kinds can be found in [phoebe.parameters.dataset](phoebe.parameters.dataset.md) and include:
 * [phoebe.parameters.dataset.lc](phoebe.parameters.dataset.lc.md)
 * [phoebe.parameters.dataset.rv](phoebe.parameters.dataset.rv.md)
-* [phoebe.parameters.dataset.lp](phoebe.parameters.dataset.lp.md)
 * [phoebe.parameters.dataset.orb](phoebe.parameters.dataset.orb.md)
 * [phoebe.parameters.dataset.mesh](phoebe.parameters.dataset.mesh.md)
 
@@ -35,11 +34,6 @@ The value of `component` will default as follows:
     [phoebe.parameters.HierarchyParameter.get_stars](phoebe.parameters.HierarchyParameter.get_stars.md).  Optionally,
     you can override this by providing a subset of the stars in the
     hierarchy.
-* lp: defaults to the top-level of the hierarchy (typically an orbit).
-    See also [phoebe.parameters.HierarchyParameter.get_top](phoebe.parameters.HierarchyParameter.get_top.md).  The
-    exposed line-profile is then the combined line profile of all
-    children components.  Optionally, you can override this by providing
-    a subset (or single entry) of the stars or orbits in the hierarchy.
 
 Arguments
 ----------

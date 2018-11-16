@@ -1,14 +1,3 @@
 ### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[Bundle](phoebe.frontend.bundle.Bundle.md).remove_features_all (method)
 
-
-```py
-
-def remove_features_all(self)
-
-```
-
-
-
-Remove all features from the bundle.  To remove a single feature, see
-[phoebe.frontend.bundle.Bundle.remove_feature](phoebe.frontend.bundle.Bundle.remove_feature.md).
-
+Bundle.remove_features_all was not introduced until the 2.1 release.

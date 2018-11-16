@@ -17,7 +17,6 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 * [phoebe.parameters.BoolParameter](api/phoebe.parameters.BoolParameter.md)
 * [phoebe.parameters.StringParameter](api/phoebe.parameters.StringParameter.md)
 * [phoebe.parameters.ChoiceParameter](api/phoebe.parameters.ChoiceParameter.md)
-* [phoebe.parameters.SelectParameter](api/phoebe.parameters.SelectParameter.md)
 * [phoebe.parameters.ConstraintParameter](api/phoebe.parameters.ConstraintParameter.md)
 * [phoebe.parameters.HierarchyParameter](api/phoebe.parameters.HierarchyParameter.md)
 * [phoebe.parameters.FloatParameter](api/phoebe.parameters.FloatParameter.md)
@@ -38,14 +37,8 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 ### Settings
 
 * [logger](api/phoebe.logger.md)
-* [mpi_on](api/phoebe.mpi_on.md)
-* [mpi_off](api/phoebe.mpi_off.md)
 * [interactive_on](api/phoebe.interactive_on.md)
 * [interactive_off](api/phoebe.interactive_off.md)
-* [interactive_checks_on](api/phoebe.interactive_checks_on.md)
-* [interactive_checks_off](api/phoebe.interactive_checks_off.md)
-* [interactive_constraints_on](api/phoebe.interactive_constraints_on.md)
-* [interactive_constraints_off](api/phoebe.interactive_constraints_off.md)
 * [reset_settings](api/phoebe.reset_settings.md)
 
 ### Atmospheres and Passbands
@@ -57,15 +50,6 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 * [download_passband](api/phoebe.atmospheres.passbands.download_passband.md)
 * [get_passband](api/phoebe.atmospheres.passbands.get_passband.md)
 * [install_passband](api/phoebe.atmospheres.passbands.install_passband.md)
-
-### Arrays
-
-* [array](api/phoebe.array.md)
-* [arange](api/phoebe.arange.md)
-* [linspace](api/phoebe.linspace.md)
-* [logspace](api/phoebe.logspace.md)
-* [geomspace](api/phoebe.geomspace.md)
-
 
 ## Bundle & ParameterSets
 
@@ -112,7 +96,6 @@ Importing/exporting from other codes:
 
 * [add_component](api/phoebe.frontend.bundle.Bundle.add_component.md)
 * [get_component](api/phoebe.frontend.bundle.Bundle.get_component.md)
-* [rename_component](api/phoebe.frontend.bundle.Bundle.rename_component.md)
 * [add_orbit](api/phoebe.frontend.bundle.Bundle.add_orbit.md)
 * [get_orbit](api/phoebe.frontend.bundle.Bundle.get_orbit.md)
 * [add_star](api/phoebe.frontend.bundle.Bundle.add_star.md)
@@ -124,7 +107,6 @@ Importing/exporting from other codes:
 
 * [add_feature](api/phoebe.frontend.bundle.Bundle.add_feature.md)
 * [get_feature](api/phoebe.frontend.bundle.Bundle.get_feature.md)
-* [rename_feature](api/phoebe.frontend.bundle.Bundle.rename_feature.md)
 * [add_spot](api/phoebe.frontend.bundle.Bundle.add_spot.md)
 * [get_spot](api/phoebe.frontend.bundle.Bundle.get_spot.md)
 
@@ -132,7 +114,6 @@ Importing/exporting from other codes:
 
 * [add_dataset](api/phoebe.frontend.bundle.Bundle.add_dataset.md)
 * [get_dataset](api/phoebe.frontend.bundle.Bundle.get_dataset.md)
-* [rename_dataset](api/phoebe.frontend.bundle.Bundle.rename_dataset.md)
 * [remove_dataset](api/phoebe.frontend.bundle.Bundle.remove_dataset.md)
 * [enable_dataset](api/phoebe.frontend.bundle.Bundle.enable_dataset.md)
 * [disable_dataset](api/phoebe.frontend.bundle.Bundle.disable_dataset.md)
@@ -147,14 +128,11 @@ Dealing with time/phase:
 
 * [add_compute](api/phoebe.frontend.bundle.Bundle.add_compute.md)
 * [get_compute](api/phoebe.frontend.bundle.Bundle.get_compute.md)
-* [rename_compute](api/phoebe.frontend.bundle.Bundle.rename_compute.md)
-* [remove_compute](api/phoebe.frontend.bundle.Bundle.remove_compute.md)
 * [run_compute](api/phoebe.frontend.bundle.Bundle.run_compute.md)
 
 ### Model
 
 * [get_model](api/phoebe.frontend.bundle.Bundle.get_model.md)
-* [rename_model](api/phoebe.frontend.bundle.Bundle.rename_model.md)
 * [remove_model](api/phoebe.frontend.bundle.Bundle.remove_model.md)
 
 ### Plotting
@@ -162,5 +140,3 @@ Dealing with time/phase:
 * [plot](api/phoebe.parameters.ParameterSet.plot.md)
 * [show](api/phoebe.parameters.ParameterSet.show.md)
 * [savefig](api/phoebe.parameters.ParameterSet.savefig.md)
-* [clf](api/phoebe.parameters.ParameterSet.clf.md)
-* [gcf](api/phoebe.parameters.ParameterSet.gcf.md)

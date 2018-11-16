@@ -21,9 +21,6 @@ after creating the Parameters.
 Arguments
 ----------
 * `times` (array/quantity, optional): observed times.
-* `include_times` (string, optional): append to times from the following
-    datasets/time standards
-* `columns` (list, optional): columns to expose within the mesh.
 
 Returns
 --------

@@ -24,9 +24,6 @@ To disable or enable existing datasets see:
 * [phoebe.frontend.bundle.Bundle.enable_dataset](phoebe.frontend.bundle.Bundle.enable_dataset.md)
 * [phoebe.frontend.bundle.Bundle.disable_dataset](phoebe.frontend.bundle.Bundle.disable_dataset.md)
 
-See also:
-* [phoebe.mpi_on](phoebe.mpi_on.md)
-* [phoebe.mpi_off](phoebe.mpi_off.md)
 
 Arguments
 ------------
@@ -41,6 +38,12 @@ Arguments
     with the same name will be overwritten - including 'latest'.
     See also [phoebe.frontend.bundle.Bundle.rename_model](phoebe.frontend.bundle.Bundle.rename_model.md) to rename
     a model after creation.
+* `protomesh` (bool, optional, default=False): **NOTE** `protomesh`
+   will be removed in the 2.1 release.  Whether to expose the mesh
+   in roche coordinates at time t0.
+* `pbmesh` (bool, optional, default=False): **NOTE** `pbmesh`
+   will be removed in the 2.1 release.  Whether to expose all
+   passband quantities in the mesh datasets.
 * `detach` (bool, optional, default=False, EXPERIMENTAL):
     whether to detach from the computation run,
     or wait for computations to complete.  If detach is True, see
@@ -68,7 +71,6 @@ Returns
 
 Raises
 --------
-* ValueError: if passing `protomesh` or `pbmesh` as these were removed in 2.1
 * ValueError: if `compute` must be provided but is not.
 * ValueError: if the system fails to pass checks.  See also
     [phoebe.frontend.bundle.Bundle.run_checks](phoebe.frontend.bundle.Bundle.run_checks.md)
