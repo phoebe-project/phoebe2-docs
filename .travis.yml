@@ -1,5 +1,11 @@
 # https://travis-ci.com/phoebe-project/phoebe2-docs
 
+# NOTE: because we checkout the branch, we may not be at this EXACT commit,
+# but rather at the latest.  So re-running a travis build on and old commit
+# will still update using the latest sources in the branch.  This shouldn't
+# be a problem - we have the builds set to autocancel if a new push occurs
+# anyways.
+
 language: python
 
 os: linux
