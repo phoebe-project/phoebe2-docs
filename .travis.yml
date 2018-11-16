@@ -1,12 +1,12 @@
 # https://travis-ci.org/phoebe-project/phoebe2-docs
 
-language: none
+language: python
 
 os: linux
 dist: trusty
 
 before_install:
-  - sudo apt-get install jupyter
+  - pip install jupyter
 
 script: |
   if [ "$TRAVIS_COMMIT_MESSAGE" != "updating .md and .py sources" ] && [ -n $GITHUB_API_KEY ]; then
