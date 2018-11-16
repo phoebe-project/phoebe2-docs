@@ -6,6 +6,7 @@ os: linux
 dist: trusty
 
 before_install:
+  - apt-get install pandoc
   - pip install jupyter
 
 script: |
@@ -15,7 +16,9 @@ script: |
     jupyter nbconvert --to python examples/*ipynb --output-dir=examples/py
     jupyter nbconvert --to markdown examples/*ipynb --ouput-dir=examples/md
     git -c user.name='travis' -c user.email='travis' commit -m 'updating .md and .py sources'
-    git add *.py
-    git add *.md
+    git add tutorials/py/*
+    git add tutorials/md/*
+    git add examples/py/*
+    git add examples/md/*
     git push -q -f https://kecnry:$GITHUB_API_KEY@github.com/phoebe-project/phoebe2-docs $TRAVIS_BRANCH
   fi
