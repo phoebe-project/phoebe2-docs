@@ -16,10 +16,11 @@ script: |
     jupyter nbconvert --to markdown tutorials/*ipynb --ouput-dir=tutorials/md
     jupyter nbconvert --to python examples/*ipynb --output-dir=examples/py
     jupyter nbconvert --to markdown examples/*ipynb --ouput-dir=examples/md
-    git -c user.name='travis' -c user.email='travis' commit -m 'updating .md and .py sources'
+    git -c user.name='travis' -c user.email='travis'
     git add tutorials/py/*
     git add tutorials/md/*
     git add examples/py/*
     git add examples/md/*
+    git commit -m 'updating .md and .py sources'
     git push -q -f https://kecnry:$GITHUB_API_KEY@github.com/phoebe-project/phoebe2-docs $TRAVIS_BRANCH
   fi
