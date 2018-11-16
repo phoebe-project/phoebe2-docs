@@ -183,6 +183,14 @@ if __name__ == '__main__':
     fms_atm = api_docs(phoebe.atmospheres, skip=[], prefix='phoebe', members=[pydoc.inspect.ismodule])
     fms_passbands = api_docs(phoebe.atmospheres.passbands, skip=skip_passbands, prefix='phoebe.atmospheres', members=[pydoc.inspect.isfunction, pydoc.inspect.isclass])
 
+    # TODO: include dependencies (need to cleanup their docs, match in same format, pull in code)
+    # fms_deps = api_docs(phoebe.dependencies, skip=['unitsiau2015'], prefix='phoebe', members=[pydoc.inspect.ismodule], write=False)
+    # fms_autofig = api_docs(phoebe.dependencies.autofig, skip=[], prefix='phoebe.dependencies', members=[pydoc.inspect.isfunction, pydoc.inspect.isclass, pydoc.inspect.ismethod, pydoc.inspect.isdatadescriptor], write=False)
+    # classes for Axes, Figure, Mesh, Plot
+    # fms_nparray = api_docs(phoebe.dependencies.nparray, skip=['LooseVersion', 'monkeypatch', 'np', 'os', 'version'], prefix='phoebe.dependencies', members=[pydoc.inspect.ismodule, pydoc.inspect.isfunction, pydoc.inspect.isclass, pydoc.inspect.ismethod, pydoc.inspect.isdatadescriptor], write=False)
+    # fms_nparray_nparray = api_docs(phoebe.dependencies.nparray.nparray, skip=['OrderedDict'], prefix='phoebe.dependencies', members=[pydoc.inspect.isclass], write=False)
+    # classes for Arange, Array, ArrayWrapper, Eye, Full, Geomspace, Linspace, Logspace, Ones, Zeros
+
     fms_component = api_docs(phoebe.parameters.component, skip=skip_parameters_type, prefix='phoebe.parameters')
     fms_compute = api_docs(phoebe.parameters.compute, skip=skip_parameters_compute, prefix='phoebe.parameters')
     fms_constraint = api_docs(phoebe.parameters.constraint, skip=skip_parameters_constraint, prefix='phoebe.parameters')

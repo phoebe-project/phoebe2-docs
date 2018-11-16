@@ -1,0 +1,23 @@
+# https://travis-ci.org/phoebe-project/phoebe2-docs
+
+language: none
+
+os: linux
+dist: trusty
+
+include:
+  addons:
+    apt:
+      packages: [jupyter]
+
+script: |
+  if [ $TRAVIS_COMMIT_MESSAGE != 'updating .md and .py sources'] && [ -n $GITHUB_API_KEY ]; then
+    jupyter nbconvert --to python tutorials/*ipynb --output-dir=tutorials/py
+    jupyter nbconvert --to markdown tutorials/*ipynb --ouput-dir=tutorials/md
+    jupyter nbconvert --to python examples/*ipynb --output-dir=examples/py
+    jupyter nbconvert --to markdown examples/*ipynb --ouput-dir=examples/md
+    git -c user.name='travis' -c user.email='travis' commit -m 'updating .md and .py sources'
+    git add *.py
+    git add *.md
+    git push -q -f https://kecnry:$GITHUB_API_KEY@github.com/phoebe-project/phoebe2-docs $TRAVIS_BRANCH
+  fi
