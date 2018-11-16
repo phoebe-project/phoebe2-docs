@@ -5,10 +5,8 @@ language: none
 os: linux
 dist: trusty
 
-include:
-  addons:
-    apt:
-      packages: [jupyter]
+before_install:
+  - sudo apt-get install jupyter
 
 script: |
   if [ "$TRAVIS_COMMIT_MESSAGE" != "updating .md and .py sources" ] && [ -n $GITHUB_API_KEY ]; then
