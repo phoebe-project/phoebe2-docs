@@ -9,7 +9,8 @@ def set_quantity(self, *args, **kwargs)
 
 
 
-Set the current value/quantity of the [phoebe.parameters.FloatParameter](phoebe.parameters.FloatParameter.md).
+Set the current value/quantity of the [phoebe.parameters.FloatParameter](phoebe.parameters.FloatParameter.md)
+or [phoebe.parameters.FloatArrayParameter](phoebe.parameters.FloatArrayParameter.md).
 
 Units can either be passed by providing a Quantity object to `value`
 OR by passing a unit object (or valid string representation) to `unit`.

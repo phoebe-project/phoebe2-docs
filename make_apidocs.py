@@ -165,7 +165,7 @@ if __name__ == '__main__':
     skip_parameters_compute = skip_parameters_type + ['jktebop', 'photodynam']
     skip_parameters_constraint = skip_parameters_type + ['keplers_third_law_hierarchical', 'etv', 'time_ephem', 'passband_ratio', 'ph_infconj', 'ph_perpass', 'ph_supconj']
     skip_parameters_dataset = skip_parameters_type + ['etv', 'etv_dep', 'etv_syn', 'lc_dep', 'lc_syn', 'lp_dep', 'lp_syn', 'mesh_dep', 'mesh_syn', 'orb_dep', 'orb_syn', 'rv_dep', 'rv_syn']
-    skip_parameters_feature = skip_parameters_type + []
+    skip_parameters_feature = skip_parameters_type + ['pulsation']
     skip_parameters_hierarchy = skip_parameters_type + []
     skip_parameters_setting = skip_parameters_type + []
     skip_parameters_system = skip_parameters_type + []
