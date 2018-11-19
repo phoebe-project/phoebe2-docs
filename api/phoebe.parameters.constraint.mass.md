@@ -12,16 +12,27 @@ def mass(b, component, solve_for=None, **kwargs)
 Create a constraint for the mass of a star based on Kepler's third
 law from its parent orbit.
 
-If 'mass' does not exist in the component, it will be created
+This is usually passed as an argument to
+ [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md).
 
-:parameter b: the :class:`phoebe.frontend.bundle.Bundle`
-:parameter str component: the label of the star in which this
-    constraint should be built
-:parameter str solve_for:  if 'mass' should not be the derived/constrained
-    parameter, provide which other parameter should be derived
-    (ie 'q', sma', 'period')
-:returns: lhs (Parameter), rhs (ConstraintParameter), args (list of arguments
+If 'mass' does not exist in the component, it will be created.
+
+Arguments
+-----------
+* `b` ([phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundle.md)): the Bundle
+* `component` (string): the label of the orbit or component in which this
+    constraint should be built.
+* `solve_for` (&lt;phoebe.parameters.Parameter, optional, default=None): if
+    'mass should not be the derived/constrained parameter, provide which
+    other parameter should be derived (ie 'period', 'sma', 'q').
+
+Returns
+----------
+* ([phoebe.parameters.Parameter](phoebe.parameters.Parameter.md), [phoebe.parameters.ConstraintParameter](phoebe.parameters.ConstraintParameter.md), list):
+    lhs (Parameter), rhs (ConstraintParameter), args (list of arguments
     that were passed to this function)
-:raises NotImplementedError: if the hierarchy is not found
-:raises NotImplementedError: if the value of solve_for is not yet implemented
+
+Raises
+--------
+* NotImplementedError: if the value of `solve_for` is not implemented.
 
