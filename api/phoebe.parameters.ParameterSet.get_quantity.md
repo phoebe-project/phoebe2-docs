@@ -14,8 +14,8 @@ Get the quantity of a [phoebe.parameters.Parameter](phoebe.parameters.Parameter.
 
 Note: this only works for Parameter objects with a `get_quantity` method.
 These include:
-* [phoebe.parameters.FloatParameter.get_quantity](phoebe.parameters.FloatParameter.get_quantity.md)
-* [phoebe.parameters.FloatArrayParameter.get_quantity](phoebe.parameters.FloatArrayParameter.get_quantity.md)
+* [phoebe.parameters.FloatParameter](phoebe.parameters.FloatParameter.md) (see [phoebe.parameters.FloatParameter.get_quantity](phoebe.parameters.FloatParameter.get_quantity.md))
+* [phoebe.parameters.FloatArrayParameter](phoebe.parameters.FloatArrayParameter.md)
 
 See also:
 * [phoebe.parameters.ParameterSet.set_quantity](phoebe.parameters.ParameterSet.set_quantity.md)

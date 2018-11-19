@@ -14,8 +14,8 @@ Set the quantity of a [phoebe.parameters.Parameter](phoebe.parameters.Parameter.
 
 Note: this only works for Parameter objects with a `set_quantity` method.
 These include:
-* [phoebe.parameters.FloatParameter.set_quantity](phoebe.parameters.FloatParameter.set_quantity.md)
-* [phoebe.parameters.FloatArrayParameter.set_quantity](phoebe.parameters.FloatArrayParameter.set_quantity.md)
+* [phoebe.parameters.FloatParameter](phoebe.parameters.FloatParameter.md) (see [phoebe.parameters.FloatParameter](phoebe.parameters.FloatParameter.md))
+* [phoebe.parameters.FloatArrayParameter](phoebe.parameters.FloatArrayParameter.md)
 
 See also:
 * [phoebe.parameters.ParameterSet.get_quantity](phoebe.parameters.ParameterSet.get_quantity.md)
