@@ -20,5 +20,4 @@
 * [semidetached](phoebe.parameters.constraint.semidetached.md)
 * [t0_perpass_supconj](phoebe.parameters.constraint.t0_perpass_supconj.md)
 * [t0_ref_supconj](phoebe.parameters.constraint.t0_ref_supconj.md)
-* [teffratio](phoebe.parameters.constraint.teffratio.md)
 * [yaw](phoebe.parameters.constraint.yaw.md)
