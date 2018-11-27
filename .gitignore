@@ -1,5 +1,4 @@
 /_build
-/api
 /examples/*.rst
 /examples/*.py
 /tutorials/*.rst
