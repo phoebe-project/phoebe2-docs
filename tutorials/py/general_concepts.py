@@ -4,6 +4,8 @@
 # General Concepts
 # ======================
 # 
+# **HOW TO RUN THIS FILE**: if you're running this in a Jupyter notebook or Google Colab session, you can click on a cell and then shift+Enter to run the cell and automatically select the next cell.  Alt+Enter will run a cell and create a new cell below it.  Ctrl+Enter will run a cell but keep it selected.  To restart from scratch, restart the kernel/runtime.
+# 
 # This tutorial introduces all the general concepts of dealing with Parameters, ParameterSets, and the Bundle.  This tutorial aims to be quite complete - covering almost everything you can do with Parameters, so on first read you may just want to try to get familiar, and then return here as a reference for any details later.
 # 
 # All of these tutorials assume basic comfort with Python in general - particularly with the concepts of lists, dictionaries, and objects as well as basic comfort with using the numpy and matplotlib packages.
@@ -11,6 +13,16 @@
 # Setup
 # ----------------------------------------------
 # 
+# 
+
+# Let's first make sure we have the latest version of PHOEBE 2.0 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+
+# In[ ]:
+
+
+get_ipython().system(u'pip install -I "phoebe>=2.0,<2.1"')
+
+
 # Let's get started with some basic imports
 
 # In[1]:

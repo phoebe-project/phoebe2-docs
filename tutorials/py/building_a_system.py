@@ -7,6 +7,14 @@
 # Setup
 # -----------------------------
 
+# Let's first make sure we have the latest version of PHOEBE 2.0 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+
+# In[ ]:
+
+
+get_ipython().system(u'pip install -I "phoebe>=2.0,<2.1"')
+
+
 # From now on, we'll just quickly do common setup at the beginning of each tutorial.
 # For full gory details on the general concepts here, make sure to read [General Concepts](general_concepts).
 # 

@@ -13,6 +13,16 @@
 # * \[optional\] if the passband is one of the passbands included in the Wilson-Devinney code, importing the WD response; and
 # * saving the generated passband file.
 # 
+# 
+
+# Let's first make sure we have the latest version of PHOEBE 2.0 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+
+# In[ ]:
+
+
+get_ipython().system(u'pip install -I "phoebe>=2.0,<2.1"')
+
+
 # I don't care about the details, just show/remind me how it's done
 # -------------------------------------------------------------------
 # 
