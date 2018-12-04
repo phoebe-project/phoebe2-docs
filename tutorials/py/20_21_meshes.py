@@ -4,6 +4,14 @@
 # 2.0 - 2.1 Migration: Meshes
 # ============================
 
+# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+
+# In[ ]:
+
+
+get_ipython().system(u'pip install -I "phoebe>=2.1,<2.2"')
+
+
 # In this tutorial we will review the changes in the PHOEBE mesh structures. We will first explain the changes and then demonstrate them in code. As usual, let us import phoebe and create a default binary bundle:
 
 # In[1]:

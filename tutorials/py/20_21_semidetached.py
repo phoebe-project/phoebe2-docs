@@ -4,6 +4,14 @@
 # 2.0 - 2.1 Migration: Semidetached
 # ============================
 
+# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+
+# In[ ]:
+
+
+get_ipython().system(u'pip install -I "phoebe>=2.1,<2.2"')
+
+
 # In PHOEBE 2.1, [rpole and potential have been replaced with requiv](20_21_requiv).  That means that the constraint used to handle semidetached systems has also changed.
 
 # In[1]:

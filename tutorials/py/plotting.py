@@ -11,6 +11,14 @@
 # Setup
 # -----------------------------
 
+# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+
+# In[ ]:
+
+
+get_ipython().system(u'pip install -I "phoebe>=2.1,<2.2"')
+
+
 # This first line is only necessary for ipython noteboooks - it allows the plots to be shown on this page instead of in interactive mode
 
 # In[1]:

@@ -4,6 +4,14 @@
 # 2.0 - 2.1 Migration: nparray
 # ============================
 
+# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+
+# In[ ]:
+
+
+get_ipython().system(u'pip install -I "phoebe>=2.1,<2.2"')
+
+
 # Although not well-documented, PHOEBE 2.0 included the ability to directly set linspace or arange to an array while only storing the properties (start, stop, step, etc).  If for some reason you managed to find and use the capability, the behavior has changed slightly and is included in a separate package called [nparray](https://github.com/kecnry/nparray), which is included and built within PHOEBE 2.1 as `phoebe.dependencies.nparray`.
 # 
 # Besides having much more flexibility, the only user-interface changes are that you cannot directly set the attributes for the properties from the Parameter.
