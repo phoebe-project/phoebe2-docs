@@ -32,5 +32,7 @@ These all assume comfort with the tutorials listed above, but should not need to
 * [Advanced: Settings](tutorials/settings.ipynb)
 * [Advanced: Animations](tutorials/animations.ipynb)
 * [Advanced: Alternate Backends](tutorials/alternate_backends.ipynb)
+* [Advanced: Running PHOEBE in MPI](tutorials/mpi.ipynb)
+* [Advanced: Optimizing Performance](tutorials/optimizing.ipynb)
 * [Advanced: Detaching from Run Compute](tutorials/detach.ipynb)
 * [Advanced: Adding Custom Passband Tables](tutorials/passbands.ipynb)
