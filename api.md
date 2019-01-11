@@ -57,6 +57,7 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 * [download_passband](api/phoebe.atmospheres.passbands.download_passband.md)
 * [get_passband](api/phoebe.atmospheres.passbands.get_passband.md)
 * [install_passband](api/phoebe.atmospheres.passbands.install_passband.md)
+* [uninstall_all_passbands](api/phoebe.atmospheres.passbands.uninstall_all_passbands.md)
 
 ### Arrays
 
@@ -75,7 +76,7 @@ See alphabetical list of [all Bundle methods](api/phoebe.frontend.bundle.Bundle.
 
 * [__init__](api/phoebe.frontend.bundle.Bundle.__init__.md)
 * [open](api/phoebe.frontend.bundle.Bundle.open.md)
-* [save](api/phoebe.frontend.bundle.Bundle.save.md)
+* [save](api/phoebe.parameters.ParameterSet.save.md)
 
 Importing/exporting from other codes:
 
@@ -96,6 +97,7 @@ Importing/exporting from other codes:
 * [get_parameter](api/phoebe.parameters.ParameterSet.get_parameter.md)
 * [get_value](api/phoebe.parameters.ParameterSet.get_value.md)
 * [set_value](api/phoebe.parameters.ParameterSet.set_value.md)
+* [set_value_all](api/phoebe.parameters.ParameterSet.set_value_all.md)
 
 ### Hierarchy
 
@@ -104,6 +106,7 @@ Importing/exporting from other codes:
 
 ### Constraints
 
+* [add_constraint](api/phoebe.fronted.bundle.Bundle.add_constraint.md)
 * [get_constraint](api/phoebe.frontend.bundle.Bundle.get_constraint.md)
 * [run_constraint](api/phoebe.frontend.bundle.Bundle.run_constraint.md)
 * [flip_constraint](api/phoebe.frontend.bundle.Bundle.flip_constraint.md)
@@ -153,6 +156,7 @@ Dealing with time/phase:
 
 ### Model
 
+* [run_compute](api/phoebe.frontend.bundle.Bundle.run_compute.md)
 * [get_model](api/phoebe.frontend.bundle.Bundle.get_model.md)
 * [rename_model](api/phoebe.frontend.bundle.Bundle.rename_model.md)
 * [remove_model](api/phoebe.frontend.bundle.Bundle.remove_model.md)
