@@ -52,7 +52,7 @@ b['ecc'] = 0.2
 b['dperdt'] = 2.0 * u.deg/u.d
 
 
-# We'll add lc, orb, and etv datasets to see how the apsidal motion affects each.  We'll need to sample over several orbits of the binary (which has a period of 3 days, by default).
+# We'll add [lc](./LC.ipynb), [orb](./ORB.ipynb), and [etv](./ETV.ipynb) datasets to see how the apsidal motion affects each.  We'll need to sample over several orbits of the binary (which has a period of 3 days, by default).
 
 # In[5]:
 

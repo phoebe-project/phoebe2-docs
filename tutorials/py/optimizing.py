@@ -36,7 +36,7 @@ b = phoebe.default_binary()
 # 
 # By default, interactive checks are **enabled** when PHOEBE is being run in an interactive session (either an interactive python, IPython, or Jupyter notebook session), but **disabled** when PHOEBE is run as a script directly from the console.  When enabled, PHOEBE will re-run the system checks after every single change to the bundle, raising warnings via the logger as soon as they occur.
 # 
-# This default behavior can be changed via [phoebe.interactive_checks_on()](../api/phoebe.interactive_checks_on) or [phoebe.interactive_checks_off()](../api/phoebe.interactive_checks_off).  The current value can be accessed via phoebe.conf.interactive_checks.
+# This default behavior can be changed via [phoebe.interactive_checks_on()](../api/phoebe.interactive_checks_on.md) or [phoebe.interactive_checks_off()](../api/phoebe.interactive_checks_off.md).  The current value can be accessed via phoebe.conf.interactive_checks.
 
 # In[3]:
 
@@ -56,7 +56,7 @@ phoebe.interactive_checks_off()
 print(phoebe.conf.interactive_checks)
 
 
-# If disabled, you can always manually run the checks via [b.run_checks()](../api/phoebe.frontend.bundle.Bundle.run_checks).
+# If disabled, you can always manually run the checks via [b.run_checks()](../api/phoebe.frontend.bundle.Bundle.run_checks.md).
 
 # In[6]:
 
@@ -84,7 +84,7 @@ print(passed, msg)
 # 
 # If disabled, constraints are delayed and only executed when needed by PHOEBE (when calling run_compute, for example).  This can save significant time, as each value that needs updating only needs to have its constraint executed once, instead of multiple times.
 # 
-# This default behavior can be changed via [phoebe.interactive_constraints_on()](../api/phoebe.interactive_constraints_on) or [phoebe.interactive_constraints_off()](../api/phoebe.interactive_constraints_off).  The current value can be accessed via phoebe.conf.interactive_constraints.
+# This default behavior can be changed via [phoebe.interactive_constraints_on()](../api/phoebe.interactive_constraints_on.md) or [phoebe.interactive_constraints_off()](../api/phoebe.interactive_constraints_off.md).  The current value can be accessed via phoebe.conf.interactive_constraints.
 # 
 # Let's first look at the default behavior with interactive constraints on.
 
@@ -183,5 +183,3 @@ print(b.filter('mass', component='primary'))
 # ### PHOEBE_ENABLE_ONLINE_PASSBANDS
 # 
 # PHOEBE_ENABLE_ONLINE_PASSBANDS (TRUE by default) dictates whether online passbands are queried and available for on-the-fly downloading.  If you are sure you have all the local passbands you need, set this to False to save some time.
-
-# 

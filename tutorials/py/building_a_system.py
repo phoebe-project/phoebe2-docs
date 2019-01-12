@@ -39,7 +39,7 @@ b = phoebe.Bundle()
 # 
 # Although the default empty Bundle doesn't include a system, there are available
 # constructors that create default systems.  To create a simple binary with component tags
-# 'binary', 'primary', and 'secondary' (as above), you could call:
+# 'binary', 'primary', and 'secondary' (as above), you could call [default_binary](../api/phoebe.frontend.bundle.Bundle.default_binary.md):
 
 # In[2]:
 
@@ -75,14 +75,14 @@ b = phoebe.default_binary(contact_binary=True)
 print b.hierarchy
 
 
-# For more details on dealing with contact binary systems, see the [Contact Binary Example Script](../examples/minimal_contact_binary)
+# For more details on dealing with contact binary systems, see the [Contact Binary Example Script](../examples/minimal_contact_binary.ipynb)
 
 # Adding Components Manually
 # --------------------
 # 
-# By default, an empty Bundle does not contain any information about our system.
+# By default, an empty [Bundle](../api/phoebe.frontend.bundle.Bundle.md) does not contain any information about our system.
 # 
-# So, let's first start by adding a few stars.  Here we'll call the generic add_component method.  This method works for any type of component in the system - stars, orbits, planets, disks, rings, spots, etc.  The first argument needs to be a callable or the name of a callable in phoebe.parameters.component which include the following options:
+# So, let's first start by adding a few stars.  Here we'll call the generic [add_component](../api/phoebe.frontend.bundle.Bundle.add_component.md) method.  This method works for any type of component in the system - stars, orbits, planets, disks, rings, spots, etc.  The first argument needs to be a callable or the name of a callable in [phoebe.parameters.component](../api/phoebe.parameters.component.md) which include the following options:
 # 
 # * orbit
 # * star
@@ -103,7 +103,7 @@ b.add_component(phoebe.component.star, component='primary')
 b.add_component('star', component='secondary')
 
 
-# But there are also shortcut methods for add_star and add_orbit.  In these cases you don't need to provide the function, but only the component tag of your star/orbit.
+# But there are also shortcut methods for [add_star](../api/phoebe.frontend.bundle.Bundle.add_star.md) and [add_orbit](../api/phoebe.frontend.bundle.Bundle.add_orbit.md).  In these cases you don't need to provide the function, but only the component tag of your star/orbit.
 # 
 # Any of these functions also accept values for any of the qualifiers of the created parameters.
 
@@ -137,7 +137,7 @@ b.add_orbit('binary')
 # we still need to specify the hierarchical setup of our system.
 # 
 # Here we want to place our two stars (with component tags 'primary' and 'secondary') in our
-# orbit (with component tag 'binary').  This can be done with several different syntaxes:
+# orbit (with component tag 'binary').  This can be done with several different syntaxes sent to [b.set_hierarchy](../api/phoebe.frontend.bundle.Bundle.set_hierarchy.md):
 
 # In[11]:
 
@@ -153,7 +153,7 @@ b.set_hierarchy(phoebe.hierarchy.binaryorbit, b['binary'], b['primary'], b['seco
 b.set_hierarchy(phoebe.hierarchy.binaryorbit(b['binary'], b['primary'], b['secondary']))
 
 
-# If you access the value that this set, you'll see that it really just resulted
+# If you access the value that this set via [get_hierarchy](../api/phoebe.frontend.bundle.Bundle.get_hierarchy.md), you'll see that it really just resulted
 # in a simple string representation:
 
 # In[13]:
@@ -200,7 +200,7 @@ b.get_hierarchy()
 b.hierarchy
 
 
-# This hierarchy parameter then has several methods unique to itself.  You can, for instance, list the component tags of all the stars or orbits in the hierarchy:
+# This [HierarchyParameter](../api/phoebe.parameters.HierarchyParameter.md) then has several methods unique to itself.  You can, for instance, list the component tags of all the stars or orbits in the hierarchy via [get_stars](../api/phoebe.parameters.HierarchyParameter.get_stars.md) or [get_orbits](../api/phoebe.parameters.HierarchyParameter.get_orbits.md), respectively:
 
 # In[18]:
 
@@ -214,7 +214,7 @@ print b.hierarchy.get_stars()
 print b.hierarchy.get_orbits()
 
 
-# Or you can ask for the component tag of the top-level item in the hierarchy
+# Or you can ask for the component tag of the top-level item in the hierarchy via [get_top](../api/phoebe.parameters.HierarchyParameter.get_top.md).
 
 # In[20]:
 
@@ -222,7 +222,7 @@ print b.hierarchy.get_orbits()
 print b.hierarchy.get_top()
 
 
-# And request the parent, children, child, or sibling of any item in the hierarchy
+# And request the parent, children, child, or sibling of any item in the hierarchy via [get_parent_of](../api/phoebe.parameters.HierarchyParameter.get_parent_of.md), [get_children_of](../api/phoebe.parameters.HierarchyParameter.get_children_of.md), or [get_sibling_of](../api/phoebe.parameters.HierarchyParameter.get_sibling_of.md).
 
 # In[21]:
 
@@ -248,7 +248,7 @@ print b.hierarchy.get_child_of('binary', 0)  # here 0 means primary component, 1
 print b.hierarchy.get_sibling_of('primary')
 
 
-# We can also check whether a given component (by component tag) is the primary or secondary component in its parent orbit.  Note that here its just a coincidence (although on purpose) that the component tag is also 'secondary'.
+# We can also check whether a given component (by component tag) is the primary or secondary component in its parent orbit via [get_primary_or_secondary](../api/phoebe.parameters.HierarchyParameter.get_primary_or_secondary.md).  Note that here its just a coincidence (although on purpose) that the component tag is also 'secondary'.
 
 # In[25]:
 
@@ -259,7 +259,7 @@ print b.hierarchy.get_primary_or_secondary('secondary')
 # Next
 # ----------
 # 
-# Next up: let's learn about [saving and loading](saving_and_loading.ipynb)
+# Next up: let's learn about [saving and loading](saving_and_loading.ipynb).
 
 # In[ ]:
 

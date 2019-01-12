@@ -31,7 +31,7 @@ b = phoebe.default_binary()
 print b['requiv_max@primary@constraint']
 
 
-# In order to create a semidetached system, you create a constraint as in PHOEBE 2.0, except instead of choosing 'critical_rpole' or 'critical_pot' constraints, use a new constraint called 'semidetached'.
+# In order to create a semidetached system, you create a constraint as in PHOEBE 2.0, except instead of choosing 'critical_rpole' or 'critical_pot' constraints, use a new constraint called 'semidetached', via [b.add_constraint](../api/phoebe.frontend.bundle.Bundle.add_constraint.md).
 
 # In[4]:
 

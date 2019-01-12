@@ -17,7 +17,7 @@
 get_ipython().system(u'pip install -I "phoebe>=2.1,<2.2"')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -32,7 +32,7 @@ logger = phoebe.logger()
 b = phoebe.default_binary()
 
 
-# And we'll attach some dummy datasets.  See [Datasets](datasets.html) for more details.
+# And we'll attach some dummy datasets.  See [Datasets](datasets.ipynb) for more details.
 
 # In[2]:
 
@@ -75,8 +75,8 @@ b.set_value('irrad_method', 'none')
 # --------------------------------------
 # 
 # In other cases, we may want to manually add additional sets of compute options.
-# This syntax should look very familiar by now, it takes a function (or the name of a recognized function in phoebe.parameters.compute) and then any
-# kwargs to set in that ParameterSet.
+# This syntax should look very familiar by now, it takes a function (or the name of a recognized function in [phoebe.parameters.compute](../api/phoebe.parameters.compute.md)) and then any
+# kwargs to set in that ParameterSet, passed to [b.add_compute](../api/phoebe.frontend.bundle.Bundle.add_compute.md).
 # 
 # Let's say that we want to create two sets of compute options - in this example, we'll create one called 'preview' which will cut some corners to quickly get us a model, and one called 'detailed' which will get a much more precise model but likely take longer.  As with other tags, the string you provide for the compute tag is up to you (so long as it doesn't raise an error because it conflicts with other tags).
 
@@ -109,19 +109,19 @@ print b.get_compute('detailed')
 # 
 # ### Backend-Specific Compute Options
 # 
-# Most of the parameters in the compute options are specific to the backend being used.  Here, of course, we're using the PHOEBE 2.0 backend - but for details on other backends see the [Alternate Backends Tutorial](alternate_backends).
+# Most of the parameters in the compute options are specific to the backend being used.  Here, of course, we're using the PHOEBE 2.0 backend - but for details on other backends see the [Alternate Backends Tutorial](./alternate_backends.ipynb).
 # 
 # The PHOEBE 2.0 compute options are described in the tutorial on their relevant dataset types:
 # 
-# * [Orbits (orb)](ORB)
-# * [Meshes (mesh)](MESH)
-# * [Light Curves/Fluxes (lc)](LC)
-# * [Radial Velocities (rv)](RV)
-# * [Line Profiles (lp)](LP)
+# * [Orbits (orb)](./ORB.ipynb)
+# * [Meshes (mesh)](./MESH.ipynb)
+# * [Light Curves/Fluxes (lc)](./LC.ipynb)
+# * [Radial Velocities (rv)](./RV.ipynb)
+# * [Line Profiles (lp)](./LP.ipynb)
 
 # ### Enabling/Disabling Datasets
 # 
-# By default, synthetic models will be created for all datasets in the Bundle when run_compute is called.  But you can disable a dataset to have run_compute ignore that dataset.  This is handled by a BoolParameter with the qualifier 'enabled' - and has a copy that lives in each set of compute options
+# By default, synthetic models will be created for all datasets in the Bundle when [run_compute](../api/phoebe.frontend.bundle.Bundle.run_commpute.md) is called.  But you can disable a dataset to have run_compute ignore that dataset.  This is handled by a [BoolParameter](../api/phoebe.parameters.BoolParameter.md) with the qualifier 'enabled' - and has a copy that lives in each set of compute options
 # 
 # Let's say we wanted to compute the orbit but not light curve - so we want to see enabled@lc01:
 
@@ -158,7 +158,7 @@ print b['enabled@lc01']
 # 
 # ### Simplest Case
 # 
-# run_compute takes arguments for the compute tag as well as the model tag for the resulting synthetic model(s).  
+# [run_compute](../api/phoebe.frontend.bundle.Bundle.run_coompute.md) takes arguments for the compute tag as well as the model tag for the resulting synthetic model(s).  
 # 
 # You do not need to provide the compute tag if only 0 or 1 set of compute options exist in the Bundle.  If there are no compute options, the default PHOEBE 2.0 options will be added on your behalf and used.  If there is a single set of compute options, those will be assumed.  In our case, we have two compute options in the Bundle (with tags 'preview' and 'detailed') so we *must* provide an argument for compute.
 # 
@@ -296,16 +296,16 @@ print b.get_value(qualifier='us', dataset='orb01', component='primary', model='r
 
 # For more details about the resulting Parameters in the model context, see the tutorial on the relevant dataset types:
 # 
-# * [Orbits (orb)](ORB)
-# * [Meshes (mesh)](MESH)
-# * [Light Curves/Fluxes (lc)](LC)
-# * [Radial Velocities (rv)](RV)
-# * [Line Profiles (lp)](LP)
+# * [Orbits (orb)](./ORB.ipynb)
+# * [Meshes (mesh)](./MESH.ipynb)
+# * [Light Curves/Fluxes (lc)](./LC.ipynb)
+# * [Radial Velocities (rv)](./RV.ipynb)
+# * [Line Profiles (lp)](./LP.ipynb)
 
 # Next
 # ----------
 # 
-# Next up: let's start [plotting](plotting.ipynb) our synthetic model.
+# Next up: let's start [plotting](./plotting.ipynb) our synthetic model.
 
 # In[ ]:
 

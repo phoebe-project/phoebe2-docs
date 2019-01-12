@@ -26,11 +26,11 @@ import phoebe
 
 # As of the 2.1 release, PHOEBE officially support parallelization using MPI.  Note that the 2.1.1 release fixed a bug related to using PHOEBE within non-openmpi environments.
 
-# There are several "modes of operation" depending on your settings and whether you're running your script within python or mpirun.  You can enable/disable MPI within phoebe by placing [phoebe.mpi_on()](../api/phoebe.mpi_on) or [phoebe.mpi_off()](../api/phoebe.mpi_off) at the top of your script.  If you do not do this, MPI will be enabled by default if within mpirun and disabled otherwise.
+# There are several "modes of operation" depending on your settings and whether you're running your script within python or mpirun.  You can enable/disable MPI within phoebe by placing [phoebe.mpi_on()](../api/phoebe.mpi_on.md) or [phoebe.mpi_off()](../api/phoebe.mpi_off.md) at the top of your script.  If you do not do this, MPI will be enabled by default if within mpirun and disabled otherwise.
 # 
 # When MPI is enabled, PHOEBE will do the following:
-# * if within mpirun: uses PHOEBE's built-in per-dataset or per-time parallelization.  The main code you write in your script is executed on a single processor, but during [run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute) the task is divided among the available resources.
-# * if not within mpirun (ie. in a serial python environment): will spawn a separate thread at phoebe.frontend.bundle.Bundle.run_compute, using number of processors sent to [phoebe.mpi_on](../api/phoebe.mpi_on) (for example: phoebe.mpi_on(nprocs=4)). 
+# * if within mpirun: uses PHOEBE's built-in per-dataset or per-time parallelization.  The main code you write in your script is executed on a single processor, but during [run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md) the task is divided among the available resources.
+# * if not within mpirun (ie. in a serial python environment): will spawn a separate thread at phoebe.frontend.bundle.Bundle.run_compute, using number of processors sent to [phoebe.mpi_on](../api/phoebe.mpi_on.md) (for example: phoebe.mpi_on(nprocs=4)). 
 # 
 # When MPI is disabled, PHOEBE will do the following:
 # * if within mpirun: PHOEBE will run equally on all processors. The user can customize parallelization with access to phoebe.mpi.nprocs, phoebe.mpi.myrank.  Your script runs equally on each processor, meaning you have multiple (separate) copies of the bundle.

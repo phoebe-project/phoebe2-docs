@@ -15,7 +15,7 @@
 get_ipython().system(u'pip install -I "phoebe>=2.1,<2.2"')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -46,7 +46,7 @@ b.filter(context='constraint')
 
 # To see what all of these constraints do, see the 'Built-in Constraints' section below.
 # 
-# For now let's look at a single constraint.
+# For now let's look at a single constraint by accessing a [ConstraintParameter](../api/phoebe.parameters.ConstraintParameter.md).
 
 # In[3]:
 
@@ -81,7 +81,7 @@ print b['mass@primary@component']
 # Built-in Constraints
 # -----------------------------
 # 
-# There are a number of built-in constraints that will be applied to your system by default.  These are all listed below:
+# There are a number of [built-in constraints](../api/phoebe.parameters.constraint.md) that will be applied to your system by default.  These are all listed below:
 
 # ### asini
 # 
@@ -256,7 +256,7 @@ b['long_an@primary@constraint']
 # As we've just seen, the mass is a constrained (ie derived) parameter.  But
 # let's say that you would rather provide masses for some reason (perhaps
 # that was what was provided in a paper).  You can choose to provide mass
-# and instead have one of its related parameters constrained
+# and instead have one of its related parameters constrained by calling [flip_constraint](../api/phoebe.frontend.bundle.Bundle.flip_constraint.md).
 
 # In[27]:
 
@@ -344,7 +344,7 @@ print "M1: {}, M2: {}".format(b.get_value('mass@primary@component'),
 
 # Now let's flip the hierarchy so that the star with the 'primary' component tag is actually the secondary component in the system (and so takes the role of numerator in q = M2/M1).
 # 
-# For more information on the syntax for setting hierarchies, see the [Building a System Tutorial](building_a_system).
+# For more information on the syntax for setting hierarchies, see the [Building a System Tutorial](building_a_system.ipynb).
 
 # In[38]:
 

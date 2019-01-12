@@ -27,7 +27,7 @@ get_ipython().system(u'pip install -I "phoebe>=2.1,<2.2"')
 get_ipython().magic(u'matplotlib inline')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 # 
 
 # In[2]:
@@ -46,7 +46,7 @@ b['ecc'] = 0.1
 b['irrad_method'] = 'none'
 
 
-# And we'll attach some dummy datasets.  See [Datasets](datasets) for more details.
+# And we'll attach some dummy datasets.  See [Datasets](datasets.ipynb) for more details.
 
 # In[3]:
 
@@ -58,7 +58,7 @@ times, fluxes, sigmas = np.loadtxt('test.lc.in', unpack=True)
 b.add_dataset('lc', times=times, fluxes=fluxes, sigmas=sigmas, dataset='lc01')
 
 
-# And run the forward models.  See [Computing Observables](compute.html) for more details.
+# And run the forward models.  See [Computing Observables](compute.ipynb) for more details.
 
 # In[4]:
 
@@ -88,13 +88,13 @@ b.run_compute(model='run_with_incl_80')
 # 
 # To see the options for plotting that are dataset-dependent see the tutorials on that dataset method:
 # 
-# - [ORB dataset](ORB)
-# - [MESH dataset](MESH)
-# - [LC dataset](LC)
-# - [RV dataset](RV)
-# - [LP dataset](LP)
+# - [ORB dataset](ORB.ipynb)
+# - [MESH dataset](MESHipynb)
+# - [LC dataset](LC.ipynb)
+# - [RV dataset](RV.ipynb)
+# - [LP dataset](LP.ipynb)
 # 
-# By calling the plot method on the bundle (or any ParameterSet) without any arguments, a plot or series of subplots will be built based on the contents of that ParameterSet.
+# By calling the [plot](../api/phoebe.parameters.ParameterSet.plot.md) method on the bundle (or any ParameterSet) without any arguments, a plot or series of subplots will be built based on the contents of that ParameterSet.
 
 # In[5]:
 
@@ -201,11 +201,11 @@ b['orb01@primary@run_with_incl_80'].qualifiers
 
 # For more information on each of the available arrays, see the relevant tutorial on that dataset method:
 # 
-# - [ORB dataset](ORB)
-# - [MESH dataset](MESH)
-# - [LC dataset](LC)
-# - [RV dataset](RV)
-# - [LP dataset](LP)
+# - [ORB dataset](ORB.ipynb)
+# - [MESH dataset](MESH.ipynb)
+# - [LC dataset](LC.ipynb)
+# - [RV dataset](RV.ipynb)
+# - [LP dataset](LP.ipynb)
 
 # ### Selecting Phase
 # 
@@ -294,7 +294,7 @@ afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(c='r', show=True)
 afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(x='times', c='vws', show=True)
 
 
-# Choosing colors works slightly differently for meshes (ie you can set fc for facecolor and ec for edgecolor).  For more details, see the tutorial on the [MESH dataset](MESH).
+# Choosing colors works slightly differently for meshes (ie you can set fc for facecolor and ec for edgecolor).  For more details, see the tutorial on the [MESH dataset](MESH.ipynb).
 
 # ### Colormaps
 # 

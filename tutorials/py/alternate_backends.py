@@ -67,7 +67,7 @@ print b['legacybackend']
 
 # ### Adding Compute Options
 # 
-# Adding a set of compute options for an alternate backend is just as easy as for the PHOEBE backend.  Simply provide the function or name of the function in phoebe.parameters.compute that points to the parameters for that backend.
+# Adding a set of compute options, via [b.add_compute](../api/phoebe.frontend.bundle.Bundle.add_compute.md) for an alternate backend is just as easy as for the PHOEBE backend.  Simply provide the function or name of the function in [phoebe.parameters.compute](../api/phoebe.parameters.compute.md) that points to the parameters for that backend.
 # 
 # Here we'll add the default PHOEBE backend as well as the PHOEBE 1.0 (legacy) backend.  Note that in order to use an alternate backend, that backend must be installed on your machine.
 
@@ -85,9 +85,9 @@ print b['phoebebackend']
 
 # ### Running Compute
 # 
-# Nothing changes for running compute - simply provide the compute tag for those options.  Do note, however, that not all backends support all dataset types.
+# Nothing changes when calling [b.run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md) - simply provide the compute tag for those options.  Do note, however, that not all backends support all dataset types.
 
-# But, since the legacy backend doesn't support ck2004 atmospheres and interpolated limb-darkening, we do need to choose a limb-darkening law.
+# But, since the legacy backend doesn't support ck2004 atmospheres and interpolated limb-darkening, we do need to choose a limb-darkening law.  We can do this for all passband-component combinations by using [set_value_all](../api/phoebe.parameters.ParameterSet.set_value_all.md).
 
 # In[7]:
 

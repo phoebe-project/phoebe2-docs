@@ -42,7 +42,7 @@ import matplotlib.pyplot as plt
 
 # ### Logger
 # 
-# Before starting any script, it is a good habit to initialize a logger and define which levels of information you want printed to the command line (clevel) and dumped to a file (flevel).
+# Before starting any script, it is a good habit to initialize a logger and define which levels of information you want printed to the command line (clevel) and dumped to a file (flevel).  A convenience function is provided at the top-level via [phoebe.logger](../api/phoebe.logger.md) to initialize the logger with any desired level.
 # 
 # The levels from most to least information are:
 # 
@@ -71,11 +71,11 @@ logger = phoebe.logger(clevel='INFO', flevel='DEBUG', filename='tutorial.log')
 # Parameters
 # ------------------------
 # 
-# Parameters hold a single value, but need to be aware about their own types, limits, and connection with other Parameters (more on this later when we discuss ParameterSets).
+# [Parameters](../api/phoebe.parameters.Parameter.md) hold a single value, but need to be aware about their own types, limits, and connection with other Parameters (more on this later when we discuss [ParameterSets](../api/phoebe.parameters.ParameterSet.md)).
 # 
 # Note that generally you won't ever have to "create" or "define" your own Parameters, those will be created for you by helper functions, but we have to start somewhere... so let's create our first Parameter.
 # 
-# We'll start with creating a StringParameter since it is the most generic, and then discuss and specific differences for each type of Parameter.
+# We'll start with creating a [StringParameter](../api/phoebe.parameters.StringParameter.md) since it is the most generic, and then discuss and specific differences for each type of Parameter.
 
 # In[3]:
 
@@ -105,7 +105,7 @@ print param
 # 
 # These "things" can be split into two groups: tags and attributes (although in a pythonic sense, both can be accessed as attributes).  Don't worry too much about this distinction - it isn't really important except for the fact that tags are shared across **all** Parameters whereas attributes are dependent on the type of the Parameter.
 # 
-# The tags of a Parameter define the Parameter and how it connects to other Parameters (again, more on this when we get to ParameterSets).  For now, just know that you can access a list of all the tags as follows:
+# The tags of a Parameter define the Parameter and how it connects to other Parameters (again, more on this when we get to ParameterSets).  For now, just know that you can access a list of all the [tags](../api/phoebe.parameters.Parameter.tags) as follows:
 
 # In[6]:
 
@@ -141,7 +141,7 @@ param.attributes
 print param['description'], param.description
 
 
-# For the special case of the **'value'** attribute, there is also a get method (will become handy later when we want to be able to request the value in a specific unit).
+# For the special case of the **'value'** attribute, there is also a [get_value](../api/phoebe.parameters.Parameter.get_value.md) method (will become handy later when we want to be able to request the value in a specific unit).
 
 # In[10]:
 
@@ -149,7 +149,7 @@ print param['description'], param.description
 print param.get_value(), param['value'], param.value
 
 
-# The value attribute is also the only attribute that you'll likely want to change, so it also has a set method:
+# The value attribute is also the only attribute that you'll likely want to change, so it also has a [set_value](../api/phoebe.parameters.Parameter.set_value.md) method:
 
 # In[11]:
 
@@ -160,15 +160,15 @@ print param.get_value()
 
 # The **'visible_if'** attribute only comes into play when the Parameter is a member of a ParameterSet, so we'll discuss it at the end of this tutorial when we get to ParameterSets.
 # 
-# The **'copy_for'** attribute is only used when the Parameter is in a particular type of ParameterSet called a Bundle (explained at the very end of this tutorial).  We'll see the 'copy_for' capability in action later in the [Datasets Tutorial](datasets), but for now, just know that you can *view* this property only and cannot change it... and most of the time it will just be an empty string.
+# The **'copy_for'** attribute is only used when the Parameter is in a particular type of ParameterSet called a Bundle (explained at the very end of this tutorial).  We'll see the 'copy_for' capability in action later in the [Datasets Tutorial](datasets.ipynb), but for now, just know that you can *view* this property only and cannot change it... and most of the time it will just be an empty string.
 
 # ### StringParameters
 # 
-# We'll just mention StringParameters again for completeness, but we've already seen about all they can do - the value must cast to a valid string but no limits or checks are performed at all on the value.
+# We'll just mention [StringParameters](../api/phoebe.parameters.StringParameter.md) again for completeness, but we've already seen about all they can do - the value must cast to a valid string but no limits or checks are performed at all on the value.
 
 # ### ChoiceParameters
 # 
-# ChoiceParameters are essentially StringParameters with one very important exception: the value **must** match one of the prescribed choices.
+# [ChoiceParameters](../api/phoebe.parameters.ChoiceParameter.md) are essentially StringParameters with one very important exception: the value **must** match one of the prescribed choices.
 # 
 # Therefore, they have a 'choice' attribute and an error will be raised if trying to set the value to any string not in that list.
 
@@ -217,7 +217,7 @@ print param.get_value()
 # 
 # ** NEW IN PHOEBE 2.1 **
 # 
-# SelectParameters are very similar to ChoiceParameters except that the value is a list, where each item **must** match one of the prescribed choices.
+# [SelectParameters](../api/phoebe.parameters.SelectParameter.md) are very similar to ChoiceParameters except that the value is a list, where each item **must** match one of the prescribed choices.
 
 # In[18]:
 
@@ -274,7 +274,7 @@ print param.expand_value()
 
 # ### FloatParameters
 # 
-# FloatParameters are probably the most common Parameter used in PHOEBE and hold both a float and a unit, with the ability to retrieve the value in any other convertible unit.
+# [FloatParameters](../api/phoebe.parameters.FloatParameter.md) are probably the most common Parameter used in PHOEBE and hold both a float and a unit, with the ability to retrieve the value in any other convertible unit.
 
 # In[26]:
 
@@ -292,7 +292,7 @@ param = phoebe.parameters.FloatParameter(qualifier='myfloatparameter',
 print param
 
 
-# You'll notice here a few new mentions in the summary... "Constrained by", "Constrains", and "Related to" are all referring to [constraints which will be discussed in a future tutorial](constraints).
+# You'll notice here a few new mentions in the summary... "Constrained by", "Constrains", and "Related to" are all referring to [constraints which will be discussed in a future tutorial](constraints.ipynb).
 
 # In[28]:
 
@@ -390,7 +390,7 @@ print param.limits
 
 # ### IntParameters
 # 
-# IntParameters are essentially the same as FloatParameters except they always cast to an Integer and they have no units.
+# [IntParameters](../api/phoebe.parameters.IntParameter.md) are essentially the same as FloatParameters except they always cast to an Integer and they have no units.
 
 # In[40]:
 
@@ -432,7 +432,7 @@ print param.get_value()
 
 # ### Bool Parameters
 # 
-# Boolean Parameters are even simpler - they accept True or False.
+# [BoolParameters](../api/phoebe.parameters.BoolParameter.md) are even simpler - they accept True or False.
 
 # In[45]:
 
@@ -504,7 +504,7 @@ print param.get_value()
 
 # ### FloatArrayParameters
 # 
-# FloatArrayParameters are essentially the same as FloatParameters (in that they have the same unit treatment, although obviously no limits) but hold numpy arrays rather than a single value.
+# [FloatArrayParameters](../api/phoebe.parameters.FloatArrayParameter.md) are essentially the same as FloatParameters (in that they have the same unit treatment, although obviously no limits) but hold numpy arrays rather than a single value.
 # 
 # By convention in Phoebe, these will (almost) always have a pluralized qualifier.
 
@@ -540,7 +540,7 @@ print param.get_value(unit=u.km)
 # ParametersSets
 # ----------------------------
 # 
-# ParameterSets are a collection of Parameters that can be filtered by their tags to return another ParameterSet.
+# [ParameterSets](../api/phoebe.parameters.ParameterSet.md) are a collection of [Parameters](../api/phoebe.parameters.Parameter.md) that can be filtered by their tags to return another ParameterSet.
 # 
 # For illustration, let's create 3 random FloatParameters and combine them to make a ParameterSet.
 
@@ -697,7 +697,7 @@ print ps.contexts
 
 # ### Filtering
 # 
-# Any of the tags can also be used to filter the ParameterSet:
+# Any of the tags can also be used to [filter](../api/phoebe.parameters.ParameterSet.filter) the ParameterSet:
 
 # In[69]:
 
@@ -784,7 +784,7 @@ print ps['description@context1@kind1']
 # The Bundle
 # ------------
 # 
-# The Bundle is nothing more than a glorified ParameterSet with some extra methods to compute models, add new components and datasets, etc.
+# The [Bundle](../api/phoebe.frontend.bundle.Bundle.md) is nothing more than a glorified [ParameterSet](../api/phoebe.parameters.ParameterSet.md) with some extra methods to compute models, add new components and datasets, etc.
 # 
 # You can initialize an empty Bundle as follows:
 
@@ -892,5 +892,3 @@ b['ys'].interp_value(xs=0.2)
 # ----------
 # 
 # Next up: let's [build a system](building_a_system.ipynb)
-
-# 

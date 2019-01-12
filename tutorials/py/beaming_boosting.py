@@ -57,7 +57,7 @@ b['sma@binary'] = 6.0
 
 
 # 
-# We'll add lc, rv, and mesh datasets so that we can see how they're each affected by beaming and boosting.
+# We'll add [lc](./LC.ipynb), [rv](./RV.ipynb), and [mesh](./MESH.ipynb) datasets so that we can see how they're each affected by beaming and boosting.
 
 # In[4]:
 

@@ -15,7 +15,7 @@
 get_ipython().system(u'pip install -I "phoebe>=2.1,<2.2"')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -41,9 +41,9 @@ b = phoebe.default_binary()
 # 
 # **NOTE:** the "pbmesh" and "protomesh" have been removed as of PHOEBE 2.1+.
 # 
-# You must create a mesh dataset and specify the times and columns which you'd like exposed.  For more information, see the tutorial on the [MESH dataset](MESH).
+# You must create a mesh dataset and specify the times and columns which you'd like exposed.  For more information, see the tutorial on the [MESH dataset](MESH.ipynb).
 # 
-# The mesh will be exposed at the times specified by the 'times' Parameter, as well as any times referenced by the 'include_times' Parameter.
+# The mesh will be exposed at the times specified by the 'times' Parameter, as well as any times referenced by the 'include_times' [SelectParameter](../api/phoebe.parameters.SelectParameter.md).
 # 
 # So let's add a LC and MESH dataset.
 # 
@@ -138,7 +138,7 @@ print b['mesh@model'].qualifiers
 print b.get_value('teffs', time=0.0, component='primary')
 
 
-# Any of the exposed columns are then available for plotting the mesh.
+# Any of the exposed columns are then available for plotting the mesh, via [b.plot](../api/phoebe.parameters.ParameterSet.plot.md).
 
 # In[19]:
 

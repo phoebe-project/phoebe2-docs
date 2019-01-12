@@ -30,7 +30,7 @@ get_ipython().system(u'pip install -I "phoebe>=2.1,<2.2"')
 # 
 # If you didn't happen to stumble on this in PHOEBE 2.0, you may find it useful. The nparray functionality allows you to store the start, stop, step values (in the case of linspace) instead of the entire array in memory. This is significantly cheaper to store when saving to json, for example, and allows for easily editing your step size without having to change the entire array. If you are writing your PHOEBE code within a script, this may seem like no use to you, but if you are in an interactive python console, then this can be quite handy.
 # 
-# The most useful of these "array creation functions" are also copied into the top-level of the phoebe package.  These include: linspace, arange, logspace, and geomspace.
+# The most useful of these "array creation functions" are also copied into the top-level of the phoebe package.  These include: [linspace](../api/phoebe.linspace.md), [arange](../api/phoebe.arange.md), [logspace](../api/phoebe.logspace.md), and [geomspace](../api/phoebe.geomspace.md).
 
 # In[1]:
 
@@ -54,7 +54,7 @@ b.add_dataset('lc', times=phoebe.linspace(0, 1, 11))
 print b.get_parameter('times')
 
 
-# You can see here that the value is being stored not as an array, but as an nparray object with the properties to create that array.  Once you (or PHOEBE) call `get_value` (or `get_quantity`), the array is temporarily created on-the-fly and returned. 
+# You can see here that the value is being stored not as an array, but as an nparray object with the properties to create that array.  Once you (or PHOEBE) call [get_value](../api/phoebe.parameters.ParameterSet.get_value.md) (or [get_quantity](../api/phoebe.parameters.ParameterSet.get_quantity.md)), the array is temporarily created on-the-fly and returned. 
 
 # In[4]:
 

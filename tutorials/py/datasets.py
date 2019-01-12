@@ -6,7 +6,7 @@
 # 
 # Datasets tell PHOEBE how and at what times to compute the model.  In some cases these will include the actual observational data, and in other cases may only include the times at which you want to compute a synthetic model.
 # 
-# Adding a dataset - even if it doesn't contain any observational data - is required in order to compute a synthetic model (which will be described in the following [Compute Tutorial](compute)).
+# Adding a dataset - even if it doesn't contain any observational data - is required in order to compute a synthetic model (which will be described in the following [Compute Tutorial](compute.ipynb)).
 # 
 # Setup
 # -----------------------------
@@ -19,7 +19,7 @@
 get_ipython().system(u'pip install -I "phoebe>=2.1,<2.2"')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -38,16 +38,16 @@ b = phoebe.default_binary()
 # --------------------------------------
 # 
 # To add a dataset, you need to provide the function in
-# phoebe.parameters.dataset for the particular type of data you're dealing with, as well
+# [phoebe.parameters.dataset](../api/phoebe.parameters.dataset.md) for the particular type of data you're dealing with, as well
 # as any of your "observed" arrays.
 # 
 # The current available methods include:
 # 
-# * orb (orbit/positional data)
-# * mesh (discretized mesh of stars)
-# * lc (light curve)
-# * rv (radial velocity)
-# * lp (spectral line profiles)
+# * [orb](../api/phoebe.parameters.dataset.orb.md) (orbit/positional data)
+# * [mesh](../api/phoebe.parameters.dataset.mesh.md) (discretized mesh of stars)
+# * [lc](../api/phoebe.parameters.dataset.lc.md) (light curve)
+# * [rv](../api/phoebe.parameters.dataset.rv.md) (radial velocity)
+# * [lp](../api/phoebe.parameters.dataset.lp.md) (spectral line profiles)
 # 
 # ### Without Observations
 # 
@@ -63,7 +63,7 @@ b = phoebe.default_binary()
 b.add_dataset(phoebe.dataset.orb, times=np.linspace(0,10,20), dataset='orb01', component=['primary', 'secondary'])
 
 
-# As you could probably predict by now, add_dataset can either take a function or the name of a function in phoebe.parameters.dataset.  The following line would do the same thing (except we'll give it a new dataset tag to avoid throwing an error).
+# As you could probably predict by now, [add_dataset](../api/phoebe.frontend.bundle.Bundle.add_dataset.md)  can either take a function or the name of a function in [phoebe.parameters.dataset](../api/phoebe.parameters.dataset.md).  The following line would do the same thing (except we'll give it a new dataset tag to avoid throwing an error).
 
 # In[3]:
 
@@ -238,7 +238,7 @@ b.add_dataset(phoebe.dataset.lc, times=times, fluxes=fluxes, sigmas=sigmas, data
 # Enabling and Disabling Datasets
 # ---------------------------------------
 # 
-# See the [Compute Tutorial](compute)
+# See the [Compute Tutorial](compute.ipynb)
 
 # Dealing with Phases
 # -------------------------------
@@ -247,7 +247,7 @@ b.add_dataset(phoebe.dataset.lc, times=times, fluxes=fluxes, sigmas=sigmas, data
 # phased data into times given an ephemeris.  But it's still useful to be able to
 # convert times to phases (and vice versa) and be able to plot in phase.
 # 
-# The following functions handle those conversions:
+# Those conversions can be handled via [b.get_ephemeris](../api/phoebe.frontend.bundle.Bundle.get_ephemeris.md), [b.to_phase](../api/phoebe.frontend.bundle.Bundle.to_phase.md), and [b.to_time](../api/phoebe.frontend.bundle.Bundle.to_time.md).
 
 # In[23]:
 
@@ -291,7 +291,7 @@ print b.to_phase('times@primary@orb01')
 # Removing Datasets
 # ----------------------
 # 
-# Removing a dataset will remove matching parameters in either the dataset, model, or constraint contexts.  This action is permanent and not undo-able via [Undo/Redo](undo_redo).
+# Removing a dataset will remove matching parameters in either the dataset, model, or constraint contexts.  This action is permanent and not undo-able via [Undo/Redo](undo_redo.ipynb).
 
 # In[28]:
 
@@ -313,7 +313,7 @@ b.remove_dataset('lc01')
 b.datasets
 
 
-# But remove_dataset also takes any other tag(s) that could be sent to filter.
+# But [remove_dataset](../api/phoebe.frontend.bundle.Bundle.remove_dataset.md) also takes any other tag(s) that could be sent to filter.
 
 # In[31]:
 
@@ -332,11 +332,11 @@ b.datasets
 # 
 # For a full explanation of all related options and Parameter see the respective dataset tutorials:
 # 
-# * [orb dataset](ORB)
-# * [mesh dataset](MESH)
-# * [lc dataset](LC)
-# * [rv dataset](RV)
-# * [lp dataset](LP)
+# * [orb dataset](ORB.ipynb)
+# * [mesh dataset](MESH.ipynb)
+# * [lc dataset](LC.ipynb)
+# * [rv dataset](RV.ipynb)
+# * [lp dataset](LP.ipynb)
 
 # Next
 # ----------

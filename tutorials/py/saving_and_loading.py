@@ -15,7 +15,7 @@
 get_ipython().system(u'pip install -I "phoebe>=2.1,<2.2"')
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -41,7 +41,7 @@ b = phoebe.default_binary()
 b['incl@orbit'] = 56.789
 
 
-# To save the Bundle to a file, we can call the save method of the Bundle and pass a filename.
+# To save the Bundle to a file, we can call the [save](../api/phoebe.parameters.ParameterSet.save.md) method of the Bundle and pass a filename.
 
 # In[3]:
 
@@ -64,7 +64,7 @@ get_ipython().system(u'head -n 30 test.phoebe')
 # Loading a Bundle
 # ----------------------
 
-# To open an existing Bundle from the file we just created, call Bundle.open and pass the filename.
+# To open an existing Bundle from the file we just created, call [Bundle.open](../api/phoebe.frontend.bundle.Bundle.open.md) and pass the filename.
 
 # In[5]:
 
@@ -85,7 +85,7 @@ print b2.get_value('incl@orbit')
 # 
 # ### Legacy
 # 
-# Importing from a PHOEBE Legacy file is as simple as passing the filename to from_legacy:
+# Importing from a PHOEBE Legacy file is as simple as passing the filename to [from_legacy](../api/phoebe.frontend.bundle.Bundle.from_legacy.md):
 
 # In[7]:
 
@@ -93,7 +93,7 @@ print b2.get_value('incl@orbit')
 b = phoebe.Bundle.from_legacy('legacy.phoebe')
 
 
-# Exporting to a PHOEBE Legacy file is also possible (although note that some parameters don't translate exactly or are not supported in PHOEBE Legacy).
+# Exporting to a PHOEBE Legacy file is also possible (although note that some parameters don't translate exactly or are not supported in PHOEBE Legacy), via [b.export_legacy](../api/phoebe.frontend.bundle.Bundle.export_legacy.md).
 
 # In[8]:
 
@@ -115,9 +115,3 @@ get_ipython().system(u'head -n 30 legacy_export.phoebe')
 # ---------
 # 
 # Next up: let's learn all about [constraints](constraints.ipynb)
-
-# In[ ]:
-
-
-
-
