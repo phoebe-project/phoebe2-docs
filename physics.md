@@ -5,6 +5,8 @@ The following tutorials aim to explain the implementation and usage of some of t
 * [Various t0s](tutorials/t0s.ipynb)
 * [Equivalent Radius](tutorials/requiv.ipynb)
 * [Potentials (replaced by Equivalent Radius in PHOEBE 2.1+)](tutorials/pot.ipynb)
+* [Critical Radii: Semidetached Systems](tutorials/requiv_crit_semidetached.ipynb)
+* [Critical Radii: Contact Systems](tutorials/requiv_crit_contact.ipynb)
 * [Eccentricity (Volume Conservation)](tutorials/ecc.ipynb)
 * [Apsidal Motion](tutorials/apsidal_motion.ipynb)
 * [Systemic Velocity (vgamma)](tutorials/vgamma.ipynb)
