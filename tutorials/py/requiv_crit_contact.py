@@ -51,7 +51,7 @@ print b.filter(qualifier=['requiv', 'pot', 'fillout_factor'])
 
 # In order to pass the system checks, these values must be between their minimum and maximum value ensuring the system is not underflowing (in which case it should be detached or semi-detached) or overflowing and losing mass.
 # 
-# These limiting values are constrained parameters, allowing us to allows see the allowed range for any parameterization.
+# These limiting values are constrained parameters, allowing us to see the allowed range for any parameterization.
 
 # In[4]:
 
