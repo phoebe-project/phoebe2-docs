@@ -15,6 +15,6 @@ The following tutorials aim to explain the implementation and usage of some of t
 * [Limb Darkening](tutorials/limb_darkening.ipynb)
 * [Gravitational Redshift (RVs)](tutorials/grav_redshift.ipynb)
 * [Reflection and Heating](tutorials/reflection_heating.ipynb)
-* [Beaming and Boosting (not yet implemented)](tutorials/beaming_boosting.ipynb)
+* [Beaming and Boosting](tutorials/beaming_boosting.ipynb)
 * [Eclipse Detection](tutorials/eclipse.ipynb)
 * [Intensity Weighting](tutorials/intens_weighting.ipynb)
