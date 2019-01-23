@@ -116,30 +116,10 @@ passed, message = b.run_checks()
 print passed, message
 
 
-# Semi-Detached Systems
+# Semi-Detached and Contact Systems
 # -----------------------------
 # 
-# Semi-detached systems are implemented by constraining the value of requiv to be the same as requiv_max by appyling the 'semidetached' constraint on the 'primary' component.
+# Semi-detached systems are implemented by constraining the value of requiv to be the same as requiv_max by appyling the 'semidetached' constraint on the 'primary' component.  For more information see the [critical radii: semidetached systems tutorial](./requiv_crit_semidetached.ipynb).
 # 
-
-# In[17]:
-
-
-b.add_constraint('semidetached', 'primary')
-
-
-# We can view the constraint on requiv by accessing the constraint:
-
-# In[21]:
-
-
-b['requiv@constraint@primary']
-
-
-# Now whenever any of the relevant parameters (q, ecc, syncpar, sma) are changed, the value of requiv will change to match the critical value as defined by requiv_max.
-
-# In[20]:
-
-
-b['requiv_max@constraint@primary']
-
+# Contact systems are implemented by constraining the value of requiv both stars to correspond to the potential of the contact envelope.  For more information see the [critical radii: contact systems tutorial](./requiv_crit_contact.ipynb).
+# 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# 2.0 - 2.1 Migration: Semidetached
+# 2.0 - 2.1 Migration: Semidetached Systems
 # ============================
 
 # Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
@@ -44,3 +44,5 @@ b.add_constraint('semidetached', 'primary')
 
 print b['requiv@primary@constraint']
 
+
+# For more information, see the [critical radii: semidetached systems tutorial](./requiv_crit_semidetached.ipynb).
