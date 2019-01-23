@@ -153,6 +153,7 @@ Dealing with time/phase:
 * [rename_compute](api/phoebe.frontend.bundle.Bundle.rename_compute.md)
 * [remove_compute](api/phoebe.frontend.bundle.Bundle.remove_compute.md)
 * [run_compute](api/phoebe.frontend.bundle.Bundle.run_compute.md)
+* [compute_pblums](api/phoebe.frontend.bundle.Bundle.compute_pblums.md)
 
 ### Model
 
