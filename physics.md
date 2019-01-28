@@ -8,6 +8,7 @@ The following tutorials aim to explain the implementation and usage of some of t
 * [Eccentricity (Volume Conservation)](tutorials/ecc.ipynb)
 * [Apsidal Motion](tutorials/apsidal_motion.ipynb)
 * [Systemic Velocity (vgamma)](tutorials/vgamma.ipynb)
+* [Rømer and Light Travel Time Effects (ltte)](tutorials/ltte.ipynb)
 * [Passband Luminosity](tutorials/pblum.ipynb)
 * [Third Light](tutorials/l3.ipynb)
 * [Distance](tutorials/distance.ipynb)
