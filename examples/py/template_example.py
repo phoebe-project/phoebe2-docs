@@ -36,9 +36,3 @@ logger = phoebe.logger()
 
 b = phoebe.default_binary()
 
-
-# In[1]:
-
-
-# DON'T FORGET TO UPDATE THE LINKS IN THE FIRST LINE
-
