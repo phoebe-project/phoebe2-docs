@@ -160,14 +160,14 @@ print(b.filter('mass', component='primary'))
 
 # ## Environment Variables
 
-# Some settings cannot be changed after importing PHOEBE, so they are available via environment variables.import-level settings can be changed via environment variables.  These can be set in a variety of ways:
+# Some settings cannot be changed after importing PHOEBE, so they are available via environment variables.  These can be set in a variety of ways:
 # 
-# setting inline before calling python will set for that single session of PHOEBE:
+# Setting inline before calling python will set for that single session of PHOEBE:
 # ```
 # PHOEBE_ENABLE_PLOTTING=FALSE python [script.py]
 # ```
 # 
-# setting via the os package in python **before** importing PHOEBE allows you to set the setting everytime you run a given script:
+# Setting via the os package in python **before** importing PHOEBE allows you to set the setting everytime you run a given script:
 # ```py
 # import os
 # os.environ['PHOEBE_ENABLE_PLOTTING'] = 'FALSE'
