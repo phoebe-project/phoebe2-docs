@@ -12,6 +12,7 @@ The following tutorials aim to explain the implementation and usage of some of t
 * [Systemic Velocity (vgamma)](tutorials/vgamma.ipynb)
 * [Rømer and Light Travel Time Effects (ltte)](tutorials/ltte.ipynb)
 * [Misalignment (pitch & yaw)](tutorials/pitch_yaw.ipynb)
+* [Passbands & Atmospheres](tutorials/atm_passbands.ipynb)
 * [Passband Luminosity](tutorials/pblum.ipynb)
 * [Third Light](tutorials/l3.ipynb)
 * [Distance](tutorials/distance.ipynb)
