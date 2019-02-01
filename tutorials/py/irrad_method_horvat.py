@@ -52,9 +52,9 @@ print(b['irrad_method'])
 # Influence on Light Curves (fluxes)
 # ---------------------------------
 # 
-# Let's (roughtly) reproduce Figure 8 from [Prsa et al. 2016](https://ui.adsabs.harvard.edu/?#abs/2016ApJS..227...29P) which shows the difference between Wilson and Horvat schemes for various inclinations.
+# Let's (roughtly) reproduce Figure 8 from [Prsa et al. 2016](http://phoebe-project.org/publications/2016Prsa+) which shows the difference between Wilson and Horvat schemes for various inclinations.
 # 
-# ![Figure 8](prsa+2016_fig8.png)
+# <img src="prsa+2016_fig8.png" alt="Figure 8" width="600px"/>
 # 
 # First we'll roughly create a A0-K0 binary and set reasonable albedos.
 
