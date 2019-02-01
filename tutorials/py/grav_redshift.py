@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# Gravitational Redshift (RVs)
+# Gravitational Redshift (rv_grav)
 # ============================
 # 
 # Setup
