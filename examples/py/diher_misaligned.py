@@ -4,7 +4,7 @@
 # DI Her: Misaligned Binary
 # ============================
 # 
-# In this example, we'll reproduce Figure 8 in the misalignment release paper ([Horvat et al. 2018](https://ui.adsabs.harvard.edu/#abs/2018ApJS..237...26H)).
+# In this example, we'll reproduce Figure 8 in the misalignment release paper ([Horvat et al. 2018](http://phoebe-project.org/publications/2018Horvat+)).
 # 
 # <img src="horvat+18_fig8.png" alt="Figure 8" width="400px"/>
 # 
