@@ -4,6 +4,8 @@
 # Reflection and Heating
 # ============================
 # 
+# For a comparison between "Horvat" and "Wilson" methods in the "irad_method" parameter, see the tutorial on [Lambert Scattering](./irrad_method_horvat.ipynb).
+# 
 # Setup
 # -----------------------------
 
@@ -31,7 +33,7 @@ from phoebe import u # units
 import numpy as np
 import matplotlib.pyplot as plt
 
-logger = phoebe.logger()
+logger = phoebe.logger('error')
 
 b = phoebe.default_binary()
 
