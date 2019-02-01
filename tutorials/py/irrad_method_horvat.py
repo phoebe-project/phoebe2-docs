@@ -7,12 +7,12 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.0 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system(u'pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system(u'pip install -I "phoebe>=2.0,<2.1"')
 
 
 # As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.html) for more details.
@@ -62,11 +62,11 @@ print(b['irrad_method'])
 
 
 b['teff@primary'] = 11000
-b['requiv@primary'] = 2.5
+b['rpole@primary'] = 2.5
 b['gravb_bol@primary'] = 1.0
 
 b['teff@secondary'] = 5000
-b['requiv@secondary'] = 0.85
+b['rpole@secondary'] = 0.85
 
 b['q@binary'] = 0.8/3.0
 
@@ -77,7 +77,7 @@ b['mass@primary'] = 3.0
 # In[5]:
 
 
-print(b.filter(qualifier=['mass', 'requiv', 'teff'], context='component'))
+print(b.filter(qualifier=['mass', 'rpole', 'teff'], context='component'))
 
 
 # In[6]:
@@ -87,14 +87,14 @@ b['irrad_frac_refl_bol@primary'] = 1.0
 b['irrad_frac_refl_bol@secondary'] = 0.6
 
 
-# In[7]:
+# In[8]:
 
 
-phases = phoebe.linspace(0,1,101)
+phases = np.linspace(0,1,101)
 b.add_dataset('lc', times=b.to_time(phases))
 
 
-# In[8]:
+# In[9]:
 
 
 for incl in [0,30,60,90]:
