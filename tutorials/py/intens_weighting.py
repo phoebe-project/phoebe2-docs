@@ -59,6 +59,10 @@ print b['intens_weighting']
 
 # Influence on Light Curves (fluxes)
 # ---------------------------------------------
+# 
+# Let's (roughtly) reproduce Figure 5 from [Prsa et al. 2016](https://ui.adsabs.harvard.edu/?#abs/2016ApJS..227...29P) which shows the difference between photon and energy intensity weighting.
+# 
+# ![Figure 5](./prsa+2016_fig5.png)
 
 # In[6]:
 
