@@ -87,14 +87,18 @@ b['irrad_frac_refl_bol@primary'] = 1.0
 b['irrad_frac_refl_bol@secondary'] = 0.6
 
 
-# In[8]:
+# Now we'll compute the light curves with wilson and horvat irradiation, and plot the relative differences between the two as a function of phase, for several different values of the inclination.
+# 
+# Note that Figure 8 excluded eclipse effects, but that ability is not included in PHOEBE 2.0, so there will be a slight discrepancy for inclinations which exhibit eclipses.
+
+# In[7]:
 
 
 phases = np.linspace(0,1,101)
 b.add_dataset('lc', times=b.to_time(phases))
 
 
-# In[9]:
+# In[8]:
 
 
 for incl in [0,30,60,90]:
@@ -109,10 +113,4 @@ plt.xlabel('phase')
 plt.ylabel('[F(wilson) - F(horvat)] / F(wilson)')
 plt.legend(loc='upper center')
 plt.show()
-
-
-# In[ ]:
-
-
-
 
