@@ -81,7 +81,7 @@ print b['mass@primary@component']
 # Built-in Constraints
 # -----------------------------
 # 
-# There are a number of [built-in constraints](../api/phoebe.parameters.constraint.md) that will be applied to your system by default.  These are all listed below:
+# There are a number of [built-in constraints](../api/phoebe.parameters.constraint.md) that can be applied to our system.  Those added by default are all listed below:
 
 # ### asini
 # 
