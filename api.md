@@ -8,6 +8,7 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 * [phoebe.parameters](api/phoebe.parameters.md)
 * [phoebe.parameters.component](api/phoebe.parameters.component.md)
 * [phoebe.parameters.compute](api/phoebe.parameters.compute.md)
+* [phoebe.parameters.constraint](api/phoebe.parameters.constraint.md)
 * [phoebe.parameters.dataset](api/phoebe.parameters.dataset.md)
 * [phoebe.parameters.feature](api/phoebe.parameters.feature.md)
 * [phoebe.parameters.hierarchy](api/phoebe.parameters.hierarchy.md)
