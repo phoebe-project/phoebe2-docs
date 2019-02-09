@@ -11,8 +11,14 @@ def esinw(b, orbit, solve_for=None, **kwargs)
 
 Create a constraint for esinw in an orbit.
 
+This constraint is automatically included for all orbits, during
+[phoebe.frontend.bundle.Bundle.add_component](phoebe.frontend.bundle.Bundle.add_component.md) for a
+[phoebe.parameters.component.orbit](phoebe.parameters.component.orbit.md).
+
 This is usually passed as an argument to
- [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md).
+ [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md)  as
+ `b.add_constraint('esinw', orbit='binary')`, where `orbit` is one of
+ [phoebe.parameters.HierarchyParameter.get_orbits](phoebe.parameters.HierarchyParameter.get_orbits.md).
 
 If 'esinw' does not exist in the orbit, it will be created
 

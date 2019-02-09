@@ -12,6 +12,9 @@ def get_stars_of_children_of(self, component)
 Get the stars under the children of a component in the
 [phoebe.parameters.HierarchyParameter](phoebe.parameters.HierarchyParameter.md).
 
+To access the HierarchyParameter from the Bundle, see
+ [phoebe.frontend.bundle.Bundle.get_hierarchy](phoebe.frontend.bundle.Bundle.get_hierarchy.md).
+
 This is the same as [phoebe.parameters.Hierarchy.get_children_of](phoebe.parameters.Hierarchy.get_children_of.md) except
 if any of the children is in an orbit, this will recursively follow the tree to
 return a list of all stars under that orbit.

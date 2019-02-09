@@ -12,7 +12,9 @@ def semidetached(b, component, solve_for=None, **kwargs)
 Create a constraint to force requiv to be semidetached.
 
 This is usually passed as an argument to
- [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md).
+ [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md) as
+ `b.add_constraint('semidetached', component='primary')`, where `component` is
+ one of [phoebe.parameters.HierarchyParameter.get_stars](phoebe.parameters.HierarchyParameter.get_stars.md).
 
 Arguments
 -----------

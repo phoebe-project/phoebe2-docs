@@ -12,8 +12,13 @@ def requiv_detached_max(b, component, solve_for=None, **kwargs)
 Create a constraint to determine the critical (at L1) value of
 requiv.
 
+This constraint is automatically created and attached for all stars
+in detached binary orbits via [phoebe.frontend.bundle.Bundle.set_hierarchy](phoebe.frontend.bundle.Bundle.set_hierarchy.md).
+
 This is usually passed as an argument to
- [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md).
+ [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md) as
+ `b.add_constraint('requiv_detached_max', component='primary')`, where `component` is
+ one of [phoebe.parameters.HierarchyParameter.get_stars](phoebe.parameters.HierarchyParameter.get_stars.md).
 
 Arguments
 -----------

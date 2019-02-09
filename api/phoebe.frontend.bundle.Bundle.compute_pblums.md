@@ -15,8 +15,10 @@ following all coupling, etc, as well as all relevant compute options
 (and any coupling) are computed at t0@system.
 
 This method is only for convenience and will be recomputed internally
-within run_compute.  Alternatively, you can create a mesh dataset
-and request any specific pblum to be exposed (per-time).
+within [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md).  Alternatively, you
+can create a mesh dataset (see [phoebe.frontend.bundle.Bundle.add_dataset](phoebe.frontend.bundle.Bundle.add_dataset.md)
+and [phoebe.parameters.dataset.mesh](phoebe.parameters.dataset.mesh.md)) and request any specific pblum to
+be exposed (per-time).
 
 Arguments
 ------------
@@ -28,6 +30,7 @@ Arguments
 * `dataset` (string or list of strings, optional): label of the
     dataset(s) requested.  If not provided, will be provided for all
     datasets attached to the bundle.
+* `**kwargs`: any additional kwargs are sent to override compute options.
 
 Returns
 ----------

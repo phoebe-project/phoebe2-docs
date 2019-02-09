@@ -12,8 +12,14 @@ def irrad_frac(b, component, solve_for=None, **kwargs)
 Create a constraint to ensure that energy is conserved and all incident
 light is accounted for.
 
+This constraint is automatically included for all orbits, during
+[phoebe.frontend.bundle.Bundle.add_component](phoebe.frontend.bundle.Bundle.add_component.md) for a
+[phoebe.parameters.component.star](phoebe.parameters.component.star.md).
+
 This is usually passed as an argument to
- [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md).
+ [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md) as
+ `b.add_constraint('irrad_frac', component='primary')`, where `component` is
+ one of [phoebe.parameters.HierarchyParameter.get_stars](phoebe.parameters.HierarchyParameter.get_stars.md).
 
 Arguments
 -----------

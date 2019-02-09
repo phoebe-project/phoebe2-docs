@@ -12,6 +12,9 @@ def get_sibling_of(self, component, kind=None)
 Get the sibling of a component in the
 [phoebe.parameters.HierarchyParameter](phoebe.parameters.HierarchyParameter.md).
 
+To access the HierarchyParameter from the Bundle, see
+ [phoebe.frontend.bundle.Bundle.get_hierarchy](phoebe.frontend.bundle.Bundle.get_hierarchy.md).
+
 If there is more than one sibling, the first result will be returned.
 
 See also:

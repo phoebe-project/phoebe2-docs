@@ -12,8 +12,13 @@ def mass(b, component, solve_for=None, **kwargs)
 Create a constraint for the mass of a star based on Kepler's third
 law from its parent orbit.
 
+This constraint is automatically created and attached for all stars
+in binary orbits via [phoebe.frontend.bundle.Bundle.set_hierarchy](phoebe.frontend.bundle.Bundle.set_hierarchy.md).
+
 This is usually passed as an argument to
- [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md).
+ [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md) as
+ `b.add_constraint('mass', component='primary')`, where `component` is
+ one of [phoebe.parameters.HierarchyParameter.get_stars](phoebe.parameters.HierarchyParameter.get_stars.md).
 
 If 'mass' does not exist in the component, it will be created.
 

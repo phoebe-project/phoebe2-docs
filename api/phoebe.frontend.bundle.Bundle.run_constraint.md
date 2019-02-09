@@ -14,6 +14,17 @@ parameter.  In general, there shouldn't be any need to manually
 call this - constraints should automatically be run whenever a
 dependent parameter's value is change.
 
+If interactive constraints are disabled via [phoebe.interactive_constraints_off](phoebe.interactive_constraints_off.md),
+then you can manually call this method or [phoebe.frontend.bundle.Bundle.run_delayed_constraints](phoebe.frontend.bundle.Bundle.run_delayed_constraints.md)
+to manually update the constraint value.
+
+See also:
+* [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md)
+* [phoebe.frontend.bundle.Bundle.get_constraint](phoebe.frontend.bundle.Bundle.get_constraint.md)
+* [phoebe.frontend.bundle.Bundle.remove_constraint](phoebe.frontend.bundle.Bundle.remove_constraint.md)
+* [phoebe.frontend.bundle.Bundle.flip_constraint](phoebe.frontend.bundle.Bundle.flip_constraint.md)
+* [phoebe.frontend.bundle.Bundle.run_delayed_constraint](phoebe.frontend.bundle.Bundle.run_delayed_constraint.md)
+
 Arguments
 -------------
 * `twig` (string, optional, default=None): twig to filter for the constraint

@@ -11,6 +11,9 @@ def get_top(self)
 
 Return the top-level component in the [phoebe.parameters.HierarchyParameter](phoebe.parameters.HierarchyParameter.md).
 
+To access the HierarchyParameter from the Bundle, see
+ [phoebe.frontend.bundle.Bundle.get_hierarchy](phoebe.frontend.bundle.Bundle.get_hierarchy.md).
+
 See also:
 * [phoebe.parameters.HierarchyParameter.get_components](phoebe.parameters.HierarchyParameter.get_components.md)
 * [phoebe.parameters.HierarchyParameter.get_stars](phoebe.parameters.HierarchyParameter.get_stars.md)

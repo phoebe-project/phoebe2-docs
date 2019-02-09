@@ -11,6 +11,13 @@ def flip_constraint(self, twig=None, solve_for=None, **kwargs)
 
 Flip an existing constraint to solve for a different parameter.
 
+See also:
+* [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md)
+* [phoebe.frontend.bundle.Bundle.get_constraint](phoebe.frontend.bundle.Bundle.get_constraint.md)
+* [phoebe.frontend.bundle.Bundle.remove_constraint](phoebe.frontend.bundle.Bundle.remove_constraint.md)
+* [phoebe.frontend.bundle.Bundle.run_constraint](phoebe.frontend.bundle.Bundle.run_constraint.md)
+* [phoebe.frontend.bundle.Bundle.run_delayed_constraint](phoebe.frontend.bundle.Bundle.run_delayed_constraint.md)
+
 Arguments
 ----------
 * `twig` (string, optional, default=None): twig to filter the constraint

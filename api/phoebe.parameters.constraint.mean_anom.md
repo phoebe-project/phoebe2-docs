@@ -9,8 +9,14 @@ def mean_anom(b, orbit, solve_for=None, **kwargs)
 
 
 
+This constraint is automatically included for all orbits, during
+[phoebe.frontend.bundle.Bundle.add_component](phoebe.frontend.bundle.Bundle.add_component.md) for a
+[phoebe.parameters.component.orbit](phoebe.parameters.component.orbit.md).
+
 This is usually passed as an argument to
- [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md).
+ [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md) as
+ `b.add_constraint('mean_anom', orbit='binary')`, where `orbit` is
+ one of [phoebe.parameters.HierarchyParameter.get_orbits](phoebe.parameters.HierarchyParameter.get_orbits.md).
 
 Arguments
 -----------

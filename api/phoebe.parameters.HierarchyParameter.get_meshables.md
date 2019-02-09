@@ -13,6 +13,9 @@ Return a list of all components that are meshable (generally stars,
 but also handles the envelope for a contact binary)
 in the [phoebe.parameters.HierarchyParameter](phoebe.parameters.HierarchyParameter.md).
 
+To access the HierarchyParameter from the Bundle, see
+ [phoebe.frontend.bundle.Bundle.get_hierarchy](phoebe.frontend.bundle.Bundle.get_hierarchy.md).
+
 See also:
 * [phoebe.parameters.HierarchyParameter.get_components](phoebe.parameters.HierarchyParameter.get_components.md)
 * [phoebe.parameters.HierarchyParameter.get_top](phoebe.parameters.HierarchyParameter.get_top.md)

@@ -13,6 +13,9 @@ Return whether a given component is the 'primary' or 'secondary'
 component in its parent orbit, according to the
 [phoebe.parameters.HierarchyParameter](phoebe.parameters.HierarchyParameter.md).
 
+To access the HierarchyParameter from the Bundle, see
+[phoebe.frontend.bundle.Bundle.get_hierarchy](phoebe.frontend.bundle.Bundle.get_hierarchy.md).
+
 Arguments
 ----------
 * `component` (string): the name of the component.

@@ -13,8 +13,13 @@ Create a constraint to determine the critical (at L2/3) value of
 requiv at which a constact will overflow.  This will only be used
 for contacts for requiv_max.
 
+This constraint is automatically created and attached for all stars
+in contact binary orbits via [phoebe.frontend.bundle.Bundle.set_hierarchy](phoebe.frontend.bundle.Bundle.set_hierarchy.md).
+
 This is usually passed as an argument to
- [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md).
+ [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md) as
+ `b.add_constraint('requiv_contact_min', component='primary')`, where `component` is
+ one of [phoebe.parameters.HierarchyParameter.get_stars](phoebe.parameters.HierarchyParameter.get_stars.md).
 
 Arguments
 -----------

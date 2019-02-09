@@ -18,6 +18,12 @@ passed on to set the values as described in the arguments below.  Alternatively,
 see [phoebe.parameters.ParameterSet.set_value](phoebe.parameters.ParameterSet.set_value.md) to set/change the values
 after creating the Parameters.
 
+The following constraints are returned, and will automtically be applied
+if attaching to the [phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundle.md) via
+[phoebe.frontend.bundle.Bundle.add_component](phoebe.frontend.bundle.Bundle.add_component.md):
+* [phoebe.parameters.constraint.freq](phoebe.parameters.constraint.freq.md)
+* [phoebe.parameters.constraint.irrad_frac](phoebe.parameters.constraint.irrad_frac.md)
+
 Arguments
 ----------
 * `requiv` (float/quantity, optional): equivalent radius.

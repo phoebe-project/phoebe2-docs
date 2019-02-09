@@ -12,6 +12,9 @@ def get_child_of(self, component, ind, kind=None)
 Get the child (by index) of a component in the
 [phoebe.parameters.HierarchyParameter](phoebe.parameters.HierarchyParameter.md).
 
+To access the HierarchyParameter from the Bundle, see
+ [phoebe.frontend.bundle.Bundle.get_hierarchy](phoebe.frontend.bundle.Bundle.get_hierarchy.md).
+
 See also:
 * [phoebe.parameters.HierarchyParameter.get_parent_of](phoebe.parameters.HierarchyParameter.get_parent_of.md)
 * [phoebe.parameters.HierarchyParameter.get_sibling_of](phoebe.parameters.HierarchyParameter.get_sibling_of.md)

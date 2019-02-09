@@ -11,8 +11,13 @@ def fillout_factor(b, component, solve_for=None, **kwargs)
 
 Create a constraint to determine the fillout factor of a contact envelope.
 
+This constraint is automatically created and attached for all stars
+in contact binary orbits via [phoebe.frontend.bundle.Bundle.set_hierarchy](phoebe.frontend.bundle.Bundle.set_hierarchy.md).
+
 This is usually passed as an argument to
- [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md).
+ [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md) as
+ `b.add_constraint('potential_contact_min', component='common_envelope')`, where `component` is
+ one of [phoebe.parameters.HierarchyParameter.get_envelopes](phoebe.parameters.HierarchyParameter.get_envelopes.md).
 
 Arguments
 -----------
