@@ -26,8 +26,8 @@ The following are automatically included for all orbits, during
 * [phoebe.parameters.constraint.asini](phoebe.parameters.constraint.asini.md)
 * [phoebe.parameters.constraint.ecosw](phoebe.parameters.constraint.ecosw.md)
 * [phoebe.parameters.constraint.esinw](phoebe.parameters.constraint.esinw.md)
-* &lt;phoebe.parameters.constraint.t0_perpass_supconj&gt;
-* &lt;phoebe.parameters.constraint.t0_ref_supconj&gt;
+* [phoebe.parameters.constraint.t0_perpass_supconj](phoebe.parameters.constraint.t0_perpass_supconj.md)
+* [phoebe.parameters.constraint.t0_ref_supconj](phoebe.parameters.constraint.t0_ref_supconj.md)
 * [phoebe.parameters.constraint.mean_anom](phoebe.parameters.constraint.mean_anom.md)
 * [phoebe.parameters.constraint.freq](phoebe.parameters.constraint.freq.md)
 

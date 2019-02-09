@@ -59,7 +59,7 @@ def api_docs(item, skip=[], prefix='', subclass_of=None, write=True, members=[py
         if pydoc.inspect.getdoc(fm[1]):
             output.append('\n')
             docstring = pydoc.HTMLDoc().markup(pydoc.inspect.getdoc(fm[1]))
-            docstring = re.sub(r"(?P<name>&lt;[a-zA-Z_\.]*&gt;)", md_internal_link, docstring)
+            docstring = re.sub(r"(?P<name>&lt;[0a-zA-Z_\.]*&gt;)", md_internal_link, docstring)
             output.append(docstring)
 
         output.append('\n')
