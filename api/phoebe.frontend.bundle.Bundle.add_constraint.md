@@ -20,6 +20,10 @@ See also:
 * [phoebe.frontend.bundle.Bundle.run_constraint](phoebe.frontend.bundle.Bundle.run_constraint.md)
 * [phoebe.frontend.bundle.Bundle.run_delayed_constraint](phoebe.frontend.bundle.Bundle.run_delayed_constraint.md)
 
+For a list of optional built-in constraints, see [phoebe.parameters.constraint](phoebe.parameters.constraint.md)
+including:
+* [phoebe.parameters.constraint.semidetached](phoebe.parameters.constraint.semidetached.md)
+
 The following are automatically included for all orbits, during
 [phoebe.frontend.bundle.Bundle.add_component](phoebe.frontend.bundle.Bundle.add_component.md) for a
 [phoebe.parameters.component.orbit](phoebe.parameters.component.orbit.md):
@@ -39,9 +43,7 @@ The following are automatically included for all stars, during
 
 Additionally, some constraints are automatically handled by the hierarchy in
 [phoebe.frontend.bundle.Bundle.set_hierarchy](phoebe.frontend.bundle.Bundle.set_hierarchy.md) or when loading a default
-system.
-
-The following are automatically included for a
+system.  The following are automatically included for a
 [phoebe.frontend.bundle.Bundle.default_binary](phoebe.frontend.bundle.Bundle.default_binary.md):
 * [phoebe.parameters.constraint.mass](phoebe.parameters.constraint.mass.md)
 * [phoebe.parameters.constraint.comp_sma](phoebe.parameters.constraint.comp_sma.md)
@@ -55,22 +57,6 @@ The following are automatically included for a
 * [phoebe.parameters.constraint.requiv_contact_max](phoebe.parameters.constraint.requiv_contact_max.md) (contact only)
 * [phoebe.parameters.constraint.fillout_factor](phoebe.parameters.constraint.fillout_factor.md) (contact only)
 * [phoebe.parameters.constraint.requiv_to_pot](phoebe.parameters.constraint.requiv_to_pot.md) (contact only)
-
-
-The following are automatically included for a
-[phoebe.frontend.bundle.Bundle.default_star](phoebe.frontend.bundle.Bundle.default_star.md):
-
-
-The following are automatically included for an envelope in a contact
-binary:
-
-
-
-For a list of optional built-in constraints, see [phoebe.parameters.constraint](phoebe.parameters.constraint.md)
-including:
-* [phoebe.parameters.constraint.semidetached](phoebe.parameters.constraint.semidetached.md)
-
-
 
 Arguments
 ------------

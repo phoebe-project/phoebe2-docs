@@ -12,6 +12,9 @@ def set_hierarchy(self, *args, **kwargs)
 Set the hierarchy of the system, and recreate/rerun all necessary
 constraints (can be slow).
 
+For a list of all constraints that are automatically set based on the
+hierarchy, see [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md).
+
 See the built-in functions for building hierarchy reprentations:
 * [phoebe.parmaeters.hierarchy](phoebe.parmaeters.hierarchy.md)
 * [phoebe.parameters.hierarchy.binaryorbit](phoebe.parameters.hierarchy.binaryorbit.md)
