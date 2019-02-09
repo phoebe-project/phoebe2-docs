@@ -23,7 +23,7 @@ See also:
 * [phoebe.frontend.bundle.Bundle.get_constraint](phoebe.frontend.bundle.Bundle.get_constraint.md)
 * [phoebe.frontend.bundle.Bundle.remove_constraint](phoebe.frontend.bundle.Bundle.remove_constraint.md)
 * [phoebe.frontend.bundle.Bundle.flip_constraint](phoebe.frontend.bundle.Bundle.flip_constraint.md)
-* [phoebe.frontend.bundle.Bundle.run_delayed_constraint](phoebe.frontend.bundle.Bundle.run_delayed_constraint.md)
+* [phoebe.frontend.bundle.Bundle.run_delayed_constraints](phoebe.frontend.bundle.Bundle.run_delayed_constraints.md)
 
 Arguments
 -------------
