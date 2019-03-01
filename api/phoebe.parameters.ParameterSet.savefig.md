@@ -22,6 +22,9 @@ Arguments
 * `save` (string): filename to save the figure (or False to not save).
 * `show` (bool, optional, default=False): whether to show the plot
 * `animate` (bool, optional, default=False): whether to animate the figure.
+* `fig` (matplotlib figure, optional): figure to use for plotting.  If
+    not provided, will use plt.gcf().  Ignored unless `save`, `show`,
+    or `animate`.
 * `draw_sidebars` (bool, optional, default=True): whether to include
     any applicable sidebars (colorbar, sizebar, etc).
 * `draw_title` (bool, optional, default=True): whether to draw axes
