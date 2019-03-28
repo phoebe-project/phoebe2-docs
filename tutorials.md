@@ -17,7 +17,7 @@ For more specific use-cases, see the example scripts below.
 
 These tutorials highlight the major changes between versions 2.1.x and 2.2+ in the following topics:
 
-* [Potential/Rpole to Requiv](tutorials/20_21_requiv.ipynb)
+* [Limb Darkening: ld_coeffs_source](tutorials/21_22_ld_coeffs_source.ipynb)
 
 
 ## Advanced tutorials
