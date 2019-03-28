@@ -1,6 +1,6 @@
 # Physics Implemented in PHOEBE
 
-The following tutorials aim to explain the implementation and usage of some of the physical effects that are incorporated in PHOEBE. These explain the relevant parameters and try to demonstrate how they affect the resulting synthetic models, but expect a comfortable understanding of using PHOEBE and python
+The following tutorials aim to explain the implementation and usage of some of the physical effects that are incorporated in PHOEBE. These explain the relevant parameters and try to demonstrate how they affect the resulting synthetic models, but expect a comfortable understanding of using PHOEBE and Python.
 
 * [Various t0s (t0, t0_perpass, t0_supconj, t0_ref)](tutorials/t0s.ipynb)
 * [Equivalent Radius (requiv)](tutorials/requiv.ipynb)
@@ -8,6 +8,7 @@ The following tutorials aim to explain the implementation and usage of some of t
 * [Critical Radii: Detached Systems (requiv_max)](tutorials/requiv_crit_detached.ipynb)
 * [Critical Radii: Semidetached Systems (requiv_max)](tutorials/requiv_crit_semidetached.ipynb)
 * [Critical Radii: Contact Systems (requiv_min & requiv_max)](tutorials/requiv_crit_contact.ipynb)
+* [Surface Gravities (logg)](tutorials/logg.ipynb)
 * [Eccentricity & Volume Conservation (ecc)](tutorials/ecc.ipynb)
 * [Apsidal Motion (dperdt)](tutorials/apsidal_motion.ipynb)
 * [Systemic Velocity (vgamma)](tutorials/vgamma.ipynb)
