@@ -1,9 +1,6 @@
 ## [phoebe](phoebe.md).[atmospheres](phoebe.atmospheres.md).passbands (module)
 
-* [HTTPError](phoebe.atmospheres.passbands.HTTPError.md)
 * [Passband](phoebe.atmospheres.passbands.Passband.md)
-* [URLError](phoebe.atmospheres.passbands.URLError.md)
-* [datetime](phoebe.atmospheres.passbands.datetime.md)
 * [download_passband](phoebe.atmospheres.passbands.download_passband.md)
 * [get_passband](phoebe.atmospheres.passbands.get_passband.md)
 * [install_passband](phoebe.atmospheres.passbands.install_passband.md)
@@ -15,5 +12,3 @@
 * [uninstall_all_passbands](phoebe.atmospheres.passbands.uninstall_all_passbands.md)
 * [update_all_passbands](phoebe.atmospheres.passbands.update_all_passbands.md)
 * [update_passband_available](phoebe.atmospheres.passbands.update_passband_available.md)
-* [urlopen](phoebe.atmospheres.passbands.urlopen.md)
-* [urlretrieve](phoebe.atmospheres.passbands.urlretrieve.md)
