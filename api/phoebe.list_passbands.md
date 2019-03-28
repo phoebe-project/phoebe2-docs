@@ -3,7 +3,7 @@
 
 ```py
 
-def list_passbands(refresh=False)
+def list_passbands(refresh=False, full_dict=False)
 
 ```
 
@@ -24,8 +24,11 @@ Arguments
     of fallback on cached values.  Passing `refresh=True` should only
     be necessary if new passbands have been installed or added to the
     online repository since importing PHOEBE.
+* `full_dict` (bool, optional, default=False): whether to return the full
+    dictionary of information about each passband or just the list
+    of names.
 
 Returns
 --------
-* (list of strings)
+* (list of strings or dictionary)
 

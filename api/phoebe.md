@@ -17,6 +17,7 @@
 * [interactive_off](phoebe.interactive_off.md)
 * [interactive_on](phoebe.interactive_on.md)
 * [linspace](phoebe.linspace.md)
+* [list_all_update_passbands_available](phoebe.list_all_update_passbands_available.md)
 * [list_installed_passbands](phoebe.list_installed_passbands.md)
 * [list_online_passbands](phoebe.list_online_passbands.md)
 * [list_passband_directories](phoebe.list_passband_directories.md)
@@ -30,3 +31,5 @@
 * [parameters](phoebe.parameters.md)
 * [reset_settings](phoebe.reset_settings.md)
 * [uninstall_all_passbands](phoebe.uninstall_all_passbands.md)
+* [update_all_passbands](phoebe.update_all_passbands.md)
+* [update_passband_available](phoebe.update_passband_available.md)

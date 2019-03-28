@@ -53,6 +53,10 @@ Arguments
     you attach a rv to a single component, the model will still only
     compute for that single component.  ALSO NOTE: this option is ignored
     if `detach=True` (at least for now).
+* `overwrite` (boolean, optional, default=model=='latest'): whether to overwrite
+    an existing model with the same `model` tag.  If False,
+    an error will be raised.  This defaults to True if `model` is not provided
+    or is 'latest', otherwise it will default to False.
 * `skip_checks` (bool, optional, default=False): whether to skip calling
     [phoebe.frontend.bundle.Bundle.run_checks](phoebe.frontend.bundle.Bundle.run_checks.md) before computing the model.
     NOTE: some unexpected errors could occur for systems which do not

@@ -23,7 +23,7 @@ be exposed (per-time).
 Arguments
 ------------
 * `compute` (string, optional, default=None): label of the compute
-    options (note required if only one is attached to the bundle).
+    options (not required if only one is attached to the bundle).
 * `component` (string or list of strings, optional): label of the
     component(s) requested. If not provided, will be provided for all
     components in the hierarchy.

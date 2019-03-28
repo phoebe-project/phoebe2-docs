@@ -3,7 +3,7 @@
 
 ```py
 
-def __init__(self, ptf=None, pbset='Johnson', pbname='V', effwl=5500.0, wlunits=Unit("Angstrom"), calibrated=False, reference='', version=1.0, comments='', oversampling=1, from_file=False)
+def __init__(self, ptf=None, pbset='Johnson', pbname='V', effwl=5500.0, wlunits=Unit("Angstrom"), calibrated=False, reference='', version=1.0, comments='', oversampling=1, spl_order=3, from_file=False)
 
 ```
 
@@ -85,6 +85,8 @@ Arguments
     about the passband.
 * `oversampling` (int, optional, default=1): the multiplicative factor
     of PTF dispersion to attain higher integration accuracy.
+* `spl_order` (int, optional, default=3): spline order for fitting
+    the passband transmission function.
 * `from_file` (bool, optional, default=False): a switch that instructs
     the class instance to skip all calculations and load all data from
     the file passed to the [phoebe.atmospheres.passbands.Passband.load](phoebe.atmospheres.passbands.Passband.load.md)

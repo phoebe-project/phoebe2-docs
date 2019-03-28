@@ -3,7 +3,7 @@
 
 ```py
 
-def ldint(self, Teff=5772.0, logg=4.43, abun=0.0, atm='ck2004', ld_func='interp', ld_coeffs=None, photon_weighted=False)
+def ldint(self, Teff=5772.0, logg=4.43, abun=0.0, ldatm='ck2004', ld_func='interp', ld_coeffs=None, photon_weighted=False)
 
 ```
 
@@ -14,7 +14,7 @@ Arguments
 * `Teff`
 * `logg`
 * `abun`
-* `atm`
+* `ldatm`
 * `ld_func` (string, optional, default='interp') limb darkening
     function.  One of: linear, sqrt, log, quadratic, power, interp.
 * `ld_coeffs` (list, optional, default=None): limb darkening coefficients

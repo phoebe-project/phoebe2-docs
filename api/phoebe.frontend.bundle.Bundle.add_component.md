@@ -38,6 +38,9 @@ Arguments
      of a function (as a string) that can be found in the
      [phoebe.parameters.compute](phoebe.parameters.compute.md) module.
 * `component` (string, optional): name of the newly-created feature.
+* `overwrite` (boolean, optional, default=False): whether to overwrite
+    an existing component with the same `component` tag.  If False,
+    an error will be raised.
 * `**kwargs`: default values for any of the newly-created parameters
     (passed directly to the matched callabled function).
 

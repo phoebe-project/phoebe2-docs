@@ -17,12 +17,12 @@ See also:
 * [phoebe.frontend.bundle.Bundle.remove_constraint](phoebe.frontend.bundle.Bundle.remove_constraint.md)
 * [phoebe.frontend.bundle.Bundle.run_constraint](phoebe.frontend.bundle.Bundle.run_constraint.md)
 * [phoebe.frontend.bundle.Bundle.flip_constraint](phoebe.frontend.bundle.Bundle.flip_constraint.md)
-* [phoebe.frontend.bundle.Bundle.run_constraint](phoebe.frontend.bundle.Bundle.run_constraint.md)
 * [phoebe.frontend.bundle.Bundle.run_delayed_constraints](phoebe.frontend.bundle.Bundle.run_delayed_constraints.md)
 
 For a list of optional built-in constraints, see [phoebe.parameters.constraint](phoebe.parameters.constraint.md)
 including:
 * [phoebe.parameters.constraint.semidetached](phoebe.parameters.constraint.semidetached.md)
+* [phoebe.parameters.constraint.logg](phoebe.parameters.constraint.logg.md)
 
 The following are automatically included for all orbits, during
 [phoebe.frontend.bundle.Bundle.add_component](phoebe.frontend.bundle.Bundle.add_component.md) for a
@@ -40,6 +40,7 @@ The following are automatically included for all stars, during
 [phoebe.parameters.component.star](phoebe.parameters.component.star.md):
 * [phoebe.parameters.constraint.freq](phoebe.parameters.constraint.freq.md)
 * [phoebe.parameters.constraint.irrad_frac](phoebe.parameters.constraint.irrad_frac.md)
+* [phoebe.parameters.constraint.logg](phoebe.parameters.constraint.logg.md)
 
 Additionally, some constraints are automatically handled by the hierarchy in
 [phoebe.frontend.bundle.Bundle.set_hierarchy](phoebe.frontend.bundle.Bundle.set_hierarchy.md) or when loading a default

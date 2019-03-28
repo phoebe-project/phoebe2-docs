@@ -55,6 +55,9 @@ Arguments
     valid options for `component` and how it will default if not provided
     based on the value of `kind`.
 * `dataset` (string, optional): name of the newly-created feature.
+* `overwrite` (boolean, optional, default=False): whether to overwrite
+    an existing dataset with the same `dataset` tag.  If False,
+    an error will be raised.
 * `**kwargs`: default values for any of the newly-created parameters
     (passed directly to the matched callabled function).
 

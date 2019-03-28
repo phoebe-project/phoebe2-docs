@@ -3,7 +3,7 @@
 
 ```py
 
-def Inorm(self, Teff=5772.0, logg=4.43, abun=0.0, atm='ck2004', ldint=None, ld_func='interp', ld_coeffs=None, photon_weighted=False)
+def Inorm(self, Teff=5772.0, logg=4.43, abun=0.0, atm='ck2004', ldatm='ck2004', ldint=None, ld_func='interp', ld_coeffs=None, photon_weighted=False)
 
 ```
 
@@ -15,7 +15,8 @@ Arguments
 * `logg`
 * `abun`
 * `atm`
-* `ldint` (string, optional, default='ck2004'): integral of the limb
+* `ldatm`
+* `ldint` (string, optional, default=None): integral of the limb
     darkening function, \int_0^1 \mu L(\mu) d\mu. Its general role is to
     convert intensity to flux. In this method, however, it is only needed
     for blackbody atmospheres because they are not limb-darkened (i.e.

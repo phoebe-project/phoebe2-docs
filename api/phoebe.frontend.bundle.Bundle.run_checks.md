@@ -20,6 +20,9 @@ sent to [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundl
 
 Arguments
 -----------
+* `compute` (string or list of strings, optional, default=None): the
+    compute options to use  when running checks.  If None (or not provided),
+    all available compute options will be considered.
 * `**kwargs`: overrides for any parameter (given as qualifier=value pairs)
 
 Returns

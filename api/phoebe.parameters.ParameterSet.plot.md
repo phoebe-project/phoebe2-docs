@@ -57,6 +57,12 @@ Arguments
 * `ec` (string/float/array, optional): qualifier/twig of the array to use
     for edgecolor (only applicable for mesh plots).
 
+* `i` (string, optional, default='time'): qualifier/twig to use for the
+    independent variable.  In the vast majority of cases, using the default
+    is sufficient.  If `x` is phase, then setting `i` to phase as well
+    will sort and connect the points in phase-order instead of the default
+    behavior or time-order.
+
 * `xerror` (string/float/array, optional): qualifier/twig of the array to plot as
     x-errors (will default based on `x` if not provided).
 * `yerror` (string/float/array, optional): qualifier/twig of the array to plot as

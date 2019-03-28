@@ -38,6 +38,9 @@ Arguments
 * `component` (string, optional): name of the component to attach the
     feature.  Note: only optional if only a single possibility otherwise.
 * `feature` (string, optional): name of the newly-created feature.
+* `overwrite` (boolean, optional, default=False): whether to overwrite
+    an existing feature with the same `feature` tag.  If False,
+    an error will be raised.
 * `**kwargs`: default values for any of the newly-created parameters
     (passed directly to the matched callabled function).
 

@@ -15,7 +15,7 @@ Create a constraint for frequency (either orbital or rotational) given a period.
 freq = 2 * pi / period
 ```
 
-This constraint is automatically added all [phoebe.parameters.component.star](phoebe.parameters.component.star.md)
+This constraint is automatically included for all [phoebe.parameters.component.star](phoebe.parameters.component.star.md)
 and [phoebe.parameters.component.orbit](phoebe.parameters.component.orbit.md) components via
 [phoebe.frontend.bundle.Bundle.add_component](phoebe.frontend.bundle.Bundle.add_component.md).
 

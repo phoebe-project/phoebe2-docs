@@ -9,7 +9,7 @@ def remove_compute(self, compute, **kwargs)
 
 
 
-Remove a 'compute' from the bundleself.
+Remove a 'compute' from the bundle.
 
 See also:
 * [phoebe.parameters.ParameterSet.remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md)

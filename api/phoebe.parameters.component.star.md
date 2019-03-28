@@ -23,6 +23,7 @@ if attaching to the [phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundl
 [phoebe.frontend.bundle.Bundle.add_component](phoebe.frontend.bundle.Bundle.add_component.md):
 * [phoebe.parameters.constraint.freq](phoebe.parameters.constraint.freq.md)
 * [phoebe.parameters.constraint.irrad_frac](phoebe.parameters.constraint.irrad_frac.md)
+* [phoebe.parameters.constraint.logg](phoebe.parameters.constraint.logg.md)
 
 Arguments
 ----------

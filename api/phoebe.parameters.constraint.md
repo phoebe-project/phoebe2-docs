@@ -7,6 +7,8 @@
 * [fillout_factor](phoebe.parameters.constraint.fillout_factor.md)
 * [freq](phoebe.parameters.constraint.freq.md)
 * [irrad_frac](phoebe.parameters.constraint.irrad_frac.md)
+* [log10](phoebe.parameters.constraint.log10.md)
+* [logg](phoebe.parameters.constraint.logg.md)
 * [mass](phoebe.parameters.constraint.mass.md)
 * [mean_anom](phoebe.parameters.constraint.mean_anom.md)
 * [pitch](phoebe.parameters.constraint.pitch.md)

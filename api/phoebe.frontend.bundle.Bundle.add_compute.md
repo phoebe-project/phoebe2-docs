@@ -29,6 +29,9 @@ Arguments
      of a function (as a string) that can be found in the
      [phoebe.parameters.compute](phoebe.parameters.compute.md) module.
 * `compute` (string, optional): name of the newly-created compute options.
+* `overwrite` (boolean, optional, default=False): whether to overwrite
+    an existing set of compute options with the same `compute` tag.  If False,
+    an error will be raised.
 * `**kwargs`: default values for any of the newly-created parameters
     (passed directly to the matched callabled function).
 

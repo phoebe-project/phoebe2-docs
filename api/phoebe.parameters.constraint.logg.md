@@ -1,16 +1,15 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[constraint](phoebe.parameters.constraint.md).irrad_frac (function)
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[constraint](phoebe.parameters.constraint.md).logg (function)
 
 
 ```py
 
-def irrad_frac(b, component, solve_for=None, **kwargs)
+def logg(b, component, solve_for=None, **kwargs)
 
 ```
 
 
 
-Create a constraint to ensure that energy is conserved and all incident
-light is accounted for.
+Create a constraint for logg at requiv for a star.
 
 This constraint is automatically included for all
 [phoebe.parameters.component.star](phoebe.parameters.component.star.md) during
@@ -18,17 +17,17 @@ This constraint is automatically included for all
 
 This is usually passed as an argument to
  [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md) as
- `b.add_constraint('irrad_frac', component='primary')`, where `component` is
+ `b.add_constraint('logg', component='primary')`, where `component` is
  one of [phoebe.parameters.HierarchyParameter.get_stars](phoebe.parameters.HierarchyParameter.get_stars.md).
 
 Arguments
 -----------
 * `b` ([phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundle.md)): the Bundle
-* `component` (string): the label of the orbit or component in which this
+* `component` (string): the label of the component in which this
     constraint should be built.
 * `solve_for` (&lt;phoebe.parameters.Parameter, optional, default=None): if
-    'irrad_frac_lost_bol' should not be the derived/constrained parameter, provide which
-    other parameter should be derived (ie 'irrad_frac_refl_bol').
+    'logg' should not be the derived/constrained parameter, provide which
+    other parameter should be derived (ie 'mass', 'requiv').
 
 Returns
 ----------

@@ -3,7 +3,7 @@
 
 ```py
 
-def export_legacy_ldcoeffs(self, models, filename=None, photon_weighted=True)
+def export_legacy_ldcoeffs(self, models, atm='ck2004', filename=None, photon_weighted=True)
 
 ```
 
@@ -16,6 +16,7 @@ Arguments
 -----------
 * `models` (string): the path (including the filename) of legacy's
     models.list
+* `atm` (string, default='ck2004'): atmosphere model, 'ck2004' or 'phoenix'
 * `filename` (string, optional, default=None): output filename for
     storing the table
 * `photon_weighted` (bool, optional, default=True): photon/energy switch
