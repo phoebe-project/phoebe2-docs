@@ -7,12 +7,12 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system(u'pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system(u'pip install -I "phoebe>=2.2,<2.3"')
 
 
 # As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.html) for more details.
@@ -87,18 +87,24 @@ b['irrad_frac_refl_bol@primary'] = 1.0
 b['irrad_frac_refl_bol@secondary'] = 0.6
 
 
-# Now we'll compute the light curves with wilson and horvat irradiation, and plot the relative differences between the two as a function of phase, for several different values of the inclination.
-# 
-# Note that Figure 8 excluded eclipse effects, but that ability is not included in PHOEBE 2.0, so there will be a slight discrepancy for inclinations which exhibit eclipses.
+# We'll also disable any eclipsing effects.
 
-# In[7]:
+# In[9]:
+
+
+b['eclipse_method'] = 'only_horizon'
+
+
+# Now we'll compute the light curves with wilson and horvat irradiation, and plot the relative differences between the two as a function of phase, for several different values of the inclination.
+
+# In[10]:
 
 
 phases = phoebe.linspace(0,1,101)
 b.add_dataset('lc', times=b.to_time(phases))
 
 
-# In[8]:
+# In[11]:
 
 
 for incl in [0,30,60,90]:
@@ -113,4 +119,10 @@ plt.xlabel('phase')
 plt.ylabel('[F(wilson) - F(horvat)] / F(wilson)')
 plt.legend(loc='upper center')
 plt.show()
+
+
+# In[ ]:
+
+
+
 
