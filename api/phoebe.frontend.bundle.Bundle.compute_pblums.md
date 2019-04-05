@@ -20,6 +20,12 @@ can create a mesh dataset (see [phoebe.frontend.bundle.Bundle.add_dataset](phoeb
 and [phoebe.parameters.dataset.mesh](phoebe.parameters.dataset.mesh.md)) and request any specific pblum to
 be exposed (per-time).
 
+Note:
+* for backends without `atm` compute options, 'ck2004' will be used.
+* for backends without `mesh_method` compute options, the most appropriate
+    method will be chosen.  'roche' will be used whenever applicable,
+    otherwise 'sphere' will be used.
+
 Arguments
 ------------
 * `compute` (string, optional, default=None): label of the compute

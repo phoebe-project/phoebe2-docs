@@ -9,7 +9,7 @@ def list_all_update_passbands_available()
 
 
 
-For convenicence, this function is available at the top-lelve as
+For convenicence, this function is available at the top-level as
 [phoebe.list_all_update_passbands_available](phoebe.list_all_update_passbands_available.md).
 
 See also:

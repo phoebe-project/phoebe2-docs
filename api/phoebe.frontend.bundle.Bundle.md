@@ -13,6 +13,7 @@ Bundle is a subclass of phoebe.parameters.ParameterSet and therefore also includ
 * [add_parameter](phoebe.frontend.bundle.Bundle.add_parameter.md)
 * [add_spot](phoebe.frontend.bundle.Bundle.add_spot.md)
 * [add_star](phoebe.frontend.bundle.Bundle.add_star.md)
+* [compute_ld_coeffs](phoebe.frontend.bundle.Bundle.compute_ld_coeffs.md)
 * [compute_pblums](phoebe.frontend.bundle.Bundle.compute_pblums.md)
 * [default_binary](phoebe.frontend.bundle.Bundle.default_binary.md)
 * [default_star](phoebe.frontend.bundle.Bundle.default_star.md)

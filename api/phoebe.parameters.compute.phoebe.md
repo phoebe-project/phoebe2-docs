@@ -17,6 +17,9 @@ When using this backend, please see the
 [list of publications](https://phoebe-project/org/publications) and cite
 the appropriate references.
 
+See also:
+* [phoebe.frontend.bundle.Bundle.references](phoebe.frontend.bundle.Bundle.references.md)
+
 Generally, this will be used as an input to the kind argument in
 [phoebe.frontend.bundle.Bundle.add_compute](phoebe.frontend.bundle.Bundle.add_compute.md).  If attaching through
 [phoebe.frontend.bundle.Bundle.add_compute](phoebe.frontend.bundle.Bundle.add_compute.md), all `**kwargs` will be
