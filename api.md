@@ -155,6 +155,7 @@ Dealing with time/phase:
 * [remove_compute](api/phoebe.frontend.bundle.Bundle.remove_compute.md)
 * [run_compute](api/phoebe.frontend.bundle.Bundle.run_compute.md)
 * [compute_pblums](api/phoebe.frontend.bundle.Bundle.compute_pblums.md)
+* [compute_ld_coeffs](api/phoebe.frontend.bundle.Bundle.compte_ld_coeffs.md)
 
 ### Model
 
