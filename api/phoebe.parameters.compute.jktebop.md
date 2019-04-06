@@ -20,7 +20,7 @@ Use `jktebop` to compute radial velocities and light curves for binary systems.
 `jktebop` must be installed and available on the system in order to use
 this plugin.  The code is available here (currently tested with v34):
 
-[<a href="http://www.astro.keele.ac.uk/jkt/codes/jktebop.html](http://www.astro.keele.ac.uk/jkt/codes/jktebop.html">http://www.astro.keele.ac.uk/jkt/codes/jktebop.html](http://www.astro.keele.ac.uk/jkt/codes/jktebop.html</a>)
+<a href="http://www.astro.keele.ac.uk/jkt/codes/jktebop.html">http://www.astro.keele.ac.uk/jkt/codes/jktebop.html</a>
 
 Please see the link above for a list of publications to cite when using this
 code.

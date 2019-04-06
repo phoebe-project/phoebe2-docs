@@ -20,7 +20,7 @@ Use `photodynam` to compute radial velocities and light curves.
 `photodynam` must be installed and available on the system in order to use
 this plugin.  The code is available here:
 
-[<a href="http://github.com/phoebe-project/photodynam](http://github.com/phoebe-project/photodynam">http://github.com/phoebe-project/photodynam](http://github.com/phoebe-project/photodynam</a>)
+<a href="http://github.com/phoebe-project/photodynam">http://github.com/phoebe-project/photodynam</a>
 
 When using this backend, please cite
 * Science 4 February 2011: Vol. 331 no. 6017 pp. 562-565 DOI:10.1126/science.1201274
