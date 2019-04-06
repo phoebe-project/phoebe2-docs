@@ -18,7 +18,10 @@ that require per-star limb-darkening coefficients.  Note that the default
 limb-darkening coefficients **per-element**.
 
 Coefficients will only be interpolated/returned for those where `ld_func`
-is not 'interp' and `ld_coeffs_source` is not 'none'.
+is not 'interp' and `ld_coeffs_source` is not 'none'.  The values of
+the `ld_coeffs` parameter will be returned for cases where `ld_func` is
+not `interp` but `ld_coeffs_source` is 'none'.  Cases where `ld_func` is
+'interp' will not be included in the output.
 
 Note:
 * for backends without `atm` compute options, 'ck2004' will be used.
@@ -41,6 +44,6 @@ Arguments
 Returns
 ----------
 * (dict) computed ld_coeffs in a dictionary with keys formatted as
-    component@dataset and the pblums as values (arrays with appropriate
+    component@dataset and the ld_coeffs as values (arrays with appropriate
     length given the respective value of `ld_func`.
 

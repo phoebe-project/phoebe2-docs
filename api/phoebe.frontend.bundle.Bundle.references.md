@@ -27,16 +27,16 @@ Included citations:
 
 Arguments
 ------------
-`compute` (string or list of strings, optional, default=None): only
+* `compute` (string or list of strings, optional, default=None): only
     consider a single (or list of) compute options.  If None or not
     provided, will default to all attached compute options.
-`dataset` (string or list of strings, optional, default=None): only
+* `dataset` (string or list of strings, optional, default=None): only
     consider a single (or list of) datasets.  If None or not provided,
     will default to all attached datasets.
 
 Returns
 ----------
-(dict): dictionary with keys being the reference name and values as a
+* (dict): dictionary with keys being the reference name and values as a
     dictionary with information about that reference: including a
     url if applicable and a list of detected uses within the current
     [phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundle.md).

@@ -16,7 +16,7 @@ Use PHOEBE 1.0 (legacy) which is based on the Wilson-Devinney code
 to compute radial velocities and light curves for binary systems
 (&gt;2 stars not supported).  The code is available here:
 
-<a href="http://phoebe-project.org/1.0">http://phoebe-project.org/1.0</a>
+[<a href="http://phoebe-project.org/1.0](http://phoebe-project.org/1.0">http://phoebe-project.org/1.0](http://phoebe-project.org/1.0</a>)
 
 PHOEBE 1.0 and the 'phoebeBackend' python interface must be installed
 and available on the system in order to use this plugin.
