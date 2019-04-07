@@ -9,6 +9,9 @@ def from_legacy(cls, filename, add_compute_legacy=True, add_compute_phoebe=True)
 
 
 
+For convenience, this function is available at the top-level as
+[phoebe.from_legacy](phoebe.from_legacy.md) as well as [phoebe.frontend.bundle.Bundle.from_legacy](phoebe.frontend.bundle.Bundle.from_legacy.md).
+
 Load a bundle from a PHOEBE 1.0 Legacy file.
 
 This is a constructor so should be called as:
@@ -16,6 +19,9 @@ This is a constructor so should be called as:
 ```py
 b = Bundle.from_legacy('myfile.phoebe')
 ```
+
+See also:
+* [phoebe.parameters.compute.legacy](phoebe.parameters.compute.legacy.md)
 
 Arguments
 ------------

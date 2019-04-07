@@ -9,6 +9,9 @@ def default_star(cls, starA='starA')
 
 
 
+For convenience, this function is available at the top-level as
+[phoebe.default_star](phoebe.default_star.md) as well as [phoebe.frontend.bundle.Bundle.default_star](phoebe.frontend.bundle.Bundle.default_star.md).
+
 Load a bundle with a default single star as the system.
 
 sun

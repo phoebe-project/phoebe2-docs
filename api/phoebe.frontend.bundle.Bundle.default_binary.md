@@ -9,6 +9,10 @@ def default_binary(cls, starA='primary', starB='secondary', orbit='binary', cont
 
 
 
+For convenience, this function is available at the top-level as
+[phoebe.default_binary](phoebe.default_binary.md) as well as
+[phoebe.frontend.bundle.Bundle.default_binary](phoebe.frontend.bundle.Bundle.default_binary.md).
+
 Load a bundle with a default binary as the system.
 
 primary - secondary

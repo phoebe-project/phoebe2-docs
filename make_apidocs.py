@@ -122,7 +122,7 @@ if __name__ == '__main__':
     skip_param = ['set_uniqueid', 'feedback', 'fitting', 'history']
 
     skip_phoebe = ['default_triple', 'devel_off', 'devel_on',
-                   'algorithms', 'atmospheres', 'backend', 'c',
+                   'algorithms', 'backend', 'c',
                    'component', 'compute', 'constraint', 'constraints',
                    'dataset', 'dependencies', 'distortions', 'dynamics',
                    'hierarchy', 'libphoebe', 'u', 'utils', 'Bundle']

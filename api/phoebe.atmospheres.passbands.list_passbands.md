@@ -10,7 +10,8 @@ def list_passbands(refresh=False, full_dict=False)
 
 
 For convenience, this function is available at the top-level as
-[phoebe.list_passbands](phoebe.list_passbands.md).
+[phoebe.list_passbands](phoebe.list_passbands.md) as well as
+[phoebe.atmospheres.passbands.list_passbands](phoebe.atmospheres.passbands.list_passbands.md).
 
 List all available passbands, both installed and available online.
 

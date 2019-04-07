@@ -27,6 +27,16 @@ passed on to set the values as described in the arguments below.  Alternatively,
 see [phoebe.parameters.ParameterSet.set_value](phoebe.parameters.ParameterSet.set_value.md) to set/change the values
 after creating the Parameters.
 
+For example:
+
+```py
+b.add_compute('phoebe')
+b.run_compute(kind='phoebe')
+```
+
+Note that default bundles ([phoebe.frontend.bundle.Bundle.default_binary](phoebe.frontend.bundle.Bundle.default_binary.md), for example)
+include a set of compute options for the phoebe backend.
+
 Arguments
 ----------
 * `enabled` (bool, optional): whether to create synthetics in compute/fitting

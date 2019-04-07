@@ -14,10 +14,10 @@ def photodynam(**kwargs)
 **DO NOT USE FOR SCIENCE**
 
 Create a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) for compute options for Josh
-Carter's `photodynam` code.
+Carter's [photodynam](<a href="http://github.com/phoebe-project/photodynam">http://github.com/phoebe-project/photodynam</a>) code.
 
-Use `photodynam` to compute radial velocities and light curves.
-`photodynam` must be installed and available on the system in order to use
+Use photodynam to compute radial velocities and light curves.
+photodynam must be installed and available on the system in order to use
 this plugin.  The code is available here:
 
 <a href="http://github.com/phoebe-project/photodynam">http://github.com/phoebe-project/photodynam</a>
@@ -79,6 +79,13 @@ Generally, this will be used as an input to the kind argument in
 passed on to set the values as described in the arguments below.  Alternatively,
 see [phoebe.parameters.ParameterSet.set_value](phoebe.parameters.ParameterSet.set_value.md) to set/change the values
 after creating the Parameters.
+
+For example:
+
+```py
+b.add_compute('photodynam')
+b.run_compute(kind='photodynam')
+```
 
 Arguments
 ----------

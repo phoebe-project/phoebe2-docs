@@ -9,8 +9,9 @@ def list_all_update_passbands_available()
 
 
 
-For convenicence, this function is available at the top-level as
-[phoebe.list_all_update_passbands_available](phoebe.list_all_update_passbands_available.md).
+For convenience, this function is available at the top-level as
+[phoebe.list_all_update_passbands_available](phoebe.list_all_update_passbands_available.md) as well as
+[phoebe.atmospheres.passbands.list_all_update_passbands_available](phoebe.atmospheres.passbands.list_all_update_passbands_available.md).
 
 See also:
 * [phoebe.atmospheres.passbands.update_passband_available](phoebe.atmospheres.passbands.update_passband_available.md)

@@ -10,7 +10,8 @@ def update_passband_available(passband)
 
 
 For convenience, this function is available at the top-level as
-[phoebe.update_passband_available](phoebe.update_passband_available.md).
+[phoebe.update_passband_available](phoebe.update_passband_available.md) as well as
+[phoebe.atmospheres.passbands.update_passband_available](phoebe.atmospheres.passbands.update_passband_available.md).
 
 Check if a newer version of a given passband is available from the online repository.
 

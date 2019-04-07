@@ -10,7 +10,8 @@ def download_passband(passband, local=True)
 
 
 For convenience, this function is available at the top-level as
-[phoebe.download_passband](phoebe.download_passband.md).
+[phoebe.download_passband](phoebe.download_passband.md) as well as
+[phoebe.atmospheres.passbands.download_passband](phoebe.atmospheres.passbands.download_passband.md).
 
 Download and install a given passband from the
 [phoebe2-tables](https://github.com/phoebe-project/phoebe2-tables) repository.

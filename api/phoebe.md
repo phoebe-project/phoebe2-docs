@@ -2,6 +2,7 @@
 
 * [arange](phoebe.arange.md)
 * [array](phoebe.array.md)
+* [atmospheres](phoebe.atmospheres.md)
 * [default_binary](phoebe.default_binary.md)
 * [default_star](phoebe.default_star.md)
 * [download_passband](phoebe.download_passband.md)

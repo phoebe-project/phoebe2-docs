@@ -10,7 +10,8 @@ def list_installed_passbands(refresh=False, full_dict=False)
 
 
 For convenience, this function is available at the top-level as
-[phoebe.list_installed_passbands](phoebe.list_installed_passbands.md).
+[phoebe.list_installed_passbands](phoebe.list_installed_passbands.md) as well as
+[phoebe.atmospheres.passbands.list_installed_passbands](phoebe.atmospheres.passbands.list_installed_passbands.md).
 
 List all installed passbands, both in the local and global directories.
 

@@ -10,7 +10,8 @@ def list_passband_directories()
 
 
 For convenience, this function is available at the top-level as
-[phoebe.list_passband_directories](phoebe.list_passband_directories.md).
+[phoebe.list_passband_directories](phoebe.list_passband_directories.md) as well as
+[phoebe.atmospheres.passbands.list_passband_directories](phoebe.atmospheres.passbands.list_passband_directories.md).
 
 List the global and local passband installation directories (in that order).
 

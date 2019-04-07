@@ -10,7 +10,8 @@ def update_all_passbands(local=True)
 
 
 For convenience, this function is available at the top-level as
-[phoebe.update_all_passbands](phoebe.update_all_passbands.md).
+[phoebe.update_all_passbands](phoebe.update_all_passbands.md) as well as
+[phoebe.atmospheres.passbands.update_all_passbands](phoebe.atmospheres.passbands.update_all_passbands.md).
 
 Download and install updates for all passbands from the
 [phoebe2-tables](https://github.com/phoebe-project/phoebe2-tables) repository.

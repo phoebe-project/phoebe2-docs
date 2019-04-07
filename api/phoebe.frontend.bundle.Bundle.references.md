@@ -24,6 +24,7 @@ Included citations:
 * Atmosphere table citations, when available/applicable.
 * Passband table citations, when available/applicable.
 * Dependency (astropy, numpy, etc) citations, when available/applicable.
+* Alternate backends, when applicable.
 
 Arguments
 ------------

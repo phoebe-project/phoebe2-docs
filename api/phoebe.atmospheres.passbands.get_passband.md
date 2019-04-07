@@ -10,7 +10,8 @@ def get_passband(passband)
 
 
 For convenience, this function is available at the top-level as
-[phoebe.get_passbands](phoebe.get_passbands.md).
+[phoebe.get_passbands](phoebe.get_passbands.md) as well as
+[phoebe.atmospheres.passbands.get_passband](phoebe.atmospheres.passbands.get_passband.md).
 
 Access a passband object by name.  If the passband isn't installed, it`
 will be downloaded and installed locally.

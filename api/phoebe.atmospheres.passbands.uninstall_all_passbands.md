@@ -10,7 +10,8 @@ def uninstall_all_passbands(local=True)
 
 
 For convenience, this function is available at the top-level as
-[phoebe.uninstall_all_passbands](phoebe.uninstall_all_passbands.md) (only after 2.1.1).
+[phoebe.uninstall_all_passbands](phoebe.uninstall_all_passbands.md) as well as
+[phoebe.atmospheres.passband.uninstall_all_passbands](phoebe.atmospheres.passband.uninstall_all_passbands.md).
 
 Uninstall all passbands, either globally or locally (need to call twice to
 delete ALL passbands).

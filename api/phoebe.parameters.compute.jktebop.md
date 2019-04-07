@@ -14,10 +14,10 @@ def jktebop(**kwargs)
 **DO NOT USE FOR SCIENCE**
 
 Create a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) for compute options for John
-Southworth's `jktebop` code.
+Southworth's [jktebop](<a href="http://www.astro.keele.ac.uk/jkt/codes/jktebop.html">http://www.astro.keele.ac.uk/jkt/codes/jktebop.html</a>) code.
 
-Use `jktebop` to compute radial velocities and light curves for binary systems.
-`jktebop` must be installed and available on the system in order to use
+Use jktebop to compute radial velocities and light curves for binary systems.
+jktebop must be installed and available on the system in order to use
 this plugin.  The code is available here (currently tested with v34):
 
 <a href="http://www.astro.keele.ac.uk/jkt/codes/jktebop.html">http://www.astro.keele.ac.uk/jkt/codes/jktebop.html</a>
@@ -28,14 +28,12 @@ code.
 See also:
 * [phoebe.frontend.bundle.Bundle.references](phoebe.frontend.bundle.Bundle.references.md)
 
-According to jktebop's website:
-
-    JKTEBOP models the two components as biaxial spheroids for the
-    calculation of the reflection and ellipsoidal effects,
-    and as spheres for the eclipse shapes.
+According to jktebop's website: "jktebop models the two components as
+biaxial spheroids for the calculation of the reflection and ellipsoidal
+effects, and as spheres for the eclipse shapes."
 
 Note that the wrapper around jktebop only uses its forward model.
-`jktebop` also includes its own fitting methods, including bootstrapping.
+jktebop also includes its own fitting methods, including bootstrapping.
 Those capabilities cannot be accessed from PHOEBE.
 
 The following parameters are "exported/translated" when using the jktebop
@@ -75,6 +73,13 @@ Generally, this will be used as an input to the kind argument in
 passed on to set the values as described in the arguments below.  Alternatively,
 see [phoebe.parameters.ParameterSet.set_value](phoebe.parameters.ParameterSet.set_value.md) to set/change the values
 after creating the Parameters.
+
+For example:
+
+```py
+b.add_compute('jktebop')
+b.run_compute(kind='jktebop')
+```
 
 Arguments
 ----------
