@@ -24,6 +24,7 @@ The following tutorials aim to explain the implementation and usage of some of t
 * [Reflection & Heating (irrad_frac_refl_bol, irrad_frac_lost_bol, ld_func_bol, ld_coeffs_bol)](tutorials/reflection_heating.ipynb)
 * [Reflection & Heating: Lambert Scattering (irrad_method='horvat' vs 'wilson')](tutorials/irrad_method_horvat.ipynb)
 * [Beaming & Boosting (boosting_method)](tutorials/beaming_boosting.ipynb)
+* [Spots](tutorials/spots.ipynb)
 * [Eclipse Detection (eclipse_method)](tutorials/eclipse.ipynb)
 * [Intensity Weighting (intens_weighting)](tutorials/intens_weighting.ipynb)
 * [Finite Time of Integration (exptime, fti_method, & fti_oversample)](tutorials/fti.ipynb)
