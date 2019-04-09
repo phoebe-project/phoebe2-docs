@@ -15,15 +15,15 @@
 # Dynamics
 # -------------------
 # 
-# See more information about options for dynamics in the section on the [ORB dataset](ORB)
+# See more information about options for dynamics in the section on the [ORB dataset](ORB.ipynb)
 
 # Meshing
 # ----------------------
 # 
-# See more information about options for meshing as well as the returned columns in the section on the [MESH dataset](MESH)
+# See more information about options for meshing as well as the returned columns in the section on the [MESH dataset](MESH.ipynb)
 # 
 # Related example scripts:
-#   * [Wilson-Devinney Style Meshing Example Script](../examples/mesh_wd)
+#   * [Wilson-Devinney Style Meshing Example Script](../examples/mesh_wd.ipynb)
 #   
 #   
 # 
@@ -31,14 +31,13 @@
 # Local Quantities
 # --------------------
 # 
-# See more information about the options and parameters for computing flux-related local quantities in the section on the [LC dataset](LC)
+# See more information about the options and parameters for computing flux-related local quantities in the section on the [LC dataset](LC.ipynb)
 # 
-# See more information about the options and parameters for computing local radial-velocities in the section on the [RV dataset](RV) (note that flux-weighted RVs also use flux-related local quantities described in the [LC dataset](LC) section).
+# See more information about the options and parameters for computing local radial-velocities in the section on the [RV dataset](RV.ipynb) (note that flux-weighted RVs also use flux-related local quantities described in the [LC dataset](LC.ipynb) section).
 # 
 # Related Example scripts:
-#   * [Reddening and Extinction](../examples/reddening_extinction)
-#   * [Reflection and Heating](../examples/reflection_heating)
-#   * [Beaming and Boosting](../examplsebeaming_boosting)
+#   * [Reflection and Heating](../tutorials/reflection_heating.ipynb)
+#   * [Beaming and Boosting](../tutorials/beaming_boosting.ipynb)
 #   
 # 
 # 
@@ -46,7 +45,7 @@
 # Eclipse Detection
 # ----------------------
 # 
-# See more information about the options for eclipse detection and subdivision in the section on the [MESH dataset](MESH)
+# See more information about the options for eclipse detection and subdivision in the section on the [MESH dataset](MESH.ipynb)
 
 # Integration
 # -----------------
