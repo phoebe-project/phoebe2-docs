@@ -3,7 +3,7 @@
 
 ```py
 
-def default_star(cls, starA='starA')
+def default_star(cls, starA='starA', force_build=False)
 
 ```
 
@@ -23,6 +23,9 @@ Arguments
 -----------
 * `starA` (string, optional, default='starA'): the label to be set for
     starA.
+* `force_build` (bool, optional, default=False): whether to force building
+    the bundle from scratch.  If False, pre-cached files will be loaded
+    whenever possible to save time.  **Introduced in 2.1.6.**
 
 Returns
 -----------
