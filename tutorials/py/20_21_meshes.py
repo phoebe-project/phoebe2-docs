@@ -9,7 +9,7 @@
 # In[ ]:
 
 
-get_ipython().system(u'pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
 
 
 # In this tutorial we will review the changes in the PHOEBE mesh structures. We will first explain the changes and then demonstrate them in code. As usual, let us import phoebe and create a default binary bundle:

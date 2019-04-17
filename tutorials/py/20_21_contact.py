@@ -9,7 +9,7 @@
 # In[ ]:
 
 
-get_ipython().system(u'pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
 
 
 # In PHOEBE 2.1, [rpole and potential have been replaced with requiv](20_21_requiv).  That means that the constraint used to handle semidetached systems has also changed.

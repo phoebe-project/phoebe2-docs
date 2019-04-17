@@ -9,7 +9,7 @@
 # In[ ]:
 
 
-get_ipython().system(u'pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
 
 
 # Although not well-documented, PHOEBE 2.0 included the ability to directly set linspace or arange to an array while only storing the properties (start, stop, step, etc).  If for some reason you managed to find and use the capability, the behavior has changed slightly and is included in a separate package called [nparray](https://github.com/kecnry/nparray), which is included and built within PHOEBE 2.1 as `phoebe.dependencies.nparray`.

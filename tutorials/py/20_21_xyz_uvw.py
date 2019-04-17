@@ -9,7 +9,7 @@
 # In[ ]:
 
 
-get_ipython().system(u'pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
 
 
 # In this tutorial we will review the changes in the coordinate conventions used for plane-of-sky vs Roche coordinates, which applies to both orbit and mesh datasets.
