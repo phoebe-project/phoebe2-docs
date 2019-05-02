@@ -40,10 +40,13 @@ Arguments
     With the exception of phase, `b.get_value(x)` needs to provide a
     valid float or array.  To plot phase along the x-axis, pass
     `x='phases'` or `x=phases:[component]`.  This will use the ephemeris
-    from &lt;phoebe.frontend.bundle.Bundle.get_ephemeris(component) if
+    from [phoebe.frontend.bundle.Bundle.get_ephemeris](phoebe.frontend.bundle.Bundle.get_ephemeris.md)(component) if
     possible to phase the applicable times array.
 * `y` (string/float/array, optional): qualifier/twig of the array to plot on the
-    y-axis (will default based on the dataset-kind if not provided).
+    y-axis (will default based on the dataset-kind if not provided).  To
+    plot residuals along the y-axis, pass `y='residuals'`.  This will
+    call [phoebe.frontend.bundle.Bundle.compute_residuals](phoebe.frontend.bundle.Bundle.compute_residuals.md) for the given
+    dataset/model.
 * `z` (string/float/array, optional): qualifier/twig of the array to plot on the
     z-axis.  By default, this will just order the points on a 2D plot.
     To plot in 3D, also pass `projection='3d'`.

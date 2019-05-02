@@ -30,12 +30,23 @@ AND must point to another [phoebe.parameters.FloatArrayParameter](phoebe.paramet
 Example:
 
 ```py
-b['flux@lc01@model'].interp_value(times=10.2)
+b['fluxes@lc01@model'].interp_value(times=10.2)
 ```
 
-NOTE: Interpolation by phase is not currently supported - but you can use
-[phoebe.frontend.bundle.Bundle.to_time](phoebe.frontend.bundle.Bundle.to_time.md) to convert to a valid
-time first (just make sure its in the bounds of the time array).
+The only exception is when interpolating in phase-space, in which
+case the 'times' qualifier must be found in the ParentPS.  Interpolating
+in phase-space is only allowed if there are no time derivatives present
+in the system.  This can be checked with
+[phoebe.parameters.HierarchyParameter.is_time_dependent](phoebe.parameters.HierarchyParameter.is_time_dependent.md).  To interpolate
+in phases:
+
+```
+b['fluxes@lc01@model'].interp_value(phases=0.5)
+```
+
+Additionally, when interpolating in time but the time is outside the
+available range, phase-interpolation will automatically be attempted,
+with a warning raised via the [phoebe.logger](phoebe.logger.md).
 
 NOTE: this method does not currently support units.  You must provide
 the interpolating value in its default units and are returned the
@@ -43,6 +54,10 @@ value in the default units (no support for quantities).
 
 Arguments
 ----------
+* `component` (string, optional): if interpolating in phases, `component`
+    will be passed along to [phoebe.frontend.bundle.Bundle.to_phase](phoebe.frontend.bundle.Bundle.to_phase.md).
+* `t0` (string/float, optional): if interpolating in phases, `t0` will
+    be passed along to [phoebe.frontend.bundle.Bundle.to_phase](phoebe.frontend.bundle.Bundle.to_phase.md).
 * `**kwargs`: see examples above, must provide a single
     qualifier-value pair to use for interpolation.  In most cases
     this will probably be time=value or wavelength=value.

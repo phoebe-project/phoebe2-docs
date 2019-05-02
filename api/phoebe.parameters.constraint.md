@@ -2,6 +2,7 @@
 
 * [asini](phoebe.parameters.constraint.asini.md)
 * [comp_sma](phoebe.parameters.constraint.comp_sma.md)
+* [compute_phases](phoebe.parameters.constraint.compute_phases.md)
 * [ecosw](phoebe.parameters.constraint.ecosw.md)
 * [esinw](phoebe.parameters.constraint.esinw.md)
 * [fillout_factor](phoebe.parameters.constraint.fillout_factor.md)
@@ -18,6 +19,8 @@
 * [requiv_contact_min](phoebe.parameters.constraint.requiv_contact_min.md)
 * [requiv_detached_max](phoebe.parameters.constraint.requiv_detached_max.md)
 * [requiv_to_pot](phoebe.parameters.constraint.requiv_to_pot.md)
+* [requivratio](phoebe.parameters.constraint.requivratio.md)
+* [requivsum](phoebe.parameters.constraint.requivsum.md)
 * [rotation_period](phoebe.parameters.constraint.rotation_period.md)
 * [semidetached](phoebe.parameters.constraint.semidetached.md)
 * [t0_perpass_supconj](phoebe.parameters.constraint.t0_perpass_supconj.md)

@@ -21,6 +21,10 @@ after creating the Parameters.
 Arguments
 ----------
 * `times` (array/quantity, optional): observed times.
+* `compute_times` (array/quantity, optional): times at which to compute
+    the model.
+* `compute_phases` (array/quantity, optional): phases at which to compute
+    the model.
 
 Returns
 --------

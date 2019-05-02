@@ -2,7 +2,9 @@
 
 ConstraintParameter is a subclass of phoebe.parameters.Parameter and therefore also includes all [phoebe.parameters.Parameter methods](phoebe.parameters.Parameter.md)
 
+* [addl_vars](phoebe.parameters.ConstraintParameter.addl_vars.md)
 * [constrained_parameter](phoebe.parameters.ConstraintParameter.constrained_parameter.md)
+* [constraint_addl_vars](phoebe.parameters.ConstraintParameter.constraint_addl_vars.md)
 * [constraint_func](phoebe.parameters.ConstraintParameter.constraint_func.md)
 * [constraint_kwargs](phoebe.parameters.ConstraintParameter.constraint_kwargs.md)
 * [default_unit](phoebe.parameters.ConstraintParameter.default_unit.md)

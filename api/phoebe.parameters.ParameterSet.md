@@ -6,6 +6,7 @@
 * [component](phoebe.parameters.ParameterSet.component.md)
 * [components](phoebe.parameters.ParameterSet.components.md)
 * [compute](phoebe.parameters.ParameterSet.compute.md)
+* [compute_residuals](phoebe.parameters.ParameterSet.compute_residuals.md)
 * [computes](phoebe.parameters.ParameterSet.computes.md)
 * [constraint](phoebe.parameters.ParameterSet.constraint.md)
 * [constraints](phoebe.parameters.ParameterSet.constraints.md)

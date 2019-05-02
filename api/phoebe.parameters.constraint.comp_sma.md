@@ -28,15 +28,16 @@ Arguments
 * `b` ([phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundle.md)): the Bundle
 * `component` (string): the label of the orbit or component in which this
     constraint should be built.
-* `solve_for` (&lt;phoebe.parameters.Parameter, optional, default=None): if
+* `solve_for` ([phoebe.parameters.Parameter](phoebe.parameters.Parameter.md), optional, default=None): if
     'sma@star' should not be the derived/constrained parameter, provide which
     other parameter should be derived (ie 'q', 'sma@orbit').
 
 Returns
 ----------
 * ([phoebe.parameters.Parameter](phoebe.parameters.Parameter.md), [phoebe.parameters.ConstraintParameter](phoebe.parameters.ConstraintParameter.md), list):
-    lhs (Parameter), rhs (ConstraintParameter), args (list of arguments
-    that were passed to this function)
+    lhs (Parameter), rhs (ConstraintParameter), addl_params (list of additional
+    parameters that may be included in the constraint), kwargs (dict of
+    keyword arguments that were passed to this function).
 
 Raises
 --------

@@ -34,6 +34,9 @@ Arguments
 * `contact_binary` (bool, optional, default=False): whether to also
     add an envelope (with component='contact_envelope') and set the
     hierarchy to a contact binary system.
+* `force_build` (bool, optional, default=False): whether to force building
+    the bundle from scratch.  If False, pre-cached files will be loaded
+    whenever possible to save time.
 
 Returns
 -----------

@@ -21,4 +21,6 @@ HierarchyParameter is a subclass of phoebe.parameters.Parameter and therefore al
 * [get_value](phoebe.parameters.HierarchyParameter.get_value.md)
 * [is_binary](phoebe.parameters.HierarchyParameter.is_binary.md)
 * [is_contact_binary](phoebe.parameters.HierarchyParameter.is_contact_binary.md)
+* [is_misaligned](phoebe.parameters.HierarchyParameter.is_misaligned.md)
+* [is_time_dependent](phoebe.parameters.HierarchyParameter.is_time_dependent.md)
 * [rename_component](phoebe.parameters.HierarchyParameter.rename_component.md)
