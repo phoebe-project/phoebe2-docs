@@ -99,6 +99,7 @@ Importing/exporting from other codes:
 * [get_value](api/phoebe.parameters.ParameterSet.get_value.md)
 * [set_value](api/phoebe.parameters.ParameterSet.set_value.md)
 * [set_value_all](api/phoebe.parameters.ParameterSet.set_value_all.md)
+* [get_quantity](api/phoebe.parameters.ParameterSet.get_quantity.md)
 
 ### Hierarchy
 
@@ -117,6 +118,7 @@ Importing/exporting from other codes:
 * [add_component](api/phoebe.frontend.bundle.Bundle.add_component.md)
 * [get_component](api/phoebe.frontend.bundle.Bundle.get_component.md)
 * [rename_component](api/phoebe.frontend.bundle.Bundle.rename_component.md)
+* [remove_component](api/phoebe.frontend.bundle.Bundle.remove_component.md)
 * [add_orbit](api/phoebe.frontend.bundle.Bundle.add_orbit.md)
 * [get_orbit](api/phoebe.frontend.bundle.Bundle.get_orbit.md)
 * [add_star](api/phoebe.frontend.bundle.Bundle.add_star.md)
@@ -129,6 +131,7 @@ Importing/exporting from other codes:
 * [add_feature](api/phoebe.frontend.bundle.Bundle.add_feature.md)
 * [get_feature](api/phoebe.frontend.bundle.Bundle.get_feature.md)
 * [rename_feature](api/phoebe.frontend.bundle.Bundle.rename_feature.md)
+* [remove_feature](api/phoebe.frontend.bundle.Bundle.remove_feature.md)
 * [add_spot](api/phoebe.frontend.bundle.Bundle.add_spot.md)
 * [get_spot](api/phoebe.frontend.bundle.Bundle.get_spot.md)
 
@@ -155,6 +158,7 @@ Dealing with time/phase:
 * [remove_compute](api/phoebe.frontend.bundle.Bundle.remove_compute.md)
 * [run_compute](api/phoebe.frontend.bundle.Bundle.run_compute.md)
 * [compute_pblums](api/phoebe.frontend.bundle.Bundle.compute_pblums.md)
+* [compute_l3s](api/phoebe.fronted.bundle.Bundle.compute_l3s.md)
 * [compute_ld_coeffs](api/phoebe.frontend.bundle.Bundle.compute_ld_coeffs.md)
 
 ### Model
