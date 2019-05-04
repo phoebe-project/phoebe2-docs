@@ -55,17 +55,13 @@ b.filter(qualifier='l3')
 b.add_dataset('lc', times=np.linspace(0,1,101), dataset='lc01')
 
 
-# We now see that the LC dataset created 'l3' parameters for each of the stars in the system hierarchy
+# We now see that the LC dataset created 'l3' parameters for the new dataset.
 
 # In[5]:
 
 
 b.filter(qualifier='l3')
 
-
-# We can also see that these belong in the 'dataset' section and in the 'lc_dep' kind.  This just means that these are passband-dependent parameters.
-# 
-# This also means that 'l3' will be relevant (and will be created) for RV datasets (when using the 'flux-weighted' method).
 
 # In[6]:
 
@@ -100,7 +96,7 @@ b.run_compute(irrad_method='none', model='with_third_light')
 
 # As expected, adding 5 W/m^3 of third light simply shifts the light curve up by that exact same amount.
 
-# In[11]:
+# In[10]:
 
 
 afig, mplfig = b['lc01'].plot(model='no_third_light')
@@ -116,44 +112,44 @@ afig, mplfig = b['lc01'].plot(model='with_third_light', legend=True, show=True)
 # 
 # To see this we can run both of our models again and look at the values of the intensities in the mesh.
 
-# In[12]:
+# In[11]:
 
 
 b.add_dataset('mesh', times=[0], dataset='mesh01', columns=['intensities@lc01', 'abs_intensities@lc01'])
 
 
-# In[13]:
+# In[12]:
 
 
 b['l3@lc01'] = 0.0
 
 
-# In[14]:
+# In[13]:
 
 
 b.run_compute(irrad_method='none', model='no_third_light')
 
 
-# In[15]:
+# In[14]:
 
 
 b['l3@lc01'] = 5
 
 
+# In[15]:
+
+
+b.run_compute(irrad_method='none', model='with_third_light')
+
+
 # In[16]:
-
-
-b.run_compute(model='with_third_light')
-
-
-# In[19]:
 
 
 print "no_third_light abs_intensities: ", np.nanmean(b.get_value(qualifier='abs_intensities', component='primary', dataset='lc01', model='no_third_light'))
 print "with_third_light abs_intensities: ", np.nanmean(b.get_value(qualifier='abs_intensities', component='primary', dataset='lc01', model='with_third_light'))
 
 
-# In[21]:
+# In[17]:
 
 
 print "no_third_light intensities: ", np.nanmean(b.get_value(qualifier='intensities', component='primary', dataset='lc01', model='no_third_light'))
