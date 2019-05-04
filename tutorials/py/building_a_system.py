@@ -12,7 +12,7 @@
 # In[ ]:
 
 
-get_ipython().system(u'pip install -I "phoebe>=2.0,<2.1"')
+get_ipython().system('pip install -I "phoebe>=2.0,<2.1"')
 
 
 # From now on, we'll just quickly do common setup at the beginning of each tutorial.

@@ -20,7 +20,7 @@
 # In[ ]:
 
 
-get_ipython().system(u'pip install -I "phoebe>=2.0,<2.1"')
+get_ipython().system('pip install -I "phoebe>=2.0,<2.1"')
 
 
 # I don't care about the details, just show/remind me how it's done
@@ -65,7 +65,7 @@ pb.save('my_passband.pb')
 # In[1]:
 
 
-get_ipython().magic(u'matplotlib inline')
+get_ipython().run_line_magic('matplotlib', 'inline')
 import phoebe
 from phoebe import u # units
 import numpy as np

@@ -16,7 +16,7 @@
 # In[ ]:
 
 
-get_ipython().system(u'pip install -I "phoebe>=2.0,<2.1"')
+get_ipython().system('pip install -I "phoebe>=2.0,<2.1"')
 
 
 # This first line is only necessary for ipython noteboooks - it allows the plots to be shown on this page instead of in interactive mode
@@ -24,7 +24,7 @@ get_ipython().system(u'pip install -I "phoebe>=2.0,<2.1"')
 # In[1]:
 
 
-get_ipython().magic(u'matplotlib inline')
+get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 # As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.html) for more details.

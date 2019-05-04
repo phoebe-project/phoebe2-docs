@@ -14,7 +14,7 @@
 # In[1]:
 
 
-get_ipython().magic(u'matplotlib inline')
+get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 # In[2]:

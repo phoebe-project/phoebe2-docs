@@ -20,7 +20,7 @@
 # In[ ]:
 
 
-get_ipython().system(u'pip install -I "phoebe>=2.0,<2.1"')
+get_ipython().system('pip install -I "phoebe>=2.0,<2.1"')
 
 
 # Let's get started with some basic imports

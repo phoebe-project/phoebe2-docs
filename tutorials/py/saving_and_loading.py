@@ -12,7 +12,7 @@
 # In[ ]:
 
 
-get_ipython().system(u'pip install -I "phoebe>=2.0,<2.1"')
+get_ipython().system('pip install -I "phoebe>=2.0,<2.1"')
 
 
 # As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](building_a_system.html) for more details.
@@ -58,7 +58,7 @@ print b.save('test.phoebe')
 # In[4]:
 
 
-get_ipython().system(u'head -n 30 test.phoebe')
+get_ipython().system('head -n 30 test.phoebe')
 
 
 # Loading a Bundle
@@ -108,7 +108,7 @@ b.export_legacy('legacy_export.phoebe')
 # In[9]:
 
 
-get_ipython().system(u'head -n 30 legacy_export.phoebe')
+get_ipython().system('head -n 30 legacy_export.phoebe')
 
 
 # Next

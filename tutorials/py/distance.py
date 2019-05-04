@@ -12,7 +12,7 @@
 # In[ ]:
 
 
-get_ipython().system(u'pip install -I "phoebe>=2.0,<2.1"')
+get_ipython().system('pip install -I "phoebe>=2.0,<2.1"')
 
 
 # As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](building_a_system.html) for more details.
@@ -20,7 +20,7 @@ get_ipython().system(u'pip install -I "phoebe>=2.0,<2.1"')
 # In[1]:
 
 
-get_ipython().magic(u'matplotlib inline')
+get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 # In[2]:

@@ -12,7 +12,7 @@
 # In[ ]:
 
 
-get_ipython().system(u'pip install -I "phoebe>=2.0,<2.1"')
+get_ipython().system('pip install -I "phoebe>=2.0,<2.1"')
 
 
 # As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](building_a_system.html) for more details.
@@ -20,7 +20,7 @@ get_ipython().system(u'pip install -I "phoebe>=2.0,<2.1"')
 # In[1]:
 
 
-get_ipython().magic(u'matplotlib inline')
+get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 # In[2]:
@@ -55,17 +55,13 @@ b.filter(qualifier='l3')
 b.add_dataset('lc', times=np.linspace(0,1,101), dataset='lc01')
 
 
-# We now see that the LC dataset created 'l3' parameters for each of the stars in the system hierarchy
+# We now see that the LC dataset created an 'l3' parameters for the new dataset.
 
 # In[5]:
 
 
 b.filter(qualifier='l3')
 
-
-# We can also see that these belong in the 'dataset' section and in the 'lc_dep' kind.  This just means that these are passband-dependent parameters.
-# 
-# This also means that 'l3' will be relevant (and will be created) for RV datasets (when using the 'flux-weighted' method).
 
 # In[6]:
 
@@ -146,7 +142,7 @@ b['l3@lc01'] = 5
 # In[15]:
 
 
-b.run_compute(model='with_third_light')
+b.run_compute(irrad_method='none', model='with_third_light')
 
 
 # In[16]:
