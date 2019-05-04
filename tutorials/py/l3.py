@@ -39,12 +39,14 @@ b = phoebe.default_binary()
 # Relevant Parameters
 # -----------------------
 # 
-# The 'l3' parameter describes how much third light exists in a given passband.  Since this is passband dependent and only used for flux measurments - it does not yet exist for a new empty Bundle.
+# **NEW in PHOEBE 2.2**: an 'l3_mode' parameter exists for each LC dataset, which determines whether third light will be provided in flux units, or as a fraction of the total flux.
+# 
+# Since this is passband dependent and only used for flux measurments - it does not yet exist for a new empty Bundle.
 
 # In[3]:
 
 
-b.filter(qualifier='l3')
+b.filter(qualifier='l3_mode')
 
 
 # So let's add a LC dataset
@@ -55,22 +57,71 @@ b.filter(qualifier='l3')
 b.add_dataset('lc', times=np.linspace(0,1,101), dataset='lc01')
 
 
-# We now see that the LC dataset created 'l3' parameters for each of the stars in the system hierarchy
+# We now see that the LC dataset created an 'l3_mode' parameter, and since l3_mode is set to 'flux' the 'l3' parameter is also visible.
 
 # In[5]:
 
 
-b.filter(qualifier='l3')
+print(b.filter(qualifier='l3*'))
 
 
-# We can also see that these belong in the 'dataset' section and in the 'lc_dep' kind.  This just means that these are passband-dependent parameters.
+# ## l3_mode = 'flux'
 # 
-# This also means that 'l3' will be relevant (and will be created) for RV datasets (when using the 'flux-weighted' method).
+# When l3_mode is set to 'flux', the 'l3' parameter defines (in flux units) how much extraneous light is added to the light curve in that particular passband/dataset.
 
 # In[6]:
 
 
-print b['l3@lc01']
+print(b.filter(qualifier='l3*'))
+
+
+# In[7]:
+
+
+print(b.get_parameter('l3'))
+
+
+# To compute the fractional third light from the provided value in flux units, call [b.compute_l3s](../api/phoebe.frontend.bundle.Bundle.compute_l3s).  This assumes that the flux of the system is the sum of the extrinsic passband luminosities (see the [pblum tutorial](./pblum.ipynb) for more details on intrinsic vs extrinsic passband luminosities) divided by $4\pi$ at t0@system, and according to the compute options.
+# 
+# Note that calling `compute_l3s` is not necessary, as the backend will handle the conversion automatically.
+
+# In[8]:
+
+
+print(b.compute_l3s())
+
+
+# ## l3_mode = 'fraction of total light'
+# 
+# When l3_mode is set to 'fraction of total light', the 'l3' parameter is now replaced by a 'l3_frac' parameter.
+
+# In[9]:
+
+
+b.set_value('l3_mode', 'fraction of total light')
+
+
+# In[10]:
+
+
+print(b.filter(qualifier='l3*'))
+
+
+# In[11]:
+
+
+print(b.get_parameter('l3_frac'))
+
+
+# Similarly to above, we can convert to actual flux units (under the same assumptions), by calling [b.compute_l3s](../api/phoebe.frontend.bundle.Bundle.compute_l3s.md).
+# 
+# 
+# Note that calling `compute_l3s` is not necessary, as the backend will handle the conversion automatically.
+
+# In[12]:
+
+
+print(b.compute_l3s())
 
 
 # Influence on Light Curves (Fluxes)
@@ -80,19 +131,20 @@ print b['l3@lc01']
 # 
 # To see this we'll compare a light curve with and without "third" light.
 
-# In[7]:
+# In[13]:
 
 
 b.run_compute(irrad_method='none', model='no_third_light')
 
 
-# In[8]:
+# In[14]:
 
 
-b['l3@lc01'] = 5
+b.set_value('l3_mode', 'flux')
+b.set_value('l3', 5)
 
 
-# In[9]:
+# In[15]:
 
 
 b.run_compute(irrad_method='none', model='with_third_light')
@@ -100,7 +152,7 @@ b.run_compute(irrad_method='none', model='with_third_light')
 
 # As expected, adding 5 W/m^3 of third light simply shifts the light curve up by that exact same amount.
 
-# In[11]:
+# In[16]:
 
 
 afig, mplfig = b['lc01'].plot(model='no_third_light')
@@ -116,44 +168,44 @@ afig, mplfig = b['lc01'].plot(model='with_third_light', legend=True, show=True)
 # 
 # To see this we can run both of our models again and look at the values of the intensities in the mesh.
 
-# In[12]:
+# In[17]:
 
 
 b.add_dataset('mesh', times=[0], dataset='mesh01', columns=['intensities@lc01', 'abs_intensities@lc01'])
 
 
-# In[13]:
+# In[18]:
 
 
-b['l3@lc01'] = 0.0
-
-
-# In[14]:
-
-
-b.run_compute(irrad_method='none', model='no_third_light')
-
-
-# In[15]:
-
-
-b['l3@lc01'] = 5
-
-
-# In[16]:
-
-
-b.run_compute(model='with_third_light')
+b.set_value('l3', 0.0)
 
 
 # In[19]:
+
+
+b.run_compute(irrad_method='none', model='no_third_light', overwrite=True)
+
+
+# In[20]:
+
+
+b.set_value('l3', 5)
+
+
+# In[21]:
+
+
+b.run_compute(irrad_method='none', model='with_third_light', overwrite=True)
+
+
+# In[22]:
 
 
 print "no_third_light abs_intensities: ", np.nanmean(b.get_value(qualifier='abs_intensities', component='primary', dataset='lc01', model='no_third_light'))
 print "with_third_light abs_intensities: ", np.nanmean(b.get_value(qualifier='abs_intensities', component='primary', dataset='lc01', model='with_third_light'))
 
 
-# In[21]:
+# In[23]:
 
 
 print "no_third_light intensities: ", np.nanmean(b.get_value(qualifier='intensities', component='primary', dataset='lc01', model='no_third_light'))
