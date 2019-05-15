@@ -25,9 +25,9 @@ script: |
     jupyter nbconvert --to python examples/*ipynb --output-dir=$TRAVIS_BRANCH/examples
     cp tutorials/*ipynb $TRAVIS_BRANCH/tutorials/
     cp examples/*ipynb $TRAVIS_BRANCH/examples/
+    git checkout master
     git add $TRAVIS_BRANCH/tutorials/*
     git add $TRAVIS_BRANCH/examples/*
-    git checkout master
     git commit -m 'TRAVIS: updating ipynb->py sources'
-    git push -q -f origin $TRAVIS_BRANCH > /dev/null 2>&1
+    git push -q -f origin master > /dev/null 2>&1
   fi
