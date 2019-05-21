@@ -81,7 +81,7 @@ b.run_compute(model='run_with_incl_80')
 # - call plt.show() after calling plot
 # - use the returned axes and artist objects however you'd like
 # - pass show=True to the plot method (same as calling plt.show())
-# - pass save='myfilename.png' to the plot method (same as calling plt.savefig('myfilename.png'))
+# - pass save='myfilename' to the plot method (same as calling plt.savefig('myfilename'))
 
 # Default Plots
 # -----------------
