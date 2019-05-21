@@ -81,7 +81,7 @@ b.run_compute(model='run_with_incl_80')
 # - call b.show or b.savefig after calling plot
 # - use the returned autofig and matplotlib figures however you'd like
 # - pass show=True to the plot method.
-# - pass save='myfilename.png' to the plot method. (same as calling plt.savefig('myfilename.png'))
+# - pass save='myfilename' to the plot method. (same as calling plt.savefig('myfilename'))
 
 # Default Plots
 # -----------------

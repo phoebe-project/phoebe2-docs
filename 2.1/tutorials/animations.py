@@ -65,7 +65,7 @@ b.run_compute(irrad_method='none')
 # Default Animations
 # -------------------------
 # 
-# By passing `animate=True` to [b.show()](../api/phoebe.parameters.ParameterSet.show.md), [b.savefig()](../api/phoebe.parameters.ParameterSet.savefig.md), or the final call to [b.plot()](../api/phoebe.parameters.ParameterSet.plot.md) along with `save='filename.gif` or `show=True` will create an animation instead of a static plot.
+# By passing `animate=True` to [b.show()](../api/phoebe.parameters.ParameterSet.show.md), [b.savefig()](../api/phoebe.parameters.ParameterSet.savefig.md), or the final call to [b.plot()](../api/phoebe.parameters.ParameterSet.plot.md) along with `save=filename` or `show=True` will create an animation instead of a static plot.
 # 
 # Alternatively, you can call `afig.animate()` on the returned afig object returned by [b.plot()](../api/phoebe.parameters.ParameterSet.plot.md).
 
