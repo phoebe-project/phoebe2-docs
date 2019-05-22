@@ -24,7 +24,10 @@ computed prior to scaling.
 
 Additionally, an estimate for the total fluxes `pbflux` and `pbflux_ext`
 can optionally be computed.  These will also be computed at t0@system,
-under the spherical assumption where `pbflux = sum(pblum / (4 pi)) + l3`.
+under the spherical assumption where `pbflux = sum(pblum / (4 pi)) + l3`
+or `pbflux_ext = sum(pblum_ext / (4 pi)) + l3`.  Note that in either case,
+the translation from `l3_frac` to `l3` (when necessary) will include
+extrinsic effects.  See also &lt;phoebe.frontend.bundle.Bundle.compute_l3s&gt;.
 
 This method is only for convenience and will be recomputed internally
 within [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md) as needed.

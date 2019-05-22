@@ -51,6 +51,8 @@ Arguments
     run.
 * `atm` (string, optional): atmosphere tables.
 * `gridsize` (float, optional): number of meshpoints for WD.
+* `distortion_method` (string, optional, default='roche'): method to use
+    for distorting stars (legacy only supports roche).
 * `irrad_method` (string, optional): which method to use to handle irradiation.
 * `ie` (bool, optional): whether data should be de-reddened.
 * `rv_method` (string, optional): which method to use for computing radial

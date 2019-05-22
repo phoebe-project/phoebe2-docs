@@ -112,6 +112,8 @@ Arguments
     for finite exposure times.
 * `fti_oversample` (int, optional, default=1): number of integration points
     used to account for finite exposure time.  Only used if `fti_method`='oversample'.
+* `irrad_method` (string, optional, default='none'): method to use for
+    irradiation (ellc does not support irradiation).
 
 
 Returns

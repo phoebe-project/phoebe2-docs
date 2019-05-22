@@ -28,9 +28,9 @@ code.
 See also:
 * [phoebe.frontend.bundle.Bundle.references](phoebe.frontend.bundle.Bundle.references.md)
 
-According to jktebop's website: "jktebop models the two components as
-biaxial spheroids for the calculation of the reflection and ellipsoidal
-effects, and as spheres for the eclipse shapes."
+Note on `distortion_method`: according to jktebop's website, "jktebop models
+the two components as biaxial spheroids for the calculation of the reflection
+and ellipsoidal effects, and as spheres for the eclipse shapes."
 
 Note that the wrapper around jktebop only uses its forward model.
 jktebop also includes its own fitting methods, including bootstrapping.
@@ -86,6 +86,12 @@ Arguments
 * `enabled` (bool, optional): whether to create synthetics in compute/fitting
     run.
 * `ringsize` (float, optional, default=5): integration ring size.
+* `distortion_method` (string, optional, default='sphere/biaxial spheroid'):
+    method to use for distorting stars.  See note above for jktebop's
+    treatment.
+* `irrad_method` (string, optional, default='biaxial spheroid'): method
+    to use for computing irradiation.  See note above regarding jktebop's
+    treatment of `distortion_method`.
 
 Returns
 --------

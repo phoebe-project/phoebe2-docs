@@ -95,6 +95,10 @@ Arguments
     integration.
 * `orbiterror` (float, optional, default=1e-20): error to use for dynamics
     integration.
+* `distortion_method` (string, optional, default='sphere'): method to use
+    for distorting stars (photodynam only supports spherical stars).
+* `irrad_method` (string, optional, default='none'): method to use for
+    irradiation (photodynam does not support irradiation).
 
 Returns
 --------
