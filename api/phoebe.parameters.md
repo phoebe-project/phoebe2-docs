@@ -9,6 +9,7 @@
 * [HierarchyParameter](phoebe.parameters.HierarchyParameter.md)
 * [HistoryParameter](phoebe.parameters.HistoryParameter.md)
 * [IntParameter](phoebe.parameters.IntParameter.md)
+* [JobParameter](phoebe.parameters.JobParameter.md)
 * [Parameter](phoebe.parameters.Parameter.md)
 * [ParameterSet](phoebe.parameters.ParameterSet.md)
 * [SelectParameter](phoebe.parameters.SelectParameter.md)

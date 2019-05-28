@@ -135,7 +135,8 @@ if __name__ == '__main__':
                             'FloatArrayParameter', 'FloatParameter',
                             'HierarchyParameter', 'HistoryParameter',
                             'IntArrayParameter', 'IntParameter',
-                            'JobParameter', 'OrderedDict', 'Parameter',
+                            'JobParameter',
+                            'OrderedDict', 'Parameter',
                             'ParameterSet', 'SelectParameter', 'SocketIO',
                             'StrictVersion', 'StringParameter', 'TwigParameter',
                             'datetime', 'deepcopy', 'fnmatch',
@@ -143,7 +144,7 @@ if __name__ == '__main__':
                             'update_if_client', 'ConstraintVar', 'cfit']
 
     skip_parameters = ['deepcopy', 'fnmatch', 'send_if_client', 'update_if_client',
-                       'JobParameter', 'ConstraintVar', 'DictParameter',
+                       'ConstraintVar', 'DictParameter',
                        'IntArrayParameter', 'TwigParameter', 'autofig', 'datetime',
                        'difflib', 'functools', 'itertools', 'json', 'logging',
                        'np', 'nparray', 'os', 'parameter_from_json', 'parse_json',
@@ -213,5 +214,6 @@ if __name__ == '__main__':
     fms = api_docs(phoebe.parameters.HierarchyParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
     fms_float_param = api_docs(phoebe.parameters.FloatParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
     fms = api_docs(phoebe.parameters.FloatArrayParameter, skip=skip_param+fms_param+fms_float_param, subclass_of='phoebe.parameters.FloatParameter', prefix='phoebe.parameters')
+    fms = api_docs(phoebe.parameters.JobParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
 
     fms = api_docs(phoebe.atmospheres.passbands.Passband, skip=skip_passband, prefix='phoebe.atmospheres.passbands')
