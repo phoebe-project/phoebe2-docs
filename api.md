@@ -69,7 +69,6 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 * [logspace](api/phoebe.logspace.md)
 * [geomspace](api/phoebe.geomspace.md)
 
-
 ## Bundle & ParameterSets
 
 See alphabetical list of [all Bundle methods](api/phoebe.frontend.bundle.Bundle.md) and [all ParameterSet methods](api/phoebe.parameters.ParameterSet.md).
@@ -114,6 +113,11 @@ Importing/exporting from other codes:
 * [run_constraint](api/phoebe.frontend.bundle.Bundle.run_constraint.md)
 * [flip_constraint](api/phoebe.frontend.bundle.Bundle.flip_constraint.md)
 
+Available (optional) constraints ([see all](api/phoebe.parameters.constraint.md)):
+
+* [semidetached](api/phoebe.parameters.constraint.semidetached.md)
+* [logg](api/phoebe.parameters.constraint.logg.md)
+
 ### Components
 
 * [add_component](api/phoebe.frontend.bundle.Bundle.add_component.md)
@@ -127,6 +131,12 @@ Importing/exporting from other codes:
 * [add_envelope](api/phoebe.frontend.bundle.Bundle.add_envelope.md)
 * [get_envelope](api/phoebe.frontend.bundle.Bundle.get_envelope.md)
 
+Available components ([see all](api/phoebe.parameters.component.md)):
+
+* [star](api/phoebe.parameters.component.star.md)
+* [orbit](api/phoebe.parameters.component.orbit.md)
+* [envelope](api/phoebe.parameters.component.envelope.md)
+
 ### Features
 
 * [add_feature](api/phoebe.frontend.bundle.Bundle.add_feature.md)
@@ -135,6 +145,10 @@ Importing/exporting from other codes:
 * [remove_feature](api/phoebe.frontend.bundle.Bundle.remove_feature.md)
 * [add_spot](api/phoebe.frontend.bundle.Bundle.add_spot.md)
 * [get_spot](api/phoebe.frontend.bundle.Bundle.get_spot.md)
+
+Available features ([see all](api/phoebe.parameters.feature.md)):
+
+* [spot](api/phoebe.parameters.feature.spot.md)
 
 ### Datasets
 
@@ -151,6 +165,14 @@ Dealing with time/phase:
 * [to_time](api/phoebe.frontend.bundle.Bundle.to_time.md)
 * [to_phase](api/phoebe.frontend.bundle.Bundle.to_phase.md)
 
+Available datasets ([see all](api/phoebe.parameters.dataset.md)):
+
+* [lc](api/phoebe.parameters.dataset.lc.md)
+* [rv](api/phoebe.parameters.dataset.rv.md)
+* [lp](api/phoebe.parameters.dataset.lp.md)
+* [orb](api/phoebe.parameters.dataset.orb.md)
+* [mesh](api/phoebe.parameters.dataset.mesh.md)
+
 ### Compute
 
 * [add_compute](api/phoebe.frontend.bundle.Bundle.add_compute.md)
@@ -161,6 +183,11 @@ Dealing with time/phase:
 * [compute_pblums](api/phoebe.frontend.bundle.Bundle.compute_pblums.md)
 * [compute_l3s](api/phoebe.fronted.bundle.Bundle.compute_l3s.md)
 * [compute_ld_coeffs](api/phoebe.frontend.bundle.Bundle.compute_ld_coeffs.md)
+
+Available compute backends ([see all](api/phoebe.parameterse.compute.md)):
+
+* [phoebe](api/phoebe.parameters.compute.phoebe.md)
+* [legacy](api/phoebe.parameters.compute.legacy.md)
 
 ### Model
 
