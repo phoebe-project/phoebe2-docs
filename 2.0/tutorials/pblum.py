@@ -76,7 +76,7 @@ print b['pblum_ref']
 print b['pblum_ref@primary']
 
 
-# The 'pblum' parameter is only relevant for each component-dataset pair in which pbscale==pblum.  This component will then have its intensities scaled such that they match the value provided by pblum.  In general, a pblum of 4pi will result in an out-of-eclipse flux of ~1.
+# The 'pblum' parameter is only relevant for each component-dataset pair in which pblum_ref=='self'.  This component will then have its intensities scaled such that they match the value provided by pblum.  In general, a pblum of 4pi will result in an out-of-eclipse flux of ~1.
 
 # In[7]:
 
