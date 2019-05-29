@@ -25,6 +25,6 @@ Returns
 --------
 * (list or None) list of limb-darkening coefficients or None if 'ck2004_ld'
     is not available in [phoebe.atmospheres.passbands.Passband.content](phoebe.atmospheres.passbands.Passband.content.md)
-    (see also &lt;phoebe.atmospheres.passbands.Passband.compute_ck2004_ldcoeffs&gt;)
+    (see also [phoebe.atmospheres.passbands.Passband.compute_ck2004_ldcoeffs](phoebe.atmospheres.passbands.Passband.compute_ck2004_ldcoeffs.md))
     or if `ld_func` is not recognized.
 
