@@ -20,6 +20,7 @@ These tutorials highlight the major changes between versions 2.1.x and 2.2+ in t
 * [Limb Darkening: ld_coeffs_source](tutorials/21_22_ld_coeffs_source.ipynb)
 * [Passband Luminosities: pblum_mode & pblum vs pblum_ext](tutorials/21_22_pblum_mode.ipynb)
 * [Third Light: l3_mode](tutorials/21_22_l3_mode.ipynb)
+* [NEW: Passband Versioning & Updates](tutorials/passband_updates.ipynb)
 * [NEW: compute_times & compute_phases](tutorials/compute_times_phases.ipynb)
 
 
@@ -36,4 +37,5 @@ These all assume comfort with the tutorials listed above, but should not need to
 * [Advanced: Optimizing Performance](tutorials/optimizing.ipynb)
 * [Advanced: Detaching from Run Compute](tutorials/detach.ipynb)
 * [Advanced: Adding Custom Passband Tables](tutorials/passbands.ipynb)
+* [Advanced: Passband Versioning & Updates](tutorials/passband_updates.ipynb)
 * [Advanced: Settings](tutorials/settings.ipynb)
