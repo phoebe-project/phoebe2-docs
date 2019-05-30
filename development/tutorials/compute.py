@@ -9,15 +9,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
+# As always, let's do imports and initialize a logger and a new Bundle.  See the [building a system tutorial](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -32,7 +32,7 @@ logger = phoebe.logger()
 b = phoebe.default_binary()
 
 
-# And we'll attach some dummy datasets.  See [Datasets](datasets.ipynb) for more details.
+# And we'll attach some dummy datasets.  See the [datasets tutorial](datasets.ipynb) for more details.
 
 # In[2]:
 
@@ -56,13 +56,13 @@ b.add_dataset(phoebe.dataset.lc, times=times, fluxes=fluxes, sigmas=sigmas, data
 # In[3]:
 
 
-print b.computes
+print(b.computes)
 
 
 # In[4]:
 
 
-print b.filter(context='compute')
+print(b.filter(context='compute'))
 
 
 # In[5]:
@@ -89,7 +89,7 @@ b.add_compute(phoebe.compute.phoebe, compute='preview', irrad_method='none')
 # In[7]:
 
 
-print b['preview@compute']
+print(b['preview@compute'])
 
 
 # In[8]:
@@ -101,7 +101,7 @@ b.add_compute('phoebe', compute='detailed', irrad_method='wilson')
 # In[9]:
 
 
-print b.get_compute('detailed')
+print(b.get_compute('detailed'))
 
 
 # Editing Compute Options
@@ -113,22 +113,22 @@ print b.get_compute('detailed')
 # 
 # The PHOEBE 2.0 compute options are described in the tutorial on their relevant dataset types:
 # 
-# * [Orbits (orb)](./ORB.ipynb)
-# * [Meshes (mesh)](./MESH.ipynb)
 # * [Light Curves/Fluxes (lc)](./LC.ipynb)
 # * [Radial Velocities (rv)](./RV.ipynb)
 # * [Line Profiles (lp)](./LP.ipynb)
+# * [Orbits (orb)](./ORB.ipynb)
+# * [Meshes (mesh)](./MESH.ipynb)
 
 # ### Enabling/Disabling Datasets
 # 
 # By default, synthetic models will be created for all datasets in the Bundle when [run_compute](../api/phoebe.frontend.bundle.Bundle.run_commpute.md) is called.  But you can disable a dataset to have run_compute ignore that dataset.  This is handled by a [BoolParameter](../api/phoebe.parameters.BoolParameter.md) with the qualifier 'enabled' - and has a copy that lives in each set of compute options
 # 
-# Let's say we wanted to compute the orbit but not light curve - so we want to see enabled@lc01:
+# Let's say we wanted to compute the orbit but not light curve - so we want to set enabled@lc01:
 
 # In[10]:
 
 
-print b['enabled@lc01']
+print(b['enabled@lc01'])
 
 
 # as you can see, there is a copy for both of our compute options ('preview' and 'detailed').
@@ -139,7 +139,7 @@ print b['enabled@lc01']
 
 
 b['enabled@lc01@preview'] = False
-print b['enabled@lc01']
+print(b['enabled@lc01'])
 
 
 # or to enable/disable a dataset for all sets of compute options, we can use the set_value_all method:
@@ -148,7 +148,7 @@ print b['enabled@lc01']
 
 
 b.set_value_all('enabled@lc01', False)
-print b['enabled@lc01']
+print(b['enabled@lc01'])
 
 
 # If the enabled parameter is missing for a set of compute options - it is likely that that particular backend does not support that dataset type.
@@ -162,7 +162,7 @@ print b['enabled@lc01']
 # 
 # You do not need to provide the compute tag if only 0 or 1 set of compute options exist in the Bundle.  If there are no compute options, the default PHOEBE 2.0 options will be added on your behalf and used.  If there is a single set of compute options, those will be assumed.  In our case, we have two compute options in the Bundle (with tags 'preview' and 'detailed') so we *must* provide an argument for compute.
 # 
-# If you do not provide a tag for the model, one will be created for you called 'latest'.  Note that any existing model with the same tag will immediately be overwritten once you call run_compute, so if you want to maintain the results from previous calls to run_compute, you must provide a NEW model tag.
+# If you do not provide a tag for the model, one will be created for you called 'latest'.  Note that the 'latest' model will be overwritten without throwing any errors, whereas other named models can only be overwritten if you pass `overwrite=True` (see the [run_compute API docs](../api/phoebe.frontend.bundle.Bundle.run_compute.md) for details).  In general, though, if you want to maintain the results from previous calls to run_compute, you must provide a NEW model tag.
 
 # In[13]:
 
@@ -173,7 +173,7 @@ b.run_compute(compute='preview')
 # In[14]:
 
 
-b.models
+print(b.models)
 
 
 # ### Storing Models
@@ -206,8 +206,77 @@ b.run_compute(compute='preview', model='run_with_incl_80')
 # In[18]:
 
 
-b.models
+print(b.models)
 
+
+# To remove a model, call [remove_model](../api/phoebe.frontend.bundle.Bundle.remove_model).
+
+# In[19]:
+
+
+b.remove_model('latest')
+
+
+# In[20]:
+
+
+print(b.models)
+
+
+# ### Overriding Times
+# 
+# #### times kwarg in run_compute
+# 
+# You can pass `times` to run_compute to override the times across *all datasets*.
+
+# In[21]:
+
+
+b.run_compute(compute='preview', 
+              times=[0,0.1,0.2], 
+              model='override_times')
+
+
+# In[22]:
+
+
+print("dataset times: {}\nmodel times: {}".format(
+    b.get_value('times', component='primary', dataset='orb01', context='dataset'),
+    b.get_value('times', component='primary', dataset='orb01', model='override_times')))
+
+
+# #### compute_times parameter
+# 
+# **NEW in PHOEBE 2.2**
+# 
+# Alternatively, you can override the times (or phases) per-dataset at which the model should be computed.  This is particularly useful if you have attached real data (with a large number of data points) but want the model computed at only a subset of times.
+# 
+# Note that the method above (sending `times` as a keyword argument to run_compute) will take precedence over `compute_times`.
+
+# In[23]:
+
+
+b.set_value('compute_times', dataset='orb01', value=[0, 0.2, 0.4])
+
+
+# In[24]:
+
+
+b.run_compute(compute='preview',  
+              model='override_compute_times')
+
+
+# In[25]:
+
+
+print("dataset times: {}\ndataset compute_times: {}\ndataset compute_phases: {}\n model times: {}".format(
+    b.get_value('times', component='primary', dataset='orb01', context='dataset'),
+    b.get_value('compute_times', dataset='orb01', context='dataset'),
+    b.get_value('compute_phases', dataset='orb01', context='dataset'),
+    b.get_value('times', component='primary', dataset='orb01', model='override_compute_times')))
+
+
+# for more details, see the [advanced: compute times & phases tutorial](compute_times_phases.ipynb).
 
 # ### Running Compute with Multiple Sets of Options
 # 
@@ -219,48 +288,48 @@ b.models
 # 
 # A given dataset can only be enabled in up to 1 of the compute options we're sending to run_compute.  So let's take care of that first (if we don't, we'd get an error when trying to call run_compute):
 
-# In[19]:
+# In[26]:
 
 
-print b['enabled@orb01']
+print(b['enabled@orb01'])
 
 
-# In[20]:
+# In[27]:
 
 
 b.set_value_all('enabled@orb01@detailed', False)
 b.set_value_all('enabled@orb01@preview', True)
-print b['enabled@orb01']
+print(b['enabled@orb01'])
 
 
 # We probably have the same problem with 'lc01', but just didn't get far enough to raise the error.  So let's fix that as well
 
-# In[21]:
+# In[28]:
 
 
-print b['enabled@lc01']
+print(b['enabled@lc01'])
 
 
-# In[22]:
+# In[29]:
 
 
 b.set_value_all('enabled@lc01@detailed', True)
 b.set_value_all('enabled@lc01@preview', False)
-print b['enabled@lc01']
+print(b['enabled@lc01'])
 
 
 # So in this case, 'lc01' will be computed using the options in 'detailed' while 'orb01' will use the options in 'preview'.
 
-# In[23]:
+# In[30]:
 
 
 b.run_compute(compute=['detailed', 'preview'], model='multiplecompute')
 
 
-# In[24]:
+# In[31]:
 
 
-b.models
+print(b.models)
 
 
 # Accessing Synthetics from Models
@@ -268,19 +337,19 @@ b.models
 # 
 # The synthetics can be accessed by their dataset and model tags.
 
-# In[25]:
+# In[32]:
 
 
 b['run_with_incl_90']
 
 
-# In[26]:
+# In[33]:
 
 
 b['primary@run_with_incl_90']
 
 
-# In[29]:
+# In[34]:
 
 
 b['us@primary@run_with_incl_90']
@@ -288,19 +357,19 @@ b['us@primary@run_with_incl_90']
 
 # or of course through method access:
 
-# In[30]:
+# In[35]:
 
 
-print b.get_value(qualifier='us', dataset='orb01', component='primary', model='run_with_incl_90')[:10]
+print(b.get_value(qualifier='us', dataset='orb01', component='primary', model='run_with_incl_90')[:10])
 
 
 # For more details about the resulting Parameters in the model context, see the tutorial on the relevant dataset types:
 # 
-# * [Orbits (orb)](./ORB.ipynb)
-# * [Meshes (mesh)](./MESH.ipynb)
 # * [Light Curves/Fluxes (lc)](./LC.ipynb)
 # * [Radial Velocities (rv)](./RV.ipynb)
 # * [Line Profiles (lp)](./LP.ipynb)
+# * [Orbits (orb)](./ORB.ipynb)
+# * [Meshes (mesh)](./MESH.ipynb)
 
 # Next
 # ----------
