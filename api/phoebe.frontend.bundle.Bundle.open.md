@@ -22,6 +22,11 @@ This is a constructor so should be called as:
 b = Bundle.open('test.phoebe')
 ```
 
+If opening a bundle from an older version of PHOEBE, this will attempt
+to make any necessary migrations.  Enable a logger at 'warning' (or higher)
+level to see messages regarding these migrations.  To enable a logger,
+see [phoebe.logger](phoebe.logger.md).
+
 See also:
 * [phoebe.parameters.ParameterSet.open](phoebe.parameters.ParameterSet.open.md)
 * [phoebe.parameters.Parameter.open](phoebe.parameters.Parameter.open.md)

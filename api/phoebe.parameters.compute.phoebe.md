@@ -14,7 +14,7 @@ PHOEBE 2 backend.  This is the default built-in backend so no other
 pre-requisites are required.
 
 When using this backend, please see the
-[list of publications](<a href="http://phoebe-project.org/publications">http://phoebe-project.org/publications</a>) and cite
+<a href="http://phoebe-project.org/publications">http://phoebe-project.org/publications</a> and cite
 the appropriate references.
 
 See also:

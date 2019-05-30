@@ -196,6 +196,11 @@ Available compute backends ([see all](api/phoebe.parameterse.compute.md)):
 * [rename_model](api/phoebe.frontend.bundle.Bundle.rename_model.md)
 * [remove_model](api/phoebe.frontend.bundle.Bundle.remove_model.md)
 
+Methods that act on resulting models:
+
+* [plot](api/phoebe.parameters.ParameterSet.plot.md)
+* [compute_residuals](api/phoebe.parameters.ParameterSet.compute_residuals.md)
+
 ### Plotting
 
 * [plot](api/phoebe.parameters.ParameterSet.plot.md)

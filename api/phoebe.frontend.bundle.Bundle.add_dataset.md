@@ -41,6 +41,32 @@ The value of `component` will default as follows:
     children components.  Optionally, you can override this by providing
     a subset (or single entry) of the stars or orbits in the hierarchy.
 
+Additional keyword arguments (`**kwargs`) will be applied to the resulting
+parameters, whenever possible.  See [phoebe.parameters.ParameterSet.set_value](phoebe.parameters.ParameterSet.set_value.md)
+for changing the values of a [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) after it has
+been attached.
+
+The following formats are acceptable, when applicable:
+
+* when passed as a single key-value pair (`times = [0,1,2,3]`), the passed
+    value will be applied to all parameters with qualifier of 'times',
+    including any with component = '_default' (in which case the value
+    will be copied to new parameters whenver a new component is added
+    to the system).
+* when passed as a single key-value pair (`times = [0, 1, 2, 3]`), **but**
+    `component` (or `components`) is also passed (`component = ['primary']`),
+    the passed value will be applied to all parameters with qualifier
+    of 'times' and one of the passed components.  In this case, component
+    = '_default' will not be included, so the value will not be copied
+    to new parameters whenever a new component is added.
+* when passed as a dictionary (`times = {'primary': [0,1], 'secondary': [0,1,2]}`),
+    separate values will be applied to parameters based on the component
+    provided (eg. for different times/rvs per-component for RV datasets)
+    or any general twig filter (eg. for different flux_densities per-time
+    and per-component: `flux_densities = {'0.00@primary': [...], ...}`).
+    Note that component = '_default' will only be set if it is included
+    in the dictionary.
+
 Arguments
 ----------
 * `kind` (string): function to call that returns a
@@ -53,13 +79,15 @@ Arguments
     the observables.  For light curves this should be left at None to always
     compute the light curve for the entire system.  See above for the
     valid options for `component` and how it will default if not provided
-    based on the value of `kind`.
-* `dataset` (string, optional): name of the newly-created feature.
+    based on the value of `kind` as well as how it affects the application
+    of any passed values to `**kwargs`.
+* `dataset` (string, optional): name of the newly-created dataset.
 * `overwrite` (boolean, optional, default=False): whether to overwrite
     an existing dataset with the same `dataset` tag.  If False,
-    an error will be raised.
+    an error will be raised if a dataset already exists with the same name.
 * `**kwargs`: default values for any of the newly-created parameters
-    (passed directly to the matched callabled function).
+    (passed directly to the matched callabled function).  See examples
+    above for acceptable formats.
 
 Returns
 ---------
@@ -68,5 +96,7 @@ Returns
 
 Raises
 ----------
+* ValueError: if a dataset with the provided `dataset` already exists,
+    but `overwrite` is not set to True.
 * NotImplementedError: if a required constraint is not implemented.
 
