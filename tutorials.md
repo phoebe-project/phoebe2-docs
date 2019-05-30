@@ -20,7 +20,7 @@ These tutorials highlight the major changes between versions 2.1.x and 2.2+ in t
 * [Limb Darkening: ld_coeffs_source](tutorials/21_22_ld_coeffs_source.ipynb)
 * [Passband Luminosities: pblum_mode & pblum vs pblum_ext](tutorials/21_22_pblum_mode.ipynb)
 * [Third Light: l3_mode](tutorials/21_22_l3_mode.ipynb)
-* [NEW: Compute Times & Phases](tutorials/compute_times_phasese.ipynb)
+* [NEW: compute_times & compute_phases](tutorials/compute_times_phases.ipynb)
 
 
 ## Advanced tutorials
