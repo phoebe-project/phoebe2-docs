@@ -17,6 +17,7 @@ To access the HierarchyParameter from the Bundle, see
  [phoebe.frontend.bundle.Bundle.get_hierarchy](phoebe.frontend.bundle.Bundle.get_hierarchy.md).
 
 See also:
+* [phoebe.parameters.HierarchyParameter.is_meshable](phoebe.parameters.HierarchyParameter.is_meshable.md)
 * [phoebe.parameters.HierarchyParameter.get_components](phoebe.parameters.HierarchyParameter.get_components.md)
 * [phoebe.parameters.HierarchyParameter.get_top](phoebe.parameters.HierarchyParameter.get_top.md)
 * [phoebe.parameters.HierarchyParameter.get_stars](phoebe.parameters.HierarchyParameter.get_stars.md)
