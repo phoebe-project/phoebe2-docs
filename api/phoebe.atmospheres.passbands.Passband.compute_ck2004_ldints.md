@@ -13,5 +13,5 @@ Computes integrated limb darkening profiles for ck2004 atmospheres.
 These are used for intensity-to-flux transformations. The evaluated
 integral is:
 
-ldint = 2 \pi \int_0^1 Imu mu dmu
+ldint = 2 \int_0^1 Imu mu dmu
 
