@@ -20,16 +20,16 @@ This is usually passed as an argument to
  `b.add_constraint('mass', component='primary')`, where `component` is
  one of [phoebe.parameters.HierarchyParameter.get_stars](phoebe.parameters.HierarchyParameter.get_stars.md).
 
-If 'mass' does not exist in the component, it will be created.
-
 Arguments
 -----------
 * `b` ([phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundle.md)): the Bundle
 * `component` (string): the label of the orbit or component in which this
     constraint should be built.
 * `solve_for` ([phoebe.parameters.Parameter](phoebe.parameters.Parameter.md), optional, default=None): if
-    'mass should not be the derived/constrained parameter, provide which
-    other parameter should be derived (ie 'period', 'sma', 'q').
+    'mass' should not be the derived/constrained parameter, provide which
+    other parameter should be derived (ie 'period', 'sma', 'q').  Note:
+    you cannot solve_for 'period' and 'sma' in the same orbit as the solution
+    will not be unique.
 
 Returns
 ----------

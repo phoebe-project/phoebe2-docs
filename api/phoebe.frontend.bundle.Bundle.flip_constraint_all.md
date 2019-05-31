@@ -1,18 +1,18 @@
-### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[Bundle](phoebe.frontend.bundle.Bundle.md).flip_constraint (method)
+### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[Bundle](phoebe.frontend.bundle.Bundle.md).flip_constraint_all (method)
 
 
 ```py
 
-def flip_constraint(self, twig=None, solve_for=None, **kwargs)
+def flip_constraint_all(self, twig=None, solve_for=None, **kwargs)
 
 ```
 
 
 
-Flip an existing constraint to solve for a different parameter.
+Flip a multiple existing constraints to solve for a different parameter.
 
 See also:
-* [phoebe.frontend.bundle.Bundle.flip_constraint_all](phoebe.frontend.bundle.Bundle.flip_constraint_all.md)
+* [phoebe.frontend.bundle.Bundle.flip_constraint](phoebe.frontend.bundle.Bundle.flip_constraint.md)
 * [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md)
 * [phoebe.frontend.bundle.Bundle.get_constraint](phoebe.frontend.bundle.Bundle.get_constraint.md)
 * [phoebe.frontend.bundle.Bundle.remove_constraint](phoebe.frontend.bundle.Bundle.remove_constraint.md)
@@ -22,10 +22,8 @@ See also:
 Arguments
 ----------
 * `twig` (string, optional, default=None): twig to filter the constraint.
-    This (along with `**kwargs`) must resolve to a single constraint or
-    else a ValueError will be raised.  See
-    [phoebe.frontend.bundle.Bundle.flip_constraint_all](phoebe.frontend.bundle.Bundle.flip_constraint_all.md) for flipping
-    multiple constraints at once.
+    If multiple constraints are returned from this and `**kwargs`, each
+    will attempt to be flipped for the same value of `solve_for`
 * `solve_for` (string or Parameter, optional, default=None): twig or
     [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) object of the new parameter for which
     this constraint should constrain (solve for).
@@ -39,7 +37,4 @@ Raises
 --------
 * ValueError: if the constraint cannot be flipped because one of the
     dependent parameters is currently nan.
-* ValueError: if cannot resolve to a single constraint.  See
-    [phoebe.frontend.bundle.Bundle.flip_constraint_all](phoebe.frontend.bundle.Bundle.flip_constraint_all.md) for flipping
-    multiple constraints at once.
 

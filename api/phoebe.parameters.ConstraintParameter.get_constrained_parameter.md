@@ -21,5 +21,5 @@ See also:
 
 Returns
 -------
-* ([phoebe.parameters](phoebe.parameters.md)parameter&gt;)
+* ([phoebe.parameters.Parameter](phoebe.parameters.Parameter.md))
 

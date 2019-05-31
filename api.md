@@ -116,6 +116,7 @@ Importing/exporting from other codes:
 * [get_constraint](api/phoebe.frontend.bundle.Bundle.get_constraint.md)
 * [run_constraint](api/phoebe.frontend.bundle.Bundle.run_constraint.md)
 * [flip_constraint](api/phoebe.frontend.bundle.Bundle.flip_constraint.md)
+* [flip_constraint_all](api/phoebe.frontend.bundle.Bundle.flip_constraint_all.md)
 
 Available (optional) constraints ([see all](api/phoebe.parameters.constraint.md)):
 
