@@ -15,17 +15,13 @@
 get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and create a new Bundle.  See [Building a System](building_a_system.html) for more details.
 
 # In[1]:
 
 
 import phoebe
 from phoebe import u # units
-import numpy as np
-import matplotlib.pyplot as plt
-
-logger = phoebe.logger()
 
 b = phoebe.default_binary()
 
@@ -131,15 +127,15 @@ b.get_parameter('fluxes', context='model').get_value()
 b.get_parameter('fluxes', context='model').interp_value(times=1.0)
 
 
-# In[14]:
+# In[15]:
 
 
-b.get_parameter('fluxes', context='model').interp_value(times=np.linspace(0,3,101))
+b.get_parameter('fluxes', context='model').interp_value(times=phoebe.linspace(0,3,101))
 
 
 # In the case of times, this will *automatically* interpolate in phase-space if the provided time is outside the range of the referenced times array.  If you have a logger enabled with at least the 'warning' level, this will raise a warning and state the phases at which the interpolation will be completed.
 
-# In[15]:
+# In[16]:
 
 
 b.get_parameter('fluxes', context='model').interp_value(times=5)
@@ -154,7 +150,7 @@ b.get_parameter('fluxes', context='model').interp_value(times=5)
 # 
 # To see this in action, we'll first create a "fake" observational dataset, add some noise, recompute the model using `compute_phases`, and then compute the residuals.
 
-# In[16]:
+# In[17]:
 
 
 b.add_dataset('lc', 
@@ -163,50 +159,50 @@ b.add_dataset('lc',
               overwrite=True)
 
 
-# In[17]:
+# In[18]:
 
 
 b.run_compute(irrad_method='none')
 
 
-# In[18]:
+# In[19]:
 
 
 fluxes = b.get_value('fluxes', context='model')
 b.set_value('fluxes', context='dataset', value=fluxes)
 
 
-# In[19]:
+# In[20]:
 
 
 b.flip_constraint('compute_phases', solve_for='compute_times')
 
 
-# In[20]:
+# In[21]:
 
 
 b.set_value('compute_phases', phoebe.linspace(0,1,101))
 
 
-# In[21]:
+# In[22]:
 
 
 b.set_value('teff', component='primary', value=5950)
 
 
-# In[22]:
+# In[23]:
 
 
 b.run_compute(irrad_method='none')
 
 
-# In[23]:
+# In[24]:
 
 
 print(len(b.get_value('fluxes', context='dataset')), len(b.get_value('fluxes', context='model')))
 
 
-# In[24]:
+# In[25]:
 
 
 b.compute_residuals()
@@ -214,7 +210,7 @@ b.compute_residuals()
 
 # If we plot the dataset and model, we see that the model was only computed for one cycle, whereas the dataset extends further in time.
 
-# In[25]:
+# In[26]:
 
 
 afig, mplfig = b.plot(show=True)
@@ -222,14 +218,8 @@ afig, mplfig = b.plot(show=True)
 
 # But we can also plot the residuals.  Here, [compute_residuals](../api/phoebe.parameters.ParameterSet.compute_residuals.md) is called internally, interpolating in phase-space, and then plotted in time-space.  See the options for `y` in the [plot API docs](../api/phoebe.parameters.ParameterSet.plot.md) for more details.
 
-# In[26]:
+# In[27]:
 
 
 afig, mplfig = b.plot(y='residuals', show=True)
-
-
-# In[ ]:
-
-
-
 
