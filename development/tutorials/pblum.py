@@ -7,12 +7,12 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
 # As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](building_a_system.html) for more details.
@@ -29,7 +29,6 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 import phoebe
 from phoebe import u # units
 import numpy as np
-import matplotlib.pyplot as plt
 
 logger = phoebe.logger()
 
@@ -41,10 +40,10 @@ b = phoebe.default_binary()
 # In[3]:
 
 
-b.add_dataset('lc', times=np.linspace(0,1,101), dataset='lc01')
+b.add_dataset('lc', times=phoebe.linspace(0,1,101), dataset='lc01')
 
 
-# Lastly, just to make things a bit easier, we'll turn off limb-darkening and irradiation (reflection) and use blackbody atmospheres.
+# Lastly, just to make things a bit easier, we'll turn off [limb-darkening](limb_darkening.ipynb) and [irradiation (reflection)](reflection_heating.ipynb) and use blackbody atmospheres.
 
 # In[4]:
 
@@ -67,7 +66,9 @@ b.set_value('irrad_method', 'none')
 print(b.get_parameter(qualifier='pblum_mode', dataset='lc01'))
 
 
-# For any of these modes, you can expose the intrinsic (excluding features such as spots and irradiation) and extrinsic computed luminosities of each star (in each dataset) by calling [b.compute_pblums](../api/phoebe.frontend.bundle.Bundle.compute_pblums.md).
+# For any of these modes, you can expose the intrinsic (excluding extrinsic effects such as [spots](./spots.ipynb) and [irradiation](./reflection_heating.ipynb)) and extrinsic computed luminosities of each star (in each dataset) by calling [b.compute_pblums](../api/phoebe.frontend.bundle.Bundle.compute_pblums.md).
+# 
+# Note that as its an aspect-dependent effect, [boosting](boosting.ipynb) is ignored in all of these output values.
 
 # In[6]:
 
@@ -100,7 +101,7 @@ print(b.filter(qualifier='pblum_ref'))
 print(b.get_parameter(qualifier='pblum_ref', component='primary'))
 
 
-# The 'pblum' parameter is only relevant for each component-dataset pair in which pblum_ref=='self'.  This component will then have its intensities scaled such that they match the value provided by pblum.  In general, a pblum of 4pi will result in an out-of-eclipse flux of ~1.
+# The 'pblum' parameter is only visible for each component-dataset pair in which pblum_ref=='self'.  This component will then have its intensities scaled such that they match the value provided by pblum.  In general, a pblum of 4pi will result in an out-of-eclipse flux of ~1.
 
 # In[9]:
 
@@ -114,7 +115,7 @@ print(b.filter(qualifier='pblum'))
 print(b.get_parameter(qualifier='pblum', component='primary'))
 
 
-# **NOTE:** other parameters also affect flux-levels, including [limb darkening](limb_darkening), [third light](l3), and [distance](distance)
+# **NOTE:** other parameters also affect flux-levels, including [limb darkening](limb_darkening.ipynb), [third light](l3.ipynb), [boosting](boosting.ipynb), [irradiation](reflection_heating.ipynb), and [distance](distance.ipynb)
 
 # ### Coupled Luminosities
 # 
@@ -332,6 +333,8 @@ b['pblum_ref@secondary'] = 'primary'
 b.set_value('pblum_mode', 'absolute')
 
 
+# As we no longer provide pblum values to scale, those parameters are not visible when filtering.
+
 # In[40]:
 
 
@@ -361,7 +364,9 @@ afig, mplfig = b.plot(show=True)
 # pblum_mode = 'total flux'
 # ------------------------------
 # 
-# By setting pblum_mode to 'total flux', the user can scale the resulting luminosities and fluxes by the total flux (extrinsic, including [third light](l3)).  Note that the scaling under-the-hood makes the approximation that each star will contribution its luminosity over 4pi (assuming a spherical star) to the overall flux.
+# By setting pblum_mode to 'total flux', the user can scale the resulting luminosities and fluxes by the total flux (extrinsic, including [third light](l3.ipynb), excluding [boosting](beaming_boosting.ipynb)).  Note that the scaling under-the-hood makes the approximation that each star will contribution its *extrinsic* luminosity (ie. `pblum_ext`) over 4pi (under the spherical star assumption) to the overall flux.  
+# 
+# The total flux will also account for third light, but will *not* account for [boosting](beaming_boosting.ipynb) (as boosting does not contribute to luminosities and requires aspect-dependent information).
 
 # In[44]:
 
@@ -416,7 +421,7 @@ b.set_value('fluxes', context='dataset', value=fluxes)
 afig, mplfig = b.plot(context='dataset', show=True)
 
 
-# Now if we set pblum_mode to 'scale to data', the resulting model will be scaled to best fit the data.  Note that in this mode we cannot access computed luminosities via [b.compute_pblums](../api/phoebe.frontend.bundle.Bundle.compute_pblums.md).
+# Now if we set pblum_mode to 'scale to data', the resulting model will be scaled to best fit the data.  Note that in this mode we cannot access computed luminosities via [b.compute_pblums](../api/phoebe.frontend.bundle.Bundle.compute_pblums.md) (which would raise an error if we attempted to do so).
 
 # In[52]:
 
@@ -483,7 +488,7 @@ b.set_value('irrad_method', 'none')
 b.set_value('pblum_mode', dataset='lc02', value='color coupled')
 
 
-# Here we see the pblum_mode@lc01 is set to 'provided' with pblum_ref@secondary set to 'primary', meaning it will follow the coupled rules described earlier.  pblum_mode@lc02 is set to 'color coupled' with pblu_ref@lc01 pointing to 'lc01'.
+# Here we see the pblum\_mode@lc01 is set to 'provided' with pblum\_ref@secondary set to 'primary', meaning it will follow the coupled rules described earlier.  pblum\_mode@lc02 is set to 'color coupled' with pblum\_ref@lc01 pointing to 'lc01'.
 
 # In[61]:
 
@@ -708,7 +713,7 @@ np.median(normal_intensities)
 
 
 pblum = b.get_value(qualifier='pblum', component='primary', context='dataset')
-print np.sum(normal_intensities * ldint * np.pi * areas) * ptfarea, pblum
+print(np.sum(normal_intensities * ldint * np.pi * areas) * ptfarea, pblum)
 
 
 # In[ ]:

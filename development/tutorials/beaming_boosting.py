@@ -15,7 +15,7 @@
 get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and create a new bundle.  See [Building a System](building_a_system.html) for more details.
 
 # In[1]:
 
@@ -28,10 +28,7 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 
 import phoebe
 from phoebe import u # units
-import numpy as np
 import matplotlib.pyplot as plt
-
-logger = phoebe.logger()
 
 b = phoebe.default_binary()
 
@@ -57,12 +54,12 @@ b['sma@binary'] = 6.0
 
 
 # 
-# We'll add [lc](./LC.ipynb), [rv](./RV.ipynb), and [mesh](./MESH.ipynb) datasets so that we can see how they're each affected by beaming and boosting.
+# We'll add [lc](./LC.ipynb), [rv](./RV.ipynb), and [mesh](./MESH.ipynb) datasets so that we can see how they're each affected by boosting.
 
 # In[4]:
 
 
-times = np.linspace(0,1,101)
+times = phoebe.linspace(0,1,101)
 
 
 # In[5]:
@@ -80,7 +77,7 @@ b.add_dataset('rv', times=times, dataset='rv01')
 # In[7]:
 
 
-b.add_dataset('mesh', times=times[::10], dataset='mesh01', columns=['boost_factors@lc01'])
+b.add_dataset('mesh', times=[0.6], dataset='mesh01', columns=['boost_factors@lc01'])
 
 
 # Relevant Parameters
@@ -89,43 +86,58 @@ b.add_dataset('mesh', times=times[::10], dataset='mesh01', columns=['boost_facto
 # In[8]:
 
 
-b.set_value('irrad_method', 'none')
+print(b['boosting_method@compute'])
 
 
 # In[9]:
 
 
-print b['boosting_method@compute']
+print(b['boosting_method@compute'].choices)
 
+
+# Influence on Luminosities (pblum, pblum_ext, pbflux, pbflux_ext)
+# ------------------------
+# 
+# Boosting is considered an 'extrinsic' effect (along with [spots](./spots.ipynb) and [irradiation](./reflection_heating.ipynb)), but because its aspect-dependent, does not affect luminsoties (`pblum` and `pblum_ext`) at all.
+# 
+# Although it will affect fluxes in light curves (see section below), `pbflux` and `pbflux_ext` as estimated by [b.compute_pblums](../api/phoebe.frontend.bundle.Bundle.compute_pblums.md) estimates these under the spherical assumption from the luminosities, and so will *ignore* the contribution of boosting.
+# 
+# Note that this also means that if you set `pblum_mode = 'total flux'`, boosting will be ignored in the scaling.  See the [pblum tutorial](./pblum.ipynb) for more details.
 
 # In[10]:
 
 
-print b['boosting_method@compute'].choices
+b.set_value('irrad_method', 'none')
+
+
+# In[11]:
+
+
+print(b.compute_pblums(dataset='lc01', boosting_method='linear', pbflux=True, pbflux_ext=True))
 
 
 # Influence on Light Curves (fluxes)
 # ----------------------------
 
-# In[11]:
+# In[12]:
 
 
 b.run_compute(boosting_method='none', model='boosting_none')
 
 
-# In[12]:
+# In[13]:
 
 
 b.run_compute(boosting_method='linear', model='boosting_linear')
 
 
-# In[13]:
+# In[14]:
 
 
 afig, mplfig = b['lc01'].plot(show=True, legend=True)
 
 
-# In[14]:
+# In[15]:
 
 
 afig, mplfig = b['lc01'].plot(ylim=(1.01,1.03), show=True, legend=True)
@@ -134,7 +146,7 @@ afig, mplfig = b['lc01'].plot(ylim=(1.01,1.03), show=True, legend=True)
 # Influence on Radial Velocities
 # ---------------------
 
-# In[15]:
+# In[16]:
 
 
 afig, mplfig = b['rv01@model'].plot(show=True, legend=True)
@@ -143,13 +155,13 @@ afig, mplfig = b['rv01@model'].plot(show=True, legend=True)
 # Influence on Meshes
 # -------------------------
 
-# In[16]:
+# In[17]:
 
 
 afig, mplfig = b['mesh@boosting_none'].plot(time=0.6, fc='boost_factors', ec='none', show=True)
 
 
-# In[17]:
+# In[18]:
 
 
 afig, mplfig = b['mesh@boosting_linear'].plot(time=0.6, fc='boost_factors', ec='none', show=True)
