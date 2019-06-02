@@ -4,7 +4,7 @@
 # 2.1 - 2.2 Migration: ld_coeffs_source
 # ==============================
 
-# PHOEBE 2.2 introduces the capability to interpolate limb-darkening coefficients for a given `ld_func` (i.e. linear, quadratic, etc).  In order to do so, there is now a new parameter called `ld_coeffs_source` which will default to 'auto'.  The `ld_coeffs` parameter will not be visibile, unless `ld_func` is some value other than the default value of 'interp' AND `ld_coeffs_source` is manually set to 'none'.  Any script in which `ld_coeffs` was set manually, will now require an addition line setting `ld_coeffs_source` to 'none' (or alternatively removing the line setting `ld_coeffs` and instead relying on the new capability to interpolate).
+# PHOEBE 2.2 introduces the capability to interpolate limb-darkening coefficients for a given `ld_func` (i.e. linear, quadratic, etc).  In order to do so, there is now a new parameter called `ld_coeffs_source` which will default to 'auto'.  The `ld_coeffs` parameter will not be visibile, unless `ld_func` is some value other than the default value of 'interp' AND `ld_coeffs_source` is manually set to 'none'.  Any script in which `ld_coeffs` was set manually, will now require an additional line setting `ld_coeffs_source` to 'none' (or alternatively removing the line setting `ld_coeffs` and instead relying on the new capability to interpolate).
 # 
 # Below is an example exhibiting the new behavior.
 
