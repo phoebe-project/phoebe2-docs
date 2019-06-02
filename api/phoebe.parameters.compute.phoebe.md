@@ -39,20 +39,38 @@ include a set of compute options for the phoebe backend.
 
 Arguments
 ----------
-* `enabled` (bool, optional): whether to create synthetics in compute/fitting
-    run.
-* `dynamics_method` (string, optional): which method to use to determine the
-    dynamics of components.
-* `ltte` (bool, optional): whether to correct for light travel time effects.
-* `atm` (string, optional): atmosphere tables
-* `irrad_method` (string, optional): which method to use to handle irradiation.
-* `boosting_method` (string, optional): type of boosting method.
-* `mesh_method` (string, optional): which method to use for discretizing
-    the surface.
-* `eclipse_method` (string, optional): which method to use for determinging
-    eclipses.
-* `rv_method` (string, optional): which method to use for compute radial
-    velocities.
+* `enabled` (bool, optional, default=True): whether to create synthetics in
+    compute/fitting runs.
+* `dynamics_method` (string, optional, default='keplerian'): which method to
+    use to determine the dynamics of components.
+* `ltte` (bool, optional, default=False): whether to correct for light
+    travel time effects.
+* `atm` (string, optional, default='ck2004'): atmosphere tables.
+* `irrad_method` (string, optional, default='wilson'): which method to use
+    to handle irradiation.
+* `boosting_method` (string, optional, default='none'): type of boosting method.
+* `mesh_method` (string, optional, default='marching'): which method to use
+    for discretizing the surface.
+* `ntriangles` (int, optional, default=1500): target number of triangles
+    (only applicable if `mesh_method` is 'marching').
+* `distortion_method` (string, optional, default='roche'): what type of
+    distortion to use when meshing the surface (only applicable
+    if `mesh_method` is 'marching').
+* `eclipse_method` (string, optional, default='native'): which method to use
+    for determinging eclipses.
+* `lc_method` (string, optional, default='numerical'): which method to use
+    for computing light curves.
+* `fti_method` (string, optional, default='oversample'): method to use for
+    handling finite-time of integration (exptime).
+* `fti_oversample` (int, optional, default=5): number of times to sample
+    per-datapoint for finite-time integration (only applicable if
+    `fti_method` is 'oversample').
+* `rv_method` (string, optional, default='flux-weighted'): which method to
+    use for computing radial velocities.  If 'dynamical', Rossiter-McLaughlin
+    effects will not be computed.
+* `rv_grav` (bool, optional, default=False): whether gravitational redshift
+    effects are enabled for RVs (only applicable if `rv_method` is
+    'flux-weighted')
 
 Returns
 --------

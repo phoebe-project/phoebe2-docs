@@ -95,8 +95,8 @@ b.run_compute(kind='ellc')
 
 Arguments
 ----------
-* `enabled` (bool, optional): whether to create synthetics in compute/fitting
-    run.
+* `enabled` (bool, optional, default=True): whether to create synthetics in
+    compute/fitting runs.
 * `distortion_method` (string, optional, default='roche'): method to use
     for distorting stars.
 * `hf` (float, optional, default=1.5): fluid second love number (only applicable

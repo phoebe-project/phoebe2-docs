@@ -47,16 +47,19 @@ b.run_compute(kind='legacy')
 
 Arguments
 ----------
-* `enabled` (bool, optional): whether to create synthetics in compute/fitting
-    run.
-* `atm` (string, optional): atmosphere tables.
-* `gridsize` (float, optional): number of meshpoints for WD.
+* `enabled` (bool, optional, default=True): whether to create synthetics in
+    compute/fitting run.
+* `atm` (string, optional, default='extern_atmx'): atmosphere tables.
+* `gridsize` (int, optional, default=60): number of meshpoints for WD.
 * `distortion_method` (string, optional, default='roche'): method to use
     for distorting stars (legacy only supports roche).
-* `irrad_method` (string, optional): which method to use to handle irradiation.
-* `ie` (bool, optional): whether data should be de-reddened.
-* `rv_method` (string, optional): which method to use for computing radial
-    velocities.
+* `irrad_method` (string, optional, default='wilson'): which method to use
+    to handle irradiation.
+* `refl_num` (int, optional, default=1): number of reflections (only applicable
+    if `irrad_method` is 'wilson').
+* `ie` (bool, optional, default=False): whether data should be de-reddened.
+* `rv_method` (string, optional, default='flux-weighted'): which method to
+    use for computing radial velocities.
 
 Returns
 --------

@@ -9,7 +9,7 @@ def flip_constraint_all(self, twig=None, solve_for=None, **kwargs)
 
 
 
-Flip a multiple existing constraints to solve for a different parameter.
+Flip multiple existing constraints to solve for a different parameter.
 
 See also:
 * [phoebe.frontend.bundle.Bundle.flip_constraint](phoebe.frontend.bundle.Bundle.flip_constraint.md)

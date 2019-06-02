@@ -83,8 +83,8 @@ b.run_compute(kind='jktebop')
 
 Arguments
 ----------
-* `enabled` (bool, optional): whether to create synthetics in compute/fitting
-    run.
+* `enabled` (bool, optional, default=True): whether to create synthetics in
+    compute/fitting runs.
 * `ringsize` (float, optional, default=5): integration ring size.
 * `distortion_method` (string, optional, default='sphere/biaxial spheroid'):
     method to use for distorting stars.  See note above for jktebop's

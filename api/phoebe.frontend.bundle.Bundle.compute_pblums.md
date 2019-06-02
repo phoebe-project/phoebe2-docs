@@ -18,6 +18,9 @@ This method allows for computing both intrinsic and extrinsic luminosities.
 Note that pblum scaling is computed (and applied to flux scaling) based
 on intrinsic luminosities (`pblum`).
 
+For any `dataset` which does not support pblum scaling (rv or lp dataset,
+for example), will have their absolute intensities exposed.
+
 Note that luminosities cannot be exposed for any dataset in which
 `pblum_mode` is 'scale to data' as the entire light curve must be
 computed prior to scaling.
@@ -28,6 +31,13 @@ under the spherical assumption where `pbflux = sum(pblum / (4 pi)) + l3`
 or `pbflux_ext = sum(pblum_ext / (4 pi)) + l3`.  Note that in either case,
 the translation from `l3_frac` to `l3` (when necessary) will include
 extrinsic effects.  See also [phoebe.frontend.bundle.Bundle.compute_l3s](phoebe.frontend.bundle.Bundle.compute_l3s.md).
+
+Note about boosting: as boosting is an aspect-dependent effect that
+does not affect normal intensities, boosting will not be included
+in any of the returned values, including `pbflux_ext` due to the
+approximation of flux explained above.  This also means that boosting
+will be ignored in any scaling if providing `pbflux` (by setting
+`pblum_mode = 'total flux'`).
 
 This method is only for convenience and will be recomputed internally
 within [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md) as needed.
@@ -50,8 +60,8 @@ Arguments
     intrinsic (excluding irradiation &amp; features) pblums.  These
     will be exposed in the returned dictionary as pblum@component@dataset.
 * `pblum_ext` (bool, optional, default=True): whether to include
-    extrinsic (irradiation &amp; features) pblums.  These will be exposed
-    as pblum_ext@component@dataset.
+    extrinsic (irradiation &amp; features) pblums.  These will
+    be exposed as pblum_ext@component@dataset.
 * `pbflux` (bool, optional, default=False): whether to include
     intrinsic per-system passband fluxes.  These include third-light
     (from the l3 or l3_frac parameter), but are estimated based
@@ -65,7 +75,9 @@ Arguments
     components in the hierarchy.
 * `dataset` (string or list of strings, optional): label of the
     dataset(s) requested.  If not provided, will be provided for all
-    datasets attached to the bundle.
+    passband-dependent datasets attached to the bundle.  Those without
+    a pblum_mode parameter (eg. rv or lp datasets) will be computed
+    in absolute luminosities.
 * `set_value` (bool, optional, default=False): apply the computed
     values to the respective `pblum` or `pbflux` parameters (even if not
     currently visible).  Note that extrinsic values (`pblum_ext` and
@@ -82,4 +94,12 @@ Returns
     pblum@component@dataset (for intrinsic pblums) or
     pblum_ext@component@dataset (for extrinsic pblums) and the pblums
     as values (as quantity objects with default units of W).
+
+Raises
+----------
+* ValueError: if `compute` needs to be provided but is not.
+* ValueError: if any value in `dataset` points to a dataset that is not
+    passband-dependent (eg. a mesh or orb dataset).
+* ValueError: if the system fails to pass
+    [phoebe.frontend.bundle.Bundle.run_checks](phoebe.frontend.bundle.Bundle.run_checks.md).
 

@@ -3,7 +3,7 @@
 
 ```py
 
-def get_or_create(self, qualifier, new_parameter, **kwargs)
+def get_or_create(self, qualifier, new_parameter, attach_to_bundle=False, **kwargs)
 
 ```
 
@@ -16,7 +16,8 @@ create and attach it.
 Note: running this on a ParameterSet that is NOT a
 [phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundle.md),
 will NOT add the Parameter to the Bundle, but only the temporary
-ParameterSet.
+ParameterSet, unless `attach_to_bundle` is set to True and the bundle
+can be found.
 
 See also:
 * [phoebe.parameters.ParameterSet.filter](phoebe.parameters.ParameterSet.filter.md)
@@ -31,6 +32,8 @@ Arguments
     **NOTE**: this must be a qualifier, not a twig.
 * `new_parameter`: ([phoebe.parameters.Parameter](phoebe.parameters.Parameter.md)): the parameter to
     attach if no result is found.
+* `attach_to_bundle` (bool, optional, default=False): whether to attach
+    the added parameter (if created) to the bundle.
 * `**kwargs`: meta-tags to use when filtering, including `check_visible` and
     `check_default`.  See [phoebe.parameters.ParameterSet.filter_or_get](phoebe.parameters.ParameterSet.filter_or_get.md).
 
