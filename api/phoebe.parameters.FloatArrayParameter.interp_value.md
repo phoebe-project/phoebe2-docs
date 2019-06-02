@@ -3,7 +3,7 @@
 
 ```py
 
-def interp_value(self, **kwargs)
+def interp_value(self, unit=None, **kwargs)
 
 ```
 
@@ -48,29 +48,40 @@ Additionally, when interpolating in time but the time is outside the
 available range, phase-interpolation will automatically be attempted,
 with a warning raised via the [phoebe.logger](phoebe.logger.md).
 
-NOTE: this method does not currently support units.  You must provide
-the interpolating value in its default units and are returned the
-value in the default units (no support for quantities).
+See also:
+* [phoebe.parameters.FloatArrayParameter.interp_quantity](phoebe.parameters.FloatArrayParameter.interp_quantity.md)
 
 Arguments
 ----------
+* `unit` (string or unit, optional, default=None): units to convert
+    the *returned* value.  If not provided or None, will return in the
+    default_units of the referenced parameter.  **NOTE**: to provide
+    units on the *passed* value, you must send a quantity object (see
+    `**kwargs` below).
 * `component` (string, optional): if interpolating in phases, `component`
     will be passed along to [phoebe.frontend.bundle.Bundle.to_phase](phoebe.frontend.bundle.Bundle.to_phase.md).
 * `t0` (string/float, optional): if interpolating in phases, `t0` will
     be passed along to [phoebe.frontend.bundle.Bundle.to_phase](phoebe.frontend.bundle.Bundle.to_phase.md).
 * `**kwargs`: see examples above, must provide a single
     qualifier-value pair to use for interpolation.  In most cases
-    this will probably be time=value or wavelength=value.
+    this will probably be time=value or wavelength=value.  If the value
+    is provided as a quantity object, it will be converted to the default
+    units of the referenced parameter prior to interpolation (enable
+    a 'warning' [phoebe.logger](phoebe.logger.md) for conversion messages)
 
 Returns
 --------
-* (float) the interpolated value.
+* (float or array) the interpolated value in value of `unit` if provided,
+    or the [phoebe.parameters.FloatParameter.default_unit](phoebe.parameters.FloatParameter.default_unit.md) of the
+    referenced [phoebe.parameters.FloatArrayParameter](phoebe.parameters.FloatArrayParameter.md).  To return
+    a quantity instead, see
+    [phoebe.parameters.FloatArrayParameter.interp_quantity](phoebe.parameters.FloatArrayParameter.interp_quantity.md).
 
 Raises
 --------
-* KeyError: if more than one qualifier is passed
+* KeyError: if more than one qualifier is passed.
 * KeyError: if no qualifier is passed that belongs to the
-    parent :class:`ParameterSet`
+    parent [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md).
 * KeyError: if the qualifier does not point to another
-    [phoebe.parameters.FloatArrayParameter](phoebe.parameters.FloatArrayParameter.md)
+    [phoebe.parameters.FloatArrayParameter](phoebe.parameters.FloatArrayParameter.md).
 
