@@ -32,6 +32,11 @@ or `pbflux_ext = sum(pblum_ext / (4 pi)) + l3`.  Note that in either case,
 the translation from `l3_frac` to `l3` (when necessary) will include
 extrinsic effects.  See also [phoebe.frontend.bundle.Bundle.compute_l3s](phoebe.frontend.bundle.Bundle.compute_l3s.md).
 
+Note about eclipses: `pbflux` and `pbflux_ext` estimates will not include
+any eclipsing or ellipsoidal effects (even if an eclipse occurs at time
+`t0`) as they are estimated directly from the luminosities under the
+spherical assumption.
+
 Note about boosting: as boosting is an aspect-dependent effect that
 does not affect normal intensities, boosting will not be included
 in any of the returned values, including `pbflux_ext` due to the
