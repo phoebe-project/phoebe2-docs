@@ -7,15 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -28,8 +28,6 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 
 import phoebe
 from phoebe import u # units
-import numpy as np
-import matplotlib.pyplot as plt
 
 logger = phoebe.logger()
 
@@ -39,13 +37,13 @@ b = phoebe.default_binary()
 # Dataset Parameters
 # --------------------------
 # 
-# Let's create and add a mesh dataset to the Bundle.
+# Let's add a mesh dataset to the Bundle (see also the [mesh API docs](../api/phoebe.parameters.dataset.mesh.md)).
 
 # In[3]:
 
 
 b.add_dataset('mesh')
-print b.filter(kind='mesh')
+print(b.get_dataset(kind='mesh'))
 
 
 # ### times
@@ -53,7 +51,7 @@ print b.filter(kind='mesh')
 # In[4]:
 
 
-print b['times']
+print(b.get_parameter(qualifier='times'))
 
 
 # ### include_times
@@ -61,7 +59,7 @@ print b['times']
 # In[5]:
 
 
-print b['include_times']
+print(b.get_parameter(qualifier='include_times'))
 
 
 # ### columns
@@ -69,7 +67,7 @@ print b['include_times']
 # In[6]:
 
 
-print b['columns']
+print(b.get_parameter(qualifier='columns'))
 
 
 # Compute Options
@@ -80,7 +78,7 @@ print b['columns']
 # In[7]:
 
 
-print b['compute']
+print(b.get_compute())
 
 
 # ### mesh_method
@@ -88,177 +86,235 @@ print b['compute']
 # In[8]:
 
 
-print b['mesh_method@primary']
+print(b.get_parameter(qualifier='mesh_method', component='primary'))
 
 
-# The 'mesh_method' parameter determines how each component in the system is discretized into its mesh, and has several options:
+# The `mesh_method` parameter determines how each component in the system is discretized into its mesh, and has several options:
 #  * marching (default): this is the new method introduced in PHOEBE 2.  The star is discretized into triangles, with the attempt to make them each of equal-area and nearly equilateral.  Although not as fast as 'wd', this method is more robust and will always form a closed surface (when possible).
-#  * wd: this is a re-implementation of the Wilson-Devinney style meshing used in PHOEBE 1.0 (legacy), with the stars discretized into trapezoids in strips of latitude (we then split each trapezoid into two triangles).  This is faster, but suffers from gaps between the surface elements, and is mainly meant for testing and comparison with legacy.  See the [WD-Style Meshing Example Script](../examples/wd_mesh) for more details.
+#  * wd: this is a re-implementation of the Wilson-Devinney style meshing used in PHOEBE 1.0 (legacy), with the stars discretized into trapezoids in strips of latitude (we then split each trapezoid into two triangles).  This is faster, but suffers from gaps between the surface elements, and is mainly meant for testing and comparison with legacy.  See the [WD-Style Meshing Example Script](../examples/wd_mesh.ipynb) for more details.
 
 # ### ntriangles
 # 
-# The 'ntriangles' parameter is only relevenat if mesh_method=='marching' (so will not be available unless that is the case).
+# The `ntriangles` parameter is only relevenat if `mesh_method` is 'marching' (so will not be available unless that is the case).
 
 # In[9]:
 
 
-print b['ntriangles@primary']
-
-
-# ### gridsize
-# 
-# The 'gridsize' parameter is only relevant if mesh_method=='wd' (so will not be available unless that is the case).
-
-# In[10]:
-
-
-print b['gridsize@primary']
+print(b.get_parameter(qualifier='ntriangles', component='primary'))
 
 
 # Synthetics
 # ------------------
 
-# In[11]:
+# In[10]:
 
 
 b.set_value('times', [0])
 
 
+# In[11]:
+
+
+b.set_value('columns', value='*')
+
+
 # In[12]:
 
 
-b['columns'] = '*'
+print(b.get_value('columns'))
 
 
 # In[13]:
 
 
-b.run_compute()
+print(b.get_value('columns', expand=True))
 
 
 # In[14]:
 
 
-b['mesh@model'].twigs
+b.run_compute()
 
-
-# ### Per-Mesh Parameters
 
 # In[15]:
 
 
-print b['times@primary@mesh01@model']
+print(b.filter(context='model').twigs)
 
 
-# ### Per-Time Parameters
+# ### Per-Mesh Parameters
 
 # In[16]:
 
 
-print b['volume@primary@mesh01@model']
+print(b.get_parameter(qualifier='times', 
+                      component='primary', 
+                      dataset='mesh01',
+                      kind='mesh', 
+                      context='model'))
 
 
-# ### Per-Element Parameters
+# ### Per-Time Parameters
 
 # In[17]:
 
 
-print b['uvw_elements@primary@mesh01@model']
+print(b.get_parameter(qualifier='volume', 
+                      component='primary', 
+                      dataset='mesh01',
+                      kind='mesh', 
+                      context='model'))
 
+
+# ### Per-Element Parameters
 
 # In[18]:
 
 
-print b['xyz_elements@primary@mesh01@model']
+print(b.get_parameter(qualifier='uvw_elements', 
+                      component='primary', 
+                      dataset='mesh01',
+                      kind='mesh', 
+                      context='model'))
 
 
 # In[19]:
 
 
-print b['us@primary@mesh01@model']
+print(b.get_parameter(qualifier='xyz_elements', 
+                      component='primary', 
+                      dataset='mesh01',
+                      kind='mesh', 
+                      context='model'))
 
 
 # In[20]:
 
 
-print b['rs@primary@mesh01@model']
+print(b.get_parameter(qualifier='us', 
+                      component='primary', 
+                      dataset='mesh01',
+                      kind='mesh', 
+                      context='model'))
 
 
 # In[21]:
 
 
-print b['rprojs@primary@mesh01@model']
+print(b.get_parameter(qualifier='rs', 
+                      component='primary', 
+                      dataset='mesh01',
+                      kind='mesh', 
+                      context='model'))
 
 
 # In[22]:
 
 
-print b['nxs@primary@mesh01@model']
+print(b.get_parameter(qualifier='rprojs', 
+                      component='primary', 
+                      dataset='mesh01',
+                      kind='mesh', 
+                      context='model'))
 
 
 # In[23]:
 
 
-print b['mus@primary@mesh01@model']
+print(b.get_parameter(qualifier='nxs', 
+                      component='primary', 
+                      dataset='mesh01',
+                      kind='mesh', 
+                      context='model'))
 
 
 # In[24]:
 
 
-print b['vxs@primary@mesh01@model']
+print(b.get_parameter(qualifier='mus', 
+                      component='primary', 
+                      dataset='mesh01',
+                      kind='mesh', 
+                      context='model'))
 
 
 # In[25]:
 
 
-print b['areas@primary@mesh01@model']
+print(b.get_parameter(qualifier='vxs', 
+                      component='primary', 
+                      dataset='mesh01',
+                      kind='mesh', 
+                      context='model'))
 
 
 # In[26]:
 
 
-print b['loggs@primary@mesh01@model']
+print(b.get_parameter(qualifier='areas', 
+                      component='primary', 
+                      dataset='mesh01',
+                      kind='mesh', 
+                      context='model'))
 
 
 # In[27]:
 
 
-print b['teffs@primary@mesh01@model']
+print(b.get_parameter(qualifier='loggs', 
+                      component='primary', 
+                      dataset='mesh01',
+                      kind='mesh', 
+                      context='model'))
 
 
 # In[28]:
 
 
-print b['visibilities@primary@mesh01@model']
+print(b.get_parameter(qualifier='teffs', 
+                      component='primary', 
+                      dataset='mesh01',
+                      kind='mesh', 
+                      context='model'))
+
+
+# In[29]:
+
+
+print(b.get_parameter(qualifier='visibilities', 
+                      component='primary', 
+                      dataset='mesh01',
+                      kind='mesh', 
+                      context='model'))
 
 
 # Plotting
 # ---------------
 # 
-# By default, MESH datasets plot as 'vs' vx 'us' (plane of sky coordinates) of just the surface elements, taken from the uvw_elements vectors.
-
-# In[29]:
-
-
-afig, mplfig = b['mesh@model'].plot(show=True)
-
-
-# Any of the 1-D fields (ie not vertices or normals) or matplotlib-recognized colornames can be used to color either the faces or edges of the triangles.  Passing none for edgecolor or facecolor turns off the coloring (you may want to set edgecolor=None if setting facecolor to disable the black outline).
+# By default, MESH datasets plot as 'vs' vx 'us' (plane of sky coordinates) of just the surface elements, taken from the `uvw_elements` vectors.
 
 # In[30]:
 
 
-afig, mplfig = b['mesh@model'].plot(fc='teffs', ec='None', show=True)
+afig, mplfig = b.plot(show=True)
+
+
+# Any of the 1-D fields (ie not vertices or normals) or matplotlib-recognized colornames can be used to color either the faces or edges of the triangles.  Passing none for edgecolor or facecolor turns off the coloring (you may want to set edgecolor=None if setting facecolor to disable the black outline).
+
+# In[31]:
+
+
+afig, mplfig = b.plot(fc='teffs', ec='None', show=True)
 
 
 # Alternatively, if you provide simple 1-D fields to plot, a 2D x-y plot will be created using the values from each element (always for a single time - if meshes exist for multiple times in the model, you should provide a single time either in the twig or as a filter).
 # 
 # NOTE: providing z=0 will override the default of z-ordering the points by there "w" (line-of-sight distance) value, which can be expensive and take a while to draw.
 
-# In[31]:
+# In[32]:
 
 
-afig, mplfig = b['mesh@model'].plot(x='mus', y='teffs', z=0, show=True)
+afig, mplfig = b.plot(x='mus', y='teffs', z=0, show=True)
 
 
 # The exception to needing to provide a time is for the per-time parameters mentioned above.  For these, time can be the x-array (not very exciting in this case with only a single time).
@@ -266,14 +322,8 @@ afig, mplfig = b['mesh@model'].plot(x='mus', y='teffs', z=0, show=True)
 # For more examples see the following:
 # - [Passband Luminosity Tutorial](pblum)
 
-# In[32]:
+# In[33]:
 
 
-afig, mplfig = b['mesh@model'].plot(x='times', y='volume', marker='s', show=True)
-
-
-# In[ ]:
-
-
-
+afig, mplfig = b.plot(x='times', y='volume', marker='s', show=True)
 

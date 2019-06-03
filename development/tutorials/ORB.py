@@ -7,15 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -23,13 +23,11 @@ get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
-# In[2]:
+# In[1]:
 
 
 import phoebe
 from phoebe import u # units
-import numpy as np
-import matplotlib.pyplot as plt
 
 logger = phoebe.logger()
 
@@ -39,21 +37,37 @@ b = phoebe.default_binary()
 # Dataset Parameters
 # --------------------------
 # 
-# Let's create the and orb dataset and attach it to the Bundle
+# Let's add an orbit dataset to the Bundle (see also the [orb API docs](../api/phoebe.parameters.dataset.orb.md)).
 
-# In[3]:
+# In[2]:
 
 
 b.add_dataset('orb')
-print b.filter(kind='orb')
+print(b.get_dataset(kind='orb'))
 
 
 # ### times
 
+# In[3]:
+
+
+print(b.get_parameter(qualifier='times', component='primary'))
+
+
+# ### compute_times / compute_phases
+# 
+# See the [Compute Times & Phases tutorial](compute_times_phases.ipynb).
+
 # In[4]:
 
 
-print b['times']
+print(b.get_parameter(qualifier='compute_times'))
+
+
+# In[5]:
+
+
+print(b.get_parameter(qualifier='compute_phases', context='dataset'))
 
 
 # Compute Options
@@ -61,73 +75,73 @@ print b['times']
 # 
 # Let's look at the compute options (for the default PHOEBE 2 backend) that relate to dynamics and the ORB dataset
 
-# In[5]:
+# In[6]:
 
 
-print b['compute']
+print(b.get_compute())
 
 
 # ### dynamics_method
 
-# In[6]:
+# In[7]:
 
 
-print b['dynamics_method']
+print(b.get_parameter(qualifier='dynamics_method'))
 
 
-# The 'dynamics_method' parameter controls how stars and components are placed in the coordinate system as a function of time and has several choices:
+# The `dynamics_method` parameter controls how stars and components are placed in the coordinate system as a function of time and has several choices:
 #  * keplerian (default): Use Kepler's laws to determine positions.  If the system has more than two components, then each orbit is treated independently and nested (ie there are no dynamical/tidal effects - the inner orbit is treated as a single point mass in the outer orbit).
 #  * nbody: Use an n-body integrator to determine positions.  Here the initial conditions (positions and velocities) are still defined by the orbit's Keplerian parameters at 't0@system'.  Closed orbits and orbital stability are not guaranteed and ejections can occur.
 
 # ### ltte
 
-# In[7]:
+# In[8]:
 
 
-print b['ltte']
+print(b.get_parameter(qualifier='ltte'))
 
 
-# The 'ltte' parameter sets whether light travel time effects (Roemer delay) are included.  If set to False, the positions and velocities are returned as they actually are for that given object at that given time.  If set to True, they are instead returned as they were or will be when their light reaches the origin of the coordinate system.
+# The `ltte` parameter sets whether light travel time effects (Roemer delay) are included.  If set to False, the positions and velocities are returned as they actually are for that given object at that given time.  If set to True, they are instead returned as they were or will be when their light reaches the origin of the coordinate system.
 # 
-# See the [Systemic Velocity Example Script](../examples/vgamma) for an example of how 'ltte' and 'vgamma' (systemic velocity) interplay.
+# See the [ltte tutorial](../ltte.ipynb) as well as the [Systemic Velocity Example Script](../examples/vgamma.ipynb) for an example of how 'ltte' and 'vgamma' (systemic velocity) interplay.
 
 # Synthetics
 # ------------------
 
-# In[8]:
-
-
-b.set_value_all('times', np.linspace(0,3,201))
-
-
-# In[9]:
-
-
-b.run_compute()
-
-
 # In[10]:
 
 
-b['orb@model'].twigs
+b.set_value_all('times', phoebe.linspace(0,3,201))
 
 
 # In[11]:
 
 
-print b['times@primary@orb01@orb@model']
+b.run_compute()
 
 
 # In[12]:
 
 
-print b['us@primary@orb01@orb@model']
+print(b.filter(context='model').twigs)
 
 
-# In[13]:
+# In[14]:
 
 
-print b['vus@primary@orb01@orb@model']
+print(b.get_parameter(qualifier='times', component='primary', kind='orb', context='model'))
+
+
+# In[15]:
+
+
+print(b.get_parameter(qualifier='us', component='primary', kind='orb', context='model'))
+
+
+# In[16]:
+
+
+print(b.get_parameter(qualifier='vus', component='primary', kind='orb', context='model'))
 
 
 # Plotting
@@ -135,30 +149,24 @@ print b['vus@primary@orb01@orb@model']
 # 
 # By default, orb datasets plot as 'vs' vx 'us' (plane of sky coordinates).  Notice the y-scale here with inclination set to 90.
 
-# In[14]:
+# In[17]:
 
 
-afig, mplfig = b['orb@model'].plot(show=True)
+afig, mplfig = b.plot(show=True)
 
 
 # As always, you have access to any of the arrays for either axes, so if you want to plot 'vus' vs 'times'
 
-# In[15]:
+# In[18]:
 
 
-afig, mplfig = b['orb@model'].plot(x='times', y='vus', show=True)
+afig, mplfig = b.plot(x='times', y='vus', show=True)
 
 
 # We can also plot the orbit in 3D.
 
-# In[16]:
+# In[20]:
 
 
-afig, mplfig = b['orb@model'].plot(projection='3d', xlim=(-4,4), ylim=(-4,4), zlim=(-4,4), show=True)
-
-
-# In[ ]:
-
-
-
+afig, mplfig = b.plot(projection='3d', xlim=(-4,4), ylim=(-4,4), zlim=(-4,4), show=True)
 
