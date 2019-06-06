@@ -7,12 +7,12 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
 # As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
@@ -28,8 +28,6 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 
 import phoebe
 from phoebe import u # units
-import numpy as np
-import matplotlib.pyplot as plt
 
 logger = phoebe.logger()
 
@@ -39,19 +37,17 @@ b = phoebe.default_binary()
 # The 'Mesh' Dataset
 # ----------------------
 # 
-# **NOTE:** the "pbmesh" and "protomesh" have been removed as of PHOEBE 2.1+.
-# 
 # You must create a mesh dataset and specify the times and columns which you'd like exposed.  For more information, see the tutorial on the [MESH dataset](MESH.ipynb).
 # 
 # The mesh will be exposed at the times specified by the 'times' Parameter, as well as any times referenced by the 'include_times' [SelectParameter](../api/phoebe.parameters.SelectParameter.md).
 # 
-# So let's add a LC and MESH dataset.
+# So let's add an LC and MESH datasets.
 # 
 
 # In[3]:
 
 
-b.add_dataset('lc', times=np.linspace(0,1,6))
+b.add_dataset('lc', times=phoebe.linspace(0,1,6))
 
 
 # In[4]:
@@ -63,27 +59,27 @@ b.add_dataset('mesh')
 # In[5]:
 
 
-print b['times@mesh']
+print(b.get_parameter(qualifier='times', kind='mesh'))
 
 
 # In[6]:
 
 
-print b['include_times@mesh']
+print(b.get_parameter(qualifier='include_times', kind='mesh'))
 
 
-# Note that we can no manually set the times of the mesh AND/OR reference the times for existing non-mesh datasets (such as the light curve we just added) as well as any of the various t0s in the system.
+# Note that we can now manually set the times of the mesh AND/OR reference the times for existing non-mesh datasets (such as the light curve we just added) as well as any of the various t0s in the system.
 
 # In[7]:
 
 
-b['times@mesh'] = [10]
+b.set_value('times', kind='mesh', value=[10])
 
 
 # In[8]:
 
 
-b['include_times@mesh'] = ['lc01']
+b.set_value('include_times', kind='mesh', value=['lc01'])
 
 
 # In[9]:
@@ -95,7 +91,7 @@ b.run_compute()
 # In[10]:
 
 
-print b['mesh@model'].times
+print(b.filter(kind='mesh', context='model').times)
 
 
 # By default, the mesh only exposes the geometric columns of the triangles
@@ -103,21 +99,21 @@ print b['mesh@model'].times
 # In[11]:
 
 
-print b['mesh@model'].qualifiers
+print(b.filter(kind='mesh', context='model').qualifiers)
 
 
-# But we can also specify other columns to be included (by setting the columns parameter *before* calling run_compute)
+# But we can also specify other columns to be included (by setting the `columns` [SelectParameter](../api/phoebe.parameters.SelectParameter.md) *before* calling [run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md))
 
 # In[12]:
 
 
-print b['columns@mesh']
+print(b.get_parameter(qualifier='columns', kind='mesh', context='dataset'))
 
 
 # In[13]:
 
 
-b['columns@mesh'] = ['teffs']
+b.set_value('columns', value=['teffs'])
 
 
 # In[14]:
@@ -129,25 +125,45 @@ b.run_compute()
 # In[15]:
 
 
-print b['mesh@model'].qualifiers
+print(b.filter(kind='mesh', context='model').qualifiers)
 
 
 # In[16]:
 
 
-print b.get_value('teffs', time=0.0, component='primary')
+print(b.get_value('teffs', time=0.0, component='primary'))
 
 
 # Any of the exposed columns are then available for plotting the mesh, via [b.plot](../api/phoebe.parameters.ParameterSet.plot.md).
 
+# In[18]:
+
+
+afig, mplfig = b.plot(kind='mesh', time=0.2, fc='teffs', ec='none', show=True)
+
+
+# Additionally, if we know that we only want to expose (and plot) the mesh in plane-of-sky, we can save some computation time by ommitting roche coordinates when computing the model.  This is done via the `coordinates` [SelectParameter](../api/phoebe.parameters.SelectParameter.md).
+
 # In[19]:
 
 
-afig, mplfig = b['mesh@model'].plot(time=0.2, fc='teffs', ec='none', show=True)
+print(b.get_parameter(qualifier='coordinates', kind='mesh', context='dataset'))
 
 
-# In[ ]:
+# In[20]:
 
 
+b.set_value('coordinates', value=['uvw'])
 
+
+# In[21]:
+
+
+b.run_compute()
+
+
+# In[22]:
+
+
+print(b.filter(kind='mesh', context='model').qualifiers)
 

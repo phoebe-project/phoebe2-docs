@@ -62,9 +62,17 @@ print(b.get_parameter(qualifier='times'))
 print(b.get_parameter(qualifier='include_times'))
 
 
-# ### columns
+# ### coordinates
 
 # In[6]:
+
+
+print(b.get_parameter(qualifier='coordinates'))
+
+
+# ### columns
+
+# In[7]:
 
 
 print(b.get_parameter(qualifier='columns'))
@@ -75,7 +83,7 @@ print(b.get_parameter(qualifier='columns'))
 # 
 # Let's look at the compute options (for the default PHOEBE 2 backend) that relate to meshes
 
-# In[7]:
+# In[8]:
 
 
 print(b.get_compute())
@@ -83,7 +91,7 @@ print(b.get_compute())
 
 # ### mesh_method
 
-# In[8]:
+# In[9]:
 
 
 print(b.get_parameter(qualifier='mesh_method', component='primary'))
@@ -97,7 +105,7 @@ print(b.get_parameter(qualifier='mesh_method', component='primary'))
 # 
 # The `ntriangles` parameter is only relevenat if `mesh_method` is 'marching' (so will not be available unless that is the case).
 
-# In[9]:
+# In[10]:
 
 
 print(b.get_parameter(qualifier='ntriangles', component='primary'))
@@ -106,37 +114,37 @@ print(b.get_parameter(qualifier='ntriangles', component='primary'))
 # Synthetics
 # ------------------
 
-# In[10]:
+# In[11]:
 
 
 b.set_value('times', [0])
 
 
-# In[11]:
+# In[12]:
 
 
 b.set_value('columns', value='*')
 
 
-# In[12]:
+# In[13]:
 
 
 print(b.get_value('columns'))
 
 
-# In[13]:
+# In[14]:
 
 
 print(b.get_value('columns', expand=True))
 
 
-# In[14]:
+# In[15]:
 
 
 b.run_compute()
 
 
-# In[15]:
+# In[16]:
 
 
 print(b.filter(context='model').twigs)
@@ -144,7 +152,7 @@ print(b.filter(context='model').twigs)
 
 # ### Per-Mesh Parameters
 
-# In[16]:
+# In[17]:
 
 
 print(b.get_parameter(qualifier='times', 
@@ -156,7 +164,7 @@ print(b.get_parameter(qualifier='times',
 
 # ### Per-Time Parameters
 
-# In[17]:
+# In[18]:
 
 
 print(b.get_parameter(qualifier='volume', 
@@ -168,7 +176,9 @@ print(b.get_parameter(qualifier='volume',
 
 # ### Per-Element Parameters
 
-# In[18]:
+# `uvw_elements` and `uvw_normals` (plane-of-sky vertices positions and triangle normals) are used internally when plotting meshes and are only exposed if 'uvw' is in the `coordinates` parameter defined in the dataset (before calling [run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md)).
+
+# In[19]:
 
 
 print(b.get_parameter(qualifier='uvw_elements', 
@@ -178,7 +188,19 @@ print(b.get_parameter(qualifier='uvw_elements',
                       context='model'))
 
 
-# In[19]:
+# In[20]:
+
+
+print(b.get_parameter(qualifier='uvw_normals', 
+                      component='primary', 
+                      dataset='mesh01',
+                      kind='mesh', 
+                      context='model'))
+
+
+# `xyz_elements` and `xyz_normals` (roche vertices positions and triangle normals) are used internally when plotting meshes and are only exposed if 'xyz' is in the `coordinates` parameter defined in the dataset (before calling [run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md)).
+
+# In[21]:
 
 
 print(b.get_parameter(qualifier='xyz_elements', 
@@ -188,30 +210,10 @@ print(b.get_parameter(qualifier='xyz_elements',
                       context='model'))
 
 
-# In[20]:
-
-
-print(b.get_parameter(qualifier='us', 
-                      component='primary', 
-                      dataset='mesh01',
-                      kind='mesh', 
-                      context='model'))
-
-
-# In[21]:
-
-
-print(b.get_parameter(qualifier='rs', 
-                      component='primary', 
-                      dataset='mesh01',
-                      kind='mesh', 
-                      context='model'))
-
-
 # In[22]:
 
 
-print(b.get_parameter(qualifier='rprojs', 
+print(b.get_parameter(qualifier='xyz_normals', 
                       component='primary', 
                       dataset='mesh01',
                       kind='mesh', 
@@ -221,7 +223,7 @@ print(b.get_parameter(qualifier='rprojs',
 # In[23]:
 
 
-print(b.get_parameter(qualifier='nxs', 
+print(b.get_parameter(qualifier='us', 
                       component='primary', 
                       dataset='mesh01',
                       kind='mesh', 
@@ -231,7 +233,7 @@ print(b.get_parameter(qualifier='nxs',
 # In[24]:
 
 
-print(b.get_parameter(qualifier='mus', 
+print(b.get_parameter(qualifier='rs', 
                       component='primary', 
                       dataset='mesh01',
                       kind='mesh', 
@@ -241,7 +243,7 @@ print(b.get_parameter(qualifier='mus',
 # In[25]:
 
 
-print(b.get_parameter(qualifier='vxs', 
+print(b.get_parameter(qualifier='rprojs', 
                       component='primary', 
                       dataset='mesh01',
                       kind='mesh', 
@@ -251,7 +253,7 @@ print(b.get_parameter(qualifier='vxs',
 # In[26]:
 
 
-print(b.get_parameter(qualifier='areas', 
+print(b.get_parameter(qualifier='nxs', 
                       component='primary', 
                       dataset='mesh01',
                       kind='mesh', 
@@ -261,7 +263,7 @@ print(b.get_parameter(qualifier='areas',
 # In[27]:
 
 
-print(b.get_parameter(qualifier='loggs', 
+print(b.get_parameter(qualifier='mus', 
                       component='primary', 
                       dataset='mesh01',
                       kind='mesh', 
@@ -271,7 +273,7 @@ print(b.get_parameter(qualifier='loggs',
 # In[28]:
 
 
-print(b.get_parameter(qualifier='teffs', 
+print(b.get_parameter(qualifier='vxs', 
                       component='primary', 
                       dataset='mesh01',
                       kind='mesh', 
@@ -279,6 +281,36 @@ print(b.get_parameter(qualifier='teffs',
 
 
 # In[29]:
+
+
+print(b.get_parameter(qualifier='areas', 
+                      component='primary', 
+                      dataset='mesh01',
+                      kind='mesh', 
+                      context='model'))
+
+
+# In[30]:
+
+
+print(b.get_parameter(qualifier='loggs', 
+                      component='primary', 
+                      dataset='mesh01',
+                      kind='mesh', 
+                      context='model'))
+
+
+# In[31]:
+
+
+print(b.get_parameter(qualifier='teffs', 
+                      component='primary', 
+                      dataset='mesh01',
+                      kind='mesh', 
+                      context='model'))
+
+
+# In[32]:
 
 
 print(b.get_parameter(qualifier='visibilities', 
@@ -291,9 +323,9 @@ print(b.get_parameter(qualifier='visibilities',
 # Plotting
 # ---------------
 # 
-# By default, MESH datasets plot as 'vs' vx 'us' (plane of sky coordinates) of just the surface elements, taken from the `uvw_elements` vectors.
+# By default, MESH datasets plot as 'vs' vx 'us' (plane of sky coordinates) of just the surface elements, taken from the `uvw_elements` vectors.  If `coordinates` includes 'xyz' but not 'uvw', then the plots default to 'ys' vs 'xs'.  If `coordinates` is empty, then plotting defaults to a scatter plot based on the available parameters based on the value of `columns`.
 
-# In[30]:
+# In[33]:
 
 
 afig, mplfig = b.plot(show=True)
@@ -301,7 +333,7 @@ afig, mplfig = b.plot(show=True)
 
 # Any of the 1-D fields (ie not vertices or normals) or matplotlib-recognized colornames can be used to color either the faces or edges of the triangles.  Passing none for edgecolor or facecolor turns off the coloring (you may want to set edgecolor=None if setting facecolor to disable the black outline).
 
-# In[31]:
+# In[34]:
 
 
 afig, mplfig = b.plot(fc='teffs', ec='None', show=True)
@@ -311,7 +343,7 @@ afig, mplfig = b.plot(fc='teffs', ec='None', show=True)
 # 
 # NOTE: providing z=0 will override the default of z-ordering the points by there "w" (line-of-sight distance) value, which can be expensive and take a while to draw.
 
-# In[32]:
+# In[35]:
 
 
 afig, mplfig = b.plot(x='mus', y='teffs', z=0, show=True)
@@ -322,7 +354,7 @@ afig, mplfig = b.plot(x='mus', y='teffs', z=0, show=True)
 # For more examples see the following:
 # - [Passband Luminosity Tutorial](pblum)
 
-# In[33]:
+# In[36]:
 
 
 afig, mplfig = b.plot(x='times', y='volume', marker='s', show=True)
