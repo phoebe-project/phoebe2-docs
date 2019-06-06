@@ -7,12 +7,12 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
 # In[1]:
@@ -156,6 +156,107 @@ b.run_delayed_constraints()
 
 
 print(b.filter('mass', component='primary'))
+
+
+# In[20]:
+
+
+phoebe.reset_settings()
+
+
+# Filtering Options
+# -------------------------
+# 
+# ### check_visible
+# 
+# By default, everytime you call filter or set_value, PHOEBE checks to see if the current value is visible (meaning it is relevant given the value of other parameters).  Although not terribly expensive, these checks can add up... so disabling these checks can save time.  Note that these are automatically *temporarily* disabled during [run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md).  If disabling these checks, be aware that changing the value of some parameters may have no affect on the resulting computations.  You can always manually check the visibility/relevance of a parameter by calling [parameter.is_visible](../api/phoebe.parameters.Parameter.is_visible.md).
+# 
+# This default behavior can be changed via [phoebe.check_visible_on()](../api/phoebe.check_visible_on.md) or [phoebe.check_visible_off()](../api/phoebe.check_visible_off.md).
+# 
+# Let's first look at the default behavior with check_visible on.
+
+# In[21]:
+
+
+b.add_dataset('lc')
+
+
+# In[22]:
+
+
+print(b.get_dataset())
+
+
+# Now if we disable check_visible, we'll see the same thing as if we passed `check_visible=False` to any filter call.
+
+# In[23]:
+
+
+phoebe.check_visible_off()
+
+
+# In[24]:
+
+
+print(b.get_dataset())
+
+
+# Now the same filter is returning additional parameters.  For example, `ld_coeffs_source` parameters were hidden because `ld_func` is set to 'interp'.  We can see the rules that are being followed:
+
+# In[25]:
+
+
+print(b.get_parameter(qualifier='ld_coeffs_source', component='primary').visible_if)
+
+
+# and can still manually check to see that it shouldn't be visible (isn't currently relevant given the value of `ld_func`):
+
+# In[26]:
+
+
+print(b.get_parameter(qualifier='ld_coeffs_source', component='primary').is_visible)
+
+
+# In[27]:
+
+
+phoebe.reset_settings()
+
+
+# ### check_default
+# 
+# Similarly, PHOEBE automatically excludes any parameter which is tagged with a '\_default' tag.  These parameters exist to provide default values when a new component or dataset are added to the bundle, but can usually be ignored, and so are excluded from any filter calls.  Although not at all expensive, this too can be disabled at the settings level or by passing `check_default=False` to any filter call.  
+# 
+# This default behavior can be changed via [phoebe.check_default_on()](../api/phoebe.check_default_on.md) or [phoebe.check_default_off()](../api/phoebe.check_default_off.md).
+
+# In[28]:
+
+
+print(b.get_dataset())
+
+
+# In[29]:
+
+
+print(b.get_dataset(check_default=False))
+
+
+# In[30]:
+
+
+phoebe.check_default_off()
+
+
+# In[31]:
+
+
+print(b.get_dataset())
+
+
+# In[32]:
+
+
+phoebe.reset_settings()
 
 
 # ## Environment Variables
