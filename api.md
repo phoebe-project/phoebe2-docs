@@ -48,6 +48,10 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 * [interactive_checks_off](api/phoebe.interactive_checks_off.md)
 * [interactive_constraints_on](api/phoebe.interactive_constraints_on.md)
 * [interactive_constraints_off](api/phoebe.interactive_constraints_off.md)
+* [check_visible_on](api/phoebe.check_visible_on.md)
+* [check_visible_off](api/phoebe.check_visible_off.md)
+* [check_default_on](api/phoebe.check_default_on.md)
+* [check_default_off](api/phoebe.check_default_off.md)
 * [reset_settings](api/phoebe.reset_settings.md)
 
 ### Atmospheres and Passbands

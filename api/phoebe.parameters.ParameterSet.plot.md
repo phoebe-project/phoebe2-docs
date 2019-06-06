@@ -19,6 +19,15 @@ See also:
 * [phoebe.parameters.ParameterSet.gcf](phoebe.parameters.ParameterSet.gcf.md)
 * [phoebe.parameters.ParameterSet.clf](phoebe.parameters.ParameterSet.clf.md)
 
+All keyword arguments also support passing dictionaries.  In this case,
+they are applied to any resulting plotting call in which the dictionary
+matches (including support for wildcards) to the tags of the respective
+ParameterSet.  For example:
+
+```
+plot(c={'primary@rv*': 'blue', 'secondary@rv*': 'red'})
+```
+
 Note: not all options are listed below.  See the
 [autofig](https://github.com/kecnry/autofig/tree/1.0.0)
 tutorials and documentation for more options which are passed along
@@ -134,6 +143,8 @@ Arguments
     Only applicable if `highlight=True` and `time` or `times` provided.
 * `highlight_color` (string, optional): color to use for highlighting.
     Only applicable if `highlight=True` and `time` or `times` provided.
+* `highlight_size` (int, optional): size to use for highlighting.
+    Only applicable if `highlight=True` and `time` or `times` provided.
 
 * `uncover` (bool, optional): whether to uncover data based on the current
     time.  Only applicable if `time` or `times` provided.
@@ -151,6 +162,23 @@ Arguments
     figure (or False to not save).
 * `show` (bool, optional, default=False): whether to show the plot
 * `animate` (bool, optional, default=False): whether to animate the figure.
+* `interval` (int, optional, default=100): time in ms between each
+    frame in the animation.  Applicable only if `animate` is True.
+
+* `projection` (string, optional, default='2d'): whether to plot
+    on a 2d or 3d axes.  If '3d', the orientation of the axes will
+    be provided by `azim` and `elev` (see [autofig tutorial on 3d](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/3d.ipynb))
+* `azim` (float or list, optional): azimuth to use when `projection`
+    is '3d'.  If `animate` is True, then a tuple or list will allow
+    rotating the axes throughout the animation (see [autofig tutorial on 3d](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/3d.ipynb))
+* `elev` (float or list, optional): elevation to use when `projection`
+    is '3d'.  If `animate` is True, then a tuple or list will allow
+    rotating the axes throughout the animation (see [autofig tutorial on 3d](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/3d.ipynb))
+* `exclude_back` (bool, optional): whether to exclude plotting the back
+    of meshes when in '2d' projections.  Defaults to True if `fc` is
+    not 'none' (otherwise defaults to False so that you can "see through"
+    the star).
+
 * `draw_sidebars` (bool, optional, default=False): whether to include
     any applicable sidebars (colorbar, sizebar, etc).
 * `draw_title` (bool, optional, default=False): whether to draw axes
@@ -160,7 +188,8 @@ Arguments
     for more details).
 
 * `save_kwargs` (dict, optional): any kwargs necessary to pass on to
-    save (only applicable if `animate=True`).
+    save (only applicable if `animate=True`).  On many systems,
+    it may be necessary to pass save_kwargs={'writer': 'imagemagick'}
 
 * `**kwargs`: additional keyword arguments are sent along to [autofig](https://github.com/kecnry/autofig/tree/1.0.0).
 
