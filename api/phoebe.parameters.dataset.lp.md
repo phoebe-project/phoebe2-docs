@@ -36,10 +36,26 @@ Arguments
 * `flux_densities` (array/quantity, optional): observed flux densities.
 * `sigmas` (array/quantity, optional): errors on flux densities measurements.
     Only applicable if `syn` is False.
-* `ld_func` (string, optional): limb-darkening model.  Only applicable if
-`syn` is False.
-* `ld_coeffs` (list, optional): limb-darkening coefficients.  Only
-applicable if `syn` is False.
+* `ld_mode` (string, optional, default='interp'): mode to use for handling
+    limb-darkening.  Note that 'interp' is not available for all values
+    of `atm` (availability can be checked by calling
+    [phoebe.frontend.bundle.Bundle.run_checks](phoebe.frontend.bundle.Bundle.run_checks.md) and will automatically be checked
+    during [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md)).  Only applicable
+    if `syn` is False.
+* `ld_func` (string, optional, default='linear'): function/law to use for
+    limb-darkening model. Not applicable if `ld_mode` is 'interp'.  Only
+    applicable if `syn` is False.
+* `ld_coeffs_source` (string, optional, default='auto'): source for limb-darkening
+    coefficients ('auto' to interpolate from the applicable table according
+    to the 'atm' parameter, or the name of a specific atmosphere table).
+    Only applicable if `ld_mode` is 'func:lookup'.  Only applicable if
+    `syn` is False.
+* `ld_coeffs` (list, optional): limb-darkening coefficients.  Must be of
+    the approriate length given the value of `ld_coeffs_source` which can
+    be checked by calling [phoebe.frontend.bundle.Bundle.run_checks](phoebe.frontend.bundle.Bundle.run_checks.md)
+    and will automtically be checked during
+    [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md).  Only applicable
+   if `ld_mode` is 'func:provided'.  Only applicable if `syn` is False.
 * `passband` (string, optional): passband.  Only applicable if `syn` is False.
 * `intens_weighting` (string, optional): whether passband intensities are
     weighted by energy of photons.  Only applicable if `syn` is False.

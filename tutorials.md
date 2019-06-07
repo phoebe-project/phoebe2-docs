@@ -17,7 +17,7 @@ For more specific use-cases, see the example scripts below.
 
 These tutorials highlight the major changes between versions 2.1.x and 2.2+ in the following topics:
 
-* [Limb Darkening: ld_coeffs_source](tutorials/21_22_ld_coeffs_source.ipynb)
+* [Limb Darkening: ld_mode & ld_coeffs_source](tutorials/21_22_ld_mode.ipynb)
 * [Passband Luminosities: pblum_mode & pblum vs pblum_ext](tutorials/21_22_pblum_mode.ipynb)
 * [Third Light: l3_mode](tutorials/21_22_l3_mode.ipynb)
 * [NEW: Passband Versioning & Updates](tutorials/passband_updates.ipynb)

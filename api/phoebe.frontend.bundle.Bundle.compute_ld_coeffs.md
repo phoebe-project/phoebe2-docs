@@ -17,11 +17,10 @@ that require per-star limb-darkening coefficients.  Note that the default
 [phoebe.parameters.compute.phoebe](phoebe.parameters.compute.phoebe.md) backend will instead interpolate
 limb-darkening coefficients **per-element**.
 
-Coefficients will only be interpolated/returned for those where `ld_func`
-is not 'interp' and `ld_coeffs_source` is not 'none'.  The values of
-the `ld_coeffs` parameter will be returned for cases where `ld_func` is
-not `interp` but `ld_coeffs_source` is 'none'.  Cases where `ld_func` is
-'interp' will not be included in the output.
+Coefficients will only be interpolated/returned for those where `ld_mode`
+is 'func_lookup'.  The values of the `ld_coeffs` parameter will be
+returned for cases where `ld_mode` is 'func_provided'.  Cases where
+`ld_mode` is 'interp' will not be included in the output.
 
 Note:
 * for backends without `atm` compute options, 'ck2004' will be used.
