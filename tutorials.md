@@ -24,6 +24,7 @@ These tutorials highlight the major changes between versions 2.0.x and 2.1+ in t
 * [Meshes](tutorials/20_21_meshes.ipynb)
 * [Plane-of-Sky vs Roche coordinates](tutorials/20_21_xyz_uvw.ipynb)
 * [nparray](tutorials/20_21_nparray.ipynb)
+* [NEW: misalignment](tutorials/pitch_yaw.ipynb)
 
 ## Advanced tutorials
 
