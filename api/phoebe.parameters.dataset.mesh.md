@@ -26,10 +26,21 @@ Arguments
     as a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) instead of a list of
     [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) objects.
 * `times` (array/quantity, optional): observed times.  Only applicable
-    if `syn` is False.
-* `include_times` (string, optional): append to times from the following
-    datasets/time standards.  Only applicable if `syn` is False.
-* `columns` (list, optional): columns to expose within the mesh.
+    if `syn` is True.  When `syn` is False: if provided, but `compute_times`
+    is not provided, this will write to `compute_times` with a warning
+    in the logger.
+* `compute_times` (array/quantity, optional): times at which to compute
+    the model.  Only applicable if `syn` is False.
+* `compute_phases` (array/quantity, optional): phases at which to compute
+    the model.  Only applicable if `syn` is False.
+* `include_times` (string, optional): append to `compute_times` from the
+    following datasets/time standards.  If referring to other datasets,
+    this will copy the computed times of that dataset (whether that be
+    from the `times` or `compute_times` of the respective dataset).
+    Only applicable if `syn` is False.
+* `coordinates` (list, optional, default=['xyz', 'uvw']): coordinates to
+    expose the mesh.  uvw (plane of sky) and/or xyz (roche).
+* `columns` (list, optional, default=[]): columns to expose within the mesh.
     Only applicable if `syn` is False.
 * `**kwargs`: if `syn` is True, additional kwargs will be applied to the
     exposed columns according to the passed lists for `mesh_columns`

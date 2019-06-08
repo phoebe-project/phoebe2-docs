@@ -31,11 +31,29 @@ Arguments
     [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) objects.
 * `times` (array/quantity): times at which the dataset should be defined.
     **IMPORTANT**: times is not a parameter and must be passed during creation,
-    see note above.
+    see note above.  If `syn` is True, a `times` parameter will be created,
+    but all other parameters will be tagged with individual times.
 * `wavelengths` (array/quantity, optional): observed wavelengths.
 * `flux_densities` (array/quantity, optional): observed flux densities.
+    A copy of this parameter will exist per-time (as passed to the `times`
+    argument at creation, see above) and will be tagged with that time.
 * `sigmas` (array/quantity, optional): errors on flux densities measurements.
-    Only applicable if `syn` is False.
+    Only applicable if `syn` is False.  A copy of this parameter will exist
+    per-time (as passed to the `times` argument at creation, see above) and
+    will be tagged with that time.
+* `compute_times` (array/quantity, optional): times at which to compute
+    the model.  If provided, this will override the tagged times as defined
+    by `times` (note that interpolating between the model computed at
+    `compute_times` and the dataset defined at `times` is not currently
+    supported).  Only applicable if `syn` is False.
+* `compute_phases` (array/quantity, optional): phases at which to compute
+    the model.  Only applicable if `syn` is False.
+* `profile_func` (string, optional, default='gaussian'): function to use
+    for the rest line profile.
+* `profile_rest` (float, optional, default=550): rest central wavelength
+    for the line profile.
+* `profile_sv` (float, optional, default=1e-4): subsidiary value of the
+    profile.
 * `ld_mode` (string, optional, default='interp'): mode to use for handling
     limb-darkening.  Note that 'interp' is not available for all values
     of `atm` (availability can be checked by calling
