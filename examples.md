@@ -36,10 +36,10 @@ These example scripts are generally focused to show a single advanced feature or
 * [Misaligned Binary System: DI Her](examples/diher_misaligned.ipynb)
 
 
-## Advanced Plotting
+## Advanced Plotting & Animations
 
 * [Complete Binary Animation](examples/animation_binary_complete.ipynb)
-
+* [Rossiter-McLaughlin Effect (RVs)](examples/rossiter_mclaughlin.ipynb)
 
 ## Alternate Backends
 
