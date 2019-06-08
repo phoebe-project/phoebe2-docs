@@ -15,7 +15,7 @@
 get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -27,9 +27,6 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 import phoebe
-from phoebe import u # units
-import numpy as np
-import matplotlib.pyplot as plt
 
 logger = phoebe.logger()
 
@@ -41,7 +38,7 @@ b = phoebe.default_binary()
 # In[3]:
 
 
-b.add_dataset('lc', times=np.linspace(0,1,101), dataset='lc01')
+b.add_dataset('lc', times=phoebe.linspace(0,1,101), dataset='lc01')
 
 
 # Relevant Parameters
@@ -67,61 +64,25 @@ print(b['ld_func_bol@primary'].choices)
 print(b['ld_coeffs_bol@primary'])
 
 
-# All other limb-darkening parameter (`ld_func`, `ld_coeffs_source`, and `ld_coeffs`) are per-component and per-dataset parameters with context='dataset'.
-# 
-# Unlike bolometric limb-darkening, these can be interpolated directly from atmosphere tables, this is the default case, with `ld_func` set to 'interp'.
-
-# In[6]:
-
-
-print(b['ld_func@lc01'])
-
-
-# In[7]:
-
-
-print(b['ld_func@lc01@primary'].choices)
-
-
-# Note that `ld_coeffs_source` and `ld_coeffs` aren't visible (relevant) if ld_func=='interp'
-
-# In[8]:
-
-
-print(b.filter(qualifier='ld*', dataset='lc01'))
-
-
-# Setting the value of `ld_func` to anything other than 'interp' will expose the `ld_coeffs_source` parameter.  Note that this behavior is slightly new as of PHOEBE 2.2 (see [this explanation for migrating from earlier versions](./21_22_ld_coeffs_source.ipynb)).
+# All other limb-darkening parameters (`ld_mode`, `ld_func`, `ld_coeffs_source`, and `ld_coeffs`) are per-component and per-dataset parameters with context='dataset'.
 
 # In[9]:
 
 
-b['ld_func@lc01@primary'] = 'logarithmic'
+print(b.filter(qualifier='ld_mode', dataset='lc01'))
 
 
-# In[10]:
-
-
-print(b.filter(qualifier='ld*', dataset='lc01'))
-
-
-# In[11]:
-
-
-print(b['ld_coeffs_source@lc01@primary'])
-
-
-# If `ld_coeffs_source` is 'auto' (which it is by default), then the limb-darkening will be interpolated **per-element** (for PHOEBE 2, other backends may interpolate per-star) for the function given in `ld_func` from the atmosphere table dictated by the `atm` parameter (falling back on 'ck2004' if no match is found).
+# ### ld_mode = 'interp'
 # 
-# To manually choose an available atmosphere table, you can choose some other value ('ck2004', for example).
-# 
-# If `ld_coeffs_source` is 'none', then the `ld_coeffs` parameter is exposed and limb-darkening coefficients can be provided directly by the user.
+# Unlike bolometric limb-darkening, these can be interpolated directly from atmosphere tables, this is the default case, with `ld_mode` set to 'interp'.  Note that before PHOEBE 2.2, this was accomplished by setting `ld_func` to 'interp' (see [this explanation for migrating from earlier versions](./21_22_ld_coeffs_source.ipynb)).
 
 # In[12]:
 
 
-b['ld_coeffs_source@lc01@primary'] = 'none'
+print(b.get_parameter(qualifier='ld_mode', dataset='lc01', component='primary').choices)
 
+
+# Note that `ld_func`, `ld_coeffs_source`, and `ld_coeffs` aren't visible (relevant) if `ld_mode` is set to  'interp' (which it is by default).
 
 # In[13]:
 
@@ -129,10 +90,62 @@ b['ld_coeffs_source@lc01@primary'] = 'none'
 print(b.filter(qualifier='ld*', dataset='lc01'))
 
 
+# ### ld_mode = 'func_lookup'
+# 
+# Setting the value of `ld_mode` to 'func_lookup' will expose the `ld_func` and `ld_coeffs_source` parameters.  Note that this behavior is slightly new as of PHOEBE 2.2 (see [this explanation for migrating from earlier versions](./21_22_ld_coeffs_source.ipynb)).
+# 
+# When set to 'func_lookup', then the limb-darkening will be interpolated **per-element** (for PHOEBE 2, other backends may interpolate per-star) for the function given in `ld_func` from the atmosphere table dictated by the `ld_coeffs_source` parameter (or the `atm` parameter and falling back on 'ck2004' if no match is found if `ld_coeffs_source` is set to 'auto').
+# 
+# To manually choose an available atmosphere table, you can choose some other value ('ck2004', for example).
+
 # In[14]:
 
 
-print b['ld_coeffs@lc01@primary']
+b.set_value(qualifier='ld_mode', dataset='lc01', component='primary', value='func_lookup')
+
+
+# In[15]:
+
+
+print(b.filter(qualifier='ld*', dataset='lc01', component='primary'))
+
+
+# In[16]:
+
+
+print(b.get_parameter(qualifier='ld_coeffs_source', dataset='lc01', component='primary'))
+
+
+# Although not necesary, we can access the interpolated coefficients by calling [b.compute_ld_coeffs](../api/phoebe.frontend.bundle.Bundle.compute_ld_coeffs.md).
+
+# In[17]:
+
+
+print(b.compute_ld_coeffs())
+
+
+# ### ld_mode = 'func_provided'
+# 
+# Setting the value of `ld_mode` to 'func_provided' will expose the `ld_func` and `ld_coeffs` parameters.  Again, note that this behavior is slightly new as of PHOEBE 2.2 (see [this explanation for migrating from earlier versions](./21_22_ld_coeffs_source.ipynb)).
+# 
+# In this case, we can manually provide the coefficients through the `ld_coeffs` parameter, keeping care that they are of the correct length for the given value of `ld_func`.  To ensure this is the case, call [b.run_checks](../api/phoebe.frontend.bundle.Bundle.run_checks.md) (or wait until [b.run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md) which will raise an error if the length is in conflict).
+
+# In[18]:
+
+
+b.set_value(qualifier='ld_mode', dataset='lc01', component='primary', value='func_provided')
+
+
+# In[19]:
+
+
+print(b.filter(qualifier='ld*', dataset='lc01', component='primary'))
+
+
+# In[20]:
+
+
+print(b.get_parameter(qualifier='ld_coeffs', dataset='lc01', component='primary'))
 
 
 # Influence on Light Curves (fluxes)

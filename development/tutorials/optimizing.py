@@ -201,7 +201,7 @@ phoebe.check_visible_off()
 print(b.get_dataset())
 
 
-# Now the same filter is returning additional parameters.  For example, `ld_coeffs_source` parameters were hidden because `ld_func` is set to 'interp'.  We can see the rules that are being followed:
+# Now the same filter is returning additional parameters.  For example, `ld_coeffs_source` parameters were initially hidden because `ld_mode` is set to 'interp'.  We can see the rules that are being followed:
 
 # In[25]:
 
