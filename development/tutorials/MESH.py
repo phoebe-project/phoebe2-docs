@@ -23,11 +23,10 @@ get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
-# In[2]:
+# In[1]:
 
 
 import phoebe
-from phoebe import u # units
 
 logger = phoebe.logger()
 
@@ -39,19 +38,29 @@ b = phoebe.default_binary()
 # 
 # Let's add a mesh dataset to the Bundle (see also the [mesh API docs](../api/phoebe.parameters.dataset.mesh.md)).
 
-# In[3]:
+# In[2]:
 
 
 b.add_dataset('mesh')
 print(b.get_dataset(kind='mesh'))
 
 
-# ### times
+# ### compute_times / compute_phases
+# 
+# Note that as of PHOEBE 2.2, the mesh dataset no longer has a `times` parameter, as observations cannot be attached to the mesh dataset.
+# 
+# See the [Compute Times & Phases tutorial](compute_times_phases.ipynb).
 
-# In[4]:
+# In[3]:
 
 
-print(b.get_parameter(qualifier='times'))
+print(b.get_parameter(qualifier='compute_times'))
+
+
+# In[5]:
+
+
+print(b.get_parameter(qualifier='compute_phases', context='dataset'))
 
 
 # ### include_times

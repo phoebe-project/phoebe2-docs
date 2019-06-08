@@ -7,12 +7,12 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
 # In[1]:
@@ -21,109 +21,92 @@ get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.ipynb) for more details.
 
-# In[2]:
+# In[1]:
 
 
 import phoebe
-from phoebe import u # units
 import numpy as np
-import matplotlib.pyplot as plt
-
-logger = phoebe.logger()
 
 b = phoebe.default_binary()
 
 
-# Let's make a significant mass ratio and radius ratio...
+# Let's make a significant mass ratio and radius ratio and spin up the primary star.
 
-# In[3]:
-
-
-b['q'] = 0.7
+# In[2]:
 
 
-# In[4]:
-
-
-b['requiv@primary'] = 1.0
-
-
-# In[5]:
-
-
-b['requiv@secondary'] = 0.5
-
-
-# In[6]:
-
-
-b['teff@secondary@component'] = 5000
-
-
-# Make sure the primary star is spinning quickly...
-
-# In[7]:
-
-
-b['syncpar@primary@component'] = 2
+b.set_value('q', value=0.7)
+b.set_value('incl', component='binary', value=87)
+b.set_value('requiv', component='primary', value=0.75)
+b.set_value('teff', component='secondary', value=6500)
+b.set_value('syncpar', component='secondary', value=1.3)
 
 
 # Adding Datasets
 # -------------------
 # 
-# Now we'll add radial velocity and mesh datasets.  We'll add two identical datasets for RVs so that we can have one computed dynamically and the other computed numerically (these options will need to be set later).
+# Now we'll add radial velocity, line profile, and mesh datasets.  We'll compute the rvs through the whole orbit, but the mesh and line profiles just at the times that we want to plot for an animation (which we'll do by concatenating three arrays so the animation "slow down" during eclipse).
 
-# In[8]:
-
-
-b.add_dataset('rv', times=np.linspace(0,2,201), dataset='dynamicalrvs')  
+# In[3]:
 
 
-# In[9]:
+anim_times= np.concatenate((np.linspace(0.4, 0.48, 21), 
+                            np.linspace(0.48, 0.52, 21), 
+                            np.linspace(0.52, 0.6, 21)))
 
 
-b.add_dataset('rv', times=np.linspace(0,2,201), dataset='numericalrvs')
+# We'll add two identical datasets, one where we compute only dynamical RVs (won't include Rossiter-McLaughlin) and another where we compute flux-weighted RVs (will include Rossiter-McLaughlin).
+
+# In[4]:
 
 
-# Storing the mesh at every timestep is overkill, and will be both computationally and memory intensive.  So let's just sample at the times we care about.
+b.add_dataset('rv', 
+              times=phoebe.linspace(0,1,101), 
+              dataset='dynamicalrvs')
 
-# In[10]:
-
-
-times = b.get_value('times@primary@numericalrvs@dataset')
-times = times[times<0.1]
-print times
+b.set_value_all('rv_method', dataset='dynamicalrvs', value='dynamical')
 
 
-# In[11]:
+# In[5]:
 
 
-b.add_dataset('mesh', dataset='mesh01', times=times, columns=['vws', 'rvs*'])
+b.add_dataset('rv', 
+              times=phoebe.linspace(0,1,101), 
+              dataset='numericalrvs')
+
+b.set_value_all('rv_method', dataset='numericalrvs', value='flux-weighted')
+
+
+# For the mesh, we'll save some time by only exposing plane-of-sky coordinates and the 'rvs' column.
+
+# In[6]:
+
+
+b.add_dataset('mesh', 
+              compute_times=anim_times, 
+              coordinates='uvw', 
+              columns=['rvs@numericalrvs'],
+              dataset='mesh01')
+
+
+# And for the line-profile, we'll expose the line-profile for both of our stars separately, instead of for the entire system.
+
+# In[7]:
+
+
+b.add_dataset('lp', 
+              compute_times=anim_times, 
+              component=['primary', 'secondary'], 
+              wavelengths=phoebe.linspace(549.5,550.5,101), 
+              profile_rest=550)
 
 
 # Running Compute
 # --------------------
 
-# Now let's set the rv_method so that one dataset uses the dynamical method and the other uses the flux-weighted (numerical) method.  Note that here we have to use set_value_all or loop over the components, as technically there are parameters for each component-dataset pair.
-
-# In[12]:
-
-
-b.set_value_all('rv_method@dynamicalrvs@compute', 'dynamical')
-b.set_value_all('rv_method@numericalrvs@compute', 'flux-weighted')
-
-
-# Let's check to make sure that rv_method is set as we'd expect.
-
-# In[13]:
-
-
-print b['rv_method']
-
-
-# In[14]:
+# In[8]:
 
 
 b.run_compute(irrad_method='none')
@@ -132,45 +115,63 @@ b.run_compute(irrad_method='none')
 # Plotting 
 # ---------------
 # 
-# Now let's plot the radial velocities.
+# First let's compare between the dynamical and numerical RVs.
 # 
-# First we'll plot the dynamical RVs.  Note that dynamical RVs show the true radial velocity of the center of mass of each star, and so we do not see the Rossiter McLaughlin effect.
+# The dynamical RVs show the velocity of the center of each star along the line of sight.  But the numerical method integrates over the visible surface elements, giving us what we'd observe if deriving RVs from observed spectra of the binary.  Here we do see the Rossiter McLaughlin effect.  You'll also notice that RVs are not available for the secondary star when its completely occulted (they're nans in the array).
 
-# In[15]:
-
-
-afig, mplfig = b['dynamicalrvs@model'].plot(c={'primary': 'b', 'secondary': 'r'}, show=True)
+# In[9]:
 
 
-# But the numerical method integrates over the visible surface elements, giving us what we'd observe if deriving RVs from observed spectra of the binary.  Here we do see the Rossiter McLaughlin effect.  You'll also notice that RVs are not available for the secondary star when its completely occulted (they're nans in the array).
-
-# In[16]:
-
-
-afig, mplfig = b['numericalrvs@model'].plot(c={'primary': 'b', 'secondary': 'r'}, show=True)
+afig, mplfig = b.plot(kind='rv',
+                      c={'primary': 'b', 'secondary': 'r'}, 
+                      ls={'numericalrvs': 'dashed', 'dynamicalrvs': 'solid'},
+                      show=True)
 
 
-# To visualize what is happening, we can plot the radial velocities of each surface element in the mesh at one of these times.
-# 
-# Here just plot on the mesh@model parameterset - the mesh will automatically get coordinates from mesh01 and then we point to rvs@numericalrvs for the facecolors.
+# We'll remove the dynamical RVs entirely since we don't want to include them from here on out.
 
-# In[17]:
+# In[10]:
 
 
-afig, mplfig = b['mesh@model'].plot(time=0.03, fc='rvs@numericalrvs', ec="None", show=True)
+#b.remove_dataset('dynamicalrvs')
 
 
-# Here you can see that the secondary star is blocking part of the "red" RVs of the primary star.
-# 
-# This is essentially the same as plotting the negative z-component of the velocities (for convention - our system is in a right handed system with +z towards the viewer, but RV convention has negative RVs for blue shifts).
-# 
-# We could also plot the RV per triangle by plotting 'vws'.  Note that this is actually defaulting to an inverted colormap to show you the same colorscheme ('RdBu_r' vs 'RdBu').
+# Now let's make a plot of the line profiles and mesh during ingress to visualize what's happening.  
 
-# In[18]:
+# In[13]:
 
 
-afig, mplfig = b['mesh01@model'].plot(time=0.09, fc='vws', ec="None", show=True)
+afig, mplfig= b.plot(time=0.48,
+                     fc='rvs@numericalrvs', ec='none',
+                     show=True,
+                     c={'primary': 'blue', 'secondary': 'red'},
+                     ls={'numericalrvs': 'dashed', 'dynamicalrvs': 'solid'},
+                     highlight={'numericalrvs': True, 'dynamicalrvs': False},
+                     tight_layout=True,
+                     axpos={'mesh': 211, 'rv': 223, 'lp': 224},
+                     xlim={'rv': (0.4, 0.6)}, ylim={'rv': (-100, 100)})
 
+
+# Here we can see that the blue part of the back star is eclipsed, distorting the line profile, and causing the apparent center of the line profile to be shifted to the right/red.
+
+# Now let's animate the same figure in time.
+
+# In[14]:
+
+
+afig, mplanim = b.plot(times=anim_times,
+                       fc='rvs@numericalrvs', ec='none',
+                       animate=True, save='rossiter_mclaughlin.gif',
+                       save_kwargs={'writer': 'imagemagick'},
+                       c={'primary': 'blue', 'secondary': 'red'},
+                       ls={'numericalrvs': 'dashed', 'dynamicalrvs': 'solid'},
+                       highlight={'numericalrvs': True, 'dynamicalrvs': False},
+                       tight_layout=True, pad_aspect=False,
+                       axpos={'mesh': 211, 'rv': 223, 'lp': 224},
+                       xlim={'rv': (0.4, 0.6)}, ylim={'rv': (-100, 100)})
+
+
+# ![rm animation](rossiter_mclaughlin.gif)
 
 # In[ ]:
 

@@ -36,6 +36,8 @@ b.add_dataset('lc', times=phoebe.linspace(0,10,101), dataset='lc01')
 # ----------------------------
 # 
 # If `compute_times` is not empty (by either providing `compute_times` *or* `compute_phases`), the provided value will be used to compute the model instead of those in the `times` parameter.
+# 
+# In the case of a [mesh dataset](MESH.ipynb), observations cannot be attached to the dataset, so a `times` parameter does not exist.  In this case `compute_times` or `compute_phases` will *always* be used.
 
 # In[3]:
 
@@ -107,6 +109,8 @@ print(b.filter(qualifier=['times', 'compute_times', 'compute_phases'], context='
 # Note that under the hood, PHOEBE **always** works in time-space, meaning it is the *constrained* value of `compute_times` that is being passed under-the-hood... even if those will result in slightly different phase-values due to the values of t0, dperdt, etc.
 
 # Also note that if directly passing `compute_phases` to [b.add_dataset](../api/phoebe.frontend.bundle.Bundle.add_dataset.md), the constraint will be flipped on our behalf.  We would then need to flip the constraint in order to provide `compute_times` instead.
+
+# Finally, it is important to make the distinction that this is **not** adding support for **data** in phases.  If we have an old light curve that is only available in phase, we still must convert these to times manually (or via [b.to_time](../api/phoebe.frontend.bundle.Bundle.to_time.md).  This restriction is intentional: we do not want the mapping between phase and time to change as the ephemeris is changed or fitted, rather we want to try to map from phase to time using the ephemeris that was originally used when the dataset was recorded (if possible, or the best possible guess).
 
 # Interpolating the Model
 # ------------------------------

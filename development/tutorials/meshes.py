@@ -27,7 +27,6 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 import phoebe
-from phoebe import u # units
 
 logger = phoebe.logger()
 
@@ -39,7 +38,7 @@ b = phoebe.default_binary()
 # 
 # You must create a mesh dataset and specify the times and columns which you'd like exposed.  For more information, see the tutorial on the [MESH dataset](MESH.ipynb).
 # 
-# The mesh will be exposed at the times specified by the 'times' Parameter, as well as any times referenced by the 'include_times' [SelectParameter](../api/phoebe.parameters.SelectParameter.md).
+# The mesh will be exposed at the times specified by the `compute_times` Parameter, as well as any times referenced by the `include_times` [SelectParameter](../api/phoebe.parameters.SelectParameter.md).
 # 
 # So let's add an LC and MESH datasets.
 # 
@@ -56,10 +55,12 @@ b.add_dataset('lc', times=phoebe.linspace(0,1,6))
 b.add_dataset('mesh')
 
 
+#  **NEW in PHOEBE 2.2**: Unlike other datasets, the mesh dataset cannot accept actual observations, so there is no `times` parameter, only the `compute_times` and `compute_phases` parameters.  For more details on these, see the [Compute Times & Phases tutorial](compute_times_phases.ipynb).
+
 # In[5]:
 
 
-print(b.get_parameter(qualifier='times', kind='mesh'))
+print(b.get_parameter(qualifier='compute_times', kind='mesh'))
 
 
 # In[6]:
@@ -68,12 +69,12 @@ print(b.get_parameter(qualifier='times', kind='mesh'))
 print(b.get_parameter(qualifier='include_times', kind='mesh'))
 
 
-# Note that we can now manually set the times of the mesh AND/OR reference the times for existing non-mesh datasets (such as the light curve we just added) as well as any of the various t0s in the system.
+# Note that we can manually set the times of the mesh AND/OR reference the times for existing non-mesh datasets (such as the light curve we just added) as well as any of the various t0s in the system.
 
 # In[7]:
 
 
-b.set_value('times', kind='mesh', value=[10])
+b.set_value('compute_times', kind='mesh', value=[10])
 
 
 # In[8]:
@@ -94,9 +95,9 @@ b.run_compute()
 print(b.filter(kind='mesh', context='model').times)
 
 
-# By default, the mesh only exposes the geometric columns of the triangles
+# By default, the mesh only exposes the geometric columns of the triangles, in both plane-of-sky and roche coordinates.
 
-# In[11]:
+# In[12]:
 
 
 print(b.filter(kind='mesh', context='model').qualifiers)
@@ -104,31 +105,31 @@ print(b.filter(kind='mesh', context='model').qualifiers)
 
 # But we can also specify other columns to be included (by setting the `columns` [SelectParameter](../api/phoebe.parameters.SelectParameter.md) *before* calling [run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md))
 
-# In[12]:
+# In[13]:
 
 
 print(b.get_parameter(qualifier='columns', kind='mesh', context='dataset'))
 
 
-# In[13]:
+# In[14]:
 
 
 b.set_value('columns', value=['teffs'])
 
 
-# In[14]:
+# In[15]:
 
 
 b.run_compute()
 
 
-# In[15]:
+# In[16]:
 
 
 print(b.filter(kind='mesh', context='model').qualifiers)
 
 
-# In[16]:
+# In[17]:
 
 
 print(b.get_value('teffs', time=0.0, component='primary'))
@@ -166,4 +167,10 @@ b.run_compute()
 
 
 print(b.filter(kind='mesh', context='model').qualifiers)
+
+
+# In[ ]:
+
+
+
 

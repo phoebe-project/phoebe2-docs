@@ -27,8 +27,6 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 import phoebe
-from phoebe import u # units
-
 
 logger = phoebe.logger()
 
@@ -38,11 +36,11 @@ b = phoebe.default_binary()
 # Dataset Parameters
 # --------------------------
 
-# Line profiles have an extra dimension than [LC](LC.ipynb) and [RV](RV.ipynb) datasets which have times as their independent variable.  For that reason, the parameters in the LP dataset are tagged with individual times instead of having a separate times array.  This allows the flux_densities and sigmas to be per-time.  Because of this, times is not a variable, but instead **must** be passed when you call [b.add_dataset](../api/phoebe.frontend.bundle.Bundle.add_dataset.md).  At that point, in order to change the times you would need to remove and re-add the dataset.
+# Line profiles have an extra dimension than [LC](LC.ipynb) and [RV](RV.ipynb) datasets which have times as their independent variable.  For that reason, the parameters in the LP dataset are tagged with individual times instead of having a separate times array.  This allows the flux_densities and sigmas to be per-time.  Because of this, `times` is not a parameter, but instead **must** be passed when you call [b.add_dataset](../api/phoebe.frontend.bundle.Bundle.add_dataset.md) if you want to attach actual line-profile data (`flux_densities`) to your dataset.  At that point, in order to change the times you would need to remove and re-add the dataset.  If you only want to compute synthetic line profiles, use `compute_times` or `compute_phases` instead.
 # 
 # Let's add a line profile dataset to the Bundle (see also the [lp API docs](../api/phoebe.parameters.dataset.lp.md)).  Some parameters are only visible based on the values of other parameters, so we'll pass `check_visible=False` (see the [filter API docs](../api/phoebe.parameters.ParameterSet.filter.md) for more details).  These visibility rules will be explained below.
 
-# In[4]:
+# In[3]:
 
 
 b.add_dataset('lp', times=[0,1,2], wavelengths=phoebe.linspace(549, 551, 101))
@@ -53,21 +51,37 @@ print(b.get_dataset(kind='lp', check_visible=False))
 
 # ### times
 
-# In[7]:
+# In[4]:
 
 
 print(b.get_dataset(kind='lp').times)
 
 
+# ### compute_times / compute_phases
+# 
+# See the [Compute Times & Phases tutorial](compute_times_phases.ipynb).
+
+# In[5]:
+
+
+print(b.get_parameter(qualifier='compute_times'))
+
+
+# In[6]:
+
+
+print(b.get_parameter(qualifier='compute_phases', context='dataset'))
+
+
 # ### wavelengths
 
-# In[9]:
+# In[7]:
 
 
 print(b.filter(qualifier='wavelengths'))
 
 
-# In[10]:
+# In[8]:
 
 
 print(b.get_parameter(qualifier='wavelengths', component='binary'))
@@ -80,14 +94,18 @@ print(b.get_parameter(qualifier='wavelengths', component='binary'))
 # If you're passing wavelengths to the [b.add_dataset](../api/phoebe.frontend.bundle.Bundle.add_dataset.md) call, it will default to filling the wavelengths at the *system-level*.  To override this, pass `components=['primary', 'secondary']`, as well.  For example: `b.add_dataset('lp', wavelengths=np.linspace(549,551,101), components=['primary', 'secondary'])`.
 
 # ### flux_densities
+# 
+# Note that observation `flux_densities` parameters are exposed per-time, according to the value of `times` passed to [add_dataset](../api/phoebe.frontend.bundle.Bundle.add_dataset.md).
+# 
+# `flux_densities` parameters will be exposed in the model based on `compute_times`/`compute_phases` if not empty, otherwise according to `times`.  For more information, see the [Compute Times & Phases tutorial](compute_times_phases.ipynb).
 
-# In[11]:
+# In[9]:
 
 
 print(b.filter(qualifier='flux_densities'))
 
 
-# In[13]:
+# In[10]:
 
 
 print(b.get_parameter(qualifier='flux_densities', 
@@ -96,14 +114,16 @@ print(b.get_parameter(qualifier='flux_densities',
 
 
 # ### sigmas
+# 
+# Note that, like `flux_densities`, `sigmas` parameters are exposed per-time, according to the value of `times` passed to [add_dataset](../api/phoebe.frontend.bundle.Bundle.add_dataset.md).
 
-# In[14]:
+# In[11]:
 
 
 print(b.filter(qualifier='sigmas'))
 
 
-# In[15]:
+# In[12]:
 
 
 print(b.get_parameter(qualifier='sigmas', 
@@ -113,7 +133,7 @@ print(b.get_parameter(qualifier='sigmas',
 
 # ### profile_func
 
-# In[16]:
+# In[13]:
 
 
 print(b.get_parameter(qualifier='profile_func'))
@@ -121,7 +141,7 @@ print(b.get_parameter(qualifier='profile_func'))
 
 # ### profile_rest
 
-# In[17]:
+# In[14]:
 
 
 print(b.get_parameter(qualifier='profile_rest'))
@@ -129,7 +149,7 @@ print(b.get_parameter(qualifier='profile_rest'))
 
 # ### profile_sv
 
-# In[18]:
+# In[15]:
 
 
 print(b.get_parameter(qualifier='profile_sv'))
@@ -138,13 +158,13 @@ print(b.get_parameter(qualifier='profile_sv'))
 # Synthetics
 # ------------------
 
-# In[19]:
+# In[16]:
 
 
 b.run_compute(irrad_method='none')
 
 
-# In[20]:
+# In[17]:
 
 
 print(b.filter(context='model').twigs)
@@ -152,13 +172,13 @@ print(b.filter(context='model').twigs)
 
 # The model for a line profile dataset will expose flux-densities at each time and for each component where the corresponding wavelengths Parameter was not empty.  Here since we used the default and exposed line-profiles for the entire system, we have a single entry per-time.
 
-# In[21]:
+# In[18]:
 
 
 print(b.filter(qualifier='flux_densities', context='model'))
 
 
-# In[22]:
+# In[19]:
 
 
 print(b.get_parameter(qualifier='flux_densities', context='model', time=0))
@@ -169,7 +189,7 @@ print(b.get_parameter(qualifier='flux_densities', context='model', time=0))
 # 
 # By default, LP datasets plot as 'flux_densities' vs 'wavelengths' for a **single time**.
 
-# In[23]:
+# In[20]:
 
 
 afig, mplfig = b.filter(dataset='lp01', context='model', time=0).plot(show=True)
@@ -180,13 +200,13 @@ afig, mplfig = b.filter(dataset='lp01', context='model', time=0).plot(show=True)
 # 
 # Let's add a single mesh and see which columns from the line profile dataset are available to expose as a column in the mesh.
 
-# In[24]:
+# In[21]:
 
 
 b.add_dataset('mesh', times=[0], dataset='mesh01')
 
 
-# In[25]:
+# In[22]:
 
 
 print(b.get_parameter(qualifier='columns').choices)
