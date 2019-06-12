@@ -17,6 +17,7 @@ These example scripts are generally focused to show a single advanced feature or
 * [Detached Binary: Roche vs Rotstar](examples/detached_rotstar.ipynb)
 * [Binary with Spots](examples/binary_spots.ipynb)
 * [Misaligned Binary System: DI Her](examples/diher_misaligned.ipynb)
+* [Eccentric Ellipsoidal (Heartbeat)](examples/eccentric_ellipsoidal.ipynb)
 
 
 ## Contact Binary Stars
@@ -28,6 +29,7 @@ These example scripts are generally focused to show a single advanced feature or
 ## Spots
 
 * [Binary with Spots](examples/binary_spots.ipynb)
+* [Spot Transit](examples/spot_transit.ipynb)
 * [Single Star with Spots](examples/single_spots.ipynb)
 * [Comparing Spots in PHOEBE 2 vs PHOEBE Legacy](examples/legacy_spots.ipynb)
 
@@ -40,6 +42,9 @@ These example scripts are generally focused to show a single advanced feature or
 
 * [Complete Binary Animation](examples/animation_binary_complete.ipynb)
 * [Rossiter-McLaughlin Effect (RVs)](examples/rossiter_mclaughlin.ipynb)
+* [Spot Transit](examples/spot_transit.ipynb)
+* [Eccentric Ellipsoidal (Heartbeat)](examples/eccentric_ellipsoidal.ipynb)
+
 
 ## Alternate Backends
 
