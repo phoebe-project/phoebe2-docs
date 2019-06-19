@@ -23,12 +23,14 @@ These example scripts are generally focused to show a single advanced feature or
 ## Contact Binary Stars
 
 * [Minimal Contact Binary System](examples/minimal_contact_binary.ipynb)
+* [Contact Binary with Spots](examples/contact_spots.ipynb)
 * [Comparing Contact Binary System PHOEBE 2 vs PHOEBE Legacy](examples/legacy_contact_binary.ipynb)
 
 
 ## Spots
 
 * [Binary with Spots](examples/binary_spots.ipynb)
+* [Contact Binary with Spots](examples/contact_spots.ipynb)
 * [Spot Transit](examples/spot_transit.ipynb)
 * [Single Star with Spots](examples/single_spots.ipynb)
 * [Comparing Spots in PHOEBE 2 vs PHOEBE Legacy](examples/legacy_spots.ipynb)
