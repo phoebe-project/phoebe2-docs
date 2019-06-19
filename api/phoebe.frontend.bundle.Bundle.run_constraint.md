@@ -3,7 +3,7 @@
 
 ```py
 
-def run_constraint(self, twig=None, return_parameter=False, **kwargs)
+def run_constraint(self, twig=None, return_parameter=False, suppress_error=True, **kwargs)
 
 ```
 
@@ -31,6 +31,11 @@ Arguments
 * `return_parameter` (bool, optional, default=False): whether to
     return the constrained [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) (otherwise will
     return the resulting value).
+* `suppress_error` (bool, optional, default=True): if True, any errors
+    while running the constraint will be availble via the logger at the
+    'error' level and can be re-attempted via
+    [phoebe.frontend.bundle.Bundle.run_failed_constraints](phoebe.frontend.bundle.Bundle.run_failed_constraints.md).  If False,
+    any errors will be raised immediately.
 * `**kwargs`:  any other tags to do the filter (except twig or context)
 
 Returns

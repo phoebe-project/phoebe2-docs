@@ -3,7 +3,7 @@
 
 ```py
 
-def get_result(self, t=None)
+def get_result(self, t=None, suppress_error=True)
 
 ```
 
