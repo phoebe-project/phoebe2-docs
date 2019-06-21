@@ -30,6 +30,7 @@ These example scripts are generally focused to show a single advanced feature or
 ## Spots
 
 * [Binary with Spots](examples/binary_spots.ipynb)
+* [Misaligned Binary with Spots](examples/binary_misaligned_spots.ipynb)
 * [Contact Binary with Spots](examples/contact_spots.ipynb)
 * [Spot Transit](examples/spot_transit.ipynb)
 * [Single Star with Spots](examples/single_spots.ipynb)
@@ -38,6 +39,7 @@ These example scripts are generally focused to show a single advanced feature or
 ## Spin-Orbit Misalignment
 
 * [Misaligned Binary System: DI Her](examples/diher_misaligned.ipynb)
+* [Misaligned Binary with Spots](examples/binary_misaligned_spots.ipynb)
 
 
 ## Advanced Plotting & Animations
