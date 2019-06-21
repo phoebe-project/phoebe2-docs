@@ -54,7 +54,7 @@ b.run_compute(irrad_method='none', model='no_spot')
 
 # Let's add a spot to the primary component in our binary.  Note that if you attempt to attach to the 'contact_envelope' component, an error will be raised.  Spots can only be attached to *star* components.
 # 
-# For more details, see the [spots tutorial](../tutorials/spots.ipynb)
+# The 'colat' parameter defines the latitude on the star measured from its North (spin) Pole.  The 'long' parameter measures the longitude of the spot - with longitude = 0 being defined as pointing towards the other star at t0.  See to [spots tutorial](../tutorials/spots.ipynb) for more details.
 
 # In[4]:
 

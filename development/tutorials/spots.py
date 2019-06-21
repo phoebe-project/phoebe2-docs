@@ -60,7 +60,7 @@ b.add_spot(component='secondary', feature='spot02')
 # Relevant Parameters
 # -----------------
 
-# A spot is defined by the colatitude and longitude of its center, its angular radius, and the ratio of temperature of the spot to the local intrinsic value.
+# A spot is defined by the colatitude (where 0 is defined as the North (spin) Pole) and longitude (where 0 is defined as pointing towards the other star for a binary, or to the observer for a single star) of its center, its angular radius, and the ratio of temperature of the spot to the local intrinsic value.
 
 # In[5]:
 

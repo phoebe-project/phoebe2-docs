@@ -52,7 +52,7 @@ b.add_spot(radius=30, colat=80, long=0, relteff=0.9)
 print b['spot']
 
 
-# The 'colat' parameter defines the latitude on the star measured from its North Pole.  The 'long' parameter measures the longitude of the spot - with longitude = 0 being defined as pointing towards the observer at t0.
+# The 'colat' parameter defines the colatitude on the star measured from its North (spin) Pole.  The 'long' parameter measures the longitude of the spot - with longitude = 0 being defined as pointing towards the observer at t0 for a single star.  See the [spots tutorial](../tutorials/spots.ipynb) for more details.
 
 # In[4]:
 
