@@ -29,7 +29,7 @@ plot(c={'primary@rv*': 'blue', 'secondary@rv*': 'red'})
 ```
 
 Note: not all options are listed below.  See the
-[autofig](https://github.com/kecnry/autofig/tree/1.0.0)
+[autofig](https://autofig.readthedocs.io/en/latest/)
 tutorials and documentation for more options which are passed along
 via `**kwargs`.
 
@@ -60,20 +60,30 @@ Arguments
     z-axis.  By default, this will just order the points on a 2D plot.
     To plot in 3D, also pass `projection='3d'`.
 * `s` (strong/float/array, optional): qualifier/twig of the array to use
-    for size.  See the [autofig tutorial on size](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/size_modes.ipynb)
+    for size.  See the [autofig tutorial on size](https://autofig.readthedocs.io/en/latest/tutorials/size_modes/)
     for more information.
 * `c` (string/float/array, optional): qualifier/twig of the array to use
     for color.
 * `fc` (string/float/array, optional): qualifier/twig of the array to use
     for facecolor (only applicable for mesh plots).
 * `ec` (string/float/array, optional): qualifier/twig of the array to use
-    for edgecolor (only applicable for mesh plots).
+    for edgecolor (only applicable for mesh plots).   To disable plotting
+    edges, use `ec='none'`.  To plot edges in the same colors as the face,
+    use `ec='face'` (not supported if `projection='3d'`).
 
-* `i` (string, optional, default='times'): qualifier/twig to use for the
-    independent variable.  In the vast majority of cases, using the default
-    is sufficient.  If `x` is 'phases' or ('phases:[component]'), then
-    setting `i` to phases as well will sort and connect the points in
-    phase-order instead of the default behavior of time-order.
+* `i` (string, optional, default='phases' or 'times'): qualifier/twig to
+    use for the independent variable.  In the vast majority of cases,
+    using the default is sufficient.  `i` will default to 'times' unless
+    'phases' is plotted along `x`, `y`, or `z`.  If 'phases' is plotted,
+    then `i` will still default to 'times' if the system is time-dependent,
+    according to [phoebe.parameters.HierarchyParameter.is_time_dependent](phoebe.parameters.HierarchyParameter.is_time_dependent.md)
+    (note that this is determined based on current values of the relevant
+    parameters, not neccessarily those when the model was computed),
+    otherwise will default to 'phases'.  If `x` is 'phases' or ('phases:[component]'),
+    then setting `i` to phases will sort and connect the points in
+    phase-order, whereas if set to `times` they will be sorted and connected
+    in time-order, with linebreaks when needed for phase-wrapping.
+    See also the [autofig tutorial on a looping independent variable](https://autofig.readthedocs.io/en/latest/gallery/looping_indep/).
 
 * `xerror` (string/float/array, optional): qualifier/twig of the array to plot as
     x-errors (will default based on `x` if not provided).
@@ -113,28 +123,37 @@ Arguments
     only applicable for mesh plots).
 
 * `xlim` (tuple/string, optional): limits for the x-axis (will default on
-    data if not provided).  See [autofig tutorial on limits](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/limits.ipynb)
+    data if not provided).  See [autofig tutorial on limits](https://autofig.readthedocs.io/en/latest/tutorials/limits/)
     for more information/choices.
 * `ylim` (tuple/string, optional): limits for the y-axis (will default on
-    data if not provided).  See [autofig tutorial on limits](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/limits.ipynb)
+    data if not provided).  See [autofig tutorial on limits](https://autofig.readthedocs.io/en/latest/tutorials/limits/)
     for more information/choices.
 * `zlim` (tuple/string, optional): limits for the z-axis (will default on
-    data if not provided).  See [autofig tutorial on limits](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/limits.ipynb)
+    data if not provided).  See [autofig tutorial on limits](https://autofig.readthedocs.io/en/latest/tutorials/limits/)
     for more information/choices.
 * `slim` (tuple/string, optional): limits for the size-axis (will default on
-    data if not provided).  See [autofig tutorial on limits](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/limits.ipynb)
+    data if not provided).  See [autofig tutorial on limits](https://autofig.readthedocs.io/en/latest/tutorials/limits/)
     for more information/choices.
 * `clim` (tuple/string, optional): limits for the color-axis (will default on
-    data if not provided).  See [autofig tutorial on limits](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/limits.ipynb)
+    data if not provided).  See [autofig tutorial on limits](https://autofig.readthedocs.io/en/latest/tutorials/limits/)
     for more information/choices.
 * `fclim` (tuple/string, optional): limits for the facecolor-axis (will default on
-    data if not provided).  See [autofig tutorial on limits](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/limits.ipynb)
+    data if not provided).  See [autofig tutorial on limits](https://autofig.readthedocs.io/en/latest/tutorials/limits/)
     for more information/choices.
 * `eclim` (tuple/string, optional): limits for the edgecolor-axis (will default on
-    data if not provided).  See [autofig tutorial on limits](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/limits.ipynb)
+    data if not provided).  See [autofig tutorial on limits](https://autofig.readthedocs.io/en/latest/tutorials/limits/)
     for more information/choices.
 
-* `smode` (string, optional): size mode.  See the [autofig tutorial on sizes](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/size_modes.ipynb)
+* `fcmap` (string, optional): colormap to use for the facecolor-axis (will default on
+    the type of data passed to `fc` if not provided, only applicable for mesh plots).
+    See the [matplotlib colormap reference](https://matplotlib.org/3.1.0/gallery/color/colormap_reference.html)
+    for a list of options (may vary based on installed version of matplotlib).
+* `ecmap` (string, optional): colormap to use for the edgecolor-axis (will default on
+    the type of data passed to `ec` if not provided, only applicable for mesh plots).
+    See the [matplotlib colormap reference](https://matplotlib.org/3.1.0/gallery/color/colormap_reference.html)
+    for a list of options (may vary based on installed version of matplotlib).
+
+* `smode` (string, optional): size mode.  See the [autofig tutorial on sizes](https://autofig.readthedocs.io/en/latest/tutorials/size_modes/)
     for more information.
 
 * `highlight` (bool, optional, default=True): whether to highlight at the
@@ -148,6 +167,10 @@ Arguments
 
 * `uncover` (bool, optional): whether to uncover data based on the current
     time.  Only applicable if `time` or `times` provided.
+* `trail` (bool or float, optional): whether trail is enabled.
+    If a float, then a value between 0 and 1 indicating the fractional
+    length of the trail.  Defaults to 0 for mesh and lineprofiles and False
+    otherwise.  Only applicable if `times` or `times` provided.
 
 * `legend` (bool, optional, default=False): whether to draw a legend for
     this axes.
@@ -155,7 +178,7 @@ Arguments
     formatting, etc) to be passed on to [plt.legend](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.legend.html)
 
 * `fig` (matplotlib figure, optional): figure to use for plotting.  If
-    not provided, will use plt.gcf().  Ignored unless `save`, `show`,
+    not provided, will use `plt.gcf()`.  Ignored unless `save`, `show`,
     or `animate`.
 
 * `save` (string, optional, default=False): filename to save the
@@ -167,13 +190,13 @@ Arguments
 
 * `projection` (string, optional, default='2d'): whether to plot
     on a 2d or 3d axes.  If '3d', the orientation of the axes will
-    be provided by `azim` and `elev` (see [autofig tutorial on 3d](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/3d.ipynb))
+    be provided by `azim` and `elev` (see [autofig tutorial on 3d](https://autofig.readthedocs.io/en/latest/tutorials/3d/))
 * `azim` (float or list, optional): azimuth to use when `projection`
     is '3d'.  If `animate` is True, then a tuple or list will allow
-    rotating the axes throughout the animation (see [autofig tutorial on 3d](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/3d.ipynb))
+    rotating the axes throughout the animation (see [autofig tutorial on 3d](https://autofig.readthedocs.io/en/latest/tutorials/3d/))
 * `elev` (float or list, optional): elevation to use when `projection`
     is '3d'.  If `animate` is True, then a tuple or list will allow
-    rotating the axes throughout the animation (see [autofig tutorial on 3d](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/3d.ipynb))
+    rotating the axes throughout the animation (see [autofig tutorial on 3d](https://autofig.readthedocs.io/en/latest/tutorials/3d/))
 * `exclude_back` (bool, optional): whether to exclude plotting the back
     of meshes when in '2d' projections.  Defaults to True if `fc` is
     not 'none' (otherwise defaults to False so that you can "see through"
@@ -184,14 +207,14 @@ Arguments
 * `draw_title` (bool, optional, default=False): whether to draw axes
     titles.
 * `subplot_grid` (tuple, optional, default=None): override the subplot
-    grid used (see [autofig tutorial on subplots](https://github.com/kecnry/autofig/blob/1.0.0/tutorials/subplot_positioning.ipynb)
+    grid used (see [autofig tutorial on subplots](https://autofig.readthedocs.io/en/latest/tutorials/subplot_positioning/)
     for more details).
 
 * `save_kwargs` (dict, optional): any kwargs necessary to pass on to
     save (only applicable if `animate=True`).  On many systems,
-    it may be necessary to pass save_kwargs={'writer': 'imagemagick'}
+    it may be necessary to pass `save_kwargs={'writer': 'imagemagick'}`.
 
-* `**kwargs`: additional keyword arguments are sent along to [autofig](https://github.com/kecnry/autofig/tree/1.0.0).
+* `**kwargs`: additional keyword arguments are sent along to [autofig](https://autofig.readthedocs.io/en/latest/).
 
 Returns
 --------
