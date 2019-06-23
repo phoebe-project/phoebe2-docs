@@ -112,6 +112,8 @@ Importing/exporting from other codes:
 * [get_constraint](api/phoebe.frontend.bundle.Bundle.get_constraint.md)
 * [run_constraint](api/phoebe.frontend.bundle.Bundle.run_constraint.md)
 * [flip_constraint](api/phoebe.frontend.bundle.Bundle.flip_constraint.md)
+* [run_delayed_constraints](api/phoebe.frontend.bundle.Bundle.run_delayed_constraints.md)
+* [run_failed_constraints](api/phoebe.frontend.bundle.Bundle.run_failed_constraints.md) (2.1.13+ only)
 
 ### Components
 
