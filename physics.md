@@ -15,7 +15,7 @@ The following tutorials aim to explain the implementation and usage of some of t
 * [Rømer & Light Travel Time Effects (ltte)](tutorials/ltte.ipynb)
 * [Misalignment (pitch & yaw)](tutorials/pitch_yaw.ipynb)
 * [Passbands & Atmospheres (passband & atm)](tutorials/atm_passbands.ipynb)
-* [Passband Luminosity (pblum_mode, pblum_ref, pblum, pbflux)](tutorials/pblum.ipynb)
+* [Passband Luminosity (pblum_mode, pblum_component, pblum_dataset, pblum, pbflux)](tutorials/pblum.ipynb)
 * [Third Light (l3_mode, l3, l3_frac)](tutorials/l3.ipynb)
 * [Distance (distance)](tutorials/distance.ipynb)
 * [Gravity Brightening/Darkening (gravb_bol)](tutorials/gravb_bol.ipynb)
