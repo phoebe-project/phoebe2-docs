@@ -18,8 +18,8 @@ that require per-star limb-darkening coefficients.  Note that the default
 limb-darkening coefficients **per-element**.
 
 Coefficients will only be interpolated/returned for those where `ld_mode`
-is 'func_lookup'.  The values of the `ld_coeffs` parameter will be
-returned for cases where `ld_mode` is 'func_provided'.  Cases where
+is 'lookup'.  The values of the `ld_coeffs` parameter will be
+returned for cases where `ld_mode` is 'manual'.  Cases where
 `ld_mode` is 'interp' will not be included in the output.
 
 Note:

@@ -61,22 +61,29 @@ Arguments
 * `passband` (string, optional): passband.  Only applicable if `syn` is False.
 * `intens_weighting` (string, optional): whether passband intensities are
     weighted by energy of photons.  Only applicable if `syn` is False.
-* `pblum_mode` (string, optional, default='provided'): mode for scaling
+* `pblum_mode` (string, optional, default='manual'): mode for scaling
     passband luminosities.  Only applicable if `syn` is False and `is_lc`
     is True.
-* `pblum_ref` (string, optional): whether to use this components pblum or to
-    couple to that from another component in the system.  Only applicable
-    if `pblum_mode` is 'provided'.  Only applicable if `syn` is False and
-    `is_lc` is True.
-* `pblum` (float/quantity, optional): passband luminosity (defined at t0).
+* `pblum_dataset` (string, optional):  Dataset to reference for coupling
+    luminosities.  Only applicable if `pblum_mode` is 'dataset-coupled'.
+* `pblum_component` (string, optional): Component to provide `pblum`.
+    Only applicable if `pblum_mode` is 'component-coupled'.
+* `pblum` (float/quantity or string, optional): passband luminosity (defined at t0).
+    If `pblum_mode` is 'decoupled', then one entry per-star will be applicable.
+    If `pblum_mode` is 'component-coupled', then only the entry for the primary
+    component, according to [phoebe.parameters.HierarchyParameter](phoebe.parameters.HierarchyParameter.md) will be
+    available.  To change the provided component, see `pblum_component`.
     Only applicable if `syn` is False and `is_lc` is True.
+* `pbflux` (float/quantity, optional): passband flux (defined here as
+    `pblum/4pi`).  Only applicable if `pblum_mode` is 'pbflux', `syn` is False,
+    and `is_lc` is True.
 * `l3_mode` (string, optional, default='flux'): mode for providing third
     light (`l3`).  Only applicable if `syn` is False and `is_lc` is True.
 * `l3` (float/quantity, optional): third light in flux units (only applicable
     if `l3_mode` is 'flux'). Only applicable if `syn` is False and `is_lc`
     is True.
-* `l3_frac` (float/quantity, optional): third light in fraction of total light
-    (only applicable if `l3_mode` is 'fraction of total light').
+* `l3_frac` (float/quantity, optional): third light in fraction
+    (only applicable if `l3_mode` is 'fraction').
     Only applicable if `syn` is False and `is_lc` is True.
 * `exptime` (float/quantity, optional): exposure time of the observations
     (`times` is defined at the mid-exposure).

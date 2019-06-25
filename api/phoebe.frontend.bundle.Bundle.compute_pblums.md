@@ -22,8 +22,10 @@ For any `dataset` which does not support pblum scaling (rv or lp dataset,
 for example), will have their absolute intensities exposed.
 
 Note that luminosities cannot be exposed for any dataset in which
-`pblum_mode` is 'scale to data' as the entire light curve must be
-computed prior to scaling.
+`pblum_mode` is 'dataset-scaled' as the entire light curve must be
+computed prior to scaling.  These will be excluded from the output
+with error, but with a warning message in the [phoebe.logger](phoebe.logger.md), if
+enabled.
 
 Additionally, an estimate for the total fluxes `pbflux` and `pbflux_ext`
 can optionally be computed.  These will also be computed at t0@system,
@@ -42,7 +44,7 @@ does not affect normal intensities, boosting will not be included
 in any of the returned values, including `pbflux_ext` due to the
 approximation of flux explained above.  This also means that boosting
 will be ignored in any scaling if providing `pbflux` (by setting
-`pblum_mode = 'total flux'`).
+`pblum_mode = 'pbflux'`).
 
 This method is only for convenience and will be recomputed internally
 within [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md) as needed.
