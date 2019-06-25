@@ -7,15 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -39,7 +39,7 @@ b = phoebe.default_binary()
 # Relevant Parameters
 # -----------------------
 # 
-# **NEW in PHOEBE 2.2**: an 'l3_mode' parameter exists for each LC dataset, which determines whether third light will be provided in flux units, or as a fraction of the total flux.
+# **NEW in PHOEBE 2.2**: an `l3_mode` parameter exists for each LC dataset, which determines whether third light will be provided in flux units, or as a fraction of the total flux.
 # 
 # Since this is passband dependent and only used for flux measurments - it does not yet exist for a new empty Bundle.
 
@@ -67,7 +67,7 @@ print(b.filter(qualifier='l3*'))
 
 # ## l3_mode = 'flux'
 # 
-# When l3_mode is set to 'flux', the 'l3' parameter defines (in flux units) how much extraneous light is added to the light curve in that particular passband/dataset.
+# When `l3_mode` is set to 'flux', the `l3` parameter defines (in flux units) how much extraneous light is added to the light curve in that particular passband/dataset.
 
 # In[6]:
 
@@ -91,14 +91,14 @@ print(b.get_parameter('l3'))
 print(b.compute_l3s())
 
 
-# ## l3_mode = 'fraction of total light'
+# ## l3_mode = 'fraction'
 # 
-# When l3_mode is set to 'fraction of total light', the 'l3' parameter is now replaced by a 'l3_frac' parameter.
+# When `l3_mode` is set to 'fraction', the `l3` parameter is now replaced by an `l3_frac` parameter.
 
 # In[9]:
 
 
-b.set_value('l3_mode', 'fraction of total light')
+b.set_value('l3_mode', 'fraction')
 
 
 # In[10]:

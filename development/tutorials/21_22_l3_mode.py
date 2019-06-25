@@ -19,7 +19,7 @@ print(b.filter(qualifier='l3*', dataset='lc01'))
 # 
 # However, you can change the value of `l3_mode` to expose the `l3_frac` parameter.  For more details, see the [third light tutorial](./l3.ipynb).
 
-# In[3]:
+# In[2]:
 
 
 print(b.get_parameter('l3_mode').choices)
@@ -27,7 +27,7 @@ print(b.get_parameter('l3_mode').choices)
 
 # Additionally, PHOEBE 2.2 introduces a new bundle-method for computing third light in flux or fractional units (whichever is not set by the user according to `l3_mode`.  
 
-# In[4]:
+# In[3]:
 
 
 print(b.compute_l3s())

@@ -15,7 +15,7 @@
 get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -43,22 +43,22 @@ b = phoebe.default_binary()
 b.add_dataset('lc', times=phoebe.linspace(0,1,101), dataset='lc01')
 
 
-# Lastly, just to make things a bit easier, we'll turn off [limb-darkening](limb_darkening.ipynb) and [irradiation (reflection)](reflection_heating.ipynb) and use blackbody atmospheres.
+# Lastly, just to make things a bit easier and faster, we'll turn off [irradiation (reflection)](reflection_heating.ipynb), use blackbody atmospheres, and disable limb-darkening (so that we can play with weird temperatures without having to worry about falling of the grids).
 
 # In[4]:
 
 
-b.set_value_all('ld_func', 'logarithmic')
-b.set_value_all('ld_coeffs_source', 'none')
-b.set_value_all('ld_coeffs', [0,0])
-b.set_value_all('atm', 'blackbody')
 b.set_value('irrad_method', 'none')
+b.set_value_all('ld_mode', 'manual')
+b.set_value_all('ld_func', 'linear')
+b.set_value_all('ld_coeffs', [0.])
+b.set_value_all('atm', 'blackbody')
 
 
 # Relevant Parameters & Methods
 # --------------------------------
 
-# **NEW in PHOEBE 2.2:** A 'pblum_mode' parameter exists for each LC dataset in the bundle.  This parameter defines how passband luminosities are handled.  The subsections below describe the use and parameters exposed depening on the value of this parameter.
+# **NEW in PHOEBE 2.2:** A `pblum_mode` parameter exists for each LC dataset in the bundle.  This parameter defines how passband luminosities are handled.  The subsections below describe the use and parameters exposed depening on the value of this parameter.
 
 # In[5]:
 
@@ -78,73 +78,53 @@ print(b.compute_pblums())
 
 # For more details, see the section below on "Accessing Model Luminosities" as well as the [b.compute_pblums API docs](../api/phoebe.frontend.bundle.Bundle.compute_pblums.md)
 
-# pblum_mode = 'provided'
+# pblum_mode = 'component-coupled'
 # -----------------------
 # 
 # 
 
-# pblum_mode='provided' is the default option and maintains the default behavior from previous releases.  Here the user provides *passband luminosities* for the stars in the system for the given dataset/passband.
+# `pblum_mode='component-coupled'` is the default option and maintains the default behavior from previous releases.  Here the user provides *passband luminosities* for a single star in the system for the given dataset/passband, and all other stars are scaled accordingly.
 # 
-# The 'pblum_ref' parameter exists for each component-dataset pair and it determines how the intensities for that star in that passband should be scaled, i.e. by the pblum provided by that component ('self') or coupled to the pblum provided by another component.  For any component in which pblum_ref='self', a 'pblum' parameter will also be visible.
-# 
-# By default the passband luminosities are *coupled* (see below for explanations of coupled vs decoupled), with the passband luminosity being defined by the primary component in the system.
+# By default, the value of `pblum` is set for the primary star in the system, but we can instead provide `pblum` for the secondary star by changing the value of `pblum_component`.
 
 # In[7]:
-
-
-print(b.filter(qualifier='pblum_ref'))
-
-
-# In[8]:
-
-
-print(b.get_parameter(qualifier='pblum_ref', component='primary'))
-
-
-# The 'pblum' parameter is only visible for each component-dataset pair in which pblum_ref=='self'.  This component will then have its intensities scaled such that they match the value provided by pblum.  In general, a pblum of 4pi will result in an out-of-eclipse flux of ~1.
-
-# In[9]:
 
 
 print(b.filter(qualifier='pblum'))
 
 
+# In[8]:
+
+
+print(b.get_parameter(qualifier='pblum_component'))
+
+
+# In[9]:
+
+
+b.set_value('pblum_component', 'secondary')
+
+
 # In[10]:
 
 
+print(b.filter(qualifier='pblum'))
+
+
+# Note that in general (for the case of a spherical star), a pblum of 4pi will result in an out-of-eclipse flux of ~1.
+
+# In[11]:
+
+
+b.set_value('pblum_component', 'primary')
 print(b.get_parameter(qualifier='pblum', component='primary'))
 
 
 # **NOTE:** other parameters also affect flux-levels, including [limb darkening](limb_darkening.ipynb), [third light](l3.ipynb), [boosting](boosting.ipynb), [irradiation](reflection_heating.ipynb), and [distance](distance.ipynb)
 
-# ### Coupled Luminosities
-# 
-# 
-# Passband luminosities are considered coupled when a single pblum value is provided, while the passband luminosity of the other component(s) is scaled by the same factor.  To accomplish this, ONE pblum_ref in the system must be set as 'self' and ALL OTHER pbscales must refer to that component. This is the default case, set explicitly by:
-
-# In[11]:
-
-
-b.set_value('pblum_ref', component='primary', value='self')
-
-
-# In[12]:
-
-
-b.set_value('pblum_ref', component='secondary', value='primary')
-
-
-# Now note that only a single pblum parameter is visible.
-
-# In[13]:
-
-
-print(b.get_parameter('pblum'))
-
-
 # If we call [b.compute_pblums](../api/phoebe.frontend.bundle.Bundle.compute_pblums.md), we'll see that the computed intrinsic luminosity of the primary star (pblum@primary@lc01) matches the value of the parameter above.
 
-# In[14]:
+# In[12]:
 
 
 print(b.compute_pblums())
@@ -154,13 +134,13 @@ print(b.compute_pblums())
 # 
 # Since the secondary star in the default binary is identical to the primary star, we'd expect an out-of-eclipse flux of the binary to be ~2.
 
-# In[15]:
+# In[13]:
 
 
 b.run_compute()
 
 
-# In[16]:
+# In[14]:
 
 
 afig, mplfig = b.plot(show=True)
@@ -168,25 +148,25 @@ afig, mplfig = b.plot(show=True)
 
 # If we now set pblum to be only 2 pi, we should expect the luminosities as well as entire light curve to be scaled in half.
 
-# In[17]:
+# In[15]:
 
 
 b.set_value('pblum', component='primary', value=2*np.pi)
 
 
-# In[18]:
+# In[16]:
 
 
 print(b.compute_pblums())
 
 
-# In[19]:
+# In[17]:
 
 
 b.run_compute()
 
 
-# In[20]:
+# In[18]:
 
 
 afig, mplfig = b.plot(show=True)
@@ -194,31 +174,31 @@ afig, mplfig = b.plot(show=True)
 
 # And if we halve the temperature of the secondary star - the resulting light curve changes to the new sum of fluxes, where the primary star dominates since the secondary star flux is reduced by a factor of 16, so we expect a total out-of-eclipse flux of ~0.5 + ~0.5/16 = ~0.53.
 
-# In[21]:
+# In[19]:
 
 
 b.set_value('teff', component='secondary', value=0.5 * b.get_value('teff', component='primary'))
 
 
-# In[22]:
+# In[20]:
 
 
 print(b.filter(qualifier='teff'))
 
 
-# In[23]:
+# In[21]:
 
 
 print(b.compute_pblums())
 
 
-# In[24]:
+# In[22]:
 
 
 b.run_compute()
 
 
-# In[25]:
+# In[23]:
 
 
 afig, mplfig = b.plot(show=True)
@@ -226,26 +206,27 @@ afig, mplfig = b.plot(show=True)
 
 # Let us undo our changes before we look at decoupled luminosities.
 
-# In[26]:
+# In[24]:
 
 
 b.set_value_all('teff', 6000)
 b.set_value_all('pblum', 4*np.pi)
 
 
-# ### Decoupled Luminosities
+# pblum_mode = 'decoupled'
+# ---------------------
 # 
-# The luminosities are decoupled when pblums are provided for the individual components.  To accomplish this, all 'pblum_ref' parameters should be set to 'self'.
+# The luminosities are decoupled when pblums are provided for the individual components.  To accomplish this, set `pblum_mode` to 'decoupled'.
 
-# In[27]:
-
-
-b.set_value_all('pblum_ref', 'self')
+# In[25]:
 
 
-# Now we see that both pblums are available and can have different values.
+b.set_value('pblum_mode', 'decoupled')
 
-# In[28]:
+
+# Now we see that both `pblum` parameters are available and can have different values.
+
+# In[26]:
 
 
 print(b.filter(qualifier='pblum'))
@@ -253,25 +234,25 @@ print(b.filter(qualifier='pblum'))
 
 # If we set these to 4pi, then we'd expect each star to contribute 1.0 in flux units, meaning the baseline of the light curve should be at approximately 2.0
 
-# In[29]:
+# In[27]:
 
 
 b.set_value_all('pblum', 4*np.pi)
 
 
-# In[30]:
+# In[28]:
 
 
 print(b.compute_pblums())
 
 
-# In[31]:
+# In[29]:
 
 
 b.run_compute()
 
 
-# In[32]:
+# In[30]:
 
 
 afig, mplfig = b.plot(show=True)
@@ -279,31 +260,31 @@ afig, mplfig = b.plot(show=True)
 
 # Now let's make a significant temperature-ratio by making a very cool secondary star.  Since the luminosities are decoupled - this temperature change won't affect the resulting light curve very much (compare this to the case above with coupled luminosities).  What is happening here is that even though the secondary star is *cooler*, its luminosity is being rescaled to the same value as the primary star, so the eclipse depth doesn't change (you would see a similar lack-of-effect if you changed the radii).
 
-# In[33]:
+# In[31]:
 
 
 print(b.filter(qualifier='teff'))
 
 
-# In[34]:
+# In[32]:
 
 
 b.set_value('teff', component='secondary', value=3000)
 
 
-# In[35]:
+# In[33]:
 
 
 print(b.compute_pblums())
 
 
-# In[36]:
+# In[34]:
 
 
 b.run_compute()
 
 
-# In[37]:
+# In[35]:
 
 
 afig, mplfig = b.plot(show=True)
@@ -313,21 +294,19 @@ afig, mplfig = b.plot(show=True)
 
 # Now we'll just undo our changes before we look at accessing model luminosities.
 
-# In[38]:
+# In[36]:
 
 
 b.set_value_all('teff', 6000)
 b.set_value_all('pblum', 4*np.pi)
-b['pblum_ref@primary'] = 'self'
-b['pblum_ref@secondary'] = 'primary'
 
 
 # pblum_mode = 'absolute'
 # -----------------------------------
 # 
-# By setting pblum_mode to 'absolute', luminosities and fluxes will be returned in absolute units and not rescaled.  Note that [third light](l3) and [distance](distance) will still affect the resulting flux levels.
+# By setting `pblum_mode` to 'absolute', luminosities and fluxes will be returned in absolute units and not rescaled.  Note that [third light](l3) and [distance](distance) will still affect the resulting flux levels.
 
-# In[39]:
+# In[37]:
 
 
 b.set_value('pblum_mode', 'absolute')
@@ -335,25 +314,25 @@ b.set_value('pblum_mode', 'absolute')
 
 # As we no longer provide pblum values to scale, those parameters are not visible when filtering.
 
-# In[40]:
+# In[38]:
 
 
 print(b.filter(qualifier='pblum'))
 
 
-# In[41]:
+# In[39]:
 
 
 print(b.compute_pblums())
 
 
-# In[42]:
+# In[40]:
 
 
 b.run_compute()
 
 
-# In[43]:
+# In[41]:
 
 
 afig, mplfig = b.plot(show=True)
@@ -361,154 +340,148 @@ afig, mplfig = b.plot(show=True)
 
 # (note the exponent on the y-axis of the above figure)
 
-# pblum_mode = 'total flux'
+# pblum_mode = 'pbflux'
 # ------------------------------
 # 
-# By setting pblum_mode to 'total flux', the user can scale the resulting luminosities and fluxes by the total flux (extrinsic, including [third light](l3.ipynb), excluding [boosting](beaming_boosting.ipynb)).  Note that the scaling under-the-hood makes the approximation that each star will contribution its *extrinsic* luminosity (ie. `pblum_ext`) over 4pi (under the spherical star assumption) to the overall flux.  
+# By setting `pblum_mode` to 'pbflux', the user can scale the resulting luminosities and fluxes by the total flux (extrinsic, including [third light](l3.ipynb), excluding [boosting](beaming_boosting.ipynb)).  Note that the scaling under-the-hood makes the approximation that each star will contribution its *extrinsic* luminosity (ie. `pblum_ext`) over 4pi (under the spherical star assumption) to the overall flux.  
 # 
 # The total flux will also account for third light, but will *not* account for [boosting](beaming_boosting.ipynb) (as boosting does not contribute to luminosities and requires aspect-dependent information).
+# 
+# **CAUTION**: as this makes several assumptions, this should not be misunderstood as actually enforcing a flux.  Rather this is useful if we want to create synthetic light curves while changing radii, temperatures, etc, that all affect luminosity, but we want the resulting light curves to all be scaled similarly.  This is **NOT** suggested to be used when fitting models to observations.
 
-# In[44]:
+# In[42]:
 
 
-b.set_value('pblum_mode', 'total flux')
+b.set_value('pblum_mode', 'pbflux')
 
 
-# In[45]:
+# In[43]:
 
 
 print(b.get_parameter('pbflux'))
 
 
-# In[46]:
+# In[44]:
 
 
 print(b.compute_pblums())
 
 
-# In[47]:
+# In[45]:
 
 
 b.run_compute()
 
 
-# In[48]:
+# In[46]:
 
 
 afig, mplfig = b.plot(show=True)
 
 
-# pblum_mode = 'scale to data'
+# pblum_mode = 'dataset-scaled'
 # ----------------------------------
 # 
-# Setting pblum_mode to 'scale to data' is only allowed if fluxes are attached to the dataset itself.  Let's use our existing model to generate "fake" data and then populate the dataset.
+# Setting `pblum_mode` to 'dataset-sclaed' is only allowed if fluxes are attached to the dataset itself.  Let's use our existing model to generate "fake" data and then populate the dataset.
 
-# In[49]:
+# In[47]:
 
 
 fluxes = b.get_value('fluxes', context='model') * 0.8 + (np.random.random(101) * 0.1)
 
 
-# In[50]:
+# In[48]:
 
 
 b.set_value('fluxes', context='dataset', value=fluxes)
 
 
-# In[51]:
+# In[49]:
 
 
 afig, mplfig = b.plot(context='dataset', show=True)
 
 
-# Now if we set pblum_mode to 'scale to data', the resulting model will be scaled to best fit the data.  Note that in this mode we cannot access computed luminosities via [b.compute_pblums](../api/phoebe.frontend.bundle.Bundle.compute_pblums.md) (which would raise an error if we attempted to do so).
+# Now if we set `pblum_mode` to 'dataset-scaled', the resulting model will be scaled to best fit the data.  Note that in this mode we cannot access computed luminosities via [b.compute_pblums](../api/phoebe.frontend.bundle.Bundle.compute_pblums.md) (which would raise an error if we attempted to do so), nor can we access scaled intensities from the mesh.
+
+# In[50]:
+
+
+b.set_value('pblum_mode', 'dataset-scaled')
+
+
+# In[51]:
+
+
+print(b.compute_pblums())
+
 
 # In[52]:
 
 
-b.set_value('pblum_mode', 'scale to data')
+b.run_compute()
 
 
 # In[53]:
 
 
-print(b.compute_pblums())
+afig, mplfig = b.plot(show=True)
 
+
+# Before moving on, let's remove our fake data (and reset `pblum_mode` or else PHOEBE will complain about the lack of data).
 
 # In[54]:
 
 
-b.run_compute()
+b.set_value('pblum_mode', 'component-coupled')
 
 
 # In[55]:
 
 
-afig, mplfig = b.plot(show=True)
+b.set_value('fluxes', context='dataset', value=[])
 
 
-# Before moving on, let's reset pblum_mode to 'provided' and remove our fake data
+# pblum_mode = 'dataset-coupled'
+# --------------------------------
+
+# Setting `pblum_mode` to 'dataset-coupled' allows for the same scaling factor to be applied to two different datasets.  In order to see this in action, we'll add another LC dataset in a different passband.
 
 # In[56]:
 
 
-b.set_value('pblum_mode', 'provided')
+b.add_dataset('lc', times=phoebe.linspace(0,1,101), 
+              ld_mode='manual', ld_func='linear', ld_coeffs=[0],
+              passband='Johnson:B', dataset='lc02')
 
 
 # In[57]:
 
 
-b.set_value('fluxes', context='dataset', value=[])
+b.set_value('pblum_mode', dataset='lc02', value='dataset-coupled')
 
 
-# pblum_mode = 'color coupled'
-# --------------------------------
-
-# Setting pblum_mode to 'color coupled' allows for the same scaling factor to be applied to two different datasets.  In order to see this in action, we'll add another LC dataset in a different passband.
+# Here we see the pblum\_mode@lc01 is set to 'component-coupled' meaning it will follow the rules described earlier where `pblum` is provided for the primary component and the secondary is coupled to that.  pblum\_mode@lc02 is set to 'dataset-coupled' with pblum_dataset@lc01 pointing to 'lc01'.
 
 # In[58]:
-
-
-b.add_dataset('lc', times=phoebe.linspace(0,1,101), passband='Johnson:B', dataset='lc02')
-
-
-# In[59]:
-
-
-b.set_value_all('ld_func', 'logarithmic')
-b.set_value_all('ld_coeffs_source', 'none')
-b.set_value_all('ld_coeffs', [0,0])
-b.set_value_all('atm', 'blackbody')
-b.set_value('irrad_method', 'none')
-
-
-# In[60]:
-
-
-b.set_value('pblum_mode', dataset='lc02', value='color coupled')
-
-
-# Here we see the pblum\_mode@lc01 is set to 'provided' with pblum\_ref@secondary set to 'primary', meaning it will follow the coupled rules described earlier.  pblum\_mode@lc02 is set to 'color coupled' with pblum\_ref@lc01 pointing to 'lc01'.
-
-# In[61]:
 
 
 print(b.filter('pblum*'))
 
 
-# In[62]:
+# In[59]:
 
 
 print(b.compute_pblums())
 
 
-# In[63]:
+# In[60]:
 
 
 b.run_compute()
 
 
-# In[64]:
+# In[61]:
 
 
 afig, mplfig = b.plot(show=True)
@@ -519,7 +492,7 @@ afig, mplfig = b.plot(show=True)
 
 # Passband luminosities at t0@system per-star (including following all coupling logic) can be computed and exposed on the fly by calling `compute_pblums`.
 
-# In[65]:
+# In[62]:
 
 
 print b.compute_pblums()
@@ -527,7 +500,7 @@ print b.compute_pblums()
 
 # By default this exposes 'pblum' and 'pblum_ext' for all component-dataset pairs in the form of a dictionary.  Alternatively, you can pass a label or list of labels to component and/or dataset.
 
-# In[66]:
+# In[63]:
 
 
 print b.compute_pblums(dataset='lc01', component='primary')
@@ -537,17 +510,17 @@ print b.compute_pblums(dataset='lc01', component='primary')
 
 # Note that this same logic is applied (at t0) to initialize all passband luminosities within the backend, so there is no need to call `compute_pblums` before `run_compute`.
 
-# In order to access passband luminosities at times other than t0, you can add a mesh dataset and request the pblum_ext column to be exposed.  For stars that have pblum defined (as opposed to coupled to another star in the system), this value should be equivalent to the value of the parameter (at t0 if no features or irradiation are present, and in simple circular cases will probably be equivalent at all times).
+# In order to access passband luminosities at times other than t0, you can add a mesh dataset and request the `pblum_ext` column to be exposed.  For stars that have pblum defined (as opposed to coupled to another star or dataset), this value should be equivalent to the value of the parameter (at t0 if no features or irradiation are present, and in simple circular cases will probably be equivalent at all times).
 # 
 # Let's create a mesh dataset at a few times and then access the synthetic luminosities.
 
-# In[67]:
+# In[64]:
 
 
 b.add_dataset('mesh', times=np.linspace(0,1,5), dataset='mesh01', columns=['areas', 'pblum_ext@lc01', 'ldint@lc01', 'ptfarea@lc01', 'abs_normal_intensities@lc01', 'normal_intensities@lc01'])
 
 
-# In[68]:
+# In[65]:
 
 
 b.run_compute()
@@ -555,7 +528,7 @@ b.run_compute()
 
 # Since the luminosities are passband-dependent, they are stored with the same dataset as the light curve (or RV), but with the mesh method, and are available at each of the times at which a mesh was stored.
 
-# In[69]:
+# In[66]:
 
 
 print b.filter(qualifier='pblum_ext', context='model').twigs
@@ -563,11 +536,31 @@ print b.filter(qualifier='pblum_ext', context='model').twigs
 
 # Now let's compare the value of the *synthetic* luminosities to those of the *input* pblum
 
-# In[70]:
+# In[67]:
 
 
 t0 = b.get_value('t0@system')
 
+
+# In[68]:
+
+
+print b.get_value(qualifier='pblum_ext', time=t0, component='primary', kind='mesh', context='model')
+
+
+# In[69]:
+
+
+print b.get_value('pblum@primary@dataset')
+
+
+# In[70]:
+
+
+print(b.compute_pblums(component='primary', dataset='lc01'))
+
+
+# In this case, since our two stars are identical, the *synthetic* luminosity of the secondary star should be the same as the primary (and the same as pblum@primary).
 
 # In[71]:
 
@@ -578,47 +571,47 @@ print b.get_value(qualifier='pblum_ext', time=t0, component='primary', kind='mes
 # In[72]:
 
 
-print b.get_value('pblum@primary@dataset')
-
-
-# In[73]:
-
-
-print(b.compute_pblums(component='primary', dataset='lc01'))
-
-
-# In this case, since our two stars are identical, the *synthetic* luminosity of the secondary star should be the same as the primary (and the same as pblum@primary).
-
-# In[74]:
-
-
-print b.get_value(qualifier='pblum_ext', time=t0, component='primary', kind='mesh', context='model')
-
-
-# In[75]:
-
-
 print b.get_value(qualifier='pblum_ext', time=t0, component='secondary', kind='mesh', context='model')
 
 
 # However, if we change the temperature of the secondary star again, since the pblums are coupled, we'd expect the *synthetic* luminosity of the primary to remain fixed but the secondary to decrease.
 
-# In[76]:
+# In[73]:
 
 
 b['teff@secondary@component'] = 3000
 
 
-# In[77]:
+# In[74]:
 
 
 print(b.compute_pblums(dataset='lc01'))
 
 
-# In[78]:
+# In[75]:
 
 
 b.run_compute()
+
+
+# In[76]:
+
+
+print b.get_value(qualifier='pblum_ext', time=t0, component='primary', kind='mesh', context='model')
+
+
+# In[77]:
+
+
+print b.get_value(qualifier='pblum_ext', time=t0, component='secondary', kind='mesh', context='model')
+
+
+# And lastly, if we re-enable irradiation, we'll see that the extrinsic luminosities do not match the prescribed value of `pblum` (an intrinsic luminosity).
+
+# In[78]:
+
+
+b.run_compute(irrad_method='horvat')
 
 
 # In[79]:
@@ -630,30 +623,10 @@ print b.get_value(qualifier='pblum_ext', time=t0, component='primary', kind='mes
 # In[80]:
 
 
-print b.get_value(qualifier='pblum_ext', time=t0, component='secondary', kind='mesh', context='model')
-
-
-# And lastly, if we re-enable irradiation, we'll see that the extrinsic luminosities do not match the prescribed value of `pblum` (an intrinsic luminosity).
-
-# In[81]:
-
-
-b.run_compute(irrad_method='horvat')
-
-
-# In[82]:
-
-
-print b.get_value(qualifier='pblum_ext', time=t0, component='primary', kind='mesh', context='model')
-
-
-# In[83]:
-
-
 print b.get_value('pblum@primary@dataset')
 
 
-# In[84]:
+# In[81]:
 
 
 print(b.compute_pblums(dataset='lc01', irrad_method='horvat'))
@@ -661,7 +634,7 @@ print(b.compute_pblums(dataset='lc01', irrad_method='horvat'))
 
 # Now, we'll just undo our changes before continuing
 
-# In[85]:
+# In[82]:
 
 
 b.set_value_all('teff@component', 6000)
@@ -672,13 +645,13 @@ b.set_value_all('teff@component', 6000)
 
 # Let's now look at the intensities in the mesh to see how they're being scaled under-the-hood.  First we'll recompute our model with the equal temperatures and irradiation disabled (to ignore the difference between pblum and pblum_ext).
 
-# In[86]:
+# In[83]:
 
 
 b.run_compute()
 
 
-# In[87]:
+# In[84]:
 
 
 areas = b.get_value(qualifier='areas', dataset='mesh01', time=t0, component='primary', unit='m^2')
@@ -691,7 +664,7 @@ normal_intensities = b.get_value(qualifier='normal_intensities', dataset='lc01',
 
 # 'abs_normal_intensities' are the intensities per triangle in absolute units, i.e. W/m^3.
 
-# In[88]:
+# In[85]:
 
 
 np.median(abs_normal_intensities)
@@ -699,7 +672,7 @@ np.median(abs_normal_intensities)
 
 # The values of 'normal_intensities', however, are significantly samller (in this case).  These are the intensities in relative units which will eventually be integrated to give us flux for a light curve.
 
-# In[89]:
+# In[86]:
 
 
 np.median(normal_intensities)
@@ -709,7 +682,7 @@ np.median(normal_intensities)
 # 
 # Here we compute the luminosity by summing over each triangle's intensity in the normal direction, and multiply it by pi to account for blackbody intensity emitted in all directions in the solid angle, and by the area of that triangle.
 
-# In[90]:
+# In[87]:
 
 
 pblum = b.get_value(qualifier='pblum', component='primary', context='dataset')
