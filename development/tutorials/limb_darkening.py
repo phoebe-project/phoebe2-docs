@@ -74,7 +74,7 @@ print(b.filter(qualifier='ld_mode', dataset='lc01'))
 
 # ### ld_mode = 'interp'
 # 
-# Unlike bolometric limb-darkening, these can be interpolated directly from atmosphere tables, this is the default case, with `ld_mode` set to 'interp'.  
+# Unlike bolometric limb-darkening, passband limb-darkening coefficients can be interpolated directly from atmosphere tables, this is the default case, with `ld_mode` set to 'interp'.  
 # 
 # Note that before PHOEBE 2.2, this was accomplished by setting `ld_func` to 'interp' (see [this explanation for migrating from earlier versions](./21_22_ld_coeffs_source.ipynb)).
 
@@ -97,8 +97,6 @@ print(b.filter(qualifier='ld*', dataset='lc01'))
 # Setting the value of `ld_mode` to 'lookup' will expose the `ld_func` and `ld_coeffs_source` parameters.  Note that this behavior is slightly new as of PHOEBE 2.2 (see [this explanation for migrating from earlier versions](./21_22_ld_coeffs_source.ipynb)).
 # 
 # When set to 'lookup', then the limb-darkening will be interpolated **per-element** (for PHOEBE 2, other backends may interpolate per-star) for the function given in `ld_func` from the atmosphere table dictated by the `ld_coeffs_source` parameter (or the `atm` parameter and falling back on 'ck2004' if no match is found if `ld_coeffs_source` is set to 'auto').
-# 
-# To manually choose an available atmosphere table, you can choose some other value ('ck2004', for example).
 
 # In[10]:
 
@@ -111,6 +109,8 @@ b.set_value(qualifier='ld_mode', dataset='lc01', component='primary', value='loo
 
 print(b.filter(qualifier='ld*', dataset='lc01', component='primary'))
 
+
+# To manually choose an available atmosphere table, you can choose some other value ('ck2004', for example).
 
 # In[12]:
 

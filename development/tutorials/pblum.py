@@ -484,7 +484,7 @@ b.run_compute()
 # In[61]:
 
 
-afig, mplfig = b.plot(show=True)
+afig, mplfig = b.plot(show=True, legend=True)
 
 
 # Accessing Model Luminosities
