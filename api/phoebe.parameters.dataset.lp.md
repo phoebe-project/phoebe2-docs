@@ -76,7 +76,7 @@ Arguments
    if `ld_mode` is 'func:provided'.  Only applicable if `syn` is False.
 * `passband` (string, optional): passband.  Only applicable if `syn` is False.
 * `intens_weighting` (string, optional): whether passband intensities are
-    weighted by energy of photons.  Only applicable if `syn` is False.
+    weighted by energy or photons.  Only applicable if `syn` is False.
 
 Returns
 --------

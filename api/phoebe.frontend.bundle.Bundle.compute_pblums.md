@@ -11,20 +11,21 @@ def compute_pblums(self, compute=None, pblum=True, pblum_ext=True, pbflux=False,
 
 Compute the passband luminosities that will be applied to the system,
 following all coupling, etc, as well as all relevant compute options
-(ntriangles, distortion_method, etc).  The exposed passband luminosities
-(and any coupling) are computed at t0@system.
+(ntriangles, distortion_method, etc), third light, and distance.
+The exposed passband luminosities (and any coupling) are computed at
+t0@system.
 
 This method allows for computing both intrinsic and extrinsic luminosities.
 Note that pblum scaling is computed (and applied to flux scaling) based
 on intrinsic luminosities (`pblum`).
 
-For any `dataset` which does not support pblum scaling (rv or lp dataset,
+Any `dataset` which does not support pblum scaling (rv or lp dataset,
 for example), will have their absolute intensities exposed.
 
 Note that luminosities cannot be exposed for any dataset in which
 `pblum_mode` is 'dataset-scaled' as the entire light curve must be
 computed prior to scaling.  These will be excluded from the output
-with error, but with a warning message in the [phoebe.logger](phoebe.logger.md), if
+without error, but with a warning message in the [phoebe.logger](phoebe.logger.md), if
 enabled.
 
 Additionally, an estimate for the total fluxes `pbflux` and `pbflux_ext`
