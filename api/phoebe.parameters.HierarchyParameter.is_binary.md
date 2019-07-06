@@ -9,7 +9,7 @@ def is_binary(self, component)
 
 
 
-Return whether a given component is part of a contact binary,
+Return whether a given component is part of a binary system,
 according to the [phoebe.parameters.HierarchyPararameter](phoebe.parameters.HierarchyPararameter.md).
 This is especially useful for [phoebe.parameters.ConstraintParameter](phoebe.parameters.ConstraintParameter.md).
 
