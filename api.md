@@ -69,6 +69,14 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 * [get_passband](api/phoebe.atmospheres.passbands.get_passband.md)
 
 
+### Available "Kinds"
+
+* [list_available_components](api/phoebe.list_available_components.md)
+* [list_available_features](api/phoebe.list_available_features.md)
+* [list_available_datasets](api/phoebe.list_available_datasets.md)
+* [list_available_computes](api/phoebe.list_available_computes.md)
+
+
 ### Arrays
 
 * [array](api/phoebe.array.md)

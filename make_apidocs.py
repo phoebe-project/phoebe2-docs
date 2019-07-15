@@ -124,6 +124,7 @@ if __name__ == '__main__':
     skip_phoebe = ['default_triple', 'devel_off', 'devel_on',
                    'algorithms', 'backend', 'c',
                    'component', 'compute', 'constraint', 'constraints',
+                   'feature',
                    'dataset', 'dependencies', 'distortions', 'dynamics',
                    'hierarchy', 'libphoebe', 'u', 'utils', 'Bundle']
 
