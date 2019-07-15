@@ -378,4 +378,4 @@ afig, mplfig = b['orb@run_with_incl_80'].plot(time=0, projection='3d', show=True
 # Next
 # ----------
 # 
-# Next (and last) up: let's [plot meshes](meshes.ipynb).
+# Next (and last) up: let's [plot meshes](./meshes.ipynb).
