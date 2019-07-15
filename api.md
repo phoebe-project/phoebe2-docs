@@ -108,6 +108,9 @@ Importing/exporting from other codes:
 * [set_value](api/phoebe.parameters.ParameterSet.set_value.md)
 * [set_value_all](api/phoebe.parameters.ParameterSet.set_value_all.md)
 * [get_quantity](api/phoebe.parameters.ParameterSet.get_quantity.md)
+* [get_default_unit](api/phoebe.parameters.ParameterSet.get_default_unit.md)
+* [set_default_unit](api/phoebe.parameters.ParameterSet.set_default_unit.md)
+* [set_default_unit_all](api/phoebe.parameters.ParameterSet.set_default_unit_all.md)
 
 ### Hierarchy
 
@@ -118,6 +121,7 @@ Importing/exporting from other codes:
 
 * [add_constraint](api/phoebe.frontend.bundle.Bundle.add_constraint.md)
 * [get_constraint](api/phoebe.frontend.bundle.Bundle.get_constraint.md)
+* [remove_constraint](api/phoebe.frontend.bundle.Bundle.remove_constraint.md)
 * [run_constraint](api/phoebe.frontend.bundle.Bundle.run_constraint.md)
 * [run_delayed_constraints](api/phoebe.frontend.bundle.Bundle.run_delayed_constraints.md)
 * [run_failed_constraints](api/phoebe.frontend.bundle.Bundle.run_failed_constraints.md)
@@ -127,7 +131,6 @@ Importing/exporting from other codes:
 Available (optional) constraints ([see all](api/phoebe.parameters.constraint.md)):
 
 * [semidetached](api/phoebe.parameters.constraint.semidetached.md)
-* [logg](api/phoebe.parameters.constraint.logg.md)
 
 ### Components
 
@@ -195,7 +198,7 @@ Available datasets ([see all](api/phoebe.parameters.dataset.md)):
 * [compute_l3s](api/phoebe.fronted.bundle.Bundle.compute_l3s.md)
 * [compute_ld_coeffs](api/phoebe.frontend.bundle.Bundle.compute_ld_coeffs.md)
 
-Available compute backends ([see all](api/phoebe.parameterse.compute.md)):
+Available compute backends ([see all](api/phoebe.parameters.compute.md)):
 
 * [phoebe](api/phoebe.parameters.compute.phoebe.md)
 * [legacy](api/phoebe.parameters.compute.legacy.md)

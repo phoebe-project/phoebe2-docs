@@ -22,7 +22,6 @@ See also:
 For a list of optional built-in constraints, see [phoebe.parameters.constraint](phoebe.parameters.constraint.md)
 including:
 * [phoebe.parameters.constraint.semidetached](phoebe.parameters.constraint.semidetached.md)
-* [phoebe.parameters.constraint.logg](phoebe.parameters.constraint.logg.md)
 
 The following are automatically included for all orbits, during
 [phoebe.frontend.bundle.Bundle.add_component](phoebe.frontend.bundle.Bundle.add_component.md) for a
