@@ -22,7 +22,9 @@ See also:
 
 Arguments
 ----------
-* `twig` (string, optional): twig to filter for the constraint.
+* `twig` (string, optional): twig to filter for the constraint.  The
+    name of the constraint function (from [phoebe.parameters.constraint](phoebe.parameters.constraint.md))
+    can also be passed.  For example: 'semidetached'.
 * `**kwargs`: other filter arguments to be sent to
     [phoebe.parameters.ParameterSet.remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md).  The following
     will be ignored: context, twig.
