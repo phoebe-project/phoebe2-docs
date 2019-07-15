@@ -214,6 +214,7 @@ Methods that act on resulting models:
 
 * [plot](api/phoebe.parameters.ParameterSet.plot.md)
 * [compute_residuals](api/phoebe.parameters.ParameterSet.compute_residuals.md)
+* [compute_chi2](api/phoebe.parameters.ParameterSet.compute_chi2.md)
 
 ### Plotting
 

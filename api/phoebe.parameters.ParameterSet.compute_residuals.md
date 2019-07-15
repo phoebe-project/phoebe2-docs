@@ -22,6 +22,9 @@ interpolation will be handled, in time-space if possible, and in
 phase-space otherwise. See
 [phoebe.parameters.FloatArrayParameter.interp_value](phoebe.parameters.FloatArrayParameter.interp_value.md).
 
+See also:
+* [phoebe.parameters.ParameterSet.compute_chi2](phoebe.parameters.ParameterSet.compute_chi2.md)
+
 Arguments
 -----------
 * `model` (string, optional, default=None): model to compare against
