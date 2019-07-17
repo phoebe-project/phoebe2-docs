@@ -38,6 +38,10 @@ Arguments
     the model.  Only applicable if `syn` is False and `is_lc` is True.
 * `compute_phases` (array/quantity, optional): phases at which to compute
     the model.  Only applicable if `syn` is False and `is_lc` is True.
+* `compute_phases_t0` (string, optional, default='t0_supconj'): t0 to use
+    when converting between `compute_phases` and `compute_times`.  Only
+    applicable if `syn` is False and `is_lc` is True.  Not applicable for
+    single stars (in which case t0@system is always used).
 * `ld_mode` (string, optional, default='interp'): mode to use for handling
     limb-darkening.  Note that 'interp' is not available for all values
     of `atm` (availability can be checked by calling

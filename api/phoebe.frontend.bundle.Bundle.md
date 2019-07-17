@@ -68,4 +68,6 @@ Bundle is a subclass of phoebe.parameters.ParameterSet and therefore also includ
 * [run_failed_constraints](phoebe.frontend.bundle.Bundle.run_failed_constraints.md)
 * [set_hierarchy](phoebe.frontend.bundle.Bundle.set_hierarchy.md)
 * [to_phase](phoebe.frontend.bundle.Bundle.to_phase.md)
+* [to_phases](phoebe.frontend.bundle.Bundle.to_phases.md)
 * [to_time](phoebe.frontend.bundle.Bundle.to_time.md)
+* [to_times](phoebe.frontend.bundle.Bundle.to_times.md)
