@@ -23,7 +23,7 @@ get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
-# In[1]:
+# In[2]:
 
 
 import phoebe
@@ -39,19 +39,11 @@ b = phoebe.default_binary()
 # 
 # Let's add an orbit dataset to the Bundle (see also the [orb API docs](../api/phoebe.parameters.dataset.orb.md)).
 
-# In[2]:
+# In[3]:
 
 
 b.add_dataset('orb')
 print(b.get_dataset(kind='orb'))
-
-
-# ### times
-
-# In[3]:
-
-
-print(b.get_parameter(qualifier='times', component='primary'))
 
 
 # ### compute_times / compute_phases
@@ -70,12 +62,18 @@ print(b.get_parameter(qualifier='compute_times'))
 print(b.get_parameter(qualifier='compute_phases', context='dataset'))
 
 
+# In[6]:
+
+
+print(b.get_parameter(qualifier='compute_phases_t0'))
+
+
 # Compute Options
 # ------------------
 # 
 # Let's look at the compute options (for the default PHOEBE 2 backend) that relate to dynamics and the ORB dataset
 
-# In[6]:
+# In[7]:
 
 
 print(b.get_compute())
@@ -83,7 +81,7 @@ print(b.get_compute())
 
 # ### dynamics_method
 
-# In[7]:
+# In[8]:
 
 
 print(b.get_parameter(qualifier='dynamics_method'))
@@ -95,7 +93,7 @@ print(b.get_parameter(qualifier='dynamics_method'))
 
 # ### ltte
 
-# In[8]:
+# In[9]:
 
 
 print(b.get_parameter(qualifier='ltte'))
@@ -108,19 +106,19 @@ print(b.get_parameter(qualifier='ltte'))
 # Synthetics
 # ------------------
 
-# In[10]:
-
-
-b.set_value_all('times', phoebe.linspace(0,3,201))
-
-
 # In[11]:
+
+
+b.set_value_all('compute_times', phoebe.linspace(0,3,201))
+
+
+# In[12]:
 
 
 b.run_compute()
 
 
-# In[12]:
+# In[13]:
 
 
 print(b.filter(context='model').twigs)
@@ -165,7 +163,7 @@ afig, mplfig = b.plot(x='times', y='vus', show=True)
 
 # We can also plot the orbit in 3D.
 
-# In[20]:
+# In[19]:
 
 
 afig, mplfig = b.plot(projection='3d', xlim=(-4,4), ylim=(-4,4), zlim=(-4,4), show=True)

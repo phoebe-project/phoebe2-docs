@@ -73,15 +73,21 @@ print(b.get_parameter(qualifier='compute_times'))
 print(b.get_parameter(qualifier='compute_phases', context='dataset'))
 
 
+# In[7]:
+
+
+print(b.get_parameter(qualifier='compute_phases_t0'))
+
+
 # ### wavelengths
 
-# In[7]:
+# In[8]:
 
 
 print(b.filter(qualifier='wavelengths'))
 
 
-# In[8]:
+# In[9]:
 
 
 print(b.get_parameter(qualifier='wavelengths', component='binary'))
@@ -99,13 +105,13 @@ print(b.get_parameter(qualifier='wavelengths', component='binary'))
 # 
 # `flux_densities` parameters will be exposed in the model based on `compute_times`/`compute_phases` if not empty, otherwise according to `times`.  For more information, see the [Compute Times & Phases tutorial](compute_times_phases.ipynb).
 
-# In[9]:
+# In[10]:
 
 
 print(b.filter(qualifier='flux_densities'))
 
 
-# In[10]:
+# In[11]:
 
 
 print(b.get_parameter(qualifier='flux_densities', 
@@ -117,13 +123,13 @@ print(b.get_parameter(qualifier='flux_densities',
 # 
 # Note that, like `flux_densities`, `sigmas` parameters are exposed per-time, according to the value of `times` passed to [add_dataset](../api/phoebe.frontend.bundle.Bundle.add_dataset.md).
 
-# In[11]:
+# In[12]:
 
 
 print(b.filter(qualifier='sigmas'))
 
 
-# In[12]:
+# In[13]:
 
 
 print(b.get_parameter(qualifier='sigmas', 
@@ -133,7 +139,7 @@ print(b.get_parameter(qualifier='sigmas',
 
 # ### profile_func
 
-# In[13]:
+# In[14]:
 
 
 print(b.get_parameter(qualifier='profile_func'))
@@ -141,7 +147,7 @@ print(b.get_parameter(qualifier='profile_func'))
 
 # ### profile_rest
 
-# In[14]:
+# In[15]:
 
 
 print(b.get_parameter(qualifier='profile_rest'))
@@ -149,7 +155,7 @@ print(b.get_parameter(qualifier='profile_rest'))
 
 # ### profile_sv
 
-# In[15]:
+# In[16]:
 
 
 print(b.get_parameter(qualifier='profile_sv'))
@@ -158,13 +164,13 @@ print(b.get_parameter(qualifier='profile_sv'))
 # Synthetics
 # ------------------
 
-# In[16]:
+# In[17]:
 
 
 b.run_compute(irrad_method='none')
 
 
-# In[17]:
+# In[18]:
 
 
 print(b.filter(context='model').twigs)
@@ -172,13 +178,13 @@ print(b.filter(context='model').twigs)
 
 # The model for a line profile dataset will expose flux-densities at each time and for each component where the corresponding wavelengths Parameter was not empty.  Here since we used the default and exposed line-profiles for the entire system, we have a single entry per-time.
 
-# In[18]:
+# In[19]:
 
 
 print(b.filter(qualifier='flux_densities', context='model'))
 
 
-# In[19]:
+# In[20]:
 
 
 print(b.get_parameter(qualifier='flux_densities', context='model', time=0))
@@ -189,7 +195,7 @@ print(b.get_parameter(qualifier='flux_densities', context='model', time=0))
 # 
 # By default, LP datasets plot as 'flux_densities' vs 'wavelengths' for a **single time**.
 
-# In[20]:
+# In[21]:
 
 
 afig, mplfig = b.filter(dataset='lp01', context='model', time=0).plot(show=True)
@@ -200,13 +206,13 @@ afig, mplfig = b.filter(dataset='lp01', context='model', time=0).plot(show=True)
 # 
 # Let's add a single mesh and see which columns from the line profile dataset are available to expose as a column in the mesh.
 
-# In[21]:
+# In[22]:
 
 
 b.add_dataset('mesh', times=[0], dataset='mesh01')
 
 
-# In[22]:
+# In[23]:
 
 
 print(b.get_parameter(qualifier='columns').choices)

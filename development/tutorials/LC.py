@@ -86,11 +86,17 @@ print(b.get_parameter(qualifier='compute_times'))
 print(b.get_parameter(qualifier='compute_phases', context='dataset'))
 
 
+# In[9]:
+
+
+print(b.get_parameter(qualifier='compute_phases_t0'))
+
+
 # ### ld_mode
 # 
 # See the [Limb Darkening tutorial](./limb_darkening.ipynb)
 
-# In[9]:
+# In[10]:
 
 
 print(b.get_parameter(qualifier='ld_mode', component='primary'))
@@ -98,15 +104,15 @@ print(b.get_parameter(qualifier='ld_mode', component='primary'))
 
 # ### ld_func
 # 
-# `ld_func` will only be available if `ld_mode` is not 'interp', so let's set it to 'func_lookup'.  See the [limb darkening tutorial](./limb_darkening.ipynb) for more details.
-
-# In[10]:
-
-
-b.set_value('ld_mode', component='primary', value='func_lookup')
-
+# `ld_func` will only be available if `ld_mode` is not 'interp', so let's set it to 'lookup'.  See the [limb darkening tutorial](./limb_darkening.ipynb) for more details.
 
 # In[11]:
+
+
+b.set_value('ld_mode', component='primary', value='lookup')
+
+
+# In[12]:
 
 
 print(b.get_parameter(qualifier='ld_func', component='primary'))
@@ -114,9 +120,9 @@ print(b.get_parameter(qualifier='ld_func', component='primary'))
 
 # ### ld_coeffs_source
 # 
-# `ld_coeffs_source` will only be available if `ld_mode` is 'func_lookup'.  See the [limb darkening tutorial](./limb_darkening.ipynb) for more details.
+# `ld_coeffs_source` will only be available if `ld_mode` is 'lookup'.  See the [limb darkening tutorial](./limb_darkening.ipynb) for more details.
 
-# In[12]:
+# In[13]:
 
 
 print(b.get_parameter(qualifier='ld_coeffs_source', component='primary'))
@@ -124,15 +130,15 @@ print(b.get_parameter(qualifier='ld_coeffs_source', component='primary'))
 
 # ### ld_coeffs
 
-# `ld_coeffs` will only be available if `ld_mode` is set to 'func_provided'.  See the [limb darkening tutorial](./limb_darkening.ipynb) for more details.
-
-# In[13]:
-
-
-b.set_value('ld_mode', component='primary', value='func_provided')
-
+# `ld_coeffs` will only be available if `ld_mode` is set to 'manual'.  See the [limb darkening tutorial](./limb_darkening.ipynb) for more details.
 
 # In[14]:
+
+
+b.set_value('ld_mode', component='primary', value='manual')
+
+
+# In[15]:
 
 
 print(b.get_parameter(qualifier='ld_coeffs', component='primary'))
@@ -142,7 +148,7 @@ print(b.get_parameter(qualifier='ld_coeffs', component='primary'))
 # 
 # See the [Atmospheres & Passbands tutorial](./atm_passbands.ipynb)
 
-# In[15]:
+# In[16]:
 
 
 print(b.get_parameter(qualifier='passband'))
@@ -152,7 +158,7 @@ print(b.get_parameter(qualifier='passband'))
 # 
 # See the [Intensity Weighting tutorial](intens_weighting)
 
-# In[16]:
+# In[17]:
 
 
 print(b.get_parameter(qualifier='intens_weighting'))
@@ -162,55 +168,55 @@ print(b.get_parameter(qualifier='intens_weighting'))
 # 
 # See the [Passband Luminosity tutorial](pblum)
 
-# In[17]:
+# In[18]:
 
 
 print(b.get_parameter(qualifier='pblum_mode'))
 
 
-# ### pblum_ref
-
-# `pblum_ref` is only available if `pblum_mode` is set to 'provided' or 'color coupled' (although the choices are different for each case).  See the [passband luminosity tutorial](./pblum.ipynb) for more details.
-
-# In[18]:
-
-
-b.set_value('pblum_mode', value='provided')
-
-
-# Note that when `pblum_mode` is 'provided', there are `pblum_ref` parameters per-component.
+# ### pblum_component
+# 
+# `pblum_component` is only available if `pblum_mode` is set to 'component-coupled'.  See the [passband luminosity tutorial](./pblum.ipynb) for more details.
 
 # In[19]:
 
 
-print(b.get_parameter(qualifier='pblum_ref', component='primary'))
+b.set_value('pblum_mode', value='component-coupled')
 
 
 # In[20]:
 
 
-b.set_value('pblum_mode', value='color coupled')
+print(b.get_parameter(qualifier='pblum_component'))
 
 
-# Note that when `pblum_mode` is 'color coupled', there is only a single `pblum_ref` parameter (per-dataset) and it is not attached to any component.
+# ### pblum_dataset
+
+# `pblum_dataset` is only available if `pblum_mode` is set to 'dataset-coupled'.  In this case we'll get a warning because there is only one dataset.  See the [passband luminosity tutorial](./pblum.ipynb) for more details.
 
 # In[21]:
 
 
-print(b.get_parameter(qualifier='pblum_ref'))
+b.set_value('pblum_mode', value='dataset-coupled')
 
-
-# ### pblum
-# 
-# `pblum` is only available if `pblum_mode` is set to 'provided' and `pblum_ref` of the component is set to 'self'.  See the [passband luminosity tutorial](./pblum.ipynb) for more details.
 
 # In[22]:
 
 
-b.set_value('pblum_mode', value='provided')
+print(b.get_parameter(qualifier='pblum_dataset'))
 
+
+# ### pblum
+# 
+# `pblum` is only available if `pblum_mode` is set to 'decoupled' (in which case there is a `pblum` entry per-star) or 'component-coupled' (in which case there is only an entry for the star chosen by `pblum_component`).  See the [passband luminosity tutorial](./pblum.ipynb) for more details.
 
 # In[23]:
+
+
+b.set_value('pblum_mode', value='decoupled')
+
+
+# In[24]:
 
 
 print(b.get_parameter(qualifier='pblum', component='primary'))
@@ -218,15 +224,15 @@ print(b.get_parameter(qualifier='pblum', component='primary'))
 
 # ### pbflux
 
-# `pbflux` is only available if `pblum_mode` is set to 'total flux'.  See the [passband luminosity tutorial](./pblum.ipynb) for more details.
+# `pbflux` is only available if `pblum_mode` is set to 'pbflux'.  See the [passband luminosity tutorial](./pblum.ipynb) for more details.
 
-# In[24]:
-
-
-b.set_value('pblum_mode', value='total flux')
+# In[26]:
 
 
-# In[25]:
+b.set_value('pblum_mode', value='pbflux')
+
+
+# In[27]:
 
 
 print(b.get_parameter('pbflux'))
@@ -236,7 +242,7 @@ print(b.get_parameter('pbflux'))
 # 
 # See the ["Third" Light tutorial](./l3.ipynb)
 
-# In[26]:
+# In[28]:
 
 
 print(b.get_parameter(qualifier='l3_mode'))
@@ -246,13 +252,13 @@ print(b.get_parameter(qualifier='l3_mode'))
 # 
 # `l3` is only avaible if `l3_mode` is set to 'flux'.  See the ["Third" Light tutorial](l3) for more details.
 
-# In[27]:
+# In[29]:
 
 
 b.set_value('l3_mode', value='flux')
 
 
-# In[28]:
+# In[30]:
 
 
 print(b.get_parameter(qualifier='l3'))
@@ -260,15 +266,15 @@ print(b.get_parameter(qualifier='l3'))
 
 # ### l3_frac
 # 
-# `l3_frac` is only avaible if `l3_mode` is set to 'fraction of total light'.  See the ["Third" Light tutorial](l3) for more details.
+# `l3_frac` is only avaible if `l3_mode` is set to 'fraction'.  See the ["Third" Light tutorial](l3) for more details.
 
-# In[29]:
-
-
-b.set_value('l3_mode', value='fraction of total light')
+# In[31]:
 
 
-# In[30]:
+b.set_value('l3_mode', value='fraction')
+
+
+# In[32]:
 
 
 print(b.get_parameter(qualifier='l3_frac'))
@@ -283,7 +289,7 @@ print(b.get_parameter(qualifier='l3_frac'))
 # * parameters related to dynamics are explained in the section on the [orb dataset](ORB.ipynb)
 # * parameters related to meshing, eclipse detection, and subdivision are explained in the section on the [mesh dataset](MESH.ipynb)
 
-# In[31]:
+# In[33]:
 
 
 print(b.get_compute())
@@ -291,7 +297,7 @@ print(b.get_compute())
 
 # ### lc_method
 
-# In[32]:
+# In[34]:
 
 
 print(b.get_parameter(qualifier='lc_method'))
@@ -299,7 +305,7 @@ print(b.get_parameter(qualifier='lc_method'))
 
 # ### irrad_method
 
-# In[33]:
+# In[35]:
 
 
 print(b.get_parameter(qualifier='irrad_method'))
@@ -309,7 +315,7 @@ print(b.get_parameter(qualifier='irrad_method'))
 
 # ### boosting_method
 
-# In[34]:
+# In[36]:
 
 
 print(b.get_parameter(qualifier='boosting_method'))
@@ -319,7 +325,7 @@ print(b.get_parameter(qualifier='boosting_method'))
 
 # ### atm
 
-# In[35]:
+# In[37]:
 
 
 print(b.get_parameter(qualifier='atm', component='primary'))
@@ -330,31 +336,31 @@ print(b.get_parameter(qualifier='atm', component='primary'))
 # Synthetics
 # ------------------
 
-# In[36]:
+# In[38]:
 
 
 b.set_value('times', phoebe.linspace(0,1,101))
 
 
-# In[37]:
+# In[39]:
 
 
 b.run_compute()
 
 
-# In[38]:
+# In[40]:
 
 
 print(b.filter(context='model').twigs)
 
 
-# In[39]:
+# In[41]:
 
 
 print(b.get_parameter(qualifier='times', kind='lc', context='model'))
 
 
-# In[40]:
+# In[42]:
 
 
 print(b.get_parameter(qualifier='fluxes', kind='lc', context='model'))
@@ -365,7 +371,7 @@ print(b.get_parameter(qualifier='fluxes', kind='lc', context='model'))
 # 
 # By default, LC datasets plot as flux vs time.
 
-# In[41]:
+# In[43]:
 
 
 afig, mplfig = b.plot(show=True)
@@ -373,7 +379,7 @@ afig, mplfig = b.plot(show=True)
 
 # Since these are the only two columns available in the synthetic model, the only other option is to plot in phase instead of time.
 
-# In[42]:
+# In[44]:
 
 
 afig, mplfig = b.plot(x='phases', show=True)
@@ -381,13 +387,13 @@ afig, mplfig = b.plot(x='phases', show=True)
 
 # In system hierarchies where there may be multiple periods, it is also possible to determine whose period to use for phasing.
 
-# In[43]:
+# In[45]:
 
 
 print(b.filter(qualifier='period').components)
 
 
-# In[44]:
+# In[46]:
 
 
 afig, mplfig = b.plot(x='phases:binary', show=True)
@@ -400,19 +406,19 @@ afig, mplfig = b.plot(x='phases:binary', show=True)
 # 
 # Let's add a single mesh at the first time of the light-curve and re-call run_compute
 
-# In[45]:
+# In[47]:
 
 
 b.add_dataset('mesh', times=[0], dataset='mesh01')
 
 
-# In[46]:
+# In[48]:
 
 
 print(b.get_parameter(qualifier='columns').choices)
 
 
-# In[47]:
+# In[49]:
 
 
 b.set_value('columns', value=['intensities@lc01', 
@@ -423,13 +429,13 @@ b.set_value('columns', value=['intensities@lc01',
                               'boost_factors@lc01'])
 
 
-# In[48]:
+# In[50]:
 
 
 b.run_compute()
 
 
-# In[49]:
+# In[51]:
 
 
 print(b.get_model().datasets)
@@ -437,7 +443,7 @@ print(b.get_model().datasets)
 
 # These new columns are stored with the lc's dataset tag, but with the 'mesh' dataset-kind.
 
-# In[50]:
+# In[52]:
 
 
 print(b.filter(dataset='lc01', kind='mesh', context='model').twigs)
@@ -445,7 +451,7 @@ print(b.filter(dataset='lc01', kind='mesh', context='model').twigs)
 
 # Any of these columns are then available to use as edge or facecolors when plotting the mesh (see the section on the [mesh dataset](MESH)).
 
-# In[51]:
+# In[53]:
 
 
 afig, mplfig = b.filter(kind='mesh').plot(fc='intensities', ec='None', show=True)
@@ -457,7 +463,7 @@ afig, mplfig = b.filter(kind='mesh').plot(fc='intensities', ec='None', show=True
 # 
 # For more details, see the tutorial on [Passband Luminosities](pblum)
 
-# In[52]:
+# In[54]:
 
 
 print(b.get_parameter(qualifier='pblum_ext', 
@@ -471,7 +477,7 @@ print(b.get_parameter(qualifier='pblum_ext',
 
 # ### abs_normal_intensities
 
-# In[53]:
+# In[55]:
 
 
 print(b.get_parameter(qualifier='abs_normal_intensities', 
@@ -485,7 +491,7 @@ print(b.get_parameter(qualifier='abs_normal_intensities',
 
 # ### normal_intensities
 
-# In[54]:
+# In[56]:
 
 
 print(b.get_parameter(qualifier='normal_intensities', 
@@ -499,7 +505,7 @@ print(b.get_parameter(qualifier='normal_intensities',
 
 # ### abs_intensities
 
-# In[55]:
+# In[57]:
 
 
 print(b.get_parameter(qualifier='abs_intensities', 
@@ -513,7 +519,7 @@ print(b.get_parameter(qualifier='abs_intensities',
 
 # ### intensities
 
-# In[56]:
+# In[58]:
 
 
 print(b.get_parameter(qualifier='intensities', 
@@ -527,7 +533,7 @@ print(b.get_parameter(qualifier='intensities',
 
 # ### boost_factors
 
-# In[57]:
+# In[59]:
 
 
 print(b.get_parameter(qualifier='boost_factors', 

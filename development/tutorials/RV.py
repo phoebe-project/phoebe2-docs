@@ -50,7 +50,7 @@ print(b.get_dataset(kind='rv', check_visible=False))
 
 # ### times
 
-# In[5]:
+# In[4]:
 
 
 print(b.get_parameter(qualifier='times', component='primary'))
@@ -60,13 +60,13 @@ print(b.get_parameter(qualifier='times', component='primary'))
 # 
 # The `rvs` parameter is only visible if the respective `times` parameter is not empty.
 
-# In[7]:
+# In[5]:
 
 
 b.set_value('times', component='primary', value=[0])
 
 
-# In[8]:
+# In[6]:
 
 
 print(b.get_parameter(qualifier='rvs', component='primary'))
@@ -76,7 +76,7 @@ print(b.get_parameter(qualifier='rvs', component='primary'))
 
 # The `sigmas` parameter is also only visible if the respective `times` parameter is not empty.
 
-# In[11]:
+# In[7]:
 
 
 print(b.get_parameter(qualifier='sigmas', component='primary'))
@@ -86,16 +86,22 @@ print(b.get_parameter(qualifier='sigmas', component='primary'))
 # 
 # See the [Compute Times & Phases tutorial](compute_times_phases.ipynb).
 
-# In[12]:
+# In[8]:
 
 
 print(b.get_parameter(qualifier='compute_times'))
 
 
-# In[13]:
+# In[9]:
 
 
 print(b.get_parameter(qualifier='compute_phases', context='dataset'))
+
+
+# In[10]:
+
+
+print(b.get_parameter(qualifier='compute_phases_t0'))
 
 
 # Compute Options
@@ -108,7 +114,7 @@ print(b.get_parameter(qualifier='compute_phases', context='dataset'))
 # * parameters related to meshing, eclipse detection, and subdivision (used if `rv_method`=='flux-weighted') are explained in the section on the [mesh dataset](MESH.ipynb)
 # * parameters related to computing fluxes (used if `rv_method`=='flux-weighted') are explained in the section on the [lc dataset](LC.ipynb)
 
-# In[14]:
+# In[11]:
 
 
 print(b.get_compute())
@@ -116,7 +122,7 @@ print(b.get_compute())
 
 # ### rv_method
 
-# In[15]:
+# In[12]:
 
 
 print(b.get_parameter(qualifier='rv_method', component='primary'))
@@ -128,7 +134,7 @@ print(b.get_parameter(qualifier='rv_method', component='primary'))
 
 # ### rv_grav
 
-# In[16]:
+# In[13]:
 
 
 print(b.get_parameter(qualifier='rv_grav', component='primary'))
@@ -139,31 +145,31 @@ print(b.get_parameter(qualifier='rv_grav', component='primary'))
 # Synthetics
 # ------------------
 
-# In[18]:
+# In[14]:
 
 
 b.set_value_all('times', phoebe.linspace(0,1,101))
 
 
-# In[19]:
+# In[15]:
 
 
 b.run_compute(irrad_method='none')
 
 
-# In[20]:
+# In[16]:
 
 
 print(b.filter(context='model').twigs)
 
 
-# In[22]:
+# In[17]:
 
 
 print(b.get_parameter(qualifier='times', component='primary', kind='rv', context='model'))
 
 
-# In[23]:
+# In[18]:
 
 
 print(b.get_parameter(qualifier='rvs', component='primary', kind='rv', context='model'))
@@ -174,7 +180,7 @@ print(b.get_parameter(qualifier='rvs', component='primary', kind='rv', context='
 # 
 # By default, RV datasets plot as 'rvs' vs 'times'.
 
-# In[24]:
+# In[19]:
 
 
 afig, mplfig = b.plot(show=True)
@@ -182,7 +188,7 @@ afig, mplfig = b.plot(show=True)
 
 # Since these are the only two columns available in the synthetic model, the only other options is to plot in phase instead of time.
 
-# In[25]:
+# In[20]:
 
 
 afig, mplfig = b.plot(x='phases', show=True)
@@ -190,13 +196,13 @@ afig, mplfig = b.plot(x='phases', show=True)
 
 # In system hierarchies where there may be multiple periods, it is also possible to determine whose period to use for phasing.
 
-# In[26]:
+# In[21]:
 
 
 print(b.filter(qualifier='period').components)
 
 
-# In[27]:
+# In[22]:
 
 
 afig, mplfig = b.plot(x='phases:binary', show=True)
@@ -210,31 +216,31 @@ afig, mplfig = b.plot(x='phases:binary', show=True)
 # 
 # Let's add a mesh at the first time of the rv dataset and re-call run_compute
 
-# In[28]:
+# In[23]:
 
 
 b.add_dataset('mesh', times=[0], dataset='mesh01')
 
 
-# In[29]:
+# In[24]:
 
 
 print(b.get_parameter(qualifier='columns').choices)
 
 
-# In[30]:
+# In[25]:
 
 
 b.set_value('columns', value=['rvs@rv01'])
 
 
-# In[31]:
+# In[26]:
 
 
 b.run_compute(irrad_method='none')
 
 
-# In[32]:
+# In[27]:
 
 
 print(b.get_model().datasets)
@@ -242,7 +248,7 @@ print(b.get_model().datasets)
 
 # These new columns are stored with the rv's dataset tag, but with the mesh model-kind.
 
-# In[33]:
+# In[28]:
 
 
 print(b.filter(dataset='rv01', kind='mesh', context='model').twigs)
@@ -250,7 +256,7 @@ print(b.filter(dataset='rv01', kind='mesh', context='model').twigs)
 
 # Any of these columns are then available to use as edge or facecolors when plotting the mesh (see the section on the [MESH dataset](MESH)).
 
-# In[34]:
+# In[29]:
 
 
 afig, mplfig = b.filter(kind='mesh').plot(fc='rvs', ec='None', show=True)
@@ -258,7 +264,7 @@ afig, mplfig = b.filter(kind='mesh').plot(fc='rvs', ec='None', show=True)
 
 # ### rvs
 
-# In[35]:
+# In[30]:
 
 
 print(b.get_parameter(qualifier='rvs', 
