@@ -4,7 +4,7 @@
 
 
 Returns the [phoebe.parameters.ConstraintParameter](phoebe.parameters.ConstraintParameter.md) that constrains
-this parameter.  If this [phoebe.parameters.FloatParameter](phoebe.parameters.FloatParameter.md) is not
+this parameter.  If this [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md)] is not
 constrained, this will return None.
 
 See also:
@@ -15,5 +15,5 @@ See also:
 
 Returns
 -------
-* (None or &lt;phoebe.parameters.ConstraintParameter)
+* None or [phoebe.parameters.ConstraintParameter](phoebe.parameters.ConstraintParameter.md)
 

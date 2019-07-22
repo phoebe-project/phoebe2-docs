@@ -4,7 +4,7 @@
 
 
 Returns a list of Parameters that are constrained by this
- [phoebe.parameters.FloatParameter](phoebe.parameters.FloatParameter.md).
+[phoebe.parameters.FloatParameter](phoebe.parameters.FloatParameter.md).
 
 See also:
 * [phoebe.parameters.FloatParameter.is_constraint](phoebe.parameters.FloatParameter.is_constraint.md)

@@ -137,7 +137,7 @@ if __name__ == '__main__':
                             'HierarchyParameter', 'HistoryParameter',
                             'IntArrayParameter', 'IntParameter',
                             'JobParameter',
-                            'OrderedDict', 'Parameter',
+                            'OrderedDict', 'Parameter', 'ParameterSetInfo',
                             'ParameterSet', 'SelectParameter', 'SocketIO',
                             'StrictVersion', 'StringParameter', 'TwigParameter',
                             'datetime', 'deepcopy', 'fnmatch',
@@ -145,7 +145,7 @@ if __name__ == '__main__':
                             'update_if_client', 'ConstraintVar', 'cfit']
 
     skip_parameters = ['deepcopy', 'fnmatch', 'send_if_client', 'update_if_client',
-                       'ConstraintVar', 'DictParameter',
+                       'ConstraintVar', 'DictParameter', 'ParameterSetInfo',
                        'IntArrayParameter', 'TwigParameter', 'autofig', 'datetime',
                        'difflib', 'functools', 'itertools', 'json', 'logging',
                        'np', 'nparray', 'os', 'parameter_from_json', 'parse_json',
