@@ -165,6 +165,8 @@ Available components ([see all](api/phoebe.parameters.component.md)):
 * [get_feature](api/phoebe.frontend.bundle.Bundle.get_feature.md)
 * [rename_feature](api/phoebe.frontend.bundle.Bundle.rename_feature.md)
 * [remove_feature](api/phoebe.frontend.bundle.Bundle.remove_feature.md)
+* [enable_feature](api/phoebe.frontend.bundle.Bundle.enable_feature.md)
+* [disable_feature](api/phoebe.frontend.bundle.Bundle.disable_feature.md)
 * [add_spot](api/phoebe.frontend.bundle.Bundle.add_spot.md)
 * [get_spot](api/phoebe.frontend.bundle.Bundle.get_spot.md)
 

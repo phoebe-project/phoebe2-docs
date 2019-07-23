@@ -16,6 +16,13 @@ during run_fitting (once supported).
 If `compute` is not provided, the dataset will be disabled across all
 compute options.
 
+Note that not all `compute` backends support all types of datasets.
+Unsupported datasets do not have 'enabled' parameters, and therefore
+cannot be enabled or disabled.
+
+See also:
+* [phoebe.frontend.bundle.Bundle.enable_dataset](phoebe.frontend.bundle.Bundle.enable_dataset.md)
+
 Arguments
 -----------
 * `dataset` (string, optional): name of the dataset
