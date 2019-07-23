@@ -37,9 +37,13 @@ Arguments
 ----------
 * `twig` (string, optional, default=None): twig to use for filtering
     prior to plotting.  See [phoebe.parameters.ParameterSet.filter](phoebe.parameters.ParameterSet.filter.md)
-* `time` (float, optional): time to use for plotting/animating.
-* `times` (list/array, optional): times to use for animating (will
-    override any value sent to `time`).
+* `time` (float, optional): time to use for plotting/animating.  This will
+    filter on time for any applicable dataset (i.e. meshes, line profiles),
+    will be used for highlighting/uncovering based on the passed value
+    to `highlight` and `uncover`.  Use `times` to set the individual
+    frames when animating with `animate=True`
+* `times` (list/array, optional): times to use for animating.  If
+    `animate` is not True, a warning will be raised in the logger.
 * `t0` (string/float, optional): qualifier/twig or float of the t0 that
     should be used for phasing, if applicable.  If provided as a string,
     `b.get_value(t0)` needs to provide a valid float.

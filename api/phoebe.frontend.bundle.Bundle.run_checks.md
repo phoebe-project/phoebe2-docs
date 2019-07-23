@@ -22,7 +22,8 @@ Arguments
 -----------
 * `compute` (string or list of strings, optional, default=None): the
     compute options to use  when running checks.  If None (or not provided),
-    all available compute options will be considered.
+    the compute options in the 'run_checks_compute@setting' parameter
+    will be used (which defaults to all available compute options).
 * `allow_skip_constraints` (bool, optional, default=False): whether
     to allow skipping running delayed constraints if interactive
     constraints are disabled.  See [phoebe.interactive_constraints_off](phoebe.interactive_constraints_off.md).
