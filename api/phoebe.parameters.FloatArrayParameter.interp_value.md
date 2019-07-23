@@ -3,7 +3,7 @@
 
 ```py
 
-def interp_value(self, unit=None, **kwargs)
+def interp_value(self, unit=None, component=None, t0='t0_supconj', **kwargs)
 
 ```
 
@@ -58,10 +58,12 @@ Arguments
     default_units of the referenced parameter.  **NOTE**: to provide
     units on the *passed* value, you must send a quantity object (see
     `**kwargs` below).
-* `component` (string, optional): if interpolating in phases, `component`
-    will be passed along to [phoebe.frontend.bundle.Bundle.to_phase](phoebe.frontend.bundle.Bundle.to_phase.md).
-* `t0` (string/float, optional): if interpolating in phases, `t0` will
-    be passed along to [phoebe.frontend.bundle.Bundle.to_phase](phoebe.frontend.bundle.Bundle.to_phase.md).
+* `component` (string, optional, default=None): if interpolating in phases,
+    `component` will be passed along to
+    [phoebe.frontend.bundle.Bundle.to_phase](phoebe.frontend.bundle.Bundle.to_phase.md).
+* `t0` (string/float, optional, default='t0_supconj'): if interpolating
+    in phases, `t0` will be passed along to
+     [phoebe.frontend.bundle.Bundle.to_phase](phoebe.frontend.bundle.Bundle.to_phase.md).
 * `**kwargs`: see examples above, must provide a single
     qualifier-value pair to use for interpolation.  In most cases
     this will probably be time=value or wavelength=value.  If the value
