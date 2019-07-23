@@ -4,7 +4,7 @@
 # Advanced: Settings
 # ============================
 # 
-# The Bundle also contains a few Parameters that provide settings for that Bundle.  Note that these are not system-wide and only apply to the current Bundle.  They are however maintained when [saving and loading](./saving_and_loading) a Bundle.
+# The Bundle also contains a few Parameters that provide settings for that Bundle.  Note that these are not system-wide and only apply to the current Bundle.  They are however maintained when [saving and loading](./saving_and_loading.ipynb) a Bundle.
 # 
 # Setup
 # -----------------------------
@@ -17,7 +17,7 @@
 get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -60,7 +60,7 @@ b['setting']
 # 
 # log_history is a BooleanParameter (defaults to False) that controls whether undo/redo ability is enabled.
 
-# In[5]:
+# In[4]:
 
 
 b['log_history@setting'].description
@@ -68,31 +68,31 @@ b['log_history@setting'].description
 
 # This parameter can also be set by calling b.enable_history() or b.disable_history() and can be accessed with b.history_enabled.
 
-# In[6]:
+# In[5]:
 
 
 b['log_history@setting']
 
 
-# In[7]:
+# In[6]:
 
 
 b.history_enabled
 
 
-# In[8]:
+# In[7]:
 
 
 b.enable_history()
 
 
-# In[9]:
+# In[8]:
 
 
 b['log_history@setting']
 
 
-# In[10]:
+# In[9]:
 
 
 b.history_enabled
@@ -102,13 +102,13 @@ b.history_enabled
 # 
 # dict_set_all is a BooleanParameter (defaults to False) that controls whether attempting to set a value to a ParameterSet via dictionary access will set all the values in that ParameterSet (if True) or raise an error (if False)
 
-# In[11]:
+# In[10]:
 
 
 b['dict_set_all@setting']
 
 
-# In[12]:
+# In[11]:
 
 
 b['teff@component']
@@ -126,7 +126,7 @@ b['teff@component']
 # 
 # In order to set both temperatures to 6000, you would either have to loop over the components or call the set_value_all method:
 
-# In[13]:
+# In[12]:
 
 
 b.set_value_all('teff@component', 4000)
@@ -135,7 +135,7 @@ print b['value@teff@primary@component'], b['value@teff@secondary@component']
 
 # If you want dictionary access to use set_value_all instead of set_value, you can enable this parameter
 
-# In[14]:
+# In[13]:
 
 
 b['dict_set_all@setting'] = True
@@ -145,9 +145,10 @@ print b['value@teff@primary@component'], b['value@teff@secondary@component']
 
 # Now let's disable this so it doesn't confuse us while looking at the other options
 
-# In[15]:
+# In[14]:
 
 
+b.set_value_all('teff@component', 6000)
 b['dict_set_all@setting'] = False
 
 
@@ -155,7 +156,7 @@ b['dict_set_all@setting'] = False
 # 
 # dict_filter is a Parameter that accepts a dictionary.  This dictionary will then always be sent to the filter call which is done under-the-hood during dictionary access.
 
-# In[16]:
+# In[15]:
 
 
 b['incl']
@@ -167,13 +168,13 @@ b['incl']
 # 
 # Instead, we can always have the dictionary access search in the component context by doing the following
 
-# In[17]:
+# In[16]:
 
 
 b['dict_filter@setting'] = {'context': 'component'}
 
 
-# In[18]:
+# In[17]:
 
 
 b['incl']
@@ -183,7 +184,7 @@ b['incl']
 # 
 # All parameters are always accessible with method access:
 
-# In[19]:
+# In[18]:
 
 
 b.filter(qualifier='incl')
@@ -191,8 +192,44 @@ b.filter(qualifier='incl')
 
 # Now let's reset this option... keeping in mind that we no longer have access to the 'setting' context through twig access, we'll have to use methods to clear the dict_filter
 
-# In[20]:
+# In[19]:
 
 
 b.set_value('dict_filter@setting', {})
+
+
+# ### run_checks_compute
+# 
+# The run_checks_compute option allows setting the default compute option(s) sent to [b.run_checks](../api/phoebe.frontend.bundle.Bundle.run_checks.md), including warnings in the logger raised by interactive checks (see [phoebe.interactive_checks_on](../api/phoebe.interactive_checks_on.md).
+
+# In[20]:
+
+
+b['run_checks_compute@setting']
+
+
+# In[21]:
+
+
+b.add_dataset('lc')
+b.add_compute('legacy')
+print(b.run_checks())
+
+
+# In[22]:
+
+
+b['run_checks_compute@setting'] = ['phoebe01']
+
+
+# In[23]:
+
+
+print(b.run_checks())
+
+
+# In[ ]:
+
+
+
 
