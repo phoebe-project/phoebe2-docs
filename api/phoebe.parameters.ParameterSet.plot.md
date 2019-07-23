@@ -46,7 +46,23 @@ Arguments
     `animate` is not True, a warning will be raised in the logger.
 * `t0` (string/float, optional): qualifier/twig or float of the t0 that
     should be used for phasing, if applicable.  If provided as a string,
-    `b.get_value(t0)` needs to provide a valid float.
+    `b.get_value(t0)` needs to provide a valid float.  This is used
+    if `phase`/`phases` provided instead of `time`/`times` as well as
+    if 'phases' is set as any direction (`x`, `y`, `z`, etc).
+* `phase` (float, optional): phase to use for plotting/animating.  This
+    will convert to `time` using the current ephemeris via
+    [phoebe.frontend.bundle.Bundle.to_time](phoebe.frontend.bundle.Bundle.to_time.md) along with the passed value
+    of `t0`.  If `time` and `phase` are both provided, an error will be
+    raised.  Note: if a dataset uses compute_phases_t0 that differs
+    from `t0`, this may result in a different mapping between
+    `phase` and `time`.
+* `phases` (list/array, optional): phases to use for animating.  This
+    will convert to `times` using the current ephemeris via
+    [phoebe.frontend.bundle.Bundle.to_time](phoebe.frontend.bundle.Bundle.to_time.md) along with the passed
+    value of `t0`.  If `times` and `phases` are both provided, an error
+    will be raised.  Note: if a dataset uses compute_phases_t0 that differs
+    from `t0`, this may result in a different mapping between
+    `phase` and `time`.
 
 * `x` (string/float/array, optional): qualifier/twig of the array to plot on the
     x-axis (will default based on the dataset-kind if not provided).
@@ -223,4 +239,9 @@ Arguments
 Returns
 --------
 * (autofig figure, matplotlib figure)
+
+Raises
+------------
+* ValueError: if both `time` and `phase` or `times` and `phases` are passed.
+* ValueError: if the resulting figure is empty.
 
