@@ -7,6 +7,8 @@
 # Setup
 # -----------------------------
 
+# **IMPORTANT NOTE:** if using spots on contact systems or single stars, make sure to use 2.1.15 or later as the 2.1.15 release fixed a bug affecting spots in these systems.
+# 
 # Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
