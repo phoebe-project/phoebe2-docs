@@ -43,7 +43,11 @@ Arguments
     to `highlight` and `uncover`.  Use `times` to set the individual
     frames when animating with `animate=True`
 * `times` (list/array, optional): times to use for animating.  If
-    `animate` is not True, a warning will be raised in the logger.
+    `animate` is not True, a warning will be raised in the logger.  If
+    `animate` is True, and neither `times` nor `time` is passed,
+    then the animation will cycle over the tagged times of the model
+    datasets (i.e. if mesh or lp datasets exist), or the computed
+    times otherwise.
 * `t0` (string/float, optional): qualifier/twig or float of the t0 that
     should be used for phasing, if applicable.  If provided as a string,
     `b.get_value(t0)` needs to provide a valid float.  This is used
@@ -207,6 +211,18 @@ Arguments
 * `animate` (bool, optional, default=False): whether to animate the figure.
 * `interval` (int, optional, default=100): time in ms between each
     frame in the animation.  Applicable only if `animate` is True.
+
+* `equal_aspect` (optional): whether to force the aspect ratio of the
+    axes to be equal.  If not provided, this will default to True if
+    all directions (i.e. `x` and `y` for `projection='2d'` or `x`,
+    `y`, and `z` for '3d') are positions and of the same units, or
+    False otherwise.
+* `pad_aspect` (optional): whether to achieve the equal aspect ratio
+    by padding the limits instead of whitespace around the axes.  Only
+    applicable if `equal_aspect` is True.  If not provided, this will
+    default to True unless `animate` is True, in which case it will
+    default to False (as autofig cannot currently handle `pad_aspect`)
+    in animations.
 
 * `projection` (string, optional, default='2d'): whether to plot
     on a 2d or 3d axes.  If '3d', the orientation of the axes will
