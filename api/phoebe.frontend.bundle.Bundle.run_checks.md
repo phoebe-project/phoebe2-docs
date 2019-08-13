@@ -31,6 +31,9 @@ Arguments
 
 Returns
 ----------
-* (bool, str) whether the checks passed or failed and a message describing
-    the FIRST failure (if applicable).
+* ([phoebe.frontend.bundle.RunChecksReport](phoebe.frontend.bundle.RunChecksReport.md)) object containing all
+    errors/warnings.  Print the returned object to see all messages.
+    See also: [phoebe.frontend.bundle.RunChecksReport.passed](phoebe.frontend.bundle.RunChecksReport.passed.md),
+     [phoebe.frontend.bundle.RunChecksReport.items](phoebe.frontend.bundle.RunChecksReport.items.md), and
+     [phoebe.frontend.bundle.RunChecksItem.message](phoebe.frontend.bundle.RunChecksItem.message.md).
 

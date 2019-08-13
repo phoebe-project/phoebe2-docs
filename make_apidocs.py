@@ -180,7 +180,7 @@ if __name__ == '__main__':
     fms_phoebe = api_docs(phoebe, skip=skip_phoebe, members=[pydoc.inspect.ismodule, pydoc.inspect.isfunction, pydoc.inspect.isclass])
 
     fms_frontend = api_docs(phoebe.frontend, skip=skip_frontend+fms_phoebe, prefix='phoebe', members=[pydoc.inspect.ismodule])
-    fms_frontend_bundle = api_docs(phoebe.frontend.bundle, skip=skip_frontend_bundle+[s for s in fms_phoebe if s!='Bundle'], prefix='phoebe.frontend', members=[pydoc.inspect.isfunction, pydoc.inspect.isclass])
+    fms_frontend_bundle = api_docs(phoebe.frontend.bundle, skip=skip_frontend_bundle+[s for s in fms_phoebe if s not in ['Bundle', 'RunChecksItem', 'RunChecksReport']], prefix='phoebe.frontend', members=[pydoc.inspect.isfunction, pydoc.inspect.isclass])
     fms_parameters = api_docs(phoebe.parameters, skip=skip_parameters+fms_phoebe, prefix='phoebe', members=[pydoc.inspect.ismodule, pydoc.inspect.isfunction, pydoc.inspect.isclass])
     fms_atm = api_docs(phoebe.atmospheres, skip=[], prefix='phoebe', members=[pydoc.inspect.ismodule])
     fms_passbands = api_docs(phoebe.atmospheres.passbands, skip=skip_passbands, prefix='phoebe.atmospheres', members=[pydoc.inspect.isfunction, pydoc.inspect.isclass])
@@ -203,6 +203,8 @@ if __name__ == '__main__':
     fms_system = api_docs(phoebe.parameters.system, skip=skip_parameters_system, prefix='phoebe.parameters')
 
     fms_ps = api_docs(phoebe.parameters.ParameterSet, skip=skip_ps, prefix='phoebe.parameters')
+    fms_rci = api_docs(phoebe.frontend.bundle.RunChecksItem, skip=['__init__'], prefix='phoebe.frontend.bundle')
+    fms_rcr = api_docs(phoebe.frontend.bundle.RunChecksReport, skip=['__init__'], prefix='phoebe.frontend.bundle')
     fms_bundle = api_docs(phoebe.frontend.bundle.Bundle, skip=skip_ps+[s for s in fms_ps if s not in ['__init__', 'open', 'load']], subclass_of='phoebe.parameters.ParameterSet', prefix='phoebe.frontend.bundle')
 
     fms_param = api_docs(phoebe.parameters.Parameter, skip=skip_param+['get_value'], prefix='phoebe.parameters')
