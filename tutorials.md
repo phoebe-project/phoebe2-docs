@@ -21,6 +21,7 @@ These tutorials highlight the major changes between versions 2.1.x and 2.2+ in t
 * [Passband Luminosities: pblum_mode, pblum_component, pblum_dataset, & pblum vs pblum_ext](tutorials/21_22_pblum_mode.ipynb)
 * [Third Light: l3_mode](tutorials/21_22_l3_mode.ipynb)
 * [Compute Times & Phases](tutorials/21_22_compute_times_phases.ipynb)
+* [Run Checks Report](tutorials/21_22_run_checks_report.ipynb)
 * [NEW: Passband Versioning & Updates](tutorials/passband_updates.ipynb)
 
 
