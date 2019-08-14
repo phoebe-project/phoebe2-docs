@@ -18,9 +18,10 @@ that require per-star limb-darkening coefficients.  Note that the default
 limb-darkening coefficients **per-element**.
 
 Coefficients will only be interpolated/returned for those where `ld_mode`
-is 'lookup'.  The values of the `ld_coeffs` parameter will be
-returned for cases where `ld_mode` is 'manual'.  Cases where
-`ld_mode` is 'interp' will not be included in the output.
+(or `ld_mode_bol`)  is 'lookup'.  The values of the `ld_coeffs`
+(or `ld_coeffs_bol`) parameter will be returned for cases where `ld_mode`
+is 'manual'.  Cases where `ld_mode` is 'interp' will not be included in
+the output.
 
 Note:
 * for backends without `atm` compute options, 'ck2004' will be used.
@@ -34,10 +35,11 @@ Arguments
     components in the hierarchy.
 * `dataset` (string or list of strings, optional): label of the
     dataset(s) requested.  If not provided, will be provided for all
-    datasets attached to the bundle.
+    datasets attached to the bundle.  Include 'bol' to include
+    bolometric (irradiation-only) quantities from `ld_func_bol`.
 * `set_value` (bool, optional, default=False): apply the interpolated
-    values to the respective `ld_coeffs` parameters (even if not
-    currently visible).
+    values to the respective `ld_coeffs`/`ld_coeffs_bol` parameters
+    (even if not currently visible).
 * `skip_checks` (bool, optional, default=False): whether to skip calling
     [phoebe.frontend.bundle.Bundle.run_checks](phoebe.frontend.bundle.Bundle.run_checks.md) before computing the model.
     NOTE: some unexpected errors could occur for systems which do not

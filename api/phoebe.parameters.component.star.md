@@ -50,9 +50,18 @@ Arguments
     redistribution).
 * `irrad_frac_refl_lost` (float, optional): ratio of incident
     bolometric light that is lost/ignored.
+* `ld_mode_bol` (string, optional, default='lookup'): mode to use for handling
+    bolometric limb-darkening.  Note that unlike passband limb-darkening,
+    'lookup' will apply a single set of coefficients per-component instead
+    of per-element.
 * `ld_func_bol` (string, optional): bolometric limb-darkening model.
-* `ld_func_coeffs` (list/array, optional): bolometric limb-darkening
-    coefficients.
+* `ld_coeffs_source_bol` (string, optional, default='auto'): source for
+    bolometric limb-darkening coefficients ('auto' to interpolate from the
+    applicable table according to the 'atm' parameter, or the name of a
+    specific atmosphere table).  Only applicable if `ld_mode_bol` is
+    'lookup'.
+* `ld_coeffs_bol` (list/array, optional): bolometric limb-darkening
+    coefficients.  Only applicable if `ld_mode_bol` is 'manual'.
 * `mass` (float/quantity, optional): mass of the star.
 
 Returns
