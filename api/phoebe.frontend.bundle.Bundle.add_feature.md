@@ -41,6 +41,9 @@ Arguments
 * `overwrite` (boolean, optional, default=False): whether to overwrite
     an existing feature with the same `feature` tag.  If False,
     an error will be raised.
+* `return_overwrite` (boolean, optional, default=False): whether to include
+    removed parameters due to `overwrite` in the returned ParameterSet.
+    Only applicable if `overwrite` is True.
 * `**kwargs`: default values for any of the newly-created parameters
     (passed directly to the matched callabled function).
 

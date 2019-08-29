@@ -58,6 +58,10 @@ Arguments
     an existing model with the same `model` tag.  If False,
     an error will be raised.  This defaults to True if `model` is not provided
     or is 'latest', otherwise it will default to False.
+* `return_overwrite` (boolean, optional, default=False): whether to include
+    removed parameters due to `overwrite` in the returned ParameterSet.
+    Only applicable if `overwrite` is True (or defaults to True if
+    `model` is 'latest').
 * `skip_checks` (bool, optional, default=False): whether to skip calling
     [phoebe.frontend.bundle.Bundle.run_checks](phoebe.frontend.bundle.Bundle.run_checks.md) before computing the model.
     NOTE: some unexpected errors could occur for systems which do not

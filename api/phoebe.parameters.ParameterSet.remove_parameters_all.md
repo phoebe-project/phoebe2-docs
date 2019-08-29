@@ -25,5 +25,10 @@ Arguments
 * `twig` (string, optional, default=None): the twig to search for the
     parameter (see [phoebe.parameters.ParameterSet.get](phoebe.parameters.ParameterSet.get.md))
 * `**kwargs`: meta-tags to use when filtering, including `check_visible` and
-    `check_default`.  See [phoebe.parameters.ParameterSet.filter](phoebe.parameters.ParameterSet.filter.md).
+    `check_default` which will all default to False if not provided.
+    See [phoebe.parameters.ParameterSet.filter](phoebe.parameters.ParameterSet.filter.md).
+
+Returns
+-----------
+* ParameterSet of removed parameters
 

@@ -29,3 +29,7 @@ Arguments
     [phoebe.parameters.ParameterSet.remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md).  The following
     will be ignored: context, twig.
 
+Returns
+-----------
+* ParameterSet of removed parameters
+

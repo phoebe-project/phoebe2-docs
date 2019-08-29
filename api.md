@@ -120,6 +120,13 @@ Importing/exporting from other codes:
 * [set_default_unit](api/phoebe.parameters.ParameterSet.set_default_unit.md)
 * [set_default_unit_all](api/phoebe.parameters.ParameterSet.set_default_unit_all.md)
 
+### System Checks & References
+
+* [run_checks](api/phoebe.frontend.bundle.Bundle.run_checks.md)
+* [run_delayed_constraints](api/phoebe.frontend.bundle.Bundle.run_delayed_constraints.md)
+* [run_failed_constraints](api/phoebe.frontend.bundle.Bundle.run_failed_constraints.md)
+* [references](api/phoebe.frontend.bundle.Bundle.references.md)
+
 ### Hierarchy
 
 * [set_hierarchy](api/phoebe.frontend.bundle.Bundle.set_hierarchy.md)

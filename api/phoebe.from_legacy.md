@@ -25,7 +25,11 @@ See also:
 
 Arguments
 ------------
-* `filename` (string): relative or full path to the file
+* `filename` (string or file object): relative or full path to the file
+    or an opened python file object.  NOTE: if passing a file object,
+    referenced data files will be ignored.  If wanting to load referenced
+    data files, pass the location of the file so that relative paths
+    to other files can be correctly parsed.
 * `add_compute_legacy` (bool, optional, default=True): whether to add
     a set of compute options for the legacy backend.  See also
     [phoebe.frontend.bundle.Bundle.add_compute](phoebe.frontend.bundle.Bundle.add_compute.md) and

@@ -23,6 +23,10 @@ Arguments
 * `**kwargs`: meta-tags to use when filtering, including `check_visible` and
     `check_default`.  See [phoebe.parameters.ParameterSet.get](phoebe.parameters.ParameterSet.get.md).
 
+Returns
+-----------
+* the removed [phoebe.parmaeters.Parameter](phoebe.parmaeters.Parameter.md).
+
 Raises
 ------
 * ValueError: if 0 or more than 1 results are found using the

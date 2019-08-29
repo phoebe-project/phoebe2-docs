@@ -21,3 +21,7 @@ Arguments
     [phoebe.parameters.ParameterSet.remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md).  The following
     will be ignored: component, context
 
+Returns
+-----------
+* ParameterSet of removed parameters
+

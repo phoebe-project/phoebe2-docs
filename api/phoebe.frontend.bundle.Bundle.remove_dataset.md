@@ -27,6 +27,10 @@ Arguments
     [phoebe.parameters.ParameterSet.remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md).  The following
     will be ignored: dataset, qualifier.
 
+Returns
+-----------
+* ParameterSet of removed parameters
+
 Raises
 --------
 * ValueError: if `dataset` is not provided AND no `kwargs` are provided.

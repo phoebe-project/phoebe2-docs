@@ -12,3 +12,7 @@ def remove_computes_all(self)
 Remove all compute options from the bundle.  To remove a single set
 of compute options see [phoebe.frontend.bundle.Bundle.remove_compute](phoebe.frontend.bundle.Bundle.remove_compute.md).
 
+Returns
+-----------
+* ParameterSet of removed parameters
+

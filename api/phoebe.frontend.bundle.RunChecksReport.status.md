@@ -3,12 +3,13 @@
 
 
 
-Return whether the report results in a status of 'PASS' or 'FAIL'.
+Return whether the report results in a status of 'PASS', 'WARNING',
+or 'FAIL'.
 
 See also:
 * [phoebe.frontend.bundle.RunChecksReport.passed](phoebe.frontend.bundle.RunChecksReport.passed.md)
 
 Returns
 ------------
-* (str) either 'PASS' or 'FAIL'
+* (str) either 'PASS', 'WARNING', or 'FAIL'
 

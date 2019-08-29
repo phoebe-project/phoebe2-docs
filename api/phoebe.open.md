@@ -33,7 +33,8 @@ See also:
 
 Arguments
 ----------
-* `filename` (string): relative or full path to the file
+* `filename` (string or file object): relative or full path to the file
+    or an opened python file object.
 
 Returns
 ---------

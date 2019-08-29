@@ -37,10 +37,13 @@ Arguments
      callable function that accepts only default values, or the name
      of a function (as a string) that can be found in the
      [phoebe.parameters.compute](phoebe.parameters.compute.md) module.
-* `component` (string, optional): name of the newly-created feature.
+* `component` (string, optional): name of the newly-created component.
 * `overwrite` (boolean, optional, default=False): whether to overwrite
     an existing component with the same `component` tag.  If False,
     an error will be raised.
+* `return_overwrite` (boolean, optional, default=False): whether to include
+    removed parameters due to `overwrite` in the returned ParameterSet.
+    Only applicable if `overwrite` is True.
 * `**kwargs`: default values for any of the newly-created parameters
     (passed directly to the matched callabled function).
 
