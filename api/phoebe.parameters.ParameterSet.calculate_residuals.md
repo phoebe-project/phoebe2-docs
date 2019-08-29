@@ -1,9 +1,9 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[ParameterSet](phoebe.parameters.ParameterSet.md).compute_residuals (method)
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[ParameterSet](phoebe.parameters.ParameterSet.md).calculate_residuals (method)
 
 
 ```py
 
-def compute_residuals(self, model=None, dataset=None, component=None, as_quantity=True)
+def calculate_residuals(self, model=None, dataset=None, component=None, as_quantity=True)
 
 ```
 
@@ -23,7 +23,7 @@ phase-space otherwise. See
 [phoebe.parameters.FloatArrayParameter.interp_value](phoebe.parameters.FloatArrayParameter.interp_value.md).
 
 See also:
-* [phoebe.parameters.ParameterSet.compute_chi2](phoebe.parameters.ParameterSet.compute_chi2.md)
+* [phoebe.parameters.ParameterSet.calculate_chi2](phoebe.parameters.ParameterSet.calculate_chi2.md)
 
 Arguments
 -----------

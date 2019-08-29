@@ -1,9 +1,9 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[ParameterSet](phoebe.parameters.ParameterSet.md).compute_chi2 (method)
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[ParameterSet](phoebe.parameters.ParameterSet.md).calculate_chi2 (method)
 
 
 ```py
 
-def compute_chi2(self, model=None, dataset=None, component=None)
+def calculate_chi2(self, model=None, dataset=None, component=None)
 
 ```
 
@@ -22,13 +22,13 @@ phase-space otherwise. See
 [phoebe.parameters.FloatArrayParameter.interp_value](phoebe.parameters.FloatArrayParameter.interp_value.md).
 
 Residuals per-dataset for the given model are computed by
-[phoebe.parameters.ParameterSet.compute_residuals](phoebe.parameters.ParameterSet.compute_residuals.md).  The returned
+[phoebe.parameters.ParameterSet.calculate_residuals](phoebe.parameters.ParameterSet.calculate_residuals.md).  The returned
 chi2 value is then the sum over the chi2 of each dataset, where each
 dataset's chi2 value is computed as the sum of squares of residuals
 over the squares of sigmas (if available).
 
 See also:
-* [phoebe.parameters.ParameterSet.compute_residuals](phoebe.parameters.ParameterSet.compute_residuals.md)
+* [phoebe.parameters.ParameterSet.calculate_residuals](phoebe.parameters.ParameterSet.calculate_residuals.md)
 
 Arguments
 -----------

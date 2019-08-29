@@ -78,7 +78,7 @@ Arguments
 * `y` (string/float/array, optional): qualifier/twig of the array to plot on the
     y-axis (will default based on the dataset-kind if not provided).  To
     plot residuals along the y-axis, pass `y='residuals'`.  This will
-    call [phoebe.frontend.bundle.Bundle.compute_residuals](phoebe.frontend.bundle.Bundle.compute_residuals.md) for the given
+    call [phoebe.frontend.bundle.Bundle.calculate_residuals](phoebe.frontend.bundle.Bundle.calculate_residuals.md) for the given
     dataset/model.
 * `z` (string/float/array, optional): qualifier/twig of the array to plot on the
     z-axis.  By default, this will just order the points on a 2D plot.

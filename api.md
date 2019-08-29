@@ -223,8 +223,8 @@ Available compute backends ([see all](api/phoebe.parameters.compute.md)):
 Methods that act on resulting models:
 
 * [plot](api/phoebe.parameters.ParameterSet.plot.md)
-* [compute_residuals](api/phoebe.parameters.ParameterSet.compute_residuals.md)
-* [compute_chi2](api/phoebe.parameters.ParameterSet.compute_chi2.md)
+* [calculate_residuals](api/phoebe.parameters.ParameterSet.calculate_residuals.md)
+* [calculate_chi2](api/phoebe.parameters.ParameterSet.calculate_chi2.md)
 
 ### Plotting
 
