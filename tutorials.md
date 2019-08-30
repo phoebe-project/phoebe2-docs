@@ -1,5 +1,7 @@
 # Tutorials
 
+For a quick discussion on why PHOEBE 2 is designed the way it is and why the learning curve seems a little steep see the [General Design Concepts of PHOEBE 2](tutorials/design_concepts.ipynb).  Otherwise, feel free to jump in to the tutorials below.
+
 Each of the following tutorials builds upon previous tutorials, so it will be most efficient to work through them sequentially at first. However, each should run independently, so feel free to jump in at any point to review a specific concept.
 
 For more specific use-cases, see the example scripts below.
