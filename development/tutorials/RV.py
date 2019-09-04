@@ -212,7 +212,7 @@ afig, mplfig = b.plot(x='phases:binary', show=True)
 # ---------------------
 # 
 # 
-# By adding a mesh dataset and setting the columns parameter, radial velocities per-element quantities can be exposed and plotted.  Since the radial velocities are flux-weighted, the flux-related quantities are also included.  For a description of these, see the section on the [lc dataset](LC.ipynb).
+# By adding a mesh dataset and setting the columns parameter, radial velocities per-element quantities can be exposed and plotted.  Since the radial velocities are flux-weighted, the flux-related quantities are also included (except relative intensities/luminosities that would require pblum scaling).  For a description of these, see the section on the [lc dataset](LC.ipynb).
 # 
 # Let's add a mesh at the first time of the rv dataset and re-call run_compute
 
