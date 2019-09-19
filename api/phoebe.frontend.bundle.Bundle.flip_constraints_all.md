@@ -1,9 +1,9 @@
-### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[Bundle](phoebe.frontend.bundle.Bundle.md).flip_constraint_all (method)
+### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[Bundle](phoebe.frontend.bundle.Bundle.md).flip_constraints_all (method)
 
 
 ```py
 
-def flip_constraint_all(self, twig=None, solve_for=None, **kwargs)
+def flip_constraints_all(self, twig=None, solve_for=None, **kwargs)
 
 ```
 

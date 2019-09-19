@@ -28,7 +28,7 @@ Bundle is a subclass of phoebe.parameters.ParameterSet and therefore also includ
 * [export_compute](phoebe.frontend.bundle.Bundle.export_compute.md)
 * [export_legacy](phoebe.frontend.bundle.Bundle.export_legacy.md)
 * [flip_constraint](phoebe.frontend.bundle.Bundle.flip_constraint.md)
-* [flip_constraint_all](phoebe.frontend.bundle.Bundle.flip_constraint_all.md)
+* [flip_constraints_all](phoebe.frontend.bundle.Bundle.flip_constraints_all.md)
 * [from_legacy](phoebe.frontend.bundle.Bundle.from_legacy.md)
 * [get_component](phoebe.frontend.bundle.Bundle.get_component.md)
 * [get_compute](phoebe.frontend.bundle.Bundle.get_compute.md)

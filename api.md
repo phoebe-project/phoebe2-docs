@@ -35,6 +35,7 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 
 * [Bundle](api/phoebe.frontend.bundle.Bundle.__init__.md)
 * [default_binary](api/phoebe.frontend.bundle.Bundle.default_binary.md)
+* [default_contact_binary](api/phoebe.frontend.bundle.Bundle.default_contact_binary.md)
 * [default_star](api/phoebe.frontend.bundle.Bundle.default_star.md)
 * [open](api/phoebe.frontend.bundle.Bundle.open.md)
 * [from_legacy](api/phoebe.frontend.bundle.Bundle.from_legacy.md)
@@ -105,11 +106,11 @@ Importing/exporting from other codes:
 
 ### Initializing New Bundles
 
-* [default_binary](api/phoebe.default_binary.md)
-* [default_contact_binary](api/phoebe.default_contact_binary.md)
-* [default_star](api/phoebe.default_star.md)
-* [open](api/phoebe.open.md)
-* [from_legacy](api/phoebe.from_legacy.md)
+* [default_binary](api/phoebe.frontend.bundle.Bundle.default_binary.md)
+* [default_contact_binary](api/phoebe.frontend.bundle.Bundle.default_contact_binary.md)
+* [default_star](api/phoebe.frontend.bundle.Bundle.default_star.md)
+* [open](api/phoebe.frontend.bundle.Bundle.open.md)
+* [from_legacy](api/phoebe.frontend.bundle.Bundle.from_legacy.md)
 
 ### Filtering
 
@@ -145,7 +146,7 @@ Importing/exporting from other codes:
 * [run_delayed_constraints](api/phoebe.frontend.bundle.Bundle.run_delayed_constraints.md)
 * [run_failed_constraints](api/phoebe.frontend.bundle.Bundle.run_failed_constraints.md)
 * [flip_constraint](api/phoebe.frontend.bundle.Bundle.flip_constraint.md)
-* [flip_constraint_all](api/phoebe.frontend.bundle.Bundle.flip_constraint_all.md)
+* [flip_constraints_all](api/phoebe.frontend.bundle.Bundle.flip_constraints_all.md)
 
 Available (optional) constraints ([see all](api/phoebe.parameters.constraint.md)):
 
