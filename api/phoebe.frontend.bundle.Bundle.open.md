@@ -3,7 +3,7 @@
 
 ```py
 
-def open(cls, filename)
+def open(cls, filename, import_from_older=True, import_from_newer=False)
 
 ```
 
@@ -34,9 +34,27 @@ See also:
 Arguments
 ----------
 * `filename` (string or file object): relative or full path to the file
-    or an opened python file object.
+    or an opened python file object.  Alternatively, pass a list of
+    parameter dictionaries to be loaded directly (use carefully).
+* `import_from_older` (bool, optional, default=True): whether to allow
+    importing bundles that were created with an older minor relase
+    of PHOEBE into the current version.  If True, enable the logger
+    (at warning level or higher) to see messages.  If False, an error will
+    be raised.  Generally, this should be a safe import operation as we
+    try to handle migrating previous versions.
+* `import_from_newer` (bool, optional, default=False): whether to allow
+    importing bundles that were created with a newer minor release
+    of PHOEBE into the current installed version.  If True, enable the
+    logger (at warning level or higher) to see messages.  If False, an
+    error will be raised.  This is off by default as we cannot guarantee
+    support with future changes to the code.
 
 Returns
 ---------
 * an instantiated [phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundle.md) object
+
+Raises
+---------
+* RuntimeError: if the version of the imported file fails to load according
+    to `import_from_older` or `import_from_newer`.
 

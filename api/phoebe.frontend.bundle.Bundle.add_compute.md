@@ -3,7 +3,7 @@
 
 ```py
 
-def add_compute(self, kind='phoebe', **kwargs)
+def add_compute(self, *args, **kwargs)
 
 ```
 
@@ -16,7 +16,8 @@ If not provided, `compute` will be created for you and can be
 accessed by the `compute` attribute of the returned
 [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md).
 
-Available kinds can be found in [phoebe.parameters.compute](phoebe.parameters.compute.md) and include:
+Available kinds can be found in [phoebe.parameters.compute](phoebe.parameters.compute.md) or by calling
+[phoebe.list_available_computes](phoebe.list_available_computes.md) and include:
 * [phoebe.parameters.compute.phoebe](phoebe.parameters.compute.phoebe.md)
 * [phoebe.parameters.compute.legacy](phoebe.parameters.compute.legacy.md)
 

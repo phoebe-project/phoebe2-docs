@@ -3,7 +3,7 @@
 
 ```py
 
-def add_component(self, kind, **kwargs)
+def add_component(self, *args, **kwargs)
 
 ```
 
@@ -24,7 +24,8 @@ or
 b.add_component('orbit', period=2.5)
 ```
 
-Available kinds can be found in [phoebe.parameters.component](phoebe.parameters.component.md) and include:
+Available kinds can be found in [phoebe.parameters.component](phoebe.parameters.component.md) or by calling
+[phoebe.list_available_components](phoebe.list_available_components.md) and include:
 * [phoebe.parameters.component.star](phoebe.parameters.component.star.md)
 * [phoebe.parmaeters.component.orbit](phoebe.parmaeters.component.orbit.md)
 * [phoebe.parameters.component.envelope](phoebe.parameters.component.envelope.md)
@@ -50,7 +51,7 @@ Arguments
 Returns
 ---------
 * [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) of all parameters that have been added
-
+    or changed.
 
 Raises
 ----------

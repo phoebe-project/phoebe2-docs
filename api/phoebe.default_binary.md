@@ -31,9 +31,13 @@ Arguments
     the secondary component.
 * `orbit` (string, optional, default='binary'): the label to be set for
     the binary component.
+* `semidetached` (string or bool, optional, default=False): component
+    to apply a semidetached constraint.  If False, system will be detached.
+    If True, both components will have semidetached constraints (a
+    double-contact system).  `contact_binary` must be False.
 * `contact_binary` (bool, optional, default=False): whether to also
     add an envelope (with component='contact_envelope') and set the
-    hierarchy to a contact binary system.
+    hierarchy to a contact binary system.  `semidetached` must be False.
 * `force_build` (bool, optional, default=False): whether to force building
     the bundle from scratch.  If False, pre-cached files will be loaded
     whenever possible to save time.
@@ -41,4 +45,9 @@ Arguments
 Returns
 -----------
 * an instantiated [phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundle.md) object.
+
+Raises
+-----------
+* ValueError: if at least one of `semidetached` and `contact_binary` are
+    not False.
 

@@ -11,6 +11,7 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 * [phoebe.parameters.constraint](api/phoebe.parameters.constraint.md)
 * [phoebe.parameters.dataset](api/phoebe.parameters.dataset.md)
 * [phoebe.parameters.feature](api/phoebe.parameters.feature.md)
+* [phoebe.parameters.figure](api/phoebe.parameters.figure.md)
 * [phoebe.parameters.hierarchy](api/phoebe.parameters.hierarchy.md)
 * [phoebe.parameters.ParameterSet](api/phoebe.parameters.ParameterSet.md)
 * [phoebe.parameters.Parameter](api/phoebe.parameters.Parameter.md)
@@ -23,6 +24,7 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 * [phoebe.parameters.SelectParameter](api/phoebe.parameters.SelectParameter.md)
 * [phoebe.parameters.ConstraintParameter](api/phoebe.parameters.ConstraintParameter.md)
 * [phoebe.parameters.HierarchyParameter](api/phoebe.parameters.HierarchyParameter.md)
+* [phoebe.parameters.UnitParameter](api/phoebe.parameters.UnitParameter.md`````````````````````````````````````````````)
 * [phoebe.parameters.JobParameter](api/phoebe.parameters.JobParameter.md)
 * [phoebe.atmospheres.passbands](api/phoebe.atmospheres.passbands.md)
 * [phoebe.atmospheres.passbands.Passband](api/phoebe.atmospheres.passbands.Passband.md)
@@ -74,6 +76,7 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 * [list_available_components](api/phoebe.list_available_components.md)
 * [list_available_features](api/phoebe.list_available_features.md)
 * [list_available_datasets](api/phoebe.list_available_datasets.md)
+* [list_available_figures](api/phoebe.list_available_figures.md)
 * [list_available_computes](api/phoebe.list_available_computes.md)
 
 
@@ -102,10 +105,11 @@ Importing/exporting from other codes:
 
 ### Initializing New Bundles
 
-* [default_binary](api/phoebe.frontend.bundle.Bundle.default_binary.md)
-* [default_star](api/phoebe.frontend.bundle.Bundle.default_star.md)
-* [open](api/phoebe.frontend.bundle.Bundle.open.md)
-* [from_legacy](api/phoebe.frontend.bundle.Bundle.from_legacy.md)
+* [default_binary](api/phoebe.default_binary.md)
+* [default_contact_binary](api/phoebe.default_contact_binary.md)
+* [default_star](api/phoebe.default_star.md)
+* [open](api/phoebe.open.md)
+* [from_legacy](api/phoebe.from_legacy.md)
 
 ### Filtering
 
@@ -204,6 +208,17 @@ Available datasets ([see all](api/phoebe.parameters.dataset.md)):
 * [orb](api/phoebe.parameters.dataset.orb.md)
 * [mesh](api/phoebe.parameters.dataset.mesh.md)
 
+### Figures
+
+* [add_figure](api/phoebe.frontend.bundle.Bundle.add_figure.md)
+* [get_figure](api/phoebe.frontend.bundle.Bundle.get_figure.md)
+* [rename_figure](api/phoebe.frontend.bundle.Bundle.rename_figure.md)
+* [remove_figure](api/phoebe.frontend.bundle.Bundle.remove_figure.md)
+* [run_figure](api/phoebe.frontend.bundle.Bundle.run_figure.md)
+
+See also the Plotting section below for a non-parameter method access to
+the same plotting functionality.
+
 ### Compute
 
 * [add_compute](api/phoebe.frontend.bundle.Bundle.add_compute.md)
@@ -211,6 +226,7 @@ Available datasets ([see all](api/phoebe.parameters.dataset.md)):
 * [rename_compute](api/phoebe.frontend.bundle.Bundle.rename_compute.md)
 * [remove_compute](api/phoebe.frontend.bundle.Bundle.remove_compute.md)
 * [run_compute](api/phoebe.frontend.bundle.Bundle.run_compute.md)
+* [export_compute](api/phoebe.frontend.bundle.Bundle.export_compute.md)
 * [compute_pblums](api/phoebe.frontend.bundle.Bundle.compute_pblums.md)
 * [compute_l3s](api/phoebe.fronted.bundle.Bundle.compute_l3s.md)
 * [compute_ld_coeffs](api/phoebe.frontend.bundle.Bundle.compute_ld_coeffs.md)
@@ -223,6 +239,8 @@ Available compute backends ([see all](api/phoebe.parameters.compute.md)):
 ### Model
 
 * [run_compute](api/phoebe.frontend.bundle.Bundle.run_compute.md)
+* [attach_job](api/phoebe.frontend.bundle.Bundle.attach_job.md)
+* [import_model](api/phoebe.frontend.bundle.Bundle.import_model.md)
 * [get_model](api/phoebe.frontend.bundle.Bundle.get_model.md)
 * [rename_model](api/phoebe.frontend.bundle.Bundle.rename_model.md)
 * [remove_model](api/phoebe.frontend.bundle.Bundle.remove_model.md)
@@ -232,6 +250,7 @@ Methods that act on resulting models:
 * [plot](api/phoebe.parameters.ParameterSet.plot.md)
 * [calculate_residuals](api/phoebe.parameters.ParameterSet.calculate_residuals.md)
 * [calculate_chi2](api/phoebe.parameters.ParameterSet.calculate_chi2.md)
+* [run_figure](api/phoebe.frontend.bundle.Bundle.run_figure.md)
 
 ### Plotting
 
@@ -240,3 +259,6 @@ Methods that act on resulting models:
 * [savefig](api/phoebe.parameters.ParameterSet.savefig.md)
 * [clf](api/phoebe.parameters.ParameterSet.clf.md)
 * [gcf](api/phoebe.parameters.ParameterSet.gcf.md)
+
+See the Figure section above for the ability to define figures via parameters
+and rebuild them by calling [run_figure](api/phoebe.frontend.bundle.Bundle.run_figure.md).

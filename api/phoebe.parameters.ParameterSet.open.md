@@ -22,7 +22,9 @@ See also:
 
 Arguments
 ---------
-* `filename` (string): relative or full path to the file
+* `filename` (string): relative or full path to the file.  Alternatively,
+    this can be the json string itself or a list of dictionaries (the
+    unpacked json).
 
 Returns
 ---------

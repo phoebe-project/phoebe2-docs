@@ -17,6 +17,10 @@ Arguments
 * `new_model` (string): the desired new label of the model
     (must not yet exist)
 
+Returns
+--------
+* [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) the renamed model
+
 Raises
 --------
 * ValueError: if the value of `new_model` is forbidden or already exists.

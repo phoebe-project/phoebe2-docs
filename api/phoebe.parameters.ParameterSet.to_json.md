@@ -3,7 +3,7 @@
 
 ```py
 
-def to_json(self, incl_uniqueid=False)
+def to_json(self, incl_uniqueid=False, exclude=[])
 
 ```
 
@@ -26,6 +26,7 @@ Arguments
 * `incl_uniqueid` (bool, optional, default=False): whether to include
     uniqueids in the file (only needed if its necessary to maintain the
     uniqueids when reloading)
+* `exclude` (list, optional, default=[]): tags to exclude when saving.
 
 Returns
 -----------

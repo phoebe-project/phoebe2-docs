@@ -13,6 +13,18 @@ High-level wrapper around matplotlib that uses
 [autofig 1.0.0](https://github.com/kecnry/autofig/tree/1.0.0)
 under-the-hood for automated figure and animation production.
 
+For an even higher-level interface allowing to interactively set and
+save plotting options see:
+* [phoebe.frontend.bundle.Bundle.add_figure](phoebe.frontend.bundle.Bundle.add_figure.md)
+* [phoebe.frontend.bundle.Bundle.run_figure](phoebe.frontend.bundle.Bundle.run_figure.md)
+
+In general, `run_figure` is useful for creating simple plots with
+consistent defaults for styling across datasets/components/etc,
+when plotting from a UI, or when wanting to save plotting options
+along with the bundle rather than in a script.  `plot` is more
+more flexible, allows for multiple subplots and advanced positioning,
+and is less clumsy if plotting from the python frontend.
+
 See also:
 * [phoebe.parameters.ParameterSet.show](phoebe.parameters.ParameterSet.show.md)
 * [phoebe.parameters.ParameterSet.savefig](phoebe.parameters.ParameterSet.savefig.md)

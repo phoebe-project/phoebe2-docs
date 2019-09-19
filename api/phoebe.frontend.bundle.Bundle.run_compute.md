@@ -66,6 +66,9 @@ Arguments
     [phoebe.frontend.bundle.Bundle.run_checks](phoebe.frontend.bundle.Bundle.run_checks.md) before computing the model.
     NOTE: some unexpected errors could occur for systems which do not
     pass checks.
+* `max_computations` (int, optional, default=None): maximum
+    number of computations to allow.  If more are detected, an error
+    will be raised before the backend begins computations.
 * `**kwargs`:: any values in the compute options to temporarily
     override for this single compute run (parameter values will revert
     after run_compute is finished)

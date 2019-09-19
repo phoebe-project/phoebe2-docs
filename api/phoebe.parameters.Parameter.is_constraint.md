@@ -15,5 +15,5 @@ See also:
 
 Returns
 -------
-* None or [phoebe.parameters.ConstraintParameter](phoebe.parameters.ConstraintParameter.md)
+* (None or &lt;phoebe.parameters.ConstraintParameter)
 

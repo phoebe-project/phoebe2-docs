@@ -117,7 +117,7 @@ if __name__ == '__main__':
                'set_prior', 'ui', 'get_plotting_info',
                'undo', 'redo', 'get_history', 'enable_history', 'disable_history',
                'feedback', 'feedbacks', 'fitting', 'fittings', 'history', 'historys',
-               'plugin', 'plugins', 'is_client']
+               'plugin', 'plugins', 'is_client', 'from_server']
 
     skip_param = ['set_uniqueid', 'feedback', 'fitting', 'history']
 
@@ -217,6 +217,7 @@ if __name__ == '__main__':
     fms = api_docs(phoebe.parameters.HierarchyParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
     fms_float_param = api_docs(phoebe.parameters.FloatParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
     fms = api_docs(phoebe.parameters.FloatArrayParameter, skip=skip_param+fms_param+fms_float_param, subclass_of='phoebe.parameters.FloatParameter', prefix='phoebe.parameters')
+    fms = api_docs(phoebe.parameters.UnitParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
     fms = api_docs(phoebe.parameters.JobParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
 
     fms = api_docs(phoebe.atmospheres.passbands.Passband, skip=skip_passband, prefix='phoebe.atmospheres.passbands')

@@ -24,7 +24,8 @@ or
 b.add_feature('spot', 'mystar', colat=90)
 ```
 
-Available kinds can be found in [phoebe.parameters.feature](phoebe.parameters.feature.md) and include:
+Available kinds can be found in [phoebe.parameters.feature](phoebe.parameters.feature.md) or by calling
+[phoebe.list_available_features](phoebe.list_available_features.md) and include:
 * [phoebe.parameters.feature.spot](phoebe.parameters.feature.spot.md)
 
 Arguments

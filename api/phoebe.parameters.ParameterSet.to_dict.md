@@ -3,7 +3,7 @@
 
 ```py
 
-def to_dict(self, field=None, **kwargs)
+def to_dict(self, field=None, include_none=False, **kwargs)
 
 ```
 

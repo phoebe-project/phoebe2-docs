@@ -3,7 +3,7 @@
 
 ```py
 
-def add_dataset(self, kind, component=None, **kwargs)
+def add_dataset(self, *args, **kwargs)
 
 ```
 
@@ -19,7 +19,8 @@ For light curves, the light curve will be generated for the entire system.
 For radial velocities, you need to provide a list of components
 for which values should be computed.
 
-Available kinds can be found in [phoebe.parameters.dataset](phoebe.parameters.dataset.md) and include:
+Available kinds can be found in [phoebe.parameters.dataset](phoebe.parameters.dataset.md) or by calling
+[phoebe.list_available_datasets](phoebe.list_available_datasets.md) and include:
 * [phoebe.parameters.dataset.lc](phoebe.parameters.dataset.lc.md)
 * [phoebe.parameters.dataset.rv](phoebe.parameters.dataset.rv.md)
 * [phoebe.parameters.dataset.lp](phoebe.parameters.dataset.lp.md)

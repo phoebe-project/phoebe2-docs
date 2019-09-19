@@ -9,7 +9,7 @@ def gcf(self)
 
 
 
-Get the active current figure.
+Get the active current autofig Figure.
 
 See also:
 * [phoebe.parameters.ParameterSet.plot](phoebe.parameters.ParameterSet.plot.md)

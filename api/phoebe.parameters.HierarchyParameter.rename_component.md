@@ -16,6 +16,9 @@ Note that this does NOT update component tags within the
 To change the name of a component, use
 [phoebe.frontend.bundle.Bundle.rename_component](phoebe.frontend.bundle.Bundle.rename_component.md) instead.
 
+If calling this manually, make sure to update all other tags
+or components and update the cache of the hierarchy.
+
 Arguments
 ----------
 * `old_component` (string): the current name of the component in the

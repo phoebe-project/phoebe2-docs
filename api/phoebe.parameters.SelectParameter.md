@@ -6,5 +6,6 @@ SelectParameter is a subclass of phoebe.parameters.Parameter and therefore also 
 * [expand_value](phoebe.parameters.SelectParameter.expand_value.md)
 * [get_choices](phoebe.parameters.SelectParameter.get_choices.md)
 * [get_value](phoebe.parameters.SelectParameter.get_value.md)
+* [handle_choice_rename](phoebe.parameters.SelectParameter.handle_choice_rename.md)
 * [remove_not_valid_selections](phoebe.parameters.SelectParameter.remove_not_valid_selections.md)
 * [valid_selection](phoebe.parameters.SelectParameter.valid_selection.md)

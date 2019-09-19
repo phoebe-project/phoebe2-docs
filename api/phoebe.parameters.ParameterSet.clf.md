@@ -9,7 +9,7 @@ def clf(self)
 
 
 
-Clear/reset the active current figure.
+Clear/reset the active current autofig Figure.
 
 See also:
 * [phoebe.parameters.ParameterSet.plot](phoebe.parameters.ParameterSet.plot.md)

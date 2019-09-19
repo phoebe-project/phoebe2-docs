@@ -17,6 +17,10 @@ Arguments
 * `new_compute` (string): the desired new label of the compute options
     (must not yet exist)
 
+Returns
+--------
+* [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) the renamed dataset
+
 Raises
 --------
 * ValueError: if the value of `new_compute` is forbidden or already exists.

@@ -14,6 +14,7 @@
 * [ParameterSet](phoebe.parameters.ParameterSet.md)
 * [SelectParameter](phoebe.parameters.SelectParameter.md)
 * [StringParameter](phoebe.parameters.StringParameter.md)
+* [UnitParameter](phoebe.parameters.UnitParameter.md)
 * [component](phoebe.parameters.component.md)
 * [compute](phoebe.parameters.compute.md)
 * [constraint](phoebe.parameters.constraint.md)
@@ -22,3 +23,4 @@
 * [hierarchy](phoebe.parameters.hierarchy.md)
 * [setting](phoebe.parameters.setting.md)
 * [system](phoebe.parameters.system.md)
+* [unit_choices](phoebe.parameters.unit_choices.md)

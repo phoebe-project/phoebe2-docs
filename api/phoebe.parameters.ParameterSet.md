@@ -18,6 +18,8 @@
 * [exclude](phoebe.parameters.ParameterSet.exclude.md)
 * [feature](phoebe.parameters.ParameterSet.feature.md)
 * [features](phoebe.parameters.ParameterSet.features.md)
+* [figure](phoebe.parameters.ParameterSet.figure.md)
+* [figures](phoebe.parameters.ParameterSet.figures.md)
 * [filter](phoebe.parameters.ParameterSet.filter.md)
 * [filter_or_get](phoebe.parameters.ParameterSet.filter_or_get.md)
 * [gcf](phoebe.parameters.ParameterSet.gcf.md)

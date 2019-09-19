@@ -17,6 +17,10 @@ Arguments
 * `new_feature` (string): the desired new label of the feature
     (must not yet exist)
 
+Returns
+--------
+* [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) the renamed dataset
+
 Raises
 --------
 * ValueError: if the value of `new_feature` is forbidden or already exists.

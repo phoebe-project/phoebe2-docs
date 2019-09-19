@@ -17,6 +17,10 @@ Arguments
 * `new_dataset` (string): the desired new label of the dataset
     (must not yet exist)
 
+Returns
+--------
+* [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) the renamed dataset
+
 Raises
 --------
 * ValueError: if the value of `new_dataset` is forbidden or already exists.

@@ -29,7 +29,7 @@ Arguments
 
 Returns
 -----------
-* ParameterSet of removed parameters
+* ParameterSet of removed or changed parameters
 
 Raises
 --------

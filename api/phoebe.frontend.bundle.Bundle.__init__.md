@@ -3,7 +3,7 @@
 
 ```py
 
-def __init__(self, params=None)
+def __init__(self, params=None, check_version=False)
 
 ```
 

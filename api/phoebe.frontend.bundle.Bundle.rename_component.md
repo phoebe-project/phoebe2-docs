@@ -17,6 +17,10 @@ Arguments
 * `new_component` (string): the desired new label of the component
     (must not yet exist)
 
+Returns
+--------
+* [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) of any parameters that were changed.
+
 Raises
 --------
 * ValueError: if the value of `new_component` is forbidden or already exists.

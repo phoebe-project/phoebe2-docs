@@ -3,7 +3,7 @@
 
 ```py
 
-def attach(self, sleep=5, cleanup=True)
+def attach(self, wait=True, sleep=5, cleanup=True)
 
 ```
 
@@ -15,10 +15,19 @@ complete, this will loop every `sleep` seconds until it is.
 
 Arguments
 ---------
+* `wait` (bool, optional, default=True): whether to wait until the job
+    is complete.
 * `sleep` (int, optional, default=5): number of seconds to sleep between
     status checks.  See [phoebe.parameters.JobParameter.get_status](phoebe.parameters.JobParameter.get_status.md).
+    Only applicable if `wait` is True.
 * `cleanup` (bool, optional, default=True): whether to delete this
     parameter and any temporary files once the results are loaded.
+
+Returns
+---------
+* ParameterSet of newly attached parameters (if attached or already
+    loaded) or this Parameter with an updated status if `wait` is False
+    and the Job is not completed.
 
 Raises
 -----------

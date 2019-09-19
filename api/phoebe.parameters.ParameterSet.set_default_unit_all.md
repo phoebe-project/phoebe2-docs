@@ -45,3 +45,7 @@ Arguments
     [phoebe.parameters.ParameterSet.get_parameter](phoebe.parameters.ParameterSet.get_parameter.md) and
     `set_default_unit`.
 
+Returns
+----------
+* [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) of the changed Parameters.
+

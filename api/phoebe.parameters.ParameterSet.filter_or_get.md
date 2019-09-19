@@ -3,7 +3,7 @@
 
 ```py
 
-def filter_or_get(self, twig=None, autocomplete=False, force_ps=False, check_visible=True, check_default=True, **kwargs)
+def filter_or_get(self, twig=None, autocomplete=False, force_ps=False, check_visible=True, check_default=True, check_advanced=False, check_single=False, **kwargs)
 
 ```
 
@@ -44,7 +44,10 @@ Arguments
     have a _default tag (these are parameters which solely exist
     to provide defaults for when new parameters or datasets are
     added and the parameter needs to be copied appropriately).
-    Defaults to True.
+* `check_advanced` (bool, optional, default=False): whether to exclude parameters which
+    are considered "advanced".
+* `check_single` (bool, optional, default=False): whether to exclude ChoiceParameters
+    with only a single choice.
 * `force_ps` (bool, optional, default=False): whether to force a
     [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) to be returned, even if more than
     1 result (see also: [phoebe.parameters.ParameterSet.filter](phoebe.parameters.ParameterSet.filter.md))

@@ -42,12 +42,10 @@ Arguments
 * `feature` (string, optional): label for the feature tag
 * `component` (string, optional): label for the component tag
 * `dataset` (string, optional): label for the dataset tag
+* `figure` (string, optional): label for the figure tag
 * `constraint` (string, optional): label for the constraint tag
 * `compute` (string, optional): label for the compute tag
 * `model` (string, optional): label for the model tag
-* `fitting` (string, optional): label for the fitting tag
-* `feedback` (string, optional): label for the feedback tag
-* `plugin` (string, optional): label for the plugin tag
 * `kind` (string, optional): label for the kind tag
 * `context` (string, optional): label for the context tag
 * `copy_for` (dictionary/False, optional, default=False): dictionary of

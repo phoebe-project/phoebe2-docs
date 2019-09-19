@@ -3,7 +3,7 @@
 
 ```py
 
-def get(self, twig=None, check_visible=True, check_default=True, **kwargs)
+def get(self, twig=None, check_visible=True, check_default=True, check_advanced=False, check_single=False, **kwargs)
 
 ```
 
@@ -38,7 +38,10 @@ Arguments
     have a _default tag (these are parameters which solely exist
     to provide defaults for when new parameters or datasets are
     added and the parameter needs to be copied appropriately).
-    Defaults to True.
+* `check_advanced` (bool, optional, default=False): whether to exclude parameters which
+    are considered "advanced".
+* `check_single` (bool, optional, default=False): whether to exclude ChoiceParameters
+    with only a single choice.
 * `**kwargs`:  meta-tags to search (ie. 'context', 'component',
     'model', etc).  See [phoebe.parameters.ParameterSet.meta](phoebe.parameters.ParameterSet.meta.md)
     for all possible options.

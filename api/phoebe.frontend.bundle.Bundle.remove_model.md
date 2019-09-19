@@ -17,11 +17,14 @@ See also:
 Arguments
 ----------
 * `model` (string): the label of the model to be removed.
+* `remove_figure_params` (bool, optional): whether to also remove
+    figure options tagged with `model`.  If not provided, will default
+    to false if `model` is 'latest', otherwise will default to True.
 * `**kwargs`: other filter arguments to be sent to
     [phoebe.parameters.ParameterSet.remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md).  The following
     will be ignored: model, context.
 
 Returns
 -----------
-* ParameterSet of removed parameters
+* ParameterSet of removed or changed parameters
 

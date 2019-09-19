@@ -5,3 +5,4 @@ ChoiceParameter is a subclass of phoebe.parameters.Parameter and therefore also 
 * [choices](phoebe.parameters.ChoiceParameter.choices.md)
 * [get_choices](phoebe.parameters.ChoiceParameter.get_choices.md)
 * [get_value](phoebe.parameters.ChoiceParameter.get_value.md)
+* [handle_choice_rename](phoebe.parameters.ChoiceParameter.handle_choice_rename.md)
