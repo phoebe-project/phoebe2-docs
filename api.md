@@ -112,7 +112,7 @@ Importing/exporting from other codes:
 * [open](api/phoebe.frontend.bundle.Bundle.open.md)
 * [from_legacy](api/phoebe.frontend.bundle.Bundle.from_legacy.md)
 
-### Filtering
+### Filtering & Accessing Parameters
 
 * [filter](api/phoebe.parameters.ParameterSet.filter.md)
 * [exclude](api/phoebe.parameters.ParameterSet.exclude.md)
@@ -124,6 +124,7 @@ Importing/exporting from other codes:
 * [get_default_unit](api/phoebe.parameters.ParameterSet.get_default_unit.md)
 * [set_default_unit](api/phoebe.parameters.ParameterSet.set_default_unit.md)
 * [set_default_unit_all](api/phoebe.parameters.ParameterSet.set_default_unit_all.md)
+* [export_arrays](api/phoebe.parameters.ParameterSet.export_arrays.md)
 
 ### System Checks & References
 

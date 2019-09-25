@@ -11,6 +11,8 @@ def export_legacy(self, filename, compute=None, skip_checks=False)
 
 Export the Bundle to a file readable by PHOEBE legacy.
 
+NEW IN PHOEBE 2.2.
+
 See also:
 * [phoebe.parameters.compute.legacy](phoebe.parameters.compute.legacy.md)
 

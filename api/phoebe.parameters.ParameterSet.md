@@ -16,6 +16,7 @@
 * [dataset](phoebe.parameters.ParameterSet.dataset.md)
 * [datasets](phoebe.parameters.ParameterSet.datasets.md)
 * [exclude](phoebe.parameters.ParameterSet.exclude.md)
+* [export_arrays](phoebe.parameters.ParameterSet.export_arrays.md)
 * [feature](phoebe.parameters.ParameterSet.feature.md)
 * [features](phoebe.parameters.ParameterSet.features.md)
 * [figure](phoebe.parameters.ParameterSet.figure.md)
