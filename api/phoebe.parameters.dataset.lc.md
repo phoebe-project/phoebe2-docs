@@ -78,9 +78,6 @@ Arguments
     component, according to [phoebe.parameters.HierarchyParameter](phoebe.parameters.HierarchyParameter.md) will be
     available.  To change the provided component, see `pblum_component`.
     Only applicable if `syn` is False and `is_lc` is True.
-* `pbflux` (float/quantity, optional): passband flux (defined here as
-    `pblum/4pi`).  Only applicable if `pblum_mode` is 'pbflux', `syn` is False,
-    and `is_lc` is True.
 * `l3_mode` (string, optional, default='flux'): mode for providing third
     light (`l3`).  Only applicable if `syn` is False and `is_lc` is True.
 * `l3` (float/quantity, optional): third light in flux units (only applicable
