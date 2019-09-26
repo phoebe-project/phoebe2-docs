@@ -3,7 +3,7 @@
 
 ```py
 
-def run_checks(self, **kwargs)
+def run_checks(self, raise_logger_warning=False, raise_error=False, **kwargs)
 
 ```
 
@@ -27,6 +27,10 @@ Arguments
 * `allow_skip_constraints` (bool, optional, default=False): whether
     to allow skipping running delayed constraints if interactive
     constraints are disabled.  See [phoebe.interactive_constraints_off](phoebe.interactive_constraints_off.md).
+* `raise_logger_warning` (bool, optional, default=False): whether to
+    raise any errors/warnings in the logger (with level of warning).
+* `raise_error` (bool, optional, default=False): whether to raise an
+    error if the report has a status of failed.
 * `**kwargs`: overrides for any parameter (given as qualifier=value pairs)
 
 Returns
