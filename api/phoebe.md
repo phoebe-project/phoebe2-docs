@@ -10,6 +10,7 @@
 * [default_binary](phoebe.default_binary.md)
 * [default_contact_binary](phoebe.default_contact_binary.md)
 * [default_star](phoebe.default_star.md)
+* [distortions](phoebe.distortions.md)
 * [download_passband](phoebe.download_passband.md)
 * [figure](phoebe.figure.md)
 * [from_legacy](phoebe.from_legacy.md)

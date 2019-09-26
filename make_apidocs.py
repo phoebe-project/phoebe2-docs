@@ -125,7 +125,7 @@ if __name__ == '__main__':
                    'algorithms', 'backend', 'c',
                    'component', 'compute', 'constraint', 'constraints',
                    'feature',
-                   'dataset', 'dependencies', 'distortions', 'dynamics',
+                   'dataset', 'dependencies', 'dynamics',
                    'hierarchy', 'libphoebe', 'u', 'utils', 'Bundle']
 
     skip_frontend = ['io', 'tabcomplete']
@@ -175,6 +175,12 @@ if __name__ == '__main__':
 
     skip_units = ['add_enabled_equivalencies', 'add_enabled_units', 'def_physical_type', 'def_unit']
 
+    skip_distortions_roche = ['BinaryRoche', 'd2BinaryRochedx2', 'dBinaryRochedr',
+                              'dBinaryRochedx', 'dBinaryRochedy', 'dBinaryRochedz',
+                              'Lag1', 'sqrt', 'sin', 'cos', 'acos', 'atan2', 'trunc', 'pi']
+
+    skip_distortions_rotstar = []
+
     skip_passband = []
 
     fms_phoebe = api_docs(phoebe, skip=skip_phoebe, members=[pydoc.inspect.ismodule, pydoc.inspect.isfunction, pydoc.inspect.isclass])
@@ -221,3 +227,7 @@ if __name__ == '__main__':
     fms = api_docs(phoebe.parameters.JobParameter, skip=skip_param+fms_param, subclass_of='phoebe.parameters.Parameter', prefix='phoebe.parameters')
 
     fms = api_docs(phoebe.atmospheres.passbands.Passband, skip=skip_passband, prefix='phoebe.atmospheres.passbands')
+
+    fms = api_docs(phoebe.distortions, prefix='phoebe', members=[pydoc.inspect.ismodule])
+    fms = api_docs(phoebe.distortions.roche, skip=skip_distortions_roche, prefix='phoebe.distortions', members=[pydoc.inspect.isfunction])
+    fms = api_docs(phoebe.distortions.rotstar, skip=skip_distortions_rotstar, prefix='phoebe.distortions', members=[pydoc.inspect.isfunction])

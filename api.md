@@ -1,7 +1,7 @@
 
 # PHOEBE API Documentation
 
-See the full alphabetical lists for the following modules/classes, or keep scrolling for an organized breakdown of the most used functions and methods.
+See the full lists for the following modules/classes, or keep scrolling for an organized breakdown of the most used functions and methods.
 
 * [phoebe](api/phoebe.md)
 * [phoebe.frontend.bundle.Bundle](api/phoebe.frontend.bundle.Bundle.md)
@@ -24,10 +24,12 @@ See the full alphabetical lists for the following modules/classes, or keep scrol
 * [phoebe.parameters.SelectParameter](api/phoebe.parameters.SelectParameter.md)
 * [phoebe.parameters.ConstraintParameter](api/phoebe.parameters.ConstraintParameter.md)
 * [phoebe.parameters.HierarchyParameter](api/phoebe.parameters.HierarchyParameter.md)
-* [phoebe.parameters.UnitParameter](api/phoebe.parameters.UnitParameter.md`````````````````````````````````````````````)
+* [phoebe.parameters.UnitParameter](api/phoebe.parameters.UnitParameter.md)
 * [phoebe.parameters.JobParameter](api/phoebe.parameters.JobParameter.md)
 * [phoebe.atmospheres.passbands](api/phoebe.atmospheres.passbands.md)
 * [phoebe.atmospheres.passbands.Passband](api/phoebe.atmospheres.passbands.Passband.md)
+* [phoebe.distortions.roche](api/phoebe.distortions.roche.md)
+* [phoebe.distortions.rotstar](api/phoebe.distortions.rotstar.md)
 
 ## Package-Level Convenience Functions
 
