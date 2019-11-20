@@ -232,7 +232,7 @@ the same plotting functionality.
 * [run_compute](api/phoebe.frontend.bundle.Bundle.run_compute.md)
 * [export_compute](api/phoebe.frontend.bundle.Bundle.export_compute.md)
 * [compute_pblums](api/phoebe.frontend.bundle.Bundle.compute_pblums.md)
-* [compute_l3s](api/phoebe.fronted.bundle.Bundle.compute_l3s.md)
+* [compute_l3s](api/phoebe.frontend.bundle.Bundle.compute_l3s.md)
 * [compute_ld_coeffs](api/phoebe.frontend.bundle.Bundle.compute_ld_coeffs.md)
 
 Available compute backends ([see all](api/phoebe.parameters.compute.md)):
