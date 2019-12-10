@@ -98,6 +98,9 @@ Arguments
 * `s` (strong/float/array, optional): qualifier/twig of the array to use
     for size.  See the [autofig tutorial on size](https://autofig.readthedocs.io/en/latest/tutorials/size_modes/)
     for more information.
+* `smode` (string, optional): mode for handling size (`s`).  See the
+    [autofig tutorial on size mode](https://autofig.readthedocs.io/en/latest/tutorials/size_modes/)
+    for more information.
 * `c` (string/float/array, optional): qualifier/twig of the array to use
     for color.
 * `fc` (string/float/array, optional): qualifier/twig of the array to use
@@ -122,11 +125,14 @@ Arguments
     See also the [autofig tutorial on a looping independent variable](https://autofig.readthedocs.io/en/latest/gallery/looping_indep/).
 
 * `xerror` (string/float/array, optional): qualifier/twig of the array to plot as
-    x-errors (will default based on `x` if not provided).
+    x-errors (will default based on `x` if not provided).  Pass None to
+    disable plotting xerrors.
 * `yerror` (string/float/array, optional): qualifier/twig of the array to plot as
-    y-errors (will default based on `y` if not provided).
+    y-errors (will default based on `y` if not provided).  Pass None to
+    disable plotting yerrors.
 * `zerror` (string/float/array, optional): qualifier/twig of the array to plot as
-    z-errors (will default based on `z` if not provided).
+    z-errors (will default based on `z` if not provided).  Pass None to
+    disable plotting zerrors.
 
 * `xunit` (string/unit, optional): unit to plot on the x-axis (will
     default on `x` if not provided).

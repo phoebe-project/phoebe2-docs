@@ -13,8 +13,9 @@ For convenience, this function is available at the top-level as
 [phoebe.update_all_passbands](phoebe.update_all_passbands.md) as well as
 [phoebe.atmospheres.passbands.update_all_passbands](phoebe.atmospheres.passbands.update_all_passbands.md).
 
-Download and install updates for all passbands from the
-[phoebe2-tables](https://github.com/phoebe-project/phoebe2-tables) repository.
+Download and install updates for all passbands from
+[tables.phoebe-project.org](<a href="http://tables.phoebe-project.org">http://tables.phoebe-project.org</a>), retrieving
+the same content as in the installed passbands.
 
 This will install into the directory dictated by `local`, regardless of the
 location of the original file.  `local`=True passbands always override
@@ -26,7 +27,9 @@ The local and global installation directories can be listed by calling
 `~/.phoebe/atmospheres/tables/passbands`, and the global (`local=False`)
 directory is in the PHOEBE installation directory.
 
-See also:
+See also
+* [phoebe.atmospheres.passbands.list_all_update_passbands_available](phoebe.atmospheres.passbands.list_all_update_passbands_available.md)
+* [phoebe.atmospheres.passbands.update_passband](phoebe.atmospheres.passbands.update_passband.md)
 * [phoebe.atmospheres.passbands.update_passband_available](phoebe.atmospheres.passbands.update_passband_available.md)
 
 

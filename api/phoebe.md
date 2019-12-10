@@ -46,4 +46,5 @@
 * [reset_settings](phoebe.reset_settings.md)
 * [uninstall_all_passbands](phoebe.uninstall_all_passbands.md)
 * [update_all_passbands](phoebe.update_all_passbands.md)
+* [update_passband](phoebe.update_passband.md)
 * [update_passband_available](phoebe.update_passband_available.md)

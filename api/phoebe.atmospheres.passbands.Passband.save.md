@@ -3,15 +3,19 @@
 
 ```py
 
-def save(self, archive)
+def save(self, archive, overwrite=True, update_timestamp=True)
 
 ```
 
 
 
-Save the [phoebe.atmospheres.passbands.Passband](phoebe.atmospheres.passbands.Passband.md) to a file.
+Save the passband to FITS format.
 
 Arguments
-------------
-* `archive` (string): filename
+----------
+* `archive` (string): filename of the saved file
+* `overwrite` (bool, optional, default=True): whether to overwrite an
+    existing file with the same filename as provided in `archive`
+* `update_timestamp` (bool, optional, default=True): whether to update
+    the stored timestamp with the current time.
 

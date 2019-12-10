@@ -11,4 +11,5 @@
 * [list_passbands](phoebe.atmospheres.passbands.list_passbands.md)
 * [uninstall_all_passbands](phoebe.atmospheres.passbands.uninstall_all_passbands.md)
 * [update_all_passbands](phoebe.atmospheres.passbands.update_all_passbands.md)
+* [update_passband](phoebe.atmospheres.passbands.update_passband.md)
 * [update_passband_available](phoebe.atmospheres.passbands.update_passband_available.md)

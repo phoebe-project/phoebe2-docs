@@ -3,7 +3,7 @@
 
 ```py
 
-def list_installed_passbands(refresh=False, full_dict=False)
+def list_installed_passbands(refresh=False, full_dict=False, skip_keys=[])
 
 ```
 
@@ -27,8 +27,10 @@ Arguments
 * `full_dict` (bool, optional, default=False): whether to return the full
     dictionary of information about each passband or just the list
     of names.
+* `skip_keys` (list, optional, default=[]): keys to exclude from the returned
+    dictionary.  Only applicable if `full_dict` is True.
 
 Returns
 --------
-* (list of strings or dictionary)
+* (list of strings or dictionary, depending on `full_dict`)
 

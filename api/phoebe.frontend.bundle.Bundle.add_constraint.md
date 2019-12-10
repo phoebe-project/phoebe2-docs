@@ -41,6 +41,11 @@ The following are automatically included for all stars, during
 * [phoebe.parameters.constraint.irrad_frac](phoebe.parameters.constraint.irrad_frac.md)
 * [phoebe.parameters.constraint.logg](phoebe.parameters.constraint.logg.md)
 
+The following are automatically included for all applicable datasets,
+during [phoebe.frontend.bundle.Bundle.add_dataset](phoebe.frontend.bundle.Bundle.add_dataset.md):
+* [phoebe.parameters.constraint.compute_times](phoebe.parameters.constraint.compute_times.md)
+* [phoebe.parameters.constraint.extinction](phoebe.parameters.constraint.extinction.md)
+
 Additionally, some constraints are automatically handled by the hierarchy in
 [phoebe.frontend.bundle.Bundle.set_hierarchy](phoebe.frontend.bundle.Bundle.set_hierarchy.md) or when loading a default
 system.  The following are automatically included for a

@@ -3,25 +3,22 @@
 
 ```py
 
-def load(cls, archive)
+def load(cls, archive, load_content=True)
 
 ```
 
 
 
-Load the [phoebe.atmospheres.passbands.Passband](phoebe.atmospheres.passbands.Passband.md) from a file.
-
-This is a constructor so should be called as:
-
-```py
-pb = Passband.load(filename)
-```
+Loads the passband contents from a fits file.
 
 Arguments
 ----------
-* `archive` (string): filename
+* `archive` (string): filename of the passband (in FITS format)
+* `load_content` (bool, optional, default=True): whether to load all
+    table contents.  If False, only the headers will be loaded into
+    the structure.
 
 Returns
----------
-* an instatiated [phoebe.atmospheres.passbands.Passband](phoebe.atmospheres.passbands.Passband.md) object.
+--------
+* the instantiated [phoebe.atmospheres.passbands.Passband](phoebe.atmospheres.passbands.Passband.md) object.
 

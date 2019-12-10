@@ -46,7 +46,7 @@ Arguments
 * `ltte` (bool, optional, default=False): whether to correct for light
     travel time effects.
 * `atm` (string, optional, default='ck2004'): atmosphere tables.
-* `irrad_method` (string, optional, default='wilson'): which method to use
+* `irrad_method` (string, optional, default='horvat'): which method to use
     to handle irradiation.
 * `boosting_method` (string, optional, default='none'): type of boosting method.
 * `mesh_method` (string, optional, default='marching'): which method to use

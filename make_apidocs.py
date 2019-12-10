@@ -157,7 +157,7 @@ if __name__ == '__main__':
                       'interpolate', 'json', 'k_B', 'libphoebe', 'logger', 'logging',
                       'marshal', 'np', 'os', 'parse_json', 'shutil', 'sigma_sb',
                       'sys', 'types', 'u', 'urllib', 'urllib2',
-                      'init_passband', 'init_passbands',
+                      'init_passband', 'init_passbands', 'Table',
                       'HTTPError', 'URLError', 'urlopen', 'urlretrieve', 'datetime']
 
     skip_parameters_type = ['deepcopy', 'download_passband', 'fnmatch',
@@ -181,7 +181,7 @@ if __name__ == '__main__':
 
     skip_distortions_rotstar = []
 
-    skip_passband = []
+    skip_passband = ['save_asdf', 'save_pickle', 'save_fits', 'load_asdf', 'load_pickle', 'load_fits', 'compute_blended_response']
 
     fms_phoebe = api_docs(phoebe, skip=skip_phoebe, members=[pydoc.inspect.ismodule, pydoc.inspect.isfunction, pydoc.inspect.isclass])
 

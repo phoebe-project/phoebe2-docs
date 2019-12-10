@@ -9,12 +9,12 @@ def compute_ck2004_intensities(self, path, particular=None, verbose=False)
 
 
 
-Computes direction-dependent passband intensities using Castelli
-&amp; Kurucz (2004) model atmospheres.
+Computes direction-dependent passband intensities using Castelli &amp; Kurucz (2004)
+model atmospheres.
 
 Arguments
 -----------
-* `path` (string): path to the directory with SEDs.
+* `path` (string): path to the directory with SEDs in FITS format.
 * `particular` (string, optional, default=None): particular file in
     `path` to be processed; if None, all files in the directory are
     processed.

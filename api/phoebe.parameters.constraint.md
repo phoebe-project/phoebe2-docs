@@ -5,6 +5,7 @@
 * [compute_phases](phoebe.parameters.constraint.compute_phases.md)
 * [ecosw](phoebe.parameters.constraint.ecosw.md)
 * [esinw](phoebe.parameters.constraint.esinw.md)
+* [extinction](phoebe.parameters.constraint.extinction.md)
 * [fillout_factor](phoebe.parameters.constraint.fillout_factor.md)
 * [freq](phoebe.parameters.constraint.freq.md)
 * [irrad_frac](phoebe.parameters.constraint.irrad_frac.md)

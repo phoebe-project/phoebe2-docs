@@ -18,6 +18,9 @@ This is usually passed as an argument to
  `b.add_constraint('mean_anom', orbit='binary')`, where `orbit` is
  one of [phoebe.parameters.HierarchyParameter.get_orbits](phoebe.parameters.HierarchyParameter.get_orbits.md).
 
+ **NOTE**: this constraint does not account for any time derivatives in
+ orbital elements (dpdt, dperdt, etc).
+
 Arguments
 -----------
 * `b` ([phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundle.md)): the Bundle

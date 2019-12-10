@@ -3,7 +3,7 @@
 
 ```py
 
-def download_passband(passband, local=True)
+def download_passband(passband, content='all', local=True)
 
 ```
 
@@ -13,8 +13,8 @@ For convenience, this function is available at the top-level as
 [phoebe.download_passband](phoebe.download_passband.md) as well as
 [phoebe.atmospheres.passbands.download_passband](phoebe.atmospheres.passbands.download_passband.md).
 
-Download and install a given passband from the
-[phoebe2-tables](https://github.com/phoebe-project/phoebe2-tables) repository.
+Download and install a given passband from
+[tables.phoebe-project.org](<a href="http://tables.phoebe-project.org">http://tables.phoebe-project.org</a>).
 
 The local and global installation directories can be listed by calling
 [phoebe.atmospheres.passbands.list_passband_directories](phoebe.atmospheres.passbands.list_passband_directories.md).  The local
@@ -27,6 +27,14 @@ Arguments
 * `passband` (string): name of the passband.  Must be one of the available
     passbands in the repository (see
     [phoebe.atmospheres.passbands.list_online_passbands](phoebe.atmospheres.passbands.list_online_passbands.md)).
+* `content` (string or list, optional, default='all'): content to fetch
+    from the server.  Options include: 'all' (to fetch all available)
+    or any of the available contents for that passband, 'ck2004' to fetch
+    all contents for the 'ck2004' atmosphere, or any specific list of
+    available contents.  To see available options for a given passband, see
+    the 'content' entry for a given passband in the dictionary exposed by
+    [phoebe.atmospheres.passbands.list_online_passbands](phoebe.atmospheres.passbands.list_online_passbands.md)
+    with `full_dict=True`.
 * `local` (bool, optional, default=True): whether to install to the local/user
     directory or the PHOEBE installation directory.  If `local=False`, you
     must have the necessary permissions to write to the installation
