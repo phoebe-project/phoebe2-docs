@@ -3,7 +3,7 @@
 
 ```py
 
-def get_passband(passband, content=None, update_if_necessary=False)
+def get_passband(passband, content=None, reload=False, update_if_necessary=False)
 
 ```
 
@@ -48,6 +48,8 @@ Arguments
     the 'content' entry for a given passband in the dictionary exposed by
     [phoebe.atmospheres.passbands.list_online_passbands](phoebe.atmospheres.passbands.list_online_passbands.md)
     with `full_dict=True`.
+* `reload` (bool, optional, default=False): force reloading from the
+    local file even if a copy of the passband exists in memory.
 * `update_if_necessary` (bool, optional, default=False): if a local version
     exists, but does not contain the necessary requirements according to
     `content`, and the online version has a different timestamp than the

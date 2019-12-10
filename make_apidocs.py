@@ -153,7 +153,7 @@ if __name__ == '__main__':
                        'sys', 'tabcomplete', 'time', 'twighelpers', 'types', 'u',
                        'json', 'ujson', 'webbrowser', 'OrderedDict']
 
-    skip_passbands = ['Inorm_bol_bb', 'c', 'cfit', 'glob', 'h', 'integrate',
+    skip_passbands = ['c', 'cfit', 'glob', 'h', 'integrate',
                       'interpolate', 'json', 'k_B', 'libphoebe', 'logger', 'logging',
                       'marshal', 'np', 'os', 'parse_json', 'shutil', 'sigma_sb',
                       'sys', 'types', 'u', 'urllib', 'urllib2',

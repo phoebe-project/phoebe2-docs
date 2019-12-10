@@ -3,7 +3,7 @@
 
 ```py
 
-def update_passband(local=True)
+def update_passband(passband, local=True, content=None)
 
 ```
 
@@ -36,10 +36,21 @@ See also:
 
 Arguments
 ----------
+* `passband` (string): passband to update
 * `local` (bool, optional, default=True): whether to install to the local/user
     directory or the PHOEBE installation directory.  If `local=False`, you
     must have the necessary permissions to write to the installation
     directory.
+* `content` (string or list, optional, default=None): content to request
+    when downloading the passband, in addition to any content in the existing
+    installed passband, if applicable.
+    Options include: None (request the same contents as the installed version),
+    'all' (to update with all available content),
+    'ck2004' to require all contents for the 'ck2004' atmosphere, or any specific list of
+    available contents.  To see available options for a given passband, see
+    the 'content' entry for a given passband in the dictionary exposed by
+    [phoebe.atmospheres.passbands.list_online_passbands](phoebe.atmospheres.passbands.list_online_passbands.md)
+    with `full_dict=True`.
 
 Raises
 --------

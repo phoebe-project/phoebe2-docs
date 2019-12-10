@@ -1,5 +1,6 @@
 ## [phoebe](phoebe.md).[atmospheres](phoebe.atmospheres.md).passbands (module)
 
+* [Inorm_bol_bb](phoebe.atmospheres.passbands.Inorm_bol_bb.md)
 * [Passband](phoebe.atmospheres.passbands.Passband.md)
 * [download_passband](phoebe.atmospheres.passbands.download_passband.md)
 * [get_passband](phoebe.atmospheres.passbands.get_passband.md)
