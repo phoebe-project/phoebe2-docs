@@ -33,6 +33,7 @@ The following set of advanced tutorials follow the same format as the tutorials 
 
 These all assume comfort with the tutorials listed above, but should not need to be read in any particular order.
 
+* [Advanced: Contact Binary Hierarchy](tutorials/contact_binary_hierarchy.ipynb)
 * [Advanced: Compute Times & Phases](tutorials/compute_times_phases.ipynb)
 * [Advanced: Animations](tutorials/animations.ipynb)
 * [Advanced: Alternate Backends](tutorials/alternate_backends.ipynb)
