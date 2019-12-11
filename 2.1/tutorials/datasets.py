@@ -73,7 +73,7 @@ b.add_dataset('orb', times=np.linspace(0,10,20), dataset='orb02', component=['pr
 
 # You may notice that add_dataset does take some time to complete.  In the background, the passband is being loaded (when applicable) and many parameters are created and attached to the Bundle.
 
-# If you do not provide a list of component(s), they will be assumed for you based on the dataset method.  Light curves and meshes can only attach at the system level (component=None), for instance, whereas RVs and ETVs can attach for each star.
+# If you do not provide a list of component(s), they will be assumed for you based on the dataset method.  Light curves and meshes can only attach at the system level (component=None), for instance, whereas RVs and ORBs can attach for each star.
 
 # In[4]:
 
