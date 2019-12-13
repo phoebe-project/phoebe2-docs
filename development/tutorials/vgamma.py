@@ -4,17 +4,15 @@
 # Systemic Velocity
 # ============================
 # 
-# **NOTE:** the definition of the systemic velocity has been flipped between 2.0.x and 2.1.0+ to adhere to usual conventions.  If importing a file from PHOEBE 2.0.x, the value should be flipped automatically, but if adopting an old script with non-zero systemic velocity, make sure the sign is correct.
-# 
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
 # In[1]:
@@ -23,9 +21,9 @@ get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](../tutorials/building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](../tutorials/building_a_system.ipynb) for more details.
 
-# In[2]:
+# In[1]:
 
 
 import phoebe
@@ -42,35 +40,35 @@ b = phoebe.default_binary()
 # 
 # To see the effects over long times, we'll compute one cycle starting at t=0, and another in the distant future.
 
-# In[3]:
+# In[2]:
 
 
 times1 = np.linspace(0,1,201)
 times2 = np.linspace(90,91,201)
 
 
-# In[4]:
+# In[3]:
 
 
 b.add_dataset('lc', times=times1, dataset='lc1')
 b.add_dataset('lc', times=times2, dataset='lc2')
 
 
-# In[5]:
+# In[4]:
 
 
 b.add_dataset('rv', times=times1, dataset='rv1')
 b.add_dataset('rv', times=times2, dataset='rv2')
 
 
-# In[6]:
+# In[5]:
 
 
 b.add_dataset('orb', times=times1, dataset='orb1')
 b.add_dataset('orb', times=times2, dataset='orb2')
 
 
-# In[7]:
+# In[6]:
 
 
 b.add_dataset('mesh', times=[0], dataset='mesh1', columns=['vws'])
@@ -82,7 +80,7 @@ b.add_dataset('mesh', times=[90], dataset='mesh2', columns=['vws'])
 
 # By default, vgamma is initially set to 0.0
 
-# In[8]:
+# In[7]:
 
 
 b['vgamma@system']
@@ -92,7 +90,7 @@ b['vgamma@system']
 # 
 # The other relevant parameter here is t0 - that is the time at which all quantities are provided, the time at which nbody integration would start (if applicable), and the time at which the center-of-mass of the system is defined to be at (0,0,0).  Unless you have a reason to do otherwise, it makes sense to have this value near the start of your time data... so if we don't have any other changing quantities defined in our system and are using BJDs, we would want to set this to be non-zero.  In this case, our times all start at 0, so we'll leave t0 at 0 as well.
 
-# In[9]:
+# In[8]:
 
 
 b['t0@system']
@@ -100,7 +98,7 @@ b['t0@system']
 
 # The option to enable or disable LTTE are in the compute options, we can either set ltte or we can just temporarily pass a value when we call run_compute.
 
-# In[10]:
+# In[9]:
 
 
 b['ltte@compute']
@@ -108,7 +106,7 @@ b['ltte@compute']
 
 # Let's first compute the model with 0 systemic velocity and ltte=False (not that it would matter in this case).  Let's also name the model so we can keep track of what settings were used.
 
-# In[11]:
+# In[10]:
 
 
 b.run_compute(irrad_method='none', model='0_false')
@@ -116,13 +114,13 @@ b.run_compute(irrad_method='none', model='0_false')
 
 # For our second model, we'll set a somewhat ridiculous value for the systemic velocity (so that the affects are exagerated and clearly visible over one orbit), but leave ltte off.
 
-# In[12]:
+# In[11]:
 
 
 b['vgamma@system'] = 100
 
 
-# In[13]:
+# In[12]:
 
 
 b.run_compute(irrad_method='none', model='100_false')
@@ -130,7 +128,7 @@ b.run_compute(irrad_method='none', model='100_false')
 
 # Lastly, let's leave this value of vgamma, but enable light-time effects.
 
-# In[14]:
+# In[13]:
 
 
 b.run_compute(irrad_method='none', ltte=True, model='100_true')
@@ -144,7 +142,7 @@ b.run_compute(irrad_method='none', ltte=True, model='100_true')
 # Let's set the colors so that all figures will have systemic velocity shown in blue, systemic velocity with ltte=False in red, and systemic velocity with ltte=True in green.
 # 
 
-# In[15]:
+# In[14]:
 
 
 colors = {'0_false': 'b', '100_false': 'r', '100_true': 'g'}
@@ -154,7 +152,7 @@ colors = {'0_false': 'b', '100_false': 'r', '100_true': 'g'}
 # 
 # Without light-time effects, the light curve remains unchanged by the introduction of a systemic velocity (blue and red overlap each other).   However, once ltte is enabled, the time between two eclipses (ie the observed period of the system) changes.  This occurs because the path between the system and observer has changed.  This is an important effect to note - the period parameter sets the TRUE period of the system, not necessarily the observed period between two successive eclipses. 
 
-# In[16]:
+# In[15]:
 
 
 afig, mplfig = b['lc'].plot(c=colors, linestyle='solid', 
@@ -169,7 +167,7 @@ afig, mplfig = b['lc'].plot(c=colors, linestyle='solid',
 # 
 # Light-time will have a similar affect on RVs as it does on LCs - it simply changes the observed period.
 
-# In[17]:
+# In[16]:
 
 
 afig, mplfig = b['rv'].plot(c=colors, linestyle='solid', 
@@ -182,7 +180,7 @@ afig, mplfig = b['rv'].plot(c=colors, linestyle='solid',
 
 # In the orbit, the addition of a systemic velocity affects both the positions and velocities.  So if we plot the orbits from above (u-w plane) we can see see orbit spiral in the w-direction.  Note that this actually shows the barycenter of the orbit moving - and it was only at 0,0,0 at t0.  This also stresses the importance of using a reasonable t0 - here 900 days later, the barycenter has moved significantly from the center of the coordinate system.
 
-# In[18]:
+# In[17]:
 
 
 afig, mplfig = b.filter(kind='orb', model=['0_false', '100_false']).plot(x='us', y='ws', 
@@ -193,7 +191,7 @@ afig, mplfig = b.filter(kind='orb', model=['0_false', '100_false']).plot(x='us',
 
 # Plotting the w-velocities with respect to time would show the same as the RVs, except without any Rossiter-McLaughlin like effects.  Note however the flip in w-convention between vw and radial velocities (+w is defined as towards the observer to make a right-handed system, but by convention +rv is a red shift).
 
-# In[19]:
+# In[18]:
 
 
 afig, mplfig = b.filter(kind='orb', model=['0_false', '100_false']).plot(x='times', y='vws',
@@ -204,7 +202,7 @@ afig, mplfig = b.filter(kind='orb', model=['0_false', '100_false']).plot(x='time
 
 # Now let's look at the effect that enabling ltte has on these same plots.
 
-# In[20]:
+# In[19]:
 
 
 afig, mplfig = b.filter(kind='orb', model=['100_false', '100_true']).plot(x='us', y='ws', 
@@ -213,7 +211,7 @@ afig, mplfig = b.filter(kind='orb', model=['100_false', '100_true']).plot(x='us'
                              subplot_grid=(1,2), tight_layout=True, show=True)
 
 
-# In[21]:
+# In[20]:
 
 
 afig, mplfig = b.filter(kind='orb', model=['100_false', '100_true']).plot(x='times', y='vws',
@@ -225,7 +223,7 @@ afig, mplfig = b.filter(kind='orb', model=['100_false', '100_true']).plot(x='tim
 # Influence on Meshes
 # --------------------------
 
-# In[22]:
+# In[21]:
 
 
 afig, mplfig = b.filter(kind='mesh', model=['0_false', '100_false']).plot(x='us', y='ws',
@@ -233,7 +231,7 @@ afig, mplfig = b.filter(kind='mesh', model=['0_false', '100_false']).plot(x='us'
                                                                           subplot_grid=(1,2), tight_layout=True, show=True)
 
 
-# In[23]:
+# In[22]:
 
 
 afig, mplfig = b.filter(kind='mesh', model=['100_false', '100_true']).plot(x='us', y='ws',
@@ -245,19 +243,19 @@ afig, mplfig = b.filter(kind='mesh', model=['100_false', '100_true']).plot(x='us
 # 
 # In addition, the actual values of vw and rv in the meshes are adjusted to include the systemic velocity.
 
-# In[24]:
+# In[23]:
 
 
 b['primary@mesh1@0_false'].get_value('vws', time=0.0)[:5]
 
 
-# In[25]:
+# In[24]:
 
 
 b['primary@mesh1@100_false'].get_value('vws', time=0.0)[:5]
 
 
-# In[26]:
+# In[25]:
 
 
 b['primary@mesh1@100_true'].get_value('vws', time=0.0)[:5]

@@ -30,7 +30,7 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 # As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 # 
 
-# In[1]:
+# In[2]:
 
 
 import phoebe
@@ -48,10 +48,10 @@ b['irrad_method'] = 'none'
 
 # And we'll attach some dummy datasets.  See [Datasets](datasets.ipynb) for more details.
 
-# In[2]:
+# In[3]:
 
 
-b.add_dataset('orb', times=np.linspace(0,4,1000), dataset='orb01', component=['primary', 'secondary'])
+b.add_dataset('orb', compute_times=np.linspace(0,4,1000), dataset='orb01', component=['primary', 'secondary'])
 
 times, fluxes, sigmas = np.loadtxt('test.lc.in', unpack=True)
 
@@ -60,7 +60,7 @@ b.add_dataset('lc', times=times, fluxes=fluxes, sigmas=sigmas, dataset='lc01')
 
 # And run the forward models.  See [Computing Observables](compute.ipynb) for more details.
 
-# In[3]:
+# In[4]:
 
 
 b.set_value('incl@orbit', 90)
@@ -96,7 +96,7 @@ b.run_compute(model='run_with_incl_80')
 # 
 # By calling the [plot](../api/phoebe.parameters.ParameterSet.plot.md) method on the bundle (or any ParameterSet) without any arguments, a plot or series of subplots will be built based on the contents of that ParameterSet.
 
-# In[4]:
+# In[5]:
 
 
 afig, mplfig = b.plot(show=True)
@@ -106,7 +106,7 @@ afig, mplfig = b.plot(show=True)
 
 # In this example with so many different models and datasets, it is quite simple to build a single plot by filtering the bundle and calling the plot method on the resulting ParameterSet.
 
-# In[5]:
+# In[6]:
 
 
 afig, mplfig = b['orb@run_with_incl_80'].plot(show=True)
@@ -121,7 +121,7 @@ afig, mplfig = b['orb@run_with_incl_80'].plot(show=True)
 # 
 # The higlight option is enabled by default so long as a time (or times) is passed to plot.  It simply adds an extra marker at the sent time - interpolating in the synthetic model if necessary.
 
-# In[6]:
+# In[7]:
 
 
 afig, mplfig = b['orb@run_with_incl_80'].plot(time=1.0, show=True)
@@ -129,7 +129,7 @@ afig, mplfig = b['orb@run_with_incl_80'].plot(time=1.0, show=True)
 
 # To change the style of the "highlighted" points, you can pass matplotlib recognized [markers](http://matplotlib.org/api/markers_api.html), [colors](http://matplotlib.org/api/colors_api.html), and markersizes to the highlight_marker, highlight_color, and highlight_ms keywords, respectively.
 
-# In[7]:
+# In[8]:
 
 
 afig, mplfig = b['orb@run_with_incl_80'].plot(time=1.0, highlight_marker='s', highlight_color='g', highlight_ms=20, show=True)
@@ -137,7 +137,7 @@ afig, mplfig = b['orb@run_with_incl_80'].plot(time=1.0, highlight_marker='s', hi
 
 # To disable highlighting, simply send highlight=False
 
-# In[8]:
+# In[9]:
 
 
 afig, mplfig = b['orb@run_with_incl_80'].plot(time=1.0, highlight=False, show=True)
@@ -149,7 +149,7 @@ afig, mplfig = b['orb@run_with_incl_80'].plot(time=1.0, highlight=False, show=Tr
 # 
 # 
 
-# In[9]:
+# In[10]:
 
 
 afig, mplfig = b['orb@run_with_incl_80'].plot(time=0.5, uncover=True, show=True)
@@ -162,19 +162,19 @@ afig, mplfig = b['orb@run_with_incl_80'].plot(time=0.5, uncover=True, show=True)
 # 
 # For this reason, any of the following give identical results:
 
-# In[10]:
+# In[11]:
 
 
 afig, mplfig = b['primary@orb@run_with_incl_80'].plot(show=True)
 
 
-# In[11]:
+# In[12]:
 
 
 afig, mplfig = b.plot(component='primary', kind='orb', model='run_with_incl_80', show=True)
 
 
-# In[12]:
+# In[13]:
 
 
 afig, mplfig = b.plot('primary@orb@run_with_incl_80', show=True)
@@ -185,7 +185,7 @@ afig, mplfig = b.plot('primary@orb@run_with_incl_80', show=True)
 # 
 # So far, each plotting call automatically chose default arrays from that dataset to plot along each axis.  To override these defaults, simply point to the qualifier of the array that you'd like plotted along a given axis.
 
-# In[13]:
+# In[14]:
 
 
 afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(x='times', y='vus', show=True)
@@ -193,7 +193,7 @@ afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(x='times', y='vus', show
 
 # To see the list of available qualifiers that could be passed for x or y, call the qualifiers (or twigs) property on the ParameterSet.
 
-# In[14]:
+# In[15]:
 
 
 b['orb01@primary@run_with_incl_80'].qualifiers
@@ -215,7 +215,7 @@ b['orb01@primary@run_with_incl_80'].qualifiers
 # (as if you called b.get_ephemeris()), whereas passing a string after the colon, 
 # will use the ephemeris of that component.
 
-# In[15]:
+# In[16]:
 
 
 afig, mplfig = b.plot(dataset='lc01', x='phases', z=0, show=True)
@@ -228,7 +228,7 @@ afig, mplfig = b.plot(dataset='lc01', x='phases', z=0, show=True)
 # 
 # Likewise, each array that is plotted is automatically plotted in its default units. To override these defaults, simply provide the unit (as a string or as a astropy units object) for a given axis.
 
-# In[16]:
+# In[17]:
 
 
 afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(xunit='AU', yunit='AU', show=True)
@@ -241,7 +241,7 @@ afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(xunit='AU', yunit='AU', 
 # 
 # Axes labels are automatically generated from the qualifier of the array and the plotted units.  To override these defaults, simply pass a string for the label of a given axis.
 
-# In[17]:
+# In[18]:
 
 
 afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(xlabel='X POS', ylabel='Z POS', show=True)
@@ -252,7 +252,7 @@ afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(xlabel='X POS', ylabel='
 # 
 # Axes limits are determined by the data automatically.  To set custom axes limits, either use matplotlib methods on the returned axes objects, or pass limits as a list or tuple.
 
-# In[18]:
+# In[19]:
 
 
 afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(xlim=(-2,2), show=True)
@@ -263,7 +263,7 @@ afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(xlim=(-2,2), show=True)
 # 
 # In the cases of observational data, errorbars can be added by passing the name of the column.
 
-# In[19]:
+# In[20]:
 
 
 afig, mplfig = b['lc01@dataset'].plot(yerror='sigmas', show=True)
@@ -271,7 +271,7 @@ afig, mplfig = b['lc01@dataset'].plot(yerror='sigmas', show=True)
 
 # To disable the errorbars, simply set yerror=None.
 
-# In[20]:
+# In[21]:
 
 
 afig, mplfig = b['lc01@dataset'].plot(yerror=None, show=True)
@@ -282,7 +282,7 @@ afig, mplfig = b['lc01@dataset'].plot(yerror=None, show=True)
 # 
 # Colors of points and lines, by default, cycle according to matplotlib's color policy.  To manually set the color, simply pass a matplotlib recognized [color](http://matplotlib.org/api/colors_api.html) to the 'c' keyword.
 
-# In[21]:
+# In[22]:
 
 
 afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(c='r', show=True)
@@ -290,7 +290,7 @@ afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(c='r', show=True)
 
 # In addition, you can point to an array in the dataset to use as color.
 
-# In[22]:
+# In[23]:
 
 
 afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(x='times', c='vws', show=True)
@@ -302,7 +302,7 @@ afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(x='times', c='vws', show
 # 
 # The colormaps is determined automatically based on the parameter used for coloring (ie RVs will be a red-blue colormap).  To override this, pass a matplotlib recognized [colormap](http://matplotlib.org/api/pyplot_summary.html#matplotlib.pyplot.colormaps) to the cmap keyword.
 
-# In[23]:
+# In[24]:
 
 
 afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(x='times', c='vws', cmap='spring', show=True)
@@ -312,7 +312,7 @@ afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(x='times', c='vws', cmap
 # 
 # To add a colorbar (or sizebar, etc), send draw_sidebars=True to the plot call.
 
-# In[24]:
+# In[25]:
 
 
 afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(x='times', c='vws', draw_sidebars=True, show=True)
@@ -325,7 +325,7 @@ afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(x='times', c='vws', draw
 # 
 # For details on placement and formatting of the legend see [matplotlib's documentation](http://matplotlib.org/users/legend_guide.html#plotting-guide-legend).
 
-# In[25]:
+# In[26]:
 
 
 afig, mplfig = b['orb@run_with_incl_80'].plot(show=True, legend=True)
@@ -333,7 +333,7 @@ afig, mplfig = b['orb@run_with_incl_80'].plot(show=True, legend=True)
 
 # The legend labels are generated automatically, but can be overriden by passing a string to the label keyword.
 
-# In[26]:
+# In[27]:
 
 
 afig, mplfig = b['primary@orb@run_with_incl_80'].plot(label='primary')
@@ -342,7 +342,7 @@ afig, mplfig = b['secondary@orb@run_with_incl_80'].plot(label='secondary', legen
 
 # To override the position or styling of the legend, you can pass valid options to legend_kwargs which will be passed on to [plt.legend](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.legend.html)
 
-# In[27]:
+# In[28]:
 
 
 afig, mplfig = b['orb@run_with_incl_80'].plot(show=True, legend=True, legend_kwargs={'loc': 'center', 'facecolor': 'r'})
@@ -358,7 +358,7 @@ afig, mplfig = b['orb@run_with_incl_80'].plot(show=True, legend=True, legend_kwa
 # Note that sizes (markersize, linewidth) should be handled by passing the size to 's' and attempting to set markersize or linewidth directly will raise an error.  See also the [autofig documention on size scales](http://nbviewer.jupyter.org/github/kecnry/autofig/blob/1.0.0/tutorials/size_modes.ipynb).
 # 
 
-# In[28]:
+# In[29]:
 
 
 afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(linestyle=':', s=0.1, show=True)
@@ -369,7 +369,7 @@ afig, mplfig = b['orb01@primary@run_with_incl_80'].plot(linestyle=':', s=0.1, sh
 # 
 # To plot a in 3d, simply pass projection='3d' to the plot call.  To override the defaults for the z-direction, pass a twig or array just as you would for x or y.
 
-# In[29]:
+# In[30]:
 
 
 afig, mplfig = b['orb@run_with_incl_80'].plot(time=0, projection='3d', show=True)

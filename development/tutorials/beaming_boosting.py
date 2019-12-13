@@ -7,15 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and create a new bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and create a new bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -119,25 +119,25 @@ print(b.compute_pblums(dataset='lc01', boosting_method='linear', pbflux=True, pb
 # Influence on Light Curves (fluxes)
 # ----------------------------
 
-# In[12]:
+# In[ ]:
 
 
 b.run_compute(boosting_method='none', model='boosting_none')
 
 
-# In[13]:
+# In[ ]:
 
 
 b.run_compute(boosting_method='linear', model='boosting_linear')
 
 
-# In[14]:
+# In[ ]:
 
 
 afig, mplfig = b['lc01'].plot(show=True, legend=True)
 
 
-# In[15]:
+# In[ ]:
 
 
 afig, mplfig = b['lc01'].plot(ylim=(1.01,1.03), show=True, legend=True)
@@ -146,7 +146,7 @@ afig, mplfig = b['lc01'].plot(ylim=(1.01,1.03), show=True, legend=True)
 # Influence on Radial Velocities
 # ---------------------
 
-# In[16]:
+# In[ ]:
 
 
 afig, mplfig = b['rv01@model'].plot(show=True, legend=True)
@@ -155,13 +155,13 @@ afig, mplfig = b['rv01@model'].plot(show=True, legend=True)
 # Influence on Meshes
 # -------------------------
 
-# In[17]:
+# In[ ]:
 
 
 afig, mplfig = b['mesh@boosting_none'].plot(time=0.6, fc='boost_factors', ec='none', show=True)
 
 
-# In[18]:
+# In[ ]:
 
 
 afig, mplfig = b['mesh@boosting_linear'].plot(time=0.6, fc='boost_factors', ec='none', show=True)

@@ -15,7 +15,7 @@
 get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and create a new Bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and create a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -192,7 +192,7 @@ b.get_parameter('fluxes', context='model').interp_value(times=5)
 # 
 # Note that if there are more than one dataset or model attached to the bundle, it may be necessary to pass `dataset` and/or `model` (or filter in advanced and call compute_residuals on the filtered [ParameterSet](../api/phoebe.paraemters.ParameterSet.md).
 # 
-# To see this in action, we'll first create a "fake" observational dataset, add some noise, recompute the model using `compute_phases`, and then compute the residuals.
+# To see this in action, we'll first create a "fake" observational dataset, add some noise, recompute the model using `compute_phases`, and then calculate the residuals.
 
 # In[21]:
 
@@ -246,30 +246,24 @@ b.run_compute(irrad_method='none')
 print(len(b.get_value('fluxes', context='dataset')), len(b.get_value('fluxes', context='model')))
 
 
-# In[29]:
+# In[30]:
 
 
-b.compute_residuals()
+b.calculate_residuals()
 
 
 # If we plot the dataset and model, we see that the model was only computed for one cycle, whereas the dataset extends further in time.
 
-# In[30]:
+# In[31]:
 
 
 afig, mplfig = b.plot(show=True)
 
 
-# But we can also plot the residuals.  Here, [compute_residuals](../api/phoebe.parameters.ParameterSet.compute_residuals.md) is called internally, interpolating in phase-space, and then plotted in time-space.  See the options for `y` in the [plot API docs](../api/phoebe.parameters.ParameterSet.plot.md) for more details.
+# But we can also plot the residuals.  Here, [calculate_residuals](../api/phoebe.parameters.ParameterSet.calculate_residuals.md) is called internally, interpolating in phase-space, and then plotted in time-space.  See the options for `y` in the [plot API docs](../api/phoebe.parameters.ParameterSet.plot.md) for more details.
 
-# In[31]:
+# In[32]:
 
 
 afig, mplfig = b.plot(y='residuals', show=True)
-
-
-# In[ ]:
-
-
-
 

@@ -7,15 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -102,7 +102,7 @@ b.get_parameter('t0', context='system')
 # In[10]:
 
 
-b.add_dataset('orb', times=np.linspace(-1,1,1001))
+b.add_dataset('orb', compute_times=np.linspace(-1,1,1001))
 
 
 # In[11]:
@@ -169,7 +169,7 @@ b.to_phase(0.0, component='binary', t0='t0_ref')
 # In[19]:
 
 
-b.add_dataset('lc', times=np.linspace(0,1,51), ld_func='linear', ld_coeffs=[0.0])
+b.add_dataset('lc', times=np.linspace(0,1,51), ld_mode='manual', ld_func='linear', ld_coeffs=[0.0])
 
 
 # In[20]:

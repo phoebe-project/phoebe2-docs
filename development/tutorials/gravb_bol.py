@@ -7,15 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -102,38 +102,38 @@ print(b.run_checks())
 # Influence on Intensities
 # ------------------
 
-# In[26]:
+# In[10]:
 
 
 b['teff@primary'] = 6000
 b['gravb_bol@primary'] = 0.32
 
 
-# In[29]:
+# In[11]:
 
 
 b.run_compute(model='gravb_bol_32')
 
 
-# In[30]:
+# In[12]:
 
 
 afig, mplfig = b['primary@mesh01@gravb_bol_32'].plot(fc='intensities', ec='None', show=True)
 
 
-# In[31]:
+# In[13]:
 
 
 b['gravb_bol@primary'] = 1.0
 
 
-# In[32]:
+# In[14]:
 
 
 b.run_compute(model='gravb_bol_10')
 
 
-# In[33]:
+# In[15]:
 
 
 afig, mplfig = b['primary@mesh01@gravb_bol_10'].plot(fc='intensities', ec='None', show=True)
@@ -141,7 +141,7 @@ afig, mplfig = b['primary@mesh01@gravb_bol_10'].plot(fc='intensities', ec='None'
 
 # Comparing these two plots, it is essentially impossible to notice any difference between the two models.  But if we compare the intensities directly, we can see that there is a subtle difference, with a maximum difference of about 3%.
 
-# In[37]:
+# In[16]:
 
 
 np.nanmax((b.get_value('intensities', component='primary', model='gravb_bol_32') - b.get_value('intensities', component='primary', model='gravb_bol_10'))/b.get_value('intensities', component='primary', model='gravb_bol_10'))

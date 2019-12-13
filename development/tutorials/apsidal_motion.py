@@ -7,15 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -52,7 +52,7 @@ b['ecc'] = 0.2
 b['dperdt'] = 2.0 * u.deg/u.d
 
 
-# We'll add [lc](./LC.ipynb), [orb](./ORB.ipynb), and [etv](./ETV.ipynb) datasets to see how the apsidal motion affects each.  We'll need to sample over several orbits of the binary (which has a period of 3 days, by default).
+# We'll add [lc](./LC.ipynb) and [orb](./ORB.ipynb) datasets to see how the apsidal motion affects each.  We'll need to sample over several orbits of the binary (which has a period of 3 days, by default).
 
 # In[5]:
 
@@ -64,7 +64,7 @@ b.add_dataset('lc', times=np.linspace(4,5,101), dataset='lc02')
 # In[6]:
 
 
-b.add_dataset('orb', times=np.linspace(0,5,401), dataset='orb01')
+b.add_dataset('orb', compute_times=np.linspace(0,5,401), dataset='orb01')
 
 
 # In[7]:
@@ -89,7 +89,7 @@ afig, mplfig = b['orb01@model'].plot(y='ws', time=[0,1,2,3,4,5], show=True)
 # 
 # Now looking at the light curve, we can see that this is resulting in the eclipses moving in phase-space.
 
-# In[11]:
+# In[9]:
 
 
 afig, mplfig = b['lc01@model'].plot()

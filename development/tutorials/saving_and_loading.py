@@ -7,12 +7,12 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
 # As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](building_a_system.ipynb) for more details.
@@ -46,7 +46,7 @@ b['incl@orbit'] = 56.789
 # In[3]:
 
 
-print b.save('test.phoebe')
+print(b.save('test.phoebe'))
 
 
 # We can now inspect the contents of the created file.
@@ -77,7 +77,7 @@ b2 = phoebe.Bundle.open('test.phoebe')
 # In[6]:
 
 
-print b2.get_value('incl@orbit')
+print(b2.get_value('incl@orbit'))
 
 
 # Support for Other Codes

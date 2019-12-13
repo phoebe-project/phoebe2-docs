@@ -9,12 +9,12 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
 # As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](./building_a_system.ipynb) for more details.
@@ -41,19 +41,19 @@ times = np.linspace(0,1,51)
 # In[3]:
 
 
-b.add_dataset('lc', times=times, dataset='lc01')
+b.add_dataset('lc', compute_times=times, dataset='lc01')
 
 
 # In[4]:
 
 
-b.add_dataset('orb', times=times, dataset='orb01')
+b.add_dataset('orb', compute_times=times, dataset='orb01')
 
 
 # In[5]:
 
 
-b.add_dataset('mesh', times=times, dataset='mesh01', columns=['teffs'])
+b.add_dataset('mesh', compute_times=times, dataset='mesh01', columns=['teffs'])
 
 
 # In[6]:
@@ -69,7 +69,7 @@ b.run_compute(irrad_method='none')
 # 
 # Alternatively, you can call `afig.animate()` on the returned afig object returned by [b.plot()](../api/phoebe.parameters.ParameterSet.plot.md).
 
-# In[ ]:
+# In[7]:
 
 
 afig, mplanim = b.plot(y={'orb': 'ws'}, 
@@ -91,7 +91,7 @@ afig, mplanim = b.plot(y={'orb': 'ws'},
 # 
 # This option is not available from run_compute - a frame will be drawn for each computed time.
 
-# In[ ]:
+# In[8]:
 
 
 afig, mplanim = b.plot(y={'orb': 'ws'},
@@ -107,7 +107,7 @@ afig, mplanim = b.plot(y={'orb': 'ws'},
 # 
 # Any additional arguments (colors, linestyle, etc) are passed to the plot call for EACH frame and for EVERY plotting call.
 
-# In[ ]:
+# In[9]:
 
 
 afig, mplanim = b['lc01@model'].plot(times=times[:-1], uncover=True,                                     c='r', linestyle=':',                                     highlight_marker='s', highlight_color='g',
@@ -116,10 +116,10 @@ afig, mplanim = b['lc01@model'].plot(times=times[:-1], uncover=True,            
 
 # ![animation](animations_3.gif)
 
-# In[ ]:
+# In[10]:
 
 
-b['mesh01@model'].plot(times=times[:-1], fc='teffs', ec='None', 
+afig, mplanim = b['mesh01@model'].plot(times=times[:-1], fc='teffs', ec='None', 
                        animate=True, save='animations_4.gif', save_kwargs={'writer': 'imagemagick'})
 
 
@@ -134,11 +134,11 @@ b['mesh01@model'].plot(times=times[:-1], fc='teffs', ec='None',
 # 
 # For more information and other options see the [autofig tutorial on limits](http://nbviewer.jupyter.org/github/kecnry/autofig/blob/1.0.0/tutorials/limits.ipynb)
 
-# In[ ]:
+# In[11]:
 
 
-b['lc01@model'].plot(times=times[:-1], uncover=True, xlim='frame',
-                    animate=True, save='animations_5.gif', save_kwargs={'writer': 'imagemagick'})
+afig, mplanim = b['lc01@model'].plot(times=times[:-1], uncover=True, xlim='frame',
+                         animate=True, save='animations_5.gif', save_kwargs={'writer': 'imagemagick'})
 
 
 # ![animation](animations_5.gif)
@@ -148,11 +148,11 @@ b['lc01@model'].plot(times=times[:-1], uncover=True, xlim='frame',
 # 
 # Plotting to 3D axes are supported.  In addition to the options for static plots, animations also support passing a list for the range of elevation/azimuth (in degrees) throughout the animation.
 
-# In[ ]:
+# In[12]:
 
 
-b['orb01@model'].plot(times=times[:-1], projection='3d', azim=[0, 360], elev=[-20,20],
-                      animate=True, save='animations_6.gif', save_kwargs={'writer': 'imagemagick'})
+afig, mplanim = b['orb01@model'].plot(times=times[:-1], projection='3d', azim=[0, 360], elev=[-20,20],
+                           animate=True, save='animations_6.gif', save_kwargs={'writer': 'imagemagick'})
 
 
 # ![animation](animations_6.gif)

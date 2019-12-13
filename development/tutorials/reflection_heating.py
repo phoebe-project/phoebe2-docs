@@ -9,15 +9,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.htmlipynb) for more details.
 
 # In[1]:
 
@@ -50,33 +50,33 @@ b = phoebe.default_binary()
 # In[3]:
 
 
-print b['irrad_frac_refl_bol']
+print(b['irrad_frac_refl_bol'])
 
 
 # In[4]:
 
 
-print b['irrad_frac_lost_bol']
+print(b['irrad_frac_lost_bol'])
 
 
 # In[5]:
 
 
-print b['irrad_frac_refl_bol@primary']
+print(b['irrad_frac_refl_bol@primary'])
 
 
 # In[6]:
 
 
-print b['irrad_frac_lost_bol@primary@component']
+print(b['irrad_frac_lost_bol@primary@component'])
 
 
-# In order to see the effect of reflection, let's set "irrad_frac_refl_bol" of both of our stars to 0.3 - that is 30% of the incident flux will go towards reflection and 70% will be ignored.
+# In order to see the effect of reflection, let's set "irrad_frac_refl_bol" of both of our stars to 0.9 - that is 90% of the incident flux will go towards reflection and 10% will be ignored.
 
 # In[7]:
 
 
-b.set_value_all('irrad_frac_refl_bol', 0.3)
+b.set_value_all('irrad_frac_refl_bol', 0.9)
 
 
 # Since reflection can be a computationally expensive process and in most cases is a low-order effect, there is a switch in the compute options that needs to be enabled in order for reflection to be taken into account.  If this switch is False (which it is by default), the albedos are completely ignored and will be treated as if all incident light is lost/ignored.
@@ -84,7 +84,7 @@ b.set_value_all('irrad_frac_refl_bol', 0.3)
 # In[8]:
 
 
-print b['irrad_method@compute']
+print(b['irrad_method@compute'])
 
 
 # Reflection has the most noticeable effect when the two stars are close to each other and have a large temperature ratio.
@@ -154,25 +154,25 @@ b.add_dataset('mesh', times=[0.2], columns=['intensities@lc01'])
 # In[18]:
 
 
-b.run_compute(irrad_method='none', ntriangles=700, model='refl_false')
+b.run_compute(irrad_method='none', ntriangles=700, model='refl_false', overwrite=True)
 
 
 # In[19]:
 
 
-b.run_compute(irrad_method='wilson', ntriangles=700, model='refl_true')
+b.run_compute(irrad_method='wilson', ntriangles=700, model='refl_true', overwrite=True)
 
 
 # In[20]:
 
 
-afig, mplfig = b.plot(kind='mesh', model='refl_false', fc='intensities', ec='none', show=True)
+afig, mplfig = b.plot(component='secondary', kind='mesh', model='refl_false', fc='intensities', ec='face', show=True)
 
 
 # In[21]:
 
 
-afig, mplfig = b.plot(kind='mesh', model='refl_true', fc='intensities', ec='none', show=True)
+afig, mplfig = b.plot(component='secondary', kind='mesh', model='refl_true', fc='intensities', ec='face', show=True)
 
 
 # In[ ]:

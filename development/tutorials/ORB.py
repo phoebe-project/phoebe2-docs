@@ -106,37 +106,37 @@ print(b.get_parameter(qualifier='ltte'))
 # Synthetics
 # ------------------
 
-# In[11]:
+# In[10]:
 
 
 b.set_value_all('compute_times', phoebe.linspace(0,3,201))
 
 
-# In[12]:
+# In[11]:
 
 
 b.run_compute()
 
 
-# In[13]:
+# In[12]:
 
 
 print(b.filter(context='model').twigs)
 
 
-# In[14]:
+# In[13]:
 
 
 print(b.get_parameter(qualifier='times', component='primary', kind='orb', context='model'))
 
 
-# In[15]:
+# In[14]:
 
 
 print(b.get_parameter(qualifier='us', component='primary', kind='orb', context='model'))
 
 
-# In[16]:
+# In[15]:
 
 
 print(b.get_parameter(qualifier='vus', component='primary', kind='orb', context='model'))
@@ -147,7 +147,7 @@ print(b.get_parameter(qualifier='vus', component='primary', kind='orb', context=
 # 
 # By default, orb datasets plot as 'vs' vx 'us' (plane of sky coordinates).  Notice the y-scale here with inclination set to 90.
 
-# In[17]:
+# In[16]:
 
 
 afig, mplfig = b.plot(show=True)
@@ -155,7 +155,7 @@ afig, mplfig = b.plot(show=True)
 
 # As always, you have access to any of the arrays for either axes, so if you want to plot 'vus' vs 'times'
 
-# In[18]:
+# In[17]:
 
 
 afig, mplfig = b.plot(x='times', y='vus', show=True)
@@ -163,7 +163,7 @@ afig, mplfig = b.plot(x='times', y='vus', show=True)
 
 # We can also plot the orbit in 3D.
 
-# In[19]:
+# In[18]:
 
 
 afig, mplfig = b.plot(projection='3d', xlim=(-4,4), ylim=(-4,4), zlim=(-4,4), show=True)

@@ -37,7 +37,7 @@ b = phoebe.default_binary()
 # In[2]:
 
 
-b.add_dataset(phoebe.dataset.orb, times=np.linspace(0,10,10), dataset='orb01', component=['primary', 'secondary'])
+b.add_dataset(phoebe.dataset.orb, compute_times=np.linspace(0,10,10), dataset='orb01', component=['primary', 'secondary'])
 
 times, fluxes, sigmas = np.loadtxt('test.lc.in', unpack=True)
 
@@ -147,7 +147,7 @@ print(b['enabled@lc01'])
 # In[12]:
 
 
-b.set_value_all('enabled@lc01', False)
+b.set_value_all('enabled@lc01', True)
 print(b['enabled@lc01'])
 
 
@@ -241,8 +241,8 @@ b.run_compute(compute='preview',
 
 
 print("dataset times: {}\nmodel times: {}".format(
-    b.get_value('times', component='primary', dataset='orb01', context='dataset'),
-    b.get_value('times', component='primary', dataset='orb01', model='override_times')))
+    b.get_value('times', dataset='lc01', context='dataset'),
+    b.get_value('times', dataset='lc01', model='override_times')))
 
 
 # #### compute_times parameter
@@ -256,7 +256,7 @@ print("dataset times: {}\nmodel times: {}".format(
 # In[23]:
 
 
-b.set_value('compute_times', dataset='orb01', value=[0, 0.2, 0.4])
+b.set_value('compute_times', dataset='lc01', value=[0, 0.2, 0.4])
 
 
 # In[24]:
@@ -270,10 +270,10 @@ b.run_compute(compute='preview',
 
 
 print("dataset times: {}\ndataset compute_times: {}\ndataset compute_phases: {}\n model times: {}".format(
-    b.get_value('times', component='primary', dataset='orb01', context='dataset'),
-    b.get_value('compute_times', dataset='orb01', context='dataset'),
-    b.get_value('compute_phases', dataset='orb01', context='dataset'),
-    b.get_value('times', component='primary', dataset='orb01', model='override_compute_times')))
+    b.get_value('times', dataset='lc01', context='dataset'),
+    b.get_value('compute_times', dataset='lc01', context='dataset'),
+    b.get_value('compute_phases', dataset='lc01', context='dataset'),
+    b.get_value('times', dataset='lc01', model='override_compute_times')))
 
 
 # for more details, see the [advanced: compute times & phases tutorial](compute_times_phases.ipynb).

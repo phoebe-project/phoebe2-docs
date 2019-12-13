@@ -9,12 +9,12 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
 # In[1]:
@@ -23,7 +23,7 @@ get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.ipynb) for more details.
 
 # In[2]:
 
@@ -60,7 +60,7 @@ b.set_value_all('eclipse_method', 'graham')
 # In[4]:
 
 
-b.add_dataset('mesh', times=np.linspace(0,10,6), dataset='mesh01', columns=['visibilities'])
+b.add_dataset('mesh', compute_times=[0, 0.5], dataset='mesh01', columns=['visibilities'])
 
 
 # Running Compute
@@ -75,7 +75,7 @@ b.run_compute(irrad_method='none')
 # Plotting
 # ---------------------
 
-# In[15]:
+# In[6]:
 
 
 afig, mplfig = b['mesh01@model'].plot(time=0.5, x='us', y='vs',
@@ -95,7 +95,7 @@ afig, mplfig = b['primary@mesh01@model'].plot(time=0.0,  x='us', y='vs',
 
 # And now looking down from above.  Here you can see the gaps between the surface elements (and you can also see some of the subdivision that's taking place along the limb).
 
-# In[11]:
+# In[8]:
 
 
 afig, mplfig = b['primary@mesh01@model'].plot(time=0.0, x='us', y='ws', 
@@ -106,11 +106,11 @@ afig, mplfig = b['primary@mesh01@model'].plot(time=0.0, x='us', y='ws',
 
 # And see which elements are visible at the current time.  This defaults to use the 'RdYlGn' colormap which will make visible elements green, partially hidden elements yellow, and hidden elements red.  Note that the observer is in the positive w-direction.
 
-# In[9]:
+# In[10]:
 
 
 afig, mplfig = b['secondary@mesh01@model'].plot(time=0.0, x='us', y='ws', 
-                                                ec='None', fc='visibilities',
+                                                ec='face', fc='visibilities',
                                                 show=True)
 
 

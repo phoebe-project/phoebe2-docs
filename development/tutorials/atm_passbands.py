@@ -7,12 +7,12 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
 # As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](building_a_system.ipynb) for more details.
@@ -95,13 +95,14 @@ b['atm@primary'] = 'blackbody'
 print(b.run_checks())
 
 
-# In[11]:
+# In[12]:
 
 
+b['ld_mode@primary'] = 'manual'
 b['ld_func@primary'] = 'logarithmic'
 
 
-# In[12]:
+# In[13]:
 
 
 print(b.run_checks())
@@ -109,7 +110,7 @@ print(b.run_checks())
 
 # A 'passband' parameter exists for each passband-dependent-dataset (i.e. not meshes or orbits, but light curves and radial velocities).  This parameter dictates which passband should be used for the computation of all intensities.
 
-# In[13]:
+# In[14]:
 
 
 b['passband']
@@ -117,7 +118,7 @@ b['passband']
 
 # The available choices will include both locally installed passbands as well as passbands currently available from the online PHOEBE repository.  If you choose an online-passband, it will be downloaded and installed locally as soon as required by [b.run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md).
 
-# In[14]:
+# In[15]:
 
 
 print(b['passband'].choices)
@@ -125,7 +126,7 @@ print(b['passband'].choices)
 
 # To see your current locally-installed passbands, call [phoebe.list_installed_passbands()](../api/phoebe.list_installed_passbands.md).
 
-# In[15]:
+# In[16]:
 
 
 print(phoebe.list_installed_passbands())
@@ -137,7 +138,7 @@ print(phoebe.list_installed_passbands())
 # 
 # The second entry is the local location - this is where individual users can store passbands and where PHOEBE will download and install passbands (by default).
 
-# In[16]:
+# In[17]:
 
 
 print(phoebe.list_passband_directories())
@@ -151,18 +152,24 @@ print(phoebe.list_passband_directories())
 print(phoebe.list_online_passbands())
 
 
-# Lastly, to manually download and install one of these online passbands, you can do so explicitly via [phoebe.download_passband](../api/phoebe.download_passband.md).
+# Lastly, to manually download and install one of these online passbands, you can do so explicitly via [phoebe.download_passband](../api/phoebe.download_passband.md) or by visiting [tables.phoebe-project.org](http://phoebe-project.org/tables).  See also the tutorial on [updating passbands](./passband_updates.ipynb).
 # 
 # Note that this isn't necessary unless you want to explicitly download passbands before needed by run_compute (perhaps if you're expecting to have unreliable network connection in the future and want to ensure you have all needed passbands).
-
-# In[19]:
-
-
-phoebe.download_passband('Cousins:R')
-
 
 # In[20]:
 
 
+phoebe.download_passband('Cousins:Rc')
+
+
+# In[21]:
+
+
 print(phoebe.list_installed_passbands())
+
+
+# In[ ]:
+
+
+
 

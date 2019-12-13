@@ -7,15 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -23,7 +23,7 @@ get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
-# In[1]:
+# In[2]:
 
 
 import phoebe
@@ -41,13 +41,13 @@ b = phoebe.default_binary()
 # 
 # Detached systems are the default case for default_binary.  The requiv_max parameter is constrained to show the maximum value for requiv before the system will begin overflowing at periastron.  
 
-# In[2]:
+# In[3]:
 
 
 b['requiv_max@component@primary']
 
 
-# In[3]:
+# In[4]:
 
 
 b['requiv_max@constraint@primary']

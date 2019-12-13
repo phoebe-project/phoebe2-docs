@@ -7,12 +7,12 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
 # In[1]:
@@ -41,43 +41,43 @@ import phoebe
 
 # To check the currently adopted settings, as well as quickly access information needed for manually doing your own parallelization, access the phoebe.mpi object.
 
-# In[3]:
+# In[2]:
 
 
 print(phoebe.mpi.enabled)
+
+
+# In[3]:
+
+
+print(phoebe.mpi.mode)
 
 
 # In[4]:
 
 
-print(phoebe.mpi.mode)
+phoebe.mpi_on()
 
 
 # In[5]:
 
 
-phoebe.mpi_on()
+print(phoebe.mpi.enabled)
 
 
 # In[6]:
 
 
-print(phoebe.mpi.enabled)
+print(phoebe.mpi.mode)
 
 
 # In[7]:
 
 
-print(phoebe.mpi.mode)
-
-
-# In[8]:
-
-
 print(phoebe.mpi.myrank)
 
 
-# In[9]:
+# In[8]:
 
 
 print(phoebe.mpi.nprocs)
@@ -85,7 +85,7 @@ print(phoebe.mpi.nprocs)
 
 # PHOEBE determines whether the current script is running within an MPI environment by checking for environment variables set by mpirun/mpiexec.  If you run into any issues with PHOEBE not behaving as expected, check to see whether PHOEBE thinks its within mpirun.
 
-# In[10]:
+# In[9]:
 
 
 print(phoebe.mpi.within_mpirun)

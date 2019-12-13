@@ -12,15 +12,15 @@
 # -----------------------------
 
 # 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -134,8 +134,8 @@ b.set_value_all('irrad_method', 'none')
 n = 200
 times = b.to_time(np.linspace(-0.05, 1.05, n))
 
-b.add_dataset('lc', times=times, dataset='lc01', ld_func='logarithmic', ld_coeffs = [0.5,0.5])
-b.add_dataset('rv', times=times, dataset='rv01', ld_func='logarithmic', ld_coeffs = [0.5,0.5])
+b.add_dataset('lc', times=times, dataset='lc01', ld_mode='manual', ld_func='logarithmic', ld_coeffs = [0.5,0.5])
+b.add_dataset('rv', times=times, dataset='rv01', ld_mode='manual', ld_func='logarithmic', ld_coeffs = [0.5,0.5])
 
 
 # Compute

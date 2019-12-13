@@ -458,18 +458,18 @@ afig, mplfig = b.plot(show=True, legend=True)
 
 # Passband luminosities at t0@system per-star (including following all coupling logic) can be computed and exposed on the fly by calling `compute_pblums`.
 
-# In[57]:
+# In[58]:
 
 
-print b.compute_pblums()
+print(b.compute_pblums())
 
 
 # By default this exposes 'pblum' and 'pblum_ext' for all component-dataset pairs in the form of a dictionary.  Alternatively, you can pass a label or list of labels to component and/or dataset.
 
-# In[58]:
+# In[59]:
 
 
-print b.compute_pblums(dataset='lc01', component='primary')
+print(b.compute_pblums(dataset='lc01', component='primary'))
 
 
 # For more options, see the [b.compute_pblums API docs](../api/phoebe.frontend.bundle.Bundle.compute_pblums.md).
@@ -480,13 +480,13 @@ print b.compute_pblums(dataset='lc01', component='primary')
 # 
 # Let's create a mesh dataset at a few times and then access the synthetic luminosities.
 
-# In[59]:
+# In[60]:
 
 
 b.add_dataset('mesh', times=np.linspace(0,1,5), dataset='mesh01', columns=['areas', 'pblum_ext@lc01', 'ldint@lc01', 'ptfarea@lc01', 'abs_normal_intensities@lc01', 'normal_intensities@lc01'])
 
 
-# In[60]:
+# In[61]:
 
 
 b.run_compute()
@@ -494,33 +494,33 @@ b.run_compute()
 
 # Since the luminosities are passband-dependent, they are stored with the same dataset as the light curve (or RV), but with the mesh method, and are available at each of the times at which a mesh was stored.
 
-# In[61]:
+# In[62]:
 
 
-print b.filter(qualifier='pblum_ext', context='model').twigs
+print(b.filter(qualifier='pblum_ext', context='model').twigs)
 
 
 # Now let's compare the value of the *synthetic* luminosities to those of the *input* pblum
 
-# In[62]:
+# In[63]:
 
 
 t0 = b.get_value('t0@system')
 
 
-# In[63]:
-
-
-print b.get_value(qualifier='pblum_ext', time=t0, component='primary', kind='mesh', context='model')
-
-
 # In[64]:
 
 
-print b.get_value('pblum@primary@dataset')
+print(b.get_value(qualifier='pblum_ext', time=t0, component='primary', kind='mesh', context='model'))
 
 
 # In[65]:
+
+
+print(b.get_value('pblum@primary@dataset'))
+
+
+# In[66]:
 
 
 print(b.compute_pblums(component='primary', dataset='lc01'))
@@ -528,83 +528,83 @@ print(b.compute_pblums(component='primary', dataset='lc01'))
 
 # In this case, since our two stars are identical, the *synthetic* luminosity of the secondary star should be the same as the primary (and the same as pblum@primary).
 
-# In[66]:
-
-
-print b.get_value(qualifier='pblum_ext', time=t0, component='primary', kind='mesh', context='model')
-
-
 # In[67]:
 
 
-print b.get_value(qualifier='pblum_ext', time=t0, component='secondary', kind='mesh', context='model')
+print(b.get_value(qualifier='pblum_ext', time=t0, component='primary', kind='mesh', context='model'))
+
+
+# In[68]:
+
+
+print(b.get_value(qualifier='pblum_ext', time=t0, component='secondary', kind='mesh', context='model'))
 
 
 # However, if we change the temperature of the secondary star again, since the pblums are coupled, we'd expect the *synthetic* luminosity of the primary to remain fixed but the secondary to decrease.
 
-# In[68]:
+# In[69]:
 
 
 b['teff@secondary@component'] = 3000
 
 
-# In[69]:
+# In[70]:
 
 
 print(b.compute_pblums(dataset='lc01'))
 
 
-# In[70]:
+# In[71]:
 
 
 b.run_compute()
 
 
-# In[71]:
-
-
-print b.get_value(qualifier='pblum_ext', time=t0, component='primary', kind='mesh', context='model')
-
-
 # In[72]:
 
 
-print b.get_value(qualifier='pblum_ext', time=t0, component='secondary', kind='mesh', context='model')
+print(b.get_value(qualifier='pblum_ext', time=t0, component='primary', kind='mesh', context='model'))
+
+
+# In[73]:
+
+
+print(b.get_value(qualifier='pblum_ext', time=t0, component='secondary', kind='mesh', context='model'))
 
 
 # And lastly, if we re-enable irradiation, we'll see that the extrinsic luminosities do not match the prescribed value of `pblum` (an intrinsic luminosity).
 
-# In[73]:
+# In[74]:
 
 
 print(b['ld_mode'])
 
 
-# In[74]:
+# In[75]:
 
 
 print(b['atm'])
 
 
-# In[75]:
+# In[76]:
 
 
 b.run_compute(irrad_method='horvat')
 
 
-# In[76]:
-
-
-print b.get_value(qualifier='pblum_ext', time=t0, component='primary', kind='mesh', context='model')
-
-
 # In[77]:
 
 
-print b.get_value('pblum@primary@dataset')
+print(b.get_value(qualifier='pblum_ext', time=t0, component='primary', kind='mesh', context='model'))
 
 
 # In[78]:
+
+
+print(b.get_value('pblum@primary@dataset'))
+
+
+# In[79]:
 
 
 print(b.compute_pblums(dataset='lc01', irrad_method='horvat'))
@@ -612,7 +612,7 @@ print(b.compute_pblums(dataset='lc01', irrad_method='horvat'))
 
 # Now, we'll just undo our changes before continuing
 
-# In[79]:
+# In[80]:
 
 
 b.set_value_all('teff@component', 6000)
@@ -623,13 +623,13 @@ b.set_value_all('teff@component', 6000)
 
 # Let's now look at the intensities in the mesh to see how they're being scaled under-the-hood.  First we'll recompute our model with the equal temperatures and irradiation disabled (to ignore the difference between pblum and pblum_ext).
 
-# In[80]:
+# In[81]:
 
 
 b.run_compute()
 
 
-# In[81]:
+# In[82]:
 
 
 areas = b.get_value(qualifier='areas', dataset='mesh01', time=t0, component='primary', unit='m^2')
@@ -642,25 +642,25 @@ normal_intensities = b.get_value(qualifier='normal_intensities', dataset='lc01',
 
 # 'abs_normal_intensities' are the intensities per triangle in absolute units, i.e. W/m^3.
 
-# In[82]:
+# In[83]:
 
 
-np.median(abs_normal_intensities)
+print(np.median(abs_normal_intensities))
 
 
 # The values of 'normal_intensities', however, are significantly samller (in this case).  These are the intensities in relative units which will eventually be integrated to give us flux for a light curve.
 
-# In[83]:
+# In[84]:
 
 
-np.median(normal_intensities)
+print(np.median(normal_intensities))
 
 
 # 'normal_intensities' are scaled from 'abs_normal_intensities' **so that** the computed luminosity matches the prescribed luminosity (pblum).
 # 
 # Here we compute the luminosity by summing over each triangle's intensity in the normal direction, and multiply it by pi to account for blackbody intensity emitted in all directions in the solid angle, and by the area of that triangle.
 
-# In[84]:
+# In[85]:
 
 
 pblum = b.get_value(qualifier='pblum', component='primary', context='dataset')

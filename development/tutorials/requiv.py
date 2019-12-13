@@ -7,15 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -52,7 +52,7 @@ b.add_dataset('mesh', times=np.linspace(0,1,11), dataset='mesh01')
 # In[4]:
 
 
-print b['requiv@component']
+print(b['requiv@component'])
 
 
 # Critical Potentials and System Checks
@@ -63,30 +63,24 @@ print b['requiv@component']
 # In[5]:
 
 
-print b['requiv_max@primary@component']
+print(b['requiv_max@primary@component'])
 
 
 # In[6]:
 
 
-print b['requiv_max@primary@constraint']
+print(b['requiv_max@primary@constraint'])
 
 
-# In[8]:
+# In[7]:
 
 
 b.set_value('requiv@primary@component', 3)
 
 
-# In[ ]:
-
-
-
-
-
 # At this time, if you were to call run_compute, an error would be thrown.  An error isn't immediately thrown when setting requiv, however, since the overflow can be recitified by changing any of the other relevant parameters.  For instance, let's change sma to be large enough to account for this value of rpole and you'll see that the error does not occur again.
 
-# In[10]:
+# In[8]:
 
 
 b.set_value('sma@binary@component', 10)
@@ -96,24 +90,22 @@ b.set_value('sma@binary@component', 10)
 # 
 # This can be done by calling run_checks which returns a boolean (whether the system passes all checks) and a message (a string describing the first failed check).
 
-# In[13]:
+# In[9]:
 
 
-passed, message = b.run_checks()
-print passed, message
+print(b.run_checks())
 
 
-# In[14]:
+# In[10]:
 
 
 b.set_value('sma@binary@component', 5)
 
 
-# In[15]:
+# In[11]:
 
 
-passed, message = b.run_checks()
-print passed, message
+print(b.run_checks())
 
 
 # Semi-Detached and Contact Systems

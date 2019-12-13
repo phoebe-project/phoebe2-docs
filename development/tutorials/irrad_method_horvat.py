@@ -15,7 +15,7 @@
 get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -89,7 +89,7 @@ b['irrad_frac_refl_bol@secondary'] = 0.6
 
 # We'll also disable any eclipsing effects.
 
-# In[9]:
+# In[7]:
 
 
 b['eclipse_method'] = 'only_horizon'
@@ -97,14 +97,14 @@ b['eclipse_method'] = 'only_horizon'
 
 # Now we'll compute the light curves with wilson and horvat irradiation, and plot the relative differences between the two as a function of phase, for several different values of the inclination.
 
-# In[10]:
+# In[8]:
 
 
 phases = phoebe.linspace(0,1,101)
 b.add_dataset('lc', times=b.to_time(phases))
 
 
-# In[11]:
+# In[9]:
 
 
 for incl in [0,30,60,90]:

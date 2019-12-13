@@ -56,12 +56,14 @@ b = phoebe.default_binary()
 # This situation will almost always be the case for orbits and meshes - its unlikely that you have observed positions and velocities for each of your components, but you still may like to store that information for plotting or diagnostic purposes.
 # 
 # Here we'll do just that - we'll add an orbit dataset which will track the positions and velocities of both our 'primary' and 'secondary' stars (by their component tags) at each of the provided times.
+# 
+#  **NEW in PHOEBE 2.2**: Unlike other datasets, the mesh and orb dataset cannot accept actual observations, so there is no `times` parameter, only the `compute_times` and `compute_phases` parameters.  For more details on these, see the [Compute Times & Phases tutorial](compute_times_phases.ipynb).
 
 # In[2]:
 
 
 b.add_dataset(phoebe.dataset.orb, 
-              times=np.linspace(0,10,20), 
+              compute_times=np.linspace(0,10,20), 
               dataset='orb01', 
               component=['primary', 'secondary'])
 
@@ -72,7 +74,7 @@ b.add_dataset(phoebe.dataset.orb,
 
 
 b.add_dataset('orb', 
-              times=np.linspace(0,10,20), 
+              compute_times=np.linspace(0,10,20), 
               component=['primary', 'secondary'], 
               dataset='orb01', 
               overwrite=True)
@@ -80,7 +82,7 @@ b.add_dataset('orb',
 
 # You may notice that add_dataset does take some time to complete.  In the background, the passband is being loaded (when applicable) and many parameters are created and attached to the Bundle.
 
-# If you do not provide a list of component(s), they will be assumed for you based on the dataset method.  Light curves and meshes can only attach at the system level (component=None), for instance, whereas RVs and ETVs can attach for each star.
+# If you do not provide a list of component(s), they will be assumed for you based on the dataset method.  [LCs](LC.ipynb) (light curves) and [meshes](MESH.ipynb) can only attach at the system level (component=None), for instance, whereas [RVs](RV.ipynb) and [ORBs](ORB.ipynb) can attach for each star.
 
 # In[4]:
 
@@ -110,27 +112,19 @@ print(b.filter(qualifier='times', dataset='rv01', check_default=False).component
 print(b.get('times@_default@rv01', check_default=False))
 
 
-# For the 'orb' datasets defined earlier, on the other hand, we explicitly provided components.  In that case the '\_default' times will be empty - adding a new component will result in this empty array being replicated and the orbit will NOT be computed for the tertiary component.  Of course, you could always manually copy the time array at a later time if you wanted the orbit to be computed..
-
-# In[8]:
-
-
-print(b.get('times@_default@orb01', check_default=False))
-
-
 # ### With Observations
 # 
 # Loading datasets with observations is (nearly) as simple.  
 # 
 # Passing arrays to any of the dataset columns will apply it to all of the same components in which the time will be applied (see the 'Without Observations' section above for more details).  This make perfect sense for fluxes in light curves where the time and flux arrays are both at the system level:
 
-# In[9]:
+# In[8]:
 
 
 b.add_dataset('lc', times=[0,1], fluxes=[1,0.5], dataset='lc01')
 
 
-# In[10]:
+# In[9]:
 
 
 print(b['fluxes@lc01@dataset'])
@@ -140,7 +134,7 @@ print(b['fluxes@lc01@dataset'])
 # 
 # For a single-lined RV where we only attach to one component, everything is as expected.
 
-# In[11]:
+# In[10]:
 
 
 b.add_dataset('rv', 
@@ -151,7 +145,7 @@ b.add_dataset('rv',
               overwrite=True)
 
 
-# In[12]:
+# In[11]:
 
 
 print(b['rvs@rv01'])
@@ -159,16 +153,16 @@ print(b['rvs@rv01'])
 
 # However, for a double-lined RV we probably **don't** want to do the following:
 
-# In[13]:
+# In[12]:
 
 
 b.add_dataset('rv', 
-              times=[0,1], 
+              times=[0,0.5,1], 
               rvs=[-3,3], 
               dataset='rv02')
 
 
-# In[14]:
+# In[13]:
 
 
 print(b['rvs@rv02'])
@@ -176,17 +170,17 @@ print(b['rvs@rv02'])
 
 # Instead we want to pass different arrays to the 'rvs@primary' and 'rvs@secondary'.  This can be done by explicitly stating the components in a dictionary sent to that argument:
 
-# In[15]:
+# In[14]:
 
 
 b.add_dataset('rv', 
-              times=[0,1], 
+              times=[0,0.5,1], 
               rvs={'primary': [-3,3], 'secondary': [4,-4]}, 
               dataset='rv02',
               overwrite=True)
 
 
-# In[16]:
+# In[15]:
 
 
 print(b['rvs@rv02'])
@@ -202,7 +196,7 @@ print(b['rvs@rv02'])
 # 
 # Note that for light curves, in particular, this rule gets slightly bent.  The dataset arrays for light curves are attached at the system level, *always*.  The passband-dependent options, however, exist for each star in the system.  So, that value will get passed to each star if the component is not explicitly provided.
 
-# In[17]:
+# In[16]:
 
 
 b.add_dataset('lc', 
@@ -212,13 +206,13 @@ b.add_dataset('lc',
               overwrite=True)
 
 
-# In[18]:
+# In[17]:
 
 
 print(b['times@lc01'])
 
 
-# In[19]:
+# In[18]:
 
 
 print(b['ld_func@lc01'])
@@ -226,17 +220,18 @@ print(b['ld_func@lc01'])
 
 # As you might expect, if you want to pass different values to different components, simply provide them in a dictionary.
 
-# In[20]:
+# In[19]:
 
 
 b.add_dataset('lc', 
               times=[0,1], 
+              ld_mode='manual',
               ld_func={'primary': 'logarithmic', 'secondary': 'quadratic'}, 
               dataset='lc01',
              overwrite=True)
 
 
-# In[21]:
+# In[20]:
 
 
 print(b['ld_func@lc01'])
@@ -244,7 +239,7 @@ print(b['ld_func@lc01'])
 
 # Note here that we didn't explicitly override the defaults for '\_default', so they used the phoebe-wide defaults.  If you wanted to set a value for the ld_coeffs of any star added in the future, you would have to provide a value for '\_default' in the dictionary as well.
 
-# In[22]:
+# In[21]:
 
 
 print(b.filter('ld_func@lc01', check_default=False))
@@ -261,7 +256,7 @@ print(b.filter('ld_func@lc01', check_default=False))
 # 
 # Here we'll load times, fluxes, and errors of a light curve from an external file and then pass them on to a newly created dataset.  Since this is a light curve, it will automatically know that you want the summed light from all copmonents in the hierarchy.
 
-# In[23]:
+# In[22]:
 
 
 times, fluxes, sigmas = np.loadtxt('test.lc.in', unpack=True)
@@ -287,19 +282,19 @@ b.add_dataset(phoebe.dataset.lc,
 # 
 # Those conversions can be handled via [b.get_ephemeris](../api/phoebe.frontend.bundle.Bundle.get_ephemeris.md), [b.to_phase](../api/phoebe.frontend.bundle.Bundle.to_phase.md), and [b.to_time](../api/phoebe.frontend.bundle.Bundle.to_time.md).
 
-# In[24]:
+# In[23]:
 
 
 print(b.get_ephemeris())
 
 
-# In[25]:
+# In[24]:
 
 
 print(b.to_phase(0.0))
 
 
-# In[26]:
+# In[25]:
 
 
 print(b.to_time(-0.25))
@@ -312,23 +307,23 @@ print(b.to_time(-0.25))
 # We'll see how plotting works later, but if you manually wanted to plot the dataset
 # with phases, all you'd need to do is:
 
-# In[27]:
+# In[26]:
 
 
-print(b.to_phase(b['times@primary@orb01']))
+print(b.to_phase(b['times@primary@rv01']))
 
 
 # or
 
-# In[28]:
+# In[27]:
 
 
-print(b.to_phase('times@primary@orb01'))
+print(b.to_phase('times@primary@rv01'))
 
 
 # Although it isn't possible to attach *data* in phase-space, it is possible (**new in PHOEBE 2.2**) to tell PHOEBE at which phases to compute the model by setting `compute_phases`.  Note that this overrides the value of `times` when the model is computed.
 
-# In[29]:
+# In[28]:
 
 
 b.add_dataset('lc',
@@ -341,7 +336,7 @@ b.add_dataset('lc',
 # 
 # Note also that although you can pass `compute_phases` directly to add_dataset, if you do not, it will be constrained by `compute_times` by default.  In this case, you would need to flip the constraint before setting `compute_phases`.  See the [constraints tutorial](./constraints.ipynb) and the [flip_constraint API docs](../api/phoebe.frontend.bundle.Bundle.flip_constraint.md) for more details on flipping constraints.
 
-# In[30]:
+# In[29]:
 
 
 b.add_dataset('lc',
@@ -350,19 +345,19 @@ b.add_dataset('lc',
               overwrite=True)
 
 
-# In[31]:
+# In[30]:
 
 
 print(b['compute_phases@lc01'])
 
 
-# In[32]:
+# In[31]:
 
 
 b.flip_constraint('compute_phases', dataset='lc01', solve_for='compute_times')
 
 
-# In[33]:
+# In[32]:
 
 
 b.set_value('compute_phases', dataset='lc01', value=np.linspace(0,1,101))
@@ -373,7 +368,7 @@ b.set_value('compute_phases', dataset='lc01', value=np.linspace(0,1,101))
 # 
 # Removing a dataset will remove matching parameters in either the dataset, model, or constraint contexts.  This action is permanent and not undo-able via [Undo/Redo](undo_redo.ipynb).
 
-# In[34]:
+# In[33]:
 
 
 print(b.datasets)
@@ -381,13 +376,13 @@ print(b.datasets)
 
 # The simplest way to remove a dataset is by its dataset tag:
 
-# In[35]:
+# In[34]:
 
 
 b.remove_dataset('lc01')
 
 
-# In[36]:
+# In[35]:
 
 
 print(b.datasets)
@@ -395,13 +390,13 @@ print(b.datasets)
 
 # But [remove_dataset](../api/phoebe.frontend.bundle.Bundle.remove_dataset.md) also takes any other tag(s) that could be sent to filter.
 
-# In[37]:
+# In[36]:
 
 
 b.remove_dataset(kind='rv')
 
 
-# In[38]:
+# In[37]:
 
 
 print(b.datasets)

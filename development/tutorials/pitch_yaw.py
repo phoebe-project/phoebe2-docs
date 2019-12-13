@@ -7,15 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -54,13 +54,13 @@ b.add_dataset('mesh', times=[0], dataset='mesh01', columns=['teffs'])
 # In[4]:
 
 
-print b['pitch@component']
+print(b['pitch@component'])
 
 
 # In[5]:
 
 
-print b['incl@constraint']
+print(b['incl@constraint'])
 
 
 # Similarly, the 'yaw' parameter defines the misalignment in the direction of the lonigtude of the ascending node.
@@ -70,13 +70,13 @@ print b['incl@constraint']
 # In[6]:
 
 
-print b['yaw@component']
+print(b['yaw@component'])
 
 
 # In[7]:
 
 
-print b['long_an@constraint']
+print(b['long_an@constraint'])
 
 
 # The long_an of a star is a bit of an odd concept, and really is just meant to be analogous to the inclination case.  In reality, it is the angle of the "equator" of the star on the sky.
@@ -84,7 +84,7 @@ print b['long_an@constraint']
 # In[8]:
 
 
-print b['long_an@primary@component'].description
+print(b['long_an@primary@component'].description)
 
 
 # Note also that the system is aligned by default, with the pitch and yaw both set to zero.
@@ -96,20 +96,20 @@ print b['long_an@primary@component'].description
 # 
 # But first let's create an aligned system for comparison.  In order to easily see the spin-axis, we'll plot the effective temperature and spin-up our star to exaggerate the effect.
 
-# In[12]:
+# In[9]:
 
 
 b['syncpar@secondary'] = 5.0
 
 
-# In[13]:
+# In[10]:
 
 
 b['pitch@secondary'] = 0
 b['yaw@secondary'] = 0
 
 
-# In[14]:
+# In[11]:
 
 
 b.run_compute(irrad_method='none')
@@ -117,7 +117,7 @@ b.run_compute(irrad_method='none')
 
 # We'll plot the mesh as it would be seen on the plane of the sky.
 
-# In[15]:
+# In[12]:
 
 
 afig, mplfig = b.plot(time=0.0, fc='teffs', ec='none', x='us', y='vs', show=True)
@@ -125,7 +125,7 @@ afig, mplfig = b.plot(time=0.0, fc='teffs', ec='none', x='us', y='vs', show=True
 
 # and also with the line-of-sight along the x-axis.
 
-# In[16]:
+# In[13]:
 
 
 afig, mplfig = b.plot(time=0.0, fc='teffs', ec='none', x='ws', y='vs', show=True)
@@ -133,26 +133,26 @@ afig, mplfig = b.plot(time=0.0, fc='teffs', ec='none', x='ws', y='vs', show=True
 
 # If we set the pitch to be non-zero, we'd expect to see a change in the spin axis along the line-of-sight.
 
-# In[17]:
+# In[14]:
 
 
 b['pitch@secondary'] = 30
 b['yaw@secondary'] = 0
 
 
-# In[18]:
+# In[15]:
 
 
 b.run_compute(irrad_method='none')
 
 
-# In[19]:
+# In[16]:
 
 
 afig, mplfig = b.plot(time=0.0, fc='teffs', ec='none', x='us', y='vs', show=True)
 
 
-# In[20]:
+# In[17]:
 
 
 afig, mplfig = b.plot(time=0.0, fc='teffs', ec='none', x='ws', y='vs', show=True)
@@ -160,26 +160,26 @@ afig, mplfig = b.plot(time=0.0, fc='teffs', ec='none', x='ws', y='vs', show=True
 
 # And if we set the yaw to be non-zero, we'll see the rotation axis rotate on the plane of the sky.
 
-# In[22]:
+# In[18]:
 
 
 b['pitch@secondary@component'] = 0
 b['yaw@secondary@component'] = 30
 
 
-# In[23]:
+# In[19]:
 
 
 b.run_compute(irrad_method='none')
 
 
-# In[24]:
+# In[20]:
 
 
 afig, mplfig = b.plot(time=0.0, fc='teffs', ec='none', x='us', y='vs', show=True)
 
 
-# In[25]:
+# In[21]:
 
 
 afig, mplfig = b.plot(time=0.0, fc='teffs', ec='none', x='ws', y='vs', show=True)

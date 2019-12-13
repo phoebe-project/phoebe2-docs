@@ -145,7 +145,7 @@ afig, mplfig = b.plot(time=0.0,
 # * `save`: we could use `show=True`, but that doesn't always play nice with jupyter notebooks
 # * `save_kwargs`: may need to change these for your setup, to create a gif, passing {'writer': 'imagemagick'} is often useful.
 
-# In[ ]:
+# In[12]:
 
 
 afig, mplfig = b.plot(times=anim_times, 

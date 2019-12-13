@@ -7,15 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -43,19 +43,19 @@ b = phoebe.default_binary()
 # In[3]:
 
 
-print b.get(qualifier='ecc')
+print(b.get_parameter(qualifier='ecc'))
 
 
 # In[4]:
 
 
-print b.get(qualifier='ecosw', context='component')
+print(b.get_parameter(qualifier='ecosw', context='component'))
 
 
 # In[5]:
 
 
-print b.get(qualifier='esinw', context='component')
+print(b.get_parameter(qualifier='esinw', context='component'))
 
 
 # Relevant Constraints
@@ -64,13 +64,13 @@ print b.get(qualifier='esinw', context='component')
 # In[6]:
 
 
-print b.get(qualifier='ecosw', context='constraint')
+print(b.get_parameter(qualifier='ecosw', context='constraint'))
 
 
 # In[7]:
 
 
-print b.get(qualifier='esinw', context='constraint')
+print(b.get_parameter(qualifier='esinw', context='constraint'))
 
 
 # Influence on Meshes (volume conservation)
@@ -98,7 +98,7 @@ b.run_compute()
 # In[11]:
 
 
-print b['volume@primary@model']
+print(b['volume@primary@model'])
 
 
 # In[12]:

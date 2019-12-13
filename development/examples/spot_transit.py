@@ -40,7 +40,7 @@ b = phoebe.default_binary()
 b.flip_constraint('mass@secondary', solve_for='q')
 b.set_value(qualifier='mass', component='secondary', value=0.2)
 b.set_value(qualifier='requiv', component='secondary', value=0.2)
-b.set_value(qualifier='teff', component='secondary', value=100)
+b.set_value(qualifier='teff', component='secondary', value=300)
 
 
 # We'll add a spot to the primary component.
@@ -67,20 +67,20 @@ b.add_dataset('lc', compute_times=phoebe.linspace(-0.1, 0.1, 201))
 
 # Because we have such a cool transiting object, we'll have to use blackbody atmospheres and manually provide limb-darkening.
 
-# In[5]:
+# In[6]:
 
 
 b.set_value(qualifier='atm', component='secondary', value='blackbody')
-b.set_value(qualifier='ld_mode', component='secondary', value='func_provided')
+b.set_value(qualifier='ld_mode', component='secondary', value='manual')
 
 
-# In[6]:
+# In[7]:
 
 
 anim_times = phoebe.linspace(-0.1, 0.1, 101)
 
 
-# In[7]:
+# In[8]:
 
 
 b.add_dataset('mesh', compute_times=anim_times, coordinates='uvw', columns='teffs')
@@ -89,7 +89,7 @@ b.add_dataset('mesh', compute_times=anim_times, coordinates='uvw', columns='teff
 # Running Compute
 # --------------------
 
-# In[8]:
+# In[9]:
 
 
 b.run_compute(distortion_method='sphere', irrad_method='none')
@@ -98,13 +98,13 @@ b.run_compute(distortion_method='sphere', irrad_method='none')
 # Plotting 
 # ---------------
 
-# In[9]:
+# In[10]:
 
 
 print(np.min(b.get_value('teffs', time=0.0, component='primary')), np.max(b.get_value('teffs', time=0.0, component='primary')))
 
 
-# Let's go through these options:
+# Let's go through these options (see also the [plot API docs](../api/phoebe.parameters.ParameterSet.plot.md)):
 # * `time`: make the plot at this single time
 # * `fc`: (will be ignored by everything but the mesh): set the facecolor to the teffs column.
 # * `fcmap`: use 'plasma' colormap instead of the default to avoid whites.
@@ -113,7 +113,7 @@ print(np.min(b.get_value('teffs', time=0.0, component='primary')), np.max(b.get_
 # * `tight_layout`: use matplotlib's tight layout to ensure we have enough padding between axes to see the labels.
 # 
 
-# In[10]:
+# In[11]:
 
 
 afig, mplfig = b.plot(time=0.0,
@@ -132,7 +132,7 @@ afig, mplfig = b.plot(time=0.0,
 # * `save`: we could use `show=True`, but that doesn't always play nice with jupyter notebooks
 # * `save_kwargs`: may need to change these for your setup, to create a gif, passing {'writer': 'imagemagick'} is often useful.
 
-# In[11]:
+# In[12]:
 
 
 afig, mplfig = b.plot(times=anim_times,

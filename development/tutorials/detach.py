@@ -7,15 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -71,7 +71,7 @@ b['mymodel']
 # In[6]:
 
 
-b['mymodel'].status
+print(b['mymodel'].status)
 
 
 # If we want, we can even save the Bundle and load it later to retrieve the results.  In this case where the job is being run in a different Python thread but on the same machine, you cannot, however, exit Python or restart your machine.  
@@ -93,7 +93,7 @@ b = phoebe.Bundle.open('test_detach.bundle')
 # In[9]:
 
 
-b['mymodel'].status
+print(b['mymodel'].status)
 
 
 # And at any point we can choose to "re-attach".  If the job isn't yet complete, we'll be in a wait loop until it is.  Once the job is complete, the new model will be loaded and accessible.
@@ -110,8 +110,8 @@ b['mymodel'].attach()
 b['mymodel']
 
 
-# In[12]:
+# In[13]:
 
 
-axs, artists = b['mymodel'].plot()
+axs, artists = b['mymodel'].plot(show=True)
 

@@ -9,12 +9,12 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
 # As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
@@ -130,7 +130,7 @@ b['teff@component']
 
 
 b.set_value_all('teff@component', 4000)
-print b['value@teff@primary@component'], b['value@teff@secondary@component']
+print(b['value@teff@primary@component'], b['value@teff@secondary@component'])
 
 
 # If you want dictionary access to use set_value_all instead of set_value, you can enable this parameter
@@ -140,7 +140,7 @@ print b['value@teff@primary@component'], b['value@teff@secondary@component']
 
 b['dict_set_all@setting'] = True
 b['teff@component'] = 8000
-print b['value@teff@primary@component'], b['value@teff@secondary@component']
+print(b['value@teff@primary@component'], b['value@teff@secondary@component'])
 
 
 # Now let's disable this so it doesn't confuse us while looking at the other options
@@ -200,7 +200,7 @@ b.set_value('dict_filter@setting', {})
 
 # ### run_checks_compute
 # 
-# The run_checks_compute option allows setting the default compute option(s) sent to [b.run_checks](../api/phoebe.frontend.bundle.Bundle.run_checks.md), including warnings in the logger raised by interactive checks (see [phoebe.interactive_checks_on](../api/phoebe.interactive_checks_on.md).
+# The run_checks_compute option allows setting the default compute option(s) sent to [b.run_checks](../api/phoebe.frontend.bundle.Bundle.run_checks.md), including warnings in the logger raised by interactive checks (see [phoebe.interactive_checks_on](../api/phoebe.interactive_checks_on.md)).
 
 # In[20]:
 

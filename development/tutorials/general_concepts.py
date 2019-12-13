@@ -15,12 +15,12 @@
 # 
 # 
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
 # Let's get started with some basic imports
@@ -90,7 +90,7 @@ param = phoebe.parameters.StringParameter(qualifier='myparameter',
 # In[4]:
 
 
-print type(param)
+print(type(param))
 
 
 # If we print the parameter object we can see a summary of information
@@ -98,7 +98,7 @@ print type(param)
 # In[5]:
 
 
-print param
+print(param)
 
 
 # You can see here that we've defined three a few things about parameter: the qualifier, description, and value (others do exist, they just don't show up in the summary).
@@ -110,7 +110,7 @@ print param
 # In[6]:
 
 
-print param.tags
+print(param.tags)
 
 
 # and that each of these is available through both a dictionary key and an object attribute.  For example:
@@ -118,7 +118,7 @@ print param.tags
 # In[7]:
 
 
-print param['qualifier'], param.qualifier
+print(param['qualifier'], param.qualifier)
 
 
 # The 'qualifier' attribute is essentially an abbreviated name for the Parameter.
@@ -138,7 +138,7 @@ param.attributes
 # In[9]:
 
 
-print param['description'], param.description
+print(param['description'], param.description)
 
 
 # For the special case of the **'value'** attribute, there is also a [get_value](../api/phoebe.parameters.Parameter.get_value.md) method (will become handy later when we want to be able to request the value in a specific unit).
@@ -146,7 +146,7 @@ print param['description'], param.description
 # In[10]:
 
 
-print param.get_value(), param['value'], param.value
+print(param.get_value(), param['value'], param.value)
 
 
 # The value attribute is also the only attribute that you'll likely want to change, so it also has a [set_value](../api/phoebe.parameters.Parameter.set_value.md) method:
@@ -155,7 +155,7 @@ print param.get_value(), param['value'], param.value
 
 
 param.set_value('newvalue')
-print param.get_value()
+print(param.get_value())
 
 
 # The **'visible_if'** attribute only comes into play when the Parameter is a member of a ParameterSet, so we'll discuss it at the end of this tutorial when we get to ParameterSets.
@@ -184,25 +184,25 @@ param = phoebe.parameters.ChoiceParameter(qualifier='mychoiceparameter',
 # In[13]:
 
 
-print param
+print(param)
 
 
 # In[14]:
 
 
-print param.attributes
+print(param.attributes)
 
 
 # In[15]:
 
 
-print param['choices'], param.choices
+print(param['choices'], param.choices)
 
 
 # In[16]:
 
 
-print param.get_value()
+print(param.get_value())
 
 
 # In[17]:
@@ -210,7 +210,7 @@ print param.get_value()
 
 #param.set_value('not_a_choice') # would raise a ValueError
 param.set_value('choice2')
-print param.get_value()
+print(param.get_value())
 
 
 # ### SelectParameters
@@ -231,25 +231,25 @@ param = phoebe.parameters.SelectParameter(qualifier='myselectparameter',
 # In[19]:
 
 
-print param
+print(param)
 
 
 # In[20]:
 
 
-print param.attributes
+print(param.attributes)
 
 
 # In[21]:
 
 
-print param['choices'], param.choices
+print(param['choices'], param.choices)
 
 
 # In[22]:
 
 
-print param.get_value()
+print(param.get_value())
 
 
 # However, SelectParameters also allow you to use * as a wildcard and will expand to any of the choices that match that wildcard.  For example,
@@ -263,13 +263,13 @@ param.set_value(["choice*"])
 # In[24]:
 
 
-print param.get_value()
+print(param.get_value())
 
 
 # In[25]:
 
 
-print param.expand_value()
+print(param.expand_value())
 
 
 # ### FloatParameters
@@ -289,7 +289,7 @@ param = phoebe.parameters.FloatParameter(qualifier='myfloatparameter',
 # In[27]:
 
 
-print param
+print(param)
 
 
 # You'll notice here a few new mentions in the summary... "Constrained by", "Constrains", and "Related to" are all referring to [constraints which will be discussed in a future tutorial](constraints.ipynb).
@@ -297,7 +297,7 @@ print param
 # In[28]:
 
 
-print param.attributes
+print(param.attributes)
 
 
 # FloatParameters have an attribute which hold the "limits" - whenever a value is set it will be checked to make sure it falls within the limits.  If either the lower or upper limit is None, then there is no limit check for that extreme.
@@ -305,7 +305,7 @@ print param.attributes
 # In[29]:
 
 
-print param['limits'], param.limits
+print(param['limits'], param.limits)
 
 
 # In[30]:
@@ -313,7 +313,7 @@ print param['limits'], param.limits
 
 #param.set_value(30) # would raise a ValueError
 param.set_value(2)
-print param.get_value()
+print(param.get_value())
 
 
 # FloatParameters have an attribute which holds the "default_unit" - this is the unit in which the value is stored **and** the unit that will be provided if not otherwise overriden.
@@ -321,7 +321,7 @@ print param.get_value()
 # In[31]:
 
 
-print param['default_unit'], param.default_unit
+print(param['default_unit'], param.default_unit)
 
 
 # Calling get_value will then return a float in these units
@@ -329,7 +329,7 @@ print param['default_unit'], param.default_unit
 # In[32]:
 
 
-print param.get_value()
+print(param.get_value())
 
 
 # But we can also request the value in a different unit, by passing an [astropy Unit object](http://docs.astropy.org/en/stable/units/) or its string representation.
@@ -337,7 +337,7 @@ print param.get_value()
 # In[33]:
 
 
-print param.get_value(unit=u.km), param.get_value(unit='km')
+print(param.get_value(unit=u.km), param.get_value(unit='km'))
 
 
 # FloatParameters also have their own method to access an [astropy Quantity object](http://docs.astropy.org/en/stable/units/) that includes both the value and the unit
@@ -345,7 +345,7 @@ print param.get_value(unit=u.km), param.get_value(unit='km')
 # In[34]:
 
 
-print param.get_quantity(), param.get_quantity(unit=u.km)
+print(param.get_quantity(), param.get_quantity(unit=u.km))
 
 
 # The set_value method also accepts a unit - this doesn't change the default_unit internally, but instead converts the provided value before storing.
@@ -354,21 +354,21 @@ print param.get_quantity(), param.get_quantity(unit=u.km)
 
 
 param.set_value(10)
-print param.get_quantity()
+print(param.get_quantity())
 
 
 # In[36]:
 
 
 param.set_value(0.001*u.km)
-print param.get_quantity()
+print(param.get_quantity())
 
 
 # In[37]:
 
 
 param.set_value(10, unit='cm')
-print param.get_quantity()
+print(param.get_quantity())
 
 
 # If for some reason you want to change the default_unit, you can do so as well:
@@ -377,7 +377,7 @@ print param.get_quantity()
 
 
 param.set_default_unit(u.km)
-print param.get_quantity()
+print(param.get_quantity())
 
 
 # But note that the limits are still stored as a quantity object in the originally defined default_units
@@ -385,7 +385,7 @@ print param.get_quantity()
 # In[39]:
 
 
-print param.limits
+print(param.limits)
 
 
 # ### IntParameters
@@ -404,13 +404,13 @@ param = phoebe.parameters.IntParameter(qualifier='myintparameter',
 # In[41]:
 
 
-print param
+print(param)
 
 
 # In[42]:
 
 
-print param.attributes
+print(param.attributes)
 
 
 # Like FloatParameters above, IntParameters still have limits
@@ -418,7 +418,7 @@ print param.attributes
 # In[43]:
 
 
-print param['limits'], param.limits
+print(param['limits'], param.limits)
 
 
 # Note that if you try to set the value to a float it will not raise an error, but will cast that value to an integer (following python rules of truncation, not rounding)
@@ -427,7 +427,7 @@ print param['limits'], param.limits
 
 
 param.set_value(1.9)
-print param.get_value()
+print(param.get_value())
 
 
 # ### Bool Parameters
@@ -445,13 +445,13 @@ param = phoebe.parameters.BoolParameter(qualifier='myboolparameter',
 # In[46]:
 
 
-print param
+print(param)
 
 
 # In[47]:
 
 
-print param.attributes
+print(param.attributes)
 
 
 # Note that, like IntParameters, BoolParameters will attempt to cast anything you give it into True or False.
@@ -460,14 +460,14 @@ print param.attributes
 
 
 param.set_value(0)
-print param.get_value()
+print(param.get_value())
 
 
 # In[49]:
 
 
 param.set_value(None)
-print param.get_value()
+print(param.get_value())
 
 
 # As with Python, an empty string will cast to False and a non-empty string will cast to True
@@ -476,14 +476,14 @@ print param.get_value()
 
 
 param.set_value('')
-print param.get_value()
+print(param.get_value())
 
 
 # In[51]:
 
 
 param.set_value('some_string')
-print param.get_value()
+print(param.get_value())
 
 
 # The only exception to this is that (unlike Python), 'true' or 'True' will cast to True and 'false' or 'False' will cast to False.
@@ -492,14 +492,14 @@ print param.get_value()
 
 
 param.set_value('False')
-print param.get_value()
+print(param.get_value())
 
 
 # In[53]:
 
 
 param.set_value('false')
-print param.get_value()
+print(param.get_value())
 
 
 # ### FloatArrayParameters
@@ -520,19 +520,19 @@ param = phoebe.parameters.FloatArrayParameter(qualifier='myfloatarrayparameters'
 # In[55]:
 
 
-print param
+print(param)
 
 
 # In[56]:
 
 
-print param.attributes
+print(param.attributes)
 
 
 # In[57]:
 
 
-print param.get_value(unit=u.km)
+print(param.get_value(unit=u.km))
 
 
 # FloatArrayParameters also allow for built-in interpolation... but this requires them to be a member of a Bundle, so we'll discuss this in just a bit.
@@ -581,7 +581,7 @@ ps = phoebe.parameters.ParameterSet([param1, param2, param3])
 # In[60]:
 
 
-print ps.to_list()
+print(ps.to_list())
 
 
 # If we print a ParameterSet, we'll see a listing of all the Parameters and their values.
@@ -589,7 +589,7 @@ print ps.to_list()
 # In[61]:
 
 
-print ps
+print(ps)
 
 
 # Similarly to Parameters, we can access the tags of a ParameterSet
@@ -597,7 +597,7 @@ print ps
 # In[62]:
 
 
-print ps.tags
+print(ps.tags)
 
 
 # ### Twigs
@@ -609,7 +609,7 @@ print ps.tags
 # In[63]:
 
 
-print ps.get('param1@kind1')
+print(ps.get('param1@kind1'))
 
 
 # Note that this returned the ParameterObject itself, so you can now use any of the Parameter methods or attributes we saw earlier.  For example:
@@ -617,7 +617,7 @@ print ps.get('param1@kind1')
 # In[64]:
 
 
-print ps.get('param1@kind1').description
+print(ps.get('param1@kind1').description)
 
 
 # But we can also use set and get_value methods from the ParameterSet itself:
@@ -626,7 +626,7 @@ print ps.get('param1@kind1').description
 
 
 ps.set_value('param1@kind1', 10)
-print ps.get_value('param1@kind1')
+print(ps.get_value('param1@kind1'))
 
 
 # ### Tags
@@ -638,7 +638,7 @@ print ps.get_value('param1@kind1')
 # In[66]:
 
 
-print ps.meta.keys()
+print(ps.meta.keys())
 
 
 # Most of these "metatags" act as labels - for example, you can give a component tag to each of the components for easier referencing.
@@ -684,7 +684,7 @@ print ps.meta.keys()
 # In[67]:
 
 
-print ps.context
+print(ps.context)
 
 
 # This returns None since not all objects in this ParameterSet share a single context.  But you can see all the options for a given tag by providing the plural version of that tag name:
@@ -692,7 +692,7 @@ print ps.context
 # In[68]:
 
 
-print ps.contexts
+print(ps.contexts)
 
 
 # ### Filtering
@@ -702,7 +702,7 @@ print ps.contexts
 # In[69]:
 
 
-print ps.filter(context='context1')
+print(ps.filter(context='context1'))
 
 
 # Here we were returned a ParameterSet of all Parameters that matched the filter criteria.  Since we're returned another ParameterSet, we can chain additional filter calls together.
@@ -710,7 +710,7 @@ print ps.filter(context='context1')
 # In[70]:
 
 
-print ps.filter(context='context1', kind='kind1')
+print(ps.filter(context='context1', kind='kind1'))
 
 
 # Now we see that we have drilled down to a single Parameter.  Note that a ParameterSet is still returned - filter will *always* return a ParameterSet.
@@ -720,7 +720,7 @@ print ps.filter(context='context1', kind='kind1')
 # In[71]:
 
 
-print ps.filter(context='context1', kind='kind1')
+print(ps.filter(context='context1', kind='kind1'))
 
 
 # If you want to access the actual Parameter, you must use get instead of (or in addition to) filter.  All of the following lines do the exact same thing:
@@ -728,13 +728,13 @@ print ps.filter(context='context1', kind='kind1')
 # In[72]:
 
 
-print ps.filter(context='context1', kind='kind1').get()
+print(ps.filter(context='context1', kind='kind1').get())
 
 
 # In[73]:
 
 
-print ps.get(context='context1', kind='kind1')
+print(ps.get(context='context1', kind='kind1'))
 
 
 # Or we can use those twigs.  Remember that twigs are just a combination of these tags separated by the @ symbol.  You can use these for dictionary access in a ParameterSet - without needing to provide the name of the tag, and without having to worry about order.  And whenever this returns a ParameterSet, these are also chainable, so the following two lines will do the same thing:
@@ -742,13 +742,13 @@ print ps.get(context='context1', kind='kind1')
 # In[74]:
 
 
-print ps['context1@kind1']
+print(ps['context1@kind1'])
 
 
 # In[75]:
 
 
-print ps['context1']['kind1']
+print(ps['context1']['kind1'])
 
 
 # You may notice that the final result was a Parameter, not a ParameterSet.  Twig dictionary access tries to be smart - if exactly 1 Parameter is found, it will return that Parameter instead of a ParameterSet.  Notice the difference between the two following lines:
@@ -756,13 +756,13 @@ print ps['context1']['kind1']
 # In[76]:
 
 
-print ps['context1']
+print(ps['context1'])
 
 
 # In[77]:
 
 
-print ps['context1@kind1']
+print(ps['context1@kind1'])
 
 
 # Of course, once you get the Parameter you can then use dictionary keys to access any attributes of that Parameter.
@@ -770,7 +770,7 @@ print ps['context1@kind1']
 # In[78]:
 
 
-print ps['context1@kind1']['description']
+print(ps['context1@kind1']['description'])
 
 
 # So we decided we might as well allow access to those attributes directly from the twig as well
@@ -778,7 +778,7 @@ print ps['context1@kind1']['description']
 # In[79]:
 
 
-print ps['description@context1@kind1']
+print(ps['description@context1@kind1'])
 
 
 # The Bundle
@@ -792,7 +792,7 @@ print ps['description@context1@kind1']
 
 
 b = phoebe.Bundle()
-print b
+print(b)
 
 
 # and filter just as you would for a ParameterSet
@@ -800,7 +800,7 @@ print b
 # In[81]:
 
 
-print b.filter(context='system')
+print(b.filter(context='system'))
 
 
 # ### Visible If
@@ -828,7 +828,7 @@ b = phoebe.Bundle([param1, param2])
 # In[83]:
 
 
-print b.filter()
+print(b)
 
 
 # It doesn't make much sense to need to define a mass if this thing isn't baryonic.  So if we change the value of 'what_is_this' to 'aether' then the 'mass' Parameter will temporarily hide itself.
@@ -837,7 +837,7 @@ print b.filter()
 
 
 b.set_value('what_is_this', 'aether')
-print b.filter()
+print(b)
 
 
 # ### FloatArrayParameters: interpolation
@@ -863,13 +863,13 @@ b = phoebe.Bundle([xparam, yparam])
 # In[86]:
 
 
-b.filter('ys').get().twig
+print(b.filter('ys').get().twig)
 
 
 # In[87]:
 
 
-b['ys'].get_value()
+print(b['ys'].get_value())
 
 
 # Now we can interpolate the 'ys' param for any given value of 'xs'
@@ -877,13 +877,13 @@ b['ys'].get_value()
 # In[88]:
 
 
-b['ys'].interp_value(xs=0)
+print(b['ys'].interp_value(xs=0))
 
 
 # In[89]:
 
 
-b['ys'].interp_value(xs=0.2)
+print(b['ys'].interp_value(xs=0.2))
 
 
 # **NOTE**: interp_value does not (yet) support passing a unit.. it will always return a value (not a quantity) and will always be in the default_unit.

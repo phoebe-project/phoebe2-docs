@@ -254,7 +254,7 @@ print(b.get_model().datasets)
 print(b.filter(dataset='rv01', kind='mesh', context='model').twigs)
 
 
-# Any of these columns are then available to use as edge or facecolors when plotting the mesh (see the section on the [MESH dataset](MESH)).
+# Any of these columns are then available to use as edge or facecolors when plotting the mesh (see the section on the [MESH dataset](MESH.ipynb)).
 
 # In[29]:
 

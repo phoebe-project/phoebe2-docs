@@ -7,15 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -44,13 +44,13 @@ b = phoebe.default_binary()
 # In[3]:
 
 
-print b.get_parameter(qualifier='distance', context='system')
+print(b.get_parameter(qualifier='distance', context='system'))
 
 
 # In[4]:
 
 
-print b.get_parameter(qualifier='t0', context='system')
+print(b.get_parameter(qualifier='t0', context='system'))
 
 
 # Influence on Orbits (Positions)
@@ -114,6 +114,7 @@ b.add_dataset('lc', times=np.linspace(0,1,101), dataset='lc01')
 # In[12]:
 
 
+b.set_value_all('ld_mode', 'manual')
 b.set_value_all('ld_func', 'logarithmic')
 b.set_value_all('ld_coeffs', [0.,0.])
 
@@ -124,27 +125,27 @@ b.set_value_all('ld_coeffs', [0.,0.])
 b.set_value('distance', 1.0)
 
 
-# In[14]:
-
-
-b.run_compute(model='dist1')
-
-
 # In[15]:
 
 
-b.set_value('distance', 2.0)
+b.run_compute(model='dist1', overwrite=True)
 
 
 # In[16]:
 
 
-b.run_compute(model='dist2')
+b.set_value('distance', 2.0)
+
+
+# In[17]:
+
+
+b.run_compute(model='dist2', overwrite=True)
 
 
 # Since we doubled the distance from 1 to 2 m, we expect the entire light curve at 2 m to be divided by 4 (note the y-scales on the plots below).
 
-# In[17]:
+# In[18]:
 
 
 afig, mplfig = b['lc01'].plot(show=True, legend=True)
@@ -152,59 +153,59 @@ afig, mplfig = b['lc01'].plot(show=True, legend=True)
 
 # Note that 'pblum' is defined such that a (spherical, non-eclipsed, non-limb darkened) star with a pblum of 4pi will contribute a flux of 1.0 at 1.0 m (the default distance).
 # 
-# For more information, see the [pblum tutorial](pblum)
+# For more information, see the [pblum tutorial](pblum.ipynb)
 
 # Influence on Meshes (Intensities)
 # -----------------------------------------
 # 
-# Distance does not affect the intensities stored in the mesh (including those in relative units).  In other words, like [third light](l3), distance only scales the fluxes.
+# Distance does not affect the intensities stored in the mesh (including those in relative units).  In other words, like [third light](l3.ipynb), distance only scales the fluxes.
 # 
-# NOTE: this is different than pblums which **DO** affect the relative intensities.  Again, see the [pblum tutorial](pblum) for more details.
+# NOTE: this is different than pblums which **DO** affect the relative intensities.  Again, see the [pblum tutorial](pblum.ipynb) for more details.
 # 
 # To see this we can run both of our distances again and look at the values of the intensities in the mesh.
 
-# In[18]:
+# In[19]:
 
 
 b.add_dataset('mesh', times=[0], dataset='mesh01', columns=['intensities@lc01', 'abs_intensities@lc01'])
 
 
-# In[19]:
+# In[20]:
 
 
 b.set_value('distance', 1.0)
 
 
-# In[20]:
-
-
-b.run_compute(model='dist1')
-
-
-# In[21]:
-
-
-b.set_value('distance', 2.0)
-
-
 # In[22]:
 
 
-b.run_compute(model='dist2')
+b.run_compute(model='dist1', overwrite=True)
 
 
 # In[23]:
 
 
-print "dist1 abs_intensities: ", np.nanmean(b.get_value(qualifier='abs_intensities', component='primary', dataset='lc01', model='dist1'))
-print "dist2 abs_intensities: ", np.nanmean(b.get_value(qualifier='abs_intensities', component='primary', dataset='lc01', model='dist2'))
+b.set_value('distance', 2.0)
 
 
 # In[24]:
 
 
-print "dist1 intensities: ", np.nanmean(b.get_value(qualifier='intensities', component='primary', dataset='lc01', model='dist1'))
-print "dist2 intensities: ", np.nanmean(b.get_value(qualifier='intensities', component='primary', dataset='lc01', model='dist2'))
+b.run_compute(model='dist2', overwrite=True)
+
+
+# In[25]:
+
+
+print("dist1 abs_intensities: ", np.nanmean(b.get_value(qualifier='abs_intensities', component='primary', dataset='lc01', model='dist1')))
+print("dist2 abs_intensities: ", np.nanmean(b.get_value(qualifier='abs_intensities', component='primary', dataset='lc01', model='dist2')))
+
+
+# In[26]:
+
+
+print("dist1 intensities: ", np.nanmean(b.get_value(qualifier='intensities', component='primary', dataset='lc01', model='dist1')))
+print("dist2 intensities: ", np.nanmean(b.get_value(qualifier='intensities', component='primary', dataset='lc01', model='dist2')))
 
 
 # In[ ]:

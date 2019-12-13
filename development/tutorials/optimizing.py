@@ -61,8 +61,7 @@ print(phoebe.conf.interactive_checks)
 # In[6]:
 
 
-passed, msg = b.run_checks()
-print(passed, msg)
+print(b.run_checks())
 
 
 # In[7]:
@@ -74,8 +73,7 @@ b.set_value('requiv', component='primary', value=50)
 # In[8]:
 
 
-passed, msg = b.run_checks()
-print(passed, msg)
+print(b.run_checks())
 
 
 # ### Interactive Constraints

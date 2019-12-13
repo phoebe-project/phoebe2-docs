@@ -7,15 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
+get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -71,20 +71,21 @@ b.add_compute('legacy', irrad_method='none', compute='phoebe1')
 b.set_value_all('atm', 'extern_planckint')
 
 
-# In[8]:
+# In[9]:
 
 
+b.set_value_all('ld_mode', 'manual')
 b.set_value_all('ld_func', 'logarithmic')
 b.set_value_all('ld_coeffs', [0.0, 0.0])
 
 
-# In[9]:
+# In[10]:
 
 
 b.run_compute('phoebe2', model='phoebe2model')
 
 
-# In[10]:
+# In[11]:
 
 
 b.run_compute('phoebe1', model='phoebe1model')
@@ -93,7 +94,7 @@ b.run_compute('phoebe1', model='phoebe1model')
 # Plotting
 # ------------
 
-# In[11]:
+# In[12]:
 
 
 afig, mplfig = b.plot(legend=True, ylim=(1.95, 2.05), show=True)

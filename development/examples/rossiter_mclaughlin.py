@@ -136,7 +136,7 @@ afig, mplfig = b.plot(kind='rv',
 
 # Now let's make a plot of the line profiles and mesh during ingress to visualize what's happening. 
 # 
-# Let's go through these options:
+# Let's go through these options (see the [plot API docs](../api/phoebe.parameters.ParameterSet.plot.md) for more details):
 # * `time`: make the plot at this single time
 # * `fc`: (will be ignored by everything but the mesh): set the facecolor to the rvs column.  This will automatically apply a red-blue color mapping.
 # * `ec`: disable drawing the edges of the triangles in a separate color.  We could also set this to 'none', but then we'd be able to "see-through" the triangle edges.
