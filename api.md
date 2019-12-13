@@ -70,6 +70,7 @@ See the full lists for the following modules/classes, or keep scrolling for an o
 * [uninstall_all_passbands](api/phoebe.atmospheres.passbands.uninstall_all_passbands.md)
 * [list_all_update_passbands_available](api/phoebe.atmospheres.passbands.list_all_update_passbands_available.md)
 * [update_passband_available](api/phoebe.atmospheres.passbands.update_passband_available.md)
+* [update_passband](api/phoebe.atmospheres.passbands.update_passband.md)
 * [update_all_passbands](api/phoebe.atmospheres.passbands.update_all_passbands.md)
 * [get_passband](api/phoebe.atmospheres.passbands.get_passband.md)
 
