@@ -6,7 +6,7 @@
 # 
 # This tutorial explains the high-level interface to plotting provided by the Bundle.  You are of course always welcome to access arrays and plot manually.
 # 
-# As of PHOEBE 2.1, PHOEBE uses [autofig](https://autofig.readthedocs.io) as an intermediate layer for highend functionality to [matplotlib](http://matplotlib.org).
+# PHOEBE 2.2 uses [autofig 1.1](https://autofig.readthedocs.io/en/1.1.0) as an intermediate layer for highend functionality to [matplotlib](http://matplotlib.org).
 # 
 # Setup
 # -----------------------------
@@ -355,7 +355,7 @@ afig, mplfig = b['orb@run_with_incl_80'].plot(show=True, legend=True, legend_kwa
 # - linestyle
 # - marker
 # 
-# Note that sizes (markersize, linewidth) should be handled by passing the size to 's' and attempting to set markersize or linewidth directly will raise an error.  See also the [autofig documention on size scales](http://nbviewer.jupyter.org/github/kecnry/autofig/blob/1.0.0/tutorials/size_modes.ipynb).
+# Note that sizes (markersize, linewidth) should be handled by passing the size to 's' and attempting to set markersize or linewidth directly will raise an error.  See also the [autofig documention on size scales](https://autofig.readthedocs.io/en/1.1.0/tutorials/size_modes/).
 # 
 
 # In[29]:

@@ -132,7 +132,7 @@ afig, mplanim = b['mesh01@model'].plot(times=times[:-1], fc='teffs', ec='None',
 # 
 # Sometimes this may not be desired.  By setting `xlim='frame'` (and/or `ylim='frame'`), the axes limits are determined automatically per-frame instead of fixed throughout the animation.
 # 
-# For more information and other options see the [autofig tutorial on limits](http://nbviewer.jupyter.org/github/kecnry/autofig/blob/1.0.0/tutorials/limits.ipynb)
+# For more information and other options see the [autofig tutorial on limits](https://autofig.readthedocs.io/en/1.1.0/tutorials/limits/)
 
 # In[11]:
 
