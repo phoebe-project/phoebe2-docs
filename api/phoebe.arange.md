@@ -9,7 +9,7 @@ def arange(start, stop, step, unit=None)
 
 
 
-This is an included dependency from [nparray](https://nparray.readthedocs.io).
+This is an included dependency from [nparray 1.1.0](https://nparray.readthedocs.io/en/1.1.0/).
 
 ===============================================================
 
