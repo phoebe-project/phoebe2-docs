@@ -3,7 +3,7 @@
 
 ```py
 
-def update_passband(passband, local=True, content=None)
+def update_passband(passband, local=True, content=None, gzipped=None)
 
 ```
 
@@ -14,7 +14,7 @@ For convenience, this function is available at the top-level as
 [phoebe.atmospheres.passbands.update_passband](phoebe.atmospheres.passbands.update_passband.md).
 
 Download and install updates for a single passband from
-[tables.phoebe-project.org](<a href="http://tables.phoebe-project.org">http://tables.phoebe-project.org</a>), retrieving
+<a href="http://tables.phoebe-project.org">http://tables.phoebe-project.org</a>, retrieving
 the same content as in the installed passband.
 
 This will install into the directory dictated by `local`, regardless of the
@@ -51,6 +51,11 @@ Arguments
     the 'content' entry for a given passband in the dictionary exposed by
     [phoebe.atmospheres.passbands.list_online_passbands](phoebe.atmospheres.passbands.list_online_passbands.md)
     with `full_dict=True`.
+* `gzipped` (bool or None, optional, default=None): whether to download a
+    compressed version of the passband.  Compressed files take up less
+    disk-space and less time to download, but take approximately 1 second
+    to load (which will happen once per-passband per-session).  If None,
+    will respect options in [phoebe.set_download_passband_defaults](phoebe.set_download_passband_defaults.md).
 
 Raises
 --------

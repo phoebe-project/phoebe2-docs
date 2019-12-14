@@ -226,9 +226,13 @@ Arguments
 * `save` (string, optional, default=False): filename to save the
     figure (or False to not save).
 * `show` (bool, optional, default=False): whether to show the plot
+
 * `animate` (bool, optional, default=False): whether to animate the figure.
 * `interval` (int, optional, default=100): time in ms between each
     frame in the animation.  Applicable only if `animate` is True.
+* `animate_callback` (callable, optional, default=None): Function which
+    takes the matplotlib figure object and will be called at each frame
+    within the animation.
 
 * `equal_aspect` (optional): whether to force the aspect ratio of the
     axes to be equal.  If not provided, this will default to True if

@@ -3,7 +3,7 @@
 
 ```py
 
-def get_passband(passband, content=None, reload=False, update_if_necessary=False)
+def get_passband(passband, content=None, reload=False, update_if_necessary=False, download_local=True, download_gzipped=None)
 
 ```
 
@@ -17,7 +17,7 @@ Access a passband object by name.  If the passband isn't installed, it
 will be downloaded and installed locally.  If the installed passband does
 not have the necessary tables to match `content` then an attempt will be
 made to download the necessary additional tables from
-[tables.phoebe-project.org](<a href="http://tables.phoebe-project.org">http://tables.phoebe-project.org</a>)
+<a href="http://tables.phoebe-project.org">http://tables.phoebe-project.org</a>
 as long as the timestamps match the local version.  If the online version
 includes other version updates, then an error will be
 raised suggesting to call [phoebe.atmospheres.passbands.update_passband](phoebe.atmospheres.passbands.update_passband.md)
@@ -39,7 +39,7 @@ Arguments
     the passband by passing `content` to
     [phoebe.atmospheres.passbands.download_passband](phoebe.atmospheres.passbands.download_passband.md).
     Options include: None (to accept the content in the local version,
-    but to pass 'all' to [phoebe.atmospheres.passbands.download_passband](phoebe.atmospheres.passbands.download_passband.md)
+    but to respect options in [phoebe.set_download_passband_defaults](phoebe.set_download_passband_defaults.md)
     if no installed version exists), 'all' (to require and fetch all
     available content),
     'ck2004' to require and fetch
@@ -55,6 +55,17 @@ Arguments
     `content`, and the online version has a different timestamp than the
     installed version, then an error will be raised unless `update_if_necessary`
     is set to True.
+* `download_local` (bool, optional, default=True): Only applicable if the
+    passband has to be downloaded from the server.  Whether to install to the local/user
+    directory or the PHOEBE installation directory.  If `local=False`, you
+    must have the necessary permissions to write to the installation
+    directory.
+* `download_gzipped` (bool or None, optional, default=None): Only applicable if
+    the passband has to be downloaded from the server.  Whether to download a
+    compressed version of the passband.  Compressed files take up less
+    disk-space and less time to download, but take approximately 1 second
+    to load (which will happen once per-passband per-session).  If None,
+    will respect options in [phoebe.set_download_passband_defaults](phoebe.set_download_passband_defaults.md).
 
 Returns
 -----------
@@ -63,5 +74,8 @@ Returns
 Raises
 --------
 * ValueError: if the passband cannot be found installed or online.
+* ValueError: if the passband cannot be found installed and online passbands
+    are unavailable (due to server being down or online passbands disabled
+    by environment variable).
 * IOError: if needing to download the passband but the connection fails.
 

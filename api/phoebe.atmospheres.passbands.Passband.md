@@ -20,7 +20,6 @@
 * [export_phoenix_atmtab](phoebe.atmospheres.passbands.Passband.export_phoenix_atmtab.md)
 * [import_wd_atmcof](phoebe.atmospheres.passbands.Passband.import_wd_atmcof.md)
 * [impute_atmosphere_grid](phoebe.atmospheres.passbands.Passband.impute_atmosphere_grid.md)
-* [impute_regular_atmosphere_grid](phoebe.atmospheres.passbands.Passband.impute_regular_atmosphere_grid.md)
 * [interpolate_extinct](phoebe.atmospheres.passbands.Passband.interpolate_extinct.md)
 * [interpolate_ldcoeffs](phoebe.atmospheres.passbands.Passband.interpolate_ldcoeffs.md)
 * [ldint](phoebe.atmospheres.passbands.Passband.ldint.md)
