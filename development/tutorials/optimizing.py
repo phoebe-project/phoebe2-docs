@@ -257,6 +257,22 @@ print(b.get_dataset())
 phoebe.reset_settings()
 
 
+# Passband Options
+# ----------------------------
+# 
+# PHOEBE automatically fetches necessary tables from [tables.phoebe-project.org](http://tables.phoebe-project.org).  By default, only the necessary tables for each passband are fetched (except when calling [download_passband](../api/phoebe.download_passband.md) manually) and the fits files are fetched uncompressed.
+# 
+# 
+# For more details, see the API docs on [download_passband](../api/phoebe.download_passband.md) and [update_passband](../api/phoebe.update_passband.md) as well as the [passband updating tutorial](./passband_updates.ipynb).
+# 
+# The default values mentioned in the API docs for `content` and `gzipped` can be exposed via [phoebe.get_download_passband_defaults](../api/phoebe.get_download_passband_defaults.md) and changed via [phoebe.set_download_passband_defaults](../api/phoebe.set_download_passband_defaults.md).  Note that setting `gzipped` to True will minimize file storage for the passband files and will result in faster download speeds, but take significantly longer to load by PHOEBE as they have to be uncompressed each time they are loaded.  If you have a large number of installed passbands, this could significantly slow importing PHOEBE.
+
+# In[34]:
+
+
+phoebe.get_download_passband_defaults()
+
+
 # ## Environment Variables
 
 # Some settings cannot be changed after importing PHOEBE, so they are available via environment variables.  These can be set in a variety of ways:
@@ -282,3 +298,17 @@ phoebe.reset_settings()
 # ### PHOEBE_ENABLE_ONLINE_PASSBANDS
 # 
 # PHOEBE_ENABLE_ONLINE_PASSBANDS (TRUE by default) dictates whether online passbands are queried and available for on-the-fly downloading.  If you are sure you have all the local passbands you need, set this to False to save some time.
+
+# ### PHOEBE_DOWNLOAD_PASSBAND_DEFAULTS_CONTENT
+# 
+# PHOEBE_DOWNLOAD_PASSBAND_DEFAULTS_CONTENT ('all' by default, use comma separate for a list: 'ck2004,phoenix') allows setting the value for `content` in [phoebe.set_download_passband_defaults](../api/phoebe.set_download_passband_defaults.md).  For more details, see the section above.
+
+# ### PHOEBE_DOWNLOAD_PASSBAND_DEFAULTS_GZIPPED
+# 
+# PHOEBE_DOWNLOAD_PASSBAND_DEFAULTS_GZIPPED (FALSE by default) allows setting the value for `gzipped` in [phoebe.set_download_passband_defaults](../api/phoebe.set_download_passband_defaults.md).  For more details, see the section above.
+
+# In[ ]:
+
+
+
+
