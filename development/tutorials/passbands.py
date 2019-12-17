@@ -110,7 +110,7 @@ np.savetxt('my_passband.ptf', np.vstack((wl, ptf)).T)
 # Registering a passband
 # -------------------------
 # 
-# The first step in introducing a new passband into PHOEBE is registering it with the system. We use the Passband class for that.
+# The first step in introducing a new passband into PHOEBE is registering it with the system. We use the [Passband](../api/phoebe.atmospheres.passbands.Passband.md) class for that.
 
 # In[5]:
 
@@ -261,7 +261,7 @@ pb.compute_ck2004_ldints()
 # 
 # PHOEBE no longer shares any codebase with the WD code, but for comparison purposes it is sometimes useful to use the same atmosphere tables. If the passband you are registering with PHOEBE has been defined in WD's atmcof.dat and atmcofplanck.dat files, PHOEBE can import those coefficients and use them to compute intensities.
 # 
-# To import a set of WD atmospheric coefficients, you need to know the corresponding index of the passband (you can look it up in the WD user manual available [here](ftp://ftp.astro.ufl.edu/pub/wilson/lcdc2003/ebdoc2003.2feb2004.pdf.gz)) and you need to grab the files [atmcofplanck.dat](ftp://ftp.astro.ufl.edu/pub/wilson/lcdc2003/atmcofplanck.dat.gz) and [atmcof.dat](ftp://ftp.astro.ufl.edu/pub/wilson/lcdc2003/atmcof.dat.gz) from Bob Wilson's webpage. For this particular passband the index is 22. To import, issue:
+# To import a set of WD atmospheric coefficients, you need to know the corresponding index of the passband (you can look it up in the WD user manual available at ftp://ftp.astro.ufl.edu/pub/wilson/lcdc2003/ebdoc2003.2feb2004.pdf.gz) and you need to grab the files ftp://ftp.astro.ufl.edu/pub/wilson/lcdc2003/atmcofplanck.dat.gz and ftp://ftp.astro.ufl.edu/pub/wilson/lcdc2003/atmcof.dat.gz from Bob Wilson's webpage. For this particular passband the index is 22. To import, issue:
 
 # In[16]:
 
