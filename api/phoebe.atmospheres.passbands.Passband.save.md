@@ -3,13 +3,13 @@
 
 ```py
 
-def save(self, archive, overwrite=True, update_timestamp=True)
+def save(self, archive, overwrite=True, update_timestamp=True, history_entry='')
 
 ```
 
 
 
-Save the passband to FITS format.
+Saves the passband file in the fits format.
 
 Arguments
 ----------
@@ -18,4 +18,7 @@ Arguments
     existing file with the same filename as provided in `archive`
 * `update_timestamp` (bool, optional, default=True): whether to update
     the stored timestamp with the current time.
+* `history_entry` (string, optional): history entry to append to the
+    fits file.  Note that previous entries will be maintained if
+    (and only if) overwriting an existing file with `overwrite=True`.
 
