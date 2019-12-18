@@ -36,6 +36,7 @@
 * [list_installed_passbands](phoebe.list_installed_passbands.md)
 * [list_online_passbands](phoebe.list_online_passbands.md)
 * [list_passband_directories](phoebe.list_passband_directories.md)
+* [list_passband_online_history](phoebe.list_passband_online_history.md)
 * [list_passbands](phoebe.list_passbands.md)
 * [load](phoebe.load.md)
 * [logger](phoebe.logger.md)

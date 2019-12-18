@@ -3,7 +3,7 @@
 
 ```py
 
-def update_passband_available(passband)
+def update_passband_available(passband, history_dict=False)
 
 ```
 
@@ -23,14 +23,21 @@ If a new version is available, you can update by calling [phoebe.atmospheres.pas
 
 See also:
 * [phoebe.atmospheres.passbands.list_all_update_passbands_available](phoebe.atmospheres.passbands.list_all_update_passbands_available.md)
+* [phoebe.atmospheres.passbands.list_passband_online_history](phoebe.atmospheres.passbands.list_passband_online_history.md)
 * [phoebe.atmospheres.passbands.download_passband](phoebe.atmospheres.passbands.download_passband.md)
 * [phoebe.atmospheres.passbands.update_all_passbands](phoebe.atmospheres.passbands.update_all_passbands.md)
 
 Arguments
 -----------
 * `passband` (string): name of the passband
+* `history_dict` (boolean, optional, default=False): expose the changelog
+    of the version online since the timestamp in the installed version.
+    See also: [phoebe.atmospheres.passbands.list_passband_online_history](phoebe.atmospheres.passbands.list_passband_online_history.md).
 
 Returns
 -----------
-* (bool): whether a newer version is available
+* (bool or dict): whether a newer version is available.  Boolean if
+    `history_dict=False`.  Dictionary of changelog entries since the current
+    version with timestamps as keys and messages as values if `history_dict=True`
+    (will be empty if no updates available).
 
