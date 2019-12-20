@@ -38,8 +38,14 @@ These example scripts are generally focused to show a single advanced feature or
 
 ## Spin-Orbit Misalignment
 
-* [Misaligned Binary System: DI Her](examples/diher_misaligned.ipynb)
+* [Misaligned Binary System: DI Her](examples/diher_misaligned.ipynb) ([Horvat+ 2018](http://phoebe-project.org/publications/2018Horvat+), Figure 8)
 * [Misaligned Binary with Spots](examples/binary_misaligned_spots.ipynb)
+
+## Extinction
+
+* [Extinction: B-K Binary](examples/extinction_BK_binary.ipynb) ([Jones+ 2020](http://phoebe-project.org/publications/2020Jones+), Figures 1 and 2)
+* [Extinction: Eclipse Depth Difference as Function of Temperature](examples/extinction_eclipse_depth_v_teff.ipynb) ([Jones+ 2020](http://phoebe-project.org/publications/2020Jones+), Figure 3)
+* [Extinction: White Dwarf - Subdwarf Binary](examples/extinction_wd_subdwarf.ipynb) ([Jones+ 2020](http://phoebe-project.org/publications/2020Jones+), Figure 4)
 
 
 ## Advanced Plotting & Animations
