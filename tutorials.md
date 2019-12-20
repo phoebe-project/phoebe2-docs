@@ -24,7 +24,9 @@ These tutorials highlight the major changes between versions 2.1.x and 2.2+ in t
 * [Third Light: l3_mode](tutorials/21_22_l3_mode.ipynb)
 * [Compute Times & Phases](tutorials/21_22_compute_times_phases.ipynb)
 * [Run Checks Report](tutorials/21_22_run_checks_report.ipynb)
+* [NEW: extinction (ebv, Av, & Rv)](tutorials/ebv_Av_Rv.ipynb)
 * [NEW: Passband Versioning & Updates](tutorials/passband_updates.ipynb)
+* [DISABLED: Beaming & Boosting](tutorials/beaming_boosting.ipynb)
 
 
 ## Advanced tutorials
