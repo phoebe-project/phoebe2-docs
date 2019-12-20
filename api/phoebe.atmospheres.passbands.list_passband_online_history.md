@@ -3,7 +3,7 @@
 
 ```py
 
-def list_passband_online_history(passband, since_installed=False)
+def list_passband_online_history(passband, since_installed=True)
 
 ```
 
@@ -22,7 +22,7 @@ See also:
 Arguments
 ------------
 * `passband` (string): name of the passband
-* `since_installed` (bool, optional, default=False): whether to filter
+* `since_installed` (bool, optional, default=True): whether to filter
     the changelog entries to only those since the timestamp of the installed
     version.
 

@@ -3,7 +3,7 @@
 
 ```py
 
-def default_contact_binary(*args, **kwargs)
+def default_contact_binary(cls, *args, **kwargs)
 
 ```
 
