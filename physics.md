@@ -30,6 +30,8 @@ The following tutorials aim to explain the implementation and usage of some of t
 * [Gravity Brightening/Darkening (gravb_bol)](tutorials/gravb_bol.ipynb)
 * [Reflection & Heating (irrad_frac_refl_bol, irrad_frac_lost_bol, ld_func_bol, ld_coeffs_bol)](tutorials/reflection_heating.ipynb)
 * [Reflection & Heating: Lambert Scattering (irrad_method='horvat' vs 'wilson')](tutorials/irrad_method_horvat.ipynb)
+* [Radial Velocity Offsets (rv_offset)](tutorials/rv_offset.ipynb)
+
 
 ## Passband/Atmosphere/Dataset Effects/Parameters:
 * [Passbands & Atmospheres (passband & atm)](tutorials/atm_passbands.ipynb)
@@ -38,5 +40,6 @@ The following tutorials aim to explain the implementation and usage of some of t
 * [Third Light (l3_mode, l3, l3_frac)](tutorials/l3.ipynb)
 * [Extinction (ebv, Av, Rv)](tutorials/ebv_Av_Rv.ipynb)
 * [Gravitational Redshift (rv_grav)](tutorials/grav_redshift.ipynb)
+* [Radial Velocity Offsets (rv_offset)](tutorials/rv_offset.ipynb)
 * [Intensity Weighting (intens_weighting)](tutorials/intens_weighting.ipynb)
 * [Finite Time of Integration (exptime, fti_method, fti_oversample)](tutorials/fti.ipynb)
