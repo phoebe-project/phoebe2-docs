@@ -80,9 +80,9 @@ print(b['Rv'])
 
 
 # For more details on the contribution of extinction to observables, see the following example scripts:
-# * [Extinction: B-K Binary](examples/extinction_BK_binary.ipynb) ([Jones+ 2020](http://phoebe-project.org/publications/2020Jones+), Figures 1 and 2)
-# * [Extinction: Eclipse Depth Difference as Function of Temperature](examples/extinction_eclipse_depth_v_teff.ipynb) ([Jones+ 2020](http://phoebe-project.org/publications/2020Jones+), Figure 3)
-# * [Extinction: White Dwarf - Subdwarf Binary](examples/extinction_wd_subdwarf.ipynb) ([Jones+ 2020](http://phoebe-project.org/publications/2020Jones+), Figure 4)
+# * [Extinction: B-K Binary](../examples/extinction_BK_binary.ipynb) ([Jones+ 2020](http://phoebe-project.org/publications/2020Jones+), Figures 1 and 2)
+# * [Extinction: Eclipse Depth Difference as Function of Temperature](../examples/extinction_eclipse_depth_v_teff.ipynb) ([Jones+ 2020](http://phoebe-project.org/publications/2020Jones+), Figure 3)
+# * [Extinction: White Dwarf - Subdwarf Binary](../examples/extinction_wd_subdwarf.ipynb) ([Jones+ 2020](http://phoebe-project.org/publications/2020Jones+), Figure 4)
 
 # In[ ]:
 
