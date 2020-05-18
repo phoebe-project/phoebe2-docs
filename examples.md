@@ -36,16 +36,18 @@ These example scripts are generally focused to show a single advanced feature or
 * [Single Star with Spots](examples/single_spots.ipynb)
 * [Comparing Spots in PHOEBE 2 vs PHOEBE Legacy](examples/legacy_spots.ipynb)
 
-## Spin-Orbit Misalignment
+## Spin-Orbit Misalignment (2.1 release)
 
 * [Misaligned Binary System: DI Her](examples/diher_misaligned.ipynb) ([Horvat+ 2018](http://phoebe-project.org/publications/2018Horvat+), Figure 8)
 * [Misaligned Binary with Spots](examples/binary_misaligned_spots.ipynb)
 
-## Extinction
+## Extinction (2.2 release)
 
 * [Extinction: B-K Binary](examples/extinction_BK_binary.ipynb) ([Jones+ 2020](http://phoebe-project.org/publications/2020Jones+), Figures 1 and 2)
 * [Extinction: Eclipse Depth Difference as Function of Temperature](examples/extinction_eclipse_depth_v_teff.ipynb) ([Jones+ 2020](http://phoebe-project.org/publications/2020Jones+), Figure 3)
 * [Extinction: White Dwarf - Subdwarf Binary](examples/extinction_wd_subdwarf.ipynb) ([Jones+ 2020](http://phoebe-project.org/publications/2020Jones+), Figure 4)
+
+## Inverse Problem (2.3 release)
 
 
 ## Advanced Plotting & Animations

@@ -15,18 +15,10 @@ For more specific use-cases, see the example scripts below.
 7. [Plotting](tutorials/plotting.ipynb)
 8. [Accessing and Plotting Meshes](tutorials/meshes.ipynb)
 
-## Migrating from PHOEBE 2.1 to PHOEBE 2.2
+## Migrating from PHOEBE 2.2 to PHOEBE 2.3
 
-These tutorials highlight the major changes between versions 2.1.x and 2.2+ in the following topics:
+These tutorials highlight the major changes between versions 2.2.x and 2.3+ in the following topics:
 
-* [Limb Darkening: ld_mode & ld_coeffs_source](tutorials/21_22_ld_mode.ipynb)
-* [Passband Luminosities: pblum_mode, pblum_component, pblum_dataset, & pblum vs pblum_ext](tutorials/21_22_pblum_mode.ipynb)
-* [Third Light: l3_mode](tutorials/21_22_l3_mode.ipynb)
-* [Compute Times & Phases](tutorials/21_22_compute_times_phases.ipynb)
-* [Run Checks Report](tutorials/21_22_run_checks_report.ipynb)
-* [NEW: extinction (ebv, Av, & Rv)](tutorials/ebv_Av_Rv.ipynb)
-* [NEW: Passband Versioning & Updates](tutorials/passband_updates.ipynb)
-* [DISABLED: Beaming & Boosting](tutorials/beaming_boosting.ipynb)
 
 
 ## Advanced tutorials
