@@ -9,6 +9,7 @@ instead of a warning).
 See also:
 * [phoebe.frontend.bundle.RunChecksReport.passed](phoebe.frontend.bundle.RunChecksReport.passed.md)
 * [phoebe.frontend.bundle.RunChecksItem.level](phoebe.frontend.bundle.RunChecksItem.level.md)
+* [phoebe.frontend.bundle.RunChecksItem.affects_methods](phoebe.frontend.bundle.RunChecksItem.affects_methods.md)
 * [phoebe.frontend.bundle.RunChecksItem.to_dict](phoebe.frontend.bundle.RunChecksItem.to_dict.md)
 
 Returns

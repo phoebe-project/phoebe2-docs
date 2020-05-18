@@ -3,7 +3,7 @@
 
 ```py
 
-def rename_dataset(self, old_dataset, new_dataset)
+def rename_dataset(self, *args, **kwargs)
 
 ```
 
@@ -15,7 +15,12 @@ Arguments
 ----------
 * `old_dataset` (string): current label of the dataset (must exist)
 * `new_dataset` (string): the desired new label of the dataset
-    (must not yet exist)
+    (must not yet exist, unless `overwrite=True`)
+* `overwrite` (bool, optional, default=False): overwrite the existing
+    entry if it exists.
+* `return_changes` (bool, optional, default=False): whether to include
+    changed/removed parameters in the returned ParameterSet, including
+    the removed parameters due to `overwrite`.
 
 Returns
 --------

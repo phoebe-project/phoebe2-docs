@@ -3,7 +3,7 @@
 
 ```py
 
-def remove_feature(self, feature=None, **kwargs)
+def remove_feature(self, feature=None, return_changes=False, **kwargs)
 
 ```
 

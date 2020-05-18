@@ -20,6 +20,9 @@ Arguments
 * `epoch` (string, optional): epoch of `ra` and `dec`.
 * `distance` (float/quantity, optional): distance to the system.
 * `vgamma` (float/quantity, optional): systemic velocity.
+* `ebv` (float, optional, default=0): extinction E(B-V).
+* `Av` (float, optional, default=0): extinction Av.
+* `Rv` (float, optional, default=3.1): extinction law parameter.
 
 Returns
 --------

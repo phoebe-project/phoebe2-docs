@@ -3,7 +3,7 @@
 
 ```py
 
-def remove_constraint(self, twig=None, **kwargs)
+def remove_constraint(self, twig=None, return_changes=False, **kwargs)
 
 ```
 

@@ -3,7 +3,7 @@
 
 ```py
 
-def save(self, filename, incl_uniqueid=False, compact=False)
+def save(self, filename, incl_uniqueid=False, compact=False, sort_by_context=True)
 
 ```
 

@@ -9,10 +9,6 @@ def ellc(**kwargs)
 
 
 
-**This backend is EXPERIMENTAL and requires developer mode to be enabled**
-
-**DO NOT USE FOR SCIENCE**
-
 Create a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) for compute options for Pierre
 Maxted's [ellc](https://github.com/pmaxted/ellc) code.
 
@@ -36,30 +32,42 @@ See also:
 * [phoebe.frontend.bundle.Bundle.references](phoebe.frontend.bundle.Bundle.references.md)
 
 Note that the wrapper around ellc only uses its forward model.
-ellc also includes its own fitting methods, including emccee.
+ellc also includes its own solver methods, including emccee.
 Those capabilities cannot be accessed from PHOEBE.
 
 The following parameters are "exported/translated" when using the ellc
 backend:
 
 Star:
-* requiv
+* requiv (passed as relative radii by dividing by sma)
 * syncpar
 * gravb_bol
+* teff (ratio^4 used as an estimate of surface brightness ratio, unless pblum_mode='decoupled' in which case pblum ratio is passed directly)
+* irrad_frac_refl_bol
 
 Orbit:
 * sma
 * period
 * q
 * incl
-* ecc
-* per0
+* ecc (passed as sqrt(ecc) cos per0 and sqrt(ecc) sin per0)
+* per0 (passed as sqrt(ecc) cos per0 and sqrt(ecc) sin per0)
 * dperdt
 * t0_supconj
 
+System:
+* vgamma
+
+Feature (spots only):
+* colat (passed as latitude=-colat)
+* long
+* radius
+* relteff (passed as brightness_factor = relteff^4)
+
 Dataset (LC/RV only):
-* l3
-* ld_func (must not be 'interp')
+* l3_frac (will be estimated if l3_mode=='flux', but will cost time)
+* ld_mode (cannot be 'interp'.  If 'lookup', coefficients are queried from PHOEBE tables and passed as ld_coeffs)
+* ld_func (supports linear, quadratic, logarithmic, square_root, power)
 * ld_coeffs (will call [phoebe.frontend.bundle.Bundle.compute_ld_coeffs](phoebe.frontend.bundle.Bundle.compute_ld_coeffs.md) if necessary)
 * pblum (will use [phoebe.frontend.bundle.Bundle.compute_pblums](phoebe.frontend.bundle.Bundle.compute_pblums.md) if necessary)
 
@@ -96,7 +104,7 @@ b.run_compute(kind='ellc')
 Arguments
 ----------
 * `enabled` (bool, optional, default=True): whether to create synthetics in
-    compute/fitting runs.
+    compute/solver runs.
 * `distortion_method` (string, optional, default='roche'): method to use
     for distorting stars.
 * `hf` (float, optional, default=1.5): fluid second love number (only applicable

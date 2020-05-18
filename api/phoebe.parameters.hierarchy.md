@@ -3,3 +3,4 @@
 * [binaryorbit](phoebe.parameters.hierarchy.binaryorbit.md)
 * [blank](phoebe.parameters.hierarchy.blank.md)
 * [component](phoebe.parameters.hierarchy.component.md)
+* [phase_mask_inds](phoebe.parameters.hierarchy.phase_mask_inds.md)

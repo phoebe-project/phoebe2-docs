@@ -3,13 +3,15 @@
 
 ```py
 
-def rename_component(self, old_component, new_component)
+def rename_component(self, *args, **kwargs)
 
 ```
 
 
 
 Change the label of a component attached to the Bundle.
+
+Note: `overwrite` is not supported for `rename_component`
 
 Arguments
 ----------

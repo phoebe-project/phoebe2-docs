@@ -15,6 +15,7 @@ See also:
 * [phoebe.list_available_features](phoebe.list_available_features.md)
 * [phoebe.list_available_datasets](phoebe.list_available_datasets.md)
 * [phoebe.list_available_computes](phoebe.list_available_computes.md)
+* [phoebe.list_available_solvers](phoebe.list_available_solvers.md)
 
 Arguments
 -----------

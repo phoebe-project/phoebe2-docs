@@ -48,7 +48,7 @@ Arguments
     supported).  Only applicable if `syn` is False.
 * `compute_phases` (array/quantity, optional): phases at which to compute
     the model.  Only applicable if `syn` is False.
-* `compute_phases_t0` (string, optional, default='t0_supconj'): t0 to use
+* `phases_t0` (string, optional, default='t0_supconj'): t0 to use
     when converting between `compute_phases` and `compute_times`.  Only
     applicable if `syn` is False.  Not applicable for
     single stars (in which case t0@system is always used).
@@ -81,12 +81,6 @@ Arguments
 * `passband` (string, optional): passband.  Only applicable if `syn` is False.
 * `intens_weighting` (string, optional): whether passband intensities are
     weighted by energy or photons.  Only applicable if `syn` is False.
-* `ebv` (float, optional, default=0): extinction E(B-V).  Only applicable
-    if `syn` is False.
-* `Av` (float, optional, default=0): extinction Av.  Only applicable if
-    `syn` is False.
-* `Rv` (float, optional, default=3.1): extinction law parameter.  Only
-   applicable if `syn` is False.
 
 Returns
 --------

@@ -3,7 +3,7 @@
 
 ```py
 
-def remove_figure(self, figure, **kwargs)
+def remove_figure(self, figure, return_changes=False, **kwargs)
 
 ```
 

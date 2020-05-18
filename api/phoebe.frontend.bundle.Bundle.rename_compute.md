@@ -3,7 +3,7 @@
 
 ```py
 
-def rename_compute(self, old_compute, new_compute)
+def rename_compute(self, *args, **kwargs)
 
 ```
 
@@ -15,7 +15,9 @@ Arguments
 ----------
 * `old_compute` (string): current label of the compute options (must exist)
 * `new_compute` (string): the desired new label of the compute options
-    (must not yet exist)
+    (must not yet exist unless `overwite=True`)
+* `overwrite` (bool, optional, default=False): overwrite the existing
+    entry if it exists.
 
 Returns
 --------

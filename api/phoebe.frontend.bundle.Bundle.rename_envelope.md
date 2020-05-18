@@ -3,11 +3,11 @@
 
 ```py
 
-def rename_envelope(self, old_envelope, new_envelope)
+def rename_envelope(self, old_envelope, new_envelope, overwrite=False, return_changes=False)
 
 ```
 
 
 
-Shortcut to :meth:`rename_component`
+Shortcut to [phoebe.frontend.bundle.Bundle.rename_component](phoebe.frontend.bundle.Bundle.rename_component.md) but with kind='envelope'
 

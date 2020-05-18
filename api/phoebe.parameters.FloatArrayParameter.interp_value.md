@@ -48,6 +48,10 @@ Additionally, when interpolating in time but the time is outside the
 available range, phase-interpolation will automatically be attempted,
 with a warning raised via the [phoebe.logger](phoebe.logger.md).
 
+Note: if this parameter is a model parameter where `sample_mode`
+was 'all', an error will be raised.  If `sample_mode` was 'n-sigma',
+then the median will be used when determining residuals.
+
 See also:
 * [phoebe.parameters.FloatArrayParameter.interp_quantity](phoebe.parameters.FloatArrayParameter.interp_quantity.md)
 

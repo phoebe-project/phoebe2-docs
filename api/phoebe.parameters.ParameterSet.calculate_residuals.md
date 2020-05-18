@@ -3,7 +3,7 @@
 
 ```py
 
-def calculate_residuals(self, model=None, dataset=None, component=None, as_quantity=True)
+def calculate_residuals(self, model=None, dataset=None, component=None, as_quantity=True, return_interp_model=False, mask_enabled=None, mask_phases=None)
 
 ```
 
@@ -24,6 +24,7 @@ phase-space otherwise. See
 
 See also:
 * [phoebe.parameters.ParameterSet.calculate_chi2](phoebe.parameters.ParameterSet.calculate_chi2.md)
+* [phoebe.parameters.ParameterSet.calculate_lnlikelihood](phoebe.parameters.ParameterSet.calculate_lnlikelihood.md)
 
 Arguments
 -----------
@@ -35,11 +36,22 @@ Arguments
     Required only if more than one component exist in the dataset (for
     RVs, for example)
 * `as_quantity` (bool, default=True): whether to return a quantity object.
+* `return_interp_model` (bool, default=False): whether to also return
+    the interpolated model used to compute the residuals.
+* `mask_enabled` (bool, optional, default=None): whether to enable
+    masking on the dataset(s).  If None or not provided, will default to
+    the values set in the dataset(s).
+* `mask_phases` (list of tuples, optional, default=None): phase masks
+    to apply if `mask_enabled = True`.  If None or not provided, will
+    default to the values set in the dataset(s).
+
 
 Returns
 -----------
 * (array) array of residuals with same length as the times array of the
-    corresponding dataset.
+    corresponding dataset.  If `return_interp_model = True`, a second
+    array will be returned corresponding to the interpolated values of
+    the model with the same length.
 
 Raises
 ----------

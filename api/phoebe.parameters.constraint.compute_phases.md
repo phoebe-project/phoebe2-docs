@@ -16,7 +16,7 @@ via [phoebe.frontend.bundle.Bundle.add_dataset](phoebe.frontend.bundle.Bundle.ad
 
 This is usually passed as an argument to
  [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md) as
- `b.add_constraint('compute_phase', component=b.hierarchy.get_top(), dataset='dataset')`.
+ `b.add_constraint('compute_phases', component=b.hierarchy.get_top(), dataset='dataset')`.
 
 Arguments
 -----------

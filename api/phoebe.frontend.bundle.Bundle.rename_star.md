@@ -3,11 +3,11 @@
 
 ```py
 
-def rename_star(self, old_star, new_star)
+def rename_star(self, old_star, new_star, overwrite=False, return_changes=False)
 
 ```
 
 
 
-Shortcut to :meth:`rename_component`
+Shortcut to [phoebe.frontend.bundle.Bundle.rename_component](phoebe.frontend.bundle.Bundle.rename_component.md) but with kind='star'.
 

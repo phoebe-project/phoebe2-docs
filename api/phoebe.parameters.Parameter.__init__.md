@@ -46,6 +46,8 @@ Arguments
 * `constraint` (string, optional): label for the constraint tag
 * `compute` (string, optional): label for the compute tag
 * `model` (string, optional): label for the model tag
+* `solver` (string, optional): label for the solver tag
+* `solution` (string, optional): label for the solution tag
 * `kind` (string, optional): label for the kind tag
 * `context` (string, optional): label for the context tag
 * `copy_for` (dictionary/False, optional, default=False): dictionary of

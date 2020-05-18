@@ -3,7 +3,7 @@
 
 ```py
 
-def remove_dataset(self, dataset=None, **kwargs)
+def remove_dataset(self, dataset=None, return_changes=False, **kwargs)
 
 ```
 
@@ -23,6 +23,8 @@ See also:
 Arguments
 ----------
 * `dataset` (string, optional): the label of the dataset to be removed.
+* `return_changes` (bool, optional, default=False): whether to include
+    changed/removed parameters in the returned ParameterSet.
 * `**kwargs`: other filter arguments to be sent to
     [phoebe.parameters.ParameterSet.remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md).  The following
     will be ignored: dataset, qualifier.

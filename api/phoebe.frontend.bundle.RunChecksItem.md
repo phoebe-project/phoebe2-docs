@@ -1,5 +1,6 @@
 ## [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).RunChecksItem (class)
 
+* [affects_methods](phoebe.frontend.bundle.RunChecksItem.affects_methods.md)
 * [fail](phoebe.frontend.bundle.RunChecksItem.fail.md)
 * [level](phoebe.frontend.bundle.RunChecksItem.level.md)
 * [message](phoebe.frontend.bundle.RunChecksItem.message.md)

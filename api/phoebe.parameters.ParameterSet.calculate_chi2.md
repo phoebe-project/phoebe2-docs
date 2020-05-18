@@ -27,8 +27,16 @@ chi2 value is then the sum over the chi2 of each dataset, where each
 dataset's chi2 value is computed as the sum of squares of residuals
 over the squares of sigmas (if available).
 
+If `sigmas_lnf` is not -inf (default value), then the following term
+is added to the squares of sigmas:
+
+`interpolated_model**2 * np.exp(2 * sigmas_lnf)`
+
+
 See also:
 * [phoebe.parameters.ParameterSet.calculate_residuals](phoebe.parameters.ParameterSet.calculate_residuals.md)
+* [phoebe.parameters.ParameterSet.calculate_lnlikelihood](phoebe.parameters.ParameterSet.calculate_lnlikelihood.md)
+* [phoebe.frontend.bundle.Bundle.calculate_lnp](phoebe.frontend.bundle.Bundle.calculate_lnp.md)
 
 Arguments
 -----------

@@ -33,10 +33,15 @@ Arguments
     the model.  Only applicable if `syn` is False.
 * `compute_phases` (array/quantity, optional): phases at which to compute
     the model.  Only applicable if `syn` is False.
-* `compute_phases_t0` (string, optional, default='t0_supconj'): t0 to use
-    when converting between `compute_phases` and `compute_times`.  Only
-    applicable if `syn` is False.  Not applicable for
+* `phases_t0` (string, optional, default='t0_supconj'): t0 to use
+    when converting between `compute_phases` and `compute_times` as well as
+    when applying `mask_phases`.  Only applicable if `syn` is False.  Not applicable for
     single stars (in which case t0@system is always used).
+* `mask_enabled` (bool, optional, default=True): whether to apply the mask
+    in mask_phases during plotting, calculate_residuals, calculate_chi2,
+    calculate_lnlikelihood, and run_solver
+* `mask_phases` (list of tuples, optional, default=[]): List of phase-tuples.
+    Any observations inside the range set by any of the tuples will be included.
 * `ld_mode` (string, optional, default='interp'): mode to use for handling
     limb-darkening.  Note that 'interp' is not available for all values
     of `atm` (availability can be checked by calling
@@ -60,12 +65,6 @@ Arguments
 * `passband` (string, optional): passband.  Only applicable if `syn` is False.
 * `intens_weighting` (string, optional): whether passband intensities are
     weighted by energy or photons.  Only applicable if `syn` is False.
-* `ebv` (float, optional, default=0): extinction E(B-V).  Only applicable
-    if `syn` is False.
-* `Av` (float, optional, default=0): extinction Av.  Only applicable if
-    `syn` is False.
-* `Rv` (float, optional, default=3.1): extinction law parameter.  Only
-   applicable if `syn` is False.
 
 Returns
 --------

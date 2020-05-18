@@ -1,6 +1,10 @@
 ## [phoebe](phoebe.md).[frontend](phoebe.frontend.md).bundle (module)
 
 * [Bundle](phoebe.frontend.bundle.Bundle.md)
+* [DistributionParameter](phoebe.frontend.bundle.DistributionParameter.md)
 * [RunChecksItem](phoebe.frontend.bundle.RunChecksItem.md)
 * [RunChecksReport](phoebe.frontend.bundle.RunChecksReport.md)
+* [SelectTwigParameter](phoebe.frontend.bundle.SelectTwigParameter.md)
+* [URLError](phoebe.frontend.bundle.URLError.md)
 * [UnitParameter](phoebe.frontend.bundle.UnitParameter.md)
+* [phase_mask_inds](phoebe.frontend.bundle.phase_mask_inds.md)

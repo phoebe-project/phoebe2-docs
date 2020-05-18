@@ -12,8 +12,6 @@ def export_arrays(self, fname, delimiter=' ', header='', footer='', comments='# 
 Export arrays from [phoebe.parameters.Parameter.FloatArrayParameter](phoebe.parameters.Parameter.FloatArrayParameter.md)
 parameters to a file via `np.savetxt`.
 
-NEW IN PHOEBE 2.2
-
 Each parameter will have its array values as a column in the output
 file in a format that can be reloaded manually with `np.loadtxt`.
 

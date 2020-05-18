@@ -48,7 +48,7 @@ b.run_compute(kind='legacy')
 Arguments
 ----------
 * `enabled` (bool, optional, default=True): whether to create synthetics in
-    compute/fitting run.
+    compute/solver run.
 * `atm` (string, optional, default='extern_atmx'): atmosphere tables.
 * `gridsize` (int, optional, default=60): number of meshpoints for WD.
 * `distortion_method` (string, optional, default='roche'): method to use

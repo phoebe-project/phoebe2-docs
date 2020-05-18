@@ -3,7 +3,7 @@
 
 ```py
 
-def compute_pblums(self, compute=None, pblum=True, pblum_ext=True, pbflux=False, pbflux_ext=False, set_value=False, **kwargs)
+def compute_pblums(self, compute=None, pblum=True, pblum_abs=False, pblum_scale=False, pbflux=False, set_value=False, **kwargs)
 
 ```
 
@@ -11,31 +11,26 @@ def compute_pblums(self, compute=None, pblum=True, pblum_ext=True, pbflux=False,
 
 Compute the passband luminosities that will be applied to the system,
 following all coupling, etc, as well as all relevant compute options
-(ntriangles, distortion_method, etc), third light, and distance.
+(ntriangles, distortion_method, etc).
 The exposed passband luminosities (and any coupling) are computed at
 t0@system.
-
-This method allows for computing both intrinsic and extrinsic luminosities.
-Note that pblum scaling is computed (and applied to flux scaling) based
-on intrinsic luminosities (`pblum`).
 
 Any `dataset` which does not support pblum scaling (rv or lp dataset,
 for example), will have their absolute intensities exposed.
 
-Note that luminosities cannot be exposed for any dataset in which
-`pblum_mode` is 'dataset-scaled' as the entire light curve must be
-computed prior to scaling.  These will be excluded from the output
-without error, but with a warning message in the [phoebe.logger](phoebe.logger.md), if
-enabled.
-
-Additionally, an estimate for the total fluxes `pbflux` and `pbflux_ext`
+Additionally, an estimate for the total fluxes `pbflux`
 can optionally be computed.  These will also be computed at t0@system,
-under the spherical assumption where `pbflux = sum(pblum / (4 pi)) + l3`
-or `pbflux_ext = sum(pblum_ext / (4 pi)) + l3`.  Note that in either case,
-the translation from `l3_frac` to `l3` (when necessary) will include
-extrinsic effects.  See also [phoebe.frontend.bundle.Bundle.compute_l3s](phoebe.frontend.bundle.Bundle.compute_l3s.md).
+under the spherical assumption where `pbflux = sum(pblum / (4 pi))`.
+The total flux from a light curve can then be estimated as `pbflux / d^2 + l3`
 
-Note about eclipses: `pbflux` and `pbflux_ext` estimates will not include
+For any dataset with `pblum_mode='dataset-scaled'` or `pblum_mode='dataset-coupled'`
+where `pblum_dataset` references a dataset-scaled dataset, `pblum`,
+`pblum_scale`, and `pbflux` are excluded from the output (but `pblum_abs`
+can be exposed).  To translate from `pblum_abs` to relative `pblum`,
+call [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md) and see the resulting
+`flux_scale` parameter in the resulting model.
+
+Note about eclipses: `pbflux` estimates will not include
 any eclipsing or ellipsoidal effects (even if an eclipse occurs at time
 `t0`) as they are estimated directly from the luminosities under the
 spherical assumption.
@@ -64,7 +59,6 @@ and [phoebe.parameters.dataset.mesh](phoebe.parameters.dataset.mesh.md)) and req
 be exposed (per-time).
 
 Note:
-* for backends without `atm` compute options, 'ck2004' will be used.
 * for backends without `mesh_method` compute options, the most appropriate
     method will be chosen.  'roche' will be used whenever applicable,
     otherwise 'sphere' will be used.
@@ -76,17 +70,16 @@ Arguments
 * `pblum` (bool, optional, default=True): whether to include
     intrinsic (excluding irradiation &amp; features) pblums.  These
     will be exposed in the returned dictionary as pblum@component@dataset.
-* `pblum_ext` (bool, optional, default=True): whether to include
-    extrinsic (irradiation &amp; features) pblums.  These will
-    be exposed as pblum_ext@component@dataset.
+* `pblum_abs` (bool, optional, default=True): whether to include
+    absolute intrinsic (excluding irradiation &amp; features) pblums.  These
+    will be exposed in the returned dictionary as pblum_abs@component@dataset.
+* `pblum_scale` (bool, optional, default=True): whether to include
+    the scaling factor between absolute and scaled pblums.  These
+    will be exposed in the returned dictionary as pblum_scale@component@dataset.
 * `pbflux` (bool, optional, default=False): whether to include
-    intrinsic per-system passband fluxes.  These include third-light
-    (from the l3 or l3_frac parameter), but are estimated based
-    on intrinsic `pblum`.  These will be exposed as pbflux@dataset.
-* `pbflux_ext` (bool, optional, default=False): whether to include
-    extrinsic per-system passband fluxes.  These include third-light
-    (from the l3 or l3_frac parameter), and are estimated based on
-    extrinsic `pblum_ext`.  These will be exposed as pbflux_ext@dataset.
+    intrinsic per-system passband fluxes (before including third light
+    or distance).  These will be exposed as pbflux@dataset.
+    Note: this will sum over all components, regardless of `component`.
 * `component` (string or list of strings, optional): label of the
     component(s) requested. If not provided, will default to all stars
     and envelopes in the hierarchy (see
@@ -102,14 +95,12 @@ Arguments
     if enabled).
 * `set_value` (bool, optional, default=False): apply the computed
     values to the respective `pblum` parameters (even if not
-    currently visible).  Note that extrinsic values (`pblum_ext` and
-    `pbflux_ext`) are not input parameters to the
-    model, so are not set.  This is often used internally to handle
+    currently visible).  This is often used internally to handle
     various options for pblum_mode for alternate backends that require
     passband luminosities or surface brightnesses as input, but is not
     ever required to be called manually.
 * `skip_checks` (bool, optional, default=False): whether to skip calling
-    [phoebe.frontend.bundle.Bundle.run_checks](phoebe.frontend.bundle.Bundle.run_checks.md) before computing the model.
+    [phoebe.frontend.bundle.Bundle.run_checks_compute](phoebe.frontend.bundle.Bundle.run_checks_compute.md) before computing the model.
     NOTE: some unexpected errors could occur for systems which do not
     pass checks.
 * `**kwargs`: any additional kwargs are sent to override compute options.
@@ -117,8 +108,7 @@ Arguments
 Returns
 ----------
 * (dict) computed pblums in a dictionary with keys formatted as
-    pblum@component@dataset (for intrinsic pblums) or
-    pblum_ext@component@dataset (for extrinsic pblums) and the pblums
+    pblum@component@dataset (for intrinsic pblums) and the pblums
     as values (as quantity objects with default units of W).
 
 Raises
@@ -130,5 +120,5 @@ Raises
 * ValueError: if any value in `component` is not a valid star or envelope
     in the hierarchy.
 * ValueError: if the system fails to pass
-    [phoebe.frontend.bundle.Bundle.run_checks](phoebe.frontend.bundle.Bundle.run_checks.md).
+    [phoebe.frontend.bundle.Bundle.run_checks_compute](phoebe.frontend.bundle.Bundle.run_checks_compute.md).
 

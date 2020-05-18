@@ -40,7 +40,7 @@ include a set of compute options for the phoebe backend.
 Arguments
 ----------
 * `enabled` (bool, optional, default=True): whether to create synthetics in
-    compute/fitting runs.
+    compute/solver runs.
 * `dynamics_method` (string, optional, default='keplerian'): which method to
     use to determine the dynamics of components.
 * `ltte` (bool, optional, default=False): whether to correct for light

@@ -23,6 +23,7 @@ Arguments
 * `figure`: (string, optional, default=None): the name of the figure
 * `**kwargs`: any other tags to do the filtering (excluding figure and context)
 
-Returns:
+Returns
+----------
 * a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) object.
 

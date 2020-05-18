@@ -3,7 +3,7 @@
 
 ```py
 
-def references(self, compute=None, dataset=None)
+def references(self, compute=None, dataset=None, solver=None)
 
 ```
 
@@ -24,7 +24,7 @@ Included citations:
 * Atmosphere table citations, when available/applicable.
 * Passband table citations, when available/applicable.
 * Dependency (astropy, numpy, etc) citations, when available/applicable.
-* Alternate backends, when applicable.
+* Alternate compute and/or solver backends, when applicable.
 
 Arguments
 ------------
@@ -34,6 +34,9 @@ Arguments
 * `dataset` (string or list of strings, optional, default=None): only
     consider a single (or list of) datasets.  If None or not provided,
     will default to all attached datasets.
+* `solver` (string or list of strings, optional, default=None): only
+    consider a single (or list of) solver options.  If None or not
+    provided, will default to all attached solver options.
 
 Returns
 ----------

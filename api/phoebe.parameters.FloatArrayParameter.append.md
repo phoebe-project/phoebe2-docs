@@ -3,7 +3,7 @@
 
 ```py
 
-def append(self, value)
+def append(self, value, ignore_readonly=False)
 
 ```
 

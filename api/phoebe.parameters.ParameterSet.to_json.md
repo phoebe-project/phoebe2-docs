@@ -3,7 +3,7 @@
 
 ```py
 
-def to_json(self, incl_uniqueid=False, exclude=[])
+def to_json(self, incl_uniqueid=False, exclude=[], sort_by_context=True)
 
 ```
 

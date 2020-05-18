@@ -3,7 +3,7 @@
 
 ```py
 
-def rename_figure(self, old_figure, new_figure)
+def rename_figure(self, *args, **kwargs)
 
 ```
 
@@ -21,7 +21,9 @@ Arguments
 ----------
 * `old_figure` (string): current label of the figure (must exist)
 * `new_figure` (string): the desired new label of the figure
-    (must not yet exist)
+    (must not yet exist, unless `overwrite=True`)
+* `overwrite` (bool, optional, default=False): overwrite the existing
+    entry if it exists.
 
 Returns
 --------

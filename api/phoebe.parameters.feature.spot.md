@@ -18,6 +18,10 @@ passed on to set the values as described in the arguments below.  Alternatively,
 see [phoebe.parameters.ParameterSet.set_value](phoebe.parameters.ParameterSet.set_value.md) to set/change the values
 after creating the Parameters.
 
+Allowed to attach to:
+* components with kind: star
+* datasets: not allowed
+
 Arguments
 ----------
 * `colat` (float/quantity, optional): colatitude of the center of the spot

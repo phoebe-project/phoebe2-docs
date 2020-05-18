@@ -3,13 +3,11 @@
 
 ```py
 
-def export_compute(self, script_fname, out_fname=None, compute=None, model=None, import_from_older=False, **kwargs)
+def export_compute(self, script_fname, out_fname=None, compute=None, model=None, dataset=None, pause=False, import_from_older=False, **kwargs)
 
 ```
 
 
-
-NEW in PHOEBE 2.2
 
 Export a script to call run_compute externally (in a different thread
 or on a different machine).  To automatically detach to a different
@@ -42,6 +40,14 @@ Arguments
     of `overwrite` (see below).   See also
     [phoebe.frontend.bundle.Bundle.rename_model](phoebe.frontend.bundle.Bundle.rename_model.md) to rename a model after
     creation.
+* `dataset` (list, dict, or string, optional, default=None): filter for which datasets
+    should be computed.  If provided as a dictionary, keys should be compute
+    labels provided in `compute`.  If None, will use the `enabled` parameters in the
+    `compute` options.  If not None, will override all `enabled` parameters.
+* `pause` (bool, optional, default=False): whether to raise an input
+    with instructions for running the exported script and calling
+    [phoebe.frontend.bundle.Bundle.import_model](phoebe.frontend.bundle.Bundle.import_model.md).  Particularly
+    useful if running in an interactive notebook or a script.
 * `import_from_older` (boolean, optional, default=False): whether to allow
     the script to run on a newer version of PHOEBE.  If True and executing
     the outputed script (`script_fname`) on a newer version of PHOEBE,
@@ -49,7 +55,7 @@ Arguments
     an error will be raised when attempting to run the script.  See
     also: [phoebe.frontend.bundle.Bundle.open](phoebe.frontend.bundle.Bundle.open.md).
 * `skip_checks` (bool, optional, default=False): whether to skip calling
-    [phoebe.frontend.bundle.Bundle.run_checks](phoebe.frontend.bundle.Bundle.run_checks.md) before computing the model.
+    [phoebe.frontend.bundle.Bundle.run_checks_compute](phoebe.frontend.bundle.Bundle.run_checks_compute.md) before computing the model.
     NOTE: some unexpected errors could occur for systems which do not
     pass checks.
 * `**kwargs`:: any values in the compute options to temporarily

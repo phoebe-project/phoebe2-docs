@@ -16,8 +16,8 @@ Arguments
 -----------
 * `plfile` (string): path and filename of atmcofplanck.dat
 * `atmfile` (string): path and filename of atmcof.dat
-* `wdidx` (int): WD index of the passed passband. This can be automated
-    but it's not a high priority.
+* `wdidx` (int): WD index of the passed passband. Starts with 1, so
+    it is aligned with the enumeration in lc and dc sources.
 * `Nabun` (int, optional, default=19): number of metallicity nodes in
     atmcof.dat. For the 2003 version the number of nodes is 19.
 * `Nlogg` (int, optional, default=11): number of logg nodes in

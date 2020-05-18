@@ -3,11 +3,11 @@
 
 ```py
 
-def rename_orbit(self, old_orbit, new_orbit)
+def rename_orbit(self, old_orbit, new_orbit, overwrite=False, return_changes=False)
 
 ```
 
 
 
-Shortcut to [phoebe.frontend.bundle.Bundle.remove_component](phoebe.frontend.bundle.Bundle.remove_component.md) but with kind='star'.
+Shortcut to [phoebe.frontend.bundle.Bundle.rename_component](phoebe.frontend.bundle.Bundle.rename_component.md) but with kind='star'.
 

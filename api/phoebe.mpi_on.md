@@ -17,12 +17,16 @@ Default case:
 
 When MPI is enabled, PHOEBE will do the following:
 * if within mpirun: uses PHOEBE's built-in per-dataset or per-time
-    parallelization
+    parallelization for [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md)
+    and per-model parallelization when possible for
+    [phoebe.frontend.bundle.Bundle.run_solver](phoebe.frontend.bundle.Bundle.run_solver.md).
 * if not within mpirun (ie. in a serial python environment): will spawn a
-    separate thread at [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md),
+    separate thread at [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md)
+    and [phoebe.frontend.bundle.Bundle.run_solver](phoebe.frontend.bundle.Bundle.run_solver.md),
     using `nprocs` processors.  This separate thread will be detached
     from the main thread if sending `detach=True` to
-    [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md).
+    [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md) or
+    [phoebe.frontend.bundle.Bundle.run_solver](phoebe.frontend.bundle.Bundle.run_solver.md).
 
 See also:
 * [phoebe.mpi_off](phoebe.mpi_off.md)

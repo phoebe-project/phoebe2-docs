@@ -90,7 +90,7 @@ b.run_compute(kind='photodynam')
 Arguments
 ----------
 * `enabled` (bool, optional, default=True): whether to create synthetics in
-    compute/fitting runs.
+    compute/solver runs.
 * `stepsize` (float, optional, default=0.01): stepsize to use for dynamics
     integration.
 * `orbiterror` (float, optional, default=1e-20): error to use for dynamics

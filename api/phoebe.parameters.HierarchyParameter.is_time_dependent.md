@@ -17,6 +17,7 @@ This will return True if any of the following conditions are met:
 * `dperdt` is non-zero
 * a feature (eg. spot) is attached to an asynchronous star (with
     non-unity value for `syncpar`).
+* a gaussian_process feature is attached to any dataset
 
 Returns
 ---------

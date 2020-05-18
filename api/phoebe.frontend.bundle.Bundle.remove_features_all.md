@@ -3,7 +3,7 @@
 
 ```py
 
-def remove_features_all(self)
+def remove_features_all(self, return_changes=False)
 
 ```
 

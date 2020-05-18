@@ -41,7 +41,7 @@ Arguments
     values to the respective `ld_coeffs`/`ld_coeffs_bol` parameters
     (even if not currently visible).
 * `skip_checks` (bool, optional, default=False): whether to skip calling
-    [phoebe.frontend.bundle.Bundle.run_checks](phoebe.frontend.bundle.Bundle.run_checks.md) before computing the model.
+    [phoebe.frontend.bundle.Bundle.run_checks_compute](phoebe.frontend.bundle.Bundle.run_checks_compute.md) before computing the model.
     NOTE: some unexpected errors could occur for systems which do not
     pass checks.
 * `**kwargs`: any additional kwargs are sent to override compute options.

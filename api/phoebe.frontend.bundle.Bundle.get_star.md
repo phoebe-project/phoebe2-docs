@@ -9,7 +9,7 @@ def get_star(self, component=None, **kwargs)
 
 
 
-Shortcut to :meth:`get_component` but with kind='star'
+Shortcut to [phoebe.frontend.bundle.Bundle.get_component](phoebe.frontend.bundle.Bundle.get_component.md) but with kind='star'
 
 See also:
 * [phoebe.parameters.ParameterSet.filter](phoebe.parameters.ParameterSet.filter.md)

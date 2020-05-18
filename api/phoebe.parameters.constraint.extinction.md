@@ -3,7 +3,7 @@
 
 ```py
 
-def extinction(b, dataset, solve_for=None, **kwargs)
+def extinction(b, solve_for=None, **kwargs)
 
 ```
 
@@ -11,21 +11,18 @@ def extinction(b, dataset, solve_for=None, **kwargs)
 
 Create a constraint for the translation between ebv, Av, and Rv.
 
-This constraint is automatically created and attached for all applicable datasets
-via [phoebe.frontend.bundle.Bundle.add_dataset](phoebe.frontend.bundle.Bundle.add_dataset.md).
+This constraint is automatically created and attached for all systems.
 
 This is usually passed as an argument to
  [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md) as
- `b.add_constraint('extinction', dataset='dataset')`.
+ `b.add_constraint('extinction')`.
 
 Arguments
 -----------
 * `b` ([phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundle.md)): the Bundle
-* `dataset` (string): the label of the dataset in which to find the
-    `ebv`, `Av`, and `Rv` parameters.
 * `solve_for` (&lt;phoebe.parameters.Parameter, optional, default=None): if
     'ebv' should not be the derived/constrained parameter, provide which
-    other parameter should be derived (ie 'compute_times').
+    other parameter should be derived (ie 'Av', 'Rv').
 
 Returns
 ----------

@@ -3,7 +3,7 @@
 
 ```py
 
-def rename_feature(self, old_feature, new_feature)
+def rename_feature(self, *args, **kwargs)
 
 ```
 
@@ -15,7 +15,9 @@ Arguments
 ----------
 * `old_feature` (string): current label of the feature (must exist)
 * `new_feature` (string): the desired new label of the feature
-    (must not yet exist)
+    (must not yet exist, unless `overwrite=True`)
+* `overwrite` (bool, optional, default=False): overwrite the existing
+    entry if it exists.
 
 Returns
 --------

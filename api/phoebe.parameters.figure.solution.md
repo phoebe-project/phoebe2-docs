@@ -1,0 +1,10 @@
+## [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[figure](phoebe.parameters.figure.md).solution (module)
+
+* [dynesty](phoebe.parameters.figure.solution.dynesty.md)
+* [ebai](phoebe.parameters.figure.solution.ebai.md)
+* [emcee](phoebe.parameters.figure.solution.emcee.md)
+* [lc_geometry](phoebe.parameters.figure.solution.lc_geometry.md)
+* [lc_periodogram](phoebe.parameters.figure.solution.lc_periodogram.md)
+* [phase_mask_inds](phoebe.parameters.figure.solution.phase_mask_inds.md)
+* [rv_geometry](phoebe.parameters.figure.solution.rv_geometry.md)
+* [rv_periodogram](phoebe.parameters.figure.solution.rv_periodogram.md)

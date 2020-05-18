@@ -22,7 +22,8 @@ When MPI is disabled, PHOEBE will do the following:
 * if not within mpirun (ie. in a serial python environment): PHOEBE will
     run on a single processor in serial-mode.  Compute jobs can still
     be detached from the main thread by sending `detach=True` to
-    [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md) but will stll run
+    [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md) or
+    [phoebe.frontend.bundle.Bundle.run_solver](phoebe.frontend.bundle.Bundle.run_solver.md) but will still run
     on a single processor.
 
 See also:

@@ -25,6 +25,7 @@ To disable or enable existing datasets see:
 * [phoebe.frontend.bundle.Bundle.disable_dataset](phoebe.frontend.bundle.Bundle.disable_dataset.md)
 
 See also:
+* [phoebe.frontend.bundle.Bundle.run_checks_compute](phoebe.frontend.bundle.Bundle.run_checks_compute.md)
 * [phoebe.mpi_on](phoebe.mpi_on.md)
 * [phoebe.mpi_off](phoebe.mpi_off.md)
 
@@ -48,6 +49,10 @@ Arguments
     [phoebe.frontend.bundle.Bundle.get_model](phoebe.frontend.bundle.Bundle.get_model.md) and
     [phoebe.parameters.JobParameter](phoebe.parameters.JobParameter.md)
     for details on how to check the job status and retrieve the results.
+* `dataset` (list, dict, or string, optional, default=None): filter for which datasets
+    should be computed.  If provided as a dictionary, keys should be compute
+    labels provided in `compute`.  If None, will use the `enabled` parameters in the
+    `compute` options.  If not None, will override all `enabled` parameters.
 * `times` (list, optional, EXPERIMENTAL): override the times at which to compute the model.
     NOTE: this only (temporarily) replaces the time array for datasets
     with times provided (ie empty time arrays are still ignored).  So if
@@ -58,12 +63,11 @@ Arguments
     an existing model with the same `model` tag.  If False,
     an error will be raised.  This defaults to True if `model` is not provided
     or is 'latest', otherwise it will default to False.
-* `return_overwrite` (boolean, optional, default=False): whether to include
-    removed parameters due to `overwrite` in the returned ParameterSet.
-    Only applicable if `overwrite` is True (or defaults to True if
-    `model` is 'latest').
+* `return_changes` (bool, optional, default=False): whether to include
+    changed/removed parameters in the returned ParameterSet, including
+    the removed parameters due to `overwrite`.
 * `skip_checks` (bool, optional, default=False): whether to skip calling
-    [phoebe.frontend.bundle.Bundle.run_checks](phoebe.frontend.bundle.Bundle.run_checks.md) before computing the model.
+    [phoebe.frontend.bundle.Bundle.run_checks_compute](phoebe.frontend.bundle.Bundle.run_checks_compute.md) before computing the model.
     NOTE: some unexpected errors could occur for systems which do not
     pass checks.
 * `max_computations` (int, optional, default=None): maximum
@@ -83,7 +87,7 @@ Raises
 * ValueError: if passing `protomesh` or `pbmesh` as these were removed in 2.1
 * ValueError: if `compute` must be provided but is not.
 * ValueError: if the system fails to pass checks.  See also
-    [phoebe.frontend.bundle.Bundle.run_checks](phoebe.frontend.bundle.Bundle.run_checks.md)
+    [phoebe.frontend.bundle.Bundle.run_checks_compute](phoebe.frontend.bundle.Bundle.run_checks_compute.md)
 * ValueError: if any given dataset is enabled in more than one set of
     compute options sent to run_compute.
 

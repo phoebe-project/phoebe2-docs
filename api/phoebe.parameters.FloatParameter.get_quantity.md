@@ -27,7 +27,7 @@ Arguments
 ----------
 * `unit` (unit or string, optional, default=None): unit to convert the
     value.  If not provided, will use the default unit (see
-    [phoebe.parameters.FloatParameter.default_unit](phoebe.parameters.FloatParameter.default_unit.md))
+    [phoebe.parameters.FloatParameter.default_unit](phoebe.parameters.FloatParameter.default_unit.md)
 * `**kwargs`: passing a keyword argument that matches the qualifier
     of the Parameter, will return that value instead of the stored value.
     See above for how default values are treated.

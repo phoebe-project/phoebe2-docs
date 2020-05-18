@@ -3,7 +3,7 @@
 
 ```py
 
-def remove_model(self, model, **kwargs)
+def remove_model(self, model, return_changes=False, **kwargs)
 
 ```
 
@@ -20,6 +20,8 @@ Arguments
 * `remove_figure_params` (bool, optional): whether to also remove
     figure options tagged with `model`.  If not provided, will default
     to false if `model` is 'latest', otherwise will default to True.
+* `return_changes` (bool, optional, default=False): whether to include
+    changed/removed parameters in the returned ParameterSet.
 * `**kwargs`: other filter arguments to be sent to
     [phoebe.parameters.ParameterSet.remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md).  The following
     will be ignored: model, context.

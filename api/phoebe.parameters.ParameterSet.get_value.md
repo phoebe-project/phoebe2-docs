@@ -29,6 +29,9 @@ Arguments
     value.  If not provided or None, will use the default unit.  See
     [phoebe.parameters.ParameterSet.get_default_unit](phoebe.parameters.ParameterSet.get_default_unit.md). `unit` will
     be ignored for Parameters that do not store quantities.
+* `draw_from` (string, optional, default=None): distribution-tag to
+    draw from (if applicable).  See [phoebe.parameters.FloatParameter.get_quantity](phoebe.parameters.FloatParameter.get_quantity.md)
+    or [phoebe.parameters.FloatParameter.get_value](phoebe.parameters.FloatParameter.get_value.md) for more information.
 * `default` (quantity, optional, default=None): value to return if
     no results are returned by [phoebe.parameters.ParameterSet.get_parameter](phoebe.parameters.ParameterSet.get_parameter.md)
     given the value of `twig` and `**kwargs`.

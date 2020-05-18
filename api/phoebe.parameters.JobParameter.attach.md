@@ -3,7 +3,7 @@
 
 ```py
 
-def attach(self, wait=True, sleep=5, cleanup=True)
+def attach(self, wait=True, sleep=5, cleanup=True, return_changes=False)
 
 ```
 
@@ -20,8 +20,10 @@ Arguments
 * `sleep` (int, optional, default=5): number of seconds to sleep between
     status checks.  See [phoebe.parameters.JobParameter.get_status](phoebe.parameters.JobParameter.get_status.md).
     Only applicable if `wait` is True.
-* `cleanup` (bool, optional, default=True): whether to delete this
-    parameter and any temporary files once the results are loaded.
+* `cleanup` (bool, optional, default=True): whether to delete any
+    temporary files once the results are loaded.
+* `return_changes` (bool, optional, default=False): whether to include
+    changed/removed parameters in the returned ParameterSet.
 
 Returns
 ---------

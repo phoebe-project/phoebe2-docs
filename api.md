@@ -11,8 +11,13 @@ See the full lists for the following modules/classes, or keep scrolling for an o
 * [phoebe.parameters.constraint](api/phoebe.parameters.constraint.md)
 * [phoebe.parameters.dataset](api/phoebe.parameters.dataset.md)
 * [phoebe.parameters.feature](api/phoebe.parameters.feature.md)
-* [phoebe.parameters.figure](api/phoebe.parameters.figure.md)
+* [phoebe.parameters.figure.dataset](api/phoebe.parameters.figure.dataset.md)
+* [phoebe.parameters.figure.distribution](api/phoebe.parameters.figure.distribution.md)
+* [phoebe.parameters.figure.solution](api/phoebe.parameters.figure.solution.md)
 * [phoebe.parameters.hierarchy](api/phoebe.parameters.hierarchy.md)
+* [phoebe.parameters.solver.estimator](api/phoebe.parameters.solver.estimator.md)
+* [phoebe.parameters.solver.optimizer](api/phoebe.parameters.solver.optimizer.md)
+* [phoebe.parameters.solver.sampler](api/phoebe.parameters.solver.sampler.md)
 * [phoebe.parameters.ParameterSet](api/phoebe.parameters.ParameterSet.md)
 * [phoebe.parameters.Parameter](api/phoebe.parameters.Parameter.md)
 * [phoebe.parameters.IntParameter](api/phoebe.parameters.IntParameter.md)
@@ -22,7 +27,9 @@ See the full lists for the following modules/classes, or keep scrolling for an o
 * [phoebe.parameters.StringParameter](api/phoebe.parameters.StringParameter.md)
 * [phoebe.parameters.ChoiceParameter](api/phoebe.parameters.ChoiceParameter.md)
 * [phoebe.parameters.SelectParameter](api/phoebe.parameters.SelectParameter.md)
+* [phoebe.parameters.DictParameter](api/phoebe.parameters.DictParameter.md)
 * [phoebe.parameters.ConstraintParameter](api/phoebe.parameters.ConstraintParameter.md)
+* [phoebe.parameters.DistributionParameter](api/phoebe.parameters.DistributionParameter.md)
 * [phoebe.parameters.HierarchyParameter](api/phoebe.parameters.HierarchyParameter.md)
 * [phoebe.parameters.UnitParameter](api/phoebe.parameters.UnitParameter.md)
 * [phoebe.parameters.JobParameter](api/phoebe.parameters.JobParameter.md)
@@ -53,10 +60,6 @@ See the full lists for the following modules/classes, or keep scrolling for an o
 * [interactive_checks_off](api/phoebe.interactive_checks_off.md)
 * [interactive_constraints_on](api/phoebe.interactive_constraints_on.md)
 * [interactive_constraints_off](api/phoebe.interactive_constraints_off.md)
-* [check_visible_on](api/phoebe.check_visible_on.md)
-* [check_visible_off](api/phoebe.check_visible_off.md)
-* [check_default_on](api/phoebe.check_default_on.md)
-* [check_default_off](api/phoebe.check_default_off.md)
 * [get_download_passband_defaults](api/phoebe.get_download_passband_defaults.md)
 * [set_download_passband_defaults](api/phoebe.set_download_passband_defaults.md)
 * [reset_settings](api/phoebe.reset_settings.md)
@@ -85,15 +88,28 @@ See the full lists for the following modules/classes, or keep scrolling for an o
 * [list_available_datasets](api/phoebe.list_available_datasets.md)
 * [list_available_figures](api/phoebe.list_available_figures.md)
 * [list_available_computes](api/phoebe.list_available_computes.md)
+* [list_available_solvers](api/phoebe.list_available_solvers.md)
 
 
 ### Arrays
 
 * [array](api/phoebe.array.md)
 * [arange](api/phoebe.arange.md)
+* [invspace](api/phoebe.invspace.md)
 * [linspace](api/phoebe.linspace.md)
 * [logspace](api/phoebe.logspace.md)
 * [geomspace](api/phoebe.geomspace.md)
+
+### Distributions
+
+* [gaussian](api/phoebe.gaussian.md)
+* [guassian_around](api/phoebe.gaussian_around.md)
+* [histogram_from_bins](api/phoebe.histogram_from_bins.md)
+* [histogram_from_data](api/phoebe.histogram_from_data.md)
+* [mvgaussian](api/phoebe.mvgaussian.md)
+* [mvhistogram_from_data](api/phoebe.mvhistogram_from_data.md)
+* [uniform](api/phoebe.uniform.md)
+* [uniform_around](api/phoebe.uniform_around.md)
 
 ## Bundle & ParameterSets
 
@@ -135,6 +151,10 @@ Importing/exporting from other codes:
 ### System Checks & References
 
 * [run_checks](api/phoebe.frontend.bundle.Bundle.run_checks.md)
+* [run_checks_system](api/phoebe.frontend.bundle.Bundle.run_checks_system.md)
+* [run_checks_compute](api/phoebe.frontend.bundle.Bundle.run_checks_compute.md)
+* [run_checks_solver](api/phoebe.frontend.bundle.Bundle.run_checks_solver.md)
+* [run_checks_solution](api/phoebe.frontend.bundle.Bundle.run_checks_solution.md)
 * [run_delayed_constraints](api/phoebe.frontend.bundle.Bundle.run_delayed_constraints.md)
 * [run_failed_constraints](api/phoebe.frontend.bundle.Bundle.run_failed_constraints.md)
 * [references](api/phoebe.frontend.bundle.Bundle.references.md)
@@ -157,7 +177,21 @@ Importing/exporting from other codes:
 
 Available (optional) constraints ([see all](api/phoebe.parameters.constraint.md)):
 
+* [requivsumfrac](api/phoebe.parameters.constraint.requivsumfrac.md)
+* [requivratio](api/phoebe.parameters.constraint.requivratio.md)
 * [semidetached](api/phoebe.parameters.constraint.semidetached.md)
+* [teffratio](api/phoebe.parameters.constraint.teffratio.md)
+
+### Figures
+
+* [add_figure](api/phoebe.frontend.bundle.Bundle.add_figure.md)
+* [get_figure](api/phoebe.frontend.bundle.Bundle.get_figure.md)
+* [rename_figure](api/phoebe.frontend.bundle.Bundle.rename_figure.md)
+* [remove_figure](api/phoebe.frontend.bundle.Bundle.remove_figure.md)
+* [run_figure](api/phoebe.frontend.bundle.Bundle.run_figure.md)
+
+See also the Plotting section below for a non-parameter method access to
+the same plotting functionality.
 
 ### Components
 
@@ -216,16 +250,15 @@ Available datasets ([see all](api/phoebe.parameters.dataset.md)):
 * [orb](api/phoebe.parameters.dataset.orb.md)
 * [mesh](api/phoebe.parameters.dataset.mesh.md)
 
-### Figures
+### Distributions
 
-* [add_figure](api/phoebe.frontend.bundle.Bundle.add_figure.md)
-* [get_figure](api/phoebe.frontend.bundle.Bundle.get_figure.md)
-* [rename_figure](api/phoebe.frontend.bundle.Bundle.rename_figure.md)
-* [remove_figure](api/phoebe.frontend.bundle.Bundle.remove_figure.md)
-* [run_figure](api/phoebe.frontend.bundle.Bundle.run_figure.md)
-
-See also the Plotting section below for a non-parameter method access to
-the same plotting functionality.
+* [add_distribution](api/phoebe.frontend.bundle.Bundle.add_distribution.md)
+* [get_distribution](api/phoebe.frontend.bundle.Bundle.get_distribution.md)
+* [rename_distribution](api/phoebe.frontend.bundle.Bundle.rename_distribution.md)
+* [remove_distribution](api/phoebe.frontend.bundle.Bundle.remove_distribution.md)
+* [get_distribution_collection](api/phoebe.frontend.bundle.Bundle.get_distribution_collection.md)
+* [sample_distribution_collection](api/phoebe.frontend.bundle.Bundle.sample_distribution_collection.md)
+* [plot_distribution_collection](api/phoebe.frontend.bundle.Bundle.plot_distribution_collection.md)
 
 ### Compute
 
@@ -241,8 +274,10 @@ the same plotting functionality.
 
 Available compute backends ([see all](api/phoebe.parameters.compute.md)):
 
-* [phoebe](api/phoebe.parameters.compute.phoebe.md)
+* [ellc](api/phoebe.parameters.compute.ellc.md)
+* [jktebop](api/phoebe.parameters.compute.jktebop)
 * [legacy](api/phoebe.parameters.compute.legacy.md)
+* [phoebe](api/phoebe.parameters.compute.phoebe.md)
 
 ### Model
 
@@ -259,6 +294,39 @@ Methods that act on resulting models:
 * [calculate_residuals](api/phoebe.parameters.ParameterSet.calculate_residuals.md)
 * [calculate_chi2](api/phoebe.parameters.ParameterSet.calculate_chi2.md)
 * [run_figure](api/phoebe.frontend.bundle.Bundle.run_figure.md)
+
+
+### Solver
+
+* [add_solver](api/phoebe.frontend.bundle.Bundle.add_solver.md)
+* [get_solver](api/phoebe.frontend.bundle.Bundle.get_solver.md)
+* [rename_solver](api/phoebe.frontend.bundle.Bundle.rename_solver.md)
+* [remove_solver](api/phoebe.frontend.bundle.Bundle.remove_solver.md)
+* [run_solver](api/phoebe.frontend.bundle.Bundle.run_solver.md)
+* [export_solver](api/phoebe.frontend.bundle.Bundle.export_solver.md)
+
+Available solver backends:
+
+* [estimator.lc_periodogram](api/phoebe.parameters.solver.estimator.lc_periodogram.md)
+* [estimator.rv_periodogram](api/phoebe.parameters.solver.estimator.rv_periodogram.md)
+* [estimator.lc_geometry](api/phoebe.parameters.solver.estimator.lc_geometry.md)
+* [estimator.rv_geometry](api/phoebe.parameters.solver.estimator.rv_geometry.md)
+* [estimator.ebai](api/phoebe.parameters.solver.estimator.ebai.md)
+* [optimizer.cg](api/phoebe.parameters.solver.optimizer.cg.md)
+* [optimizer.nelder_mead](api/phoebe.parameters.solver.optimizer.nelder_mead.md)
+* [optimizer.powell](api/phoebe.parameters.solver.optimizer.powell.md)
+* [sampler.dynesty](api/phoebe.parameters.solver.sampler.dynesty.md)
+* [sampler.emcee](api/phoebe.parameters.solver.sampler.emcee.md)
+
+### Solution
+
+* [run_solver](api/phoebe.frontend.bundle.Bundle.run_solver.md)
+* [attach_job](api/phoebe.frontend.bundle.Bundle.attach_job.md)
+* [import_solution](api/phoebe.frontend.bundle.Bundle.import_solution.md)
+* [get_solution](api/phoebe.frontend.bundle.Bundle.get_solution.md)
+* [adopt_solution](api/phoebe.frontend.bundle.Bundle.adopt_solution.md)
+* [rename_solution](api/phoebe.frontend.bundle.Bundle.rename_solution.md)
+* [remove_solution](api/phoebe.frontend.bundle.Bundle.remove_solution.md)
 
 ### Plotting
 

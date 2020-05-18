@@ -168,9 +168,11 @@ if __name__ == '__main__':
     skip_parameters_compute = skip_parameters_type #+ ['jktebop', 'photodynam']
     skip_parameters_constraint = skip_parameters_type + ['keplers_third_law_hierarchical', 'etv', 'time_ephem', 'passband_ratio', 'ph_infconj', 'ph_perpass', 'ph_supconj', 'sin', 'cos', 'tan', 'arcsin', 'arccos', 'arctan', 'arctan2', 'abs', 'sqrt', 'roche_requiv_L1', 'roche_requiv_contact_L1', 'roche_requiv_contact_L23', 'roche_potential_contact_L1', 'roche_potential_contact_L23', 'roche_pot_to_fillout_factor', 'roche_fillout_factor_to_pot', 'requiv_to_pot_contact', 'pot_to_requiv_contact', 'esinw2per0', 'ecosw2per0','esinw2ecc', 'ecosw2ecc', 't0_perpass_to_supconj', 't0_supconj_to_perpass', 't0_ref_to_supconj', 't0_supconj_to_ref', 'custom', 't0', 'teffratio']
     skip_parameters_dataset = skip_parameters_type + ['etv']
+    skip_parameters_figure = skip_parameters_type + []
     skip_parameters_feature = skip_parameters_type + ['pulsation']
     skip_parameters_hierarchy = skip_parameters_type + []
     skip_parameters_setting = skip_parameters_type + []
+    skip_parameters_solver = skip_parameters_type + ['phase_mask_inds']
     skip_parameters_system = skip_parameters_type + []
 
     skip_units = ['add_enabled_equivalencies', 'add_enabled_units', 'def_physical_type', 'def_unit']
@@ -201,6 +203,12 @@ if __name__ == '__main__':
 
     fms_component = api_docs(phoebe.parameters.component, skip=skip_parameters_type, prefix='phoebe.parameters')
     fms_compute = api_docs(phoebe.parameters.compute, skip=skip_parameters_compute, prefix='phoebe.parameters')
+    fms_compute = api_docs(phoebe.parameters.solver.estimator, skip=skip_parameters_solver, prefix='phoebe.parameters.solver')
+    fms_compute = api_docs(phoebe.parameters.solver.optimizer, skip=skip_parameters_solver, prefix='phoebe.parameters.solver')
+    fms_compute = api_docs(phoebe.parameters.solver.sampler, skip=skip_parameters_solver, prefix='phoebe.parameters.solver')
+    fms_compute = api_docs(phoebe.parameters.figure.dataset, skip=skip_parameters_figure, prefix='phoebe.parameters.figure')
+    fms_compute = api_docs(phoebe.parameters.figure.distribution, skip=skip_parameters_figure, prefix='phoebe.parameters.figure')
+    fms_compute = api_docs(phoebe.parameters.figure.solution, skip=skip_parameters_figure, prefix='phoebe.parameters.figure')
     fms_constraint = api_docs(phoebe.parameters.constraint, skip=skip_parameters_constraint, prefix='phoebe.parameters')
     fms_dataset = api_docs(phoebe.parameters.dataset, skip=skip_parameters_dataset, prefix='phoebe.parameters')
     fms_feature = api_docs(phoebe.parameters.feature, skip=skip_parameters_feature, prefix='phoebe.parameters')

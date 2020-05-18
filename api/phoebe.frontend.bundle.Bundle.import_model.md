@@ -3,15 +3,13 @@
 
 ```py
 
-def import_model(self, fname, model=None)
+def import_model(self, fname, model=None, overwrite=False, return_changes=False)
 
 ```
 
 
 
 Import and attach a model from a file.
-
-NEW IN PHOEBE 2.2
 
 Generally this file will be the output after running a script generated
 by [phoebe.frontend.bundle.Bundle.export_compute](phoebe.frontend.bundle.Bundle.export_compute.md).  This is NOT necessary
@@ -30,6 +28,11 @@ Arguments
 * `model` (string, optional): the name of the model to be attached
     to the Bundle.  If not provided, the model will be adopted from
     the tags in the file.
+* `overwrite` (bool, optional, default=False): overwrite the existing
+    entry if it exists.
+* `return_changes` (bool, optional, default=False): whether to include
+    changed/removed parameters in the returned ParameterSet, including
+    the removed parameters due to `overwrite`.
 
 Returns
 -----------
