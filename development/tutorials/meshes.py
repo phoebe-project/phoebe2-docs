@@ -169,8 +169,7 @@ b.run_compute()
 print(b.filter(kind='mesh', context='model').qualifiers)
 
 
-# In[ ]:
-
-
-
-
+# Next
+# ----------
+# 
+# Next up: let's learn about [distributions](./distributions.ipynb)

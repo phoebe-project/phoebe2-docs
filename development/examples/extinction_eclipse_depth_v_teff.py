@@ -14,12 +14,12 @@
 # -----------------------------
 
 # 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
+get_ipython().system('pip install -I "phoebe>=2.3,<2.4"')
 
 
 # As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.ipynb) for more details.
@@ -94,12 +94,12 @@ b.set_value_all('ld_func', 'linear')
 b.set_value_all('ld_coeffs', [0.0])
 
 
-# And flip all extinction constraints so we can provide E(B-V) values.
+# And flip the extinction constraint so we can provide E(B-V).
 
 # In[9]:
 
 
-b.flip_constraints_all('ebv', solve_for='Av')
+b.flip_constraint('ebv', solve_for='Av')
 
 
 # In[10]:
@@ -137,10 +137,10 @@ def binmodel(teff,requiv,mass):
     b.set_value('mass', component='primary', value=mass*u.solMass)
     b.set_value('mass', component='secondary', value=1.0*u.solMass)
     
-    b.set_value_all('ebv', value=0.0)
+    b.set_value('ebv', value=0.0)
     b.run_compute(distortion_method='rotstar', irrad_method='none', model='noext', overwrite=True)
     
-    b.set_value_all('ebv', value=1.0)
+    b.set_value('ebv', value=1.0)
     b.run_compute(distortion_method='rotstar', irrad_method='none', model='ext', overwrite=True)
     
     Bextmags=-2.5*np.log10(b['value@fluxes@B@ext@model'])
@@ -159,10 +159,10 @@ def binmodel(teff,requiv,mass):
 def binmodel_teff(teff):
     b.set_value('teff', component='primary', value=teff*u.K)
     
-    b.set_value_all('ebv', value=0.0)
+    b.set_value('ebv', value=0.0)
     b.run_compute(distortion_method='rotstar', irrad_method='none', model='noext', overwrite=True)
     
-    b.set_value_all('ebv', value=1.0)
+    b.set_value('ebv', value=1.0)
     b.run_compute(distortion_method='rotstar', irrad_method='none', model='ext', overwrite=True)
     
     Bextmags=-2.5*np.log10(b['value@fluxes@B@ext@model'])

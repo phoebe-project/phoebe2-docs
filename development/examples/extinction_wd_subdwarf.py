@@ -14,12 +14,12 @@
 # -----------------------------
 
 # 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
+get_ipython().system('pip install -I "phoebe>=2.3,<2.4"')
 
 
 # As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.ipynb) for more details.
@@ -117,7 +117,7 @@ b.set_value_all('intens_weighting', value='photon')
 # In[9]:
 
 
-b.set_value_all('Rv', value=2.5)
+b.set_value('Rv', value=2.5)
 
 
 # For comparison, we'll first compute a model with zero extinction.
@@ -125,7 +125,7 @@ b.set_value_all('Rv', value=2.5)
 # In[10]:
 
 
-b.set_value_all('Av', value=0.0)
+b.set_value('Av', value=0.0)
 b.run_compute(model='noext',overwrite=True)
 
 
@@ -134,7 +134,7 @@ b.run_compute(model='noext',overwrite=True)
 # In[11]:
 
 
-b.set_value_all('Av',2.0)
+b.set_value('Av',2.0)
 b.run_compute(model='ext',overwrite=True)
 
 

@@ -15,12 +15,12 @@
 # -----------------------------
 
 # 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
+get_ipython().system('pip install -I "phoebe>=2.3,<2.4"')
 
 
 # As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.ipynb) for more details.
@@ -95,35 +95,35 @@ b.set_value_all('ld_func_bol', 'linear')
 b.set_value_all('ld_coeffs_bol', [0.0])
 
 
-# And flip all extinction constraints so we can provide E(B-V) values.
+# And flip the extinction constraint so we can provide E(B-V).
 
 # In[7]:
 
 
-b.flip_constraints_all('ebv', solve_for='Av')
+b.flip_constraint('ebv', solve_for='Av')
 
 
 # For comparison, we'll run a model without extinction
 
-# In[8]:
+# In[9]:
 
 
-b.set_value_all('ebv', 0.0)
+b.set_value('ebv', 0.0)
 b.run_compute(distortion_method='rotstar', irrad_method='none', model='noext')
 
 
 # and then another model with extinction
 
-# In[9]:
+# In[10]:
 
 
-b.set_value_all('ebv', 1.0)
+b.set_value('ebv', 1.0)
 b.run_compute(distortion_method='rotstar', irrad_method='none', model='ext')
 
 
 # Lastly, we'll convert the model fluxes into magnitudes and format the figures.
 
-# In[10]:
+# In[11]:
 
 
 Bextmags=-2.5*np.log10(b['value@fluxes@B@ext@model'])
@@ -139,7 +139,7 @@ Rnoextmags_norm=Rnoextmags-Rnoextmags.min()+1
 Rresid=Rextmags_norm-Rnoextmags_norm
 
 
-# In[11]:
+# In[12]:
 
 
 fig=plt.figure(figsize=(12,6))
@@ -184,7 +184,7 @@ plt.tight_layout()
 fig.canvas.draw()
 
 
-# In[12]:
+# In[13]:
 
 
 KEPextmags=-2.5*np.log10(b['value@fluxes@KEP@ext@model'])
@@ -194,7 +194,7 @@ KEPnoextmags_norm=KEPnoextmags-KEPnoextmags.min()+1
 KEPresid=KEPextmags_norm-KEPnoextmags_norm
 
 
-# In[13]:
+# In[14]:
 
 
 fig=plt.figure(figsize=(6,6))
@@ -219,4 +219,10 @@ ax_1.axhline(y=0., linestyle='dashed',color='k',linewidth=0.5)
 
 plt.tight_layout()
 fig.canvas.draw()
+
+
+# In[ ]:
+
+
+
 

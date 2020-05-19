@@ -7,12 +7,12 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
+get_ipython().system('pip install -I "phoebe>=2.3,<2.4"')
 
 
 # As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
@@ -36,47 +36,41 @@ logger = phoebe.logger()
 b = phoebe.default_binary()
 
 
-# Now let's add a light curve so that we can access the relevant parameters.
-
-# In[3]:
-
-
-b.add_dataset('lc')
-
+# **NOTE** extinction parameters were [moved from the dataset to system context in the 2.3 release](./22_23_extinction.ipynb)
 
 # Relevant Parameters
 # ------------------------
 
 # Extinction is parameterized by 3 parameters: `ebv` (E(B-V)), `Av`, and `Rv`.  Of these three, two can be provided and the other must be constrained.  By default, `ebv` is the constrained parameter.  To change this, see the [tutorial on constraints](constraints.ipynb) and the [b.flip_constraint API docs](../api/phoebe.frontend.bundle.Bundle.flip_constraint.md).
 
-# In[8]:
+# In[3]:
 
 
-print(b['ebv'])
+print(b.filter(qualifier='ebv'))
 
 
-# In[10]:
+# In[4]:
 
 
-print(b['ebv@dataset'])
+print(b.get_parameter(qualifier='ebv', context='system'))
 
 
-# In[11]:
+# In[5]:
 
 
-print(b['ebv@constraint'])
+print(b.get_parameter(qualifier='ebv', context='constraint'))
 
 
 # In[6]:
 
 
-print(b['Av'])
+print(b.get_parameter(qualifier='Av'))
 
 
 # In[7]:
 
 
-print(b['Rv'])
+print(b.get_parameter(qualifier='Rv'))
 
 
 # For more details on the contribution of extinction to observables, see the following example scripts:
