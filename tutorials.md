@@ -14,16 +14,17 @@ For more specific use-cases, see the example scripts below.
 6. [Computing Observables](tutorials/compute.ipynb)
 7. [Plotting](tutorials/plotting.ipynb)
 8. [Accessing and Plotting Meshes](tutorials/meshes.ipynb)
-9. Solving the Inverse Problem
+9. [Distributions](tutorials/distributions.ipynb)
+10. [Solving the Inverse Problem](tutorials/solver.ipynb)
 
 ## Migrating from PHOEBE 2.2 to PHOEBE 2.3
 
 These tutorials highlight the major changes between versions 2.2.x and 2.3+ in the following topics:
 
-* Extinction: per-dataset to system-level
-* Checks: run_checks at system, compute, solver, and solution levels
-* requivsumfrac constraint: replaces requivsum
-* Scipy dependency: updated to 1.7+
+* [Extinction: per-dataset to system-level](tutorials/22_23_extinction.ipynb)
+* [Checks: run_checks at system, compute, solver, and solution levels](tutorials/22_23_run_checks.ipynb)
+* [requivsumfrac constraint: replaces requivsum](tutorials/22_23_requivsumfrac.ipynb)
+* [Scipy dependency: updated to 1.7+](tutorials/22_23_scipy.ipynb)
 
 
 ## Advanced tutorials

@@ -259,6 +259,7 @@ Methods that act on resulting models:
 * [plot](api/phoebe.parameters.ParameterSet.plot.md)
 * [calculate_residuals](api/phoebe.parameters.ParameterSet.calculate_residuals.md)
 * [calculate_chi2](api/phoebe.parameters.ParameterSet.calculate_chi2.md)
+* [calculate_lnlikelihood](api/phoebe.parameters.ParameterSet.calculate_lnlikelihood.md)
 * [run_figure](api/phoebe.frontend.bundle.Bundle.run_figure.md)
 
 
@@ -283,6 +284,13 @@ Available solver backends ([see all](api/phoebe.parameters.solver.md)):
 * [optimizer.powell](api/phoebe.parameters.solver.optimizer.powell.md)
 * [sampler.dynesty](api/phoebe.parameters.solver.sampler.dynesty.md)
 * [sampler.emcee](api/phoebe.parameters.solver.sampler.emcee.md)
+
+Access to merit-function values:
+
+* [calculate_residuals](api/phoebe.parameters.ParameterSet.calculate_residuals.md)
+* [calculate_chi2](api/phoebe.parameters.ParameterSet.calculate_chi2.md)
+* [calculate_lnlikelihood](api/phoebe.parameters.ParameterSet.calculate_lnlikelihood.md)
+* [calculate_lnp](api/phoebe.frontend.bundle.Bundle.calculate_lnp.md)
 
 ### Solution
 
