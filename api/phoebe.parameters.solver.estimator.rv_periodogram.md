@@ -33,6 +33,31 @@ b.run_solver(kind='rv_periodogram')
 
 Arguments
 ----------
+* `algorithm` (string, optional, default='bls'): algorithm to use to create
+    the periodogram.  ls: LombScargle.
+* `rv_datasets` (string or list, optional, default='*'): Radial velocity
+    dataset(s) to use to run the periodogram algorithm.
+* `component` (string, optional, default=top-level orbit): Component to
+    apply the found period.
+* `sample_mode` (string, optional, default='auto'): Whether to automatically
+    determine sampling periods/frequencies ('auto') or set manually ('manual').
+* `sample_periods` (array, optional, default=[]): only applicable if
+    `sample_mode` is 'manual'.  Manual period grid for sampling the periodogram.
+    Note: if `algorithm` is 'ls', these will be converted to frequencies and
+    will be more efficient if sampled evenly in frequency space (consider
+    using [phoebe.invspace](phoebe.invspace.md) instead of [phoebe.linspace](phoebe.linspace.md)).
+* `samples_per_peak` (int, optional, default=10): only applicable if
+    `algorithm` is 'ls' and `sample_mode` is 'auto'.  The approximate number
+    of desired samples across the typical peak.  This is passed directly to
+    autopower. See
+    https://docs.astropy.org/en/stable/api/astropy.timeseries.LombScargle.html#astropy.timeseries.LombScargle.autopower
+* `nyquist_factor` (int, optional, default=5): only applicable if
+    `algorithm` is 'ls' and `sample_mode` is 'auto'.  The multiple of the
+    average nyquist frequency used to choose the maximum frequency.  This is
+    passed directly to autopower. See
+    https://docs.astropy.org/en/stable/api/astropy.timeseries.LombScargle.html#astropy.timeseries.LombScargle.autopower
+
+
 
 Returns
 --------

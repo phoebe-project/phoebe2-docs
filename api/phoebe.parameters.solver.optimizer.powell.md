@@ -28,6 +28,36 @@ b.run_solver(kind='powell')
 
 Arguments
 ----------
+* `compute` (string, optional): compute options to use for the forward
+    model.
+* `expose_lnlikelihoods` (bool, optional, default=False): whether to expose
+    the initial and final lnlikelihoods in the solution (will result in 2
+    additional forward model calls)
+* `fit_parameters` (list, optional, default=[]): parameters (as twigs) to
+    optimize.
+* `initial_values` (dict, optional, default={}): twig-value pairs to
+    (optionally) override the current values in the bundle.  Any items not
+    in `fit_parameters` will be silently ignored.
+* `priors` (list, optional, default=[]): distribution(s) to use for priors
+    (constrained and unconstrained parameters will be included, covariances
+    will be respected except for distributions merge via `priors_combine`).
+* `priors_combine` (str, optional, default='and'): Method to use to combine
+    multiple distributions from priors for the same parameter.
+    first: ignore duplicate entries and take the first in the priors parameter.
+    and: combine duplicate entries via AND logic, dropping covariances.
+    or: combine duplicate entries via OR logic, dropping covariances.
+* `maxiter` (int, optional, default=1e6): passed directly to
+    scipy.optimize.minimize.  Maximum allowed number of iterations.
+* `maxfev` (int, optional, default=1e6): passed directly to
+    scipy.optimize.minimize.  Maximum allowed number of function evaluations
+    (forward models).
+* `xtol` (float, optional, default=1e-4): passed directly to
+    scipy.optimize.minimize.  Relative error in xopt (input parameters)
+    between iterations that is acceptable for convergence.
+* `ftol` (float, optional, default=1e-4): passed directly to
+    scipy.optimize.minimize.  Relative error in func(xopt)
+    (lnlikelihood + lnp(priors)) between iterations that is acceptable for
+    convergence.
 
 Returns
 --------

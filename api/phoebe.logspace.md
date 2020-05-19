@@ -27,7 +27,7 @@ to the instantiation functions or by multiplying an array with a unit object.
 
 See also:
 
-* [nparray.geomspace](nparray.geomspace.md)
+* nparray.geomspace
 
 Arguments
 ------------
@@ -47,7 +47,7 @@ corresponding to the passed values.
 
 Returns
 -----------
-* [Logspace](Logspace.md)
+* Logspace
 
 
 ===============================================================

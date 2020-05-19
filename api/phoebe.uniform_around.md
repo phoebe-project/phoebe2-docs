@@ -14,5 +14,5 @@ This is an included dependency from [distl](https://distl.readthedocs.io).
 ===============================================================
 
 
-Create a [Uniform_Around](Uniform_Around.md) distribution.
+Create a Uniform_Around distribution.
 

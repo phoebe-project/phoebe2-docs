@@ -14,5 +14,5 @@ This is an included dependency from [distl](https://distl.readthedocs.io).
 ===============================================================
 
 
-Shortcut to [distl.uniform](distl.uniform.md).
+Shortcut to distl.uniform.
 

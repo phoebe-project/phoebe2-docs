@@ -40,7 +40,7 @@ corresponding to the passed values.
 
 Returns
 -----------
-* [Linspace](Linspace.md)
+* Linspace
 
 
 ===============================================================

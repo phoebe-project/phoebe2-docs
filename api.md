@@ -1,43 +1,6 @@
 
 # PHOEBE API Documentation
 
-See the full lists for the following modules/classes, or keep scrolling for an organized breakdown of the most used functions and methods.
-
-* [phoebe](api/phoebe.md)
-* [phoebe.frontend.bundle.Bundle](api/phoebe.frontend.bundle.Bundle.md)
-* [phoebe.parameters](api/phoebe.parameters.md)
-* [phoebe.parameters.component](api/phoebe.parameters.component.md)
-* [phoebe.parameters.compute](api/phoebe.parameters.compute.md)
-* [phoebe.parameters.constraint](api/phoebe.parameters.constraint.md)
-* [phoebe.parameters.dataset](api/phoebe.parameters.dataset.md)
-* [phoebe.parameters.feature](api/phoebe.parameters.feature.md)
-* [phoebe.parameters.figure.dataset](api/phoebe.parameters.figure.dataset.md)
-* [phoebe.parameters.figure.distribution](api/phoebe.parameters.figure.distribution.md)
-* [phoebe.parameters.figure.solution](api/phoebe.parameters.figure.solution.md)
-* [phoebe.parameters.hierarchy](api/phoebe.parameters.hierarchy.md)
-* [phoebe.parameters.solver.estimator](api/phoebe.parameters.solver.estimator.md)
-* [phoebe.parameters.solver.optimizer](api/phoebe.parameters.solver.optimizer.md)
-* [phoebe.parameters.solver.sampler](api/phoebe.parameters.solver.sampler.md)
-* [phoebe.parameters.ParameterSet](api/phoebe.parameters.ParameterSet.md)
-* [phoebe.parameters.Parameter](api/phoebe.parameters.Parameter.md)
-* [phoebe.parameters.IntParameter](api/phoebe.parameters.IntParameter.md)
-* [phoebe.parameters.FloatParameter](api/phoebe.parameters.FloatParameter.md)
-* [phoebe.parameters.FloatArrayParameter](api/phoebe.parameters.FloatArrayParameter.md)
-* [phoebe.parameters.BoolParameter](api/phoebe.parameters.BoolParameter.md)
-* [phoebe.parameters.StringParameter](api/phoebe.parameters.StringParameter.md)
-* [phoebe.parameters.ChoiceParameter](api/phoebe.parameters.ChoiceParameter.md)
-* [phoebe.parameters.SelectParameter](api/phoebe.parameters.SelectParameter.md)
-* [phoebe.parameters.DictParameter](api/phoebe.parameters.DictParameter.md)
-* [phoebe.parameters.ConstraintParameter](api/phoebe.parameters.ConstraintParameter.md)
-* [phoebe.parameters.DistributionParameter](api/phoebe.parameters.DistributionParameter.md)
-* [phoebe.parameters.HierarchyParameter](api/phoebe.parameters.HierarchyParameter.md)
-* [phoebe.parameters.UnitParameter](api/phoebe.parameters.UnitParameter.md)
-* [phoebe.parameters.JobParameter](api/phoebe.parameters.JobParameter.md)
-* [phoebe.atmospheres.passbands](api/phoebe.atmospheres.passbands.md)
-* [phoebe.atmospheres.passbands.Passband](api/phoebe.atmospheres.passbands.Passband.md)
-* [phoebe.distortions.roche](api/phoebe.distortions.roche.md)
-* [phoebe.distortions.rotstar](api/phoebe.distortions.rotstar.md)
-
 ## Package-Level Convenience Functions
 
 ### Creating Bundles
@@ -222,10 +185,13 @@ Available components ([see all](api/phoebe.parameters.component.md)):
 * [disable_feature](api/phoebe.frontend.bundle.Bundle.disable_feature.md)
 * [add_spot](api/phoebe.frontend.bundle.Bundle.add_spot.md)
 * [get_spot](api/phoebe.frontend.bundle.Bundle.get_spot.md)
+* [add_gaussian_process](api/phoebe.frontend.bundle.Bundle.add_gaussian_process.md)
+* [get_gaussian_process](api/phoebe.frontend.bundle.Bundle.get_gaussian_process.md)
 
 Available features ([see all](api/phoebe.parameters.feature.md)):
 
 * [spot](api/phoebe.parameters.feature.spot.md)
+* [gaussian_process](api/phoebe.parameters.feature.gaussian_process.md)
 
 ### Datasets
 
@@ -305,7 +271,7 @@ Methods that act on resulting models:
 * [run_solver](api/phoebe.frontend.bundle.Bundle.run_solver.md)
 * [export_solver](api/phoebe.frontend.bundle.Bundle.export_solver.md)
 
-Available solver backends:
+Available solver backends ([see all](api/phoebe.parameters.solver.md)):
 
 * [estimator.lc_periodogram](api/phoebe.parameters.solver.estimator.lc_periodogram.md)
 * [estimator.rv_periodogram](api/phoebe.parameters.solver.estimator.rv_periodogram.md)
@@ -338,3 +304,41 @@ Available solver backends:
 
 See the Figure section above for the ability to define figures via parameters
 and rebuild them by calling [run_figure](api/phoebe.frontend.bundle.Bundle.run_figure.md).
+
+
+## Package Listing
+
+* [phoebe](api/phoebe.md)
+* [phoebe.frontend.bundle.Bundle](api/phoebe.frontend.bundle.Bundle.md)
+* [phoebe.parameters](api/phoebe.parameters.md)
+* [phoebe.parameters.component](api/phoebe.parameters.component.md)
+* [phoebe.parameters.compute](api/phoebe.parameters.compute.md)
+* [phoebe.parameters.constraint](api/phoebe.parameters.constraint.md)
+* [phoebe.parameters.dataset](api/phoebe.parameters.dataset.md)
+* [phoebe.parameters.feature](api/phoebe.parameters.feature.md)
+* [phoebe.parameters.figure.dataset](api/phoebe.parameters.figure.dataset.md)
+* [phoebe.parameters.figure.distribution](api/phoebe.parameters.figure.distribution.md)
+* [phoebe.parameters.figure.solution](api/phoebe.parameters.figure.solution.md)
+* [phoebe.parameters.hierarchy](api/phoebe.parameters.hierarchy.md)
+* [phoebe.parameters.solver.estimator](api/phoebe.parameters.solver.estimator.md)
+* [phoebe.parameters.solver.optimizer](api/phoebe.parameters.solver.optimizer.md)
+* [phoebe.parameters.solver.sampler](api/phoebe.parameters.solver.sampler.md)
+* [phoebe.parameters.ParameterSet](api/phoebe.parameters.ParameterSet.md)
+* [phoebe.parameters.Parameter](api/phoebe.parameters.Parameter.md)
+* [phoebe.parameters.IntParameter](api/phoebe.parameters.IntParameter.md)
+* [phoebe.parameters.FloatParameter](api/phoebe.parameters.FloatParameter.md)
+* [phoebe.parameters.FloatArrayParameter](api/phoebe.parameters.FloatArrayParameter.md)
+* [phoebe.parameters.BoolParameter](api/phoebe.parameters.BoolParameter.md)
+* [phoebe.parameters.StringParameter](api/phoebe.parameters.StringParameter.md)
+* [phoebe.parameters.ChoiceParameter](api/phoebe.parameters.ChoiceParameter.md)
+* [phoebe.parameters.SelectParameter](api/phoebe.parameters.SelectParameter.md)
+* [phoebe.parameters.DictParameter](api/phoebe.parameters.DictParameter.md)
+* [phoebe.parameters.ConstraintParameter](api/phoebe.parameters.ConstraintParameter.md)
+* [phoebe.parameters.DistributionParameter](api/phoebe.parameters.DistributionParameter.md)
+* [phoebe.parameters.HierarchyParameter](api/phoebe.parameters.HierarchyParameter.md)
+* [phoebe.parameters.UnitParameter](api/phoebe.parameters.UnitParameter.md)
+* [phoebe.parameters.JobParameter](api/phoebe.parameters.JobParameter.md)
+* [phoebe.atmospheres.passbands](api/phoebe.atmospheres.passbands.md)
+* [phoebe.atmospheres.passbands.Passband](api/phoebe.atmospheres.passbands.Passband.md)
+* [phoebe.distortions.roche](api/phoebe.distortions.roche.md)
+* [phoebe.distortions.rotstar](api/phoebe.distortions.rotstar.md)

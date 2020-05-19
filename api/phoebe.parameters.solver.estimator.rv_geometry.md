@@ -28,6 +28,12 @@ b.run_solver(kind='rv_geometry')
 
 Arguments
 ----------
+* `rv_datasets` (string or list, optional, default='*'): Radial velocity
+    dataset(s) to use to extract RV geometry
+* `orbit` (string, optional, default=top-level orbit): Orbit to use for
+    estimating orbital parameters
+* `expose_model` (bool, optional, default=True): Whether to expose the
+    Keplerian analytical models in the solution
 
 Returns
 --------

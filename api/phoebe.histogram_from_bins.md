@@ -14,11 +14,11 @@ This is an included dependency from [distl](https://distl.readthedocs.io).
 ===============================================================
 
 
-Create a [Histogram](Histogram.md) distribution from binned data.
+Create a Histogram distribution from binned data.
 
 See also:
 
-* [distl.histogram_from_data](distl.histogram_from_data.md)
+* distl.histogram_from_data
 
 Arguments
 --------------
@@ -29,13 +29,13 @@ less entry than `bins`.
 * `unit` (astropy.units object, optional): the units of the provided values.
 * `label` (string, optional): a label for the distribution.  This is used
 for the x-label while plotting the distribution, as well as a shorthand
-notation when creating a [Composite](Composite.md) distribution.
+notation when creating a Composite distribution.
 * `wrap_at` (float or False or None, optional, default=None): value to wrap all
 sampled values.  If None, will default to 0-2pi if `unit` is angular
 (0-360 for degrees), or 0-1 if `unit` is cycles.  If False, will not wrap.
-See [Histogram.wrap_at](Histogram.wrap_at.md) and [Histogram.wrap](Histogram.wrap.md) for more details.
+See Histogram.wrap_at and Histogram.wrap for more details.
 
 Returns
 --------
-* a [Histogram](Histogram.md) object
+* a Histogram object
 

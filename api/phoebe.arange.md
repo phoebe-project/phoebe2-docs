@@ -37,7 +37,7 @@ corresponding to the passed values.
 
 Returns
 -----------
-* [Arange](Arange.md)
+* Arange
 
 
 ===============================================================

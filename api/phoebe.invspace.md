@@ -22,7 +22,7 @@ Evenly sampled numbers in inverted space.  This is equivalent to:
 
 See also:
 
-* [nparray.linspace](nparray.linspace.md)
+* nparray.linspace
 
 Arguments
 ------------
@@ -39,5 +39,5 @@ corresponding to the passed values.
 
 Returns
 -----------
-* [Invspace](Invspace.md)
+* Invspace
 

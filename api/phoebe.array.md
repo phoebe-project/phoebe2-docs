@@ -33,7 +33,7 @@ corresponding to the passed values.
 
 Returns
 -----------
-* [Array](Array.md)
+* Array
 
 
 ===============================================================

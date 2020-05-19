@@ -36,6 +36,51 @@ b.run_solver(kind='emcee')
 
 Arguments
 ----------
+* `compute` (string, optional): compute options to use for forward model
+* `continue_from` (string, optional, default='None'): continue the MCMC run
+    from an existing emcee solution.  Chains will be appended to existing
+    chains (so it is safe to overwrite the existing solution).  If 'None',
+    will start a new run using `init_from`.
+* `init_from` (list, optional, default=[]): only applicable if `continue_from`
+    is 'None'.  distribution(s) to initialize samples from (all unconstrained
+    parameters with attached distributions will be sampled/fitted, constrained
+    parameters will be ignored, covariances will be respected)
+* `init_from_combine` (string, optional, default='first'): only applicable
+    if `continue_from` is 'None' and `init_from` is not empty.  Method to use
+    to combine multiple distributions from `init_from` for the same parameter.
+    first: ignore duplicate entries and take the first in the init_from parameter.
+    and: combine duplicate entries via AND logic, dropping covariances.
+     or: combine duplicate entries via OR logic, dropping covariances.
+* `priors` (list, optional, default=[]): distribution(s) to use for priors
+    (constrained and unconstrained parameters will be included, covariances
+    will be respected except for distributions merge via `priors_combine`)
+* `priors_combine` (string, optional, default='and'): only applicable
+    if `priors` is not empty.  Method to use to combine multiple distributions
+    from `priors` for the same parameter.
+    first: ignore duplicate entries and take the first in the priors parameter.
+    and: combine duplicate entries via AND logic, dropping covariances.
+    or: combine duplicate entries via OR logic, dropping covariances.
+* `nwalkers` (int, optional, default=16): only appicable if `continue_from`
+    is 'None'.  Number of walkers.
+* `niters` (int, optional, default=100): Number of iterations.
+* `burnin_factor` (float, optional, default=2): factor of max(autocorr_time)
+    to apply for burnin (burnin not applied until adopting the solution)
+* `thin_factor` (float, optional, default=0.5): factor of min(autocorr_time)
+    to apply for thinning (thinning not applied until adopting the solution)
+* `progress_every_niters` (int, optional, default=0): Save the progress of
+    the solution every n iterations.  The solution can only be recovered
+    from an early termination by loading the bundle from a saved file and
+    then calling [phoebe.frontend.bundle.Bundle.import_solution](phoebe.frontend.bundle.Bundle.import_solution.md)(filename).
+    The filename of the saved file will default to solution.ps.progress within
+    [phoebe.frontend.bundle.Bundle.run_solver](phoebe.frontend.bundle.Bundle.run_solver.md), or the output filename provided
+    to [phoebe.frontend.bundle.Bundle.export_solver](phoebe.frontend.bundle.Bundle.export_solver.md) suffixed with .progress.
+    If using detach=True within run_solver, attach job will load the progress
+    and allow re-attaching until the job is completed.  If 0 will not save
+    and will only return after completion.
+* `expose_failed` (bool, optional, default=True): only applicable if
+    `continue_from` is 'None'. whether to expose dictionary of failed samples
+    and their error messages.  Note: depending on the number of failed
+    samples, this could add overhead.
 
 Returns
 --------

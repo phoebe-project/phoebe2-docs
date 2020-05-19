@@ -14,5 +14,5 @@ This is an included dependency from [distl](https://distl.readthedocs.io).
 ===============================================================
 
 
-Create a [MVGaussian](MVGaussian.md) distribution.
+Create a MVGaussian distribution.
 

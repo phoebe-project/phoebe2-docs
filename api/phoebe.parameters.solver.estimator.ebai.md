@@ -34,6 +34,10 @@ b.run_solver(kind='ebai')
 
 Arguments
 ----------
+* `lc_datasets` (string or list, optional, default='*'): Light curve
+    dataset(s) to pass to ebai
+* `orbit` (string, optional, default=top-level orbit): Orbit to use for
+    phasing the light curve referenced in the `lc_datasets` parameter
 
 Returns
 --------

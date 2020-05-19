@@ -28,6 +28,15 @@ b.run_solver(kind='lc_geometry')
 
 Arguments
 ----------
+* `lc_datasets` (string or list, optional, default='*'): Light curve
+    dataset(s) to use to extract eclipse geometry
+* `orbit` (string, optional, default=top-level orbit): Orbit to use for
+    phasing the light curve referenced in the `lc_datasets` parameter
+* `t0_near_times` (bool, optional, default=True): Whether the returned value
+    for t0_supconj should be forced to be in the range of the referenced
+    observations.
+* `expose_model` (bool, optional, default=True): Whether to expose the
+    2-gaussian analytical models in the solution
 
 Returns
 --------
