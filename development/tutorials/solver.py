@@ -13,7 +13,7 @@
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.3,<2.3"')
+get_ipython().system('pip install -I "phoebe>=2.3,<2.4"')
 
 
 # As always, let's do imports and initialize a logger and a new Bundle.  See the [building a system tutorial](building_a_system.ipynb) for more details.
@@ -31,7 +31,7 @@ logger = phoebe.logger()
 b = phoebe.default_binary()
 
 
-# For the sake of a simple crude example, we'll just use the synthetic light curve of a default binary as our "observations".   See the [solver example scripts](../examples.md) for more realistic examples.
+# For the sake of a simple crude example, we'll just use the synthetic light curve of a default binary as our "observations".   See the [inverse problem example scripts](../examples.md) for more realistic examples.
 
 # In[2]:
 
@@ -78,7 +78,7 @@ b.add_solver('estimator.lc_geometry', solver='my_lcgeom_solver')
 print(b.get_solver(solver='my_lcgeom_solver'))
 
 
-# In addition to the [solver API docs](../api/phoebe.parameters.solver.md), remember that each parameter has a description and possibly a set of available choices (if its a [ChoiceParameter](../api/phoebe.parameters.ChoiceParameter.md) or [SelectParameter](../api/phoebe.parameters.SelectParameter.md).
+# In addition to the [solver API docs](../api/phoebe.parameters.solver.md), remember that each parameter has a description and possibly a set of available choices (if its a [ChoiceParameter](../api/phoebe.parameters.ChoiceParameter.md) or [SelectParameter](../api/phoebe.parameters.SelectParameter.md)).
 
 # In[6]:
 
