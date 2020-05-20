@@ -26,6 +26,10 @@ b.add_solver('optimizer.cg')
 b.run_solver(kind='cg')
 ```
 
+Parallelization support: cg does not support parallelization.  If
+within mpi, parallelization will be handled at the compute-level (per-time)
+for the [phoebe.parameters.compute.phoebe](phoebe.parameters.compute.phoebe.md) backend.
+
 Arguments
 ----------
 * `compute` (string, optional): compute options to use for the forward

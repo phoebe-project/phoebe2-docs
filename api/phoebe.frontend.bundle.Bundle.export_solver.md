@@ -3,7 +3,7 @@
 
 ```py
 
-def export_solver(self, script_fname, out_fname=None, solver=None, solution=None, pause=False, import_from_older=False, **kwargs)
+def export_solver(self, script_fname, out_fname=None, solver=None, solution=None, pause=False, import_from_older=False, log_level=None, **kwargs)
 
 ```
 
@@ -38,6 +38,8 @@ Arguments
     the bundle will attempt to migrate to the newer version.  If False,
     an error will be raised when attempting to run the script.  See
     also: [phoebe.frontend.bundle.Bundle.open](phoebe.frontend.bundle.Bundle.open.md).
+* `log_level` (string, optional, default=None): `clevel` to set in the
+    logger in the exported script.  See [phoebe.logger](phoebe.logger.md).
 * `custom_lnprobability_callable` (callable, optional, default=None):
     custom callable function which takes the following arguments:
     `b, model, lnpriors, priors, priors_combine` and returns the lnlikelihood

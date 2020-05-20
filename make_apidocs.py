@@ -172,7 +172,7 @@ if __name__ == '__main__':
     skip_parameters_feature = skip_parameters_type + ['pulsation']
     skip_parameters_hierarchy = skip_parameters_type + []
     skip_parameters_setting = skip_parameters_type + []
-    skip_parameters_solver = skip_parameters_type + ['phase_mask_inds']
+    skip_parameters_solver = skip_parameters_type + ['phase_mask_inds', 'differential_evolution']
     skip_parameters_system = skip_parameters_type + []
 
     skip_units = ['add_enabled_equivalencies', 'add_enabled_units', 'def_physical_type', 'def_unit']

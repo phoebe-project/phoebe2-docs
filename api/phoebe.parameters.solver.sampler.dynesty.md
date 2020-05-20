@@ -39,6 +39,10 @@ b.add_solver('sampler.dynesty')
 b.run_solver(kind='dynesty')
 ```
 
+Parallelization support: dynesty supports both MPI and multiprocessing, always
+at the solver-level (per-model).
+
+
 Arguments
 ----------
 * `compute` (string, optional): compute options to use for forward model

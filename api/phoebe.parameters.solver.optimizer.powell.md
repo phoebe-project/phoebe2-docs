@@ -26,6 +26,10 @@ b.add_solver('optimizer.powell')
 b.run_solver(kind='powell')
 ```
 
+Parallelization support: powell does not support parallelization.  If
+within mpi, parallelization will be handled at the compute-level (per-time)
+for the [phoebe.parameters.compute.phoebe](phoebe.parameters.compute.phoebe.md) backend.
+
 Arguments
 ----------
 * `compute` (string, optional): compute options to use for the forward
