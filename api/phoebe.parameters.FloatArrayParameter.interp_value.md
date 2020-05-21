@@ -3,7 +3,7 @@
 
 ```py
 
-def interp_value(self, unit=None, component=None, t0='t0_supconj', **kwargs)
+def interp_value(self, unit=None, component=None, t0='t0_supconj', consider_gaussian_process=True, **kwargs)
 
 ```
 
@@ -37,8 +37,8 @@ The only exception is when interpolating in phase-space, in which
 case the 'times' qualifier must be found in the ParentPS.  Interpolating
 in phase-space is only allowed if there are no time derivatives present
 in the system.  This can be checked with
-[phoebe.parameters.HierarchyParameter.is_time_dependent](phoebe.parameters.HierarchyParameter.is_time_dependent.md).  To interpolate
-in phases:
+[phoebe.parameters.HierarchyParameter.is_time_dependent](phoebe.parameters.HierarchyParameter.is_time_dependent.md)(`consider_gaussian_process=consider_gaussian_process`).
+To interpolate in phases:
 
 ```
 b['fluxes@lc01@model'].interp_value(phases=0.5)
@@ -68,6 +68,8 @@ Arguments
 * `t0` (string/float, optional, default='t0_supconj'): if interpolating
     in phases, `t0` will be passed along to
      [phoebe.frontend.bundle.Bundle.to_phase](phoebe.frontend.bundle.Bundle.to_phase.md).
+* `consider_gaussian_process` (bool, optional, defult=True): whether
+    to consider a system with gaussian process(es) as time-dependent.
 * `**kwargs`: see examples above, must provide a single
     qualifier-value pair to use for interpolation.  In most cases
     this will probably be time=value or wavelength=value.  If the value

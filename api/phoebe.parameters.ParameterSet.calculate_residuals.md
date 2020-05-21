@@ -3,7 +3,7 @@
 
 ```py
 
-def calculate_residuals(self, model=None, dataset=None, component=None, as_quantity=True, return_interp_model=False, mask_enabled=None, mask_phases=None)
+def calculate_residuals(self, model=None, dataset=None, component=None, consider_gaussian_process=True, as_quantity=True, return_interp_model=False, mask_enabled=None, mask_phases=None)
 
 ```
 
@@ -35,6 +35,9 @@ Arguments
 * `component` (string, optional, default=None): component for comparison.
     Required only if more than one component exist in the dataset (for
     RVs, for example)
+* `consider_gaussian_process` (bool, optional, defult=True): whether
+    to consider a system with gaussian process(es) as time-dependent
+    for any required interpolation.
 * `as_quantity` (bool, default=True): whether to return a quantity object.
 * `return_interp_model` (bool, default=False): whether to also return
     the interpolated model used to compute the residuals.

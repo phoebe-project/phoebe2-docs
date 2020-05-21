@@ -3,7 +3,7 @@
 
 ```py
 
-def is_time_dependent(self)
+def is_time_dependent(self, consider_gaussian_process=True)
 
 ```
 
@@ -17,7 +17,13 @@ This will return True if any of the following conditions are met:
 * `dperdt` is non-zero
 * a feature (eg. spot) is attached to an asynchronous star (with
     non-unity value for `syncpar`).
-* a gaussian_process feature is attached to any dataset
+* a gaussian_process feature is attached to any dataset, unless
+    `consider_gaussian_process` is False.
+
+Arguments
+---------
+* `consider_gaussian_process` (bool, optional, defult=True): whether
+    to consider a system with gaussian process(es) as time-dependent
 
 Returns
 ---------
