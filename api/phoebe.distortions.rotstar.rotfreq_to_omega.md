@@ -17,8 +17,8 @@ Arguments
 ----------
 * `rotfreq`
 * `scale` (float, optional, default=c.R_sun.si.value)
-* `solar_units` (bool, optional, default=False): whether to return in solar
-    units.
+* `solar_units` (bool, optional, default=False): whether `scale` is provided
+    in solar units or SI.
 
 Returns
 ---------
