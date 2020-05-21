@@ -15,6 +15,8 @@ plt.rc('font', family='serif')
 import phoebe
 import numpy as np
 
+logger = phoebe.logger('warning')
+
 # we'll set the random seed so that the noise model is reproducible
 np.random.seed(123456789)
 
@@ -80,6 +82,8 @@ b.run_compute(model='withoutGPs')
 
 
 # # Add GPs
+# 
+# See the API docs for [b.add_gaussian_process](../api/phoebe.frontend.bundle.Bundle.add_gaussian_process.md) and [gaussian_process](../api/phoebe.parameters.feature.gaussian_process.md).
 
 # In[12]:
 
@@ -93,21 +97,44 @@ b.add_gaussian_process(dataset='lc01', kernel='sho')
 b.add_gaussian_process(dataset='lc01', kernel='matern32')
 
 
-# In[15]:
+# In[14]:
 
 
 print(b.get_gaussian_process())
 
 
 # # Run Forward Model
+# 
+# Since the system itself is still time-independent, the model is computed for one cycle according to `compute_phases`, but is then interpolated at the phases of the times in the dataset to compute and expose the fluxes including gaussian processes at the dataset times.
+# 
+# If the model were time-dependent, then using `compute_times` or `compute_phases` without covering a sufficient time-span will raise an error.
+
+# In[15]:
+
+
+print(b.run_checks_compute())
+
 
 # In[16]:
+
+
+b.flip_constraint('compute_phases', solve_for='compute_times')
+b.set_value('compute_phases', phoebe.linspace(0,1,101))
+
+
+# In[17]:
+
+
+print(b.run_checks_compute())
+
+
+# In[18]:
 
 
 b.run_compute(model='withGPs')
 
 
-# In[17]:
+# In[19]:
 
 
 afig, mplfig = b.plot(c={'withoutGPs': 'red', 'withGPs': 'green'},
@@ -117,7 +144,7 @@ afig, mplfig = b.plot(c={'withoutGPs': 'red', 'withGPs': 'green'},
                       show=True)
 
 
-# In[22]:
+# In[20]:
 
 
 afig, mplfig = b.plot(c={'withoutGPs': 'red', 'withGPs': 'green'},
@@ -125,10 +152,4 @@ afig, mplfig = b.plot(c={'withoutGPs': 'red', 'withGPs': 'green'},
                       s={'model': 0.03},
                       x='phases', 
                       save='figure_GPs_phases.eps', show=True)
-
-
-# In[ ]:
-
-
-
 
