@@ -50,7 +50,7 @@ Orbit:
 * period
 * t0_supconj
 
-Dataset (LC only):
+Dataset:
 * l3_frac (will be estimated if l3_mode=='flux', but will cost time)
 * ld_mode (cannot be 'interp'.  If 'lookup', coefficients are queried from PHOEBE tables and passed as ld_coeffs)
 * ld_func (supports linear, logarithmic, square_root, quadratic)
@@ -72,6 +72,10 @@ LCs:
 * times
 * fluxes
 
+RVs:
+* times
+* rvs
+
 Generally, this will be used as an input to the kind argument in
 [phoebe.frontend.bundle.Bundle.add_compute](phoebe.frontend.bundle.Bundle.add_compute.md).  If attaching through
 [phoebe.frontend.bundle.Bundle.add_compute](phoebe.frontend.bundle.Bundle.add_compute.md), all `**kwargs` will be
@@ -90,10 +94,25 @@ Arguments
 ----------
 * `enabled` (bool, optional, default=True): whether to create synthetics in
     compute/solver runs.
+* `atm` (string, optional, default='ck2003'): Atmosphere table to use when
+    estimating passband luminosities and flux scaling (see pblum_method).
+    Note jktebop itself does not support atmospheres.
+* `pblum_method` (string, optional, default='stefan-boltzmann'): Method to
+    estimate passband luminosities and handle scaling of returned fluxes from
+    jktebop.  stefan-boltzmann: approximate the star as a uniform sphere and
+    estimate the luminosities from teff, requiv, logg, and abun from the
+    internal passband and atmosphere tables.  phoebe: build the mesh using
+    roche distortion at time t0 and compute luminosities use the internal
+     atmosphere tables (considerable overhead, but more accurate for
+     distorted stars).
 * `ringsize` (float, optional, default=5): integration ring size.
+* `rv_method` (string, optional, default='dynamical'): Method to use for
+    computing RVs.  jktebop only supports dynamical (Keplerian) RVs.
 * `distortion_method` (string, optional, default='sphere/biaxial spheroid'):
-    method to use for distorting stars.  See note above for jktebop's
-    treatment.
+    Method to use for distorting stars (applies to all components).
+    sphere/biaxial-spheroid: spheres for eclipse shapes and biaxial spheroid
+    for calculation of ellipsoidal effects and reflection,
+    sphere: sphere for eclipse shapes and no ellipsoidal or reflection effects
 * `irrad_method` (string, optional, default='biaxial spheroid'): method
     to use for computing irradiation.  See note above regarding jktebop's
     treatment of `distortion_method`.

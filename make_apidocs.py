@@ -165,7 +165,7 @@ if __name__ == '__main__':
                             'list_passbands', 'parameter_from_json', 'parse_json',
                             'send_if_client', 'update_if_client']
 
-    skip_parameters_compute = skip_parameters_type #+ ['jktebop', 'photodynam']
+    skip_parameters_compute = skip_parameters_type + ['phase_mask_inds', 'photodynam']
     skip_parameters_constraint = skip_parameters_type + ['keplers_third_law_hierarchical', 'etv', 'time_ephem', 'passband_ratio', 'ph_infconj', 'ph_perpass', 'ph_supconj', 'sin', 'cos', 'tan', 'arcsin', 'arccos', 'arctan', 'arctan2', 'abs', 'sqrt', 'roche_requiv_L1', 'roche_requiv_contact_L1', 'roche_requiv_contact_L23', 'roche_potential_contact_L1', 'roche_potential_contact_L23', 'roche_pot_to_fillout_factor', 'roche_fillout_factor_to_pot', 'requiv_to_pot_contact', 'pot_to_requiv_contact', 'esinw2per0', 'ecosw2per0','esinw2ecc', 'ecosw2ecc', 't0_perpass_to_supconj', 't0_supconj_to_perpass', 't0_ref_to_supconj', 't0_supconj_to_ref', 'custom', 't0']
     skip_parameters_dataset = skip_parameters_type + ['etv']
     skip_parameters_figure = skip_parameters_type + ['common']

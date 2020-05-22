@@ -7,6 +7,7 @@ The following tutorials aim to explain the implementation and usage of some of t
 * [Rømer & Light Travel Time Effects (ltte)](tutorials/ltte.ipynb)
 * [Third Light (l3_mode, l3, l3_frac)](tutorials/l3.ipynb)
 * [Distance (distance)](tutorials/distance.ipynb)
+* [Extinction (ebv, Av, Rv)](tutorials/ebv_Av_Rv.ipynb)
 
 ## Orbital Effects/Parameters:
 * [Various t0s (t0, t0_perpass, t0_supconj, t0_ref)](tutorials/t0s.ipynb)
@@ -32,13 +33,11 @@ The following tutorials aim to explain the implementation and usage of some of t
 * [Reflection & Heating: Lambert Scattering (irrad_method='horvat' vs 'wilson')](tutorials/irrad_method_horvat.ipynb)
 * [Radial Velocity Offsets (rv_offset)](tutorials/rv_offset.ipynb)
 
-
 ## Passband/Atmosphere/Dataset Effects/Parameters:
 * [Passbands & Atmospheres (passband & atm)](tutorials/atm_passbands.ipynb)
 * [Passband Luminosity (pblum_mode, pblum_component, pblum_dataset, pblum, pbflux)](tutorials/pblum.ipynb)
 * [Limb Darkening (ld_mode, ld_func, ld_coeffs_source, ld_coeffs)](tutorials/limb_darkening.ipynb)
 * [Third Light (l3_mode, l3, l3_frac)](tutorials/l3.ipynb)
-* [Extinction (ebv, Av, Rv)](tutorials/ebv_Av_Rv.ipynb)
 * [Gravitational Redshift (rv_grav)](tutorials/grav_redshift.ipynb)
 * [Radial Velocity Offsets (rv_offset)](tutorials/rv_offset.ipynb)
 * [Intensity Weighting (intens_weighting)](tutorials/intens_weighting.ipynb)
