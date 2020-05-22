@@ -13,7 +13,6 @@ plt.rc('font', family='serif')
 
 
 import phoebe
-#logger = phoebe.logger('error')
 
 
 # In[3]:
@@ -24,31 +23,35 @@ def run_comparison_models(b):
     b.add_compute('ellc', rv_method='flux-weighted')
     b.add_compute('jktebop')
     
-    b.add_dataset('lc', compute_phases=phoebe.linspace(0,1,501))
-    b.add_dataset('rv', compute_phases=phoebe.linspace(0,1,501))
+    b.add_dataset('lc', compute_phases=phoebe.linspace(0,1,1001))
+    b.add_dataset('rv', compute_phases=phoebe.linspace(0,1,1001))
     b.set_value_all('ld_mode', 'lookup')
-    b.set_value_all('irrad_method', 'none')  # if not using this, then we need to use dynamical RVs for ellc
-    #b.set_value_all('distortion_method', kind=['phoebe', 'ellc'], value='sphere') # to agree better with jktebop 
     
+    if True:
+        b.set_value_all('irrad_method', 'none')  # if not using this, then we need to use dynamical RVs for ellc
+    else:
+        b.set_value_all('rv_method', kind='ellc', value='dynamical')
+          
     b.set_value_all('pblum_method', 'phoebe')
     
-    b.set_value_all('ld_mode', 'manual')
+    b.set_value_all('ld_mode', 'lookup')
+    b.set_value_all('ld_func', 'linear')
     
-    b.run_compute(kind='phoebe', ntriangles=3000, model='phoebe2_model')
-    b.run_compute(kind='legacy', model='phoebe1_model')
+    b.run_compute(kind='phoebe', model='phoebe2_model', ntriangles=3000)
+    b.run_compute(kind='legacy', model='phoebe1_model', gridsize=60)
     b.run_compute(kind='ellc', model='ellc_model')
     b.run_compute(kind='jktebop', model='jktebop_model')
     return b
 
 
+# # Detached Case
+
 # In[4]:
 
 
-# detached case
 b = phoebe.default_binary()
-#b['period@binary'] = 10
-#b.flip_constraint('mass@primary', solve_for='sma@binary')
-#b['mass@primary'] = 1.0
+b['period@binary'] = 1.2  # 1.0 case causes some issues with ellc
+b['requiv@primary'] = 0.95  # same stars causes issues with RM in legacy
 
 
 # In[5]:
@@ -60,9 +63,8 @@ b = run_comparison_models(b)
 # In[6]:
 
 
-afig, mplfig = b.plot(x='phase', context='model',
-                      ylim={'lc': (1.95,2.05), 'rv': (-100,100)}, xlim={'rv': (-0.05,0.05)},
-                      model=['phoebe2_model', 'phoebe1_model'],
+afig, mplfig = b.plot(x='phases', context='model',
+                      ylim={'lc': (2.05,2.15), 'rv': (-100,100)}, xlim={'rv': (-0.25,0.25)},
                       c={'phoebe2_model': 'blue', 'phoebe1_model': 'green', 'ellc_model': 'orange', 'jktebop_model': 'purple'},
                       ls={'phoebe2_model': 'solid', 'phoebe1_model': 'dashed', 'ellc_model': 'dotted', 'jktebop_model': '-.'},
                       legend={'lc': True},
@@ -70,52 +72,40 @@ afig, mplfig = b.plot(x='phase', context='model',
                       show=True, save='figure_backends_compare.eps')
 
 
+# # Semi-detached Case
+
 # In[7]:
 
 
-#afig, mplfig = b.plot(x='phase', context='model',
-#                      ylim={'lc': (1.98,2.01), 'rv': (-25,25)}, xlim={'rv': (-0.05,0.05)},
-#                      #model=['phoebe2_model', 'phoebe1_model'],
-#                      c={'phoebe2_model': 'blue', 'phoebe1_model': 'green', 'ellc_model': 'orange', 'jktebop_model': 'purple'},
-#                      ls={'phoebe2_model': 'solid', 'phoebe1_model': 'dashed', 'ellc_model': 'dotted', 'jktebop_model': '-.'},
-#                      legend={'lc': True},
-#                      #fig=plt.figure(figsize=(4,7)),  # causes issues when saving - labels are cutoff
-#                      show=True, save='figure_backends_compare.eps')
+b = phoebe.default_binary(semidetached='secondary')
+
+b.set_value('period@binary', 3.0633292)
+b.set_value('q@binary@component',0.24700)
+b.set_value('ecc@binary@orbit', 0.0 )
+b.set_value('requiv@primary@component', 2.8)
+b.set_value('incl@orbit', 83.500)
+b.set_value('sma@orbit', 15.9)
+
+b.set_value('teff@primary', 12900.000000)
+b.set_value('teff@secondary', 5500.000000)
+b.set_value('gravb_bol@primary',1.0)
+b.set_value('gravb_bol@secondary',0.32)
+b.set_value('irrad_frac_refl_bol@primary',1.0)
+b.set_value('irrad_frac_refl_bol@secondary',0.75)
+b.set_value('per0@binary@orbit',0.0)
 
 
 # In[8]:
 
 
-# semidetached case
-b = phoebe.default_binary(semidetached='primary')
-# TODO: get a realistic semidetached system
-b['period@binary'] = 2
-b['q'] = 0.2
-b['teff@primary'] = 7600
-b['teff@secondary'] = 4500
-b['requiv@secondary'] = 0.8
-b.flip_constraint('mass@secondary', solve_for='sma@binary')
-b['mass@secondary'] = 0.8
+b = run_comparison_models(b)
 
 
 # In[9]:
 
 
-print(b.filter(qualifier=['mass', 'requiv', 'teff'], context='component'))
-
-
-# In[10]:
-
-
-b = run_comparison_models(b)
-
-
-# In[ ]:
-
-
-afig, mplfig = b.plot(x='phase',
-                      ylim={'lc': (1.98,2.01), 'rv': (-15,15)}, xlim={'rv': (-0.05,0.05)},
-                      #model=['phoebe2_model', 'phoebe1_model'],
+afig, mplfig = b.plot(x='phase', context='model',
+                      compute=['phoebe01', 'legacy01', 'ellc01'],
                       c={'phoebe2_model': 'blue', 'phoebe1_model': 'green', 'ellc_model': 'orange', 'jktebop_model': 'purple'},
                       ls={'phoebe2_model': 'solid', 'phoebe1_model': 'dashed', 'ellc_model': 'dotted', 'jktebop_model': '-.'},
                       legend={'lc': True},
