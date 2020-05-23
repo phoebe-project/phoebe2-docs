@@ -21,7 +21,7 @@
 #         <th>jktebop</th>
 #     </tr>
 #     <tr>
-#         <td><b>Supported Versions<i class="fas fa-info" title="the wrappers are tested on the versions stated, compatibility with newer versions is not guaranteed, but will be updated as possible"></i></b></td>
+#         <td><b style="text-decoration:underline;text-decoration-style:dotted" title="the wrappers are tested on the versions stated, compatibility with newer versions is not guaranteed, but will be updated as possible">Supported Versions</b></td>
 #         <td><a href="http://phoebe-project.org/releases/2.3">2.3</a></td>
 #         <td><a href="http://phoebe-project.org/1.0">1.0</a></td>
 #         <td><a href="https://github.com/pmaxted/ellc/tree/c04c17b0bd657e41e2315daa70e5aed380bd8094">1.8.2</a></td>
@@ -38,8 +38,8 @@
 #         <td><b>LCs (absolute fluxes)</b></td>
 #         <td>yes</td>
 #         <td>yes</td>
-#         <td>re-scaled<i class="fas fa-info" title="fluxes re-scaled by phoebe based on pblum_method, may not be exact"></i></td>
-#         <td>re-scaled<i class="fas fa-info" title="fluxes re-scaled by phoebe based on pblum_method, may not be exact"></i></td>
+#         <td style="text-decoration:underline;text-decoration-style:dotted" title="fluxes re-scaled by phoebe based on pblum_method, may not be exact">re-scaled</td>
+#         <td style="text-decoration:underline;text-decoration-style:dotted" title="fluxes re-scaled by phoebe based on pblum_method, may not be exact">re-scaled</td>
 #     </tr>
 #     <tr>
 #         <td><b>RVs (dynamical)</b></td>
@@ -52,7 +52,7 @@
 #         <td><b>RVs (flux-weighted)</b></td>
 #         <td>yes</td>
 #         <td>yes</td>
-#         <td>yes (no irradiation)<i class="fas fa-info" title="ellc does natively support flux-weighted with a three parameter irradiation model, but not with the lambert irradiation which is used when mapped from PHOEBE"></i></td>
+#         <td style="text-decoration:underline;text-decoration-style:dotted" title="ellc does natively support flux-weighted with a three parameter irradiation model, but not with the lambert irradiation which is used when mapped from PHOEBE">yes (no irradiation)</td>
 #         <td>no</td>
 #     </tr>
 #     <tr>
@@ -94,7 +94,7 @@
 #         <td><b>Semi-detached Systems</b></td>
 #         <td>yes</td>
 #         <td>yes</td>
-#         <td>yes<i class="fas fa-info" title="the semi-detached radius is determined by PHOEBE and passed to ellc.  ellc does also natively support semi-detached systems by passing a radius of -1, but this is not used by the backend wrapper in PHOEBE."></i></td>
+#         <td style="text-decoration:underline;text-decoration-style:dotted" title="the semi-detached radius is determined by PHOEBE and passed to ellc.  ellc does also natively support semi-detached systems by passing a radius of -1, but this is not used by the backend wrapper in PHOEBE.">yes</td>
 #         <td>no</td>
 #     </tr>
 #     <tr>
@@ -116,14 +116,14 @@
 #         <td>period<br/>mass-ratio<br/>semi-major axis<br/>synchronicities<br/>equivalent radii<br/>Teffs<br/>eccentricity<br/>argument of periastron</td>
 #         <td>period<br/>mass-ratio<br/>semi-major axis<br/>synchronicities<br/>equipotentials<br/>Teffs<br/>eccentricity<br/>argument of periastron</td>
 #         <td>period<br/>mass-ratio<br/><br/>syncrhonicities<br/>fractional radii<br/>surface-brightness ratio<br/>&#8730;ecosw<br/>&#8730;esinw</td>
-#         <td>period<br/>mass-ratio<br/>sum of fractional radii<br/>ratio of radii<br/>surface-brightness ratio<br/>ecosw<br/>esinw<i class="fas fa-info" title="jktebop also natively supports passing eccentricity and argument of periastron"></i></td>
+#         <td>period<br/>mass-ratio<br/>sum of fractional radii<br/>ratio of radii<br/>surface-brightness ratio<br/><span style="text-decoration:underline;text-decoration-style:dotted" title="jktebop also natively supports passing eccentricity and argument of periastron">ecosw<br/>esinw</span></td>
 #     </tr>
 #     <tr>
 #         <td><b>Surface Distortion</b></td>
 #         <td>roche<br/>rotating star<br/>sphere</td>
 #         <td>roche</td>
 #         <td>roche<br/>sphere<br/>roche_v<br/>poly1p5<br/>poly3p0<br/>love</td>
-#         <td>biaxial-spheroid<i class="fas fa-info" title="biaxial-spherioid used for ellipsoidal and irradiation contributions, but spheres still used for eclipse shapes"></i><br/>sphere</td>
+#         <td style="text-decoration:underline;text-decoration-style:dotted" title="biaxial-spherioid used for ellipsoidal and irradiation contributions, but spheres still used for eclipse shapes">biaxial-spheroid<br/>sphere</td>
 #     </tr>
 #     <tr>
 #         <td><b>Asynchronous Rotation</b></td>
@@ -134,15 +134,15 @@
 #     </tr>
 #     <tr>
 #         <td><b>Atmospheres</b></td>
-#         <td>blackbody<br/>Castelli-Kurucz<i class="fas fa-info" title="ATLAS (atm=ck2004)"></i><br/>phoenix</td>
-#         <td>blackbody<i class="fas fa-info" title="(atm=extern_planckint)"></i><br/>Catelli-Kurucz<i class="fas fa-info" title="(atm=extern_atmx)"></i><br/><br/></td>
+#         <td>blackbody<br/><span style="text-decoration:underline;text-decoration-style:dotted" title="ATLAS (atm=ck2004)">Castelli-Kurucz</span><br/>phoenix</td>
+#         <td><span style="text-decoration:underline;text-decoration-style:dotted" title="(atm=extern_planckint)">blackbody</span><br/><span style="text-decoration:underline;text-decoration-style:dotted" title="(atm=extern_atmx)">Catelli-Kurucz</span><br/><br/></td>
 #         <td></td>
 #         <td></td>
 #     </tr>
 #     <tr>
 #         <td><b>Number of Supported Passbands</b></td>
 #         <td>30</td>
-#         <td>30<i class="fas fa-info" title="PHOEBE legacy natively supports approximately 100, but only those available in PHOEBE 2 are available directly through the backend wrapper"></i></td>
+#         <td style="text-decoration:underline;text-decoration-style:dotted" title="PHOEBE legacy natively supports approximately 100, but only those available in PHOEBE 2 are available directly through the backend wrapper">30</td>
 #         <td>0</td>
 #         <td>0</td>
 #     </tr>
@@ -157,7 +157,7 @@
 #         <td><b>Limb-Darkening</b></td>
 #         <td>interpolated<br/>linear<br/>logarithmic<br/>quadratic<br/>sqrt<br/>power</td>
 #         <td>linear<br/>logarithmic<br/>sqrt</td>
-#         <td>linear<br/>logarithmic<br/>quadratic<br/>sqrt<br/>power<i class="fas fa-info" title="ellc natively refers to this as power-2, but is mapped from PHOEBE's ld_func=power"></i></td>
+#         <td>linear<br/>logarithmic<br/>quadratic<br/>sqrt<br/><span style="text-decoration:underline;text-decoration-style:dotted" title="ellc natively refers to this as power-2, but is mapped from PHOEBE's ld_func=power">power</span></td>
 #         <td>linear<br/>logarithmic<br/>quadratic<br/>sqrt</td>
 #     </tr>
 #     <tr>
