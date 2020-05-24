@@ -44,6 +44,7 @@ Star:
 * gravb_bol
 * teff (ratio^4 used as an estimate of surface brightness ratio, unless pblum_mode='decoupled' in which case pblum ratio is passed directly)
 * irrad_frac_refl_bol
+* yaw (misalignment only supported with `distortion_method='sphere'` and only included for Rossiter-McLaughlin contribution to RVs)
 
 Orbit:
 * sma

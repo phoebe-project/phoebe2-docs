@@ -46,6 +46,7 @@ These example scripts are generally focused to show a single advanced feature or
 
 * [Misaligned Binary System: DI Her](examples/diher_misaligned.ipynb) ([Horvat+ 2018](http://phoebe-project.org/publications/2018Horvat+), Figure 8)
 * [Misaligned Binary with Spots](examples/binary_misaligned_spots.ipynb)
+* [Misaligned Rossiter-McLaughlin: phoebe and ellc](examples/RM_phoebe_ellc.ipynb)
 
 
 ## Extinction (2.2 release)
@@ -74,3 +75,5 @@ These example scripts are generally focused to show a single advanced feature or
 * [Comparing Contact Binary System PHOEBE 2 vs PHOEBE Legacy](examples/legacy_contact_binary.ipynb)
 * [Comparing Spots in PHOEBE 2 vs PHOEBE Legacy](examples/legacy_spots.ipynb)
 * [Comparing PHOEBE 2, Legacy, jktebop, ellc](examples/backends_compare_legacy_jktebop_ellc.ipynb) ([Conroy+ 2020](http://phoebe-project.org/publications/2020Conroy+), Figure ???)
+* [Misaligned Rossiter-McLaughlin: phoebe and ellc](examples/RM_phoebe_ellc.ipynb)
+* [jktebop: requiv_max_limit](examples/requiv_max_limit.ipynb)

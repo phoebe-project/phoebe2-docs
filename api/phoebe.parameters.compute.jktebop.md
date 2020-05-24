@@ -94,6 +94,9 @@ Arguments
 ----------
 * `enabled` (bool, optional, default=True): whether to create synthetics in
     compute/solver runs.
+* `requiv_max_limit` (float, optional, default=0.5): Maximum allowed fraction
+    of requiv_max (as jktebop does not handle highly distorted systems)
+    before raising an error in [phoebe.frontend.bundle.Bundle.run_checks_compute](phoebe.frontend.bundle.Bundle.run_checks_compute.md).
 * `atm` (string, optional, default='ck2003'): Atmosphere table to use when
     estimating passband luminosities and flux scaling (see pblum_method).
     Note jktebop itself does not support atmospheres.

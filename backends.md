@@ -2,7 +2,7 @@
 
 ## Compute Backends
 
-The following backends are available to run a forward model and are passed as the `kind` argument to [b.run_compute](api/phoebe.frontend.bundle.Bundle.run_compute.md):
+The following backends are available to run a forward model and are passed as the `kind` argument to [b.add_compute](api/phoebe.frontend.bundle.Bundle.add_compute.md):
 
 * [phoebe](api/phoebe.parameters.compute.phoebe.md)
 * [legacy](api/phoebe.parameters.compute.legacy.md)
