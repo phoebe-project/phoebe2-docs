@@ -21,11 +21,11 @@ import phoebe
 def run_comparison_models(b):
     b.add_compute('legacy')
     b.add_compute('ellc', rv_method='flux-weighted')
-    b.add_compute('jktebop')
+    # for jktebop, we'll use requiv_max_limit=1.0 to allow the semi-detached case to run
+    b.add_compute('jktebop', requiv_max_limit=1.0)
     
     b.add_dataset('lc', compute_phases=phoebe.linspace(0,1,1001))
     b.add_dataset('rv', compute_phases=phoebe.linspace(0,1,1001))
-    b.set_value_all('ld_mode', 'lookup')
     
     if True:
         b.set_value_all('irrad_method', 'none')  # if not using this, then we need to use dynamical RVs for ellc
@@ -72,7 +72,7 @@ afig, mplfig = b.plot(x='phases', context='model',
                       show=True, save='figure_backends_compare.eps')
 
 
-# # Semi-detached Case
+# # Semi-Detached Case
 
 # In[7]:
 
@@ -111,10 +111,4 @@ afig, mplfig = b.plot(x='phase', context='model',
                       legend={'lc': True},
                       #fig=plt.figure(figsize=(4,7)),  # causes issues when saving - labels are cutoff
                       show=True, save='figure_backends_compare_semidetached.eps')
-
-
-# In[ ]:
-
-
-
 
