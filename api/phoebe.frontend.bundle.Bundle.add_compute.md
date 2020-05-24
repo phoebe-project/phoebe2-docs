@@ -20,6 +20,8 @@ Available kinds can be found in [phoebe.parameters.compute](phoebe.parameters.co
 [phoebe.list_available_computes](phoebe.list_available_computes.md) and include:
 * [phoebe.parameters.compute.phoebe](phoebe.parameters.compute.phoebe.md)
 * [phoebe.parameters.compute.legacy](phoebe.parameters.compute.legacy.md)
+* [phoebe.parameters.compute.ellc](phoebe.parameters.compute.ellc.md)
+* [phoebe.parameters.compute.jktebop](phoebe.parameters.compute.jktebop.md)
 
 Arguments
 ----------

@@ -32,7 +32,7 @@ See also:
 * [phoebe.frontend.bundle.Bundle.references](phoebe.frontend.bundle.Bundle.references.md)
 
 Note that the wrapper around ellc only uses its forward model.
-ellc also includes its own solver methods, including emccee.
+ellc also includes its own solver methods, including emcee.
 Those capabilities cannot be accessed from PHOEBE.
 
 The following parameters are "exported/translated" when using the ellc
@@ -72,10 +72,10 @@ Dataset (LC/RV only):
 * ld_coeffs (will call [phoebe.frontend.bundle.Bundle.compute_ld_coeffs](phoebe.frontend.bundle.Bundle.compute_ld_coeffs.md) if necessary)
 * pblum (will use [phoebe.frontend.bundle.Bundle.compute_pblums](phoebe.frontend.bundle.Bundle.compute_pblums.md) if necessary)
 
-Note: ellc returns fluxes in arbitrary units.  These are then rescaled according
-to the values of pblum, but converted to a flux-scale by assuming spherical stars.
-For the non-spherical case, the fluxes may be off by a (small) factor.
-
+Note: ellc returns fluxes that are normalized based on the sum of the irradiated
+faces of each of the components.  These are then rescaled according to
+`pblum_method`.  Note that this re-normalization is not exact, but should behave
+reasonably with plbum_mode='dataset-scaled'.
 
 The following parameters are populated in the resulting model when using the
 ellc backend:
@@ -106,6 +106,17 @@ Arguments
 ----------
 * `enabled` (bool, optional, default=True): whether to create synthetics in
     compute/solver runs.
+* `atm` (string, optional, default='ck2003'): Atmosphere table to use when
+    estimating passband luminosities and flux scaling (see pblum_method).
+    Note jktebop itself does not support atmospheres.
+* `pblum_method` (string, optional, default='stefan-boltzmann'): Method to
+    estimate passband luminosities and handle scaling of returned fluxes from
+    jktebop.  stefan-boltzmann: approximate the star as a uniform sphere and
+    estimate the luminosities from teff, requiv, logg, and abun from the
+    internal passband and atmosphere tables.  phoebe: build the mesh using
+    roche distortion at time t0 and compute luminosities use the internal
+     atmosphere tables (considerable overhead, but more accurate for
+     distorted stars).
 * `distortion_method` (string, optional, default='roche'): method to use
     for distorting stars.
 * `hf` (float, optional, default=1.5): fluid second love number (only applicable
@@ -117,13 +128,12 @@ Arguments
     gravity at 4 points on the star.
 * `rv_method` (string, optional, default='flux-weighted'): which method to
     use for computing radial velocities.
+* `irrad_method` (string, optional, default='none'): method to use for
+    irradiation (ellc does not support irradiation).
 * `fti_method` (string, optional, default='none'): method to use when accounting
     for finite exposure times.
 * `fti_oversample` (int, optional, default=1): number of integration points
     used to account for finite exposure time.  Only used if `fti_method`='oversample'.
-* `irrad_method` (string, optional, default='none'): method to use for
-    irradiation (ellc does not support irradiation).
-
 
 Returns
 --------

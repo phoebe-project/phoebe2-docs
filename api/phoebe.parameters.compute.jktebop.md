@@ -10,7 +10,7 @@ def jktebop(**kwargs)
 
 
 Create a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) for compute options for John
-Southworth's [jktebop](<a href="http://www.astro.keele.ac.uk/jkt/codes/jktebop.html">http://www.astro.keele.ac.uk/jkt/codes/jktebop.html</a>) code.
+Southworth's [jktebop](https://www.astro.keele.ac.uk/jkt/codes/jktebop.html) code.
 
 Use jktebop to compute radial velocities and light curves for binary systems.
 jktebop must be installed and available on the system in order to use
@@ -57,11 +57,9 @@ Dataset:
 * ld_coeffs (will call [phoebe.frontend.bundle.Bundle.compute_ld_coeffs](phoebe.frontend.bundle.Bundle.compute_ld_coeffs.md) if necessary)
 * pblum (will use [phoebe.frontend.bundle.Bundle.compute_pblums](phoebe.frontend.bundle.Bundle.compute_pblums.md) if necessary)
 
-Note that jktebop works in magnitudes (not fluxes) and returns a phased synthetic
-model sampled at 1001 evenly-spaced phases.  These are then converted to phases
-and renormalized so that the maximum values matches the estimated total
-eclipse flux determined by [phoebe.frontend.bundle.Bundle.compute_pblums](phoebe.frontend.bundle.Bundle.compute_pblums.md)
-and are then linearly interpolated onto the requested times.  This renormalization
+Note that jktebop works in magnitudes (not fluxes) and is normalized at
+quadrature.  Once converted to fluxes, these are then re-scaled according
+to `pblum_method`.  This renormalization
 is crude and should not be trusted to give absolute fluxes, but should behave
 reasonably with plbum_mode='dataset-scaled'.
 
@@ -119,6 +117,8 @@ Arguments
 * `irrad_method` (string, optional, default='biaxial spheroid'): method
     to use for computing irradiation.  See note above regarding jktebop's
     treatment of `distortion_method`.
+* `irrad_method` (string, optional, default='none'): method to use for
+    irradiation (ellc does not support irradiation).
 
 Returns
 --------

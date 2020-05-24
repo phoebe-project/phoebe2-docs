@@ -50,6 +50,14 @@ Arguments
 * `enabled` (bool, optional, default=True): whether to create synthetics in
     compute/solver run.
 * `atm` (string, optional, default='extern_atmx'): atmosphere tables.
+* `pblum_method` (string, optional, default='phoebe'): Method to estimate
+    passband luminosities and handle scaling of returned fluxes from legacy.
+    stefan-boltzmann: approximate the star as a uniform sphere and estimate
+    the luminosities from teff, requiv, logg, and abun from the internal
+    passband and atmosphere tables.
+    phoebe: build the mesh using roche distortion at time t0 and compute
+    luminosities use the internal atmosphere tables (considerable overhead,
+    but more accurate for distorted stars).
 * `gridsize` (int, optional, default=60): number of meshpoints for WD.
 * `distortion_method` (string, optional, default='roche'): method to use
     for distorting stars (legacy only supports roche).
@@ -60,6 +68,11 @@ Arguments
 * `ie` (bool, optional, default=False): whether data should be de-reddened.
 * `rv_method` (string, optional, default='flux-weighted'): which method to
     use for computing radial velocities.
+* `fti_method` (string, optional, default='none'): How to handle finite-time
+    integration (when non-zero exptime)
+* `fit_oversample` (int, optiona, default=5): Number of times to sample
+    per-datapoint for finite-time integration (only applicable when `fit_method`
+    is 'oversample')
 
 Returns
 --------
