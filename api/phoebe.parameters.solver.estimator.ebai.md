@@ -18,7 +18,8 @@ When using this solver, consider citing:
 See also:
 * [phoebe.frontend.bundle.Bundle.references](phoebe.frontend.bundle.Bundle.references.md)
 
-The input light curves (`lc_datasets`) are normalized, combined, and
+The input light curve datasets (`lc_datasets`) are each normalized
+according to `lc_combine`, combined and
 fitted with a 2 gaussian model which is then itself
 normalized and used as input to `ebai`.  Any necessary phase-shift required
 to ensure the primary is at a phase of 0 is used to provide the proposed
@@ -44,7 +45,9 @@ b.run_solver(kind='ebai')
 Arguments
 ----------
 * `lc_datasets` (string or list, optional, default='*'): Light curve
-    dataset(s) to pass to ebai
+    dataset(s) to pass to ebai.
+* `lc_combine` (string, optional, default='median'): How to normalize each
+    light curve prior to combining.
 * `orbit` (string, optional, default=top-level orbit): Orbit to use for
     phasing the light curve referenced in the `lc_datasets` parameter
 

@@ -12,8 +12,9 @@ def lc_geometry(**kwargs)
 Create a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) for solver options for the
 light curve geometry esimator.
 
-The input light curve datasets (`lc_datasets`) are each normalized and
-combined.  These combined data are then fitted with a 2-gaussian model
+The input light curve datasets (`lc_datasets`) are each normalized
+according to `lc_combine` and then combined.
+These combined data are then fitted with a 2-gaussian model
 which is used to help determine phases of eclipse minima, ingress, and
 egress.  These are then used to estimate and propose values for `ecc`, `per0`,
 `t0_supconj` for the corresponding `orbit` as well as `mask_phases` (not included in `adopt_parameters`
@@ -39,6 +40,8 @@ Arguments
 ----------
 * `lc_datasets` (string or list, optional, default='*'): Light curve
     dataset(s) to use to extract eclipse geometry
+* `lc_combine` (string, optional, default='median'): How to normalize each
+    light curve prior to combining.
 * `orbit` (string, optional, default=top-level orbit): Orbit to use for
     phasing the light curve referenced in the `lc_datasets` parameter
 * `t0_near_times` (bool, optional, default=True): Whether the returned value

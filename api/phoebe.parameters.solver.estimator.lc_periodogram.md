@@ -18,8 +18,9 @@ NOTE: this requires astropy 3.2+, which in turn requires python 3.  If these
 requirements are not met, an error will be raised when attempting to call
 [phoebe.frontend.bundle.Bundle.run_solver](phoebe.frontend.bundle.Bundle.run_solver.md).
 
-The input light curve datasets (`lc_datasets`) are each normalized and
-combined.  These combined data are then sent to the respective periodgram
+The input light curve datasets (`lc_datasets`) are each normalized
+according to `lc_combine` and then combined.
+These combined data are then sent to the respective periodgram
 `algorithm` and the resulting period
 corresponding to the strongest peak is proposed as an adopted value.  In
 addition, the periodgram itself is exposed in the solution and available
@@ -45,6 +46,8 @@ Arguments
     the periodogram.  bls: BoxLeastSquares, ls: LombScargle.
 * `lc_datasets` (string or list, optional, default='*'): Light curve
     dataset(s) to use to run the periodogram algorithm.
+* `lc_combine` (string, optional, default='median'): How to normalize each
+    light curve prior to combining.
 * `component` (string, optional, default=top-level orbit): Component to
     apply the found period.
 * `sample_mode` (string, optional, default='auto'): Whether to automatically
