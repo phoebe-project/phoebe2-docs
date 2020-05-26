@@ -10,7 +10,7 @@
 
 # Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
-# In[ ]:
+# In[1]:
 
 
 #!pip install -I "phoebe>=2.3,<2.4"
@@ -18,7 +18,7 @@
 
 # First we'll import, set our plotting options, and set a fixed random seed so that our noise model is reproducible between runs.
 
-# In[1]:
+# In[2]:
 
 
 import matplotlib.pyplot as plt
@@ -26,7 +26,7 @@ import matplotlib.pyplot as plt
 plt.rc('font', family='serif')
 
 
-# In[2]:
+# In[3]:
 
 
 import phoebe
@@ -42,7 +42,7 @@ np.random.seed(123456789)
 # 
 # Now we'll create a fake set of observations by setting some parameter values, running a forward model, and adding some simple random noise on both the fluxes and RVs.
 
-# In[3]:
+# In[4]:
 
 
 b = phoebe.default_binary()
@@ -72,7 +72,7 @@ rvsB = b.get_value('rvs@secondary@model') + np.random.normal(size=rvtimes.shape)
 rvsigmas = np.ones_like(rvtimes) * 20
 
 
-# In[4]:
+# In[5]:
 
 
 # TESTING to compare to ebai - REMOVE 
@@ -85,7 +85,7 @@ print(b.filter(qualifier=['teffratio', 'requivsumfrac'], context='component'))
 # 
 # Now we'll start over "blind" with a fresh bundle and import our "fake" observations in datasets.
 
-# In[5]:
+# In[6]:
 
 
 b = phoebe.default_binary()
@@ -96,7 +96,7 @@ b.set_value_all('ld_mode', 'lookup')
 
 # For the sake of this example, we'll assume that we know the orbital period *exactly*, and so can see that our observations phase nicely.  
 
-# In[6]:
+# In[7]:
 
 
 afig, mplfig = b.plot(x='phases', show=True)
@@ -106,14 +106,14 @@ afig, mplfig = b.plot(x='phases', show=True)
 # 
 # First we'll run the [rv_geometry estimator](../api/phoebe.parameters.solver.estimator.rv_geometry.md) via [b.add_solver](../api/phoebe.frontend.bundle.Bundle.add_solver.md) and [b.run_solver](../api/phoebe.frontend.bundle.Bundle.run_solver.md).
 
-# In[7]:
+# In[8]:
 
 
 b.add_solver('estimator.rv_geometry',
              rv='rv01')
 
 
-# In[8]:
+# In[9]:
 
 
 b.run_solver(kind='rv_geometry', solution='rv_geom_sol')
@@ -121,7 +121,7 @@ b.run_solver(kind='rv_geometry', solution='rv_geom_sol')
 
 # By calling [b.adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution.md) with `trial_run=True`, we can see the proposed values by the estimator.
 
-# In[9]:
+# In[10]:
 
 
 print(b.adopt_solution('rv_geom_sol', trial_run=True))
@@ -131,7 +131,7 @@ print(b.adopt_solution('rv_geom_sol', trial_run=True))
 # 
 # This reproduces Figure ??? ...
 
-# In[10]:
+# In[11]:
 
 
 afig, mplfig = b.plot(solution='rv_geom_sol',
@@ -142,14 +142,14 @@ afig, mplfig = b.plot(solution='rv_geom_sol',
 # 
 # Next we'll run the [lc_geometry estimator](../api/phoebe.parameters.solver.estimator.lc_geometry.md).
 
-# In[11]:
+# In[12]:
 
 
 b.add_solver('estimator.lc_geometry',
              lc='lc01')
 
 
-# In[12]:
+# In[13]:
 
 
 b.run_solver(kind='lc_geometry', solution='lc_geom_sol')
@@ -157,7 +157,7 @@ b.run_solver(kind='lc_geometry', solution='lc_geom_sol')
 
 # Again, calling [b.adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution.md) with `trial_run=True` shows the proposed values.
 
-# In[13]:
+# In[14]:
 
 
 print(b.adopt_solution('lc_geom_sol', trial_run=True))
@@ -165,7 +165,7 @@ print(b.adopt_solution('lc_geom_sol', trial_run=True))
 
 # By plotting the solution, we get Figure ???, which shows the best two gaussian model as well as the detected positions of mid-eclipse, ingress, and egress which were used to compute the proposed values.
 
-# In[14]:
+# In[15]:
 
 
 afig, mplfig = b.plot(solution='lc_geom_sol',
@@ -174,7 +174,7 @@ afig, mplfig = b.plot(solution='lc_geom_sol',
 
 # Figure ??? in the paper which shows the seven underlying two gaussian models cannot directly be generated from the plotting functionality within PHOEBE, but the arrays are stored in the solution and can be plotted manually, as shown below.
 
-# In[15]:
+# In[16]:
 
 
 from phoebe.dependencies.autofig.cyclers import _mplcolors as cmap
@@ -203,20 +203,20 @@ plt.savefig('figure_lc_geometry_models.eps')
 
 # Figure ??? exhibits eclipse masking by adopting `mask_phases` from the `lc_geometry` solution.  Note that by default, `mask_phases` is not included in `adopt_parameters`, which is why it was not included when calling [b.adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution.md) with `trial_mode=True` (all available proposed parameters could be shown by passing `adopt_parameters='*'`.  For the sake of this figure, we'll only adopt the `mask_phases`, plot the dataset with that mask applied, but then disable the mask for the rest of this example script.
 
-# In[16]:
+# In[17]:
 
 
 b.adopt_solution('lc_geom_sol', adopt_parameters='mask_phases')
 
 
-# In[17]:
+# In[18]:
 
 
 _ = b.plot(context='dataset', dataset='lc01', x='phases', xlim=(-0.55,0.55),
            save='figure_lc_geometry_mask.eps', show=True)
 
 
-# In[18]:
+# In[19]:
 
 
 b.set_value('mask_enabled@lc01', False)
@@ -226,20 +226,20 @@ b.set_value('mask_enabled@lc01', False)
 # 
 # And finally, we'll do the same for the [ebai estimator](../api/phoebe.parameters.solver.estimator.ebai.md).
 
-# In[19]:
+# In[20]:
 
 
 b.add_solver('estimator.ebai',
              lc='lc01')
 
 
-# In[20]:
+# In[21]:
 
 
 b.run_solver(kind='ebai', solution='ebai_sol')
 
 
-# In[21]:
+# In[22]:
 
 
 print(b.adopt_solution('ebai_sol', trial_run=True))
@@ -247,7 +247,7 @@ print(b.adopt_solution('ebai_sol', trial_run=True))
 
 # By plotting the `ebai` solution, we reproduce Figure ???, which shows the normalized light curve observations and the resulting sample two gaussian model that is sent to the neural network.
 
-# In[22]:
+# In[23]:
 
 
 afig, mplfig = b.plot(solution='ebai_sol',
