@@ -12,6 +12,15 @@ def lc_geometry(**kwargs)
 Create a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) for solver options for the
 light curve geometry esimator.
 
+The input light curve datasets (`lc_datasets`) are each normalized and
+combined.  These combined data are then fitted with a 2-gaussian model
+which is used to help determine phases of eclipse minima, ingress, and
+egress.  These are then used to estimate and propose values for `ecc`, `per0`,
+`t0_supconj` for the corresponding `orbit` as well as `mask_phases` (not included in `adopt_parameters`
+by default).  If `expose_model` is True, the 2-gaussian model and the phases of minima,
+ingress, and egress are exposed in the solution and available for
+plotting with [phoebe.parameters.ParameterSet.plot](phoebe.parameters.ParameterSet.plot.md).
+
 Generally, this will be used as an input to the kind argument in
 [phoebe.frontend.bundle.Bundle.add_solver](phoebe.frontend.bundle.Bundle.add_solver.md).  If attaching through
 [phoebe.frontend.bundle.Bundle.add_solver](phoebe.frontend.bundle.Bundle.add_solver.md), all `**kwargs` will be

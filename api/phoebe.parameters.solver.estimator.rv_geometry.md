@@ -12,6 +12,16 @@ def rv_geometry(**kwargs)
 Create a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) for solver options for the
 radial velocity geometry esimator.
 
+The input radial velocity datasets (`rv_datasets`) are combined without
+normalization.  These combined data are then used to estimate the
+semi-amplitude and `t0_supconj` which are then used to fit a Keplerian
+orbit using least-squares.  This results in proposed values for `t0_supconj`,
+`q`, `asini`, `ecc`, and `per0` for the corresponding `orbit`.
+If `expose_model` is True, the analytical Keplerian RVs are exposed in the
+solution and available for
+plotting with [phoebe.parameters.ParameterSet.plot](phoebe.parameters.ParameterSet.plot.md).
+
+
 Generally, this will be used as an input to the kind argument in
 [phoebe.frontend.bundle.Bundle.add_solver](phoebe.frontend.bundle.Bundle.add_solver.md).  If attaching through
 [phoebe.frontend.bundle.Bundle.add_solver](phoebe.frontend.bundle.Bundle.add_solver.md), all `**kwargs` will be

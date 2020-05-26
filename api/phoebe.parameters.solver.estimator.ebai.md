@@ -18,6 +18,15 @@ When using this solver, consider citing:
 See also:
 * [phoebe.frontend.bundle.Bundle.references](phoebe.frontend.bundle.Bundle.references.md)
 
+The input light curves (`lc_datasets`) are normalized, combined, and
+fitted with a 2 gaussian model which is then itself
+normalized and used as input to `ebai`.  Any necessary phase-shift required
+to ensure the primary is at a phase of 0 is used to provide the proposed
+value for `t0_supconj`.  The normalized 2 gaussian model is then sent through
+the matrix transformation for a pre-trained `ebai` artificial neural network
+resulting in proposed values for `teffratio`, `requivsumfrac`, `esinw`,
+`ecosw`, and `incl` for the corresponding `orbit`.
+
 Generally, this will be used as an input to the kind argument in
 [phoebe.frontend.bundle.Bundle.add_solver](phoebe.frontend.bundle.Bundle.add_solver.md).  If attaching through
 [phoebe.frontend.bundle.Bundle.add_solver](phoebe.frontend.bundle.Bundle.add_solver.md), all `**kwargs` will be

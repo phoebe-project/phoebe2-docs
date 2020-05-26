@@ -18,6 +18,13 @@ NOTE: this requires astropy 3.2+, which in turn requires python 3.  If these
 requirements are not met, an error will be raised when attempting to call
 [phoebe.frontend.bundle.Bundle.run_solver](phoebe.frontend.bundle.Bundle.run_solver.md).
 
+The input light curve datasets (`lc_datasets`) are each normalized and
+combined.  These combined data are then sent to the respective periodgram
+`algorithm` and the resulting period
+corresponding to the strongest peak is proposed as an adopted value.  In
+addition, the periodgram itself is exposed in the solution and available
+for plotting via [phoebe.parameters.ParameterSet.plot](phoebe.parameters.ParameterSet.plot.md).
+
 Generally, this will be used as an input to the kind argument in
 [phoebe.frontend.bundle.Bundle.add_solver](phoebe.frontend.bundle.Bundle.add_solver.md).  If attaching through
 [phoebe.frontend.bundle.Bundle.add_solver](phoebe.frontend.bundle.Bundle.add_solver.md), all `**kwargs` will be
