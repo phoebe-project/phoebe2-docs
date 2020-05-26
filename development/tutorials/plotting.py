@@ -6,20 +6,20 @@
 # 
 # This tutorial explains the high-level interface to plotting provided by the Bundle.  You are of course always welcome to access arrays and plot manually.
 # 
-# PHOEBE 2.2 uses [autofig 1.1](https://autofig.readthedocs.io/en/1.1.0) as an intermediate layer for highend functionality to [matplotlib](http://matplotlib.org).
+# PHOEBE 2.3 uses [autofig 1.1](https://autofig.readthedocs.io/en/1.1.0) as an intermediate layer for highend functionality to [matplotlib](http://matplotlib.org).
 # 
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
+#!pip install -I "phoebe>=2.3,<2.4"
 
 
-# This first line is only necessary for ipython noteboooks - it allows the plots to be shown on this page instead of in interactive mode
+# This first line is only necessary for ipython noteboooks - it allows the plots to be shown on this page instead of in interactive mode.  Depending on your version of Jupyter, Python, and matplotlib - you may or may not need this line in order to see plots in the notebook.
 
 # In[1]:
 
@@ -27,18 +27,34 @@ get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
-# 
-
 # In[2]:
 
 
 import phoebe
 from phoebe import u # units
 import numpy as np
-import matplotlib.pyplot as plt
 
 logger = phoebe.logger()
+
+
+# First we're going to create some fake observations so that we can show how to plot observational data.  In real life, we would use something like [np.loadtxt](https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html) to get arrays from a data file instead.
+
+# In[ ]:
+
+
+b = phoebe.default_binary()
+b.add_dataset('lc', compute_phases=phoebe.linspace(0,1,101))
+b.run_compute(irrad_method='none')
+
+times = b.get_value('times', context='model')
+fluxes = b.get_value('fluxes', context='model') + np.random.normal(size=times.shape) * 0.01
+sigmas = np.ones_like(lctimes) * 0.02
+
+
+# Now we'll create a new Bundle and attach an orbit dataset (without observations) and a light curve dataset (with our "fake" observations - see [Datasets](datasets.ipynb) for more details):
+
+# In[ ]:
+
 
 b = phoebe.default_binary()
 b['q'] = 0.8
@@ -46,19 +62,14 @@ b['ecc'] = 0.1
 b['irrad_method'] = 'none'
 
 
-# And we'll attach some dummy datasets.  See [Datasets](datasets.ipynb) for more details.
-
 # In[3]:
 
 
 b.add_dataset('orb', compute_times=np.linspace(0,4,1000), dataset='orb01', component=['primary', 'secondary'])
-
-times, fluxes, sigmas = np.loadtxt('test.lc.in', unpack=True)
-
 b.add_dataset('lc', times=times, fluxes=fluxes, sigmas=sigmas, dataset='lc01')
 
 
-# And run the forward models.  See [Computing Observables](compute.ipynb) for more details.
+# And run several forward models.  See [Computing Observables](compute.ipynb) for more details.
 
 # In[4]:
 
@@ -94,7 +105,7 @@ b.run_compute(model='run_with_incl_80')
 # - [RV dataset](RV.ipynb)
 # - [LP dataset](LP.ipynb)
 # 
-# By calling the [plot](../api/phoebe.parameters.ParameterSet.plot.md) method on the bundle (or any ParameterSet) without any arguments, a plot or series of subplots will be built based on the contents of that ParameterSet.
+# By calling the [plot](../api/phoebe.parameters.ParameterSet.plot.md) method on the Bundle (or any ParameterSet) without any arguments, a plot or series of subplots will be built based on the contents of that ParameterSet.
 
 # In[5]:
 
@@ -378,4 +389,14 @@ afig, mplfig = b['orb@run_with_incl_80'].plot(time=0, projection='3d', show=True
 # Next
 # ----------
 # 
-# Next (and last) up: let's [plot meshes](./meshes.ipynb).
+# That's it for the forward model!  Next we'll get started discussing the inverse problem by introducing [distributions](./distributions.ipynb).
+# 
+# Or look at any of these advanced plotting topics:
+# * [Advanced: Animations](animations.ipynb)
+# * [Advanced: Accessing and Plotting Meshes](meshes.ipynb)
+
+# In[ ]:
+
+
+
+

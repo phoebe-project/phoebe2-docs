@@ -1,44 +1,40 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# General Concepts
+# General Concepts: The PHOEBE Bundle
 # ======================
 # 
 # **HOW TO RUN THIS FILE**: if you're running this in a Jupyter notebook or Google Colab session, you can click on a cell and then shift+Enter to run the cell and automatically select the next cell.  Alt+Enter will run a cell and create a new cell below it.  Ctrl+Enter will run a cell but keep it selected.  To restart from scratch, restart the kernel/runtime.
 # 
-# This tutorial introduces all the general concepts of dealing with Parameters, ParameterSets, and the Bundle.  This tutorial aims to be quite complete - covering almost everything you can do with Parameters, so on first read you may just want to try to get familiar, and then return here as a reference for any details later.
 # 
-# All of these tutorials assume basic comfort with Python in general - particularly with the concepts of lists, dictionaries, and objects as well as basic comfort with using the numpy and matplotlib packages.
+# All of these tutorials assume basic comfort with Python in general - particularly with the concepts of lists, dictionaries, and objects as well as basic comfort with using the numpy and matplotlib packages. This tutorial introduces all the general concepts of accessing parameters within the Bundle.
 # 
 # Setup
 # ----------------------------------------------
 # 
-# 
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
-
-# In[ ]:
-
-
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
-
-
-# Let's get started with some basic imports
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
+#!pip install -I "phoebe>=2.3,<2.4"
+
+
+# Let's get started with some basic imports:
+
+# In[2]:
+
+
 import phoebe
 from phoebe import u # units
-import numpy as np
-import matplotlib.pyplot as plt
 
 
 # If running in IPython notebooks, you may see a "ShimWarning" depending on the version of Jupyter you are using - this is safe to ignore.
 # 
 # PHOEBE 2 uses constants defined in the IAU 2015 Resolution which conflict with the constants defined in astropy.  As a result, you'll see the warnings as phoebe.u and phoebe.c "hijacks" the values in astropy.units and astropy.constants.
 # 
-# Whenever providing units, please make sure to use phoebe.u instead of astropy.units, otherwise the conversions may be inconsistent.
+# Whenever providing units, please make sure to use `phoebe.u` instead of `astropy.units`, otherwise the conversions may be inconsistent.
 
 # ### Logger
 # 
@@ -53,10 +49,10 @@ import matplotlib.pyplot as plt
 # * CRITICAL
 # 
 
-# In[2]:
+# In[3]:
 
 
-logger = phoebe.logger(clevel='INFO', flevel='DEBUG', filename='tutorial.log')
+logger = phoebe.logger(clevel='WARNING')
 
 
 # All of these arguments are optional and will default to clevel='WARNING' if not provided.  There is therefore no need to provide a filename if you don't provide a value for flevel.
@@ -65,830 +61,345 @@ logger = phoebe.logger(clevel='INFO', flevel='DEBUG', filename='tutorial.log')
 # 
 # Note: the logger messages are not included in the outputs shown below.
 # 
+
+# ## Overview
 # 
+# As a quick overview of what's to come, here is a quick preview of some of the steps used when modeling a binary system with PHOEBE.  Each of these steps will be explained in more detail throughout these tutorials.
 # 
-
-# Parameters
-# ------------------------
-# 
-# [Parameters](../api/phoebe.parameters.Parameter.md) hold a single value, but need to be aware about their own types, limits, and connection with other Parameters (more on this later when we discuss [ParameterSets](../api/phoebe.parameters.ParameterSet.md)).
-# 
-# Note that generally you won't ever have to "create" or "define" your own Parameters, those will be created for you by helper functions, but we have to start somewhere... so let's create our first Parameter.
-# 
-# We'll start with creating a [StringParameter](../api/phoebe.parameters.StringParameter.md) since it is the most generic, and then discuss and specific differences for each type of Parameter.
-
-# In[3]:
-
-
-param = phoebe.parameters.StringParameter(qualifier='myparameter', 
-                                          description='mydescription',
-                                          value='myvalue')
-
-
-# If you ever need to know the type of a Parameter, you can always use python's built-in type functionality:
+# First we need to create our binary system.  For the sake of most of these tutorials, we'll use the default detached binary available through the [phoebe.default_binary](../api/phoebe.default_binary.md) constructor.
 
 # In[4]:
 
 
-print(type(param))
+b = phoebe.default_binary()
 
 
-# If we print the parameter object we can see a summary of information
+# This object holds all the parameters and their respective values.  We'll see in this tutorial and the next tutorial on [constraints](constraints.ipynb) how to search through these parameters and set their values.
 
 # In[5]:
 
 
-print(param)
+b.set_value(qualifier='teff', component='primary', value=6500)
 
 
-# You can see here that we've defined three a few things about parameter: the qualifier, description, and value (others do exist, they just don't show up in the summary).
-# 
-# These "things" can be split into two groups: tags and attributes (although in a pythonic sense, both can be accessed as attributes).  Don't worry too much about this distinction - it isn't really important except for the fact that tags are shared across **all** Parameters whereas attributes are dependent on the type of the Parameter.
-# 
-# The tags of a Parameter define the Parameter and how it connects to other Parameters (again, more on this when we get to ParameterSets).  For now, just know that you can access a list of all the [tags](../api/phoebe.parameters.Parameter.tags) as follows:
+# Next, we need to define our datasets via [b.add_dataset](../api/phoebe.frontend.bundle.Bundle.add_dataset.md).  This will be the topic of the following tutorial on [datasets](datasets.ipynb).
 
 # In[6]:
 
 
-print(param.tags)
+b.add_dataset('lc', compute_times=phoebe.linspace(0,1,101))
 
 
-# and that each of these is available through both a dictionary key and an object attribute.  For example:
+# We'll then want to run our forward model to create a synthetic model of the observables defined by these datasets using [b.run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md), which will be the topic of the [computing observables](compute.ipynb) tutorial.
 
 # In[7]:
 
 
-print(param['qualifier'], param.qualifier)
+b.run_compute()
 
 
-# The 'qualifier' attribute is essentially an abbreviated name for the Parameter.
-# 
-# These tags will be shared across **all** Parameters, regardless of their type.
-# 
-# Attributes, on the other hand, can be dependent on the type of the Parameter and tell the Parameter its rules and how to interpret its value.  You can access a list of available attributes as follows:
+# We can then plot the resulting model with [b.plot](../api/phoebe.parameters.ParameterSet.plot.md), which will be covered in the [plotting](plotting.ipynb) tutorial.
 
 # In[8]:
 
 
-param.attributes
+afig, mplfig = b.plot(show=True)
 
 
-# and again, each of these are available through both a dictionary key and as an object attribute.  For example, all parameters have a **'description'** attribute which gives additional information about what the Parameter means:
+# And then lastly, if we wanted to solve the inverse problem and "fit" parameters to observational data, we may want to add [distributions](distributions.ipynb) to our system so that we can run [estimators, optimizers, or samplers](solver.ipynb).
+
+# ## Default Binary Bundle
+
+# For this tutorial, let's start over and discuss this `b` object in more detail and how to access and change the values of the input parameters.
+# 
+# Everything for our system will be stored in this single Python object that we call the [Bundle](../api/phoebe.frontend.bundle.Bundle.md) which we'll call `b` (short for bundle).
 
 # In[9]:
 
 
-print(param['description'], param.description)
+b = phoebe.default_binary()
 
 
-# For the special case of the **'value'** attribute, there is also a [get_value](../api/phoebe.parameters.Parameter.get_value.md) method (will become handy later when we want to be able to request the value in a specific unit).
+# The Bundle is just a collection of [Parameter](../api/phoebe.parameters.Parameter.md) objects along with some callable methods.  Here we can see that the default binary Bundle consists of over 100 individual parameters.
 
 # In[10]:
 
 
-print(param.get_value(), param['value'], param.value)
+b
 
 
-# The value attribute is also the only attribute that you'll likely want to change, so it also has a [set_value](../api/phoebe.parameters.Parameter.set_value.md) method:
+# If we want to view or edit a Parameter in the Bundle, we first need to know how to access it.  Each Parameter object has a number of tags which can be used to [filter](../api/phoebe.parameters.ParameterSet.filter.md) (similar to a database query).  When filtering the Bundle, a [ParameterSet](../api/phoebe.parameters.ParameterSet.md) is returned - this is essentially just a subset of the Parameters in the Bundle and can be further filtered until eventually accessing a single Parameter.
 
 # In[11]:
 
 
-param.set_value('newvalue')
-print(param.get_value())
+b.filter(context='compute')
 
 
-# The **'visible_if'** attribute only comes into play when the Parameter is a member of a ParameterSet, so we'll discuss it at the end of this tutorial when we get to ParameterSets.
-# 
-# The **'copy_for'** attribute is only used when the Parameter is in a particular type of ParameterSet called a Bundle (explained at the very end of this tutorial).  We'll see the 'copy_for' capability in action later in the [Datasets Tutorial](datasets.ipynb), but for now, just know that you can *view* this property only and cannot change it... and most of the time it will just be an empty string.
-
-# ### StringParameters
-# 
-# We'll just mention [StringParameters](../api/phoebe.parameters.StringParameter.md) again for completeness, but we've already seen about all they can do - the value must cast to a valid string but no limits or checks are performed at all on the value.
-
-# ### ChoiceParameters
-# 
-# [ChoiceParameters](../api/phoebe.parameters.ChoiceParameter.md) are essentially StringParameters with one very important exception: the value **must** match one of the prescribed choices.
-# 
-# Therefore, they have a 'choice' attribute and an error will be raised if trying to set the value to any string not in that list.
+# Here we filtered on the context tag for all Parameters with `context='compute'` (i.e. the options for computing a model).  If we want to see all the available options for this tag in the Bundle, we can use the plural form of the tag as a property on the Bundle or any ParameterSet.
 
 # In[12]:
 
 
-param = phoebe.parameters.ChoiceParameter(qualifier='mychoiceparameter',
-                                          description='mydescription',
-                                          choices=['choice1', 'choice2'],
-                                          value='choice1')
+b.contexts
 
+
+# Although there is no strict hierarchy or order to the tags, it can be helpful to think of the context tag as the top-level tag and is often very helpful to filter by the appropriate context first.
+# 
+# Other tags currently include:
+# * kind
+# * figure
+# * component
+# * feature
+# * dataset
+# * distribution
+# * compute
+# * model
+# * solver
+# * solution
+# * time
+# * qualifier
+
+# Accessing the plural form of the tag as an attribute also works on a filtered ParameterSet
 
 # In[13]:
 
 
-print(param)
+b.filter(context='compute').components
 
+
+# This then tells us what can be used to filter further.
 
 # In[14]:
 
 
-print(param.attributes)
+b.filter(context='compute').filter(component='primary')
 
+
+# The qualifier tag is the shorthand name of the Parameter itself.  If you don't know what you're looking for, it is often useful to list all the qualifiers of the Bundle or a given ParameterSet.
 
 # In[15]:
 
 
-print(param['choices'], param.choices)
+b.filter(context='compute', component='primary').qualifiers
 
+
+# Now that we know the options for the qualifier within this filter, we can choose to filter on one of those.  Let's look filter by the 'ntriangles' qualifier.
 
 # In[16]:
 
 
-print(param.get_value())
+b.filter(context='compute', component='primary', qualifier='ntriangles')
 
+
+# Once we filter far enough to get to a single Parameter, we can use [get_parameter](../api/phoebe.parameters.ParameterSet.get_parameter.md) to return the Parameter object itself (instead of a ParameterSet).
 
 # In[17]:
 
 
-#param.set_value('not_a_choice') # would raise a ValueError
-param.set_value('choice2')
-print(param.get_value())
+b.filter(context='compute', component='primary', qualifier='ntriangles').get_parameter()
 
 
-# ### SelectParameters
-# 
-# ** NEW IN PHOEBE 2.1 **
-# 
-# [SelectParameters](../api/phoebe.parameters.SelectParameter.md) are very similar to ChoiceParameters except that the value is a list, where each item **must** match one of the prescribed choices.
+# As a shortcut, get_parameter also takes filtering keywords.  So the above line is also equivalent to the following:
 
 # In[18]:
 
 
-param = phoebe.parameters.SelectParameter(qualifier='myselectparameter',
-                                          description='mydescription',
-                                          choices=['choice1', 'choice2'],
-                                          value=['choice1'])
+b.get_parameter(context='compute', component='primary', qualifier='ntriangles')
 
+
+# Each Parameter object contains several keys that provide information about that Parameter.  The keys "description" and "value" are always included, with additional keys available depending on the type of Parameter.
 
 # In[19]:
 
 
-print(param)
+b.get_parameter(context='compute', component='primary', qualifier='ntriangles').get_value()
 
 
 # In[20]:
 
 
-print(param.attributes)
+b.get_parameter(context='compute', component='primary', qualifier='ntriangles').get_description()
 
+
+# Since the Parameter for `ntriangles` is a FloatParameter, it also includes a key for the allowable limits.
 
 # In[21]:
 
 
-print(param['choices'], param.choices)
+b.get_parameter(context='compute', component='primary', qualifier='ntriangles').get_limits()
 
+
+# In this case, we're looking at the Parameter called `ntriangles` with the component tag set to 'primary'.  This Parameter therefore defines how many triangles should be created when creating the mesh for the star named 'primary'.  By default, this is set to 1500 triangles, with allowable values above 100.
+# 
+# If we wanted a finer mesh, we could change the value.
 
 # In[22]:
 
 
-print(param.get_value())
+b.get_parameter(context='compute', component='primary', qualifier='ntriangles').set_value(2000)
 
-
-# However, SelectParameters also allow you to use * as a wildcard and will expand to any of the choices that match that wildcard.  For example,
 
 # In[23]:
 
 
-param.set_value(["choice*"])
+b.get_parameter(context='compute', component='primary', qualifier='ntriangles')
 
+
+# If we choose the `distortion_method` qualifier from that same ParameterSet, we'll see that it has a few different keys in addition to description and value.
 
 # In[24]:
 
 
-print(param.get_value())
+b.get_parameter(context='compute', component='primary', qualifier='distortion_method')
 
 
 # In[25]:
 
 
-print(param.expand_value())
+b.get_parameter(context='compute', component='primary', qualifier='distortion_method').get_value()
 
-
-# ### FloatParameters
-# 
-# [FloatParameters](../api/phoebe.parameters.FloatParameter.md) are probably the most common Parameter used in PHOEBE and hold both a float and a unit, with the ability to retrieve the value in any other convertible unit.
 
 # In[26]:
 
 
-param = phoebe.parameters.FloatParameter(qualifier='myfloatparameter',
-                                         description='mydescription',
-                                         default_unit=u.m,
-                                         limits=[None,20],
-                                         value=5)
+b.get_parameter(context='compute', component='primary', qualifier='distortion_method').get_description()
 
+
+# Since the distortion_method Parameter is a [ChoiceParameter](../api/phoebe.parameters.ChoiceParameter.md), it contains a key for the allowable choices.
 
 # In[27]:
 
 
-print(param)
+b.get_parameter(context='compute', component='primary', qualifier='distortion_method').get_choices()
 
 
-# You'll notice here a few new mentions in the summary... "Constrained by", "Constrains", and "Related to" are all referring to [constraints which will be discussed in a future tutorial](constraints.ipynb).
+# We can only set a value if it is contained within this list - if you attempt to set a non-valid value, an error will be raised.
 
 # In[28]:
 
 
-print(param.attributes)
+try:
+    b.get_parameter(context='compute', component='primary', qualifier='distortion_method').set_value('blah')
+except Exception as e:
+    print(e)
 
-
-# FloatParameters have an attribute which hold the "limits" - whenever a value is set it will be checked to make sure it falls within the limits.  If either the lower or upper limit is None, then there is no limit check for that extreme.
 
 # In[29]:
 
 
-print(param['limits'], param.limits)
+b.get_parameter(context='compute', component='primary', qualifier='distortion_method').set_value('rotstar')
 
 
 # In[30]:
 
 
-#param.set_value(30) # would raise a ValueError
-param.set_value(2)
-print(param.get_value())
+b.get_parameter(context='compute', component='primary', qualifier='distortion_method').get_value()
 
 
-# FloatParameters have an attribute which holds the "default_unit" - this is the unit in which the value is stored **and** the unit that will be provided if not otherwise overriden.
+# [Parameter](../api/phoebe.parameters.Parameter.md) types include:
+# * [IntParameter](../api/phoebe.parameters.IntParameter.md)
+# * [FloatParameter](../api/phoebe.parameters.FloatParameter.md)
+# * [FloatArrayParameter](../api/phoebe.parameters.FloatArrayParameter.md)
+# * [BoolParameter](../api/phoebe.parameters.BoolParameter.md)
+# * [StringParameter](../api/phoebe.parameters.StringParameter.md)
+# * [ChoiceParameter](../api/phoebe.parameters.ChoiceParameter.md)
+# * [SelectParameter](../api/phoebe.parameters.SelectParameter.md)
+# * [DictParameter](../api/phoebe.parameters.DictParameter.md)
+# * [ConstraintParameter](../api/phoebe.parameters.ConstraintParameter.md)
+# * [DistributionParameter](../api/phoebe.parameters.DistributionParameter.md)
+# * [HierarchyParameter](../api/phoebe.parameters.HierarchyParameter.md)
+# * [UnitParameter](../api/phoebe.parameters.UnitParameter.md)
+# * [JobParameter](../api/phoebe.parameters.JobParameter.md)
+# 
+# these Parameter types and their available options are all described in great detail in [Advanced: Parameter Types](parameters.ipynb)
+
+# ### Twigs
+
+# As a shortcut to needing to filter by all these tags, the Bundle and ParameterSets can be filtered through what we call "twigs" (as in a Bundle of twigs).  These are essentially a single string-representation of the tags, separated by `@` symbols.
+# 
+# This is very useful as a shorthand when working in an interactive Python console, but somewhat obfuscates the names of the tags and can make it difficult if you use them in a script and make changes earlier in the script.
+# 
+# For example, the following lines give identical results:
 
 # In[31]:
 
 
-print(param['default_unit'], param.default_unit)
+b.filter(context='compute', component='primary')
 
-
-# Calling get_value will then return a float in these units
 
 # In[32]:
 
 
-print(param.get_value())
+b['primary@compute']
 
-
-# But we can also request the value in a different unit, by passing an [astropy Unit object](http://docs.astropy.org/en/stable/units/) or its string representation.
 
 # In[33]:
 
 
-print(param.get_value(unit=u.km), param.get_value(unit='km'))
+b['compute@primary']
 
 
-# FloatParameters also have their own method to access an [astropy Quantity object](http://docs.astropy.org/en/stable/units/) that includes both the value and the unit
+# However, this dictionary-style twig access will never return a ParameterSet with a single Parameter, instead it will return the Parameter itself.  This can be seen in the different output between the following two lines:
 
 # In[34]:
 
 
-print(param.get_quantity(), param.get_quantity(unit=u.km))
+b.filter(context='compute', component='primary', qualifier='distortion_method')
 
-
-# The set_value method also accepts a unit - this doesn't change the default_unit internally, but instead converts the provided value before storing.
 
 # In[35]:
 
 
-param.set_value(10)
-print(param.get_quantity())
+b['distortion_method@primary@compute']
 
+
+# Because of this, this dictionary-style twig access can also set the value directly:
 
 # In[36]:
 
 
-param.set_value(0.001*u.km)
-print(param.get_quantity())
+b['distortion_method@primary@compute'] = 'roche'
 
 
 # In[37]:
 
 
-param.set_value(10, unit='cm')
-print(param.get_quantity())
+print(b['distortion_method@primary@compute'])
 
 
-# If for some reason you want to change the default_unit, you can do so as well:
+# And can even provide direct access to the keys/attributes of the Parameter (value, description, limits, etc)
 
 # In[38]:
 
 
-param.set_default_unit(u.km)
-print(param.get_quantity())
+print(b['value@distortion_method@primary@compute'])
 
-
-# But note that the limits are still stored as a quantity object in the originally defined default_units
 
 # In[39]:
 
 
-print(param.limits)
+print(b['description@distortion_method@primary@compute'])
 
 
-# ### IntParameters
-# 
-# [IntParameters](../api/phoebe.parameters.IntParameter.md) are essentially the same as FloatParameters except they always cast to an Integer and they have no units.
+# As with the tags, you can call .twigs on any ParameterSet to see the "smallest unique twigs" of the contained Parameters
 
 # In[40]:
 
 
-param = phoebe.parameters.IntParameter(qualifier='myintparameter',
-                                       description='mydescription',
-                                       limits=[0,None],
-                                       value=1)
+b['compute'].twigs
 
 
-# In[41]:
-
-
-print(param)
-
-
-# In[42]:
-
-
-print(param.attributes)
-
-
-# Like FloatParameters above, IntParameters still have limits
-
-# In[43]:
-
-
-print(param['limits'], param.limits)
-
-
-# Note that if you try to set the value to a float it will not raise an error, but will cast that value to an integer (following python rules of truncation, not rounding)
-
-# In[44]:
-
-
-param.set_value(1.9)
-print(param.get_value())
-
-
-# ### Bool Parameters
-# 
-# [BoolParameters](../api/phoebe.parameters.BoolParameter.md) are even simpler - they accept True or False.
-
-# In[45]:
-
-
-param = phoebe.parameters.BoolParameter(qualifier='myboolparameter',
-                                        description='mydescription',
-                                        value=True)
-
-
-# In[46]:
-
-
-print(param)
-
-
-# In[47]:
-
-
-print(param.attributes)
-
-
-# Note that, like IntParameters, BoolParameters will attempt to cast anything you give it into True or False.
-
-# In[48]:
-
-
-param.set_value(0)
-print(param.get_value())
-
-
-# In[49]:
-
-
-param.set_value(None)
-print(param.get_value())
-
-
-# As with Python, an empty string will cast to False and a non-empty string will cast to True
-
-# In[50]:
-
-
-param.set_value('')
-print(param.get_value())
-
-
-# In[51]:
-
-
-param.set_value('some_string')
-print(param.get_value())
-
-
-# The only exception to this is that (unlike Python), 'true' or 'True' will cast to True and 'false' or 'False' will cast to False.
-
-# In[52]:
-
-
-param.set_value('False')
-print(param.get_value())
-
-
-# In[53]:
-
-
-param.set_value('false')
-print(param.get_value())
-
-
-# ### FloatArrayParameters
-# 
-# [FloatArrayParameters](../api/phoebe.parameters.FloatArrayParameter.md) are essentially the same as FloatParameters (in that they have the same unit treatment, although obviously no limits) but hold numpy arrays rather than a single value.
-# 
-# By convention in Phoebe, these will (almost) always have a pluralized qualifier.
-
-# In[54]:
-
-
-param = phoebe.parameters.FloatArrayParameter(qualifier='myfloatarrayparameters',
-                                              description='mydescription',
-                                              default_unit=u.m,
-                                              value=np.array([0,1,2,3]))
-
-
-# In[55]:
-
-
-print(param)
-
-
-# In[56]:
-
-
-print(param.attributes)
-
-
-# In[57]:
-
-
-print(param.get_value(unit=u.km))
-
-
-# FloatArrayParameters also allow for built-in interpolation... but this requires them to be a member of a Bundle, so we'll discuss this in just a bit.
-
-# ParametersSets
-# ----------------------------
-# 
-# [ParameterSets](../api/phoebe.parameters.ParameterSet.md) are a collection of [Parameters](../api/phoebe.parameters.Parameter.md) that can be filtered by their tags to return another ParameterSet.
-# 
-# For illustration, let's create 3 random FloatParameters and combine them to make a ParameterSet.
-
-# In[58]:
-
-
-param1 = phoebe.parameters.FloatParameter(qualifier='param1',
-                                          description='param1 description',
-                                          default_unit=u.m,
-                                          limits=[None,20],
-                                          value=5,
-                                          context='context1',
-                                          kind='kind1')
-
-param2 = phoebe.parameters.FloatParameter(qualifier='param2',
-                                          description='param2 description',
-                                          default_unit=u.deg,
-                                          limits=[0,2*np.pi],
-                                          value=0,
-                                          context='context2',
-                                          kind='kind2')
-
-param3 = phoebe.parameters.FloatParameter(qualifier='param3',
-                                          description='param3 description',
-                                          default_unit=u.kg,
-                                          limits=[0,2*np.pi],
-                                          value=0,
-                                          context='context1',
-                                          kind='kind2')
-
-
-# In[59]:
-
-
-ps = phoebe.parameters.ParameterSet([param1, param2, param3])
-
-
-# In[60]:
-
-
-print(ps.to_list())
-
-
-# If we print a ParameterSet, we'll see a listing of all the Parameters and their values.
-
-# In[61]:
-
-
-print(ps)
-
-
-# Similarly to Parameters, we can access the tags of a ParameterSet
-
-# In[62]:
-
-
-print(ps.tags)
-
-
-# ### Twigs
-
-# The string notation used for the Parameters is called a 'twig' - its simply a combination of all the tags joined with the '@' symbol and gives a very convenient way to access any Parameter.  
-# 
-# The order of the tags doesn't matter, and you only need to provide enough tags to produce a unique match.  Since there is only one parameter with kind='kind1', we do not need to provide the extraneous context='context1' in the twig to get a match.
-
-# In[63]:
-
-
-print(ps.get('param1@kind1'))
-
-
-# Note that this returned the ParameterObject itself, so you can now use any of the Parameter methods or attributes we saw earlier.  For example:
-
-# In[64]:
-
-
-print(ps.get('param1@kind1').description)
-
-
-# But we can also use set and get_value methods from the ParameterSet itself:
-
-# In[65]:
-
-
-ps.set_value('param1@kind1', 10)
-print(ps.get_value('param1@kind1'))
-
-
-# ### Tags
-
-# Each Parameter has a number of tags, and the ParameterSet has the same tags - where the value of any given tag is None if not shared by all Parameters in that ParameterSet.
-# 
-# So let's just print the names of the tags again and then describe what each one means.
-
-# In[66]:
-
-
-print(ps.meta.keys())
-
-
-# Most of these "metatags" act as labels - for example, you can give a component tag to each of the components for easier referencing.
-# 
-# But a few of these tags are fixed and not editable:
-# 
-# * qualifier: literally the name of the parameter.
-# * kind: tells what kind a parameter is (ie whether a component is a star or an orbit).
-# * context: tells what context this parameter belongs to
-# * twig: a shortcut to the parameter in a single string.
-# * uniquetwig: the minimal twig needed to reach this parameter.
-# * uniqueid: an internal representation used to reach this parameter
-# 
-# These contexts are (you'll notice that most are represented in the tags):
-# 
-# * setting
-# * history
-# * system
-# * component
-# * feature
-# * dataset
-# * constraint
-# * compute
-# * model
-# * fitting [not yet supported]
-# * feedback [not yet supported]
-# * plugin [not yet supported]
-# 
-# One way to distinguish between context and kind is with the following question and answer:
-# 
-# "What kind of **[context]** is this?  It's a **[kind]** tagged **[context]**=**[tag-with-same-name-as-context]**."
-# 
-# In different cases, this will then become:
-# 
-# * "What kind of **component** is this?  It's a **star** tagged **component**=**starA**." (context='component', kind='star', component='starA')
-# * "What kind of **feature** is this?  It's a **spot** tagged **feature**=**spot01**." (context='feature', kind='spot', feature='spot01')
-# * "What kind of **dataset** is this?  It's a **LC (light curve)** tagged **dataset**=**lc01**." (context='dataset', kind='LC', dataset='lc01')
-# * "What kind of **compute** (options) are these?  They're **phoebe** (compute options) tagged **compute**=**preview**." (context='compute', kind='phoebe', compute='preview')
-# 
-# 
-# As we saw before, these tags can be accessed at the Parameter level as either a dictionary key or as an object attribute.  For ParameterSets, the tags are only accessible through object attributes.
-
-# In[67]:
-
-
-print(ps.context)
-
-
-# This returns None since not all objects in this ParameterSet share a single context.  But you can see all the options for a given tag by providing the plural version of that tag name:
-
-# In[68]:
-
-
-print(ps.contexts)
-
-
-# ### Filtering
-# 
-# Any of the tags can also be used to [filter](../api/phoebe.parameters.ParameterSet.filter) the ParameterSet:
-
-# In[69]:
-
-
-print(ps.filter(context='context1'))
-
-
-# Here we were returned a ParameterSet of all Parameters that matched the filter criteria.  Since we're returned another ParameterSet, we can chain additional filter calls together.
-
-# In[70]:
-
-
-print(ps.filter(context='context1', kind='kind1'))
-
-
-# Now we see that we have drilled down to a single Parameter.  Note that a ParameterSet is still returned - filter will *always* return a ParameterSet.
-# 
-# We could have accomplished the exact same thing with a single call to filter:
-
-# In[71]:
-
-
-print(ps.filter(context='context1', kind='kind1'))
-
-
-# If you want to access the actual Parameter, you must use get instead of (or in addition to) filter.  All of the following lines do the exact same thing:
-
-# In[72]:
-
-
-print(ps.filter(context='context1', kind='kind1').get())
-
-
-# In[73]:
-
-
-print(ps.get(context='context1', kind='kind1'))
-
-
-# Or we can use those twigs.  Remember that twigs are just a combination of these tags separated by the @ symbol.  You can use these for dictionary access in a ParameterSet - without needing to provide the name of the tag, and without having to worry about order.  And whenever this returns a ParameterSet, these are also chainable, so the following two lines will do the same thing:
-
-# In[74]:
-
-
-print(ps['context1@kind1'])
-
-
-# In[75]:
-
-
-print(ps['context1']['kind1'])
-
-
-# You may notice that the final result was a Parameter, not a ParameterSet.  Twig dictionary access tries to be smart - if exactly 1 Parameter is found, it will return that Parameter instead of a ParameterSet.  Notice the difference between the two following lines:
-
-# In[76]:
-
-
-print(ps['context1'])
-
-
-# In[77]:
-
-
-print(ps['context1@kind1'])
-
-
-# Of course, once you get the Parameter you can then use dictionary keys to access any attributes of that Parameter.
-
-# In[78]:
-
-
-print(ps['context1@kind1']['description'])
-
-
-# So we decided we might as well allow access to those attributes directly from the twig as well
-
-# In[79]:
-
-
-print(ps['description@context1@kind1'])
-
-
-# The Bundle
-# ------------
-# 
-# The [Bundle](../api/phoebe.frontend.bundle.Bundle.md) is nothing more than a glorified [ParameterSet](../api/phoebe.parameters.ParameterSet.md) with some extra methods to compute models, add new components and datasets, etc.
-# 
-# You can initialize an empty Bundle as follows:
-
-# In[80]:
-
-
-b = phoebe.Bundle()
-print(b)
-
-
-# and filter just as you would for a ParameterSet
-
-# In[81]:
-
-
-print(b.filter(context='system'))
-
-
-# ### Visible If
-# 
-# As promised earlier, the 'visible_if' attribute of a Parameter controls whether its visible to a ParameterSet... but it only does anything if the Parameter belongs to a Bundle.
-# 
-# Let's make a new ParameterSet in which the visibility of one parameter is dependent on the value of another.
-
-# In[82]:
-
-
-param1 = phoebe.parameters.ChoiceParameter(qualifier='what_is_this',
-                                           choices=['matter', 'aether'],
-                                           value='matter',
-                                           context='context1')
-param2 = phoebe.parameters.FloatParameter(qualifier='mass',
-                                          default_unit=u.kg,
-                                          value=5,
-                                          visible_if='what_is_this:matter',
-                                          context='context1')
-
-b = phoebe.Bundle([param1, param2])
-
-
-# In[83]:
-
-
-print(b)
-
-
-# It doesn't make much sense to need to define a mass if this thing isn't baryonic.  So if we change the value of 'what_is_this' to 'aether' then the 'mass' Parameter will temporarily hide itself.
-
-# In[84]:
-
-
-b.set_value('what_is_this', 'aether')
-print(b)
-
-
-# ### FloatArrayParameters: interpolation
-# 
-# As mentioned earlier, when a part of a Bundle, FloatArrayParameters can handle simple linear interpolation with respect to another FloatArrayParameter in the same Bundle.
-
-# In[85]:
-
-
-xparam = phoebe.parameters.FloatArrayParameter(qualifier='xs',
-                                               default_unit=u.d,
-                                               value=np.linspace(0,1,10),
-                                               context='context1')
-
-yparam = phoebe.parameters.FloatArrayParameter(qualifier='ys',
-                                               default_unit=u.m,
-                                               value=np.linspace(0,1,10)**2,
-                                               context='context1')
-
-b = phoebe.Bundle([xparam, yparam])
-
-
-# In[86]:
-
-
-print(b.filter('ys').get().twig)
-
-
-# In[87]:
-
-
-print(b['ys'].get_value())
-
-
-# Now we can interpolate the 'ys' param for any given value of 'xs'
-
-# In[88]:
-
-
-print(b['ys'].interp_value(xs=0))
-
-
-# In[89]:
-
-
-print(b['ys'].interp_value(xs=0.2))
-
-
-# **NOTE**: interp_value does not (yet) support passing a unit.. it will always return a value (not a quantity) and will always be in the default_unit.
+# Since the more verbose method without twigs is a bit clearer to read, most of the tutorials will show that syntax, but feel free to use twigs if they make more sense to you.
 
 # Next
 # ----------
 # 
-# Next up: let's [build a system](building_a_system.ipynb)
+# Next up: let's learn about [constraints](constraints.ipynb).
+# 
+# Or look at any of the following advanced topics:
+# * [Advanced: Parameter Types](parameters.ipynb)
+# * [Advanced: Parameter Units](units.ipynb)
+# * [Advanced: Building a System](building_a_system.ipynb)
+# * [Advanced: Contact Binary Hierarchy](contact_binary_hierarchy.ipynb)
+# * [Advanced: Saving, Loading, and Exporting](saving_and_loading.ipynb)

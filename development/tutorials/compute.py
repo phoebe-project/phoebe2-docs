@@ -9,15 +9,13 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
+#!pip install -I "phoebe>=2.3,<2.4"
 
-
-# As always, let's do imports and initialize a logger and a new Bundle.  See the [building a system tutorial](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -37,14 +35,13 @@ b = phoebe.default_binary()
 # In[2]:
 
 
-b.add_dataset(phoebe.dataset.orb, compute_times=np.linspace(0,10,10), dataset='orb01', component=['primary', 'secondary'])
+b.add_dataset('orb', 
+              compute_times=phoebe.linspace(0,10,10), 
+              dataset='orb01')
 
-times, fluxes, sigmas = np.loadtxt('test.lc.in', unpack=True)
-
-# test.lc.in has 1000 datapoints... let's use every 10 just for brevity
-times, fluxes, sigmas = times[:10], fluxes[:10], sigmas[:10]
-
-b.add_dataset(phoebe.dataset.lc, times=times, fluxes=fluxes, sigmas=sigmas, dataset='lc01')
+b.add_dataset('lc', 
+              compute_times=phoebe.linspace(0,1,101),
+              dataset='lc01')
 
 
 # Default Compute Options
@@ -109,7 +106,7 @@ print(b.get_compute('detailed'))
 # 
 # ### Backend-Specific Compute Options
 # 
-# Most of the parameters in the compute options are specific to the backend being used.  Here, of course, we're using the PHOEBE 2.0 backend - but for details on other backends see the [Alternate Backends Tutorial](./alternate_backends.ipynb).
+# Most of the parameters in the compute options are specific to the backend being used.  Here, of course, we're using the PHOEBE 2.0 backend - but for details on other backends see the [Advanced: Alternate Backends Tutorial](./alternate_backends.ipynb).
 # 
 # The PHOEBE 2.0 compute options are described in the tutorial on their relevant dataset types:
 # 
@@ -156,11 +153,9 @@ print(b['enabled@lc01'])
 # Running Compute
 # -----------------------
 # 
-# ### Simplest Case
-# 
 # [run_compute](../api/phoebe.frontend.bundle.Bundle.run_coompute.md) takes arguments for the compute tag as well as the model tag for the resulting synthetic model(s).  
 # 
-# You do not need to provide the compute tag if only 0 or 1 set of compute options exist in the Bundle.  If there are no compute options, the default PHOEBE 2.0 options will be added on your behalf and used.  If there is a single set of compute options, those will be assumed.  In our case, we have two compute options in the Bundle (with tags 'preview' and 'detailed') so we *must* provide an argument for compute.
+# You do not need to provide the compute tag if only 0 or 1 set of compute options exist in the Bundle.  If there are no compute options, the default PHOEBE 2 options will be added on your behalf and used.  If there is a single set of compute options, those will be assumed.  In our case, we have two compute options in the Bundle (with tags 'preview' and 'detailed') so we *must* provide an argument for compute.
 # 
 # If you do not provide a tag for the model, one will be created for you called 'latest'.  Note that the 'latest' model will be overwritten without throwing any errors, whereas other named models can only be overwritten if you pass `overwrite=True` (see the [run_compute API docs](../api/phoebe.frontend.bundle.Bundle.run_compute.md) for details).  In general, though, if you want to maintain the results from previous calls to run_compute, you must provide a NEW model tag.
 
@@ -176,7 +171,7 @@ b.run_compute(compute='preview')
 print(b.models)
 
 
-# ### Storing Models
+# ### Storing/Tagging Models
 # 
 # Now let's compute models for three different 'versions' of parameters.  By providing a model tag, we can keep the synthetics for each of these different runs in the bundle - which will be handy later on for plotting and comparing models.
 
@@ -218,115 +213,6 @@ b.remove_model('latest')
 
 
 # In[20]:
-
-
-print(b.models)
-
-
-# ### Overriding Times
-# 
-# #### times kwarg in run_compute
-# 
-# You can pass `times` to run_compute to override the times across *all datasets*.
-
-# In[21]:
-
-
-b.run_compute(compute='preview', 
-              times=[0,0.1,0.2], 
-              model='override_times')
-
-
-# In[22]:
-
-
-print("dataset times: {}\nmodel times: {}".format(
-    b.get_value('times', dataset='lc01', context='dataset'),
-    b.get_value('times', dataset='lc01', model='override_times')))
-
-
-# #### compute_times parameter
-# 
-# **NEW in PHOEBE 2.2**
-# 
-# Alternatively, you can override the times (or phases) per-dataset at which the model should be computed.  This is particularly useful if you have attached real data (with a large number of data points) but want the model computed at only a subset of times.
-# 
-# Note that the method above (sending `times` as a keyword argument to run_compute) will take precedence over `compute_times`.
-
-# In[23]:
-
-
-b.set_value('compute_times', dataset='lc01', value=[0, 0.2, 0.4])
-
-
-# In[24]:
-
-
-b.run_compute(compute='preview',  
-              model='override_compute_times')
-
-
-# In[25]:
-
-
-print("dataset times: {}\ndataset compute_times: {}\ndataset compute_phases: {}\n model times: {}".format(
-    b.get_value('times', dataset='lc01', context='dataset'),
-    b.get_value('compute_times', dataset='lc01', context='dataset'),
-    b.get_value('compute_phases', dataset='lc01', context='dataset'),
-    b.get_value('times', dataset='lc01', model='override_compute_times')))
-
-
-# for more details, see the [advanced: compute times & phases tutorial](compute_times_phases.ipynb).
-
-# ### Running Compute with Multiple Sets of Options
-# 
-# So far we've seen how setting up different sets of compute options can be handy - 'preview' vs 'detailed', for example.  But there could also be situations where you want to use different sets of options per dataset.  Perhaps you have a high-precision follow-up light curve of an eclipse along with a lower-precision light curve over a longer time baseline.  So here you'd want to run 'detailed' on the high-precision light curve, but 'preview' on the lower-precision light curve.
-# 
-# You could of course call run_compute twice and create two separate models - but that isn't always convenient and will be a problem in the future when we want to fit data.
-# 
-# Instead we can send a list of compute options to run_compute.
-# 
-# A given dataset can only be enabled in up to 1 of the compute options we're sending to run_compute.  So let's take care of that first (if we don't, we'd get an error when trying to call run_compute):
-
-# In[26]:
-
-
-print(b['enabled@orb01'])
-
-
-# In[27]:
-
-
-b.set_value_all('enabled@orb01@detailed', False)
-b.set_value_all('enabled@orb01@preview', True)
-print(b['enabled@orb01'])
-
-
-# We probably have the same problem with 'lc01', but just didn't get far enough to raise the error.  So let's fix that as well
-
-# In[28]:
-
-
-print(b['enabled@lc01'])
-
-
-# In[29]:
-
-
-b.set_value_all('enabled@lc01@detailed', True)
-b.set_value_all('enabled@lc01@preview', False)
-print(b['enabled@lc01'])
-
-
-# So in this case, 'lc01' will be computed using the options in 'detailed' while 'orb01' will use the options in 'preview'.
-
-# In[30]:
-
-
-b.run_compute(compute=['detailed', 'preview'], model='multiplecompute')
-
-
-# In[31]:
 
 
 print(b.models)
@@ -375,9 +261,9 @@ print(b.get_value(qualifier='us', dataset='orb01', component='primary', model='r
 # ----------
 # 
 # Next up: let's start [plotting](./plotting.ipynb) our synthetic model.
-
-# In[ ]:
-
-
-
-
+# 
+# Or look at any of these advanced topics related to computing observables:
+# * [Advanced: Compute Times & Phases](compute_times_phases.ipynb)
+# * [Advanced: Running Multiple Compute Options Simulataneously](compute_multiple.ipynb)
+# * [Advanced: Alternate Backends](alternate_backends.ipynb)
+# * [Advanced: Detaching from Run Compute](detach.ipynb)

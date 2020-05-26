@@ -1,21 +1,19 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# Accessing and Plotting Meshes
+# Advanced: Accessing and Plotting Meshes
 # ============================
 # 
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
+#!pip install -I "phoebe>=2.3,<2.4"
 
-
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 
@@ -55,7 +53,7 @@ b.add_dataset('lc', times=phoebe.linspace(0,1,6))
 b.add_dataset('mesh')
 
 
-#  **NEW in PHOEBE 2.2**: Unlike other datasets, the mesh dataset cannot accept actual observations, so there is no `times` parameter, only the `compute_times` and `compute_phases` parameters.  For more details on these, see the [Compute Times & Phases tutorial](compute_times_phases.ipynb).
+# Unlike other datasets, the mesh dataset cannot accept actual observations, so there is no `times` parameter, only the `compute_times` and `compute_phases` parameters.  For more details on these, see the [Advanced: Compute Times & Phases tutorial](compute_times_phases.ipynb).
 
 # In[5]:
 
@@ -168,8 +166,3 @@ b.run_compute()
 
 print(b.filter(kind='mesh', context='model').qualifiers)
 
-
-# Next
-# ----------
-# 
-# Next up: let's learn about [distributions](./distributions.ipynb)

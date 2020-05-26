@@ -7,23 +7,19 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
-
-# In[ ]:
-
-
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
-
-
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.html) for more details.
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
+#!pip install -I "phoebe>=2.3,<2.4"
+
+
+# In[2]:
+
+
 import phoebe
 from phoebe import u # units
-import numpy as np
-import matplotlib.pyplot as plt
 
 logger = phoebe.logger()
 
@@ -32,16 +28,20 @@ b = phoebe.default_binary()
 
 # And we'll attach some dummy datasets.  See [Datasets](datasets.html) for more details.
 
-# In[2]:
-
-
-b.add_dataset('orb', times=np.linspace(0,10,1000), dataset='orb01', component=['primary', 'secondary'])
-
-
 # In[3]:
 
 
-b.add_dataset('lc', times=np.linspace(0,10,1000), dataset='lc01')
+b.add_dataset('orb', 
+              compute_times=phoebe.linspace(0,10,1000), 
+              dataset='orb01')
+
+
+# In[4]:
+
+
+b.add_dataset('lc', 
+              compute_times=phoebe.linspace(0,10,1000), 
+              dataset='lc01')
 
 
 # Available Backends
@@ -49,16 +49,47 @@ b.add_dataset('lc', times=np.linspace(0,10,1000), dataset='lc01')
 # 
 # See the [Compute Tutorial](./compute) for details on adding compute options and using them to create synthetic models.
 # 
+# The following list in any version of PHOEBE can always be accessed via [phoebe.list_available_computes](../api/phoebe.list_available_computes.md).
+# 
+# Note also that all of these are listed on the [backends](../backends.md) page and their available functionality is compared in the [compute backend comparison table](../examples/compute_comparison_table.ipynb).
+
+# In[5]:
+
+
+phoebe.list_available_computes()
+
 
 # ### PHOEBE 1.0 Legacy
 # 
-# For more details, see [Comparing PHOEBE 2.0 vs PHOEBE Legacy](../examples/legacy)
+# For more details, see [Comparing PHOEBE 2.0 vs PHOEBE Legacy](../examples/legacy) and the [legacy compute API docs](../api/phoebe.parameters.compute.legacy.md).
 
-# In[4]:
+# In[6]:
 
 
 b.add_compute('legacy', compute='legacybackend')
 print(b.get_compute('legacybackend'))
+
+
+# ### ellc
+# 
+# For more details, see the the [ellc compute API docs](../api/phoebe.parameters.compute.ellc.md).
+
+# In[7]:
+
+
+b.add_compute('ellc', compute='ellcbackend')
+print(b.get_compute('ellcbackend'))
+
+
+# ### jktebop
+# 
+# For more details, see the the [jktebop compute API docs](../api/phoebe.parameters.compute.jktebop.md).
+
+# In[8]:
+
+
+b.add_compute('jktebop', compute='jktebopcompute')
+print(b.get_compute('jktebopcompute'))
 
 
 # Using Alternate Backends
@@ -71,13 +102,13 @@ print(b.get_compute('legacybackend'))
 # 
 # Here we'll add the default PHOEBE backend as well as the PHOEBE 1.0 (legacy) backend.  Note that in order to use an alternate backend, that backend must be installed on your machine.
 
-# In[5]:
+# In[9]:
 
 
 b.add_compute('phoebe', compute='phoebebackend')
 
 
-# In[6]:
+# In[10]:
 
 
 print(b.get_compute('phoebebackend'))
@@ -88,20 +119,22 @@ print(b.get_compute('phoebebackend'))
 # Nothing changes when calling [b.run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md) - simply provide the compute tag for those options.  Do note, however, that not all backends support all dataset types.
 
 # But, since the legacy backend doesn't support ck2004 atmospheres and interpolated limb-darkening, we do need to choose a limb-darkening law.  We can do this for all passband-component combinations by using [set_value_all](../api/phoebe.parameters.ParameterSet.set_value_all.md).
+# 
+# For more information on limb-darkening options, see the [limb-darkening tutorial](limb_darkening.ipynb).
 
-# In[8]:
+# In[11]:
 
 
 b.set_value_all('ld_mode', 'manual')
 
 
-# In[9]:
+# In[12]:
 
 
 b.set_value_all('ld_func', 'logarithmic')
 
 
-# In[10]:
+# In[13]:
 
 
 b.run_compute('legacybackend', model='legacyresults')
@@ -114,7 +147,7 @@ b.run_compute('legacybackend', model='legacyresults')
 # 
 # We just need to make sure that each dataset is only enabled for one (or none) of the backends that we want to use, and then send a list of the compute tags to run_compute.  Here we'll use the PHOEBE backend to compute orbits and the legacy backend to compute light curves.
 
-# In[11]:
+# In[14]:
 
 
 b.set_value_all('enabled@lc01@phoebebackend', False)
@@ -122,7 +155,7 @@ b.set_value_all('enabled@lc01@phoebebackend', False)
 print(b.filter(qualifier='enabled'))
 
 
-# In[12]:
+# In[15]:
 
 
 b.run_compute(['phoebebackend', 'legacybackend'], model='mixedresults')
@@ -130,19 +163,19 @@ b.run_compute(['phoebebackend', 'legacybackend'], model='mixedresults')
 
 # The parameters inside the returned model even remember which set of compute options (and therefore, in this case, which backend) were used to compute them.
 
-# In[13]:
+# In[16]:
 
 
 print(b['mixedresults'].computes)
 
 
-# In[14]:
+# In[17]:
 
 
 b['mixedresults@phoebebackend'].datasets
 
 
-# In[15]:
+# In[18]:
 
 
 b['mixedresults@legacybackend'].datasets

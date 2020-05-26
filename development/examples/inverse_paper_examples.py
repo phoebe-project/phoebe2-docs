@@ -7,6 +7,15 @@
 
 # # Setup
 # 
+
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
+
+# In[ ]:
+
+
+#!pip install -I "phoebe>=2.3,<2.4"
+
+
 # First we'll import, set our plotting options, and set a fixed random seed so that our noise model is reproducible between runs.
 
 # In[1]:
@@ -85,7 +94,7 @@ b.add_dataset('rv', times=rvtimes, rvs={'primary': rvsA, 'secondary': rvsB}, sig
 b.set_value_all('ld_mode', 'lookup')
 
 
-# For the sake of this example, we'll assume that we know the orbital period _exactly_, and so can see that our observations phase nicely.  
+# For the sake of this example, we'll assume that we know the orbital period *exactly*, and so can see that our observations phase nicely.  
 
 # In[6]:
 
@@ -93,9 +102,9 @@ b.set_value_all('ld_mode', 'lookup')
 afig, mplfig = b.plot(x='phases', show=True)
 
 
-# # Run `rv_geometry` estimator
+# # Run rv_geometry estimator
 # 
-# First we'll run the `rv_geometry` estimator.
+# First we'll run the [rv_geometry estimator](../api/phoebe.parameters.solver.estimator.rv_geometry.md) via [b.add_solver](../api/phoebe.frontend.bundle.Bundle.add_solver.md) and [b.run_solver](../api/phoebe.frontend.bundle.Bundle.run_solver.md).
 
 # In[7]:
 
@@ -129,9 +138,9 @@ afig, mplfig = b.plot(solution='rv_geom_sol',
                       show=True, save='figure_rv_geometry.eps')
 
 
-# # Run `lc_geometry` estimator
+# # Run lc_geometry estimator
 # 
-# Next we'll run the `lc_geometry` estimator.
+# Next we'll run the [lc_geometry estimator](../api/phoebe.parameters.solver.estimator.lc_geometry.md).
 
 # In[11]:
 
@@ -213,9 +222,9 @@ _ = b.plot(context='dataset', dataset='lc01', x='phases', xlim=(-0.55,0.55),
 b.set_value('mask_enabled@lc01', False)
 
 
-# # Run `ebai` estimator
+# # Run ebai estimator
 # 
-# And finally, we'll do the same for the `ebai` estimator.
+# And finally, we'll do the same for the [ebai estimator](../api/phoebe.parameters.solver.estimator.ebai.md).
 
 # In[19]:
 
@@ -299,9 +308,11 @@ _ = b.plot(x='phases', show=True)
 print(b.filter(qualifier=['teffratio', 'requivsumfrac'], context='component'))
 
 
-# # Optimize with `nelder_mead` using `ellc`
+# # Optimize with nelder_mead using ellc
 # 
-# To avoid a long burnin during sampling, we'll use the `nelder_mead` optimizer to try to achieve better agreement with the observations.
+# To avoid a long burnin during sampling, we'll use the [nelder_mead optimizer](../api/phoebe.parameters.solver.optimizer.nelder_mead.md) to try to achieve better agreement with the observations.
+# 
+# We'll use [ellc](../api/phoebe.parameters.compute.ellc.md) as our forward-model just for the sake of computational efficiency.  
 
 # In[30]:
 
@@ -375,7 +386,7 @@ _ = b.plot(x='phases',
            save='figure_optimizer_nm.eps', show=True)
 
 
-# # Determine uncertainties with `emcee`
+# # Determine uncertainties with emcee
 
 # So that we don't ignore any degeneracies between parameters and the luminosities, we'll turn off the dataset-scaling we used for optimizing and make sure we have a reasonable value of `pblum@primary` set to roughly obtain the out-of-eclipse flux levels of the observations.
 
@@ -407,7 +418,7 @@ b.add_distribution({'teffratio': phoebe.gaussian_around(0.1),
                     distribution='ball_around_optimized_solution')
 
 
-# We can look at this combined set of distributions, which will be used to sample the initial values of our walkers in `emcee`.
+# We can look at this combined set of distributions, which will be used to sample the initial values of our walkers in [emcee](../api/phoebe.parameters.solver.sampler.emcee.md).
 
 # In[43]:
 
@@ -424,7 +435,7 @@ b.add_solver('sampler.emcee',
              solver='emcee_solver')
 
 
-# Since we'll need a lot of iterations, we'll export the solver to an HPC cluster and import the solution.  We'll save the bundle first so that we can interrupt the notebook and return to the following line, if needed.
+# Since we'll need a lot of iterations, we'll export the solver to an HPC cluster (with [b.export_solver](../api/phoebe.frontend.bundle.Bundle.export_solver.md)) and import the solution (with [b.import_solution](../api/phoebe.frontend.bundle.Bundle.import_solution.md)).  We'll [save](../api/phoebe.parameters.ParameterSet.save.md) the bundle first so that we can interrupt the notebook and return to the following line, if needed.
 
 # In[45]:
 
@@ -483,7 +494,7 @@ _ = b.plot('emcee_sol', style='lnprobabilities', c='black',
            save='figure_emcee_lnprobabilities.eps', show=True)
 
 
-# # Accessing posteriors from `emcee` run
+# # Accessing posteriors from emcee run
 # 
 # **TODO**: explain the difference between `parameters` and `adopt_parameters`, or consider merging in the code so this isn't possible (or rename to be more self-explanatory).
 
@@ -587,7 +598,7 @@ _ = b.plot(kind='rv', model='emcee_posts', x='phases', y='residuals',
            save='figure_posteriors_sample_from_rv.eps', show=True)
 
 
-# # Sampling with `dynesty`
+# # Sampling with dynesty
 
 # The posterior plots in the paper were all created from the `emcee` results, but we'll also run the `dynesty` sampler on the same system.
 # 

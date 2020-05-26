@@ -4,20 +4,18 @@
 # Distributions
 # ============================
 # 
-# Distributions are mostly useful when using samplers (which we'll see in the next tutorial on [solving the inverse problem](./solver.ipynb) - but can also be useful to propagate any set of distributions (whether those be uncertainties in the literature, etc) through the forward model.
+# Distributions are mostly useful when using samplers (which we'll see in the next tutorial on [solving the inverse problem](./solver.ipynb)) - but can also be useful to propagate any set of distributions (whether those be uncertainties in the literature, etc) through the forward model.
 # 
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.3 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.3,<2.4"')
+#!pip install -I "phoebe>=2.3,<2.4"
 
-
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
 
 # In[1]:
 

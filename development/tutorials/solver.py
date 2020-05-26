@@ -1,45 +1,43 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# Inverse Problem (solvers)
+# Solvers: The Inverse Problem
 # ============================
 # 
 # 
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.3 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
-
-# In[ ]:
-
-
-get_ipython().system('pip install -I "phoebe>=2.3,<2.4"')
-
-
-# As always, let's do imports and initialize a logger and a new Bundle.  See the [building a system tutorial](building_a_system.ipynb) for more details.
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
+
+
+#!pip install -I "phoebe>=2.3,<2.4"
+
+
+# In[2]:
 
 
 import phoebe
 from phoebe import u # units
 import numpy as np
-import matplotlib.pyplot as plt
 
 logger = phoebe.logger()
 
+
+# For the sake of a simple crude example, we'll just use the synthetic light curve of a default binary with a bit of noise as our "observations".   See the [inverse problem example scripts](../examples.md) for more realistic examples.
+
+# In[3]:
+
+
 b = phoebe.default_binary()
-
-
-# For the sake of a simple crude example, we'll just use the synthetic light curve of a default binary as our "observations".   See the [inverse problem example scripts](../examples.md) for more realistic examples.
-
-# In[2]:
-
-
 b.add_dataset('lc', compute_phases=phoebe.linspace(0,1,101))
 b.run_compute(irrad_method='none')
+
 times = b.get_value('times', context='model')
-fluxes = b.get_value('fluxes', context='model')
+fluxes = b.get_value('fluxes', context='model') + np.random.normal(size=times.shape) * 0.01
+sigmas = np.ones_like(times) * 0.02
 
 b = phoebe.default_binary()
 b.add_dataset('lc', times=times, fluxes=fluxes, sigmas=np.full_like(fluxes, fill_value=0.1))
@@ -56,7 +54,7 @@ b.add_dataset('lc', times=times, fluxes=fluxes, sigmas=np.full_like(fluxes, fill
 # 
 # To see the currently implemented set of solvers, we can call [phoebe.list_available_solvers](../api/phoebe.list_available_solvers.md)
 
-# In[3]:
+# In[4]:
 
 
 print(phoebe.list_available_solvers())
@@ -66,13 +64,13 @@ print(phoebe.list_available_solvers())
 # 
 # As you may expect, to use a solver you must first call [b.add_solver](../api/phoebe.frontend.bundle.Bundle.add_solver.md), set the desired options, and then call [b.run_solver](../api/phoebe.frontend.bundle.Bundle.run_solver.md) (or [b.export_solver](../api/phoebe.frontend.bundle.Bundle.export_solver.md)).
 
-# In[4]:
+# In[5]:
 
 
 b.add_solver('estimator.lc_geometry', solver='my_lcgeom_solver')
 
 
-# In[5]:
+# In[6]:
 
 
 print(b.get_solver(solver='my_lcgeom_solver'))
@@ -80,7 +78,7 @@ print(b.get_solver(solver='my_lcgeom_solver'))
 
 # In addition to the [solver API docs](../api/phoebe.parameters.solver.md), remember that each parameter has a description and possibly a set of available choices (if its a [ChoiceParameter](../api/phoebe.parameters.ChoiceParameter.md) or [SelectParameter](../api/phoebe.parameters.SelectParameter.md)).
 
-# In[6]:
+# In[7]:
 
 
 print(b.get_parameter('expose_model').description)
@@ -91,7 +89,7 @@ print(b.get_parameter('expose_model').description)
 
 # [b.run_solver](../api/phoebe.frontend.bundle.Bundle.run_solver.md) (or [b.export_solver](../api/phoebe.frontend.bundle.Bundle.export_solver.md) and [b.import_solution](../api/phoebe.frontend.bundle.Bundle.import_solution.md)) allows optionally setting a `solution` tag (if not provided, one will be created automatically, just as [b.run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md) allows setting a `model` tag.  
 
-# In[7]:
+# In[8]:
 
 
 b.run_solver(solver='my_lcgeom_solver', solution='my_lcgeom_solution')
@@ -99,7 +97,7 @@ b.run_solver(solver='my_lcgeom_solver', solution='my_lcgeom_solution')
 
 # In many cases, the `solution` itself is plottable - showing some sort of diagnostic figures.
 
-# In[8]:
+# In[9]:
 
 
 _ = b.plot(context='solution', solution='my_lcgeom_solution', show=True)
@@ -109,13 +107,13 @@ _ = b.plot(context='solution', solution='my_lcgeom_solution', show=True)
 # 
 # * [b.adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution.md)
 
-# In[9]:
+# In[10]:
 
 
 print(b.adopt_solution(trial_run=True))
 
 
-# In[10]:
+# In[11]:
 
 
 print(b.adopt_solution())
@@ -133,11 +131,11 @@ print(b.adopt_solution())
 # * [b.calculate_lnlikelihood](../api/phoebe.parameters.ParameterSet.calculate_lnlikelihood.md)
 # * [b.calculate_lnp](../api/phoebe.frontend.bundle.Bundle.calculate_lnp.md)
 # 
-# The log-probability used as the merit function within optimizers and samplers is defined as [calculate_lnp](../api/phoebe.frontend.bundle.Bundle.calculate_lnp.md)(priors, combine=priors_combine) + [calculate_lnlikelihood](../api/phoebe.parameters.ParameterSet.calculate_lnlikelihood).
+# The log-probability used as the merit function within optimizers and samplers is defined as [calculate_lnp](../api/phoebe.frontend.bundle.Bundle.calculate_lnp.md)`(priors, combine=priors_combine)` + [calculate_lnlikelihood](../api/phoebe.parameters.ParameterSet.calculate_lnlikelihood).
 # 
 # To see the affect of `priors_combine`, we can pass the `solver` tag directly to [b.get_distribution_collection](../api/phoebe.frontend.bundle.Bundle.get_distribution_collection.md), [b.plot_distribution_collection](../api/phoebe.frontend.bundle.Bundle.plot_distribution_collection.md), or [b.calculate_lnp](../api/phoebe.frontend.bundle.Bundle.calculate_lnp.md).
 
-# In[11]:
+# In[12]:
 
 
 b.add_distribution('teff@primary', phoebe.gaussian(6000,100), distribution='mydist01')
@@ -146,49 +144,49 @@ b.add_distribution('teff@secondary', phoebe.gaussian(5500,600), distribution='my
 b.add_distribution('teff@primary', phoebe.uniform(5800,6200), distribution='mydist02')
 
 
-# In[12]:
+# In[13]:
 
 
 b.add_solver('sampler.emcee', priors=['mydist01', 'mydist02'], solver='myemceesolver')
 
 
-# In[13]:
+# In[14]:
 
 
 print(b.filter(qualifier='prior*'))
 
 
-# In[14]:
+# In[15]:
 
 
 print(b.get_parameter('priors_combine').description)
 
 
-# In[15]:
-
-
-_ = b.plot_distribution_collection('priors@myemceesolver', show=True)
-
-
 # In[16]:
 
 
-b.calculate_lnp('priors@myemceesolver')
+_ = b.plot_distribution_collection('priors@myemceesolver', show=True)
 
 
 # In[17]:
 
 
-b.set_value('priors_combine', 'first')
+b.calculate_lnp('priors@myemceesolver')
 
 
 # In[18]:
 
 
-_ = b.plot_distribution_collection('priors@myemceesolver', show=True)
+b.set_value('priors_combine', 'first')
 
 
 # In[19]:
+
+
+_ = b.plot_distribution_collection('priors@myemceesolver', show=True)
+
+
+# In[20]:
 
 
 b.calculate_lnp('priors@myemceesolver')
@@ -197,10 +195,4 @@ b.calculate_lnp('priors@myemceesolver')
 # Next
 # ----------
 # 
-# That's it!! You've completed all the basic tutorials.  Now give PHOEBE a try or dig into some of the advanced tutorials and example scripts.
-
-# In[ ]:
-
-
-
-
+# That's it!! You've completed all the basic tutorials.  Now give PHOEBE a try or dig into some of the [advanced tutorials](../tutorials.md) and [example scripts](../examples.md).
