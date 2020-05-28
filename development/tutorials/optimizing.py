@@ -307,6 +307,10 @@ phoebe.get_download_passband_defaults()
 # 
 # PHOEBE_DOWNLOAD_PASSBAND_DEFAULTS_GZIPPED (FALSE by default) allows setting the value for `gzipped` in [phoebe.set_download_passband_defaults](../api/phoebe.set_download_passband_defaults.md).  For more details, see the section above.
 
+# ### PHOEBE_UPDATE_PASSBAND_IGNORE_VERSION
+# 
+# PHOEBE_UPDATE_PASSBAND_IGNORE_VERSION (FALSE by default) allows disabling the timestamp check used to require manually updating passbands when required content is missing.  See [phoebe.update_passband_ignore_version_on](../api/phoebe.update_passband_ignore_version_on.md) and [phoebe.update_passband_ignore_version_off](../api/phoebe.update_passband_ignore_version_off.md)
+
 # In[ ]:
 
 
