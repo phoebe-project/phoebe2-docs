@@ -19,7 +19,8 @@ Arguments
 * `dec` (float/quantity, optiona): declination.
 * `epoch` (string, optional): epoch of `ra` and `dec`.
 * `distance` (float/quantity, optional): distance to the system.
-* `vgamma` (float/quantity, optional): systemic velocity.
+* `vgamma` (float/quantity, optional): Constant barycentric systemic velocity
+    (in the direction of positive RV or negative vz)
 * `ebv` (float, optional, default=0): extinction E(B-V).
 * `Av` (float, optional, default=0): extinction Av.
 * `Rv` (float, optional, default=3.1): extinction law parameter.

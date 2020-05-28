@@ -32,7 +32,7 @@ Arguments
 * `value` (optional, default=None): valid value to set for the
     matched Parameter.
 * `index` (int, optional): only applicable for
-    [phoebe.parmaeters.FloatArrayParameter](phoebe.parmaeters.FloatArrayParameter.md).  Passing `index` will call
+    [phoebe.parameters.FloatArrayParameter](phoebe.parameters.FloatArrayParameter.md).  Passing `index` will call
     [phoebe.parameters.FloatArrayParameter.set_index_value](phoebe.parameters.FloatArrayParameter.set_index_value.md) and pass
     `index` instead of [phoebe.parameters.FloatArrayParameter.set_value](phoebe.parameters.FloatArrayParameter.set_value.md).
 * `**kwargs`: filter options to be passed along to

@@ -25,7 +25,7 @@ Arguments
 
 Returns
 -----------
-* the removed [phoebe.parmaeters.Parameter](phoebe.parmaeters.Parameter.md).
+* the removed [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md).
 
 Raises
 ------

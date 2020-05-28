@@ -34,6 +34,7 @@ These tutorials highlight the major changes between versions 2.2.x and 2.3+ in t
 
 * [Extinction: per-dataset to system-level](tutorials/22_23_extinction.ipynb)
 * [Checks: run_checks at system, compute, solver, and solution levels](tutorials/22_23_run_checks.ipynb)
+* [Read Only and Constrained Notation](tutorials/22_23_readonly.ipynb)
 * [requivsumfrac constraint: replaces requivsum](tutorials/22_23_requivsumfrac.ipynb)
 * [Scipy dependency: updated to 1.7+](tutorials/22_23_scipy.ipynb)
 

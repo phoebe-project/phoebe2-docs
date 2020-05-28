@@ -302,6 +302,11 @@ Access to merit-function values:
 * [rename_solution](api/phoebe.frontend.bundle.Bundle.rename_solution.md)
 * [remove_solution](api/phoebe.frontend.bundle.Bundle.remove_solution.md)
 
+Helper functions to access underyling solution objects:
+
+* [process_mcmc_chains_from_solution](api/phoebe.helpers.process_mcmc_chains_from_solution.md)
+* [get_dynesty_object_from_solution](api/phoebe.helpers.get_dynesty_object_from_solution.md)
+
 ### Plotting
 
 * [plot](api/phoebe.parameters.ParameterSet.plot.md)
@@ -350,3 +355,4 @@ and rebuild them by calling [run_figure](api/phoebe.frontend.bundle.Bundle.run_f
 * [phoebe.atmospheres.passbands.Passband](api/phoebe.atmospheres.passbands.Passband.md)
 * [phoebe.distortions.roche](api/phoebe.distortions.roche.md)
 * [phoebe.distortions.rotstar](api/phoebe.distortions.rotstar.md)
+* [phoebe.helpers](api/phoebe.helpers.md)

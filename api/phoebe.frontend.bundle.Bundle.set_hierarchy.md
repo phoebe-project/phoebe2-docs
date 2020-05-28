@@ -16,7 +16,7 @@ For a list of all constraints that are automatically set based on the
 hierarchy, see [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md).
 
 See the built-in functions for building hierarchy reprentations:
-* [phoebe.parmaeters.hierarchy](phoebe.parmaeters.hierarchy.md)
+* [phoebe.parameters.hierarchy](phoebe.parameters.hierarchy.md)
 * [phoebe.parameters.hierarchy.binaryorbit](phoebe.parameters.hierarchy.binaryorbit.md)
 * [phoebe.parameters.hierarchy.component](phoebe.parameters.hierarchy.component.md)
 

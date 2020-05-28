@@ -192,6 +192,7 @@ if __name__ == '__main__':
     fms_parameters = api_docs(phoebe.parameters, skip=skip_parameters+fms_phoebe, prefix='phoebe', members=[pydoc.inspect.ismodule, pydoc.inspect.isfunction, pydoc.inspect.isclass])
     fms_atm = api_docs(phoebe.atmospheres, skip=[], prefix='phoebe', members=[pydoc.inspect.ismodule])
     fms_passbands = api_docs(phoebe.atmospheres.passbands, skip=skip_passbands, prefix='phoebe.atmospheres', members=[pydoc.inspect.isfunction, pydoc.inspect.isclass])
+    fms_helps = api_docs(phoebe.helpers, skip=[], prefix='phoebe', members=[pydoc.inspect.isfunction])
 
     # TODO: include dependencies (need to cleanup their docs, match in same format, pull in code)
     # fms_deps = api_docs(phoebe.dependencies, skip=['unitsiau2015'], prefix='phoebe', members=[pydoc.inspect.ismodule], write=False)

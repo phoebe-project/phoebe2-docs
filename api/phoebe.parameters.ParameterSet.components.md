@@ -14,5 +14,5 @@ For the singular version, see:
 Returns
 --------
 * (list) a list of all components for each [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md)
-    in this [phoebe.parmaeters.ParameterSet](phoebe.parmaeters.ParameterSet.md)
+    in this [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md)
 

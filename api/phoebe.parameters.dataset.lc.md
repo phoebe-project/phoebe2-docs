@@ -89,7 +89,7 @@ Arguments
 * `l3` (float/quantity, optional): third light in flux units (only applicable
     if `l3_mode` is 'flux'). Only applicable if `syn` is False and `is_lc`
     is True.
-* `l3_frac` (float/quantity, optional): third light in fraction
+* `l3_frac` (float/quantity, optional): third light in fraction of total light.
     (only applicable if `l3_mode` is 'fraction').
     Only applicable if `syn` is False and `is_lc` is True.
 * `exptime` (float/quantity, optional): exposure time of the observations

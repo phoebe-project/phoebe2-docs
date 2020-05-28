@@ -21,7 +21,7 @@ See also:
 Arguments
 -------------
 * `distribution` (string list or None, optional, default=None): distribution
-    to use when filtering.  If None, will default to [phoebe.parmaeters.FloatParameter.in_distributions](phoebe.parmaeters.FloatParameter.in_distributions.md)
+    to use when filtering.  If None, will default to [phoebe.parameters.FloatParameter.in_distributions](phoebe.parameters.FloatParameter.in_distributions.md)
 * `follow_constraints` (bool, optional, default=True): whether to include
     the distributions of parameters in the constrained parameter.  Only
     applicable if this parameter is currently constrained.  See also

@@ -10,7 +10,7 @@ def to_string_short(self)
 
 
 Return a short/abreviated string representation of the
-[phoebe.parmaeters.Parameter](phoebe.parmaeters.Parameter.md).
+[phoebe.parameters.Parameter](phoebe.parameters.Parameter.md).
 
 See also:
 * [phoebe.parameters.Parameter.to_string](phoebe.parameters.Parameter.to_string.md)

@@ -18,6 +18,7 @@
 * [geomspace](phoebe.geomspace.md)
 * [get_download_passband_defaults](phoebe.get_download_passband_defaults.md)
 * [get_passband](phoebe.get_passband.md)
+* [helpers](phoebe.helpers.md)
 * [histogram_from_bins](phoebe.histogram_from_bins.md)
 * [histogram_from_data](phoebe.histogram_from_data.md)
 * [install_passband](phoebe.install_passband.md)
@@ -63,3 +64,5 @@
 * [update_all_passbands](phoebe.update_all_passbands.md)
 * [update_passband](phoebe.update_passband.md)
 * [update_passband_available](phoebe.update_passband_available.md)
+* [update_passband_ignore_version_off](phoebe.update_passband_ignore_version_off.md)
+* [update_passband_ignore_version_on](phoebe.update_passband_ignore_version_on.md)

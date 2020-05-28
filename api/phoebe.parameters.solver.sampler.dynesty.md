@@ -42,6 +42,24 @@ b.run_solver(kind='dynesty')
 Parallelization support: dynesty supports both MPI and multiprocessing, always
 at the solver-level (per-model).
 
+The resulting solution (from [phoebe.frontend.bundle.Bundle.run_solver](phoebe.frontend.bundle.Bundle.run_solver.md) or
+[phoebe.frontend.bundle.Bundle.export_solver](phoebe.frontend.bundle.Bundle.export_solver.md) and [phoebe.frontend.bundle.Bundle.import_solution](phoebe.frontend.bundle.Bundle.import_solution.md))
+then exposes the raw-products from `dynesty`, after which the following
+actions can be taken:
+
+* [phoebe.parameters.ParameterSet.plot](phoebe.parameters.ParameterSet.plot.md) with `style` as one of
+    ['corner', 'trace', 'run'].
+* [phoebe.frontend.bundle.Bundle.adopt_solution](phoebe.frontend.bundle.Bundle.adopt_solution.md) to adopt the resulting
+    posteriors in a distribution.  Use `adopt_values=True` (defaults to False)
+    to adopt the face-values.  Use `trial_run=True` to see the adopted
+    distributions and/or values without applying to the Bundle.
+* [phoebe.frontend.bundle.Bundle.get_distribution_collection](phoebe.frontend.bundle.Bundle.get_distribution_collection.md) to access
+    the multivariate distribution representation of the posteriors.
+* [phoebe.helpers.get_dynesty_object](phoebe.helpers.get_dynesty_object.md) or [phoebe.helpers.get_dynesty_object_from_solution](phoebe.helpers.get_dynesty_object_from_solution.md)
+    to manually access the dynesty object which can then be passed to any
+    [dynesty helper function](https://dynesty.readthedocs.io/en/latest/api.html#module-dynesty.results)
+    which accepts the `results` object.
+
 
 Arguments
 ----------

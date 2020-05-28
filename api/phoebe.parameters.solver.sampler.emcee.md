@@ -39,6 +39,23 @@ using MPI and nprocs &gt; nwalkers and `compute` is a phoebe backend, then MPI
 will be handled at the compute-level (per-time).  In all other cases,
 parallelization is handled at the solver-level (per-model).
 
+The resulting solution (from [phoebe.frontend.bundle.Bundle.run_solver](phoebe.frontend.bundle.Bundle.run_solver.md) or
+[phoebe.frontend.bundle.Bundle.export_solver](phoebe.frontend.bundle.Bundle.export_solver.md) and [phoebe.frontend.bundle.Bundle.import_solution](phoebe.frontend.bundle.Bundle.import_solution.md))
+then exposes the raw-products from `emcee`, after which the following
+actions can be taken:
+
+* [phoebe.parameters.ParameterSet.plot](phoebe.parameters.ParameterSet.plot.md) with `style` as one of
+    ['corner', 'failed', 'lnprobabilities', 'trace'/'walks'].
+* [phoebe.frontend.bundle.Bundle.adopt_solution](phoebe.frontend.bundle.Bundle.adopt_solution.md) to adopt the resulting
+    posteriors in a distribution.  Use `adopt_values=True` (defaults to False)
+    to adopt the face-values.  Use `trial_run=True` to see the adopted
+    distributions and/or values without applying to the Bundle.
+* [phoebe.frontend.bundle.Bundle.get_distribution_collection](phoebe.frontend.bundle.Bundle.get_distribution_collection.md) to access
+    the multivariate distribution representation of the posteriors.
+* [phoebe.helpers.process_mcmc_chains](phoebe.helpers.process_mcmc_chains.md) or [phoebe.helpers.process_mcmc_chains_from_solution](phoebe.helpers.process_mcmc_chains_from_solution.md)
+    to manually access the `lnprobabilities` and `samples` after applying
+    `burnin`, `thin`, `lnprob_cutoff`, and `adopt_parameters`/`adopt_inds`.
+
 Arguments
 ----------
 * `compute` (string, optional): compute options to use for forward model

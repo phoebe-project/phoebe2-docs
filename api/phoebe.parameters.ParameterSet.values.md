@@ -9,7 +9,7 @@ def values(self)
 
 
 
-Return the values from [phoebe.parmaeters.ParameterSet.to_dict](phoebe.parmaeters.ParameterSet.to_dict.md)
+Return the values from [phoebe.parameters.ParameterSet.to_dict](phoebe.parameters.ParameterSet.to_dict.md)
 
 Returns
 -------

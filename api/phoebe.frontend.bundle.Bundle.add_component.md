@@ -27,7 +27,7 @@ b.add_component('orbit', period=2.5)
 Available kinds can be found in [phoebe.parameters.component](phoebe.parameters.component.md) or by calling
 [phoebe.list_available_components](phoebe.list_available_components.md) and include:
 * [phoebe.parameters.component.star](phoebe.parameters.component.star.md)
-* [phoebe.parmaeters.component.orbit](phoebe.parmaeters.component.orbit.md)
+* [phoebe.parameters.component.orbit](phoebe.parameters.component.orbit.md)
 * [phoebe.parameters.component.envelope](phoebe.parameters.component.envelope.md)
 
 Arguments
