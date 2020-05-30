@@ -23,6 +23,7 @@ For more specific use-cases, see the example scripts below.
     * [Advanced: Alternate Backends](tutorials/alternate_backends.ipynb)
     * [Advanced: Detaching from Run Compute](tutorials/detach.ipynb)
 5. [Plotting](tutorials/plotting.ipynb)
+    * [Advanced: Plotting Options](tutorials/plotting_advanced.ipynb)
     * [Advanced: Animations](tutorials/animations.ipynb)
     * [Advanced: Accessing and Plotting Meshes](tutorials/meshes.ipynb)
 6. [Distributions](tutorials/distributions.ipynb)
