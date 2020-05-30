@@ -9,19 +9,19 @@
 
 # Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
-# In[ ]:
+# In[1]:
 
 
 #!pip install -I "phoebe>=2.3,<2.4"
 
 
-# In[1]:
+# In[2]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
-# In[2]:
+# In[3]:
 
 
 import phoebe
@@ -41,13 +41,13 @@ b = phoebe.default_binary()
 # So let's add an LC and MESH datasets.
 # 
 
-# In[3]:
+# In[4]:
 
 
 b.add_dataset('lc', times=phoebe.linspace(0,1,6))
 
 
-# In[4]:
+# In[5]:
 
 
 b.add_dataset('mesh')
@@ -55,13 +55,13 @@ b.add_dataset('mesh')
 
 # Unlike other datasets, the mesh dataset cannot accept actual observations, so there is no `times` parameter, only the `compute_times` and `compute_phases` parameters.  For more details on these, see the [Advanced: Compute Times & Phases tutorial](compute_times_phases.ipynb).
 
-# In[5]:
+# In[6]:
 
 
 print(b.get_parameter(qualifier='compute_times', kind='mesh'))
 
 
-# In[6]:
+# In[7]:
 
 
 print(b.get_parameter(qualifier='include_times', kind='mesh'))
@@ -69,25 +69,25 @@ print(b.get_parameter(qualifier='include_times', kind='mesh'))
 
 # Note that we can manually set the times of the mesh AND/OR reference the times for existing non-mesh datasets (such as the light curve we just added) as well as any of the various t0s in the system.
 
-# In[7]:
+# In[8]:
 
 
 b.set_value('compute_times', kind='mesh', value=[10])
 
 
-# In[8]:
+# In[9]:
 
 
 b.set_value('include_times', kind='mesh', value=['lc01'])
 
 
-# In[9]:
+# In[10]:
 
 
 b.run_compute()
 
 
-# In[10]:
+# In[11]:
 
 
 print(b.filter(kind='mesh', context='model').times)
