@@ -18,6 +18,9 @@ passed on to set the values as described in the arguments below.  Alternatively,
 see [phoebe.parameters.ParameterSet.set_value](phoebe.parameters.ParameterSet.set_value.md) to set/change the values
 after creating the Parameters.
 
+In addition, some constraints are created automatically by [phoebe.frontend.bundle.Bundle.set_hierarchy](phoebe.frontend.bundle.Bundle.set_hierarchy.md).
+For a list of these, see [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md).
+
 Arguments
 ----------
 * `abun` (float, optional): abundance/metallicity.

@@ -1,27 +1,26 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[constraint](phoebe.parameters.constraint.md).comp_sma (function)
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[constraint](phoebe.parameters.constraint.md).comp_asini (function)
 
 
 ```py
 
-def comp_sma(b, component, solve_for=None, **kwargs)
+def comp_asini(b, component, solve_for=None, **kwargs)
 
 ```
 
 
 
-Create a constraint for the star's semi-major axes WITHIN its
-parent orbit.  This is NOT the same as the semi-major axes OF
-the parent orbit
+Create a constraint for the star's projected semi-major axes WITHIN its
+parent orbit.
 
 This constraint is automatically created and attached for all stars
 in binary orbits via [phoebe.frontend.bundle.Bundle.set_hierarchy](phoebe.frontend.bundle.Bundle.set_hierarchy.md).
 
 This is usually passed as an argument to
  [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md) as
- `b.add_constraint('comp_sma', component='primary')`, where `component` is
+ `b.add_constraint('comp_asini', component='primary')`, where `component` is
  one of [phoebe.parameters.HierarchyParameter.get_stars](phoebe.parameters.HierarchyParameter.get_stars.md).
 
-If 'sma' does not exist in the component, it will be created
+If 'asini' does not exist in the component, it will be created
 
 Arguments
 -----------
@@ -29,8 +28,8 @@ Arguments
 * `component` (string): the label of the orbit or component in which this
     constraint should be built.
 * `solve_for` ([phoebe.parameters.Parameter](phoebe.parameters.Parameter.md), optional, default=None): if
-    'sma@star' should not be the derived/constrained parameter, provide which
-    other parameter should be derived (ie 'q', 'sma@orbit').
+    'asini@star' should not be the derived/constrained parameter, provide which
+    other parameter should be derived (ie 'sma@orbit').
 
 Returns
 ----------

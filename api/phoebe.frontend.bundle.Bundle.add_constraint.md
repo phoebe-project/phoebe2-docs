@@ -52,6 +52,7 @@ system.  The following are automatically included for a
 [phoebe.frontend.bundle.Bundle.default_binary](phoebe.frontend.bundle.Bundle.default_binary.md):
 * [phoebe.parameters.constraint.mass](phoebe.parameters.constraint.mass.md)
 * [phoebe.parameters.constraint.comp_sma](phoebe.parameters.constraint.comp_sma.md)
+* [phoebe.parameters.constraint.comp_asini](phoebe.parameters.constraint.comp_asini.md)
 * [phoebe.parameters.constraint.rotation_period](phoebe.parameters.constraint.rotation_period.md) (detached only)
 * [phoebe.parameters.constraint.pitch](phoebe.parameters.constraint.pitch.md) (detached only)
 * [phoebe.parameters.constraint.yaw](phoebe.parameters.constraint.yaw.md) (detached only)

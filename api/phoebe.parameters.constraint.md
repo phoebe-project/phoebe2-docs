@@ -1,6 +1,7 @@
 ## [phoebe](phoebe.md).[parameters](phoebe.parameters.md).constraint (module)
 
 * [asini](phoebe.parameters.constraint.asini.md)
+* [comp_asini](phoebe.parameters.constraint.comp_asini.md)
 * [comp_sma](phoebe.parameters.constraint.comp_sma.md)
 * [compute_phases](phoebe.parameters.constraint.compute_phases.md)
 * [ecosw](phoebe.parameters.constraint.ecosw.md)

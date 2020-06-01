@@ -29,6 +29,9 @@ if attaching to the [phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundl
 * [phoebe.parameters.constraint.mean_anom](phoebe.parameters.constraint.mean_anom.md)
 * [phoebe.parameters.constraint.freq](phoebe.parameters.constraint.freq.md)
 
+In addition, some constraints are created automatically by [phoebe.frontend.bundle.Bundle.set_hierarchy](phoebe.frontend.bundle.Bundle.set_hierarchy.md).
+For a list of these, see [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md).
+
 Arguments
 ----------
 * `period` (float/quantity, optional): orbital period.
