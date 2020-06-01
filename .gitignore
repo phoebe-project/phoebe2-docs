@@ -5,6 +5,7 @@
 /tutorials/*.py
 /tutorials/*.phoebe
 /tutorials/*.bundle
+/examples/*.bundle
 *_tmp*
 *after.phoebe
 *.ipynb_checkpoints*
@@ -13,3 +14,5 @@
 *.profile
 *.log
 *.eps
+*.py.out.progress
+TEST*.ipynb
