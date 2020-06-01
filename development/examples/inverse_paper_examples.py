@@ -56,6 +56,7 @@ b.set_value('q', 0.3)
 b.set_value('t0_supconj', 0.1)
 #b.set_value('requiv@primary', 0.95*b.get_value('requiv_max@primary@component'))  # rv_geometry fails to converge
 b.set_value('requiv@primary', 2.0)
+b.set_value('vgamma', 80)
 
 lctimes = phoebe.linspace(0, 10, 1005)
 rvtimes = phoebe.linspace(0, 10, 105)
@@ -72,20 +73,11 @@ rvsB = b.get_value('rvs@secondary@model') + np.random.normal(size=rvtimes.shape)
 rvsigmas = np.ones_like(rvtimes) * 20
 
 
-# In[5]:
-
-
-# TESTING to compare to ebai - REMOVE 
-b.add_constraint('teffratio')
-b.add_constraint('requivsumfrac')
-print(b.filter(qualifier=['teffratio', 'requivsumfrac'], context='component'))
-
-
 # # Create a new bundle/system
 # 
 # Now we'll start over "blind" with a fresh bundle and import our "fake" observations in datasets.
 
-# In[6]:
+# In[5]:
 
 
 b = phoebe.default_binary()
@@ -96,7 +88,7 @@ b.set_value_all('ld_mode', 'lookup')
 
 # For the sake of this example, we'll assume that we know the orbital period *exactly*, and so can see that our observations phase nicely.  
 
-# In[7]:
+# In[6]:
 
 
 afig, mplfig = b.plot(x='phases', show=True)
@@ -106,14 +98,14 @@ afig, mplfig = b.plot(x='phases', show=True)
 # 
 # First we'll run the [rv_geometry estimator](../api/phoebe.parameters.solver.estimator.rv_geometry.md) via [b.add_solver](../api/phoebe.frontend.bundle.Bundle.add_solver.md) and [b.run_solver](../api/phoebe.frontend.bundle.Bundle.run_solver.md).
 
-# In[8]:
+# In[7]:
 
 
 b.add_solver('estimator.rv_geometry',
              rv='rv01')
 
 
-# In[9]:
+# In[8]:
 
 
 b.run_solver(kind='rv_geometry', solution='rv_geom_sol')
@@ -121,7 +113,7 @@ b.run_solver(kind='rv_geometry', solution='rv_geom_sol')
 
 # By calling [b.adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution.md) with `trial_run=True`, we can see the proposed values by the estimator.
 
-# In[10]:
+# In[9]:
 
 
 print(b.adopt_solution('rv_geom_sol', trial_run=True))
@@ -131,7 +123,7 @@ print(b.adopt_solution('rv_geom_sol', trial_run=True))
 # 
 # This reproduces Figure ??? ...
 
-# In[11]:
+# In[10]:
 
 
 afig, mplfig = b.plot(solution='rv_geom_sol',
@@ -142,14 +134,14 @@ afig, mplfig = b.plot(solution='rv_geom_sol',
 # 
 # Next we'll run the [lc_geometry estimator](../api/phoebe.parameters.solver.estimator.lc_geometry.md).
 
-# In[12]:
+# In[11]:
 
 
 b.add_solver('estimator.lc_geometry',
              lc='lc01')
 
 
-# In[13]:
+# In[12]:
 
 
 b.run_solver(kind='lc_geometry', solution='lc_geom_sol')
@@ -157,7 +149,7 @@ b.run_solver(kind='lc_geometry', solution='lc_geom_sol')
 
 # Again, calling [b.adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution.md) with `trial_run=True` shows the proposed values.
 
-# In[14]:
+# In[13]:
 
 
 print(b.adopt_solution('lc_geom_sol', trial_run=True))
@@ -165,7 +157,7 @@ print(b.adopt_solution('lc_geom_sol', trial_run=True))
 
 # By plotting the solution, we get Figure ???, which shows the best two gaussian model as well as the detected positions of mid-eclipse, ingress, and egress which were used to compute the proposed values.
 
-# In[15]:
+# In[14]:
 
 
 afig, mplfig = b.plot(solution='lc_geom_sol',
@@ -174,7 +166,7 @@ afig, mplfig = b.plot(solution='lc_geom_sol',
 
 # Figure ??? in the paper which shows the seven underlying two gaussian models cannot directly be generated from the plotting functionality within PHOEBE, but the arrays are stored in the solution and can be plotted manually, as shown below.
 
-# In[16]:
+# In[15]:
 
 
 from phoebe.dependencies.autofig.cyclers import _mplcolors as cmap
@@ -203,20 +195,20 @@ plt.savefig('figure_lc_geometry_models.eps')
 
 # Figure ??? exhibits eclipse masking by adopting `mask_phases` from the `lc_geometry` solution.  Note that by default, `mask_phases` is not included in `adopt_parameters`, which is why it was not included when calling [b.adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution.md) with `trial_mode=True` (all available proposed parameters could be shown by passing `adopt_parameters='*'`.  For the sake of this figure, we'll only adopt the `mask_phases`, plot the dataset with that mask applied, but then disable the mask for the rest of this example script.
 
-# In[17]:
+# In[16]:
 
 
 b.adopt_solution('lc_geom_sol', adopt_parameters='mask_phases')
 
 
-# In[18]:
+# In[17]:
 
 
 _ = b.plot(context='dataset', dataset='lc01', x='phases', xlim=(-0.55,0.55),
            save='figure_lc_geometry_mask.eps', show=True)
 
 
-# In[19]:
+# In[18]:
 
 
 b.set_value('mask_enabled@lc01', False)
@@ -226,20 +218,20 @@ b.set_value('mask_enabled@lc01', False)
 # 
 # And finally, we'll do the same for the [ebai estimator](../api/phoebe.parameters.solver.estimator.ebai.md).
 
-# In[20]:
+# In[19]:
 
 
 b.add_solver('estimator.ebai',
              lc='lc01')
 
 
-# In[21]:
+# In[20]:
 
 
 b.run_solver(kind='ebai', solution='ebai_sol')
 
 
-# In[22]:
+# In[21]:
 
 
 print(b.adopt_solution('ebai_sol', trial_run=True))
@@ -247,7 +239,7 @@ print(b.adopt_solution('ebai_sol', trial_run=True))
 
 # By plotting the `ebai` solution, we reproduce Figure ???, which shows the normalized light curve observations and the resulting sample two gaussian model that is sent to the neural network.
 
-# In[23]:
+# In[22]:
 
 
 afig, mplfig = b.plot(solution='ebai_sol',
@@ -298,14 +290,7 @@ b.run_compute(irrad_method='none', model='after_estimators', overwrite=True)
 # In[28]:
 
 
-_ = b.plot(x='phases', show=True)
-
-
-# In[29]:
-
-
-# TESTING to compare ebai to original values at top
-print(b.filter(qualifier=['teffratio', 'requivsumfrac'], context='component'))
+_ = b.plot(x='phases', m='.', show=True)
 
 
 # # Optimize with nelder_mead using ellc
@@ -314,7 +299,7 @@ print(b.filter(qualifier=['teffratio', 'requivsumfrac'], context='component'))
 # 
 # We'll use [ellc](../api/phoebe.parameters.compute.ellc.md) as our forward-model just for the sake of computational efficiency.  
 
-# In[30]:
+# In[29]:
 
 
 b.add_compute('ellc', compute='fastcompute')
@@ -322,39 +307,39 @@ b.add_compute('ellc', compute='fastcompute')
 
 # For the sake of optimizing, we'll use `pblum_mode='dataset-scaled'` which will automatically re-scale the light curve to the observations at each iteration - we'll disable this later for sampling to make sure we account for any degeneracies between the luminosity and other parameters.
 
-# In[31]:
+# In[30]:
 
 
 b.set_value_all('pblum_mode', 'dataset-scaled')
 
 
-# In[32]:
+# In[31]:
 
 
 b.add_solver('optimizer.nelder_mead',
-             fit_parameters=['teffratio', 'requivsumfrac', 'incl', 'q', 'ecc', 'per0'],
+             fit_parameters=['teffratio', 'requivsumfrac', 'incl@binary', 'q', 'ecc', 'per0'],
              compute='fastcompute')
 
 
-# In[33]:
+# In[32]:
 
 
 print(b.get_solver(kind='nelder_mead'))
 
 
-# In[34]:
+# In[33]:
 
 
 b.run_solver(kind='nelder_mead', maxfev=1000, solution='nm_sol')
 
 
+# In[34]:
+
+
+print(b.get_solution('nm_sol').filter(qualifier=['message', 'nfev', 'niter', 'success']))
+
+
 # In[35]:
-
-
-print(b.get_solution('nm_sol'))
-
-
-# In[36]:
 
 
 print(b.adopt_solution('nm_sol', trial_run=True))
@@ -362,7 +347,7 @@ print(b.adopt_solution('nm_sol', trial_run=True))
 
 # We'll adopt all the proposed values, and run the forward model with a new `model` tag so that we can overplot the "before" and "after".  
 
-# In[39]:
+# In[36]:
 
 
 b.adopt_solution('nm_sol')
@@ -390,13 +375,13 @@ _ = b.plot(x='phases',
 
 # So that we don't ignore any degeneracies between parameters and the luminosities, we'll turn off the dataset-scaling we used for optimizing and make sure we have a reasonable value of `pblum@primary` set to roughly obtain the out-of-eclipse flux levels of the observations.
 
-# In[40]:
+# In[39]:
 
 
 b.set_value_all('pblum_mode', 'component-coupled')
 
 
-# In[41]:
+# In[40]:
 
 
 print(b.compute_pblums(compute='fastcompute', dataset='lc01', pbflux=True))
@@ -404,29 +389,28 @@ print(b.compute_pblums(compute='fastcompute', dataset='lc01', pbflux=True))
 
 # We'll now create our initializing distribution, including gaussian "balls" around all of the optimized values and a generous boxcar on `pblum@primary`.
 
-# In[42]:
+# In[41]:
 
 
-# TODO: remove @primary@lc01 once bug fixed
 b.add_distribution({'teffratio': phoebe.gaussian_around(0.1),
                     'requivsumfrac': phoebe.gaussian_around(0.1),
                     'incl@binary': phoebe.gaussian_around(3),
                     'q': phoebe.gaussian_around(0.1),
                     'ecc': phoebe.gaussian_around(0.05),
                     'per0': phoebe.gaussian_around(5),
-                    'pblum@primary@lc01': phoebe.uniform_around(2)},
+                    'pblum': phoebe.uniform_around(2)},
                     distribution='ball_around_optimized_solution')
 
 
 # We can look at this combined set of distributions, which will be used to sample the initial values of our walkers in [emcee](../api/phoebe.parameters.solver.sampler.emcee.md).
 
-# In[43]:
+# In[42]:
 
 
 _ = b.plot_distribution_collection('ball_around_optimized_solution', show=True)
 
 
-# In[44]:
+# In[43]:
 
 
 b.add_solver('sampler.emcee',
@@ -440,20 +424,36 @@ b.add_solver('sampler.emcee',
 # In[45]:
 
 
-b.save('figure_examples_before_emcee.bundle')
-b.export_solver('figure_examples_run_emcee.py', 
+b.save('inverse_paper_examples_before_emcee.bundle')
+b.export_solver('inverse_paper_examples_run_emcee.py', 
                 solver='emcee_solver',
-                niters=2000, progress_every_niters=250, 
+                niters=10000, progress_every_niters=200, 
                 nwalkers=16,
                 solution='emcee_sol',
+                log_level='warning',
                 pause=True)
 
 
-# In[2]:
+# In[20]:
 
 
-b = phoebe.load('figure_examples_before_emcee.bundle')
-b.import_solution('figure_examples_run_emcee.py.out.progress', solution='emcee_sol')
+# only needed if starting script from here
+import matplotlib.pyplot as plt
+plt.rc('font', family='serif')
+
+import phoebe
+import numpy as np
+
+logger = phoebe.logger('error')
+
+b = phoebe.load('inverse_paper_examples_before_emcee.bundle')
+
+
+# In[21]:
+
+
+# NOTE: append .progress to view any of the following plots before the run has completed
+b.import_solution('inverse_paper_examples_run_emcee.py.out', solution='emcee_sol')
 
 
 # Alternatively, we could run the solver locally as we've seen before, but probably would want to run less iterations:
@@ -464,14 +464,14 @@ b.import_solution('figure_examples_run_emcee.py.out.progress', solution='emcee_s
 # 
 # in which case calling `b.import_solution` is not necessary.
 
-# In[3]:
+# In[22]:
 
 
 _ = b.plot('emcee_sol', style='failed', 
            save='figure_emcee_failed_samples.eps', show=True)
 
 
-# In[62]:
+# In[23]:
 
 
 _ = b.plot('emcee_sol', style='walks', c='black', 
@@ -479,7 +479,7 @@ _ = b.plot('emcee_sol', style='walks', c='black',
            save='figure_emcee_walks.eps', show=True)
 
 
-# In[63]:
+# In[24]:
 
 
 _ = b.plot('emcee_sol', style='lnprobabilities', c='black',
@@ -487,7 +487,7 @@ _ = b.plot('emcee_sol', style='lnprobabilities', c='black',
            save='figure_emcee_lnprobabilities_all.eps', show=True)
 
 
-# In[64]:
+# In[25]:
 
 
 _ = b.plot('emcee_sol', style='lnprobabilities', c='black',
@@ -498,20 +498,20 @@ _ = b.plot('emcee_sol', style='lnprobabilities', c='black',
 # 
 # **TODO**: explain the difference between `parameters` and `adopt_parameters`, or consider merging in the code so this isn't possible (or rename to be more self-explanatory).
 
-# In[65]:
+# In[26]:
 
 
-#_ = b.plot('emcee_sol', style='corner', show=True)
+_ = b.plot('emcee_sol', style='corner', show=True)
 
 
-# In[66]:
+# In[27]:
 
 
 _ = b.plot('emcee_sol', style='corner', parameters=['teffratio', 'requivsumfrac', 'incl@binary'], 
            save='figure_posteriors_mvsamples.eps', show=True)
 
 
-# In[67]:
+# In[28]:
 
 
 _ = b.plot('emcee_sol', style='corner', parameters=['teffratio', 'requivsumfrac', 'incl@binary'], 
@@ -519,42 +519,41 @@ _ = b.plot('emcee_sol', style='corner', parameters=['teffratio', 'requivsumfrac'
            save='figure_posteriors_mvgaussian.eps', show=True)
 
 
-# In[68]:
+# In[29]:
 
 
 _ = b.plot('emcee_sol', style='corner', parameters=['ecc', 'per0'], 
            save='figure_posteriors_ew.eps', show=True)
 
 
-# In[69]:
+# In[30]:
 
 
 _ = b.plot('emcee_sol', style='corner', parameters=['esinw', 'ecosw'], 
            save='figure_posteriors_ecs.eps', show=True)
 
 
-# In[5]:
+# ## Propagating Posteriors through Forward-Model
+
+# In[12]:
 
 
 b.run_compute(compute='fastcompute', 
-              sample_from='emcee_sol', sample_num=100, sample_mode='3-sigma',
+              sample_from='emcee_sol', sample_num=500, sample_mode='3-sigma',
               model='emcee_posts')
 
 
-# In[7]:
+# In[13]:
 
 
-b.save('figure_examples_after_sample_from.bundle')
+b.save('inverse_paper_examples_after_sample_from.bundle')
 
 
-# In[1]:
+# In[14]:
 
 
-#### REMOVE THIS CELL ONCE DONE TESTING - THIS JUST ALLOWS TO START THE SCRIPT HERE
-
-
+# only needed if starting script from here
 import matplotlib.pyplot as plt
-
 plt.rc('font', family='serif')
 
 import phoebe
@@ -562,39 +561,27 @@ import numpy as np
 
 logger = phoebe.logger('error')
 
-# we'll set the random seed so that the noise model is reproducible
-np.random.seed(123456789)
+b = phoebe.load('inverse_paper_examples_after_sample_from.bundle')
 
 
-# In[2]:
+# In[15]:
 
 
-b = phoebe.load('figure_examples_after_sample_from.bundle')
-
-
-# In[10]:
-
-
-# TODO: fix this so that passing model to plot doesn't exclude the observations
 _ = b.plot(kind='lc', model='emcee_posts', x='phases', y='fluxes', 
-           c={'dataset': 'black', 'model': 'blue'},
            s={'dataset': 0.005},
            marker={'dataset': '.'})
 _ = b.plot(kind='lc', model='emcee_posts', x='phases', y='residuals', 
-           c={'dataset': 'black', 'model': 'blue'},
+           z={'dataset': 0, 'model': 1},
            save='figure_posteriors_sample_from_lc.eps', show=True)
 
 
-# In[11]:
+# In[16]:
 
 
-# TODO: fix this so model and dataset are in same panel for residuals 
-# and so observations are included in top-panel (problem seems to be units on phase)
 _ = b.plot(kind='rv', model='emcee_posts', x='phases', y='rvs',
-          c={'dataset': 'black', 'model': 'blue'},
           marker={'dataset': '.'})
 _ = b.plot(kind='rv', model='emcee_posts', x='phases', y='residuals', 
-           c={'dataset': 'black', 'model': 'blue'},
+           z={'dataset': 0, 'model': 1},
            save='figure_posteriors_sample_from_rv.eps', show=True)
 
 
@@ -604,7 +591,7 @@ _ = b.plot(kind='rv', model='emcee_posts', x='phases', y='residuals',
 # 
 # `dynesty` samples directly from the priors, so we shouldn't use the same gaussian balls we did for `emcee`.  Instead, we'll create a narrow box around the solution with widths somewhat estimated from the `emcee` cornerplot.  We can do this to save time for this example because we know the solution, but in practice these would likely need to be much more conservatively set.
 
-# In[3]:
+# In[17]:
 
 
 b.add_distribution({'teffratio': phoebe.uniform_around(0.1),
@@ -613,11 +600,11 @@ b.add_distribution({'teffratio': phoebe.uniform_around(0.1),
                     'q': phoebe.uniform_around(0.1),
                     'ecc': phoebe.uniform_around(0.05),
                     'per0': phoebe.uniform_around(6),
-                    'pblum@primary@lc01': phoebe.uniform_around(0.5)},
+                    'pblum': phoebe.uniform_around(0.5)},
                     distribution='dynesty_uninformative_priors')
 
 
-# In[4]:
+# In[18]:
 
 
 b.add_solver('sampler.dynesty',
@@ -627,25 +614,23 @@ b.add_solver('sampler.dynesty',
             )
 
 
-# In[5]:
+# In[19]:
 
 
-b.save('figure_examples_before_dynesty.bundle')
-b.export_solver('figure_examples_run_dynesty.py', 
+b.save('inverse_paper_examples_before_dynesty.bundle')
+b.export_solver('inverse_paper_examples_run_dynesty.py', 
                 solver='dynesty_solver',
                 maxiter=10000, maxcall=int(1e6), progress_every_niters=100, 
                 solution='dynesty_sol',
+                log_level='warning',
                 pause=True)
 
 
-# In[ ]:
+# In[31]:
 
 
-#### REMOVE THIS CELL ONCE DONE TESTING - THIS JUST ALLOWS TO START THE SCRIPT HERE
-
-
+# only needed if starting script from here
 import matplotlib.pyplot as plt
-
 plt.rc('font', family='serif')
 
 import phoebe
@@ -653,47 +638,39 @@ import numpy as np
 
 logger = phoebe.logger('error')
 
-# we'll set the random seed so that the noise model is reproducible
-np.random.seed(123456789)
+b = phoebe.load('inverse_paper_examples_before_dynesty.bundle')
 
 
-# In[6]:
+# In[32]:
 
 
-b = phoebe.load('figure_examples_before_dynesty.bundle')
-b.import_solution('figure_examples_run_dynesty.py.out', solution='dynesty_sol')
+b.import_solution('inverse_paper_examples_run_dynesty.py.out', solution='dynesty_sol')
 
 
-# In[10]:
+# In[33]:
 
 
-afig, mplfig = _ = b.plot('dynesty_sol', style='trace', 
+afig, mplfig = b.plot('dynesty_sol', style='trace', 
            savefig='figure_dynesty_trace.eps', show=True)
 
 
-# In[12]:
+# In[34]:
 
 
 mplfig.tight_layout()
 mplfig.savefig('figure_dynesty_trace.eps')
 
 
-# In[8]:
-
-
-_ = b.plot('dynesty_sol', style='run', 
-           show=True)
-
-
-# In[9]:
+# In[35]:
 
 
 _ = b.plot('dynesty_sol', style='corner', 
            show=True)
 
 
-# In[ ]:
+# In[37]:
 
 
-
+#_ = b.plot('dynesty_sol', style='run', 
+#           show=True)
 
