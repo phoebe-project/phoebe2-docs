@@ -44,8 +44,8 @@ The resulting solution (from [phoebe.frontend.bundle.Bundle.run_solver](phoebe.f
 then exposes the raw-products from `emcee`, after which the following
 actions can be taken:
 
-* [phoebe.parameters.ParameterSet.plot](phoebe.parameters.ParameterSet.plot.md) with `style` as one of
-    ['corner', 'failed', 'lnprobabilities', 'trace'/'walks'].
+* [phoebe.parameters.ParameterSet.plot](phoebe.parameters.ParameterSet.plot.md) with `style` as one of:
+    'corner', 'failed', 'lnprobabilities', 'trace'/'walks'.
 * [phoebe.frontend.bundle.Bundle.adopt_solution](phoebe.frontend.bundle.Bundle.adopt_solution.md) to adopt the resulting
     posteriors in a distribution.  Use `adopt_values=True` (defaults to False)
     to adopt the face-values.  Use `trial_run=True` to see the adopted

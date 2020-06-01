@@ -10,7 +10,7 @@ def legacy(**kwargs)
 
 
 Create a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) for compute options for the
-[PHOEBE 1.0 (legacy)](<a href="http://phoebe-project.org/1.0">http://phoebe-project.org/1.0</a>) backend.
+[PHOEBE 1.0 legacy](<a href="http://phoebe-project.org/1.0">http://phoebe-project.org/1.0</a>) backend.
 
 See also:
 * [phoebe.frontend.bundle.Bundle.export_legacy](phoebe.frontend.bundle.Bundle.export_legacy.md)
