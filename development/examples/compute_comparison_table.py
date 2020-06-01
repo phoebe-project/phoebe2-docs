@@ -39,7 +39,7 @@
 #         <td><a href="http://phoebe-project.org/releases/2.3">2.3</a></td>
 #         <td><a href="http://phoebe-project.org/1.0">1.0</a></td>
 #         <td><a href="https://github.com/pmaxted/ellc/tree/c04c17b0bd657e41e2315daa70e5aed380bd8094">1.8.2</a></td>
-#         <td><a href="https://www.astro.keele.ac.uk/jkt/codes/jktebop.html">v34</a></td>
+#         <td><a href="https://www.astro.keele.ac.uk/jkt/codes/jktebop.html">v40</a></td>
 #     </tr>
 #     <tr>
 #         <td><b><a href="../tutorials/LC.ipynb" title="Light curves as a synthetic observable">LCs</a></b></td>
@@ -102,7 +102,7 @@
 #         <td>yes</td>
 #         <td>yes</td>
 #         <td style="text-decoration:underline;text-decoration-style:dotted" title="the semi-detached radius is determined by PHOEBE and passed to ellc.  ellc does also natively support semi-detached systems by passing a radius of -1, but this is not used by the backend wrapper in PHOEBE.">yes</td>
-#         <td><a href="../examples/requiv_max_limit.ipynb" style="text-decoration:underline;text-decoration-style:dotted" title="the biaxial-spheroid assumption in jktebop should not be used for highly distorted system, but technically can be run for semi-detached systems by setting requivfrac_limit to 1.0">no</a></td>
+#         <td><a href="../examples/requiv_max_limit.ipynb" style="text-decoration:underline;text-decoration-style:dotted" title="the biaxial-spheroid assumption in jktebop should not be used for highly distorted system, but technically can be run for semi-detached systems by setting requiv_max_limit to 1.0">no</a></td>
 #     </tr>
 #     <tr style="border-bottom:1px solid black">
 #         <td><b><a href="../tutorials/requiv_crit_contact.ipynb">Contact Systems</a></b></td>
