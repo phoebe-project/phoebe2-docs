@@ -48,6 +48,7 @@ These all assume comfort with the tutorials listed above, but should not need to
 
 * [Advanced: Running PHOEBE in MPI](tutorials/mpi.ipynb)
 * [Advanced: Optimizing Performance](tutorials/optimizing.ipynb)
+* [Advanced: Environment Variables](tutorials/envars.ipynb)
 * [Advanced: Adding Custom Passband Tables](tutorials/passbands.ipynb)
 * [Advanced: Passband Versioning & Updates](tutorials/passband_updates.ipynb)
 * [Advanced: Settings](tutorials/settings.ipynb)
