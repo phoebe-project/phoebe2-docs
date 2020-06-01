@@ -14,7 +14,8 @@ Southworth's [jktebop](https://www.astro.keele.ac.uk/jkt/codes/jktebop.html) cod
 
 Use jktebop to compute radial velocities and light curves for binary systems.
 jktebop must be installed and available on the system in order to use
-this plugin.  The code is available here (currently tested with v34):
+this plugin.  The code is available here (currently tested with v40, requires
+v40+):
 
 <a href="http://www.astro.keele.ac.uk/jkt/codes/jktebop.html">http://www.astro.keele.ac.uk/jkt/codes/jktebop.html</a>
 
