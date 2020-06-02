@@ -30,7 +30,7 @@ Arguments
 * `solution` (string or list of strings, optional, default=None): the
     solution to use  when running checks.  If None (or not provided),
     the compute options in the 'run_checks_solution@setting' parameter
-    will be used (which defaults to not solutions, if not set).
+    will be used (which defaults to no solutions, if not set).
 * `run_checks_compute` (bool, optional, default=True): whether to also
     call [phoebe.frontend.bundle.run_checks_compute](phoebe.frontend.bundle.run_checks_compute.md) on any `compute`
     listed in the solution in `solution`.
