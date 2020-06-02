@@ -24,7 +24,7 @@
 # * [per-component rv offsets](../tutorials/rv_offset.ipynb)
 # * noise nuissance
 # * [gaussian processes](../examples/minimal_GPs.ipynb)
-# * [optimizers](../api/phoebe.parameters.solver.optimizer.md) and [samplers](../api/phoebe.parameters.solver.optimizer.md)
+# * [optimizers](../api/phoebe.parameters.solver.optimizer.md) and [samplers](../api/phoebe.parameters.solver.sampler.md)
 
 # <table style="width:100%">
 #     <tr style="border-bottom:2px solid black">
