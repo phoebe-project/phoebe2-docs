@@ -80,7 +80,7 @@ See alphabetical list of [all Bundle methods](api/phoebe.frontend.bundle.Bundle.
 
 ### Saving/Loading
 
-* [__init__](api/phoebe.frontend.bundle.Bundle.__init__.md)
+* [Bundle](api/phoebe.frontend.bundle.Bundle.__init__.md)
 * [open](api/phoebe.frontend.bundle.Bundle.open.md)
 * [save](api/phoebe.parameters.ParameterSet.save.md)
 
