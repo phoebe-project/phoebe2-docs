@@ -62,7 +62,7 @@ print(phoebe.list_available_solvers())
 
 # As there are quite a few and each have their own available options, we won't get in to the details here.  See the [solver API docs](../api/phoebe.parameters.solver.md) for details or look through some of the [solver example scripts](../examples.md).
 # 
-# As you may expect, to use a solver you must first call [b.add_solver](../api/phoebe.frontend.bundle.Bundle.add_solver.md), set the desired options, and then call [b.run_solver](../api/phoebe.frontend.bundle.Bundle.run_solver.md) (or [b.export_solver](../api/phoebe.frontend.bundle.Bundle.export_solver.md)).
+# As you may expect, to use a solver you must first call [b.add_solver](../api/phoebe.frontend.bundle.Bundle.add_solver.md), set the desired options, and then call [b.run_solver](../api/phoebe.frontend.bundle.Bundle.run_solver.md) (or [b.export_solver](../api/phoebe.frontend.bundle.Bundle.export_solver.md) and [b.import_solution](../api/phoebe.frontend.bundle.Bundle.import_solution.md)).
 
 # In[5]:
 
@@ -84,36 +84,50 @@ print(b.get_solver(solver='my_lcgeom_solver'))
 print(b.get_parameter('expose_model').description)
 
 
+# In[8]:
+
+
+print(b.get_parameter('lc_datasets').description)
+
+
+# In[9]:
+
+
+print(b.get_parameter('lc_datasets').choices)
+
+
 # run_solver
 # ---------------
 
-# [b.run_solver](../api/phoebe.frontend.bundle.Bundle.run_solver.md) (or [b.export_solver](../api/phoebe.frontend.bundle.Bundle.export_solver.md) and [b.import_solution](../api/phoebe.frontend.bundle.Bundle.import_solution.md)) allows optionally setting a `solution` tag (if not provided, one will be created automatically, just as [b.run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md) allows setting a `model` tag.  
+# [b.run_solver](../api/phoebe.frontend.bundle.Bundle.run_solver.md) (or [b.export_solver](../api/phoebe.frontend.bundle.Bundle.export_solver.md) and [b.import_solution](../api/phoebe.frontend.bundle.Bundle.import_solution.md)) allows optionally setting a `solution` tag (if not provided, one will be created automatically), just as [b.run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md) allows setting a `model` tag.  
 
-# In[8]:
+# In[10]:
 
 
 b.run_solver(solver='my_lcgeom_solver', solution='my_lcgeom_solution')
 
 
-# In many cases, the `solution` itself is plottable - showing some sort of diagnostic figures.
+# In many cases, the `solution` itself is plottable - showing some sort of diagnostic figures.  In some cases, such as [sampler.emcee](../api/phoebe.parameters.solver.sampler.emcee.md) or [sampler.dynesty](../api/phoebe.parameters.solver.sampler.dynesty.md), there are several different diagnostic figures available which can be chosen by passing the available options to `style`.
 
-# In[9]:
-
-
-_ = b.plot(context='solution', solution='my_lcgeom_solution', show=True)
+# In[11]:
 
 
-# The proposed values can be viewed (by passing `trial_run=True`, in which case constrained values will not be shown) and/or directly adopted as face-values in the bundle via:
+_ = b.plot(solution='my_lcgeom_solution', show=True)
+
+
+# The proposed values can be viewed via [b.adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution.md).
 # 
-# * [b.adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution.md)
+# By passing `trial_run=True` the proposed changed parameters will be shown, but not changed in the bundle itself.
 
-# In[10]:
+# In[12]:
 
 
 print(b.adopt_solution(trial_run=True))
 
 
-# In[11]:
+# Otherwise, the changes will be made and all changed parameters (including those changed via [constraints](constraints.ipynb)) will be returned.
+
+# In[13]:
 
 
 print(b.adopt_solution())
@@ -135,7 +149,7 @@ print(b.adopt_solution())
 # 
 # To see the affect of `priors_combine`, we can pass the `solver` tag directly to [b.get_distribution_collection](../api/phoebe.frontend.bundle.Bundle.get_distribution_collection.md), [b.plot_distribution_collection](../api/phoebe.frontend.bundle.Bundle.plot_distribution_collection.md), or [b.calculate_lnp](../api/phoebe.frontend.bundle.Bundle.calculate_lnp.md).
 
-# In[12]:
+# In[14]:
 
 
 b.add_distribution('teff@primary', phoebe.gaussian(6000,100), distribution='mydist01')
@@ -144,53 +158,57 @@ b.add_distribution('teff@secondary', phoebe.gaussian(5500,600), distribution='my
 b.add_distribution('teff@primary', phoebe.uniform(5800,6200), distribution='mydist02')
 
 
-# In[13]:
+# In[15]:
 
 
 b.add_solver('sampler.emcee', priors=['mydist01', 'mydist02'], solver='myemceesolver')
 
 
-# In[14]:
+# In[16]:
 
 
 print(b.filter(qualifier='prior*'))
 
 
-# In[15]:
+# Now we'll look at the affect of `priors_combine` on the resulting priors distributions that would be sent to the merit function.
+
+# In[17]:
 
 
 print(b.get_parameter('priors_combine').description)
 
 
-# In[16]:
-
-
-_ = b.plot_distribution_collection('priors@myemceesolver', show=True)
-
-
-# In[17]:
-
-
-b.calculate_lnp('priors@myemceesolver')
-
-
 # In[18]:
 
 
-b.set_value('priors_combine', 'first')
+_ = b.plot_distribution_collection('priors@myemceesolver', show=True)
 
 
 # In[19]:
 
 
-_ = b.plot_distribution_collection('priors@myemceesolver', show=True)
+b.calculate_lnp('priors@myemceesolver')
 
 
 # In[20]:
 
 
+b.set_value('priors_combine', 'first')
+
+
+# In[21]:
+
+
+_ = b.plot_distribution_collection('priors@myemceesolver', show=True)
+
+
+# In[22]:
+
+
 b.calculate_lnp('priors@myemceesolver')
 
+
+# As with the example above, to run an `emcee` run, just set all the desired options in the `solver` parameters, and then call [b.run_solver](../api/phoebe.frontend.bundle.Bundle.run_solver.md).  This will then expose the resulting chains in the solution, which are available for plotting and adopting.  See the  [solver example scripts](../examples.md) or the individual [API docs for solvers](../api/phoebe.parameters.solver.md) for more details on each available algorithm.
 
 # Next
 # ----------
