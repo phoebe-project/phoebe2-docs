@@ -3,7 +3,7 @@
 
 ```py
 
-def compute_pblums(self, compute=None, pblum=True, pblum_abs=False, pblum_scale=False, pbflux=False, set_value=False, **kwargs)
+def compute_pblums(self, compute=None, model=None, pblum=True, pblum_abs=False, pblum_scale=False, pbflux=False, set_value=False, **kwargs)
 
 ```
 
@@ -26,9 +26,9 @@ The total flux from a light curve can then be estimated as `pbflux / d^2 + l3`
 For any dataset with `pblum_mode='dataset-scaled'` or `pblum_mode='dataset-coupled'`
 where `pblum_dataset` references a dataset-scaled dataset, `pblum`,
 `pblum_scale`, and `pbflux` are excluded from the output (but `pblum_abs`
-can be exposed).  To translate from `pblum_abs` to relative `pblum`,
-call [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md) and see the resulting
-`flux_scale` parameter in the resulting model.
+can be exposed), unless `model` is provided (see below) in which case
+the scaling factor in the model will be adopted to translate from absolute
+to relative units.
 
 Note about eclipses: `pbflux` estimates will not include
 any eclipsing or ellipsoidal effects (even if an eclipse occurs at time
@@ -67,6 +67,10 @@ Arguments
 ------------
 * `compute` (string, optional, default=None): label of the compute
     options (not required if only one is attached to the bundle).
+* `model` (string, optional, default=None): label of the model to use
+    for scaling absolute luminosities for any cases where
+    `pblum_mode='dataset-scaled'`.  If not provided, entries
+    using 'dataset-scaled' will be excluded from the output.
 * `pblum` (bool, optional, default=True): whether to include
     intrinsic (excluding irradiation &amp; features) pblums.  These
     will be exposed in the returned dictionary as pblum@component@dataset.

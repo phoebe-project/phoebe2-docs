@@ -48,7 +48,7 @@ then exposes the raw-products from `dynesty`, after which the following
 actions can be taken:
 
 * [phoebe.parameters.ParameterSet.plot](phoebe.parameters.ParameterSet.plot.md) with `style` as one of:
-    'corner', 'trace', 'run'.
+    'corner', 'failed', 'trace', 'run'.
 * [phoebe.frontend.bundle.Bundle.adopt_solution](phoebe.frontend.bundle.Bundle.adopt_solution.md) to adopt the resulting
     posteriors in a distribution.  Use `adopt_values=True` (defaults to False)
     to adopt the face-values.  Use `trial_run=True` to see the adopted
@@ -88,6 +88,10 @@ Arguments
     If using detach=True within run_solver, attach job will load the progress
     and allow re-attaching until the job is completed.  If 0 will not save
     and will only return after completion.
+* `expose_failed` (bool, optional, default=True): only applicable if
+    `continue_from` is 'None'. whether to expose dictionary of failed samples
+    and their error messages.  Note: depending on the number of failed
+    samples, this could add overhead.
 
 
 Returns
