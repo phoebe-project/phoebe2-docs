@@ -77,3 +77,4 @@ These example scripts are generally focused to show a single advanced feature or
 * [Comparing PHOEBE 2, Legacy, jktebop, ellc](examples/backends_compare_legacy_jktebop_ellc.ipynb) ([Conroy+ 2020](http://phoebe-project.org/publications/2020Conroy+), Figure ???)
 * [Misaligned Rossiter-McLaughlin: phoebe and ellc](examples/RM_phoebe_ellc.ipynb)
 * [jktebop: requiv_max_limit](examples/requiv_max_limit.ipynb)
+* [Comparing pblum methods](examples/pblum_method_compare.ipynb)
