@@ -9,7 +9,6 @@
 
 
 import phoebe
-import matplotlib.pyplot as plt
 
 
 # In[2]:
