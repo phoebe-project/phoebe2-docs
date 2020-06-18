@@ -104,22 +104,13 @@ if __name__ == '__main__':
 
     print("CREATING API DOCS FOR PHOEBE VERSION: {}".format(phoebe.__version__))
 
-    skip_ps = ['add_feedback', 'add_fitting', 'add_plugin', 'add_prior',
-               'as_client', 'client_update', 'default_triple',
-               'disable_prior', 'draw_from_posterior', 'draw_from_prior',
-               'enable_prior', 'from_catalog', 'from_server', 'get_adjust',
-               'get_feedback', 'get_fitting', 'get_plotting', 'get_plugin',
-               'get_posterior', 'get_prior', 'remove_feedback', 'remove_fitting',
-               'remove_history',
-               'remove_plugin', 'remove_posterior', 'remove_prior',
-               'run_fitting', 'run_plugin',
-               'set_adjust', 'set_adjust_all', 'set_meta',
-               'set_prior', 'ui', 'get_plotting_info',
-               'undo', 'redo', 'get_history', 'enable_history', 'disable_history',
-               'feedback', 'feedbacks', 'fitting', 'fittings', 'history', 'historys',
-               'plugin', 'plugins', 'is_client', 'from_server']
+    skip_ps = ['default_triple', 'remove_history',
+               'set_meta',
+               'get_plotting_info',
+               'undo', 'redo', 'get_history', 'enable_history', 'disable_history', 'history',
+               'history', 'historys']
 
-    skip_param = ['set_uniqueid', 'feedback', 'fitting', 'history']
+    skip_param = ['set_uniqueid', 'history']
 
     skip_phoebe = ['default_triple', 'devel_off', 'devel_on',
                    'algorithms', 'backend', 'c',

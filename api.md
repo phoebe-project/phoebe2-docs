@@ -11,6 +11,7 @@
 * [default_star](api/phoebe.frontend.bundle.Bundle.default_star.md)
 * [open](api/phoebe.frontend.bundle.Bundle.open.md)
 * [from_legacy](api/phoebe.frontend.bundle.Bundle.from_legacy.md)
+* [from_server](api/phoebe.fronend.bundle.Bundle.from_server.md)
 
 ### Settings
 
@@ -122,6 +123,13 @@ Importing/exporting from other codes:
 * [run_failed_constraints](api/phoebe.frontend.bundle.Bundle.run_failed_constraints.md)
 * [references](api/phoebe.frontend.bundle.Bundle.references.md)
 
+## Clients / UI
+
+* [as_client](api/phoebe.frontend.bundle.Bundle.as_client.md)
+* [is_client](api/phoebe.frontend.bundle.Bundle.is_client.md)
+* [ui](api/phoebe.parameters.ParameterSet.ui.md)
+* [ui_figures](api/phoebe.frontend.bundle.Bundle.ui_figures.md)
+
 ### Hierarchy
 
 * [set_hierarchy](api/phoebe.frontend.bundle.Bundle.set_hierarchy.md)
@@ -152,6 +160,7 @@ Available (optional) constraints ([see all](api/phoebe.parameters.constraint.md)
 * [rename_figure](api/phoebe.frontend.bundle.Bundle.rename_figure.md)
 * [remove_figure](api/phoebe.frontend.bundle.Bundle.remove_figure.md)
 * [run_figure](api/phoebe.frontend.bundle.Bundle.run_figure.md)
+* [ui_figures](api/phoebe.frontend.bundle.Bundle.ui_figures.md)
 
 See also the Plotting section below for a non-parameter method access to
 the same plotting functionality.
