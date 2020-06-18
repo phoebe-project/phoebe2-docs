@@ -40,6 +40,11 @@ Arguments
 * `auto_remove_figure` (bool, optional, default=False): Whether to
     automatically remove figure parameters when the referenced
     dataset/solution are removed.
+* `web_client` (bool, optional, default=False): Whether to default to using
+    the web-client over a locally installed desktop-client when opening the
+    UI from the desktop client.
+* `web_client_url` (string, optional, default='ui.phoebe-project.org'):
+    Default location of web-client.  Will only be used if web_client is True.
 
 Returns
 --------

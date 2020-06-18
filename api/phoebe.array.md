@@ -92,7 +92,15 @@ An array object satisfying the specified requirements.
 
 See Also
 --------
-empty, empty_like, zeros, zeros_like, ones, ones_like, full, full_like
+empty_like : Return an empty array with shape and type of input.
+ones_like : Return an array of ones with shape and type of input.
+zeros_like : Return an array of zeros with shape and type of input.
+full_like : Return a new array with shape of input filled with value.
+empty : Return a new uninitialized array.
+ones : Return a new array setting values to one.
+zeros : Return a new array setting values to zero.
+full : Return a new array of given shape filled with value.
+
 
 Notes
 -----

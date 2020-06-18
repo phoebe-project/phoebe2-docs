@@ -1,9 +1,9 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[FloatParameter](phoebe.parameters.FloatParameter.md).get_quantity (method)
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[FloatParameter](phoebe.parameters.FloatParameter.md).get_quantity (function)
 
 
 ```py
 
-def get_quantity(self, *args, **kwargs)
+def get_quantity(self, unit=None, t=None, **kwargs)
 
 ```
 

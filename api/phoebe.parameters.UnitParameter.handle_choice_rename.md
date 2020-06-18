@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[UnitParameter](phoebe.parameters.UnitParameter.md).handle_choice_rename (method)
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[UnitParameter](phoebe.parameters.UnitParameter.md).handle_choice_rename (function)
 
 
 ```py

@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[RunChecksItem](phoebe.frontend.bundle.RunChecksItem.md).to_dict (method)
+### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[RunChecksItem](phoebe.frontend.bundle.RunChecksItem.md).to_dict (function)
 
 
 ```py

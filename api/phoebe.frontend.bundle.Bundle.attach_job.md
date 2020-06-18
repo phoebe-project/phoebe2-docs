@@ -1,9 +1,9 @@
-### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[Bundle](phoebe.frontend.bundle.Bundle.md).attach_job (method)
+### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[Bundle](phoebe.frontend.bundle.Bundle.md).attach_job (function)
 
 
 ```py
 
-def attach_job(self, twig=None, wait=True, sleep=5, cleanup=True, return_changes=False, **kwargs)
+def attach_job(self, *args, **kwargs)
 
 ```
 

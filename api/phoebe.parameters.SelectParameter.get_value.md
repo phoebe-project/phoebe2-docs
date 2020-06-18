@@ -1,9 +1,9 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[SelectParameter](phoebe.parameters.SelectParameter.md).get_value (method)
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[SelectParameter](phoebe.parameters.SelectParameter.md).get_value (function)
 
 
 ```py
 
-def get_value(self, *args, **kwargs)
+def get_value(self, expand=False, **kwargs)
 
 ```
 

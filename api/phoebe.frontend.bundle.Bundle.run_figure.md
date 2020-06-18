@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[Bundle](phoebe.frontend.bundle.Bundle.md).run_figure (method)
+### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[Bundle](phoebe.frontend.bundle.Bundle.md).run_figure (function)
 
 
 ```py
@@ -22,6 +22,7 @@ more flexible, allows for multiple subplots and advanced positioning,
 and is less clumsy if plotting from the python frontend.
 
 See also:
+* [phoebe.frontend.bundle.Bundle.ui_figures](phoebe.frontend.bundle.Bundle.ui_figures.md)
 * [phoebe.frontend.bundle.Bundle.add_figure](phoebe.frontend.bundle.Bundle.add_figure.md)
 * [phoebe.frontend.bundle.Bundle.get_figure](phoebe.frontend.bundle.Bundle.get_figure.md)
 * [phoebe.frontend.bundle.Bundle.remove_figure](phoebe.frontend.bundle.Bundle.remove_figure.md)

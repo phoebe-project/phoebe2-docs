@@ -1,9 +1,9 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[Parameter](phoebe.parameters.Parameter.md).to_json (method)
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[Parameter](phoebe.parameters.Parameter.md).to_json (function)
 
 
 ```py
 
-def to_json(self, incl_uniqueid=False, exclude=[])
+def to_json(self, incl_uniqueid=False, incl_none=False, exclude=[])
 
 ```
 
@@ -22,6 +22,8 @@ Arguments
 * `incl_uniqueid` (bool, optional, default=False): whether to include
     uniqueids in the file (only needed if its necessary to maintain the
     uniqueids when reloading)
+* `incl_none` (bool, optional, default=False): whether to include tags
+    whose values are None.
 * `exclude` (list, optional, default=[]): tags to exclude when saving.
 
 Returns

@@ -2,9 +2,10 @@
 
 * [Bundle](phoebe.frontend.bundle.Bundle.md)
 * [DistributionParameter](phoebe.frontend.bundle.DistributionParameter.md)
+* [IOBase](phoebe.frontend.bundle.IOBase.md)
+* [JupyterUI](phoebe.frontend.bundle.JupyterUI.md)
 * [RunChecksItem](phoebe.frontend.bundle.RunChecksItem.md)
 * [RunChecksReport](phoebe.frontend.bundle.RunChecksReport.md)
 * [SelectTwigParameter](phoebe.frontend.bundle.SelectTwigParameter.md)
-* [URLError](phoebe.frontend.bundle.URLError.md)
 * [UnitParameter](phoebe.frontend.bundle.UnitParameter.md)
 * [phase_mask_inds](phoebe.frontend.bundle.phase_mask_inds.md)

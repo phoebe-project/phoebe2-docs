@@ -1,9 +1,9 @@
-### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[Bundle](phoebe.frontend.bundle.Bundle.md).remove_component (method)
+### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[Bundle](phoebe.frontend.bundle.Bundle.md).remove_component (function)
 
 
 ```py
 
-def remove_component(self, component, return_changes=False, **kwargs)
+def remove_component(self, *args, **kwargs)
 
 ```
 

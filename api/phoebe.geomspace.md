@@ -57,11 +57,14 @@ Return numbers spaced evenly on a log scale (a geometric progression).
 This is similar to `logspace`, but with endpoints specified directly.
 Each output sample is a constant multiple of the previous.
 
+.. versionchanged:: 1.16.0
+Non-scalar `start` and `stop` are now supported.
+
 Parameters
 ----------
-start : scalar
+start : array_like
 The starting value of the sequence.
-stop : scalar
+stop : array_like
 The final value of the sequence, unless `endpoint` is False.
 In that case, ``num + 1`` values are spaced over the
 interval in log-space, of which all but the last (a sequence of
@@ -74,6 +77,12 @@ Default is True.
 dtype : dtype
 The type of the output array.  If `dtype` is not given, infer the data
 type from the other input arguments.
+axis : int, optional
+The axis in the result to store the samples.  Relevant only if start
+or stop are array-like.  By default (0), the samples will be along a
+new axis inserted at the beginning. Use -1 to get an axis at the end.
+
+.. versionadded:: 1.16.0
 
 Returns
 -------
@@ -116,15 +125,15 @@ array([  1,   2,   4,   8,  16,  32,  64, 128, 256])
 Negative, decreasing, and complex inputs are allowed:
 
 &gt;&gt;&gt; np.geomspace(1000, 1, num=4)
-array([ 1000.,   100.,    10.,     1.])
+array([1000.,  100.,   10.,    1.])
 &gt;&gt;&gt; np.geomspace(-1000, -1, num=4)
 array([-1000.,  -100.,   -10.,    -1.])
 &gt;&gt;&gt; np.geomspace(1j, 1000j, num=4)  # Straight line
-array([ 0.   +1.j,  0.  +10.j,  0. +100.j,  0.+1000.j])
+array([0.   +1.j, 0.  +10.j, 0. +100.j, 0.+1000.j])
 &gt;&gt;&gt; np.geomspace(-1+0j, 1+0j, num=5)  # Circle
-array([-1.00000000+0.j        , -0.70710678+0.70710678j,
-0.00000000+1.j        ,  0.70710678+0.70710678j,
-1.00000000+0.j        ])
+array([-1.00000000e+00+1.22464680e-16j, -7.07106781e-01+7.07106781e-01j,
+6.12323400e-17+1.00000000e+00j,  7.07106781e-01+7.07106781e-01j,
+1.00000000e+00+0.00000000e+00j])
 
 Graphical illustration of ``endpoint`` parameter:
 
@@ -132,8 +141,11 @@ Graphical illustration of ``endpoint`` parameter:
 &gt;&gt;&gt; N = 10
 &gt;&gt;&gt; y = np.zeros(N)
 &gt;&gt;&gt; plt.semilogx(np.geomspace(1, 1000, N, endpoint=True), y + 1, 'o')
+[&lt;matplotlib.lines.Line2D object at 0x...&gt;]
 &gt;&gt;&gt; plt.semilogx(np.geomspace(1, 1000, N, endpoint=False), y + 2, 'o')
+[&lt;matplotlib.lines.Line2D object at 0x...&gt;]
 &gt;&gt;&gt; plt.axis([0.5, 2000, 0, 3])
+[0.5, 2000, 0, 3]
 &gt;&gt;&gt; plt.grid(True, color='0.7', linestyle='-', which='both', axis='both')
 &gt;&gt;&gt; plt.show()
 

@@ -55,11 +55,14 @@ interval [`start`, `stop`].
 
 The endpoint of the interval can optionally be excluded.
 
+.. versionchanged:: 1.16.0
+Non-scalar `start` and `stop` are now supported.
+
 Parameters
 ----------
-start : scalar
+start : array_like
 The starting value of the sequence.
-stop : scalar
+stop : array_like
 The end value of the sequence, unless `endpoint` is set to False.
 In that case, the sequence consists of all but the last of ``num + 1``
 evenly spaced samples, so that `stop` is excluded.  Note that the step
@@ -78,6 +81,13 @@ type from the other input arguments.
 
 .. versionadded:: 1.9.0
 
+axis : int, optional
+The axis in the result to store the samples.  Relevant only if start
+or stop are array-like.  By default (0), the samples will be along a
+new axis inserted at the beginning. Use -1 to get an axis at the end.
+
+.. versionadded:: 1.16.0
+
 Returns
 -------
 samples : ndarray
@@ -94,16 +104,19 @@ See Also
 --------
 arange : Similar to `linspace`, but uses a step size (instead of the
 number of samples).
-logspace : Samples uniformly distributed in log space.
+geomspace : Similar to `linspace`, but with numbers spaced evenly on a log
+scale (a geometric progression).
+logspace : Similar to `geomspace`, but with the end points specified as
+logarithms.
 
 Examples
 --------
 &gt;&gt;&gt; np.linspace(2.0, 3.0, num=5)
-array([ 2.  ,  2.25,  2.5 ,  2.75,  3.  ])
+array([2.  , 2.25, 2.5 , 2.75, 3.  ])
 &gt;&gt;&gt; np.linspace(2.0, 3.0, num=5, endpoint=False)
-array([ 2. ,  2.2,  2.4,  2.6,  2.8])
+array([2. ,  2.2,  2.4,  2.6,  2.8])
 &gt;&gt;&gt; np.linspace(2.0, 3.0, num=5, retstep=True)
-(array([ 2.  ,  2.25,  2.5 ,  2.75,  3.  ]), 0.25)
+(array([2.  ,  2.25,  2.5 ,  2.75,  3.  ]), 0.25)
 
 Graphical illustration:
 

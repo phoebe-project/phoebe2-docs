@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[DistributionParameter](phoebe.parameters.DistributionParameter.md).lnp (method)
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[DistributionParameter](phoebe.parameters.DistributionParameter.md).lnp (function)
 
 
 ```py

@@ -1,9 +1,9 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[ConstraintParameter](phoebe.parameters.ConstraintParameter.md).flip_for (method)
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[ConstraintParameter](phoebe.parameters.ConstraintParameter.md).flip_for (function)
 
 
 ```py
 
-def flip_for(self, twig=None, expression=None, **kwargs)
+def flip_for(self, *args, **kwargs)
 
 ```
 

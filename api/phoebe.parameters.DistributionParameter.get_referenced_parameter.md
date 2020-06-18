@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[DistributionParameter](phoebe.parameters.DistributionParameter.md).get_referenced_parameter (method)
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[DistributionParameter](phoebe.parameters.DistributionParameter.md).get_referenced_parameter (function)
 
 
 ```py

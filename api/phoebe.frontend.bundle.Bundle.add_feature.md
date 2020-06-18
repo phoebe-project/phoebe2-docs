@@ -1,9 +1,9 @@
-### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[Bundle](phoebe.frontend.bundle.Bundle.md).add_feature (method)
+### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[Bundle](phoebe.frontend.bundle.Bundle.md).add_feature (function)
 
 
 ```py
 
-def add_feature(self, kind, component=None, dataset=None, return_changes=False, **kwargs)
+def add_feature(self, *args, **kwargs)
 
 ```
 

@@ -61,11 +61,14 @@ In linear space, the sequence starts at ``base ** start``
 (`base` to the power of `start`) and ends with ``base ** stop``
 (see `endpoint` below).
 
+.. versionchanged:: 1.16.0
+Non-scalar `start` and `stop` are now supported.
+
 Parameters
 ----------
-start : float
+start : array_like
 ``base ** start`` is the starting value of the sequence.
-stop : float
+stop : array_like
 ``base ** stop`` is the final value of the sequence, unless `endpoint`
 is False.  In that case, ``num + 1`` values are spaced over the
 interval in log-space, of which all but the last (a sequence of
@@ -82,6 +85,13 @@ Default is 10.0.
 dtype : dtype
 The type of the output array.  If `dtype` is not given, infer the data
 type from the other input arguments.
+axis : int, optional
+The axis in the result to store the samples.  Relevant only if start
+or stop are array-like.  By default (0), the samples will be along a
+new axis inserted at the beginning. Use -1 to get an axis at the end.
+
+.. versionadded:: 1.16.0
+
 
 Returns
 -------
@@ -109,11 +119,11 @@ Logspace is equivalent to the code
 Examples
 --------
 &gt;&gt;&gt; np.logspace(2.0, 3.0, num=4)
-array([  100.        ,   215.443469  ,   464.15888336,  1000.        ])
+array([ 100.        ,  215.443469  ,  464.15888336, 1000.        ])
 &gt;&gt;&gt; np.logspace(2.0, 3.0, num=4, endpoint=False)
-array([ 100.        ,  177.827941  ,  316.22776602,  562.34132519])
+array([100.        ,  177.827941  ,  316.22776602,  562.34132519])
 &gt;&gt;&gt; np.logspace(2.0, 3.0, num=4, base=2.0)
-array([ 4.        ,  5.0396842 ,  6.34960421,  8.        ])
+array([4.        ,  5.0396842 ,  6.34960421,  8.        ])
 
 Graphical illustration:
 

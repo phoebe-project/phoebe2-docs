@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[RunChecksReport](phoebe.frontend.bundle.RunChecksReport.md).add_item (method)
+### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[RunChecksReport](phoebe.frontend.bundle.RunChecksReport.md).add_item (function)
 
 
 ```py

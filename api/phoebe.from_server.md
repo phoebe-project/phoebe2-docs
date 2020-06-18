@@ -20,7 +20,6 @@ See also:
 * [phoebe.parameters.ParameterSet.ui](phoebe.parameters.ParameterSet.ui.md)
 * [phoebe.frontend.bundle.Bundle.as_client](phoebe.frontend.bundle.Bundle.as_client.md)
 * [phoebe.frontend.bundle.Bundle.is_client](phoebe.frontend.bundle.Bundle.is_client.md)
-* [phoebe.frontend.bundle.Bundle.client_update](phoebe.frontend.bundle.Bundle.client_update.md)
 
 Arguments
 ----------
@@ -29,5 +28,6 @@ Arguments
 * `server` (string, optional, default='<a href="http://localhost:5555">http://localhost:5555</a>'): the
     host (and port) of the server.
 * `as_client` (bool, optional, default=True):  whether to attach in
-    client mode.  See [phoebe.frontend.bundle.Bundle.as_client](phoebe.frontend.bundle.Bundle.as_client.md).
+    client mode.  If True, `server` will be passed to
+    [phoebe.frontend.bundle.Bundle.as_client](phoebe.frontend.bundle.Bundle.as_client.md) as `as_client`.
 

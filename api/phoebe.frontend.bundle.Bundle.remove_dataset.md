@@ -1,9 +1,9 @@
-### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[Bundle](phoebe.frontend.bundle.Bundle.md).remove_dataset (method)
+### [phoebe](phoebe.md).[frontend](phoebe.frontend.md).[bundle](phoebe.frontend.bundle.md).[Bundle](phoebe.frontend.bundle.Bundle.md).remove_dataset (function)
 
 
 ```py
 
-def remove_dataset(self, dataset=None, return_changes=False, **kwargs)
+def remove_dataset(self, *args, **kwargs)
 
 ```
 

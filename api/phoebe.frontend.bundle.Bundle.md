@@ -13,7 +13,6 @@ Bundle is a subclass of phoebe.parameters.ParameterSet and therefore also includ
 * [add_figure](phoebe.frontend.bundle.Bundle.add_figure.md)
 * [add_gaussian_process](phoebe.frontend.bundle.Bundle.add_gaussian_process.md)
 * [add_orbit](phoebe.frontend.bundle.Bundle.add_orbit.md)
-* [add_parameter](phoebe.frontend.bundle.Bundle.add_parameter.md)
 * [add_solver](phoebe.frontend.bundle.Bundle.add_solver.md)
 * [add_spot](phoebe.frontend.bundle.Bundle.add_spot.md)
 * [add_star](phoebe.frontend.bundle.Bundle.add_star.md)
@@ -117,3 +116,4 @@ Bundle is a subclass of phoebe.parameters.ParameterSet and therefore also includ
 * [to_phases](phoebe.frontend.bundle.Bundle.to_phases.md)
 * [to_time](phoebe.frontend.bundle.Bundle.to_time.md)
 * [to_times](phoebe.frontend.bundle.Bundle.to_times.md)
+* [ui_figures](phoebe.frontend.bundle.Bundle.ui_figures.md)
