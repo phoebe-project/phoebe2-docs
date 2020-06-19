@@ -8,7 +8,6 @@
 * [FloatArrayParameter](phoebe.parameters.FloatArrayParameter.md)
 * [FloatParameter](phoebe.parameters.FloatParameter.md)
 * [HierarchyParameter](phoebe.parameters.HierarchyParameter.md)
-* [HistoryParameter](phoebe.parameters.HistoryParameter.md)
 * [IntParameter](phoebe.parameters.IntParameter.md)
 * [JobParameter](phoebe.parameters.JobParameter.md)
 * [JupyterUI](phoebe.parameters.JupyterUI.md)

@@ -16,8 +16,6 @@ Generally, this will automatically be added to a newly initialized
 
 Arguments
 ----------
-* `log_history` (bool, optional, default=False): whether to log history (undo/redo)
-    NOTE: this is experimental and not fully-functional.
 * `dict_filter` (dictionary, optional, default={}): filter to use when using
     dictionary access in the bundle.
 * `dict_set_all` (bool, optional, default=False): whether to set all values

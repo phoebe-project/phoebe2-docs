@@ -21,7 +21,6 @@ Please see the individual classes for documentation:
 * [phoebe.parameters.ChoiceParameter.set_value](phoebe.parameters.ChoiceParameter.set_value.md)
 * [phoebe.parameters.SelectParameter.set_value](phoebe.parameters.SelectParameter.set_value.md)
 * [phoebe.parameters.ConstraintParameter.set_value](phoebe.parameters.ConstraintParameter.set_value.md)
-* [phoebe.parameters.HistoryParameter.set_value](phoebe.parameters.HistoryParameter.set_value.md)
 
 If subclassing, this method needs to:
 * check the inputs for the correct format/agreement/cast_type

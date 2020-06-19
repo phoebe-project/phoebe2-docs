@@ -15,7 +15,6 @@ method instead:
 * [phoebe.parameters.ChoiceParameter.get_value](phoebe.parameters.ChoiceParameter.get_value.md)
 * [phoebe.parameters.SelectParameter.get_value](phoebe.parameters.SelectParameter.get_value.md)
 * [phoebe.parameters.ConstraintParameter.get_value](phoebe.parameters.ConstraintParameter.get_value.md)
-* [phoebe.parameters.HistoryParameter.get_value](phoebe.parameters.HistoryParameter.get_value.md)
 
 Returns
 ---------

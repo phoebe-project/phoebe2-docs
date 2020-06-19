@@ -38,7 +38,6 @@ Arguments
 * `uniqueid` (string, optional): uniqueid for the parameter (suggested to leave blank
     and a random string will be generated)
 * `time` (string/float, optional): value for the time tag
-* `history` (string, optional): label for the history tag
 * `feature` (string, optional): label for the feature tag
 * `component` (string, optional): label for the component tag
 * `dataset` (string, optional): label for the dataset tag

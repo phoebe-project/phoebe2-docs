@@ -37,7 +37,6 @@
 * [get_parameter](phoebe.parameters.ParameterSet.get_parameter.md)
 * [get_quantity](phoebe.parameters.ParameterSet.get_quantity.md)
 * [get_value](phoebe.parameters.ParameterSet.get_value.md)
-* [histories](phoebe.parameters.ParameterSet.histories.md)
 * [info](phoebe.parameters.ParameterSet.info.md)
 * [items](phoebe.parameters.ParameterSet.items.md)
 * [keys](phoebe.parameters.ParameterSet.keys.md)

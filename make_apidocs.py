@@ -104,13 +104,12 @@ if __name__ == '__main__':
 
     print("CREATING API DOCS FOR PHOEBE VERSION: {}".format(phoebe.__version__))
 
-    skip_ps = ['default_triple', 'remove_history',
+    skip_ps = ['default_triple',
                'set_meta',
                'get_plotting_info',
-               'undo', 'redo', 'get_history', 'enable_history', 'disable_history', 'history',
-               'history', 'historys']
+               'URLError']
 
-    skip_param = ['set_uniqueid', 'history']
+    skip_param = ['set_uniqueid']
 
     skip_phoebe = ['default_triple', 'devel_off', 'devel_on',
                    'algorithms', 'backend', 'c',
@@ -125,9 +124,10 @@ if __name__ == '__main__':
                             'BaseNamespace', 'BoolParameter', 'ChoiceParameter',
                             'ConstraintParameter', 'DictParameter',
                             'FloatArrayParameter', 'FloatParameter',
-                            'HierarchyParameter', 'HistoryParameter',
+                            'HierarchyParameter',
                             'IntArrayParameter', 'IntParameter',
                             'JobParameter',
+                            'URLError',
                             'OrderedDict', 'Parameter', 'ParameterSetInfo',
                             'ParameterSet', 'SelectParameter', 'SocketIO',
                             'StrictVersion', 'StringParameter', 'TwigParameter',
