@@ -54,7 +54,6 @@ b.set_value('sma@binary', 7)
 b.set_value('incl@binary', 80)
 b.set_value('q', 0.3)
 b.set_value('t0_supconj', 0.1)
-#b.set_value('requiv@primary', 0.95*b.get_value('requiv_max@primary@component'))  # rv_geometry fails to converge
 b.set_value('requiv@primary', 2.0)
 b.set_value('vgamma', 80)
 
@@ -356,7 +355,8 @@ b.adopt_solution('nm_sol')
 # In[37]:
 
 
-b.run_compute(compute='phoebe01', model='after_nm')
+#b.run_compute(compute='phoebe01', model='after_nm')
+b.run_compute(compute='fastcompute', model='after_nm')
 
 
 # Figure ?? shows the forward-models from the parameters we adopted after estimators to those after optimization.
@@ -371,46 +371,89 @@ _ = b.plot(x='phases',
            save='figure_optimizer_nm.eps', show=True)
 
 
-# # Determine uncertainties with emcee
-
-# So that we don't ignore any degeneracies between parameters and the luminosities, we'll turn off the dataset-scaling we used for optimizing and make sure we have a reasonable value of `pblum@primary` set to roughly obtain the out-of-eclipse flux levels of the observations.
+# It's also always a good idea to check to see if our model agrees between different backends and approximations.  So we'll compute the same forward-model using PHOEBE and overplot ellc and PHOEBE (note there are some minor differences... if this were a real system that we were publishing we may want to switch to using PHOEBE for determining the final uncertainties)
 
 # In[39]:
 
 
-b.set_value_all('pblum_mode', 'component-coupled')
+b.run_compute(compute='phoebe01', model='after_nm_phoebe')
 
 
 # In[40]:
 
 
+_ = b.plot(x='phases', model='after_nm*', show=True)
+
+
+# # Determine uncertainties with emcee
+
+# So that we don't ignore any degeneracies between parameters and the luminosities, we'll turn off the dataset-scaling we used for optimizing and make sure we have a reasonable value of `pblum@primary` set to roughly obtain the out-of-eclipse flux levels of the observations.  To get a good rough guess for `pblum@primary`, we'll use the flux-scaling from `pblum_mode='dataset-scaled'` (see [compute_pblums API docs](../api/phoebe.frontend.bundle.Bundle.compute_pblums.md) for details).
+
+# In[41]:
+
+
+pblums_scaled = b.compute_pblums(compute='fastcompute', model='after_nm')
+
+
+# In[42]:
+
+
+print(pblums_scaled)
+
+
+# In[43]:
+
+
+b.set_value_all('pblum_mode', 'component-coupled')
+
+
+# **IMPORTANT NOTE**: it is important that you only apply this automatically scaled pblum value with the same `pblum_method` as was originally used.  See [pblum method comparison](pblum_method_compare.ipynb).  Also note that if we marginalize over `pblum` using `pblum_method = 'stefan-boltzmann'` that the luminosities themselves should not be trusted - here we're just marginalizing as a nuisance parameter to account for any degeneracies but will not report the actual values themselves, so we can use the cheaper method.  If we wanted to switch to `pblum_method='phoebe'` at this point (or to use the phoebe backend), we could re-run a single forward model with `pblum_method='phoebe'` and `pblum_mode='dataset-scaled'` first, and then make the call to `b.compute_pblums` using the resulting model.
+
+# In[44]:
+
+
+b.set_value('pblum', dataset='lc01', component='primary', value=pblums_scaled['pblum@primary@lc01'])
+
+
+# In[45]:
+
+
 print(b.compute_pblums(compute='fastcompute', dataset='lc01', pbflux=True))
 
 
-# We'll now create our initializing distribution, including gaussian "balls" around all of the optimized values and a generous boxcar on `pblum@primary`.
+# And although it doesn't really matter, let's marginalize over 'sma' and 'incl' instead of 'asini' and 'incl'.
 
-# In[41]:
+# In[46]:
+
+
+b.flip_constraint('sma@binary', solve_for='asini')
+
+
+# We'll now create our initializing distribution, including gaussian "balls" around all of the optimized values and a uniform boxcar on `pblum@primary`.
+
+# In[47]:
 
 
 b.add_distribution({'teffratio': phoebe.gaussian_around(0.1),
                     'requivsumfrac': phoebe.gaussian_around(0.1),
                     'incl@binary': phoebe.gaussian_around(3),
+                    'sma@binary': phoebe.gaussian_around(2),
                     'q': phoebe.gaussian_around(0.1),
                     'ecc': phoebe.gaussian_around(0.05),
                     'per0': phoebe.gaussian_around(5),
-                    'pblum': phoebe.uniform_around(2)},
+                    'pblum': phoebe.uniform_around(0.5)},
                     distribution='ball_around_optimized_solution')
 
 
 # We can look at this combined set of distributions, which will be used to sample the initial values of our walkers in [emcee](../api/phoebe.parameters.solver.sampler.emcee.md).
 
-# In[42]:
+# In[48]:
 
 
 _ = b.plot_distribution_collection('ball_around_optimized_solution', show=True)
 
 
-# In[43]:
+# In[49]:
 
 
 b.add_solver('sampler.emcee',
@@ -420,21 +463,23 @@ b.add_solver('sampler.emcee',
 
 
 # Since we'll need a lot of iterations, we'll export the solver to an HPC cluster (with [b.export_solver](../api/phoebe.frontend.bundle.Bundle.export_solver.md)) and import the solution (with [b.import_solution](../api/phoebe.frontend.bundle.Bundle.import_solution.md)).  We'll [save](../api/phoebe.parameters.ParameterSet.save.md) the bundle first so that we can interrupt the notebook and return to the following line, if needed.
+# 
+# For 5000 iteration on 72 processors, this should take about 4 hours.
 
-# In[45]:
+# In[50]:
 
 
 b.save('inverse_paper_examples_before_emcee.bundle')
 b.export_solver('inverse_paper_examples_run_emcee.py', 
                 solver='emcee_solver',
-                niters=10000, progress_every_niters=200, 
+                niters=2000, progress_every_niters=100, 
                 nwalkers=16,
                 solution='emcee_sol',
                 log_level='warning',
                 pause=True)
 
 
-# In[20]:
+# In[1]:
 
 
 # only needed if starting script from here
@@ -449,11 +494,25 @@ logger = phoebe.logger('error')
 b = phoebe.load('inverse_paper_examples_before_emcee.bundle')
 
 
-# In[21]:
+# In[2]:
 
 
 # NOTE: append .progress to view any of the following plots before the run has completed
-b.import_solution('inverse_paper_examples_run_emcee.py.out', solution='emcee_sol')
+b.import_solution('inverse_paper_examples_run_emcee.py.out.progress', solution='emcee_sol')
+
+
+# To get as "clean" of posterior distributions as possible, we'll override the proposed thinning value and set it to 1 (effectively disabling thinning).
+
+# In[3]:
+
+
+print(b.get_value('thin', solution='emcee_sol'))
+
+
+# In[4]:
+
+
+b.set_value('thin', solution='emcee_sol', value=1)
 
 
 # Alternatively, we could run the solver locally as we've seen before, but probably would want to run less iterations:
@@ -464,14 +523,14 @@ b.import_solution('inverse_paper_examples_run_emcee.py.out', solution='emcee_sol
 # 
 # in which case calling `b.import_solution` is not necessary.
 
-# In[22]:
+# In[5]:
 
 
 _ = b.plot('emcee_sol', style='failed', 
            save='figure_emcee_failed_samples.eps', show=True)
 
 
-# In[23]:
+# In[6]:
 
 
 _ = b.plot('emcee_sol', style='walks', c='black', 
@@ -479,7 +538,7 @@ _ = b.plot('emcee_sol', style='walks', c='black',
            save='figure_emcee_walks.eps', show=True)
 
 
-# In[24]:
+# In[7]:
 
 
 _ = b.plot('emcee_sol', style='lnprobabilities', c='black',
@@ -487,7 +546,7 @@ _ = b.plot('emcee_sol', style='lnprobabilities', c='black',
            save='figure_emcee_lnprobabilities_all.eps', show=True)
 
 
-# In[25]:
+# In[8]:
 
 
 _ = b.plot('emcee_sol', style='lnprobabilities', c='black',
@@ -498,20 +557,20 @@ _ = b.plot('emcee_sol', style='lnprobabilities', c='black',
 # 
 # **TODO**: explain the difference between `parameters` and `adopt_parameters`, or consider merging in the code so this isn't possible (or rename to be more self-explanatory).
 
-# In[26]:
+# In[9]:
 
 
 _ = b.plot('emcee_sol', style='corner', show=True)
 
 
-# In[27]:
+# In[10]:
 
 
 _ = b.plot('emcee_sol', style='corner', parameters=['teffratio', 'requivsumfrac', 'incl@binary'], 
            save='figure_posteriors_mvsamples.eps', show=True)
 
 
-# In[28]:
+# In[11]:
 
 
 _ = b.plot('emcee_sol', style='corner', parameters=['teffratio', 'requivsumfrac', 'incl@binary'], 
@@ -519,18 +578,36 @@ _ = b.plot('emcee_sol', style='corner', parameters=['teffratio', 'requivsumfrac'
            save='figure_posteriors_mvgaussian.eps', show=True)
 
 
-# In[29]:
+# In[12]:
 
 
 _ = b.plot('emcee_sol', style='corner', parameters=['ecc', 'per0'], 
            save='figure_posteriors_ew.eps', show=True)
 
 
-# In[30]:
+# In[13]:
 
 
 _ = b.plot('emcee_sol', style='corner', parameters=['esinw', 'ecosw'], 
            save='figure_posteriors_ecs.eps', show=True)
+
+
+# ## Accessing Uncertainty Estimates from Posteriors
+
+# A nice latex representation of the asymmetric uncertainties can be exposed via [b.uncertainties_from_distribution_collection](../api/phoebe.frontend.bundle.Bundle.uncertainties_from_distribution_collection.md) for any distribution collection - but this is particularly useful for acting on posterior distributions.
+
+# In[3]:
+
+
+b.uncertainties_from_distribution_collection(solution='emcee_sol')
+
+
+# As with the corner plots, these can also be accessed with distributions propagated through constraints into any parameterization.
+
+# In[6]:
+
+
+b.uncertainties_from_distribution_collection(solution='emcee_sol', parameters=['esinw', 'ecosw'])
 
 
 # ## Propagating Posteriors through Forward-Model
@@ -591,20 +668,21 @@ _ = b.plot(kind='rv', model='emcee_posts', x='phases', y='residuals',
 # 
 # `dynesty` samples directly from the priors, so we shouldn't use the same gaussian balls we did for `emcee`.  Instead, we'll create a narrow box around the solution with widths somewhat estimated from the `emcee` cornerplot.  We can do this to save time for this example because we know the solution, but in practice these would likely need to be much more conservatively set.
 
-# In[17]:
+# In[ ]:
 
 
 b.add_distribution({'teffratio': phoebe.uniform_around(0.1),
                     'requivsumfrac': phoebe.uniform_around(0.1),
                     'incl@binary': phoebe.uniform_around(0.5),
+                    'asini@binary': phoebe.uniform_around(5),
                     'q': phoebe.uniform_around(0.1),
                     'ecc': phoebe.uniform_around(0.05),
                     'per0': phoebe.uniform_around(6),
-                    'pblum': phoebe.uniform_around(0.5)},
+                    'pblum': phoebe.uniform_around(1)},
                     distribution='dynesty_uninformative_priors')
 
 
-# In[18]:
+# In[ ]:
 
 
 b.add_solver('sampler.dynesty',
@@ -614,7 +692,7 @@ b.add_solver('sampler.dynesty',
             )
 
 
-# In[19]:
+# In[ ]:
 
 
 b.save('inverse_paper_examples_before_dynesty.bundle')
@@ -626,7 +704,7 @@ b.export_solver('inverse_paper_examples_run_dynesty.py',
                 pause=True)
 
 
-# In[31]:
+# In[ ]:
 
 
 # only needed if starting script from here
@@ -641,34 +719,34 @@ logger = phoebe.logger('error')
 b = phoebe.load('inverse_paper_examples_before_dynesty.bundle')
 
 
-# In[32]:
+# In[ ]:
 
 
 b.import_solution('inverse_paper_examples_run_dynesty.py.out', solution='dynesty_sol')
 
 
-# In[33]:
+# In[ ]:
 
 
 afig, mplfig = b.plot('dynesty_sol', style='trace', 
            savefig='figure_dynesty_trace.eps', show=True)
 
 
-# In[34]:
+# In[ ]:
 
 
 mplfig.tight_layout()
 mplfig.savefig('figure_dynesty_trace.eps')
 
 
-# In[35]:
+# In[ ]:
 
 
 _ = b.plot('dynesty_sol', style='corner', 
            show=True)
 
 
-# In[37]:
+# In[ ]:
 
 
 #_ = b.plot('dynesty_sol', style='run', 
