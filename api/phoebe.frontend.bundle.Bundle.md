@@ -119,3 +119,4 @@ Bundle is a subclass of phoebe.parameters.ParameterSet and therefore also includ
 * [to_time](phoebe.frontend.bundle.Bundle.to_time.md)
 * [to_times](phoebe.frontend.bundle.Bundle.to_times.md)
 * [ui_figures](phoebe.frontend.bundle.Bundle.ui_figures.md)
+* [uncertainties_from_distribution_collection](phoebe.frontend.bundle.Bundle.uncertainties_from_distribution_collection.md)

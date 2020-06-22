@@ -14,6 +14,7 @@ Calls plot on the first returned argument from [phoebe.frontend.bundle.Bundle.ge
 See also:
 * [phoebe.frontend.bundle.Bundle.get_distribution_collection](phoebe.frontend.bundle.Bundle.get_distribution_collection.md)
 * [phoebe.frontend.bundle.Bundle.sample_distribution_collection](phoebe.frontend.bundle.Bundle.sample_distribution_collection.md)
+* [phoebe.frontend.bundle.Bundle.uncertainties_from_distribution_collection](phoebe.frontend.bundle.Bundle.uncertainties_from_distribution_collection.md)
 * [phoebe.parameters.ParameterSet.plot](phoebe.parameters.ParameterSet.plot.md)
 
 Arguments
@@ -57,7 +58,7 @@ Arguments
 * `show` (boolean, optional, default=False): whether to call show on the
     resulting figure object
 * `**kwargs`: all additional keyword arguments are passed directly to
-    [phoebe.frontend.bundle.Bundle.get_distribution_collection](phoebe.frontend.bundle.Bundle.get_distribution_collection.md)
+    [phoebe.frontend.bundle.Bundle.get_distribution_collection](phoebe.frontend.bundle.Bundle.get_distribution_collection.md).
 
 Returns
 ----------

@@ -233,7 +233,9 @@ Available datasets ([see all](api/phoebe.parameters.dataset.md)):
 * [remove_distribution](api/phoebe.frontend.bundle.Bundle.remove_distribution.md)
 * [get_distribution_collection](api/phoebe.frontend.bundle.Bundle.get_distribution_collection.md)
 * [sample_distribution_collection](api/phoebe.frontend.bundle.Bundle.sample_distribution_collection.md)
+* [uncertainties_from_distribution_collection](api/phoebe.frontend.bundle.Bundle.uncertainties_from_distribution_collection.md)
 * [plot_distribution_collection](api/phoebe.frontend.bundle.Bundle.plot_distribution_collection.md)
+
 
 ### Compute
 

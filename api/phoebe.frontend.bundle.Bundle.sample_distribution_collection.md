@@ -19,6 +19,8 @@ Pass `as_quantity=True` to access the quantity objects in original units.
 
 See also:
 * [phoebe.frontend.bundle.Bundle.get_distribution_collection](phoebe.frontend.bundle.Bundle.get_distribution_collection.md)
+* [phoebe.frontend.bundle.Bundle.plot_distribution_collection](phoebe.frontend.bundle.Bundle.plot_distribution_collection.md)
+* [phoebe.frontend.bundle.Bundle.uncertainties_from_distribution_collection](phoebe.frontend.bundle.Bundle.uncertainties_from_distribution_collection.md)
 * [phoebe.frontend.bundle.Bundle.calculate_lnp](phoebe.frontend.bundle.Bundle.calculate_lnp.md)
 * [phoebe.frontend.bundle.Bundle.get_distribution](phoebe.frontend.bundle.Bundle.get_distribution.md)
 
