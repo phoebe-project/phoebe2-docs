@@ -3,7 +3,7 @@
 
 ```py
 
-def calculate_chi2(self, model=None, dataset=None, component=None, consider_gaussian_process=True)
+def calculate_chi2(self, model=None, dataset=None, component=None, consider_gaussian_process=True, mask_enabled=None, mask_phases=None)
 
 ```
 
@@ -51,6 +51,12 @@ Arguments
     the chi2
 * `consider_gaussian_process` (bool, optional, defult=True): whether
     to consider a system with gaussian process(es) as time-dependent
+* `mask_enabled` (bool, optional, default=None): whether to enable
+    masking on the dataset(s).  If None or not provided, will default to
+    the values set in the dataset(s).
+* `mask_phases` (list of tuples, optional, default=None): phase masks
+    to apply if `mask_enabled = True`.  If None or not provided, will
+    default to the values set in the dataset(s).
 
 Returns
 -----------

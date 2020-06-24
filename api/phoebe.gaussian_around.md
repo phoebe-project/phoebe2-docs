@@ -3,7 +3,7 @@
 
 ```py
 
-def gaussian_around(scale, unit=None, label=None, wrap_at=None)
+def gaussian_around(scale, unit=None, label=None, label_latex=None, wrap_at=None)
 
 ```
 

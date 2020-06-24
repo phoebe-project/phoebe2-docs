@@ -27,6 +27,8 @@
 * [is_constraint](phoebe.parameters.Parameter.is_constraint.md)
 * [is_visible](phoebe.parameters.Parameter.is_visible.md)
 * [kind](phoebe.parameters.Parameter.kind.md)
+* [latexfmt](phoebe.parameters.Parameter.latexfmt.md)
+* [latextwig](phoebe.parameters.Parameter.latextwig.md)
 * [meta](phoebe.parameters.Parameter.meta.md)
 * [model](phoebe.parameters.Parameter.model.md)
 * [open](phoebe.parameters.Parameter.open.md)

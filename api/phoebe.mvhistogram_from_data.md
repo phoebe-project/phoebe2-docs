@@ -3,7 +3,7 @@
 
 ```py
 
-def mvhistogram_from_data(data, bins=10, range=None, weights=None, units=None, labels=None, wrap_ats=None)
+def mvhistogram_from_data(data, bins=10, range=None, weights=None, units=None, labels=None, labels_latex=None, wrap_ats=None)
 
 ```
 

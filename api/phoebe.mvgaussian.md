@@ -3,7 +3,7 @@
 
 ```py
 
-def mvgaussian(mean, cov, allow_singular=False, units=None, labels=None, wrap_ats=None)
+def mvgaussian(mean, cov, allow_singular=False, units=None, labels=None, labels_latex=None, wrap_ats=None)
 
 ```
 

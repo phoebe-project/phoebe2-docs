@@ -3,7 +3,7 @@
 
 ```py
 
-def uniform_around(width, unit=None, label=None, wrap_at=None)
+def uniform_around(width, unit=None, label=None, label_latex=None, wrap_at=None)
 
 ```
 
