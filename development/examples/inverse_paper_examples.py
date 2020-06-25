@@ -134,7 +134,7 @@ print(b.adopt_solution('rv_geom_sol', trial_run=True))
 # 
 # This reproduces Figure 1
 # 
-# <img src="2020Conroy+_fig1.png" alt="Figure 1" width="800px"/>
+# <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig1.png" id="fig1" alt="Figure 1" width="800px"/>
 
 # In[10]:
 
@@ -170,7 +170,7 @@ print(b.adopt_solution('lc_geom_sol', trial_run=True))
 
 # By plotting the solution, we get Figure 2, which shows the best two gaussian model as well as the detected positions of mid-eclipse, ingress, and egress which were used to compute the proposed values.
 # 
-# <img src="2020Conroy+_fig2.png" alt="Figure 2" width="800px"/>
+# <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig2.png" id="fig2" alt="Figure 2" width="800px"/>
 
 # In[14]:
 
@@ -181,7 +181,7 @@ afig, mplfig = b.plot(solution='lc_geom_sol',
 
 # Figure 5 exhibits eclipse masking by adopting `mask_phases` from the `lc_geometry` solution.  Note that by default, `mask_phases` is not included in `adopt_parameters`, which is why it was not included when calling [b.adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution.md) with `trial_mode=True` (all available proposed parameters could be shown by passing `adopt_parameters='*'`.  For the sake of this figure, we'll only adopt the `mask_phases`, plot the dataset with that mask applied, but then disable the mask for the rest of this example script.
 # 
-# <img src="2020Conroy+_fig5.png" alt="Figure 5" width="800px"/>
+# <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig5.png" id="fig5" alt="Figure 5" width="800px"/>
 
 # In[16]:
 
@@ -227,7 +227,7 @@ print(b.adopt_solution('ebai_sol', trial_run=True))
 
 # By plotting the `ebai` solution, we reproduce Figure 3, which shows the normalized light curve observations and the resulting sample two gaussian model that is sent to the neural network.
 # 
-# <img src="2020Conroy+_fig3.png" alt="Figure 3" width="800px"/>
+# <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig3.png" id="fig3" alt="Figure 3" width="800px"/>
 
 # In[22]:
 
@@ -351,7 +351,7 @@ b.run_compute(compute='fastcompute', model='after_nm')
 
 # Figure 8 shows the forward-models from the parameters we adopted after estimators to those after optimization.
 # 
-# <img src="2020Conroy+_fig8.png" alt="Figure 8" width="800px"/>
+# <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig8.png" id="fig8" alt="Figure 8" width="800px"/>
 
 # In[38]:
 
@@ -518,7 +518,7 @@ b.set_value('thin', solution='emcee_sol', value=1)
 # 
 # Figure 9 shows the relation of any failed or rejected samples with respect to the final posteriors.
 # 
-# <img src="2020Conroy+_fig9.png" alt="Figure 9" width="800px"/>
+# <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig8.png" id="fig9" alt="Figure 9" width="800px"/>
 
 # In[6]:
 
@@ -541,7 +541,7 @@ plt.rc('font', size=14)
 
 # Figure 10 compares posteriors directly from the samples to those converted to a multivariate gaussian.
 # 
-# <img src="2020Conroy+_fig10.png" alt="Figure 10" width="800px"/>
+# <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig8.png" id="fig10" alt="Figure 10" width="800px"/>
 
 # In[11]:
 
@@ -560,7 +560,7 @@ _ = b.plot('emcee_sol', style='corner', parameters=['teffratio', 'requivsumfrac'
 
 # Figure 11 demonstrates how posteriors can be propagated through constraints.
 # 
-# <img src="2020Conroy+_fig11.png" alt="Figure 11" width="800px"/>
+# <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig8.png" id="fig11" alt="Figure 11" width="800px"/>
 
 # In[13]:
 
@@ -628,7 +628,7 @@ b = phoebe.load('inverse_paper_examples_after_sample_from.bundle')
 
 # And lastly, Figure 12 demonstrates posteriors propagated through the forward model.
 # 
-# <img src="2020Conroy+_fig12.png" alt="Figure 12" width="800px"/>
+# <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig8.png" id="fig12" alt="Figure 12" width="800px"/>
 
 # In[20]:
 

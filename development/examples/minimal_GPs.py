@@ -5,7 +5,7 @@
 # 
 # In this example script, we'll reproduce Figure 7 from the fitting release paper ([Conroy et al. 2020](http://phoebe-project.org/publications/2020Conroy+)).
 # 
-# <img src="2020Conroy+_fig7.png" alt="Figure 7" width="800px"/>
+# <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig7.png" alt="Figure 7" width="800px"/>
 
 # In[1]:
 
