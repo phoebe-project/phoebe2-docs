@@ -1,12 +1,19 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# # Minimal Example: Gaussian Processes
+# 
+# In this example script, we'll reproduce Figure 7 from the fitting release paper ([Conroy et al. 2020](http://phoebe-project.org/publications/2020Conroy+)).
+# 
+# <img src="2020Conroy+_fig7.png" alt="Figure 7" width="800px"/>
+
 # In[1]:
 
 
 import matplotlib.pyplot as plt
 
-plt.rc('font', family='serif')
+plt.rc('font', family='serif', size=14, serif='STIXGeneral')
+plt.rc('mathtext', fontset='stix')
 
 
 # In[2]:
@@ -140,7 +147,7 @@ b.run_compute(model='withGPs')
 afig, mplfig = b.plot(c={'withoutGPs': 'red', 'withGPs': 'green'},
                       ls={'withoutGPs': 'dashed', 'withGPs': 'solid'},
                       s={'model': 0.03},
-                      save='figure_GPs_times.eps', 
+                      save='figure_GPs_times.pdf', 
                       show=True)
 
 
@@ -151,5 +158,5 @@ afig, mplfig = b.plot(c={'withoutGPs': 'red', 'withGPs': 'green'},
                       ls={'withoutGPs': 'dashed', 'withGPs': 'solid'},
                       s={'model': 0.03},
                       x='phases', 
-                      save='figure_GPs_phases.eps', show=True)
+                      save='figure_GPs_phases.pdf', show=True)
 

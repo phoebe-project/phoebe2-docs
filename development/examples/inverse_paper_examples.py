@@ -4,6 +4,12 @@
 # # Inverse Problem: General Workflow and Examples
 # 
 # In this example script, we'll reproduce many of the plots from the fitting release paper ([Conroy et al. 2020](http://phoebe-project.org/publications/2020Conroy+)).
+# 
+# For the few figures not included here, see the following:
+# 
+# * Figure 4: [Propagating Distributions through Constraints](distribution_constraints.ipynb)
+# * Figure 6: [Comparing PHOEBE 2, Legacy, jktebop, ellc](backends_compare_legacy_jktebop_ellc.ipynb)
+# * FIgure 7: [Minimal Gaussian Processes](minimal_GPs.ipynb)
 
 # # Setup
 # 
@@ -23,7 +29,8 @@
 
 import matplotlib.pyplot as plt
 
-plt.rc('font', family='serif')
+plt.rc('font', family='serif', size=14, serif='STIXGeneral')
+plt.rc('mathtext', fontset='stix')
 
 
 # In[3]:
@@ -80,6 +87,11 @@ rvsigmas = np.ones_like(rvtimes) * 20
 
 
 b = phoebe.default_binary()
+
+b.set_value('latex_repr', component='binary', value='orb')
+b.set_value('latex_repr', component='primary', value='1')
+b.set_value('latex_repr', component='secondary', value='2')
+
 b.add_dataset('lc', times=lctimes, fluxes=fluxes, sigmas=fsigmas, dataset='lc01')
 b.add_dataset('rv', times=rvtimes, rvs={'primary': rvsA, 'secondary': rvsB}, sigmas=rvsigmas, dataset='rv01')
 b.set_value_all('ld_mode', 'lookup')
@@ -120,13 +132,15 @@ print(b.adopt_solution('rv_geom_sol', trial_run=True))
 
 # And by plotting the solution, we can see the underlying Keplerian orbit that was fitted to the RVs to determine these values.  
 # 
-# This reproduces Figure ??? ...
+# This reproduces Figure 1
+# 
+# <img src="2020Conroy+_fig1.png" alt="Figure 1" width="800px"/>
 
 # In[10]:
 
 
 afig, mplfig = b.plot(solution='rv_geom_sol',
-                      show=True, save='figure_rv_geometry.eps')
+                      show=True, save='figure_rv_geometry.pdf')
 
 
 # # Run lc_geometry estimator
@@ -154,45 +168,20 @@ b.run_solver(kind='lc_geometry', solution='lc_geom_sol')
 print(b.adopt_solution('lc_geom_sol', trial_run=True))
 
 
-# By plotting the solution, we get Figure ???, which shows the best two gaussian model as well as the detected positions of mid-eclipse, ingress, and egress which were used to compute the proposed values.
+# By plotting the solution, we get Figure 2, which shows the best two gaussian model as well as the detected positions of mid-eclipse, ingress, and egress which were used to compute the proposed values.
+# 
+# <img src="2020Conroy+_fig2.png" alt="Figure 2" width="800px"/>
 
 # In[14]:
 
 
 afig, mplfig = b.plot(solution='lc_geom_sol',
-                      show=True, save='figure_lc_geometry.eps')
+                      show=True, save='figure_lc_geometry.pdf')
 
 
-# Figure ??? in the paper which shows the seven underlying two gaussian models cannot directly be generated from the plotting functionality within PHOEBE, but the arrays are stored in the solution and can be plotted manually, as shown below.
-
-# In[15]:
-
-
-from phoebe.dependencies.autofig.cyclers import _mplcolors as cmap
-
-input_phases = b.get_value('input_phases', solution='lc_geom_sol')
-input_fluxes = b.get_value('input_fluxes', solution='lc_geom_sol')
-input_sigmas = b.get_value('input_sigmas', solution='lc_geom_sol')
-
-analytic_phases = b.get_value('analytic_phases', solution='lc_geom_sol')
-analytic_fluxes_dict = b.get_value('analytic_fluxes', solution='lc_geom_sol')
-analytic_best_model = b.get_value('analytic_best_model', solution='lc_geom_sol')
-
-plt.figure(figsize=(8,6))
-plt.plot(input_phases, input_fluxes, ls='None', marker='.', c='gray',)
-for i, (model, analytic_fluxes) in enumerate(analytic_fluxes_dict.items()):
-    plt.plot(analytic_phases, analytic_fluxes, 
-             label="{} - best fit".format(model) if model==analytic_best_model else model, 
-             lw=4 if model==analytic_best_model else 3, 
-             c='k' if model==analytic_best_model else cmap[i+1])
-    
-plt.xlabel('phase')
-plt.ylabel('flux (normalized)')
-plt.legend()
-plt.savefig('figure_lc_geometry_models.eps')
-
-
-# Figure ??? exhibits eclipse masking by adopting `mask_phases` from the `lc_geometry` solution.  Note that by default, `mask_phases` is not included in `adopt_parameters`, which is why it was not included when calling [b.adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution.md) with `trial_mode=True` (all available proposed parameters could be shown by passing `adopt_parameters='*'`.  For the sake of this figure, we'll only adopt the `mask_phases`, plot the dataset with that mask applied, but then disable the mask for the rest of this example script.
+# Figure 5 exhibits eclipse masking by adopting `mask_phases` from the `lc_geometry` solution.  Note that by default, `mask_phases` is not included in `adopt_parameters`, which is why it was not included when calling [b.adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution.md) with `trial_mode=True` (all available proposed parameters could be shown by passing `adopt_parameters='*'`.  For the sake of this figure, we'll only adopt the `mask_phases`, plot the dataset with that mask applied, but then disable the mask for the rest of this example script.
+# 
+# <img src="2020Conroy+_fig5.png" alt="Figure 5" width="800px"/>
 
 # In[16]:
 
@@ -204,7 +193,7 @@ b.adopt_solution('lc_geom_sol', adopt_parameters='mask_phases')
 
 
 _ = b.plot(context='dataset', dataset='lc01', x='phases', xlim=(-0.55,0.55),
-           save='figure_lc_geometry_mask.eps', show=True)
+           save='figure_lc_geometry_mask.pdf', show=True)
 
 
 # In[18]:
@@ -236,13 +225,15 @@ b.run_solver(kind='ebai', solution='ebai_sol')
 print(b.adopt_solution('ebai_sol', trial_run=True))
 
 
-# By plotting the `ebai` solution, we reproduce Figure ???, which shows the normalized light curve observations and the resulting sample two gaussian model that is sent to the neural network.
+# By plotting the `ebai` solution, we reproduce Figure 3, which shows the normalized light curve observations and the resulting sample two gaussian model that is sent to the neural network.
+# 
+# <img src="2020Conroy+_fig3.png" alt="Figure 3" width="800px"/>
 
 # In[22]:
 
 
 afig, mplfig = b.plot(solution='ebai_sol',
-                      show=True, save='figure_ebai.eps')
+                      show=True, save='figure_ebai.pdf')
 
 
 # # Adopt from estimators
@@ -355,11 +346,12 @@ b.adopt_solution('nm_sol')
 # In[37]:
 
 
-#b.run_compute(compute='phoebe01', model='after_nm')
 b.run_compute(compute='fastcompute', model='after_nm')
 
 
-# Figure ?? shows the forward-models from the parameters we adopted after estimators to those after optimization.
+# Figure 8 shows the forward-models from the parameters we adopted after estimators to those after optimization.
+# 
+# <img src="2020Conroy+_fig8.png" alt="Figure 8" width="800px"/>
 
 # In[38]:
 
@@ -368,7 +360,7 @@ _ = b.plot(x='phases',
            c={'after_estimators': 'red', 'after_nm': 'green', 'dataset': 'black'}, 
            linestyle={'after_estimators': 'dashed', 'after_nm': 'solid'},
            marker={'dataset': '.'},
-           save='figure_optimizer_nm.eps', show=True)
+           save='figure_optimizer_nm.pdf', show=True)
 
 
 # It's also always a good idea to check to see if our model agrees between different backends and approximations.  So we'll compute the same forward-model using PHOEBE and overplot ellc and PHOEBE (note there are some minor differences... if this were a real system that we were publishing we may want to switch to using PHOEBE for determining the final uncertainties)
@@ -464,7 +456,7 @@ b.add_solver('sampler.emcee',
 
 # Since we'll need a lot of iterations, we'll export the solver to an HPC cluster (with [b.export_solver](../api/phoebe.frontend.bundle.Bundle.export_solver.md)) and import the solution (with [b.import_solution](../api/phoebe.frontend.bundle.Bundle.import_solution.md)).  We'll [save](../api/phoebe.parameters.ParameterSet.save.md) the bundle first so that we can interrupt the notebook and return to the following line, if needed.
 # 
-# For 5000 iteration on 72 processors, this should take about 4 hours.
+# For 2000 iteration on 72 processors, this should take about 2 hours.
 
 # In[50]:
 
@@ -484,7 +476,8 @@ b.export_solver('inverse_paper_examples_run_emcee.py',
 
 # only needed if starting script from here
 import matplotlib.pyplot as plt
-plt.rc('font', family='serif')
+plt.rc('font', family='serif', size=14, serif='STIXGeneral')
+plt.rc('mathtext', fontset='stix')
 
 import phoebe
 import numpy as np
@@ -494,22 +487,22 @@ logger = phoebe.logger('error')
 b = phoebe.load('inverse_paper_examples_before_emcee.bundle')
 
 
-# In[2]:
+# In[3]:
 
 
 # NOTE: append .progress to view any of the following plots before the run has completed
-b.import_solution('inverse_paper_examples_run_emcee.py.out.progress', solution='emcee_sol')
+b.import_solution('inverse_paper_examples_run_emcee.py.out', solution='emcee_sol')
 
 
 # To get as "clean" of posterior distributions as possible, we'll override the proposed thinning value and set it to 1 (effectively disabling thinning).
 
-# In[3]:
+# In[4]:
 
 
 print(b.get_value('thin', solution='emcee_sol'))
 
 
-# In[4]:
+# In[5]:
 
 
 b.set_value('thin', solution='emcee_sol', value=1)
@@ -522,97 +515,88 @@ b.set_value('thin', solution='emcee_sol', value=1)
 # ```
 # 
 # in which case calling `b.import_solution` is not necessary.
-
-# In[5]:
-
-
-_ = b.plot('emcee_sol', style='failed', 
-           save='figure_emcee_failed_samples.eps', show=True)
-
+# 
+# Figure 9 shows the relation of any failed or rejected samples with respect to the final posteriors.
+# 
+# <img src="2020Conroy+_fig9.png" alt="Figure 9" width="800px"/>
 
 # In[6]:
 
 
-_ = b.plot('emcee_sol', style='walks', c='black', 
-           adopt_parameters=['q', 'ecc', 'per0', 'incl@binary'],
-           save='figure_emcee_walks.eps', show=True)
-
-
-# In[7]:
-
-
-_ = b.plot('emcee_sol', style='lnprobabilities', c='black',
-           burnin=0, thin=1,
-           save='figure_emcee_lnprobabilities_all.eps', show=True)
-
-
-# In[8]:
-
-
-_ = b.plot('emcee_sol', style='lnprobabilities', c='black',
-           save='figure_emcee_lnprobabilities.eps', show=True)
+plt.rc('font', size=18)
+_ = b.plot('emcee_sol', style='failed', 
+           save='figure_emcee_failed_samples.pdf', show=True)
+plt.rc('font', size=14)
 
 
 # # Accessing posteriors from emcee run
-# 
-# **TODO**: explain the difference between `parameters` and `adopt_parameters`, or consider merging in the code so this isn't possible (or rename to be more self-explanatory).
-
-# In[9]:
-
-
-_ = b.plot('emcee_sol', style='corner', show=True)
-
 
 # In[10]:
 
 
-_ = b.plot('emcee_sol', style='corner', parameters=['teffratio', 'requivsumfrac', 'incl@binary'], 
-           save='figure_posteriors_mvsamples.eps', show=True)
+plt.rc('font', size=18)
+_ = b.plot('emcee_sol', style='corner', show=True)
+plt.rc('font', size=14)
 
+
+# Figure 10 compares posteriors directly from the samples to those converted to a multivariate gaussian.
+# 
+# <img src="2020Conroy+_fig10.png" alt="Figure 10" width="800px"/>
 
 # In[11]:
 
 
 _ = b.plot('emcee_sol', style='corner', parameters=['teffratio', 'requivsumfrac', 'incl@binary'], 
-           distributions_convert='mvgaussian',
-           save='figure_posteriors_mvgaussian.eps', show=True)
+           save='figure_posteriors_mvsamples.pdf', show=True)
 
 
 # In[12]:
 
 
-_ = b.plot('emcee_sol', style='corner', parameters=['ecc', 'per0'], 
-           save='figure_posteriors_ew.eps', show=True)
+_ = b.plot('emcee_sol', style='corner', parameters=['teffratio', 'requivsumfrac', 'incl@binary'], 
+           distributions_convert='mvgaussian',
+           save='figure_posteriors_mvgaussian.pdf', show=True)
 
+
+# Figure 11 demonstrates how posteriors can be propagated through constraints.
+# 
+# <img src="2020Conroy+_fig11.png" alt="Figure 11" width="800px"/>
 
 # In[13]:
 
 
+_ = b.plot('emcee_sol', style='corner', parameters=['ecc', 'per0'], 
+           save='figure_posteriors_ew.pdf', show=True)
+
+
+# In[14]:
+
+
 _ = b.plot('emcee_sol', style='corner', parameters=['esinw', 'ecosw'], 
-           save='figure_posteriors_ecs.eps', show=True)
+           save='figure_posteriors_ecs.pdf', show=True)
 
 
 # ## Accessing Uncertainty Estimates from Posteriors
 
 # A nice latex representation of the asymmetric uncertainties can be exposed via [b.uncertainties_from_distribution_collection](../api/phoebe.frontend.bundle.Bundle.uncertainties_from_distribution_collection.md) for any distribution collection - but this is particularly useful for acting on posterior distributions.
 
-# In[3]:
+# In[15]:
 
 
-b.uncertainties_from_distribution_collection(solution='emcee_sol')
+b.uncertainties_from_distribution_collection(solution='emcee_sol', tex=True)
 
 
 # As with the corner plots, these can also be accessed with distributions propagated through constraints into any parameterization.
 
-# In[6]:
+# In[16]:
 
 
-b.uncertainties_from_distribution_collection(solution='emcee_sol', parameters=['esinw', 'ecosw'])
+b.uncertainties_from_distribution_collection(solution='emcee_sol', parameters=['esinw', 'ecosw'], tex=True)
 
 
 # ## Propagating Posteriors through Forward-Model
 
-# In[12]:
+# In[17]:
 
 
 b.run_compute(compute='fastcompute', 
@@ -620,18 +604,19 @@ b.run_compute(compute='fastcompute',
               model='emcee_posts')
 
 
-# In[13]:
+# In[18]:
 
 
 b.save('inverse_paper_examples_after_sample_from.bundle')
 
 
-# In[14]:
+# In[19]:
 
 
 # only needed if starting script from here
 import matplotlib.pyplot as plt
-plt.rc('font', family='serif')
+plt.rc('font', family='serif', size=14, serif='STIXGeneral')
+plt.rc('mathtext', fontset='stix')
 
 import phoebe
 import numpy as np
@@ -641,7 +626,11 @@ logger = phoebe.logger('error')
 b = phoebe.load('inverse_paper_examples_after_sample_from.bundle')
 
 
-# In[15]:
+# And lastly, Figure 12 demonstrates posteriors propagated through the forward model.
+# 
+# <img src="2020Conroy+_fig12.png" alt="Figure 12" width="800px"/>
+
+# In[20]:
 
 
 _ = b.plot(kind='lc', model='emcee_posts', x='phases', y='fluxes', 
@@ -649,106 +638,15 @@ _ = b.plot(kind='lc', model='emcee_posts', x='phases', y='fluxes',
            marker={'dataset': '.'})
 _ = b.plot(kind='lc', model='emcee_posts', x='phases', y='residuals', 
            z={'dataset': 0, 'model': 1},
-           save='figure_posteriors_sample_from_lc.eps', show=True)
+           save='figure_posteriors_sample_from_lc.pdf', show=True)
 
 
-# In[16]:
+# In[21]:
 
 
 _ = b.plot(kind='rv', model='emcee_posts', x='phases', y='rvs',
           marker={'dataset': '.'})
 _ = b.plot(kind='rv', model='emcee_posts', x='phases', y='residuals', 
            z={'dataset': 0, 'model': 1},
-           save='figure_posteriors_sample_from_rv.eps', show=True)
-
-
-# # Sampling with dynesty
-
-# The posterior plots in the paper were all created from the `emcee` results, but we'll also run the `dynesty` sampler on the same system.
-# 
-# `dynesty` samples directly from the priors, so we shouldn't use the same gaussian balls we did for `emcee`.  Instead, we'll create a narrow box around the solution with widths somewhat estimated from the `emcee` cornerplot.  We can do this to save time for this example because we know the solution, but in practice these would likely need to be much more conservatively set.
-
-# In[ ]:
-
-
-b.add_distribution({'teffratio': phoebe.uniform_around(0.1),
-                    'requivsumfrac': phoebe.uniform_around(0.1),
-                    'incl@binary': phoebe.uniform_around(0.5),
-                    'asini@binary': phoebe.uniform_around(5),
-                    'q': phoebe.uniform_around(0.1),
-                    'ecc': phoebe.uniform_around(0.05),
-                    'per0': phoebe.uniform_around(6),
-                    'pblum': phoebe.uniform_around(1)},
-                    distribution='dynesty_uninformative_priors')
-
-
-# In[ ]:
-
-
-b.add_solver('sampler.dynesty',
-             compute='fastcompute',
-             priors='dynesty_uninformative_priors',
-             solver='dynesty_solver'
-            )
-
-
-# In[ ]:
-
-
-b.save('inverse_paper_examples_before_dynesty.bundle')
-b.export_solver('inverse_paper_examples_run_dynesty.py', 
-                solver='dynesty_solver',
-                maxiter=10000, maxcall=int(1e6), progress_every_niters=100, 
-                solution='dynesty_sol',
-                log_level='warning',
-                pause=True)
-
-
-# In[ ]:
-
-
-# only needed if starting script from here
-import matplotlib.pyplot as plt
-plt.rc('font', family='serif')
-
-import phoebe
-import numpy as np
-
-logger = phoebe.logger('error')
-
-b = phoebe.load('inverse_paper_examples_before_dynesty.bundle')
-
-
-# In[ ]:
-
-
-b.import_solution('inverse_paper_examples_run_dynesty.py.out', solution='dynesty_sol')
-
-
-# In[ ]:
-
-
-afig, mplfig = b.plot('dynesty_sol', style='trace', 
-           savefig='figure_dynesty_trace.eps', show=True)
-
-
-# In[ ]:
-
-
-mplfig.tight_layout()
-mplfig.savefig('figure_dynesty_trace.eps')
-
-
-# In[ ]:
-
-
-_ = b.plot('dynesty_sol', style='corner', 
-           show=True)
-
-
-# In[ ]:
-
-
-#_ = b.plot('dynesty_sol', style='run', 
-#           show=True)
+           save='figure_posteriors_sample_from_rv.pdf', show=True)
 

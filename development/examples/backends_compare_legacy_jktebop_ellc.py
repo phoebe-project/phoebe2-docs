@@ -1,12 +1,19 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# # Comparing jktebop and ellc to PHOEBE
+# 
+# In this example script, we'll reproduce Figure 6 from the fitting release paper ([Conroy et al. 2020](http://phoebe-project.org/publications/2020Conroy+)).
+# 
+# <img src="2020Conroy+_fig6.png" alt="Figure 6" width="800px"/>
+
 # In[1]:
 
 
 import matplotlib.pyplot as plt
 
-plt.rc('font', family='serif')
+plt.rc('font', family='serif', size=14, serif='STIXGeneral')
+plt.rc('mathtext', fontset='stix')
 
 
 # In[2]:
@@ -68,8 +75,7 @@ afig, mplfig = b.plot(x='phases', context='model',
                       c={'phoebe2_model': 'blue', 'phoebe1_model': 'green', 'ellc_model': 'orange', 'jktebop_model': 'purple'},
                       ls={'phoebe2_model': 'solid', 'phoebe1_model': 'dashed', 'ellc_model': 'dotted', 'jktebop_model': '-.'},
                       legend={'lc': True},
-                      #fig=plt.figure(figsize=(4,7)),  # causes issues when saving - labels are cutoff
-                      show=True, save='figure_backends_compare.eps')
+                      show=True, save='figure_backends_compare.pdf')
 
 
 # # Semi-Detached Case
@@ -109,6 +115,5 @@ afig, mplfig = b.plot(x='phase', context='model',
                       c={'phoebe2_model': 'blue', 'phoebe1_model': 'green', 'ellc_model': 'orange', 'jktebop_model': 'purple'},
                       ls={'phoebe2_model': 'solid', 'phoebe1_model': 'dashed', 'ellc_model': 'dotted', 'jktebop_model': '-.'},
                       legend={'lc': True},
-                      #fig=plt.figure(figsize=(4,7)),  # causes issues when saving - labels are cutoff
-                      show=True, save='figure_backends_compare_semidetached.eps')
+                      show=True, save='figure_backends_compare_semidetached.pdf')
 
