@@ -14,5 +14,6 @@
 *.profile
 *.log
 *.eps
+*.pdf
 *.py.out.progress
 TEST*.ipynb

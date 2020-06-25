@@ -39,7 +39,7 @@ These example scripts are generally focused to show a single advanced feature or
 
 ## Gaussian Processes
 
-* [Minimal Gaussian Processes](examples/minimal_GPs.ipynb) ([Conroy+ 2020](http://phoebe-project.org/publications/2020Conroy+), Figure ?)
+* [Minimal Gaussian Processes](examples/minimal_GPs.ipynb) ([Conroy+ 2020](http://phoebe-project.org/publications/2020Conroy+), Figure 7)
 
 
 ## Spin-Orbit Misalignment (2.1 release)
@@ -58,7 +58,8 @@ These example scripts are generally focused to show a single advanced feature or
 
 ## Inverse Problem (2.3 release)
 
-* [Inverse Problem: General Examples](examples/inverse_paper_examples.ipynb) ([Conroy+ 2020](http://phoebe-project.org/publications/2020Conroy+), Figures ???)
+* [Inverse Problem: General Examples](examples/inverse_paper_examples.ipynb) ([Conroy+ 2020](http://phoebe-project.org/publications/2020Conroy+), Figures 1-3, 5, 8-12)
+* [Propagating Distributions through Constraints](examples/distribution_constraints.ipynb) ([Conroy+ 2020](http://phoebe-project.org/publications/2020Conroy+) Figure 4)
 
 
 ## Advanced Plotting & Animations
@@ -74,7 +75,7 @@ These example scripts are generally focused to show a single advanced feature or
 * [Comparing PHOEBE 2 vs PHOEBE Legacy](examples/legacy.ipynb)
 * [Comparing Contact Binary System PHOEBE 2 vs PHOEBE Legacy](examples/legacy_contact_binary.ipynb)
 * [Comparing Spots in PHOEBE 2 vs PHOEBE Legacy](examples/legacy_spots.ipynb)
-* [Comparing PHOEBE 2, Legacy, jktebop, ellc](examples/backends_compare_legacy_jktebop_ellc.ipynb) ([Conroy+ 2020](http://phoebe-project.org/publications/2020Conroy+), Figure ???)
+* [Comparing PHOEBE 2, Legacy, jktebop, ellc](examples/backends_compare_legacy_jktebop_ellc.ipynb) ([Conroy+ 2020](http://phoebe-project.org/publications/2020Conroy+), Figure 6)
 * [Misaligned Rossiter-McLaughlin: phoebe and ellc](examples/RM_phoebe_ellc.ipynb)
 * [jktebop: requiv_max_limit](examples/requiv_max_limit.ipynb)
 * [Comparing pblum methods](examples/pblum_method_compare.ipynb)
