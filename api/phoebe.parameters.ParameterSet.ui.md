@@ -55,7 +55,8 @@ Arguments
 * `full_ui` (bool, optional, default=None): whether to show the entire
     bundle or just the filtered ParameterSet.  If not provided, will
     default to True if acting on the Bundle, or False if acting on
-    a filtered ParameterSet.
+    a filtered ParameterSet.  If in Jupyter, will default to False
+    always, and override to True will launch the full client (not in-line)
 * `blocking` (bool, optional, default=None): whether the clal to the
     UI should be blocking (wait for the client to close/disconnect)
     before continuing the python-thread or not.  If not provided or

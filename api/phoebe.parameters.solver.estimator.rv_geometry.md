@@ -43,11 +43,18 @@ b.run_solver(kind='rv_geometry')
 Arguments
 ----------
 * `rv_datasets` (string or list, optional, default='*'): Radial velocity
-    dataset(s) to use to extract RV geometry
+    dataset(s) to use to extract RV geometry.
+* `phase_bin` (bool, optional, default=True): Bin the input observations (
+    see `phase_nbins`) if more than 2*phase_nbins.  NOTE: input observational
+    sigmas will be ignored during binning.
+* `phase_nbins` (int, optional, default=500): Number of bins to use during
+    phase binning input observations
+    (will only be applied if len(times) &gt; 2*`phase_nbins`).  Only applicable
+    if `phase_bin` is True.
 * `orbit` (string, optional, default=top-level orbit): Orbit to use for
-    estimating orbital parameters
+    estimating orbital parameters.
 * `expose_model` (bool, optional, default=True): Whether to expose the
-    Keplerian analytical models in the solution
+    Keplerian analytical models in the solution.
 
 Returns
 --------

@@ -42,6 +42,13 @@ Arguments
     dataset(s) to use to extract eclipse geometry
 * `lc_combine` (string, optional, default='median'): How to normalize each
     light curve prior to combining.
+* `phase_bin` (bool, optional, default=True): Bin the input observations (
+    see `phase_nbins`) if more than 2*phase_nbins.  NOTE: input observational
+    sigmas will be ignored during binning.
+* `phase_nbins` (int, optional, default=500): Number of bins to use during
+    phase binning input observations
+    (will only be applied if len(times) &gt; 2*`phase_nbins`).  Only applicable
+    if `phase_bin` is True.
 * `orbit` (string, optional, default=top-level orbit): Orbit to use for
     phasing the light curve referenced in the `lc_datasets` parameter
 * `t0_near_times` (bool, optional, default=True): Whether the returned value
