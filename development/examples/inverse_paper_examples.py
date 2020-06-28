@@ -68,8 +68,10 @@ lctimes = phoebe.linspace(0, 10, 1005)
 rvtimes = phoebe.linspace(0, 10, 105)
 b.add_dataset('lc', compute_times=lctimes)
 b.add_dataset('rv', compute_times=rvtimes)
+
+b.add_compute('ellc', compute='fastcompute')
 b.set_value_all('ld_mode', 'lookup')
-b.run_compute(irrad_method='none')
+b.run_compute(compute='fastcompute')
 
 fluxes = b.get_value('fluxes@model') + np.random.normal(size=lctimes.shape) * 0.01
 fsigmas = np.ones_like(lctimes) * 0.02
@@ -92,8 +94,20 @@ b.set_value('latex_repr', component='binary', value='orb')
 b.set_value('latex_repr', component='primary', value='1')
 b.set_value('latex_repr', component='secondary', value='2')
 
-b.add_dataset('lc', times=lctimes, fluxes=fluxes, sigmas=fsigmas, dataset='lc01')
-b.add_dataset('rv', times=rvtimes, rvs={'primary': rvsA, 'secondary': rvsB}, sigmas=rvsigmas, dataset='rv01')
+b.add_dataset('lc', 
+              compute_phases=phoebe.linspace(0,1,201),
+              times=lctimes, 
+              fluxes=fluxes, 
+              sigmas=fsigmas, 
+              dataset='lc01')
+
+b.add_dataset('rv', 
+              compute_phases=phoebe.linspace(0,1,201),
+              times=rvtimes, 
+              rvs={'primary': rvsA, 'secondary': rvsB}, 
+              sigmas=rvsigmas, 
+              dataset='rv01')
+
 b.set_value_all('ld_mode', 'lookup')
 
 
@@ -183,20 +197,20 @@ afig, mplfig = b.plot(solution='lc_geom_sol',
 # 
 # <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig5.png" id="fig5" alt="Figure 5" width="800px"/>
 
-# In[16]:
+# In[15]:
 
 
 b.adopt_solution('lc_geom_sol', adopt_parameters='mask_phases')
 
 
-# In[17]:
+# In[16]:
 
 
 _ = b.plot(context='dataset', dataset='lc01', x='phases', xlim=(-0.55,0.55),
            save='figure_lc_geometry_mask.pdf', show=True)
 
 
-# In[18]:
+# In[17]:
 
 
 b.set_value('mask_enabled@lc01', False)
@@ -206,20 +220,20 @@ b.set_value('mask_enabled@lc01', False)
 # 
 # And finally, we'll do the same for the [ebai estimator](../api/phoebe.parameters.solver.estimator.ebai.md).
 
-# In[19]:
+# In[18]:
 
 
 b.add_solver('estimator.ebai',
              lc='lc01')
 
 
-# In[20]:
+# In[19]:
 
 
 b.run_solver(kind='ebai', solution='ebai_sol')
 
 
-# In[21]:
+# In[20]:
 
 
 print(b.adopt_solution('ebai_sol', trial_run=True))
@@ -229,7 +243,7 @@ print(b.adopt_solution('ebai_sol', trial_run=True))
 # 
 # <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig3.png" id="fig3" alt="Figure 3" width="800px"/>
 
-# In[22]:
+# In[21]:
 
 
 afig, mplfig = b.plot(solution='ebai_sol',
@@ -240,14 +254,14 @@ afig, mplfig = b.plot(solution='ebai_sol',
 # 
 # Now we'll adopt the proposed values from the two geometry estimators.
 
-# In[23]:
+# In[22]:
 
 
 b.flip_constraint('asini@binary', solve_for='sma@binary')
 b.adopt_solution('rv_geom_sol')
 
 
-# In[24]:
+# In[23]:
 
 
 b.adopt_solution('lc_geom_sol')
@@ -255,7 +269,7 @@ b.adopt_solution('lc_geom_sol')
 
 # We'll keep the eccentricity and per0 estimates from the lc geometry, but use the ebai results to adopt the values for the temperature ratio, sum of fractional radii, and inclination.  Note that since we flipped the asini constraint earlier, that value from the rv geometry will remain fixed and the semi-major axis will be adjusted based on asini from rv geometry and incl from ebai.
 
-# In[25]:
+# In[24]:
 
 
 b.flip_constraint('teffratio', solve_for='teff@primary')
@@ -263,7 +277,7 @@ b.flip_constraint('requivsumfrac', solve_for='requiv@primary')
 b.adopt_solution('ebai_sol', adopt_parameters=['teffratio', 'requivsumfrac', 'incl'])
 
 
-# In[26]:
+# In[25]:
 
 
 print(b.filter(qualifier=['ecc', 'per0', 'teff', 'sma', 'incl', 'q', 'requiv'], context='component'))
@@ -271,13 +285,13 @@ print(b.filter(qualifier=['ecc', 'per0', 'teff', 'sma', 'incl', 'q', 'requiv'], 
 
 # Now we can run a forward model with these adopted parameters to see how well the results from the estimators agree with the observations.
 
-# In[27]:
+# In[26]:
 
 
 b.run_compute(irrad_method='none', model='after_estimators', overwrite=True)
 
 
-# In[28]:
+# In[27]:
 
 
 _ = b.plot(x='phases', m='.', show=True)
@@ -289,7 +303,7 @@ _ = b.plot(x='phases', m='.', show=True)
 # 
 # We'll use [ellc](../api/phoebe.parameters.compute.ellc.md) as our forward-model just for the sake of computational efficiency.  
 
-# In[29]:
+# In[28]:
 
 
 b.add_compute('ellc', compute='fastcompute')
@@ -297,13 +311,13 @@ b.add_compute('ellc', compute='fastcompute')
 
 # For the sake of optimizing, we'll use `pblum_mode='dataset-scaled'` which will automatically re-scale the light curve to the observations at each iteration - we'll disable this later for sampling to make sure we account for any degeneracies between the luminosity and other parameters.
 
-# In[30]:
+# In[29]:
 
 
 b.set_value_all('pblum_mode', 'dataset-scaled')
 
 
-# In[31]:
+# In[30]:
 
 
 b.add_solver('optimizer.nelder_mead',
@@ -311,25 +325,25 @@ b.add_solver('optimizer.nelder_mead',
              compute='fastcompute')
 
 
-# In[32]:
+# In[31]:
 
 
 print(b.get_solver(kind='nelder_mead'))
 
 
-# In[33]:
+# In[32]:
 
 
 b.run_solver(kind='nelder_mead', maxfev=1000, solution='nm_sol')
 
 
-# In[34]:
+# In[33]:
 
 
 print(b.get_solution('nm_sol').filter(qualifier=['message', 'nfev', 'niter', 'success']))
 
 
-# In[35]:
+# In[34]:
 
 
 print(b.adopt_solution('nm_sol', trial_run=True))
@@ -337,13 +351,13 @@ print(b.adopt_solution('nm_sol', trial_run=True))
 
 # We'll adopt all the proposed values, and run the forward model with a new `model` tag so that we can overplot the "before" and "after".  
 
-# In[36]:
+# In[35]:
 
 
 b.adopt_solution('nm_sol')
 
 
-# In[37]:
+# In[36]:
 
 
 b.run_compute(compute='fastcompute', model='after_nm')
@@ -353,7 +367,7 @@ b.run_compute(compute='fastcompute', model='after_nm')
 # 
 # <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig8.png" id="fig8" alt="Figure 8" width="800px"/>
 
-# In[38]:
+# In[37]:
 
 
 _ = b.plot(x='phases', 
@@ -365,13 +379,13 @@ _ = b.plot(x='phases',
 
 # It's also always a good idea to check to see if our model agrees between different backends and approximations.  So we'll compute the same forward-model using PHOEBE and overplot ellc and PHOEBE (note there are some minor differences... if this were a real system that we were publishing we may want to switch to using PHOEBE for determining the final uncertainties)
 
-# In[39]:
+# In[38]:
 
 
 b.run_compute(compute='phoebe01', model='after_nm_phoebe')
 
 
-# In[40]:
+# In[39]:
 
 
 _ = b.plot(x='phases', model='after_nm*', show=True)
@@ -381,19 +395,19 @@ _ = b.plot(x='phases', model='after_nm*', show=True)
 
 # So that we don't ignore any degeneracies between parameters and the luminosities, we'll turn off the dataset-scaling we used for optimizing and make sure we have a reasonable value of `pblum@primary` set to roughly obtain the out-of-eclipse flux levels of the observations.  To get a good rough guess for `pblum@primary`, we'll use the flux-scaling from `pblum_mode='dataset-scaled'` (see [compute_pblums API docs](../api/phoebe.frontend.bundle.Bundle.compute_pblums.md) for details).
 
-# In[41]:
+# In[40]:
 
 
 pblums_scaled = b.compute_pblums(compute='fastcompute', model='after_nm')
 
 
-# In[42]:
+# In[41]:
 
 
 print(pblums_scaled)
 
 
-# In[43]:
+# In[42]:
 
 
 b.set_value_all('pblum_mode', 'component-coupled')
@@ -401,13 +415,13 @@ b.set_value_all('pblum_mode', 'component-coupled')
 
 # **IMPORTANT NOTE**: it is important that you only apply this automatically scaled pblum value with the same `pblum_method` as was originally used.  See [pblum method comparison](pblum_method_compare.ipynb).  Also note that if we marginalize over `pblum` using `pblum_method = 'stefan-boltzmann'` that the luminosities themselves should not be trusted - here we're just marginalizing as a nuisance parameter to account for any degeneracies but will not report the actual values themselves, so we can use the cheaper method.  If we wanted to switch to `pblum_method='phoebe'` at this point (or to use the phoebe backend), we could re-run a single forward model with `pblum_method='phoebe'` and `pblum_mode='dataset-scaled'` first, and then make the call to `b.compute_pblums` using the resulting model.
 
-# In[44]:
+# In[43]:
 
 
 b.set_value('pblum', dataset='lc01', component='primary', value=pblums_scaled['pblum@primary@lc01'])
 
 
-# In[45]:
+# In[44]:
 
 
 print(b.compute_pblums(compute='fastcompute', dataset='lc01', pbflux=True))
@@ -415,7 +429,7 @@ print(b.compute_pblums(compute='fastcompute', dataset='lc01', pbflux=True))
 
 # And although it doesn't really matter, let's marginalize over 'sma' and 'incl' instead of 'asini' and 'incl'.
 
-# In[46]:
+# In[45]:
 
 
 b.flip_constraint('sma@binary', solve_for='asini')
@@ -423,7 +437,7 @@ b.flip_constraint('sma@binary', solve_for='asini')
 
 # We'll now create our initializing distribution, including gaussian "balls" around all of the optimized values and a uniform boxcar on `pblum@primary`.
 
-# In[47]:
+# In[46]:
 
 
 b.add_distribution({'teffratio': phoebe.gaussian_around(0.1),
@@ -439,13 +453,13 @@ b.add_distribution({'teffratio': phoebe.gaussian_around(0.1),
 
 # We can look at this combined set of distributions, which will be used to sample the initial values of our walkers in [emcee](../api/phoebe.parameters.solver.sampler.emcee.md).
 
-# In[48]:
+# In[47]:
 
 
 _ = b.plot_distribution_collection('ball_around_optimized_solution', show=True)
 
 
-# In[49]:
+# In[48]:
 
 
 b.add_solver('sampler.emcee',
