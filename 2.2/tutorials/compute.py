@@ -42,7 +42,7 @@ b.add_dataset(phoebe.dataset.orb, compute_times=np.linspace(0,10,10), dataset='o
 times, fluxes, sigmas = np.loadtxt('test.lc.in', unpack=True)
 
 # test.lc.in has 1000 datapoints... let's use every 10 just for brevity
-times, fluxes, sigmas = times[:10], fluxes[:10], sigmas[:10]
+times, fluxes, sigmas = times[::10], fluxes[::10], sigmas[::10]
 
 b.add_dataset(phoebe.dataset.lc, times=times, fluxes=fluxes, sigmas=sigmas, dataset='lc01')
 
