@@ -152,6 +152,7 @@ Available (optional) constraints ([see all](api/phoebe.parameters.constraint.md)
 * [requivratio](api/phoebe.parameters.constraint.requivratio.md)
 * [semidetached](api/phoebe.parameters.constraint.semidetached.md)
 * [teffratio](api/phoebe.parameters.constraint.teffratio.md)
+* [parallax](api/phoebe.parameters.constraint.parallax.md)
 
 ### Figures
 

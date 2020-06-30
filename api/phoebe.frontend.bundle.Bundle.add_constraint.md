@@ -22,6 +22,10 @@ See also:
 For a list of optional built-in constraints, see [phoebe.parameters.constraint](phoebe.parameters.constraint.md)
 including:
 * [phoebe.parameters.constraint.semidetached](phoebe.parameters.constraint.semidetached.md)
+* [phoebe.parameters.constraint.requivratio](phoebe.parameters.constraint.requivratio.md)
+* [phoebe.parameters.constraint.requivsumfrac](phoebe.parameters.constraint.requivsumfrac.md)
+* [phoebe.parameters.constraint.teffratio](phoebe.parameters.constraint.teffratio.md)
+* [phoebe.parameters.constraint.parallax](phoebe.parameters.constraint.parallax.md)
 
 The following are automatically included for all orbits, during
 [phoebe.frontend.bundle.Bundle.add_component](phoebe.frontend.bundle.Bundle.add_component.md) for a
