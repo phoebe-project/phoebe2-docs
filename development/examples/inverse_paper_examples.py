@@ -532,7 +532,7 @@ b.set_value('thin', solution='emcee_sol', value=1)
 # 
 # Figure 9 shows the relation of any failed or rejected samples with respect to the final posteriors.
 # 
-# <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig8.png" id="fig9" alt="Figure 9" width="800px"/>
+# <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig9.png" id="fig9" alt="Figure 9" width="800px"/>
 
 # In[6]:
 
@@ -555,7 +555,7 @@ plt.rc('font', size=14)
 
 # Figure 10 compares posteriors directly from the samples to those converted to a multivariate gaussian.
 # 
-# <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig8.png" id="fig10" alt="Figure 10" width="800px"/>
+# <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig10.png" id="fig10" alt="Figure 10" width="800px"/>
 
 # In[11]:
 
@@ -574,7 +574,7 @@ _ = b.plot('emcee_sol', style='corner', parameters=['teffratio', 'requivsumfrac'
 
 # Figure 11 demonstrates how posteriors can be propagated through constraints.
 # 
-# <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig8.png" id="fig11" alt="Figure 11" width="800px"/>
+# <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig11.png" id="fig11" alt="Figure 11" width="800px"/>
 
 # In[13]:
 
@@ -642,7 +642,7 @@ b = phoebe.load('inverse_paper_examples_after_sample_from.bundle')
 
 # And lastly, Figure 12 demonstrates posteriors propagated through the forward model.
 # 
-# <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig8.png" id="fig12" alt="Figure 12" width="800px"/>
+# <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig12.png" id="fig12" alt="Figure 12" width="800px"/>
 
 # In[20]:
 
