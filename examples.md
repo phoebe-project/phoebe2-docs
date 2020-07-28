@@ -6,6 +6,7 @@ These example scripts are generally focused to show a single advanced feature or
 ## Single Stars
 
 * [Sun (rotating single star)](examples/sun.ipynb)
+* [Single Star with Spots](examples/single_spots.ipynb)
 
 
 ## Detached Binary Stars
