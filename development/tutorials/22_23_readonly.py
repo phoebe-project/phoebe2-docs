@@ -4,7 +4,7 @@
 # 2.2 - 2.3 Migration: Read Only and Constrained Notation
 # ============================
 # 
-# In the string representation of a [ParameterSet](../api/phoebe.parameters.ParameterSet.md), constrained parameters were notated with a `\*` symbol in the far left.  
+# In the string representation of a [ParameterSet](../api/phoebe.parameters.ParameterSet.md), constrained parameters were notated with a `*` symbol in the far left.  
 # 
 # In version 2.3, this is replaced with a `C`.  Parameters that are read-only for other reasons (i.e. exposed model parameters) are noted with an `R`.
 
