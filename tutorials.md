@@ -28,6 +28,8 @@ For more specific use-cases, see the example scripts below.
     * [Advanced: Accessing and Plotting Meshes](tutorials/meshes.ipynb)
 6. [Distributions](tutorials/distributions.ipynb)
 7. [Solving the Inverse Problem](tutorials/solver.ipynb)
+    * [Advanced: LC Estimators](tutorials/LC_estimators_tutorial.ipynb)
+    * [Advanced: RV Geometry Estimator](tutorials/RV_geometry_tutorial.ipynb)
 
 ## Migrating from PHOEBE 2.2 to PHOEBE 2.3
 
