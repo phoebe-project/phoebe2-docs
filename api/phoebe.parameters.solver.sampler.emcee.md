@@ -19,6 +19,8 @@ If using this backend for solver, consider citing:
 
 See also:
 * [phoebe.frontend.bundle.Bundle.references](phoebe.frontend.bundle.Bundle.references.md)
+* [phoebe.helpers.get_emcee_object_from_solution](phoebe.helpers.get_emcee_object_from_solution.md)
+* [phoebe.helpers.process_mcmc_chains_from_solution](phoebe.helpers.process_mcmc_chains_from_solution.md)
 
 Generally, this will be used as an input to the kind argument in
 [phoebe.frontend.bundle.Bundle.add_solver](phoebe.frontend.bundle.Bundle.add_solver.md).  If attaching through

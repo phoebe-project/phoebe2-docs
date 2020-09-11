@@ -26,7 +26,9 @@ Arguments
 * `twig` (string, optional, default=None): twig to be used to access
     the Parameter.  See [phoebe.parameters.ParameterSet.get_parameter](phoebe.parameters.ParameterSet.get_parameter.md).
 * `unit` (string or unit, optional, default=None): unit to convert the
-    value.  If not provided or None, will use the default unit.  See
+    value.  If not provided or None, will use the default unit.
+    'SI' or 'solar' are also allowed values which will then be determined
+    based on the physical type of the default unit. See
     [phoebe.parameters.ParameterSet.get_default_unit](phoebe.parameters.ParameterSet.get_default_unit.md). `unit` will
     be ignored for Parameters that do not store quantities.
 * `draw_from` (string, optional, default=None): distribution-tag to

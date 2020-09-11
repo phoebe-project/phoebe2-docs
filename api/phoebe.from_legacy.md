@@ -37,7 +37,11 @@ Arguments
 * `add_compute_phoebe` (bool, optional, default=True): whether to add
     a set of compute options for the phoebe backend.  See also
     [phoebe.frontend.bundle.Bundle.add_compute](phoebe.frontend.bundle.Bundle.add_compute.md) and
-    [phoebe.parameters.compute.phoebe](phoebe.parameters.compute.phoebe.md) to add manually after
+    [phoebe.parameters.compute.phoebe](phoebe.parameters.compute.phoebe.md) to add manually after.
+* `ignore_errors` (bool, optional, default=False): whether to ignore any
+    import errors and include instead as a warning in the logger.
+* `passband_map` (dict, optional, default={}): dictionary to map passbands
+    from the value in the legacy file to the corresponding value  in PHOEBE.
 
 Returns
 ---------

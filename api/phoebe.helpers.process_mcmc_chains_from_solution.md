@@ -14,6 +14,7 @@ after applying `burnin`, `thin`, `lnprob_cutoff`.
 
 See also:
 * [phoebe.helpers.process_mcmc_chains](phoebe.helpers.process_mcmc_chains.md)
+* [phoebe.parameters.solver.sampler.emcee](phoebe.parameters.solver.sampler.emcee.md)
 
 Arguments
 ---------------

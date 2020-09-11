@@ -1,36 +1,31 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[constraint](phoebe.parameters.constraint.md).logg (function)
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[constraint](phoebe.parameters.constraint.md).requivfrac (function)
 
 
 ```py
 
-def logg(b, component, solve_for=None, **kwargs)
+def requivfrac(b, component, solve_for=None, **kwargs)
 
 ```
 
 
 
-Create a constraint for logg at requiv for a star.
-
-Note that the constant includes G in solar units and then a conversion
-factor from solar to cgs.
-
-This constraint is automatically included for all
-[phoebe.parameters.component.star](phoebe.parameters.component.star.md) during
-[phoebe.frontend.bundle.Bundle.add_component](phoebe.frontend.bundle.Bundle.add_component.md).
+Create a constraint for the star's fractional equivalent radius.
 
 This is usually passed as an argument to
  [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md) as
- `b.add_constraint('logg', component='primary')`, where `component` is
+ `b.add_constraint('requivfrac', component='primary')`, where `component` is
  one of [phoebe.parameters.HierarchyParameter.get_stars](phoebe.parameters.HierarchyParameter.get_stars.md).
+
+If 'requivfrac' does not exist in the component, it will be created
 
 Arguments
 -----------
 * `b` ([phoebe.frontend.bundle.Bundle](phoebe.frontend.bundle.Bundle.md)): the Bundle
-* `component` (string): the label of the component in which this
+* `component` (string): the label of the orbit or component in which this
     constraint should be built.
 * `solve_for` ([phoebe.parameters.Parameter](phoebe.parameters.Parameter.md), optional, default=None): if
-    'logg' should not be the derived/constrained parameter, provide which
-    other parameter should be derived (ie 'mass', 'requiv').
+    'requivfrac@star' should not be the derived/constrained parameter, provide which
+    other parameter should be derived (ie 'requiv@star' 'sma@orbit').
 
 Returns
 ----------

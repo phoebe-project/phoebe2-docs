@@ -73,6 +73,10 @@ Arguments
 * `max_computations` (int, optional, default=None): maximum
     number of computations to allow.  If more are detected, an error
     will be raised before the backend begins computations.
+* `progressbar` (bool, optional): whether to show a progressbar.  If not
+    provided or none, will default to [phoebe.progressbars_on](phoebe.progressbars_on.md) or
+    [phoebe.progressbars_off](phoebe.progressbars_off.md).  Progressbars require `tqdm` to be installed
+    (will silently ignore if not installed).
 * `**kwargs`:: any values in the compute options to temporarily
     override for this single compute run (parameter values will revert
     after run_compute is finished)

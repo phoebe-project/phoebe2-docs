@@ -74,6 +74,10 @@ Arguments
     optimizers that minimize, the negative returned values will be minimized.
     NOTE: if defined in an interactive session, passing `custom_lnlikelihood_callable`
     may throw an error if `detach=True`.
+* `progressbar` (bool, optional): whether to show a progressbar.  If not
+    provided or none, will default to [phoebe.progressbars_on](phoebe.progressbars_on.md) or
+    [phoebe.progressbars_off](phoebe.progressbars_off.md).  Progressbars require `tqdm` to be installed
+    (will silently ignore if not installed).
 * `**kwargs`: any values in the solver or compute options to temporarily
     override for this single solver run (parameter values will revert
     after run_solver is finished)

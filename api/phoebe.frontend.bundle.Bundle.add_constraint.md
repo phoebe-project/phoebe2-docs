@@ -22,6 +22,7 @@ See also:
 For a list of optional built-in constraints, see [phoebe.parameters.constraint](phoebe.parameters.constraint.md)
 including:
 * [phoebe.parameters.constraint.semidetached](phoebe.parameters.constraint.semidetached.md)
+* [phoebe.parameters.constraint.requivfrac](phoebe.parameters.constraint.requivfrac.md)
 * [phoebe.parameters.constraint.requivratio](phoebe.parameters.constraint.requivratio.md)
 * [phoebe.parameters.constraint.requivsumfrac](phoebe.parameters.constraint.requivsumfrac.md)
 * [phoebe.parameters.constraint.teffratio](phoebe.parameters.constraint.teffratio.md)

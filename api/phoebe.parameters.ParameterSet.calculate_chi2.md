@@ -49,7 +49,7 @@ Arguments
     comparison.  Required only if more than one component exist in the
     dataset (for RVs, for example) and not all should be included in
     the chi2
-* `consider_gaussian_process` (bool, optional, defult=True): whether
+* `consider_gaussian_process` (bool, optional, default=True): whether
     to consider a system with gaussian process(es) as time-dependent
 * `mask_enabled` (bool, optional, default=None): whether to enable
     masking on the dataset(s).  If None or not provided, will default to

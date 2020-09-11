@@ -3,7 +3,7 @@
 
 ```py
 
-def run_checks_figure(self, figure=None, raise_logger_warning=False, raise_error=False, **kwargs)
+def run_checks_figure(self, figure=None, compute=None, solver=None, solution=None, raise_logger_warning=False, raise_error=False, **kwargs)
 
 ```
 

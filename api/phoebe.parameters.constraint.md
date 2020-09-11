@@ -22,6 +22,7 @@
 * [requiv_contact_min](phoebe.parameters.constraint.requiv_contact_min.md)
 * [requiv_detached_max](phoebe.parameters.constraint.requiv_detached_max.md)
 * [requiv_to_pot](phoebe.parameters.constraint.requiv_to_pot.md)
+* [requivfrac](phoebe.parameters.constraint.requivfrac.md)
 * [requivratio](phoebe.parameters.constraint.requivratio.md)
 * [requivsumfrac](phoebe.parameters.constraint.requivsumfrac.md)
 * [rotation_period](phoebe.parameters.constraint.rotation_period.md)

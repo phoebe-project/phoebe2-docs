@@ -53,6 +53,8 @@
 * [open](phoebe.open.md)
 * [parameters](phoebe.parameters.md)
 * [pool](phoebe.pool.md)
+* [progressbars_off](phoebe.progressbars_off.md)
+* [progressbars_on](phoebe.progressbars_on.md)
 * [reset_settings](phoebe.reset_settings.md)
 * [set_download_passband_defaults](phoebe.set_download_passband_defaults.md)
 * [solver](phoebe.solver.md)

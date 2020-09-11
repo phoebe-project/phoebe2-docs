@@ -148,6 +148,7 @@ Importing/exporting from other codes:
 
 Available (optional) constraints ([see all](api/phoebe.parameters.constraint.md)):
 
+* [requivfrac](api/phoebe.parameters.constraint.requivfrac.md)
 * [requivsumfrac](api/phoebe.parameters.constraint.requivsumfrac.md)
 * [requivratio](api/phoebe.parameters.constraint.requivratio.md)
 * [semidetached](api/phoebe.parameters.constraint.semidetached.md)
@@ -314,8 +315,9 @@ Access to merit-function values:
 * [rename_solution](api/phoebe.frontend.bundle.Bundle.rename_solution.md)
 * [remove_solution](api/phoebe.frontend.bundle.Bundle.remove_solution.md)
 
-Helper functions to access underyling solution objects:
+Helper functions to access underlying solution objects:
 
+* [get_emcee_object_from_solution](api/phoebe.helpers.get_emcee_object_from_solution.md)
 * [process_mcmc_chains_from_solution](api/phoebe.helpers.process_mcmc_chains_from_solution.md)
 * [get_dynesty_object_from_solution](api/phoebe.helpers.get_dynesty_object_from_solution.md)
 

@@ -13,6 +13,7 @@ Expose the `results` object in `dynesty` from the solution [phoebe.parameters.Pa
 
 See also:
 * [phoebe.helpers.get_dynesty_object](phoebe.helpers.get_dynesty_object.md)
+* [phoebe.parameters.solver.sampler.dynesty](phoebe.parameters.solver.sampler.dynesty.md)
 
 Arguments
 ------------
