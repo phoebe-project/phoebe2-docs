@@ -283,15 +283,21 @@ b.adopt_solution('ebai_sol', adopt_parameters=['teffratio', 'requivsumfrac', 'in
 print(b.filter(qualifier=['ecc', 'per0', 'teff', 'sma', 'incl', 'q', 'requiv'], context='component'))
 
 
-# Now we can run a forward model with these adopted parameters to see how well the results from the estimators agree with the observations.
+# Now we can run a forward model with these adopted parameters to see how well the results from the estimators agree with the observations.  We'll also set the synthetic light curve to automatically scale to the flux-levels of the observations.
 
 # In[26]:
+
+
+b.set_value_all('pblum_mode', 'dataset-scaled')
+
+
+# In[27]:
 
 
 b.run_compute(irrad_method='none', model='after_estimators', overwrite=True)
 
 
-# In[27]:
+# In[28]:
 
 
 _ = b.plot(x='phases', m='.', show=True)
@@ -303,19 +309,13 @@ _ = b.plot(x='phases', m='.', show=True)
 # 
 # We'll use [ellc](../api/phoebe.parameters.compute.ellc.md) as our forward-model just for the sake of computational efficiency.  
 
-# In[28]:
+# In[29]:
 
 
 b.add_compute('ellc', compute='fastcompute')
 
 
-# For the sake of optimizing, we'll use `pblum_mode='dataset-scaled'` which will automatically re-scale the light curve to the observations at each iteration - we'll disable this later for sampling to make sure we account for any degeneracies between the luminosity and other parameters.
-
-# In[29]:
-
-
-b.set_value_all('pblum_mode', 'dataset-scaled')
-
+# For the sake of optimizing, we'll keep `pblum_mode='dataset-scaled'` which will automatically re-scale the light curve to the observations at each iteration - we'll disable this later for sampling to make sure we account for any degeneracies between the luminosity and other parameters.
 
 # In[30]:
 
@@ -334,7 +334,7 @@ print(b.get_solver(kind='nelder_mead'))
 # In[32]:
 
 
-b.run_solver(kind='nelder_mead', maxfev=1000, solution='nm_sol')
+b.run_solver(kind='nelder_mead', maxiter=10000, solution='nm_sol')
 
 
 # In[33]:
@@ -472,7 +472,7 @@ b.add_solver('sampler.emcee',
 # 
 # For 2000 iteration on 72 processors, this should take about 2 hours.
 
-# In[50]:
+# In[49]:
 
 
 b.save('inverse_paper_examples_before_emcee.bundle')
@@ -501,7 +501,7 @@ logger = phoebe.logger('error')
 b = phoebe.load('inverse_paper_examples_before_emcee.bundle')
 
 
-# In[3]:
+# In[2]:
 
 
 # NOTE: append .progress to view any of the following plots before the run has completed
@@ -510,13 +510,13 @@ b.import_solution('inverse_paper_examples_run_emcee.py.out', solution='emcee_sol
 
 # To get as "clean" of posterior distributions as possible, we'll override the proposed thinning value and set it to 1 (effectively disabling thinning).
 
-# In[4]:
+# In[3]:
 
 
 print(b.get_value('thin', solution='emcee_sol'))
 
 
-# In[5]:
+# In[4]:
 
 
 b.set_value('thin', solution='emcee_sol', value=1)
@@ -534,7 +534,7 @@ b.set_value('thin', solution='emcee_sol', value=1)
 # 
 # <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig9.png" id="fig9" alt="Figure 9" width="800px"/>
 
-# In[6]:
+# In[5]:
 
 
 plt.rc('font', size=18)
@@ -545,7 +545,7 @@ plt.rc('font', size=14)
 
 # # Accessing posteriors from emcee run
 
-# In[10]:
+# In[6]:
 
 
 plt.rc('font', size=18)
@@ -557,14 +557,14 @@ plt.rc('font', size=14)
 # 
 # <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig10.png" id="fig10" alt="Figure 10" width="800px"/>
 
-# In[11]:
+# In[7]:
 
 
 _ = b.plot('emcee_sol', style='corner', parameters=['teffratio', 'requivsumfrac', 'incl@binary'], 
            save='figure_posteriors_mvsamples.pdf', show=True)
 
 
-# In[12]:
+# In[8]:
 
 
 _ = b.plot('emcee_sol', style='corner', parameters=['teffratio', 'requivsumfrac', 'incl@binary'], 
@@ -576,14 +576,14 @@ _ = b.plot('emcee_sol', style='corner', parameters=['teffratio', 'requivsumfrac'
 # 
 # <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig11.png" id="fig11" alt="Figure 11" width="800px"/>
 
-# In[13]:
+# In[9]:
 
 
 _ = b.plot('emcee_sol', style='corner', parameters=['ecc', 'per0'], 
            save='figure_posteriors_ew.pdf', show=True)
 
 
-# In[14]:
+# In[10]:
 
 
 _ = b.plot('emcee_sol', style='corner', parameters=['esinw', 'ecosw'], 
@@ -594,7 +594,7 @@ _ = b.plot('emcee_sol', style='corner', parameters=['esinw', 'ecosw'],
 
 # A nice latex representation of the asymmetric uncertainties can be exposed via [b.uncertainties_from_distribution_collection](../api/phoebe.frontend.bundle.Bundle.uncertainties_from_distribution_collection.md) for any distribution collection - but this is particularly useful for acting on posterior distributions.
 
-# In[15]:
+# In[11]:
 
 
 b.uncertainties_from_distribution_collection(solution='emcee_sol', tex=True)
@@ -602,7 +602,7 @@ b.uncertainties_from_distribution_collection(solution='emcee_sol', tex=True)
 
 # As with the corner plots, these can also be accessed with distributions propagated through constraints into any parameterization.
 
-# In[16]:
+# In[12]:
 
 
 b.uncertainties_from_distribution_collection(solution='emcee_sol', parameters=['esinw', 'ecosw'], tex=True)
@@ -610,21 +610,21 @@ b.uncertainties_from_distribution_collection(solution='emcee_sol', parameters=['
 
 # ## Propagating Posteriors through Forward-Model
 
-# In[17]:
+# In[13]:
 
 
 b.run_compute(compute='fastcompute', 
               sample_from='emcee_sol', sample_num=500, sample_mode='3-sigma',
-              model='emcee_posts')
+              model='emcee_posts', progressbar=False)
 
 
-# In[18]:
+# In[14]:
 
 
 b.save('inverse_paper_examples_after_sample_from.bundle')
 
 
-# In[19]:
+# In[15]:
 
 
 # only needed if starting script from here
@@ -644,7 +644,7 @@ b = phoebe.load('inverse_paper_examples_after_sample_from.bundle')
 # 
 # <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig12.png" id="fig12" alt="Figure 12" width="800px"/>
 
-# In[20]:
+# In[16]:
 
 
 _ = b.plot(kind='lc', model='emcee_posts', x='phases', y='fluxes', 
@@ -655,7 +655,7 @@ _ = b.plot(kind='lc', model='emcee_posts', x='phases', y='residuals',
            save='figure_posteriors_sample_from_lc.pdf', show=True)
 
 
-# In[21]:
+# In[17]:
 
 
 _ = b.plot(kind='rv', model='emcee_posts', x='phases', y='rvs',
@@ -663,4 +663,10 @@ _ = b.plot(kind='rv', model='emcee_posts', x='phases', y='rvs',
 _ = b.plot(kind='rv', model='emcee_posts', x='phases', y='residuals', 
            z={'dataset': 0, 'model': 1},
            save='figure_posteriors_sample_from_rv.pdf', show=True)
+
+
+# In[ ]:
+
+
+
 
