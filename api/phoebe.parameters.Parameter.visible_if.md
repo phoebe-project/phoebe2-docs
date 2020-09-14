@@ -7,6 +7,7 @@ Return the `visible_if` expression for this [phoebe.parameters.Parameter](phoebe
 
 See also:
 * [phoebe.parameters.Parameter.is_visible](phoebe.parameters.Parameter.is_visible.md)
+* [phoebe.parameters.Parameter.visible_if_parameters](phoebe.parameters.Parameter.visible_if_parameters.md)
 
 Returns
 --------

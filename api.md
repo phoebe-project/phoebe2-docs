@@ -123,7 +123,7 @@ Importing/exporting from other codes:
 * [run_failed_constraints](api/phoebe.frontend.bundle.Bundle.run_failed_constraints.md)
 * [references](api/phoebe.frontend.bundle.Bundle.references.md)
 
-## Clients / UI
+### Clients / UI
 
 * [as_client](api/phoebe.frontend.bundle.Bundle.as_client.md)
 * [is_client](api/phoebe.frontend.bundle.Bundle.is_client.md)

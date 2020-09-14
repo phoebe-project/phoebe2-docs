@@ -12,6 +12,7 @@ If `False`, [phoebe.parameters.ParameterSet.filter](phoebe.parameters.ParameterS
 
 See also:
 * [phoebe.parameters.Parameter.visible_if](phoebe.parameters.Parameter.visible_if.md)
+* [phoebe.parameters.Parameter.visible_if_parameters](phoebe.parameters.Parameter.visible_if_parameters.md)
 
 Returns
 --------

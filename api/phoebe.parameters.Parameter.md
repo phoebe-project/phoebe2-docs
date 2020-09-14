@@ -53,3 +53,4 @@
 * [uniquetwig_trunc](phoebe.parameters.Parameter.uniquetwig_trunc.md)
 * [value](phoebe.parameters.Parameter.value.md)
 * [visible_if](phoebe.parameters.Parameter.visible_if.md)
+* [visible_if_parameters](phoebe.parameters.Parameter.visible_if_parameters.md)
