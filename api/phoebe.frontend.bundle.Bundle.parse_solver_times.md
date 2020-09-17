@@ -22,7 +22,7 @@ the same logic to diagnose the influence of these options on the computed
 times.
 
 Overview of logic:
-* if `solver_times='times' but not `mask_enabled`: returns the dataset-times
+* if `solver_times='times'` but not `mask_enabled`: returns the dataset-times
     (concatenating over components as necessary).
 * if `solver_times='times'` and `mask_enabled`: returns the masked
     dataset-times (concatenating over components as necessary), according
