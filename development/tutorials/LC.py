@@ -7,21 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
-
-# In[ ]:
-
-
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
-
-
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+#!pip install -I "phoebe>=2.3,<2.4"
 
+
+# As always, let's do imports and initialize a logger and a new Bundle.
 
 # In[2]:
 
@@ -86,10 +80,12 @@ print(b.get_parameter(qualifier='compute_times'))
 print(b.get_parameter(qualifier='compute_phases', context='dataset'))
 
 
+# **NOTE**: `phases_t0` was called `compute_phases_t0` before the 2.3 release.
+
 # In[9]:
 
 
-print(b.get_parameter(qualifier='compute_phases_t0'))
+print(b.get_parameter(qualifier='phases_t0'))
 
 
 # ### ld_mode
@@ -226,7 +222,7 @@ print(b.get_parameter(qualifier='pblum', component='primary'))
 # 
 # See the ["Third" Light tutorial](./l3.ipynb)
 
-# In[26]:
+# In[25]:
 
 
 print(b.get_parameter(qualifier='l3_mode'))
@@ -236,13 +232,13 @@ print(b.get_parameter(qualifier='l3_mode'))
 # 
 # `l3` is only avaible if `l3_mode` is set to 'flux'.  See the ["Third" Light tutorial](l3) for more details.
 
-# In[27]:
+# In[26]:
 
 
 b.set_value('l3_mode', value='flux')
 
 
-# In[28]:
+# In[27]:
 
 
 print(b.get_parameter(qualifier='l3'))
@@ -252,13 +248,13 @@ print(b.get_parameter(qualifier='l3'))
 # 
 # `l3_frac` is only avaible if `l3_mode` is set to 'fraction'.  See the ["Third" Light tutorial](l3) for more details.
 
-# In[29]:
+# In[28]:
 
 
 b.set_value('l3_mode', value='fraction')
 
 
-# In[30]:
+# In[29]:
 
 
 print(b.get_parameter(qualifier='l3_frac'))
@@ -273,23 +269,15 @@ print(b.get_parameter(qualifier='l3_frac'))
 # * parameters related to dynamics are explained in the section on the [orb dataset](ORB.ipynb)
 # * parameters related to meshing, eclipse detection, and subdivision are explained in the section on the [mesh dataset](MESH.ipynb)
 
-# In[31]:
+# In[30]:
 
 
 print(b.get_compute())
 
 
-# ### lc_method
-
-# In[32]:
-
-
-print(b.get_parameter(qualifier='lc_method'))
-
-
 # ### irrad_method
 
-# In[33]:
+# In[31]:
 
 
 print(b.get_parameter(qualifier='irrad_method'))
@@ -299,7 +287,7 @@ print(b.get_parameter(qualifier='irrad_method'))
 
 # ### boosting_method
 
-# In[34]:
+# In[32]:
 
 
 print(b.get_parameter(qualifier='boosting_method'))
@@ -309,7 +297,7 @@ print(b.get_parameter(qualifier='boosting_method'))
 
 # ### atm
 
-# In[35]:
+# In[33]:
 
 
 print(b.get_parameter(qualifier='atm', component='primary'))
@@ -320,31 +308,31 @@ print(b.get_parameter(qualifier='atm', component='primary'))
 # Synthetics
 # ------------------
 
-# In[36]:
+# In[34]:
 
 
 b.set_value('times', phoebe.linspace(0,1,101))
 
 
-# In[37]:
+# In[35]:
 
 
 b.run_compute()
 
 
-# In[38]:
+# In[36]:
 
 
 print(b.filter(context='model').twigs)
 
 
-# In[39]:
+# In[37]:
 
 
 print(b.get_parameter(qualifier='times', kind='lc', context='model'))
 
 
-# In[40]:
+# In[38]:
 
 
 print(b.get_parameter(qualifier='fluxes', kind='lc', context='model'))
@@ -355,7 +343,7 @@ print(b.get_parameter(qualifier='fluxes', kind='lc', context='model'))
 # 
 # By default, LC datasets plot as flux vs time.
 
-# In[41]:
+# In[39]:
 
 
 afig, mplfig = b.plot(show=True)
@@ -363,7 +351,7 @@ afig, mplfig = b.plot(show=True)
 
 # Since these are the only two columns available in the synthetic model, the only other option is to plot in phase instead of time.
 
-# In[42]:
+# In[40]:
 
 
 afig, mplfig = b.plot(x='phases', show=True)
@@ -371,13 +359,13 @@ afig, mplfig = b.plot(x='phases', show=True)
 
 # In system hierarchies where there may be multiple periods, it is also possible to determine whose period to use for phasing.
 
-# In[43]:
+# In[41]:
 
 
 print(b.filter(qualifier='period').components)
 
 
-# In[44]:
+# In[42]:
 
 
 afig, mplfig = b.plot(x='phases:binary', show=True)
@@ -390,19 +378,19 @@ afig, mplfig = b.plot(x='phases:binary', show=True)
 # 
 # Let's add a single mesh at the first time of the light-curve and re-call run_compute
 
-# In[45]:
+# In[43]:
 
 
 b.add_dataset('mesh', times=[0], dataset='mesh01')
 
 
-# In[46]:
+# In[44]:
 
 
 print(b.get_parameter(qualifier='columns').choices)
 
 
-# In[47]:
+# In[45]:
 
 
 b.set_value('columns', value=['intensities@lc01', 
@@ -413,13 +401,13 @@ b.set_value('columns', value=['intensities@lc01',
                               'boost_factors@lc01'])
 
 
-# In[48]:
+# In[46]:
 
 
 b.run_compute()
 
 
-# In[49]:
+# In[47]:
 
 
 print(b.get_model().datasets)
@@ -427,7 +415,7 @@ print(b.get_model().datasets)
 
 # These new columns are stored with the lc's dataset tag, but with the 'mesh' dataset-kind.
 
-# In[50]:
+# In[48]:
 
 
 print(b.filter(dataset='lc01', kind='mesh', context='model').twigs)
@@ -435,7 +423,7 @@ print(b.filter(dataset='lc01', kind='mesh', context='model').twigs)
 
 # Any of these columns are then available to use as edge or facecolors when plotting the mesh (see the section on the [mesh dataset](MESH)).
 
-# In[51]:
+# In[49]:
 
 
 afig, mplfig = b.filter(kind='mesh').plot(fc='intensities', ec='None', show=True)
@@ -447,7 +435,7 @@ afig, mplfig = b.filter(kind='mesh').plot(fc='intensities', ec='None', show=True
 # 
 # For more details, see the tutorial on [Passband Luminosities](pblum)
 
-# In[52]:
+# In[50]:
 
 
 print(b.get_parameter(qualifier='pblum_ext', 
@@ -461,7 +449,7 @@ print(b.get_parameter(qualifier='pblum_ext',
 
 # ### abs_normal_intensities
 
-# In[53]:
+# In[51]:
 
 
 print(b.get_parameter(qualifier='abs_normal_intensities', 
@@ -475,7 +463,7 @@ print(b.get_parameter(qualifier='abs_normal_intensities',
 
 # ### normal_intensities
 
-# In[54]:
+# In[52]:
 
 
 print(b.get_parameter(qualifier='normal_intensities', 
@@ -489,7 +477,7 @@ print(b.get_parameter(qualifier='normal_intensities',
 
 # ### abs_intensities
 
-# In[55]:
+# In[53]:
 
 
 print(b.get_parameter(qualifier='abs_intensities', 
@@ -503,7 +491,7 @@ print(b.get_parameter(qualifier='abs_intensities',
 
 # ### intensities
 
-# In[56]:
+# In[54]:
 
 
 print(b.get_parameter(qualifier='intensities', 
@@ -517,7 +505,7 @@ print(b.get_parameter(qualifier='intensities',
 
 # ### boost_factors
 
-# In[57]:
+# In[55]:
 
 
 print(b.get_parameter(qualifier='boost_factors', 

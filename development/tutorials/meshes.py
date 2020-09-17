@@ -15,12 +15,6 @@
 #!pip install -I "phoebe>=2.3,<2.4"
 
 
-# In[2]:
-
-
-get_ipython().run_line_magic('matplotlib', 'inline')
-
-
 # In[3]:
 
 

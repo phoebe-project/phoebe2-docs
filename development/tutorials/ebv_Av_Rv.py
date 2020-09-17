@@ -12,16 +12,10 @@
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.3,<2.4"')
+#!pip install -I "phoebe>=2.3,<2.4"
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
-
-# In[1]:
-
-
-get_ipython().run_line_magic('matplotlib', 'inline')
-
+# As always, let's do imports and initialize a logger and a new Bundle.
 
 # In[2]:
 

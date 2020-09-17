@@ -7,21 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
-
-# In[ ]:
-
-
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
-
-
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](building_a_system.ipynb) for more details.
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+#!pip install -I "phoebe>=2.3,<2.4"
 
+
+# As always, let's do imports and initialize a logger and a new bundle.
 
 # In[2]:
 
@@ -125,19 +119,19 @@ b.set_value_all('ld_coeffs', [0.,0.])
 b.set_value('distance', 1.0)
 
 
-# In[15]:
+# In[14]:
 
 
 b.run_compute(model='dist1', overwrite=True)
 
 
-# In[16]:
+# In[15]:
 
 
 b.set_value('distance', 2.0)
 
 
-# In[17]:
+# In[16]:
 
 
 b.run_compute(model='dist2', overwrite=True)
@@ -145,7 +139,7 @@ b.run_compute(model='dist2', overwrite=True)
 
 # Since we doubled the distance from 1 to 2 m, we expect the entire light curve at 2 m to be divided by 4 (note the y-scales on the plots below).
 
-# In[18]:
+# In[17]:
 
 
 afig, mplfig = b['lc01'].plot(show=True, legend=True)
@@ -164,44 +158,44 @@ afig, mplfig = b['lc01'].plot(show=True, legend=True)
 # 
 # To see this we can run both of our distances again and look at the values of the intensities in the mesh.
 
-# In[19]:
+# In[18]:
 
 
 b.add_dataset('mesh', times=[0], dataset='mesh01', columns=['intensities@lc01', 'abs_intensities@lc01'])
 
 
-# In[20]:
+# In[19]:
 
 
 b.set_value('distance', 1.0)
 
 
-# In[22]:
+# In[20]:
 
 
 b.run_compute(model='dist1', overwrite=True)
 
 
-# In[23]:
+# In[21]:
 
 
 b.set_value('distance', 2.0)
 
 
-# In[24]:
+# In[22]:
 
 
 b.run_compute(model='dist2', overwrite=True)
 
 
-# In[25]:
+# In[23]:
 
 
 print("dist1 abs_intensities: ", np.nanmean(b.get_value(qualifier='abs_intensities', component='primary', dataset='lc01', model='dist1')))
 print("dist2 abs_intensities: ", np.nanmean(b.get_value(qualifier='abs_intensities', component='primary', dataset='lc01', model='dist2')))
 
 
-# In[26]:
+# In[24]:
 
 
 print("dist1 intensities: ", np.nanmean(b.get_value(qualifier='intensities', component='primary', dataset='lc01', model='dist1')))

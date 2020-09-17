@@ -4,7 +4,7 @@
 # Beaming and Boosting
 # ============================
 # 
-# Due to concerns about accuracy, support for Beaming & Boosting has been disabled in the 2.2 release of PHOEBE.
+# Due to concerns about accuracy, support for Beaming & Boosting has been disabled as of the 2.2 release of PHOEBE (although we hope to bring it back in a future release).
 
 # It may come as surprise that support for Doppler boosting has been dropped in PHOEBE 2.2. This document details the underlying causes for that decision and explains the conditions that need to be met for boosting to be re-incorporated into PHOEBE.
 # 
@@ -27,6 +27,14 @@
 # $$ B_\mathrm{pb} = \frac{\int_\lambda \mathcal{P}(\lambda) \mathcal S(\lambda) B(\lambda) \mathrm d\lambda}{\int_\lambda \mathcal{P}(\lambda) \mathcal S(\lambda) \mathrm d\lambda}. $$
 # 
 # In what follows we will code up these steps and demonstrate the inherent difficulty of realizing a robust, reliable treatment of boosting.
+
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
+
+# In[1]:
+
+
+#!pip install -I "phoebe>=2.3,<2.4"
+
 
 # Import all python modules that we'll need:
 

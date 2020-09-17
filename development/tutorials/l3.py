@@ -7,21 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
-
-# In[ ]:
-
-
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
-
-
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](building_a_system.ipynb) for more details.
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+#!pip install -I "phoebe>=2.3,<2.4"
 
+
+# As always, let's do imports and initialize a logger and a new bundle.
 
 # In[2]:
 
@@ -39,7 +33,7 @@ b = phoebe.default_binary()
 # Relevant Parameters
 # -----------------------
 # 
-# **NEW in PHOEBE 2.2**: an `l3_mode` parameter exists for each LC dataset, which determines whether third light will be provided in flux units, or as a fraction of the total flux.
+# An `l3_mode` parameter exists for each LC dataset, which determines whether third light will be provided in flux units, or as a fraction of the total flux.
 # 
 # Since this is passband dependent and only used for flux measurments - it does not yet exist for a new empty Bundle.
 
@@ -198,14 +192,14 @@ b.set_value('l3', 5)
 b.run_compute(irrad_method='none', model='with_third_light', overwrite=True)
 
 
-# In[23]:
+# In[22]:
 
 
 print("no_third_light abs_intensities: ", np.nanmean(b.get_value(qualifier='abs_intensities', component='primary', dataset='lc01', model='no_third_light')))
 print("with_third_light abs_intensities: ", np.nanmean(b.get_value(qualifier='abs_intensities', component='primary', dataset='lc01', model='with_third_light')))
 
 
-# In[24]:
+# In[23]:
 
 
 print("no_third_light intensities: ", np.nanmean(b.get_value(qualifier='intensities', component='primary', dataset='lc01', model='no_third_light')))

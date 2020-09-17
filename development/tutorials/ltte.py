@@ -7,21 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
-
-# In[ ]:
-
-
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
-
-
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+#!pip install -I "phoebe>=2.3,<2.4"
 
+
+# As always, let's do imports and initialize a logger and a new Bundle.
 
 # In[2]:
 
@@ -74,7 +68,7 @@ b['q'] = 0.1
 
 # We'll just ignore the fact that this will be a completely unphysical system since we'll leave the radii and temperatures alone despite somewhat ridiculous masses - but since the masses and radii disagree so much, we'll have to abandon atmospheres and use blackbody.
 
-# In[8]:
+# In[7]:
 
 
 b.set_value_all('atm', 'blackbody')
@@ -82,19 +76,19 @@ b.set_value_all('ld_mode', 'manual')
 b.set_value_all('ld_func', 'logarithmic')
 
 
-# In[9]:
+# In[8]:
 
 
 b.run_compute(irrad_method='none', ltte=False, model='ltte_off')
 
 
-# In[10]:
+# In[9]:
 
 
 b.run_compute(irrad_method='none', ltte=True, model='ltte_on')
 
 
-# In[11]:
+# In[10]:
 
 
 afig, mplfig = b.plot(show=True)
