@@ -7,17 +7,17 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
-
-# In[ ]:
-
-
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
-
-
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
+
+
+#!pip install -I "phoebe>=2.3,<2.4"
+
+
+# As always, let's do imports and initialize a logger and a new Bundle.
+
+# In[2]:
 
 
 import phoebe
@@ -39,7 +39,7 @@ b = phoebe.default_binary()
 # 
 # In order to show this example, let's set the mass-ratio to be non-unity.
 
-# In[35]:
+# In[3]:
 
 
 b.set_value('q', 0.8)
@@ -47,7 +47,7 @@ b.set_value('q', 0.8)
 
 # Here the star with component tag 'primary' is actually the primary component in the hierarchy, so should have the LARGER mass (for a q < 1.0).
 
-# In[36]:
+# In[4]:
 
 
 print("M1: {}, M2: {}".format(b.get_value('mass@primary@component'),
@@ -58,31 +58,31 @@ print("M1: {}, M2: {}".format(b.get_value('mass@primary@component'),
 # 
 # For more information on the syntax for setting hierarchies, see the [Building a System Tutorial](building_a_system.ipynb).
 
-# In[37]:
+# In[5]:
 
 
 b['mass@primary']
 
 
-# In[38]:
+# In[6]:
 
 
 b.set_hierarchy('orbit:binary(star:secondary, star:primary)')
 
 
-# In[39]:
+# In[7]:
 
 
 b['mass@primary@star@component']
 
 
-# In[40]:
+# In[8]:
 
 
 print(b.get_value('q'))
 
 
-# In[41]:
+# In[9]:
 
 
 print("M1: {}, M2: {}".format(b.get_value('mass@primary@component'),
@@ -93,7 +93,7 @@ print("M1: {}, M2: {}".format(b.get_value('mass@primary@component'),
 # 
 # To show this, let's flip the constraint for the secondary mass to solve for 'period' and then change the hierarchy back to its original value.
 
-# In[42]:
+# In[10]:
 
 
 print("M1: {}, M2: {}, period: {}, q: {}".format(b.get_value('mass@primary@component'),
@@ -102,13 +102,13 @@ print("M1: {}, M2: {}, period: {}, q: {}".format(b.get_value('mass@primary@compo
                                                  b.get_value('q@binary@component')))
 
 
-# In[43]:
+# In[11]:
 
 
 b.flip_constraint('mass@secondary@constraint', 'period')
 
 
-# In[44]:
+# In[12]:
 
 
 print("M1: {}, M2: {}, period: {}, q: {}".format(b.get_value('mass@primary@component'),
@@ -117,17 +117,23 @@ print("M1: {}, M2: {}, period: {}, q: {}".format(b.get_value('mass@primary@compo
                                                  b.get_value('q@binary@component')))
 
 
-# In[45]:
+# In[13]:
 
 
 b.set_value('mass@secondary@component', 1.0)
 
 
-# In[46]:
+# In[14]:
 
 
 print("M1: {}, M2: {}, period: {}, q: {}".format(b.get_value('mass@primary@component'),
                                                  b.get_value('mass@secondary@component'),
                                                  b.get_value('period@binary@component'),
                                                  b.get_value('q@binary@component')))
+
+
+# In[ ]:
+
+
+
 

@@ -7,21 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
-
-# In[ ]:
-
-
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
-
-
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+#!pip install -I "phoebe>=2.3,<2.4"
 
+
+# As always, let's do imports and initialize a logger and a new Bundle.
 
 # In[2]:
 
@@ -104,13 +98,13 @@ print(b['mymodel'].status)
 b['mymodel'].attach()
 
 
-# In[11]:
+# In[ ]:
 
 
 b['mymodel']
 
 
-# In[13]:
+# In[ ]:
 
 
 axs, artists = b['mymodel'].plot(show=True)

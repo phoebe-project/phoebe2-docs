@@ -214,3 +214,14 @@ b.calculate_lnp('priors@myemceesolver')
 # ----------
 # 
 # That's it!! You've completed all the basic tutorials.  Now give PHOEBE a try or dig into some of the [advanced tutorials](../tutorials.md) and [example scripts](../examples.md).
+# 
+# Or look at any of these advanced topics related to computing observables:
+# * [Advanced: Solver Times](./solver_times.ipynb)
+# * [Advanced: LC Estimators](./LC_estimators.ipynb)
+# * [Advanced: RV Estimators](./RV_estimators.ipynb)
+
+# In[ ]:
+
+
+
+

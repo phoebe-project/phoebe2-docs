@@ -7,17 +7,17 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
-
-# In[ ]:
-
-
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
-
-
-# As always, let's do imports and create a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
+
+
+#!pip install -I "phoebe>=2.3,<2.4"
+
+
+# Let's get started with some basic imports.
+
+# In[2]:
 
 
 import phoebe
@@ -26,7 +26,7 @@ from phoebe import u # units
 b = phoebe.default_binary()
 
 
-# In[2]:
+# In[3]:
 
 
 b.add_dataset('lc', times=phoebe.linspace(0,10,101), dataset='lc01')
@@ -39,25 +39,25 @@ b.add_dataset('lc', times=phoebe.linspace(0,10,101), dataset='lc01')
 # 
 # In the case of a [mesh dataset](MESH.ipynb) or [orbit dataset](ORB.ipynb), observations cannot be attached to the dataset, so a `times` parameter does not exist.  In this case `compute_times` or `compute_phases` will *always* be used.
 
-# In[3]:
+# In[4]:
 
 
 print(b.filter(qualifier=['times', 'compute_times'], context='dataset'))
 
 
-# In[4]:
+# In[5]:
 
 
 b.set_value('compute_times', phoebe.linspace(0,3,11))
 
 
-# In[5]:
+# In[6]:
 
 
 b.run_compute()
 
 
-# In[6]:
+# In[7]:
 
 
 print("dataset times: {}\ndataset compute_times: {}\nmodel times: {}".format(
@@ -69,13 +69,13 @@ print("dataset times: {}\ndataset compute_times: {}\nmodel times: {}".format(
 
 # `compute_times` (when not empty) overrides the value of `times` when computing the model.  However, passing `times` as a keyword argument to [run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md) will take precedence over either - and override the computed times across *all* enabled datasets.
 
-# In[7]:
+# In[8]:
 
 
 b.run_compute(times=[0,0.2])
 
 
-# In[8]:
+# In[9]:
 
 
 print("dataset times: {}\ndataset compute_times: {}\nmodel times: {}".format(
@@ -85,13 +85,13 @@ print("dataset times: {}\ndataset compute_times: {}\nmodel times: {}".format(
     ))
 
 
-# In[9]:
+# In[10]:
 
 
 b.run_compute()
 
 
-# In[10]:
+# In[11]:
 
 
 print("dataset times: {}\ndataset compute_times: {}\nmodel times: {}".format(
@@ -106,44 +106,44 @@ print("dataset times: {}\ndataset compute_times: {}\nmodel times: {}".format(
 
 # In addition to the ability to provide `compute_times`, we can alternatively provide `compute_phases`.  These two parameters are linked via a constraint (see the [constraints tutorial](./constraints.ipynb)), with `compute_phases` *constrained* by default.
 
-# In[11]:
+# In[12]:
 
 
 print(b.filter(qualifier=['times', 'compute_times', 'compute_phases', 'compute_phases_t0'], context='dataset'))
 
 
-# Essentially, this constraint does the same thing as [b.to_phase](../api/phoebe.frontend.bundle.Bundle.to_phase.md) or [b.to_time](../api/phoebe.frontend.bundle.Bundle.to_time.md), using the appropriate t0 according to `compute_phases_t0` from the **top-level** orbit in the hierarchy.
+# Essentially, this constraint does the same thing as [b.to_phase](../api/phoebe.frontend.bundle.Bundle.to_phase.md) or [b.to_time](../api/phoebe.frontend.bundle.Bundle.to_time.md), using the appropriate t0 according to `phases_t0` from the **top-level** orbit in the hierarchy.
 
-# In[12]:
+# In[13]:
 
 
 print(b.get_constraint('compute_phases'))
 
 
-# In[13]:
+# In[14]:
 
 
-print(b.get_parameter('compute_phases_t0').choices)
+print(b.get_parameter('phases_t0').choices)
 
 
 # In order to provide `compute_phases` instead of `compute_times`, we must call [b.flip_constraint](../api/phoebe.frontend.bundle.Bundle.flip_constraint.md).
 
-# In[14]:
+# In[15]:
 
 
 b.flip_constraint('compute_phases', solve_for='compute_times')
 
 
-# In[15]:
+# In[16]:
 
 
 b.set_value('compute_phases', phoebe.linspace(0,1,11))
 
 
-# In[16]:
+# In[17]:
 
 
-print(b.filter(qualifier=['times', 'compute_times', 'compute_phases', 'compute_phases_t0'], context='dataset'))
+print(b.filter(qualifier=['times', 'compute_times', 'compute_phases', 'phases_t0'], context='dataset'))
 
 
 # Note that under the hood, PHOEBE **always** works in time-space, meaning it is the *constrained* value of `compute_times` that is being passed under-the-hood.
@@ -159,19 +159,19 @@ print(b.filter(qualifier=['times', 'compute_times', 'compute_phases', 'compute_p
 # 
 # We can call [interp_value](../api/phoebe.parameters.FloatArrayParameter.interp_value.md) on any [FloatArrayParameter](../api/phoebe.parameters.FloatArrayParameter.md).  
 
-# In[17]:
+# In[18]:
 
 
 b.get_parameter('fluxes', context='model').get_value()
 
 
-# In[18]:
+# In[19]:
 
 
 b.get_parameter('fluxes', context='model').interp_value(times=1.0)
 
 
-# In[19]:
+# In[20]:
 
 
 b.get_parameter('fluxes', context='model').interp_value(times=phoebe.linspace(0,3,101))
@@ -179,7 +179,7 @@ b.get_parameter('fluxes', context='model').interp_value(times=phoebe.linspace(0,
 
 # In the case of times, this will *automatically* interpolate in phase-space if the provided time is outside the range of the referenced times array.  If you have a logger enabled with at least the 'warning' level, this will raise a warning and state the phases at which the interpolation will be completed.
 
-# In[20]:
+# In[21]:
 
 
 b.get_parameter('fluxes', context='model').interp_value(times=5)
@@ -194,7 +194,7 @@ b.get_parameter('fluxes', context='model').interp_value(times=5)
 # 
 # To see this in action, we'll first create a "fake" observational dataset, add some noise, recompute the model using `compute_phases`, and then calculate the residuals.
 
-# In[21]:
+# In[22]:
 
 
 b.add_dataset('lc', 
@@ -203,44 +203,44 @@ b.add_dataset('lc',
               overwrite=True)
 
 
-# In[22]:
+# In[23]:
 
 
 b.run_compute(irrad_method='none')
 
 
-# In[23]:
+# In[24]:
 
 
 fluxes = b.get_value('fluxes', context='model')
 b.set_value('fluxes', context='dataset', value=fluxes)
 
 
-# In[24]:
+# In[25]:
 
 
 b.flip_constraint('compute_phases', solve_for='compute_times')
 
 
-# In[25]:
+# In[26]:
 
 
 b.set_value('compute_phases', phoebe.linspace(0,1,101))
 
 
-# In[26]:
+# In[27]:
 
 
 b.set_value('teff', component='primary', value=5950)
 
 
-# In[27]:
+# In[28]:
 
 
 b.run_compute(irrad_method='none')
 
 
-# In[28]:
+# In[29]:
 
 
 print(len(b.get_value('fluxes', context='dataset')), len(b.get_value('fluxes', context='model')))
@@ -267,3 +267,9 @@ afig, mplfig = b.plot(show=True)
 
 afig, mplfig = b.plot(y='residuals', show=True)
 
+
+# ## See Also
+# 
+# The following other advanced tutorials may interest you:
+# * [Advanced: Phase Masking](./mask_phases.ipynb)
+# * [Advanced: Solver Times](./solver_times.ipynb)

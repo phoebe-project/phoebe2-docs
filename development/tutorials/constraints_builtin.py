@@ -7,15 +7,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
+#!pip install -I "phoebe>=2.3,<2.4"
 
 
-# As always, let's do imports and initialize a logger and a new Bundle.  See [Building a System](building_a_system.ipynb) for more details.
+# As always, let's do imports and initialize a logger and a new Bundle.
 
 # In[2]:
 
@@ -211,15 +211,4 @@ b['long_an@constraint']
 
 
 b['long_an@primary@constraint']
-
-
-# Next
-# ----------
-# 
-# Next up: let's add a [dataset](datasets.ipynb) to our Bundle.
-
-# In[ ]:
-
-
-
 

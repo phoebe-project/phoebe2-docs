@@ -9,17 +9,17 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
-# In[ ]:
+# In[1]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
+#!pip install -I "phoebe>=2.3,<2.4"
 
 
 # As always, let's do imports and initialize a logger and a new Bundle.  See the [building a system tutorial](building_a_system.ipynb) for more details.
 
-# In[1]:
+# In[2]:
 
 
 import phoebe
@@ -34,7 +34,7 @@ b = phoebe.default_binary()
 
 # And we'll attach some dummy datasets.  See the [datasets tutorial](datasets.ipynb) for more details.
 
-# In[2]:
+# In[3]:
 
 
 b.add_dataset(phoebe.dataset.orb, compute_times=np.linspace(0,10,10), dataset='orb01', component=['primary', 'secondary'])
@@ -47,19 +47,19 @@ times, fluxes, sigmas = times[:10], fluxes[:10], sigmas[:10]
 b.add_dataset(phoebe.dataset.lc, times=times, fluxes=fluxes, sigmas=sigmas, dataset='lc01')
 
 
-# In[5]:
+# In[4]:
 
 
 b.set_value('irrad_method', 'none')
 
 
+# In[5]:
+
+
+b.add_compute('phoebe', compute='preview', irrad_method='none')
+
+
 # In[6]:
-
-
-b.add_compute(phoebe.compute.phoebe, compute='preview', irrad_method='none')
-
-
-# In[8]:
 
 
 b.add_compute('phoebe', compute='detailed', irrad_method='wilson')
@@ -75,13 +75,13 @@ b.add_compute('phoebe', compute='detailed', irrad_method='wilson')
 # 
 # A given dataset can only be enabled in up to 1 of the compute options we're sending to run_compute.  So let's take care of that first (if we don't, we'd get an error when trying to call run_compute):
 
-# In[26]:
+# In[7]:
 
 
 print(b['enabled@orb01'])
 
 
-# In[27]:
+# In[8]:
 
 
 b.set_value_all('enabled@orb01@detailed', False)
@@ -91,13 +91,13 @@ print(b['enabled@orb01'])
 
 # We probably have the same problem with 'lc01', but just didn't get far enough to raise the error.  So let's fix that as well
 
-# In[28]:
+# In[9]:
 
 
 print(b['enabled@lc01'])
 
 
-# In[29]:
+# In[10]:
 
 
 b.set_value_all('enabled@lc01@detailed', True)
@@ -107,13 +107,13 @@ print(b['enabled@lc01'])
 
 # So in this case, 'lc01' will be computed using the options in 'detailed' while 'orb01' will use the options in 'preview'.
 
-# In[30]:
+# In[11]:
 
 
 b.run_compute(compute=['detailed', 'preview'], model='multiplecompute')
 
 
-# In[31]:
+# In[12]:
 
 
 print(b.models)
