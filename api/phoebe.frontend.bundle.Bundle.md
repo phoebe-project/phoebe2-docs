@@ -64,6 +64,7 @@ Bundle is a subclass of phoebe.parameters.ParameterSet and therefore also includ
 * [is_client](phoebe.frontend.bundle.Bundle.is_client.md)
 * [kill_job](phoebe.frontend.bundle.Bundle.kill_job.md)
 * [open](phoebe.frontend.bundle.Bundle.open.md)
+* [parse_solver_times](phoebe.frontend.bundle.Bundle.parse_solver_times.md)
 * [plot_distribution_collection](phoebe.frontend.bundle.Bundle.plot_distribution_collection.md)
 * [references](phoebe.frontend.bundle.Bundle.references.md)
 * [remove_component](phoebe.frontend.bundle.Bundle.remove_component.md)

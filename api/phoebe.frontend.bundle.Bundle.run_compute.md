@@ -43,6 +43,11 @@ Arguments
     of `overwrite` (see below).   See also
     [phoebe.frontend.bundle.Bundle.rename_model](phoebe.frontend.bundle.Bundle.rename_model.md) to rename a model after
     creation.
+* `solver` (string, optional): name of the solver options to use to
+    extract compute options and use `solver_times`
+    (see [phoebe.frontend.bundle.Bundle.parse_solver_times](phoebe.frontend.bundle.Bundle.parse_solver_times.md)) unless
+    `times` is also passed.  `compute` must be None (not passed) or an
+    error will be raised.
 * `detach` (bool, optional, default=False, EXPERIMENTAL):
     whether to detach from the computation run,
     or wait for computations to complete.  If detach is True, see

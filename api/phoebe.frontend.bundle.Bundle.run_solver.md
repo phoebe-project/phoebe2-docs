@@ -33,6 +33,7 @@ See also:
 * [phoebe.frontend.bundle.Bundle.get_solver](phoebe.frontend.bundle.Bundle.get_solver.md)
 * [phoebe.frontend.bundle.Bundle.get_solution](phoebe.frontend.bundle.Bundle.get_solution.md)
 * [phoebe.frontend.bundle.Bundle.adopt_solution](phoebe.frontend.bundle.Bundle.adopt_solution.md)
+* [phoebe.frontend.bundle.Bundle.parse_solver_times](phoebe.frontend.bundle.Bundle.parse_solver_times.md)
 * [phoebe.mpi_on](phoebe.mpi_on.md)
 * [phoebe.mpi_off](phoebe.mpi_off.md)
 

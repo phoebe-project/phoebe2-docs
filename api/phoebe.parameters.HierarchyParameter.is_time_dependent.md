@@ -20,6 +20,9 @@ This will return True if any of the following conditions are met:
 * a gaussian_process feature is attached to any dataset, unless
     `consider_gaussian_process` is False.
 
+To access the HierarchyParameter from the Bundle, see
+ [phoebe.frontend.bundle.Bundle.get_hierarchy](phoebe.frontend.bundle.Bundle.get_hierarchy.md).
+
 Arguments
 ---------
 * `consider_gaussian_process` (bool, optional, defult=True): whether
