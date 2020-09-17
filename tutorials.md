@@ -8,7 +8,7 @@ For more specific use-cases, see the example scripts below.
 
 1. [The PHOEBE Bundle](tutorials/general_concepts.ipynb)
     * [Advanced: Parameter Types](tutorials/parameters.ipynb)
-    * [Advanced: Parameter Units](tuturials/units.ipynb)
+    * [Advanced: Parameter Units](tutorials/units.ipynb)
     * [Advanced: Building a System](tutorials/building_a_system.ipynb)
     * [Advanced: Contact Binary Hierarchy](tutorials/contact_binary_hierarchy.ipynb)
     * [Advanced: Saving, Loading, and Exporting](tutorials/saving_and_loading.ipynb)
@@ -19,6 +19,7 @@ For more specific use-cases, see the example scripts below.
     * [Advanced: Datasets (passband options, dealing with phases, removing datasets)](tutorials/datasets_advanced.ipynb)
 4. [Computing Observables](tutorials/compute.ipynb)
     * [Advanced: Compute Times & Phases](tutorials/compute_times_phases.ipynb)
+    * [Advanced: Phase Masking](tutorials/mask_phases.ipynb)
     * [Advanced: Running Multiple Compute Options Simulataneously](tutorials/compute_multiple.ipynb)
     * [Advanced: Alternate Backends](tutorials/alternate_backends.ipynb)
     * [Advanced: Detaching from Run Compute](tutorials/detach.ipynb)
@@ -28,8 +29,9 @@ For more specific use-cases, see the example scripts below.
     * [Advanced: Accessing and Plotting Meshes](tutorials/meshes.ipynb)
 6. [Distributions](tutorials/distributions.ipynb)
 7. [Solving the Inverse Problem](tutorials/solver.ipynb)
-    * [Advanced: LC Estimators](tutorials/LC_estimators_tutorial.ipynb)
-    * [Advanced: RV Geometry Estimator](tutorials/RV_geometry_tutorial.ipynb)
+    * [Advanced: Solver Times](tutorials/solver_times.ipynb)
+    * [Advanced: LC Estimators](tutorials/LC_estimators.ipynb)
+    * [Advanced: RV Geometry Estimator](tutorials/RV_estimators.ipynb)
 
 ## Migrating from PHOEBE 2.2 to PHOEBE 2.3
 
