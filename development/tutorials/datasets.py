@@ -6,7 +6,7 @@
 # 
 # Datasets tell PHOEBE how and at what times to compute the model.  In some cases these will include the actual observational data, and in other cases may only include the times at which you want to compute a synthetic model.
 # 
-# Adding a dataset - even if it doesn't contain any observational data - is required in order to compute a synthetic model (which will be described in the following [Compute Tutorial](compute.ipynb)).
+# Adding a dataset - even if it doesn't contain any observational data - is required in order to compute a synthetic model (which will be described in the [Compute Tutorial](compute.ipynb)).
 # 
 # Setup
 # -----------------------------
@@ -216,9 +216,15 @@ print(b.filter(qualifier='rvs', dataset='rv02', context='dataset'))
 # Next
 # ----------
 # 
-# Next up: let's learn how to [compute observables](compute.ipynb) and create our first synthetic model.
+# Next up: let's learn how about [features](features.ipynb) (including spots, gaussian processes, etc).
 # 
 # Or see some of these advanced topics:
 # 
 # * [Advanced: Datasets (passband options, dealing with phases, removing datasets)](datasets_advanced.ipynb)
 # * [Advanced: Compute Times & Phases](compute_times_phases.ipynb)
+
+# In[ ]:
+
+
+
+
