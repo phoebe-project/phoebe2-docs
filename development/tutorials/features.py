@@ -72,7 +72,7 @@ b.get_feature('spot01')
 # Or see some of these advanced topics:
 # 
 # * [Advanced: Spots](spots.ipynb)
-# * [Example: Gaussian Processes](../examples/minimial_gps.ipynb)
+# * [Example: Gaussian Processes](../examples/minimal_GPs.ipynb)
 
 # In[ ]:
 
