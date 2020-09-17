@@ -42,3 +42,4 @@ The following tutorials aim to explain the implementation and usage of some of t
 * [Radial Velocity Offsets (rv_offset)](tutorials/rv_offset.ipynb)
 * [Intensity Weighting (intens_weighting)](tutorials/intens_weighting.ipynb)
 * [Finite Time of Integration (exptime, fti_method, fti_oversample)](tutorials/fti.ipynb)
+* [Gaussian Processes](examples/minimal_GPs.ipynb)

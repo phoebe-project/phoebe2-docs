@@ -19,7 +19,7 @@ For more specific use-cases, see the example scripts below.
     * [Advanced: Datasets (passband options, dealing with phases, removing datasets)](tutorials/datasets_advanced.ipynb)
 4. [Features](tutorials/features.ipynb)
     * [Advanced: Spots](tutorials/spots.ipynb)
-    * [Example: Gaussian Processes](examples/minimial_gps.ipynb)
+    * [Example: Gaussian Processes](examples/minimal_GPs.ipynb)
 5. [Computing Observables](tutorials/compute.ipynb)
     * [Advanced: Compute Times & Phases](tutorials/compute_times_phases.ipynb)
     * [Advanced: Phase Masking](tutorials/mask_phases.ipynb)
@@ -59,3 +59,4 @@ These all assume comfort with the tutorials listed above, but should not need to
 * [Advanced: Adding Custom Passband Tables](tutorials/passbands.ipynb)
 * [Advanced: Passband Versioning & Updates](tutorials/passband_updates.ipynb)
 * [Advanced: Settings](tutorials/settings.ipynb)
+* [Advanced: Launching the UI from Jupyter](tutorials/ui_jupyter.ipynb)
