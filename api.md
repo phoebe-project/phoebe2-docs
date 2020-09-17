@@ -284,6 +284,7 @@ Methods that act on resulting models:
 * [remove_solver](api/phoebe.frontend.bundle.Bundle.remove_solver.md)
 * [run_solver](api/phoebe.frontend.bundle.Bundle.run_solver.md)
 * [export_solver](api/phoebe.frontend.bundle.Bundle.export_solver.md)
+* [parse_solver_times](api/phoebe.frontend.bundle.Bundle.parse_solver_times.md)
 
 Available solver backends ([see all](api/phoebe.parameters.solver.md)):
 

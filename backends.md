@@ -22,8 +22,8 @@ These can then be passed as the `kind` argument to [b.add_solver](api/phoebe.fro
 
 ### Estimators
 
-* [Tutorial: LC estimators](tutorials/LC_estimators_tutorial.ipynb)
-* [Tutorial: RV geometry](tutorials/RV_geometry_tutorial.ipynb)
+* [Tutorial: LC estimators](tutorials/LC_estimators.ipynb)
+* [Tutorial: RV geometry](tutorials/RV_estimators.ipynb)
 * [estimator.lc_periodogram](api/phoebe.parameters.solver.estimator.lc_periodogram.md)
 * [estimator.rv_periodogram](api/phoebe.parameters.solver.estimator.rv_periodogram.md)
 * [estimator.lc_geometry](api/phoebe.parameters.solver.estimator.lc_geometry.md)
