@@ -25,7 +25,6 @@ For more specific use-cases, see the example scripts below.
     * [Advanced: Phase Masking](tutorials/mask_phases.ipynb)
     * [Advanced: Running Multiple Compute Options Simulataneously](tutorials/compute_multiple.ipynb)
     * [Advanced: Alternate Backends](tutorials/alternate_backends.ipynb)
-    * [Advanced: Detaching from Run Compute](tutorials/detach.ipynb)
 6. [Plotting](tutorials/plotting.ipynb)
     * [Advanced: Plotting Options](tutorials/plotting_advanced.ipynb)
     * [Advanced: Animations](tutorials/animations.ipynb)
@@ -45,6 +44,8 @@ These tutorials highlight the major changes between versions 2.2.x and 2.3+ in t
 * [Read Only and Constrained Notation](tutorials/22_23_readonly.ipynb)
 * [requivsumfrac constraint: replaces requivsum](tutorials/22_23_requivsumfrac.ipynb)
 * [Scipy dependency: updated to 1.7+](tutorials/22_23_scipy.ipynb)
+* [logg Units](tutorials/22_23_logg_units.ipynb)
+* [compute_phases_t0 renamed to phases_to](tutorials/22_23_phases_t0.ipynb)
 
 
 ## Advanced Tutorials
