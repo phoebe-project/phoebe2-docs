@@ -7,6 +7,14 @@
 # 
 # <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig7.png" alt="Figure 7" width="800px"/>
 
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
+
+# In[1]:
+
+
+#!pip install -I "phoebe>=2.3,<2.4"
+
+
 # In[1]:
 
 

@@ -142,31 +142,57 @@ artists = plt.plot(b['value@times@refl_false'], b['value@fluxes@refl_true']-b['v
 # In[17]:
 
 
-b.add_dataset('mesh', times=[0.2], columns=['intensities@lc01'])
+b.add_dataset('mesh', times=[0.2], columns=['teffs', 'intensities@lc01'])
 
 
 # In[18]:
 
 
-b.run_compute(irrad_method='none', ntriangles=700, model='refl_false', overwrite=True)
+b.disable_dataset('lc01')
 
 
 # In[19]:
 
 
-b.run_compute(irrad_method='wilson', ntriangles=700, model='refl_true', overwrite=True)
+b.run_compute(irrad_method='none', ntriangles=700, model='refl_false', overwrite=True)
 
 
 # In[20]:
 
 
-afig, mplfig = b.plot(component='secondary', kind='mesh', model='refl_false', fc='intensities', ec='face', show=True)
+b.run_compute(irrad_method='wilson', ntriangles=700, model='refl_true', overwrite=True)
 
 
 # In[21]:
 
 
-afig, mplfig = b.plot(component='secondary', kind='mesh', model='refl_true', fc='intensities', ec='face', show=True)
+afig, mplfig = b.plot(component='secondary', kind='mesh', model='refl_false', 
+                      fc='intensities', ec='face', 
+                      draw_sidebars=True, show=True)
+
+
+# In[22]:
+
+
+afig, mplfig = b.plot(component='secondary', kind='mesh', model='refl_true', 
+                      fc='intensities', ec='face', 
+                      draw_sidebars=True, show=True)
+
+
+# In[23]:
+
+
+afig, mplfig = b.plot(component='secondary', kind='mesh', model='refl_false', 
+                      fc='teffs', ec='face', 
+                      draw_sidebars=True, show=True)
+
+
+# In[24]:
+
+
+afig, mplfig = b.plot(component='secondary', kind='mesh', model='refl_true', 
+                      fc='teffs', ec='face', 
+                      draw_sidebars=True, show=True)
 
 
 # In[ ]:

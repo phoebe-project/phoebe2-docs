@@ -7,23 +7,17 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
-
-# In[ ]:
-
-
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
-
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+#!pip install -I "phoebe>=2.3,<2.4"
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.ipynb) for more details.
+# As always, let's do imports and initialize a logger and a new bundle.
 
-# In[1]:
+# In[2]:
 
 
 import phoebe
@@ -34,7 +28,7 @@ b = phoebe.default_binary()
 
 # Now we need a highly eccentric system that nearly overflows at periastron and is slightly eclipsing.
 
-# In[2]:
+# In[3]:
 
 
 b.set_value('q', value=0.7)
@@ -44,13 +38,13 @@ b.set_value('incl', component='binary', value=0)
 b.set_value('ecc', component='binary', value=0.9)
 
 
-# In[3]:
+# In[4]:
 
 
 print(b.filter(qualifier='requiv*', context='component'))
 
 
-# In[4]:
+# In[5]:
 
 
 b.set_value('requiv', component='primary', value=1.1)
@@ -62,7 +56,7 @@ b.set_value('requiv', component='secondary', value=0.9)
 # 
 # We'll add light curve, orbit, and mesh datasets.
 
-# In[5]:
+# In[6]:
 
 
 b.add_dataset('lc', 
@@ -70,19 +64,19 @@ b.add_dataset('lc',
               dataset='lc01')
 
 
-# In[6]:
+# In[7]:
 
 
 b.add_dataset('orb', compute_times=phoebe.linspace(-2, 2, 201))
 
 
-# In[7]:
+# In[8]:
 
 
 anim_times = phoebe.linspace(-2, 2, 101)
 
 
-# In[8]:
+# In[9]:
 
 
 b.add_dataset('mesh', 
@@ -94,7 +88,7 @@ b.add_dataset('mesh',
 # Running Compute
 # --------------------
 
-# In[9]:
+# In[10]:
 
 
 b.run_compute(irrad_method='none')
@@ -103,7 +97,7 @@ b.run_compute(irrad_method='none')
 # Plotting 
 # ---------------
 
-# In[10]:
+# In[11]:
 
 
 afig, mplfig = b.plot(kind='lc', x='phases', t0='t0_perpass', show=True)
@@ -122,7 +116,7 @@ afig, mplfig = b.plot(kind='lc', x='phases', t0='t0_perpass', show=True)
 # * `highlight`: disable highlighting for the orbit, since the mesh will be in the same position.
 # * `tight_layout`: use matplotlib's tight layout to ensure we have enough padding between axes to see the labels.
 
-# In[11]:
+# In[12]:
 
 
 afig, mplfig = b.plot(time=0.0, 
@@ -145,7 +139,7 @@ afig, mplfig = b.plot(time=0.0,
 # * `save`: we could use `show=True`, but that doesn't always play nice with jupyter notebooks
 # * `save_kwargs`: may need to change these for your setup, to create a gif, passing {'writer': 'imagemagick'} is often useful.
 
-# In[12]:
+# In[13]:
 
 
 afig, mplfig = b.plot(times=anim_times, 

@@ -7,6 +7,16 @@
 # 
 # <img src="http://phoebe-project.org/images/figures/2020Conroy+_fig6.png" alt="Figure 6" width="800px"/>
 
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
+
+# In[ ]:
+
+
+#!pip install -I "phoebe>=2.3,<2.4"
+
+
+# Next we'll import matplotlib and set some figure options before importing phoebe
+
 # In[1]:
 
 

@@ -7,23 +7,17 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed.  (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
-
-# In[ ]:
-
-
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
-
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+#!pip install -I "phoebe>=2.3,<2.4"
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.ipynb) for more details.
+# As always, let's do imports and initialize a logger and a new bundle.
 
-# In[1]:
+# In[2]:
 
 
 import phoebe
@@ -41,7 +35,7 @@ b = phoebe.default_binary()
 # 
 # Now we'll create an empty lc dataset:
 
-# In[2]:
+# In[3]:
 
 
 b.add_dataset('lc', times=np.linspace(0,1,201), dataset='mylc')
@@ -52,7 +46,7 @@ b.add_dataset('lc', times=np.linspace(0,1,201), dataset='mylc')
 
 # Now we'll compute synthetics at the times provided using the default options
 
-# In[3]:
+# In[4]:
 
 
 b.run_compute(irrad_method='none')
@@ -63,13 +57,13 @@ b.run_compute(irrad_method='none')
 # 
 # Now we can simply plot the resulting synthetic light curve.
 
-# In[4]:
+# In[5]:
 
 
 afig, mplfig = b['mylc@model'].plot(show=True)
 
 
-# In[5]:
+# In[6]:
 
 
 afig, mplfig = b['mylc@model'].plot(x='phases', show=True)

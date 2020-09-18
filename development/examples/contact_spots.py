@@ -7,23 +7,17 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
-
-# In[ ]:
-
-
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
-
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+#!pip install -I "phoebe>=2.3,<2.4"
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.ipynb) for more details.
+# As always, let's do imports and initialize a logger and a new bundle.
 
-# In[1]:
+# In[2]:
 
 
 import phoebe
@@ -37,13 +31,13 @@ b = phoebe.default_binary(contact_binary=True)
 # Model without Spots
 # --------------------------
 
-# In[2]:
+# In[3]:
 
 
 b.add_dataset('lc', times=phoebe.linspace(0,0.5,101))
 
 
-# In[3]:
+# In[4]:
 
 
 b.run_compute(irrad_method='none', model='no_spot')
@@ -56,13 +50,13 @@ b.run_compute(irrad_method='none', model='no_spot')
 # 
 # The 'colat' parameter defines the latitude on the star measured from its North (spin) Pole.  The 'long' parameter measures the longitude of the spot - with longitude = 0 being defined as pointing towards the other star at t0.  See to [spots tutorial](../tutorials/spots.ipynb) for more details.
 
-# In[4]:
+# In[5]:
 
 
 b.add_feature('spot', component='primary', feature='spot01', relteff=0.9, radius=20, colat=90, long=-45)
 
 
-# In[5]:
+# In[6]:
 
 
 b.run_compute(irrad_method='none', model='with_spot')
@@ -71,7 +65,7 @@ b.run_compute(irrad_method='none', model='with_spot')
 # Comparing Light Curves
 # ------------------------------
 
-# In[6]:
+# In[7]:
 
 
 afig, mplfig = b.plot(show=True, legend=True)
@@ -83,31 +77,31 @@ afig, mplfig = b.plot(show=True, legend=True)
 # 
 # To see this, let's plot our mesh with `teff` as the facecolor.
 
-# In[7]:
+# In[8]:
 
 
 b.remove_dataset(kind='lc')
 
 
-# In[8]:
+# In[9]:
 
 
 b.remove_model(model=['with_spot', 'no_spot'])
 
 
-# In[9]:
+# In[10]:
 
 
 b.add_dataset('mesh', compute_times=b.to_time(0.25), columns='teffs')
 
 
-# In[10]:
+# In[11]:
 
 
 b.run_compute(irrad_method='none')
 
 
-# In[11]:
+# In[12]:
 
 
 afig, mplfig = b.plot(fc='teffs', ec='face', fcmap='plasma', show=True)
@@ -115,19 +109,19 @@ afig, mplfig = b.plot(fc='teffs', ec='face', fcmap='plasma', show=True)
 
 # Now if we set the `long` closer to the neck, we'll see it get cropped by the boundary between the two components.  If we need a spot that crosses between the two "halves" of the contact, we'd have to add separate spots to each component, with each getting cropped at the boundary.
 
-# In[12]:
+# In[13]:
 
 
 b.set_value('long', value=-30)
 
 
-# In[13]:
+# In[14]:
 
 
 b.run_compute(irrad_method='none')
 
 
-# In[14]:
+# In[15]:
 
 
 afig, mplfig = b.plot(fc='teffs', ec='face', fcmap='plasma', show=True)
@@ -135,19 +129,19 @@ afig, mplfig = b.plot(fc='teffs', ec='face', fcmap='plasma', show=True)
 
 # If we set `long` to zero, the spot completely disappears (as there is nowhere in the neck that is still on the surface.
 
-# In[15]:
+# In[16]:
 
 
 b.set_value('long', value=0.0)
 
 
-# In[16]:
+# In[17]:
 
 
 b.run_compute(irrad_method='none')
 
 
-# In[17]:
+# In[18]:
 
 
 afig, mplfig = b.plot(fc='teffs', ec='face', fcmap='plasma', show=True)
@@ -155,19 +149,19 @@ afig, mplfig = b.plot(fc='teffs', ec='face', fcmap='plasma', show=True)
 
 # But if we increase the `radius` large enough, we'll get a ring.
 
-# In[18]:
+# In[19]:
 
 
 b.set_value('radius', value=40)
 
 
-# In[19]:
+# In[20]:
 
 
 b.run_compute(irrad_method='none')
 
 
-# In[20]:
+# In[21]:
 
 
 afig, mplfig = b.plot(fc='teffs', ec='face', fcmap='plasma', show=True)
