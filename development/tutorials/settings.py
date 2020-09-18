@@ -194,7 +194,7 @@ print(b.run_checks())
 
 # ### auto_add_figure, auto_remove_figure
 # 
-# The `auto_add_figure` and `auto_remove_figure` determine whether new figures are automatically added to the Bundle when new datasets, distributions, etc are added.  This is False by default within Python, but True by default within the UI.
+# The `auto_add_figure` and `auto_remove_figure` determine whether new figures are automatically added to the Bundle when new datasets, distributions, etc are added.  This is False by default within Python, but True by default within the [UI clients](http://phoebe-project.org/clients).
 
 # In[19]:
 
@@ -221,6 +221,8 @@ b['auto_remove_figure'].description
 
 
 # ### web_client, web_client_url
+# 
+# The `web_client` and `web_client_url` settings determine whether the [client](http://phoebe-project.org/clients) is opened in a web-browser or with the installed desktop client whenever calling [b.ui](../api/phoebe.parameters.ParameterSet.ui.md) or [b.ui_figures](../api/phoebe.frontend.bundle.Bundle.ui_figures.md).  For more information, see the [UI from Jupyter tutorial](./ui_jupyter.ipynb).
 
 # In[23]:
 
