@@ -2,22 +2,22 @@
 
 The following tutorials aim to explain the implementation and usage of some of the physical effects that are incorporated in PHOEBE. These explain the relevant parameters and try to demonstrate how they affect the resulting synthetic models, but expect a comfortable understanding of using PHOEBE and Python.
 
-## System Effects/Parameters:
+## System Effects:
 * [Systemic Velocity (vgamma)](tutorials/vgamma.ipynb)
 * [Rømer & Light Travel Time Effects (ltte)](tutorials/ltte.ipynb)
 * [Third Light (l3_mode, l3, l3_frac)](tutorials/l3.ipynb)
 * [Distance (distance)](tutorials/distance.ipynb)
 * [Extinction (ebv, Av, Rv)](tutorials/ebv_Av_Rv.ipynb)
 
-## Orbital Effects/Parameters:
+## Orbital Effects:
 * [Various t0s (t0, t0_perpass, t0_supconj, t0_ref)](tutorials/t0s.ipynb)
 * [Eccentricity & Volume Conservation (ecc)](tutorials/ecc.ipynb)
-* [Apsidal Motion (dperdt)](tutorials/apsidal_motion.ipynb)
+* [Apsidal Motion (dperdt, period vs period_anom)](tutorials/apsidal_motion.ipynb)
 * [Misalignment (pitch & yaw)](tutorials/pitch_yaw.ipynb)
 * [Rømer & Light Travel Time Effects (ltte)](tutorials/ltte.ipynb)
 * [Beaming & Boosting (boosting_method)](tutorials/beaming_boosting.ipynb)
 
-## Stellar Effects/Parameters:
+## Stellar Effects:
 * [Equivalent Radius (requiv)](tutorials/requiv.ipynb)
 * [Potentials (replaced by Equivalent Radius in PHOEBE 2.1+)](tutorials/pot.ipynb)
 * [Critical Radii: Detached Systems (requiv_max)](tutorials/requiv_crit_detached.ipynb)
@@ -33,7 +33,7 @@ The following tutorials aim to explain the implementation and usage of some of t
 * [Reflection & Heating: Lambert Scattering (irrad_method='horvat' vs 'wilson')](tutorials/irrad_method_horvat.ipynb)
 * [Radial Velocity Offsets (rv_offset)](tutorials/rv_offset.ipynb)
 
-## Passband/Atmosphere/Dataset Effects/Parameters:
+## Passband/Atmosphere/Dataset Effects:
 * [Passbands & Atmospheres (passband & atm)](tutorials/atm_passbands.ipynb)
 * [Passband Luminosity (pblum_mode, pblum_component, pblum_dataset, pblum, pbflux)](tutorials/pblum.ipynb)
 * [Limb Darkening (ld_mode, ld_func, ld_coeffs_source, ld_coeffs)](tutorials/limb_darkening.ipynb)
