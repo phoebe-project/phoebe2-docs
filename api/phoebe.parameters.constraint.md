@@ -9,6 +9,7 @@
 * [extinction](phoebe.parameters.constraint.extinction.md)
 * [fillout_factor](phoebe.parameters.constraint.fillout_factor.md)
 * [freq](phoebe.parameters.constraint.freq.md)
+* [impact_param](phoebe.parameters.constraint.impact_param.md)
 * [irrad_frac](phoebe.parameters.constraint.irrad_frac.md)
 * [log10](phoebe.parameters.constraint.log10.md)
 * [logg](phoebe.parameters.constraint.logg.md)

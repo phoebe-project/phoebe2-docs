@@ -25,6 +25,7 @@ including:
 * [phoebe.parameters.constraint.requivfrac](phoebe.parameters.constraint.requivfrac.md)
 * [phoebe.parameters.constraint.requivratio](phoebe.parameters.constraint.requivratio.md)
 * [phoebe.parameters.constraint.requivsumfrac](phoebe.parameters.constraint.requivsumfrac.md)
+* [phoebe.parameters.constraint.impact_param](phoebe.parameters.constraint.impact_param.md)
 * [phoebe.parameters.constraint.teffratio](phoebe.parameters.constraint.teffratio.md)
 * [phoebe.parameters.constraint.parallax](phoebe.parameters.constraint.parallax.md)
 
