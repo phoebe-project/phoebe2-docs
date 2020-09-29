@@ -40,7 +40,7 @@ Star:
 * requiv
 * gravb_bol
 * irrad_frac_refl_bol
-* teff (ratio^4 used as an estimate of surface brightness ratio, unless pblum_mode='decoupled' in which case pblum ratio is passed directly)
+* teff (surface-brightness approximated as pblum ratio according to pblum_method divided by square of respective requivs)
 
 Orbit:
 * sma

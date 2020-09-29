@@ -3,7 +3,7 @@
 
 ```py
 
-def get_ephemeris(self, component=None, t0='t0_supconj', **kwargs)
+def get_ephemeris(self, component=None, period='period', t0='t0_supconj', **kwargs)
 
 ```
 
@@ -19,7 +19,10 @@ Arguments
 * `component` (str, optional): name of the component.  If not given,
     component will default to the top-most level of the current
     hierarchy.  See [phoebe.parameters.HierarchyParameter.get_top](phoebe.parameters.HierarchyParameter.get_top.md).
-* `t0` (str, optional, default='t0_supconj'): qualifier of the parameter
+* `period` (str or float, optional, default='period'): qualifier of the parameter
+    to be used for t0.  For orbits, can either be 'period' or 'period_sidereal'.
+    For stars, must be 'period'.
+* `t0` (str or float, optional, default='t0_supconj'): qualifier of the parameter
     to be used for t0.  Must be 't0' for 't0@system' or a valid qualifier
     (eg. 't0_supconj', 't0_perpass', 't0_ref' for binary orbits.)
     For single stars, `t0` will be used if a float or integer, otherwise

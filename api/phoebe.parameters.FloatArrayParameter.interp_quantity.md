@@ -29,6 +29,9 @@ Arguments
     `**kwargs` below).
 * `component` (string, optional): if interpolating in phases, `component`
     will be passed along to [phoebe.frontend.bundle.Bundle.to_phase](phoebe.frontend.bundle.Bundle.to_phase.md).
+* `period` (string/float, optional, default='period'): if interpolating
+    in phases, `period` will be passed along to
+    [phoebe.frontend.bundle.Bundle.to_phase](phoebe.frontend.bundle.Bundle.to_phase.md).
 * `t0` (string/float, optional): if interpolating in phases, `t0` will
     be passed along to [phoebe.frontend.bundle.Bundle.to_phase](phoebe.frontend.bundle.Bundle.to_phase.md).
 * `**kwargs`: see examples above, must provide a single

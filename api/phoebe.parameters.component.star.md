@@ -37,9 +37,9 @@ Arguments
     equivalent radius for the given morphology.
 * `teff` (float/quantity, optional): mean effective temperature.
 * `abun` (float, optional): abundance/metallicity
-* `syncpar` (float, optional): syncrhonicity parameter.
-* `period` (float/quantity, optional): rotation period.
-* `freq` (float/quantity, optional): rotation frequency.
+* `syncpar` (float, optional): synchronicity parameter.
+* `period` (float/quantity, optional): rotation period (wrt the sky).
+* `freq` (float/quantity, optional): rotation frequency (wrt the sky).
 * `pitch` (float/quantity, optional): pitch of the stellar rotation axis wrt
     the orbital inclination.
 * `yaw` (float/quantity, optional): yaw of the stellar rotation axis wrt

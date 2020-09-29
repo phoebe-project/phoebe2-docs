@@ -15,6 +15,7 @@
 * [mass](phoebe.parameters.constraint.mass.md)
 * [mean_anom](phoebe.parameters.constraint.mean_anom.md)
 * [parallax](phoebe.parameters.constraint.parallax.md)
+* [period_anom](phoebe.parameters.constraint.period_anom.md)
 * [pitch](phoebe.parameters.constraint.pitch.md)
 * [potential_contact_max](phoebe.parameters.constraint.potential_contact_max.md)
 * [potential_contact_min](phoebe.parameters.constraint.potential_contact_min.md)

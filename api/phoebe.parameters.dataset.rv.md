@@ -33,6 +33,10 @@ Arguments
     the model.  Only applicable if `syn` is False.
 * `compute_phases` (array/quantity, optional): phases at which to compute
     the model.  Only applicable if `syn` is False.
+* `phases_period` (string, optional, default='period'): period to use
+    when converting between `compute_phases` and `compute_times` as well as
+    when applying `mask_phases`.  Only applicable if `syn` is False.  Not applicable for
+    single stars (in which case period is always used).
 * `phases_t0` (string, optional, default='t0_supconj'): t0 to use
     when converting between `compute_phases` and `compute_times` as well as
     when applying `mask_phases`.  Only applicable if `syn` is False.  Not applicable for

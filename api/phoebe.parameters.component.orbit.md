@@ -34,11 +34,16 @@ For a list of these, see [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.f
 
 Arguments
 ----------
-* `period` (float/quantity, optional): orbital period.
-* `freq` (float/quantity, optional): orbital frequency.
-* `dpdt` (float/quantity, optional): time derivative orbital period.
-* `per0` (float/quantity, optional): argument of periastron
-* `dperdt` (float/quantity, optional): time derivative of argument of periastron.
+* `period` (float/quantity, optional): Orbital period (defined at t0@system,
+    sidereal: wrt the sky)
+* `period_anom` (float/quantity, optional): Anomalistic orbital period (defined
+    at t0@system, anomalistic: time between two successive periastron passages).
+* `freq` (float/quantity, optional): Orbital frequency (sidereal).
+* `dpdt` (float/quantity, optional): Time derivative orbital period (anomalistic),
+    where `period` is defined at t0@system.
+* `per0` (float/quantity, optional): Argument of periastron (defined at time t0@system)
+* `dperdt` (float/quantity, optional): Time derivative of argument of periastron,
+    where `per0` is defined at t0@system
 * `ecc` (float, optional): eccentricity
 * `t0_perpass` (float/quantity, optional): zeropoint date at periastron passage of the
     primary component.
