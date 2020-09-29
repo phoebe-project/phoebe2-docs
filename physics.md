@@ -13,6 +13,7 @@ The following tutorials aim to explain the implementation and usage of some of t
 * [Various t0s (t0, t0_perpass, t0_supconj, t0_ref)](tutorials/t0s.ipynb)
 * [Eccentricity & Volume Conservation (ecc)](tutorials/ecc.ipynb)
 * [Apsidal Motion (dperdt, period vs period_anom)](tutorials/apsidal_motion.ipynb)
+* [Period Change (dpdt)](tutorials/dpdt.ipynb)
 * [Misalignment (pitch & yaw)](tutorials/pitch_yaw.ipynb)
 * [Rømer & Light Travel Time Effects (ltte)](tutorials/ltte.ipynb)
 * [Beaming & Boosting (boosting_method)](tutorials/beaming_boosting.ipynb)

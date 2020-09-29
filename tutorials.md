@@ -39,13 +39,15 @@ For more specific use-cases, see the example scripts below.
 
 These tutorials highlight the major changes between versions 2.2.x and 2.3+ in the following topics:
 
+* [Fixed phasing in time-dependent systems](tutorials/22_23_dpdt_phasing.ipynb)
+* [Distinction between anomalous and sidereal period in apsidal motion cases](tutorials/22_23_period_anom.ipynb)
 * [Extinction: per-dataset to system-level](tutorials/22_23_extinction.ipynb)
 * [Checks: run_checks at system, compute, solver, and solution levels](tutorials/22_23_run_checks.ipynb)
 * [Read Only and Constrained Notation](tutorials/22_23_readonly.ipynb)
 * [requivsumfrac constraint: replaces requivsum](tutorials/22_23_requivsumfrac.ipynb)
 * [Scipy dependency: updated to 1.7+](tutorials/22_23_scipy.ipynb)
 * [logg Units](tutorials/22_23_logg_units.ipynb)
-* [compute_phases_t0 renamed to phases_to](tutorials/22_23_phases_t0.ipynb)
+* [compute_phases_t0 renamed to phases_t0](tutorials/22_23_phases_t0.ipynb)
 
 
 ## Advanced Tutorials
