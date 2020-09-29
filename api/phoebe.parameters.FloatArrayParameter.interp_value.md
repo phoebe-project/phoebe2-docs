@@ -3,7 +3,7 @@
 
 ```py
 
-def interp_value(self, unit=None, component=None, t0='t0_supconj', consider_gaussian_process=True, **kwargs)
+def interp_value(self, unit=None, component=None, period='period', dpdt='dpdt', t0='t0_supconj', consider_gaussian_process=True, **kwargs)
 
 ```
 
@@ -67,6 +67,9 @@ Arguments
     [phoebe.frontend.bundle.Bundle.to_phase](phoebe.frontend.bundle.Bundle.to_phase.md).
 * `period` (string/float, optional, default='period'): if interpolating
     in phases, `period` will be passed along to
+    [phoebe.frontend.bundle.Bundle.to_phase](phoebe.frontend.bundle.Bundle.to_phase.md).
+* `dpdt` (string/float, optional, default='dpdt'): if interpolating in
+    phases, `dpdt` will be passed along to
     [phoebe.frontend.bundle.Bundle.to_phase](phoebe.frontend.bundle.Bundle.to_phase.md).
 * `t0` (string/float, optional, default='t0_supconj'): if interpolating
     in phases, `t0` will be passed along to

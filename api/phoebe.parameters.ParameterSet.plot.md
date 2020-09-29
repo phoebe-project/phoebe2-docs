@@ -60,11 +60,24 @@ Arguments
     then the animation will cycle over the tagged times of the model
     datasets (i.e. if mesh or lp datasets exist), or the computed
     times otherwise.
+* `period` (string/float, optional): qualifier/twig or float of the period that
+    should be used for phasing, if applicable.  If provided as a string,
+    `b.get_value(period)` needs to provide a valid float.  This is used
+    if `phase`/`phases` provided instead of `time`/`times` as well as
+    if 'phases' is set as any direction (`x`, `y`, `z`, etc).
+    Passed directly to [phoebe.frontend.bundle.Bundle.to_phase](phoebe.frontend.bundle.Bundle.to_phase.md).
+* `dpdt` (string/float, optional): qualifier/twig or float of the dpdt that
+    should be used for phasing, if applicable.  If provided as a string,
+    `b.get_value(dpdt)` needs to provide a valid float.  This is used
+    if `phase`/`phases` provided instead of `time`/`times` as well as
+    if 'phases' is set as any direction (`x`, `y`, `z`, etc).
+    Passed directly to [phoebe.frontend.bundle.Bundle.to_phase](phoebe.frontend.bundle.Bundle.to_phase.md).
 * `t0` (string/float, optional): qualifier/twig or float of the t0 that
     should be used for phasing, if applicable.  If provided as a string,
     `b.get_value(t0)` needs to provide a valid float.  This is used
     if `phase`/`phases` provided instead of `time`/`times` as well as
     if 'phases' is set as any direction (`x`, `y`, `z`, etc).
+    Passed directly to [phoebe.frontend.bundle.Bundle.to_phase](phoebe.frontend.bundle.Bundle.to_phase.md).
 * `phase` (float, optional): phase to use for plotting/animating.  This
     will convert to `time` using the current ephemeris via
     [phoebe.frontend.bundle.Bundle.to_time](phoebe.frontend.bundle.Bundle.to_time.md) along with the passed value

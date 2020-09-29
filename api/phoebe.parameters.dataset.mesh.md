@@ -36,7 +36,10 @@ Arguments
 * `phases_period` (string, optional, default='period'): period to use
     when converting between `compute_phases` and `compute_times` as well as
     when applying `mask_phases`.  Only applicable if `syn` is False.  Not applicable for
-    single stars (in which case period is always used).
+    single stars (in which case period is always used) or if `dperdt == 0.0`.
+* `phases_dpdt` (string, optional, default='dpdt'): dpdt to use when
+    converting between compute_times and compute_phases as well as when
+    applying mask_phases.  Not applicable for single stars or if `dpdt == 0`
 * `phases_t0` (string, optional, default='t0_supconj'): t0 to use
     when converting between `compute_phases` and `compute_times`.  Only
     applicable if `syn` is False.  Not applicable for
