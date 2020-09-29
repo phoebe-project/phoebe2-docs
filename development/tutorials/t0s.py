@@ -46,7 +46,7 @@ b.set_value('per0', 45)
 
 # There are three t0 parameters that are available to define an orbit (but only one of which is editable at any given time), as well as a t0 parameter for the entire system.  Let's first access the three t0 parameters for our binary orbit.
 # 
-# 't0_supconj' defines the time at which the primary component in our orbit is at superior conjunction.  For a binary system in which there are eclipses, this is defined as the primary eclipse.  By default this parameter is editable.
+# `t0_supconj` defines the time at which the primary component in our orbit is at superior conjunction.  For a binary system in which there are eclipses, this is defined as the primary eclipse.  By default this parameter is editable.
 
 # In[4]:
 
@@ -54,7 +54,7 @@ b.set_value('per0', 45)
 b.get_parameter('t0_supconj', context='component')
 
 
-# 't0_perpass' defines the time at which both components in our orbit is at periastron passage.  By default this parameter is *constrained* by 't0_supconj'.  For more details or information on how to change which parameter is editable, see the [Constraints Tutorial](constraints.html).
+# `t0_perpass` defines the time at which both components in our orbit is at periastron passage.  By default this parameter is *constrained* by `t0_supconj`.  For more details or information on how to change which parameter is editable, see the [Constraints Tutorial](constraints.html).
 
 # In[5]:
 
@@ -68,7 +68,7 @@ b.get_parameter('t0_perpass', context='component')
 b.get_parameter('t0_perpass', context='constraint')
 
 
-# The 't0_ref' defines the time at which the primary component in our orbit passes an arbitrary reference point.  This 't0_ref' is defined in the same way as PHOEBE legacy's 'HJD0' parameter, so is included for convenience translating between the two.
+# The `t0_ref` defines the time at which the primary component in our orbit passes an arbitrary reference point.  This `t0_ref` is defined in the same way as PHOEBE legacy's 'HJD0' parameter, so is included for convenience translating between the two.
 
 # In[7]:
 
@@ -82,7 +82,7 @@ b.get_parameter('t0_ref', context='component')
 b.get_parameter('t0_ref', context='constraint')
 
 
-# In addition, there is a single 't0' parameter that is system-wide.  This parameter simply defines the time at which **all** parameters are defined and therefore at which all computations start.  The value of this parameter begins to play an important role if any parameter is given a time-derivative (see [apsidal motion](apsidal_motion.html) for an example) or when using N-body instead of Keplerian dynamics (coming in a future release).
+# In addition, there is a single `t0` parameter that is system-wide.  This parameter simply defines the time at which **all** parameters are defined and therefore at which all computations start.  The value of this parameter begins to play an important role if any parameter is given a time-derivative (see [apsidal motion](apsidal_motion.ipynb) and [dpdt](dpdt.ipynb), for example) or when using N-body instead of Keplerian dynamics (coming in a future release).
 
 # In[9]:
 
@@ -107,7 +107,7 @@ b.run_compute(ltte=False)
 
 # To visualize where these times are with respect to the orbits, we can plot the model orbit and highlight the positions of each star at the times defined by these parameters.  Note here that the observer is in the **positive** w-direction.
 # 
-# NOTE: sending z=0 will override the default of ordering in z by vs (the unused coordinate in the same system), which can be expensive to draw.
+# NOTE: sending `z=0` will override the default of ordering in z by vs (the unused coordinate in the same system), which can be expensive to draw.
 
 # In[12]:
 

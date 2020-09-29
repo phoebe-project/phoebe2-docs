@@ -113,6 +113,8 @@ print(b.filter(qualifier=['times', 'compute_times', 'compute_phases', 'compute_p
 
 
 # Essentially, this constraint does the same thing as [b.to_phase](../api/phoebe.frontend.bundle.Bundle.to_phase.md) or [b.to_time](../api/phoebe.frontend.bundle.Bundle.to_time.md), using the appropriate t0 according to `phases_t0` from the **top-level** orbit in the hierarchy.
+# 
+# Note that in the case of time-dependent systems, this mapping will also adhere to `phases_dpdt` (in the case of [dpdt](dpdt.ipynb) and/or `phases_period` (in the case of [apsidal motion (dperdt)](apsidal_motion.ipynb).
 
 # In[13]:
 

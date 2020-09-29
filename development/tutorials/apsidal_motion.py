@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Apsidal Motion (dperdt)
+# # Apsidal Motion (dperdt, period vs period_anom)
 # 
 # ## Setup
 # 
@@ -229,7 +229,7 @@ _ = b.plot(kind='orb',
 
 # ## Considerations in compute_phases and mask_phases
 
-# If instead we wanted [compute_phases](compute_times_phases.ipynb) (and [mask_phases](mask_phases.ipynb) to use `period_anom`, we could change the value of `phases_period` (only visible if `dperdt != 0.0`) in each dataset.
+# If instead we wanted [compute_phases](compute_times_phases.ipynb) (and [mask_phases](mask_phases.ipynb)) to use `period_anom`, we could change the value of `phases_period` (only visible if `dperdt != 0.0`) in each dataset.
 
 # In[24]:
 
