@@ -12,7 +12,7 @@
 # In[ ]:
 
 
-get_ipython().system('pip install -I "phoebe>=2.3,<2.4"')
+#!pip install -I "phoebe>=2.3,<2.4"
 
 
 # As always, let's do imports and initialize a logger and a new Bundle.

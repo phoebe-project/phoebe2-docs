@@ -27,7 +27,7 @@ from phoebe import u # units
 import numpy as np
 import matplotlib.pyplot as plt
 
-logger = phoebe.logger('error')
+#logger = phoebe.logger('error')
 
 b = phoebe.default_binary()
 
@@ -166,15 +166,13 @@ b.run_compute(irrad_method='wilson', ntriangles=700, model='refl_true', overwrit
 # In[21]:
 
 
-afig, mplfig = b.plot(component='secondary', kind='mesh', model='refl_false', 
-                      fc='intensities', ec='face', 
-                      draw_sidebars=True, show=True)
+#phoebe.logger('debug')
 
 
 # In[22]:
 
 
-afig, mplfig = b.plot(component='secondary', kind='mesh', model='refl_true', 
+afig, mplfig = b.plot(component='secondary', kind='mesh', model='refl_false', 
                       fc='intensities', ec='face', 
                       draw_sidebars=True, show=True)
 
@@ -182,21 +180,23 @@ afig, mplfig = b.plot(component='secondary', kind='mesh', model='refl_true',
 # In[23]:
 
 
-afig, mplfig = b.plot(component='secondary', kind='mesh', model='refl_false', 
-                      fc='teffs', ec='face', 
+afig, mplfig = b.plot(component='secondary', kind='mesh', model='refl_true', 
+                      fc='intensities', ec='face', 
                       draw_sidebars=True, show=True)
 
 
 # In[24]:
 
 
-afig, mplfig = b.plot(component='secondary', kind='mesh', model='refl_true', 
+afig, mplfig = b.plot(component='secondary', kind='mesh', model='refl_false', 
                       fc='teffs', ec='face', 
                       draw_sidebars=True, show=True)
 
 
-# In[ ]:
+# In[25]:
 
 
-
+afig, mplfig = b.plot(component='secondary', kind='mesh', model='refl_true', 
+                      fc='teffs', ec='face', 
+                      draw_sidebars=True, show=True)
 

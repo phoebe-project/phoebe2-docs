@@ -98,7 +98,7 @@ print(b['volume@primary@model'])
 # In[12]:
 
 
-afig, mplfig = b['mesh01'].plot(x='times', y='volume', show=True)
+afig, mplfig = b['mesh01'].plot(x='times', y='volume', ylim=(4.18, 4.20), show=True)
 
 
 # In[13]:

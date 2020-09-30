@@ -6,7 +6,7 @@
 # 
 # This tutorial explains the high-level interface to plotting provided by the Bundle.  You are of course always welcome to access arrays and plot manually.
 # 
-# PHOEBE 2.3 uses [autofig 1.1](https://autofig.readthedocs.io/en/1.1.0) as an intermediate layer for highend functionality to [matplotlib](http://matplotlib.org).
+# PHOEBE 2.3 uses [autofig 1.2](https://autofig.readthedocs.io/en/1.2.0) as an intermediate layer for highend functionality to [matplotlib](http://matplotlib.org).
 # 
 # Setup
 # -----------------------------

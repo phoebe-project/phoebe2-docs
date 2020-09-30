@@ -199,7 +199,7 @@ _ = b.plot(kind='orb',
 # 
 # Due to the changing size of the orbit due to mass conservation (increasing the RV amplitude for a positive `dpdt`), as well as the changing orbital period (decreasing the RV amplitude for a positive `dpdt`), the RVs will also have a change in amplitude as a function of time (in addition to the phase-effects seen for the light curve above).
 
-# In[23]:
+# In[22]:
 
 
 _ = b.plot(kind='rv', x='times', 

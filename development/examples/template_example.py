@@ -16,7 +16,7 @@
 get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.html) for more details.
+# As always, let's do imports and initialize a logger and a new bundle.
 
 # In[1]:
 

@@ -11,13 +11,13 @@
 
 # Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
-# In[ ]:
+# In[1]:
 
 
 #!pip install -I "phoebe>=2.3,<2.4"
 
 
-# In[1]:
+# In[2]:
 
 
 import phoebe
@@ -32,7 +32,7 @@ b = phoebe.default_binary()
 
 # And we'll attach some dummy datasets.  See the [datasets tutorial](datasets.ipynb) for more details.
 
-# In[2]:
+# In[3]:
 
 
 b.add_dataset('orb', 
@@ -50,19 +50,19 @@ b.add_dataset('lc',
 # Any default Bundle already has a set of default compute options to run the backend for PHOEBE 2.  In most cases, you can just edit the options in this default set of compte options.
 # 
 
-# In[3]:
+# In[4]:
 
 
 print(b.computes)
 
 
-# In[4]:
+# In[5]:
 
 
 print(b.filter(context='compute'))
 
 
-# In[5]:
+# In[6]:
 
 
 b.set_value('irrad_method', 'none')
@@ -77,25 +77,25 @@ b.set_value('irrad_method', 'none')
 # 
 # Let's say that we want to create two sets of compute options - in this example, we'll create one called 'preview' which will cut some corners to quickly get us a model, and one called 'detailed' which will get a much more precise model but likely take longer.  As with other tags, the string you provide for the compute tag is up to you (so long as it doesn't raise an error because it conflicts with other tags).
 
-# In[6]:
+# In[7]:
 
 
 b.add_compute(phoebe.compute.phoebe, compute='preview', irrad_method='none')
 
 
-# In[7]:
+# In[8]:
 
 
 print(b['preview@compute'])
 
 
-# In[8]:
+# In[9]:
 
 
 b.add_compute('phoebe', compute='detailed', irrad_method='wilson')
 
 
-# In[9]:
+# In[10]:
 
 
 print(b.get_compute('detailed'))
@@ -122,7 +122,7 @@ print(b.get_compute('detailed'))
 # 
 # Let's say we wanted to compute the orbit but not light curve - so we want to set enabled@lc01:
 
-# In[10]:
+# In[11]:
 
 
 print(b['enabled@lc01'])
@@ -132,7 +132,7 @@ print(b['enabled@lc01'])
 # 
 # If we know which set of compute options we'll be using, or only want to enable/disable for a given set, then we can do that:
 
-# In[11]:
+# In[12]:
 
 
 b['enabled@lc01@preview'] = False
@@ -141,7 +141,7 @@ print(b['enabled@lc01'])
 
 # or to enable/disable a dataset for all sets of compute options, we can use the set_value_all method:
 
-# In[12]:
+# In[13]:
 
 
 b.set_value_all('enabled@lc01', True)
@@ -159,13 +159,13 @@ print(b['enabled@lc01'])
 # 
 # If you do not provide a tag for the model, one will be created for you called 'latest'.  Note that the 'latest' model will be overwritten without throwing any errors, whereas other named models can only be overwritten if you pass `overwrite=True` (see the [run_compute API docs](../api/phoebe.frontend.bundle.Bundle.run_compute.md) for details).  In general, though, if you want to maintain the results from previous calls to run_compute, you must provide a NEW model tag.
 
-# In[13]:
+# In[14]:
 
 
 b.run_compute(compute='preview')
 
 
-# In[14]:
+# In[15]:
 
 
 print(b.models)
@@ -175,21 +175,21 @@ print(b.models)
 # 
 # Now let's compute models for three different 'versions' of parameters.  By providing a model tag, we can keep the synthetics for each of these different runs in the bundle - which will be handy later on for plotting and comparing models.
 
-# In[15]:
+# In[16]:
 
 
 b.set_value('incl@orbit', 90)
 b.run_compute(compute='preview', model='run_with_incl_90') 
 
 
-# In[16]:
+# In[17]:
 
 
 b.set_value('incl@orbit', 85)
 b.run_compute(compute='preview', model='run_with_incl_85')
 
 
-# In[17]:
+# In[18]:
 
 
 b.set_value('incl@orbit', 80)
@@ -198,7 +198,7 @@ b.run_compute(compute='preview', model='run_with_incl_80')
 
 # We will now have three new sets of synthetics which can be compared, plotted, or removed.
 
-# In[18]:
+# In[19]:
 
 
 print(b.models)
@@ -206,13 +206,13 @@ print(b.models)
 
 # To remove a model, call [remove_model](../api/phoebe.frontend.bundle.Bundle.remove_model).
 
-# In[19]:
+# In[20]:
 
 
 b.remove_model('latest')
 
 
-# In[20]:
+# In[21]:
 
 
 print(b.models)
@@ -223,19 +223,19 @@ print(b.models)
 # 
 # The synthetics can be accessed by their dataset and model tags.
 
-# In[32]:
+# In[22]:
 
 
 b['run_with_incl_90']
 
 
-# In[33]:
+# In[23]:
 
 
 b['primary@run_with_incl_90']
 
 
-# In[34]:
+# In[24]:
 
 
 b['us@primary@run_with_incl_90']
@@ -243,7 +243,7 @@ b['us@primary@run_with_incl_90']
 
 # or of course through method access:
 
-# In[35]:
+# In[25]:
 
 
 print(b.get_value(qualifier='us', dataset='orb01', component='primary', model='run_with_incl_90')[:10])

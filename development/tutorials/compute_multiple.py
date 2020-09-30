@@ -118,3 +118,15 @@ b.run_compute(compute=['detailed', 'preview'], model='multiplecompute')
 
 print(b.models)
 
+
+# In[13]:
+
+
+print(b.filter(dataset='lc01', model='multiplecompute').computes)
+
+
+# In[14]:
+
+
+print(b.filter(dataset='orb01', model='multiplecompute').computes)
+
