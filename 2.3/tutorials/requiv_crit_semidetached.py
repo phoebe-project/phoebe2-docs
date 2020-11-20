@@ -57,3 +57,54 @@ b['requiv@constraint@primary']
 
 b['requiv_max@constraint@primary']
 
+
+# Note that the point region in semi-detached systems often falls outside of the atmosphere tables.  Since this requires the full mesh, this cannot be checked in advance with [b.run_checks](../api/phoebe.frontend.bundle.Bundle.run_checks.md) but will raise an error during [b.run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md).
+
+# In[6]:
+
+
+b.add_dataset('lc', compute_phases=phoebe.linspace(0,1,101))
+
+
+# In[8]:
+
+
+try:
+    b.run_compute()
+except Exception as err:
+    print(err)
+
+
+# In this case, it is necessary to fallback on blackbody atmospheres and manually provide the limb-darkening function and coefficients:
+
+# In[9]:
+
+
+b.set_value('atm', component='primary', value='blackbody')
+
+
+# In[10]:
+
+
+b.set_value('ld_mode', component='primary', value='manual')
+
+
+# The default values of the `ld_func` and `ld_coeffs` should be changed to appropriate values for a given system, but should still compute without errors.
+
+# In[11]:
+
+
+print(b.filter(qualifier=['ld_func', 'ld_coeffs']))
+
+
+# In[12]:
+
+
+b.run_compute()
+
+
+# In[ ]:
+
+
+
+
