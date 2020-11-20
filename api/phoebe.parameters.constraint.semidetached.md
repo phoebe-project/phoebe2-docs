@@ -11,6 +11,11 @@ def semidetached(b, component, solve_for=None, **kwargs)
 
 Create a constraint to force requiv to be semidetached.
 
+Note that the point region in semidetached systems often falls outside the
+atmosphere grids and will raise an error during [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md)
+which cannot be caught in advance via [phoebe.frontend.bundle.Bundle.run_checks](phoebe.frontend.bundle.Bundle.run_checks.md).
+It may be necessary to set `atm` to 'blackbody' and `ld_mode` to 'manual'.
+
 This is usually passed as an argument to
  [phoebe.frontend.bundle.Bundle.add_constraint](phoebe.frontend.bundle.Bundle.add_constraint.md) as
  `b.add_constraint('semidetached', component='primary')`, where `component` is
@@ -35,4 +40,3 @@ Returns
 Raises
 --------
 * NotImplementedError: if the value of `solve_for` is not implemented.
-
