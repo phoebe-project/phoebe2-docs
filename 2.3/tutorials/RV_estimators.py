@@ -1,6 +1,18 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# # Advanced: RV Estimators
+
+# ## Setup
+# 
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
+
+# In[ ]:
+
+
+#!pip install -I "phoebe>=2.3,<2.4"
+
+
 # In[1]:
 
 
@@ -11,7 +23,7 @@ import numpy as np
 logger = phoebe.logger()
 
 
-# ### Generate data
+# ## Generate data
 
 # Let's first initialize a bundle and change some of the parameter values. We'll then export the computed models as "observables" to use with the rv_geometry estimator.
 
@@ -41,7 +53,7 @@ rvs2 = b.get_value('rvs', component='secondary', context='model', dataset='rv01'
 sigmas_rv = np.ones_like(times) * 2
 
 
-# ### Initialize the bundle
+# ## Initialize the bundle
 
 # To showcase the rv_estimator, we'll start with a fresh default bundle.
 
@@ -59,7 +71,9 @@ b.run_compute()
 b.plot(legend=True, show=True)
 
 
-# ### rv_geometry
+# ## rv_geometry
+
+# The [rv_geometry estimator](../api/phoebe.parameters.solver.estimator.rv_geometry.md) is meant to provide an efficient starting point for q, vgamma, asini, esinw and ecosw. Similar to the [light curve estimators](./LC_estimators.ipynb), it will by default bin the input data if the number of data points is larger than `phase_nbins` and will expose the analytical (in this case, Keplerian orbit) models that were fit to the data.First we add the solver options via [add_solver](../api/phoebe.frontend.bundle.Bundle.add_solver.md):
 
 # In[4]:
 
@@ -68,8 +82,6 @@ b.add_solver('estimator.rv_geometry', solver='rvgeom')
 print(b['rvgeom'])
 
 
-# The rv_geometry estimator is meant to provide an efficient starting point for q, vgamma, asini, esinw and ecosw. Similar to the light curve estimators, it will by default bin the input data if the number of data points is larger than *phase_nbins* and will expose the analytical (in this case, Keplerian orbit) models that were fit to the data.
-
 # In[5]:
 
 
@@ -77,7 +89,7 @@ b.run_solver('rvgeom', solution='rvgeom_solution')
 print(b['rvgeom_solution'])
 
 
-# The solution, as expected returns the fitted values and the analytic models we fit to get them, which can be turned off by setting *expose_model* to False. Let's inspect the fitted twigs and values before adopting the solution:
+# The solution, as expected returns the fitted values and the analytic models we fit to get them, which can be turned off by setting `expose_model` to False. Let's inspect the fitted twigs and values before adopting the solution:
 
 # In[6]:
 
@@ -86,7 +98,7 @@ print(b['value@fitted_twigs@rvgeom_solution'])
 print(b['value@fitted_values@rvgeom_solution'])
 
 
-# As we can see all values look okay, and we have *asini@binary* in the twigs, which means we'll need to flip the *asini* constraint to be able to set it with *adopt_solution()*:
+# As we can see all values look okay, and we have *asini@binary* in the twigs, which means we'll need to flip the *asini* constraint to be able to set it with [adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution.md):
 
 # In[7]:
 
@@ -98,7 +110,7 @@ b.run_compute()
 b.plot(x='phase', show=True)
 
 
-# ### * one RV
+# ## single-lined RVs
 
 # In some cases, only one RV is available, in which case not all parameters can be estimated with rv_geometry. Let's recreate the above example with only providing the primary RV and see how the solution differs.
 
@@ -131,7 +143,7 @@ print(b['value@fitted_values@rvgeom_solution'])
 # - We have *asini@primary* instead of *asini@binary*.
 # This is because with only one RV we cannot get a reliable estimate of the mass ratio and semi-major axis of the system and instead we revert to what can be estimated from just the one available RV, or in this case the semi-major axis of the primary orbit around the center of mass.
 
-# We still need to flip the *asini@primary* before adopting the solution:
+# We still need to flip the *asini@primary* before adopting the solution, with [flip_constraint](../api/phoebe.fronend.bundle.Bundle.flip_constraint.md):
 
 # In[15]:
 

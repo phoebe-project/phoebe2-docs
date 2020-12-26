@@ -11,13 +11,13 @@
 
 # Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
-# In[ ]:
+# In[1]:
 
 
 #!pip install -I "phoebe>=2.3,<2.4"
 
 
-# In[4]:
+# In[2]:
 
 
 import phoebe
@@ -34,7 +34,7 @@ b.add_dataset('lc', compute_phases=phoebe.linspace(0,1,101))
 # Distributions can be attached to most any FloatParameter in the Bundle.  To see a list of these available parameters, we can call [b.get_adjustable_parameters](../api/phoebe.frontend.bundle.Bundle.get_adjustable_parameters.md).  Note the `exclude_constrained` option which defaults to True: we can set distributions on constrained parameters (for priors, for example), but those will not be able to be sampled from in the forward model or while fitting.  We'll come back to this in the next tutorial when looking at priors.
 # 
 
-# In[5]:
+# In[3]:
 
 
 b.get_adjustable_parameters()
@@ -51,7 +51,7 @@ b.get_adjustable_parameters()
 # 
 # Now let's attach a gaussian distribution on the temperature of the primary star.
 
-# In[6]:
+# In[4]:
 
 
 b.add_distribution(qualifier='teff', component='primary', 
@@ -65,7 +65,7 @@ b.add_distribution(qualifier='teff', component='primary',
 # * [rename_distribution](../api/phoebe.frontend.bundle.Bundle.rename_distribution.md)
 # * [remove_distribution](../api/phoebe.frontend.bundle.Bundle.remove_distribution.md)
 
-# In[7]:
+# In[5]:
 
 
 print(b.get_distribution(distribution='mydist'))
@@ -73,7 +73,7 @@ print(b.get_distribution(distribution='mydist'))
 
 # Now let's add another distribution, with the same `distribution` tag, to the inclination of the binary.
 
-# In[8]:
+# In[6]:
 
 
 b.add_distribution(qualifier='incl', component='binary',
@@ -81,7 +81,7 @@ b.add_distribution(qualifier='incl', component='binary',
                    distribution='mydist')
 
 
-# In[9]:
+# In[7]:
 
 
 print(b.get_distribution(distribution='mydist'))
@@ -92,19 +92,19 @@ print(b.get_distribution(distribution='mydist'))
 
 # The parameters we've created and attached are [DistributionParameters](../api/phoebe.parameters.DistributionParameter.md) and live in `context='distribution'`, with all other tags matching the parameter they're referencing.  For example, let's filter and look at the distributions we've added.
 
-# In[10]:
+# In[8]:
 
 
 print(b.filter(context='distribution'))
 
 
-# In[11]:
+# In[9]:
 
 
 print(b.get_parameter(context='distribution', qualifier='incl'))
 
 
-# In[12]:
+# In[10]:
 
 
 print(b.get_parameter(context='distribution', qualifier='incl').tags)
@@ -112,7 +112,7 @@ print(b.get_parameter(context='distribution', qualifier='incl').tags)
 
 # The "value" of the parameter, is the [distl](https://distl.readthedocs.io) distributon object itself.
 
-# In[14]:
+# In[11]:
 
 
 b.get_value(context='distribution', qualifier='incl')
@@ -120,7 +120,7 @@ b.get_value(context='distribution', qualifier='incl')
 
 # And because of that, we can call any method on the [distl](https://distl.readthedocs.io) object, including plotting the distribution.
 
-# In[17]:
+# In[12]:
 
 
 _ = b.get_value(context='distribution', qualifier='incl').plot(show=True)
@@ -131,7 +131,7 @@ _ = b.get_value(context='distribution', qualifier='incl').plot(show=True)
 # * [b.get_distribution_collection](../api/phoebe.frontend.bundle.Bundle.get_distribution_collection.md)
 # * [b.plot_distribution_collection](../api/phoebe.frontend.bundle.Bundle.plot_distribution_collection.md)
 
-# In[18]:
+# In[13]:
 
 
 _ = b.plot_distribution_collection(distribution='mydist', show=True)
@@ -144,7 +144,7 @@ _ = b.plot_distribution_collection(distribution='mydist', show=True)
 # 
 # * [b.sample_distribution_collection](../api/phoebe.frontend.bundle.Bundle.sample_distribution_collection.md)
 
-# In[19]:
+# In[14]:
 
 
 b.sample_distribution_collection(distribution='mydist')
@@ -152,13 +152,13 @@ b.sample_distribution_collection(distribution='mydist')
 
 # By default this just returns a dictionary with the twigs and sampled values.  But if we wanted, we could have these applied immediately to the face-values by passing `set_value=True`, in which case a [ParameterSet](../api/phoebe.parameters.ParameterSet.md) of changed parameters (including those via constraints) is returned instead.
 
-# In[21]:
+# In[15]:
 
 
 changed_params = b.sample_distribution_collection(distribution='mydist', set_value=True)
 
 
-# In[22]:
+# In[16]:
 
 
 print(changed_params)
@@ -169,7 +169,7 @@ print(changed_params)
 
 # Lastly, we can have PHOEBE automatically draw from a "distribution collection" multiple times and expose the distribution of the model itself.
 
-# In[24]:
+# In[17]:
 
 
 print(b.get_parameter(qualifier='sample_from', context='compute'))
@@ -177,13 +177,13 @@ print(b.get_parameter(qualifier='sample_from', context='compute'))
 
 # Once `sample_from` is set, `sample_num` and `sample_mode` are exposed as visible parameters
 
-# In[25]:
+# In[18]:
 
 
 b.set_value('sample_from', value='mydist')
 
 
-# In[26]:
+# In[19]:
 
 
 print(b.filter(qualifier='sample*'))
@@ -191,13 +191,13 @@ print(b.filter(qualifier='sample*'))
 
 # Now when we call [run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md), 10 different instances of the forward model will be computed from 10 random draws from the "distribution collection" but only the median and 1-sigma uncertainties will be exposed in the model.
 
-# In[27]:
+# In[20]:
 
 
 b.run_compute(irrad_method='none')
 
 
-# In[28]:
+# In[21]:
 
 
 _ = b.plot(show=True)
@@ -205,5 +205,7 @@ _ = b.plot(show=True)
 
 # Next
 # ----------
+# 
+# To learn about how the parameter labels are created and how to override their representation, see [Advanced: Latex Representation](./latex_repr.ipynb).
 # 
 # Next up: let's learn about [solving the inverse problem](./solver.ipynb)
