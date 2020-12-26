@@ -32,11 +32,13 @@ These can then be passed as the `kind` argument to [b.add_solver](api/phoebe.fro
 
 ### Optimizers
 
+* [Tutorial: Nelder-Mead optimizer](tutorials/nelder_mead.ipynb)
 * [optimizer.cg](api/phoebe.parameters.solver.optimizer.cg.md)
 * [optimizer.nelder_mead](api/phoebe.parameters.solver.optimizer.nelder_mead.md)
 * [optimizer.powell](api/phoebe.parameters.solver.optimizer.powell.md)
 
 ### Samplers
 
+* [Tutorial: emcee sampler](tutorials/emcee.ipynb)
 * [sampler.dynesty](api/phoebe.parameters.solver.sampler.dynesty.md)
 * [sampler.emcee](api/phoebe.parameters.solver.sampler.emcee.md)
