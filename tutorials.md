@@ -11,6 +11,7 @@ For more specific use-cases, see the example scripts below.
     * [Advanced: Parameter Units](tutorials/units.ipynb)
     * [Advanced: Building a System](tutorials/building_a_system.ipynb)
     * [Advanced: Contact Binary Hierarchy](tutorials/contact_binary_hierarchy.ipynb)
+    * [Advanced: Semi-Detached Systems](tutorials/requiv_crit_semidetached.ipynb)
     * [Advanced: Saving, Loading, and Exporting](tutorials/saving_and_loading.ipynb)
 2. [Constraints](tutorials/constraints.ipynb)
     * [Advanced: Constraints and Changing Hierarchices](tutorials/constraints_hierarchies.ipynb)
@@ -30,10 +31,16 @@ For more specific use-cases, see the example scripts below.
     * [Advanced: Animations](tutorials/animations.ipynb)
     * [Advanced: Accessing and Plotting Meshes](tutorials/meshes.ipynb)
 7. [Distributions](tutorials/distributions.ipynb)
+    * [Advanced: Latex Representations in Distribution Plots](tutorials/latex_repr.ipynb)
 8. [Solving the Inverse Problem](tutorials/solver.ipynb)
     * [Advanced: Solver Times](tutorials/solver_times.ipynb)
     * [Advanced: LC Estimators](tutorials/LC_estimators.ipynb)
     * [Advanced: RV Geometry Estimator](tutorials/RV_estimators.ipynb)
+    * [Advanced: Nelder-Mead Optimizer](tutorials/nelder_mead.ipynb)
+    * [Advanced: Emcee Sampler](tutorials/emcee.ipynb)
+    * [Advanced: Continuing Emcee from a Previous Run](tutorials/emcee_continue_from.ipynb)
+    * [Advanced: Resampling Emcee from a Previous Run](tutorials/emcee_resampling.ipynb)
+    * [Advanced: Running Solvers on an External Machine](tutorials/export_solver.ipynb)
 
 ## Migrating from PHOEBE 2.2 to PHOEBE 2.3
 
