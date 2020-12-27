@@ -4,7 +4,7 @@ For a quick discussion on why PHOEBE 2 is designed the way it is and why the lea
 
 Each of the following tutorials builds upon previous tutorials, so it will be most efficient to work through them sequentially at first. However, each should run independently, so feel free to jump in at any point to review a specific concept.  The advanced topics below each numbered-item go into more detail on related advanced topics, but are not required to continue to the next tutorial.
 
-For more specific use-cases, see the example scripts below.
+For more specific use-cases, see the [example scripts](./examples.md).
 
 1. [The PHOEBE Bundle](tutorials/general_concepts.ipynb)
     * [Advanced: Parameter Types](tutorials/parameters.ipynb)
