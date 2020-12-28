@@ -15,9 +15,9 @@
 # In addition to the features listed in the table below, PHOEBE also includes support for the following via [b.run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md) for *any* backend:
 # 
 # * flexible parameterization via [constraints](../tutorials/constraints.ipynb)
-# * phase-masking
+# * [phase-masking](../tutorials/mask_phases.ipynb)
 # * exposure times via oversampling
-# * limb-darkening coefficients lookup
+# * [limb-darkening coefficients lookup](../tutorials/limb_darkening.ipynb)
 # * [pblum and flux scaling](../tutorials/pblum.ipynb)
 # * [third light](../tutorials/l3.ipynb)
 # * [systemic velocities](../tutorials/vgamma.ipynb)
@@ -135,7 +135,7 @@
 #     <tr style="border-bottom:1px solid black">
 #         <td><b><a href="../tutorials/atm_passbands.ipynb">Atmospheres</a></b></td>
 #         <td>blackbody<br/><span style="text-decoration:underline;text-decoration-style:dotted" title="(atm=ck2004)">Castelli-Kurucz</span><br/>phoenix</td>
-#         <td><span style="text-decoration:underline;text-decoration-style:dotted" title="(atm=extern_planckint)">blackbody</span><br/><span style="text-decoration:underline;text-decoration-style:dotted" title="(atm=extern_atmx)">Catelli-Kurucz</span><br/><br/></td>
+#         <td><span style="text-decoration:underline;text-decoration-style:dotted" title="(atm=extern_planckint)">blackbody</span><br/><span style="text-decoration:underline;text-decoration-style:dotted" title="(atm=extern_atmx)">Castelli-Kurucz</span><br/><br/></td>
 #         <td></td>
 #         <td></td>
 #     </tr>

@@ -60,7 +60,7 @@ b.add_dataset('lc', times=times, fluxes=fluxes, sigmas=np.full_like(fluxes, fill
 print(phoebe.list_available_solvers())
 
 
-# As there are quite a few and each have their own available options, we won't get in to the details here.  See the [solver API docs](../api/phoebe.parameters.solver.md) for details or look through some of the [solver example scripts](../examples.md).
+# As there are quite a few and each have their own available options, we won't get in to the details here.  See [LC esimators](./LC_estimators.ipynb), [RV estimators](./RV_estimators.ipynb), [Nelder-Mead Optimizer](./nelder_mead.ipynb), and [emcee sampler](./emcee.ipynb) for details on some of the most commonly-used solver.  The [solver API docs](../api/phoebe.parameters.solver.md) or [solver example scripts](../examples.md) may also help.
 # 
 # As you may expect, to use a solver you must first call [b.add_solver](../api/phoebe.frontend.bundle.Bundle.add_solver.md), set the desired options, and then call [b.run_solver](../api/phoebe.frontend.bundle.Bundle.run_solver.md) (or [b.export_solver](../api/phoebe.frontend.bundle.Bundle.export_solver.md) and [b.import_solution](../api/phoebe.frontend.bundle.Bundle.import_solution.md)).
 
@@ -219,9 +219,6 @@ b.calculate_lnp('priors@myemceesolver')
 # * [Advanced: Solver Times](./solver_times.ipynb)
 # * [Advanced: LC Estimators](./LC_estimators.ipynb)
 # * [Advanced: RV Estimators](./RV_estimators.ipynb)
-
-# In[ ]:
-
-
-
-
+# * [Advanced: Nelder-Mead Optimizer](./nelder_mead.ipynb)
+# * [Advanced: Emcee Sampler](./emcee.ipynb)
+# * [Advanced: Running Solvers on an External Machine](tutorials/export_solver.ipynb)

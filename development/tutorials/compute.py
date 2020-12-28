@@ -17,6 +17,8 @@
 #!pip install -I "phoebe>=2.3,<2.4"
 
 
+# Now we'll import our packages and initialize the default PHOEBE bundle.
+
 # In[2]:
 
 
@@ -86,7 +88,7 @@ b.add_compute(phoebe.compute.phoebe, compute='preview', irrad_method='none')
 # In[8]:
 
 
-print(b['preview@compute'])
+print(b.filter(compute='preview', context='compute'))
 
 
 # In[9]:
@@ -108,7 +110,7 @@ print(b.get_compute('detailed'))
 # 
 # Most of the parameters in the compute options are specific to the backend being used.  Here, of course, we're using the PHOEBE 2.0 backend - but for details on other backends see the [Advanced: Alternate Backends Tutorial](./alternate_backends.ipynb).
 # 
-# The PHOEBE 2.0 compute options are described in the tutorial on their relevant dataset types:
+# The PHOEBE compute options are described in the tutorial on their relevant dataset types:
 # 
 # * [Light Curves/Fluxes (lc)](./LC.ipynb)
 # * [Radial Velocities (rv)](./RV.ipynb)
@@ -125,27 +127,27 @@ print(b.get_compute('detailed'))
 # In[11]:
 
 
-print(b['enabled@lc01'])
+print(b.filter(qualifier='enabled', dataset='lc01'))
 
 
 # as you can see, there is a copy for both of our compute options ('preview' and 'detailed').
 # 
-# If we know which set of compute options we'll be using, or only want to enable/disable for a given set, then we can do that:
+# If we know which set of compute options we'll be using, or only want to enable/disable for a given set, then we can do that (we could also use [b.disable_dataset](../api/phoebe.frontend.bundle.Bundle.disable_dataset.md) and [b.enable_dataset](../api/phoebe.frontend.bundle.Bundle.enable_dataset.md):
 
 # In[12]:
 
 
-b['enabled@lc01@preview'] = False
-print(b['enabled@lc01'])
+b.set_value(qualifier='enabled', dataset='lc01', compute='preview', value=False)
+print(b.filter(qualifier='enabled', dataset='lc01'))
 
 
-# or to enable/disable a dataset for all sets of compute options, we can use the set_value_all method:
+# or to enable/disable a dataset for all sets of compute options, we can use the [set_value_all](../api/phoebe.parameters.ParameterSet.set_value_all.md) method:
 
 # In[13]:
 
 
 b.set_value_all('enabled@lc01', True)
-print(b['enabled@lc01'])
+print(b.filter(qualifier='enabled', dataset='lc01'))
 
 
 # If the enabled parameter is missing for a set of compute options - it is likely that that particular backend does not support that dataset type.
@@ -226,27 +228,25 @@ print(b.models)
 # In[22]:
 
 
-b['run_with_incl_90']
+b.filter(model='run_with_incl_90')
 
 
 # In[23]:
 
 
-b['primary@run_with_incl_90']
+b.filter(component='primary', model='run_with_incl_90')
 
 
 # In[24]:
 
 
-b['us@primary@run_with_incl_90']
+b.get_parameter(qualifier='us', component='primary', model='run_with_incl_90')
 
-
-# or of course through method access:
 
 # In[25]:
 
 
-print(b.get_value(qualifier='us', dataset='orb01', component='primary', model='run_with_incl_90')[:10])
+b.get_value(qualifier='us', dataset='orb01', component='primary', model='run_with_incl_90')[:10]
 
 
 # For more details about the resulting Parameters in the model context, see the tutorial on the relevant dataset types:

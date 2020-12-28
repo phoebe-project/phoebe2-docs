@@ -63,7 +63,7 @@ print(b.get_parameter(qualifier='solver_times', dataset='lc01').choices)
 # The logic for solver times is generally only used internally within [b.run_solver](../api/phoebe.frontend.bundle.Bundle.run_solver.md) (for optimizers and samplers which require a forward-model to be computed).  However, it is useful (in order to diagnose any issues, for example) to be able to see how the combination of `solver_times`, `times`, `compute_times`/`compute_phases`, `mask_enabled`, and `mask_phases` will be interpretted within PHOEBE during [b.run_solver](../api/phoebe.bundle.Bundle.run_solver.md).
 # 
 # See also:
-# * Advanced: mask_phases (coming soon) - for now see [this example](../examples/inverse_paper_examples.ipynb#fig5)
+# * [Advanced: mask_phases](./mask_phases.ipynb)
 # * [Advanced: Compute Times & Phases](./compute_times_phases.ipynb)
 # 
 # To access the underlying times that would be used, we can call [b.parse_solver_times](../api/phoebe.frontend.bundle.Bundle.parse_solver_times.md).  Let's first look at the docstring (also available from the link above):
