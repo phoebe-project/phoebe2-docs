@@ -37,9 +37,10 @@ For more specific use-cases, see the [example scripts](./examples.md).
     * [Advanced: LC Estimators](tutorials/LC_estimators.ipynb)
     * [Advanced: RV Geometry Estimator](tutorials/RV_estimators.ipynb)
     * [Advanced: Nelder-Mead Optimizer](tutorials/nelder_mead.ipynb)
-    * [Advanced: Emcee Sampler](tutorials/emcee.ipynb)
-    * [Advanced: Continuing Emcee from a Previous Run](tutorials/emcee_continue_from.ipynb)
-    * [Advanced: Resampling Emcee from a Previous Run](tutorials/emcee_resampling.ipynb)
+    * [Advanced: EMCEE Sampler](tutorials/emcee.ipynb)
+    * [Advanced: Continuing EMCEE from a Previous Run](tutorials/emcee_continue_from.ipynb)
+    * [Advanced: Resampling EMCEE from a Previous Run](tutorials/emcee_resampling.ipynb)
+    * [Advanced: Convert Posterior Distributions from EMCEE](./emcee_distributions_convert.ipynb)
     * [Advanced: Running Solvers on an External Machine](tutorials/export_solver.ipynb)
 
 ## Migrating from PHOEBE 2.2 to PHOEBE 2.3
