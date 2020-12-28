@@ -2,6 +2,8 @@
 # coding: utf-8
 
 # # Advanced: Resampling Emcee from a Previous Run
+# 
+# **IMPORTANT**: this tutorial assumes basic knowledge (and uses a file resulting from) the [emcee tutorial](./emcee.ipynb).
 
 # ## Setup
 # 
@@ -134,7 +136,8 @@ _ = b.plot_distribution_collection('init_from@emcee_solver', show=True)
 # 
 # See the following for even more advanced use cases of emcee.
 # 
-# * [Advanced: Continue emcee from a previous run](./emcee_continue_from.ipynb)
+# * [Advanced: continue emcee from a previous run](./emcee_continue_from.ipynb)
+# * [Advanced: convert posterior distributions from EMCEE](./emcee_distributions_convert.ipynb)
 
 # In[ ]:
 

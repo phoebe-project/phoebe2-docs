@@ -3,6 +3,8 @@
 
 # # Advanced: Continuing Emcee from a Previous Run
 # 
+# **IMPORTANT**: this tutorial assumes basic knowledge (and uses a file resulting from) the [emcee tutorial](./emcee.ipynb).
+# 
 # **NOTE**: support for `continue_from` was fixed in PHOEBE 2.3.11.  Earlier version may raise an error while running this notebook.
 
 # ## Setup
@@ -114,3 +116,4 @@ _ = b.plot(solution='emcee_sol_contd', style='lnprobability', burnin=0, thin=1, 
 # See the following for even more advanced use cases of emcee.
 # 
 # * [Advanced: resampling emcee from a previous run](./emcee_resample.ipynb)
+# * [Advanced: convert posterior distributions from EMCEE](./emcee_distributions_convert.ipynb)

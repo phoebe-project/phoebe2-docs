@@ -62,7 +62,7 @@ print(b.get_parameter(qualifier='period', component='binary').description)
 b.set_value('dperdt', 18*u.deg/u.d)
 
 
-# And now we can see the `period_anom` parameter and its constraint.  Since we have a positive `dpdt`, the anomalistic period will be longer than the sidereal period (since it takes extra time to reach the newly precessed argument of periastron).
+# And now we can see the `period_anom` parameter and its constraint.  Since we have a positive `dperdt`, the anomalistic period will be longer than the sidereal period (since it takes extra time to reach the newly precessed argument of periastron).
 # 
 # The [period_anom constraint](../api/phoebe.parameters.constraint.period_anom.md) is a simple linear approximation and is defined as:
 # 
