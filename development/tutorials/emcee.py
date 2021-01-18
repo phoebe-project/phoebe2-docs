@@ -264,12 +264,6 @@ print(b.filter(qualifier='enabled', compute='fastcompute'))
 b.run_solver('emcee_solver', solution='emcee_sol')
 
 
-# In[23]:
-
-
-b['continue_from'].get_value()
-
-
 # ## Returned Solution
 # 
 # Once `run_solver` is complete (or after calling `import_solution`) a number of new parameters have been added.  Let's now look at some of these new parameters.
@@ -323,6 +317,8 @@ print(b.filter(qualifier=['burnin', 'thin', 'lnprob_cutoff', 'autocorr_times']))
 # The `distributions_convert` parameter dictates whether the distributions should internally be stored as the full underlying parameter samples (most *fair* representation of the posterior distributions, but also expensive to store) or on converted to another distribution type.
 # 
 # Converting to a multivariate gaussian ("mvgaussian"), for example, results in a very lightweight distribution object that can then easily be used for a future initializing or prior distribution.  However, it is important to manually check that the original distribution is well-represented by a multivariate gaussian first. **WITH GREAT POWER COMES GREAT RESPONSIBILITY!!**
+# 
+# Examples of this in action can be seen in [Advanced: convert posterior distributions from EMCEE](./emcee_distributions_convert.ipynb).
 
 # In[29]:
 
@@ -495,6 +491,7 @@ b.uncertainties_from_distribution_collection(distribution='emcee_posteriors', si
 # 
 # * [Advanced: continuing emcee from a previous run](./emcee_continue_from.ipynb)
 # * [Advanced: resampling emcee from a previous run](./emcee_resample.ipynb)
+# * [Advanced: convert posterior distributions from EMCEE](./emcee_distributions_convert.ipynb)
 
 # In[48]:
 

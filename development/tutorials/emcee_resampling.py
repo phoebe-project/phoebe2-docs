@@ -2,6 +2,8 @@
 # coding: utf-8
 
 # # Advanced: Resampling Emcee from a Previous Run
+# 
+# **IMPORTANT**: this tutorial assumes basic knowledge (and uses a file resulting from) the [emcee tutorial](./emcee.ipynb).
 
 # ## Setup
 # 
@@ -48,7 +50,7 @@ b = phoebe.load('emcee_advanced_tutorials.bundle')
 print(b.get_parameter(qualifier='init_from', solver='emcee_solver'))
 
 
-# Here we can see that we now have the additional choice of 'emcee_posteriors' (created in the [emcee_tutorial](./emcee.ipynb) by calling [b.adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution) on the emcee solution.
+# Here we can see that we now have the additional choice of 'emcee_posteriors' (created in the [emcee_tutorial](./emcee.ipynb) by calling [b.adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution) on the emcee solution).
 # 
 # If we wanted to start from these posteriors as they are, we would just set `init_from` to 'emcee_posteriors' and then call `run_solver` (this would be sufficient for changing the number of walkers without needing to completely start from scratch).
 # 
@@ -63,7 +65,7 @@ _ = b.plot(solution='emcee_sol', style='lnprobability', show=True)
 # In[6]:
 
 
-b.set_value('lnprob_cutoff', solution='emcee_sol', value=3796)
+b.set_value('lnprob_cutoff', solution='emcee_sol', value=3800)
 
 
 # In[7]:
@@ -109,7 +111,7 @@ b.add_distribution('requiv@secondary', phoebe.gaussian_around(200), distribution
 # In[12]:
 
 
-b.set_value('init_from', solver='emcee_solver', value=['resample_branch', 'init_from_new'])
+b.set_value(qualifier='init_from', solver='emcee_solver', value=['resample_branch', 'init_from_new'])
 
 
 # Whenever `init_from` contains more than one distribution, they will be combined according to `init_from_combine` (and similarly for `priors` and `priors_combine`).
@@ -117,7 +119,7 @@ b.set_value('init_from', solver='emcee_solver', value=['resample_branch', 'init_
 # In[13]:
 
 
-print(b.get_parameter('init_from_combine', solver='emcee_solver'))
+print(b.get_parameter(qualifier='init_from_combine', solver='emcee_solver'))
 
 
 # In this case, 'first' is sufficient as we don't have multiple distributions describing the same parameter.  Now we can plot the *combined* initializing distribution.
@@ -134,7 +136,8 @@ _ = b.plot_distribution_collection('init_from@emcee_solver', show=True)
 # 
 # See the following for even more advanced use cases of emcee.
 # 
-# * [Advanced: Continue emcee from a previous run](./emcee_continue_from.ipynb)
+# * [Advanced: continue emcee from a previous run](./emcee_continue_from.ipynb)
+# * [Advanced: convert posterior distributions from EMCEE](./emcee_distributions_convert.ipynb)
 
 # In[ ]:
 

@@ -3,6 +3,8 @@
 
 # # Advanced: Continuing Emcee from a Previous Run
 # 
+# **IMPORTANT**: this tutorial assumes basic knowledge (and uses a file resulting from) the [emcee tutorial](./emcee.ipynb).
+# 
 # **NOTE**: support for `continue_from` was fixed in PHOEBE 2.3.11.  Earlier version may raise an error while running this notebook.
 
 # ## Setup
@@ -55,12 +57,12 @@ print(b.filter(solver='emcee_solver', context='solver'))
 print(b.get_parameter(qualifier='continue_from', solver='emcee_solver'))
 
 
-# By setting this to the existing solution, we will know longer have options for `nwalkers`, `init_from`, or `init_from_combine`.  Instead, the new run will use the same number of walkers as the previous run (to change the number of walkers, [resample emcee from a previous run](./emcee_resampling.ipynb) instead) and will continue with the parameters exactly where the left-off in the latest iteration.
+# By setting this to the existing solution, we will no longer have options for `nwalkers`, `init_from`, or `init_from_combine`.  Instead, the new run will use the same number of walkers as the previous run (to change the number of walkers, [resample emcee from a previous run](./emcee_resampling.ipynb) instead) and will continue with the parameters exactly where they left-off in the latest iteration.
 
 # In[7]:
 
 
-b.set_value('continue_from', 'emcee_sol')
+b.set_value(qualifier='continue_from', value='emcee_sol')
 
 
 # In[8]:
@@ -74,7 +76,7 @@ print(b.filter(solver='emcee_solver', context='solver'))
 # In[9]:
 
 
-b.set_value('niters', solver='emcee_solver', context='solver', value=50)
+b.set_value(qualifier='niters', solver='emcee_solver', context='solver', value=50)
 
 
 # ## run_solver
@@ -114,3 +116,4 @@ _ = b.plot(solution='emcee_sol_contd', style='lnprobability', burnin=0, thin=1, 
 # See the following for even more advanced use cases of emcee.
 # 
 # * [Advanced: resampling emcee from a previous run](./emcee_resample.ipynb)
+# * [Advanced: convert posterior distributions from EMCEE](./emcee_distributions_convert.ipynb)
