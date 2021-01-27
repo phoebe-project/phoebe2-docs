@@ -16,6 +16,7 @@ For more specific use-cases, see the [example scripts](./examples.md).
 2. [Constraints](tutorials/constraints.ipynb)
     * [Advanced: Constraints and Changing Hierarchices](tutorials/constraints_hierarchies.ipynb)
     * [Advanced: Built-In Constraints](tutorials/constraints_builtin.ipynb)
+    * [Advanced: Custom Constraints](tutorials/constraints_custom.ipynb)
 3. [Datasets](tutorials/datasets.ipynb)
     * [Advanced: Datasets (passband options, dealing with phases, removing datasets)](tutorials/datasets_advanced.ipynb)
 4. [Features](tutorials/features.ipynb)
