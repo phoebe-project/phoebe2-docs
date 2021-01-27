@@ -9,7 +9,7 @@ def logspace(start, stop, num, endpoint=True, base=10.0, unit=None)
 
 
 
-This is an included dependency from [nparray 1.1.0](https://nparray.readthedocs.io/en/1.1.0/).
+This is an included dependency from [nparray 1.2.0](https://nparray.readthedocs.io/en/1.2.0/).
 
 ===============================================================
 

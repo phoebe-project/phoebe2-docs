@@ -24,4 +24,5 @@
 * [interpolate_ldcoeffs](phoebe.atmospheres.passbands.Passband.interpolate_ldcoeffs.md)
 * [ldint](phoebe.atmospheres.passbands.Passband.ldint.md)
 * [load](phoebe.atmospheres.passbands.Passband.load.md)
+* [on_updated_ptf](phoebe.atmospheres.passbands.Passband.on_updated_ptf.md)
 * [save](phoebe.atmospheres.passbands.Passband.save.md)

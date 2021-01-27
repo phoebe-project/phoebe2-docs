@@ -87,9 +87,9 @@ Arguments
 * `nwalkers` (int, optional, default=16): only appicable if `continue_from`
     is 'None'.  Number of walkers.
 * `niters` (int, optional, default=100): Number of iterations.
-* `burnin_factor` (float, optional, default=2): factor of max(autocorr_time)
+* `burnin_factor` (float, optional, default=2): factor of max(autocorr_times)
     to apply for burnin (burnin not applied until adopting the solution)
-* `thin_factor` (float, optional, default=0.5): factor of min(autocorr_time)
+* `thin_factor` (float, optional, default=0.5): factor of min(autocorr_times)
     to apply for thinning (thinning not applied until adopting the solution)
 * `progress_every_niters` (int, optional, default=0): Save the progress of
     the solution every n iterations.  The solution can only be recovered

@@ -71,9 +71,21 @@ system.  The following are automatically included for a
 * [phoebe.parameters.constraint.fillout_factor](phoebe.parameters.constraint.fillout_factor.md) (contact only)
 * [phoebe.parameters.constraint.requiv_to_pot](phoebe.parameters.constraint.requiv_to_pot.md) (contact only)
 
+To add a custom constraint, pass the left-hand side (as a [phoebe.parameters.FloatParameter](phoebe.parameters.FloatParameter.md))
+and the right-hand side (as a [phoebe.parameters.ConstraintParameter](phoebe.parameters.ConstraintParameter.md)).
+For example:
+
+```
+lhs = b.get_parameter(qualifier='teff', component='secondary')
+rhs = 0.6 * b.get_parameter(qualifier='teff', component='primary')
+b.add_constraint(lhs, rhs)
+```
+
 Arguments
 ------------
 * `*args`: positional arguments can be any one of the following:
+    * lhs (left-hand side parameter) and rhs (right-hand side parameter or
+        ConstraintParameter) of a custom constraint.
     * valid string representation of a constraint
     * callable function (possibly in [phoebe.parameters.constraint](phoebe.parameters.constraint.md))
         followed by arguments that return a valid string representation

@@ -9,7 +9,7 @@ def linspace(start, stop, num, endpoint=True, unit=None)
 
 
 
-This is an included dependency from [nparray 1.1.0](https://nparray.readthedocs.io/en/1.1.0/).
+This is an included dependency from [nparray 1.2.0](https://nparray.readthedocs.io/en/1.2.0/).
 
 ===============================================================
 
