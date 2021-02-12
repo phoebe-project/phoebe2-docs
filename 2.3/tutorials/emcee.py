@@ -84,7 +84,7 @@ b.add_compute('ellc', compute='fastcompute')
 b.set_value_all('ld_mode', 'lookup')
 
 
-# We'll set the initial model to be *very close* to the correct values, but not exact.  In practice, we would instead have to use a combination of manual tweaking, [LC estimators](./LC_estimators.ipynb), and [RV_estimators](./RV_estimators.ipynb), and [optimizers](./nelder_mead.ipynb) to get essentially our final solution *before* using a sampler to probe the local parameter space and estimate parameter uncertainties (emcee can "burnin" to the solution, but this is inefficient and can get stuck from finding the actual solution).
+# We'll set the initial model to be *very close* to the correct values, but not exact.  In practice, we would instead have to use a combination of manual tweaking, [LC estimators](./LC_estimators.ipynb), [RV_estimators](./RV_estimators.ipynb), and [optimizers](./nelder_mead.ipynb) to essentially get our final solution *before* using a sampler to probe the local parameter space and estimate parameter uncertainties (emcee can "burnin" to the solution, but this is inefficient and can get stuck from finding the actual solution).
 
 # In[5]:
 
@@ -151,11 +151,11 @@ b.set_value('compute', solver='emcee_solver', value='fastcompute')
 # 
 # Instead of the `fit_parameters` list that was used for [optimizers](./nelder_mead.ipynb), emcee requires initializing distributions.  Each of our `nwalkers` walkers will then draw from this distribution set to determine the starting position in parameter space.
 # 
-# For this case, we'll sample over just a few parameters (the ones that we offset somewhat from the known true solution).  In practice, you want to sample over as many of the most-sensitive parameters as possible to account for any correlations between the parameters... but each additional parameter adds a dimension to the parameter space that needs to be sampled and so increases the computational cost.
+# For this case, we'll sample over just a few parameters (the ones that we offset somewhat from the known true solution).  In practice, we would want to sample over as many of the most-sensitive parameters as possible to account for any correlations between the parameters... but each additional parameter adds a dimension to the parameter space that needs to be sampled and so increases the computational cost.
 # 
-# If using `pblum_mode='dataset-scaled'` while optimizing, it is generally a good idea to disable this (set to 'component-coupled' or 'dataset-coupled' and sample over `pblum` to account for any correlations between the luminosities and your other sampled parameters.  For more details, see the [pblum tutorial](./pblum.ipynb).
+# If using `pblum_mode='dataset-scaled'` while optimizing, it is generally a good idea to disable this (by setting to 'component-coupled' or 'dataset-coupled' and sample over `pblum` to account for any correlations between the luminosities and your other sampled parameters).  For more details, see the [pblum tutorial](./pblum.ipynb).
 # 
-# If your observational uncertainties are not reliable, you may also want to sample over `sigmas_lnf` (the [emcee fitting a line tutorial](https://emcee.readthedocs.io/en/stable/tutorials/line/) has a nice overview on the mathematics, and the [inverse paper](http://phoebe-project.org/publications/2020Conroy+) describes the implementation within PHOEBE).
+# If our observational uncertainties are not reliable, we may also want to sample over `sigmas_lnf` (the [emcee fitting a line tutorial](https://emcee.readthedocs.io/en/stable/tutorials/line/) has a nice overview on the mathematics, and the [inverse paper](http://phoebe-project.org/publications/2020Conroy+) describes the implementation within PHOEBE).
 # 
 # See the [distributions tutorial](./distributions.ipynb) for more details on adding distributions.
 
@@ -165,7 +165,7 @@ b.set_value('compute', solver='emcee_solver', value='fastcompute')
 b.add_distribution({'sma@binary': phoebe.gaussian_around(0.1),
                     'incl@binary': phoebe.gaussian_around(5),
                     't0_supconj': phoebe.gaussian_around(0.001),
-                    'requiv@primary': phoebe.gaussian_around(0.2),
+                    'requiv@primary': phoebe.gaussian_around(0.4),
                     'pblum@primary': phoebe.gaussian_around(0.2),
                     'sigmas_lnf@lc01': phoebe.uniform(-1e9, -1e4),
                    }, distribution='ball_around_guess')
@@ -196,7 +196,7 @@ _ = b.plot(dataset='lc01', x='phases', y='residuals',
            model='init_from_model', show=True)
 
 
-# Creating distributions alone does *nothing*.  In order to use this distribution set as our initializing distribution within emcee, we need to set `init_from` in the solver options.
+# Creating distributions alone does *nothing*.  In order to use this distribution-set as our initializing distribution within emcee, we need to set `init_from` in the solver options.
 
 # In[16]:
 
@@ -208,15 +208,38 @@ b.set_value('init_from', 'ball_around_guess')
 # 
 # Optionally, you can also set the priors to be used within MCMC.  Generally, you only want to include priors if you know something in advance (perhaps a reliable constraint on asini from the literature) that is not included in your observations.  But priors can also be used to prevent the walkers from wandering into a region of the parameter space (you should however disclose the priors you use in the publication of any results).
 # 
-# To add priors, you would do the same as above by creating a distribution set and then setting the `priors` parameter in the emcee solver options.
+# To add priors, you would do the same as above by creating a distribution set and then setting the `priors` parameter in the emcee solver options.  Here we'll just create a simple prior on asini, as if we had a reliable estimate from an external source.... and we'll cheat a bit for the sake of the example and look at how our initializing distribution (in inclination and sma) propagate to asini.
+
+# In[17]:
+
+
+_ = b.plot_distribution_collection(distribution='ball_around_guess', parameters=['asini@binary'])
+
+
+# In[18]:
+
+
+b.add_distribution({'asini@binary': phoebe.gaussian(6.8, 0.2)},
+                   distribution='priors_from_external_source')
+
+
+# Again, we must now tell the emcee solver options to apply this new distribution-set as the priors.
+
+# In[19]:
+
+
+b.set_value('priors', 'priors_from_external_source')
+
 
 # ### nwalkers, niters
 # 
-# We also need to set options for the number of walkers (`nwalkers`) and number of iterations (`niters`).  You must set `nwalkers` to at least double the number of parameters you've defined in the initializing distribution (`2*6=12` in this case).  Since running emcee will be done in parallel (using either multiprocessing or mpi) within each iteration, it makes sense to also set this as a multiple of the number of processors available.
+# We also need to set options for the number of walkers (`nwalkers`) and number of iterations (`niters`).  
 # 
-# If using MPI, parallelization will occur per walker (with run_compute serialized) if `nwalkers <= nprocs`, otherwise emcee will be serialized and `run_compute`.
+# We must set `nwalkers` to at least double the number of parameters we've defined in the initializing distribution (`2*6=12` in this case).  Since running emcee will be done in parallel (using either multiprocessing or mpi) within each iteration, it makes sense to also set this as a multiple of the number of processors available.
+# 
+# If using MPI, parallelization will occur per walker (with run_compute serialized) if `nwalkers <= nprocs`, otherwise emcee will be serialized and `run_compute` (see [Advanced: Running PHOEBE in MPI](./mpi.ipynb)).
 
-# In[17]:
+# In[20]:
 
 
 b.set_value('nwalkers', solver='emcee_solver', value=12)
@@ -226,7 +249,7 @@ b.set_value('nwalkers', solver='emcee_solver', value=12)
 # 
 # For this example, we'll set `niters` to be quite small so that it can complete with a notebook (and ignore whether it is actually fully converged or not).
 
-# In[18]:
+# In[21]:
 
 
 b.set_value('niters', solver='emcee_solver', value=250)
@@ -238,27 +261,27 @@ b.set_value('niters', solver='emcee_solver', value=250)
 # 
 # In this case, we want to sample **only** the LCs, so we'll disable the RVs in the compute options that we're using.
 
-# In[19]:
+# In[22]:
 
 
 print(b.filter(qualifier='enabled', compute='fastcompute'))
 
 
-# In[20]:
+# In[23]:
 
 
 b.disable_dataset('rv01', compute='fastcompute')
 
 
-# In[21]:
+# In[24]:
 
 
 print(b.filter(qualifier='enabled', compute='fastcompute'))
 
 
-# We're only running with a small number of walkers and iterations, and with an efficient backend.  In practice, running emcee can take a significant amount of computing resources and time, and therefore you'll likely want to run on a high-performance cluster (HPC).  You could of course run your entire script there, but working interactively on these machines is not always convenient.  Instead, you may want to *prepare* your emcee run locally, call [b.export_solver](../api/phoebe.frontend.bundle.Bundle.export_solver.md) and then [b.import_solution](../api/phoebe.frontend.bundle.Bundle.import_solution.md) on the resulting file.  For more details and discussion, see [Advanced: Running Solvers on an External Machine](./export_solver.ipynb).
+# We're only running with a small number of walkers and iterations, and with an efficient backend.  In practice, running emcee can take a significant amount of computing resources and time, and therefore we'll likely want to run on a high-performance cluster (HPC).  You could of course run your entire script there, but working interactively on these machines is not always convenient.  Instead, you may want to *prepare* your emcee run locally, call [b.export_solver](../api/phoebe.frontend.bundle.Bundle.export_solver.md) and then [b.import_solution](../api/phoebe.frontend.bundle.Bundle.import_solution.md) on the resulting file.  For more details and discussion, see [Advanced: Running Solvers on an External Machine](./export_solver.ipynb).
 
-# In[22]:
+# In[25]:
 
 
 b.run_solver('emcee_solver', solution='emcee_sol')
@@ -266,9 +289,9 @@ b.run_solver('emcee_solver', solution='emcee_sol')
 
 # ## Returned Solution
 # 
-# Once `run_solver` is complete (or after calling `import_solution`) a number of new parameters have been added.  Let's now look at some of these new parameters.
+# Once `run_solver` is complete (or after calling `import_solution`), a number of new parameters have been added to the bundle in the solution context:
 
-# In[24]:
+# In[26]:
 
 
 print(b.filter(solution='emcee_sol').twigs)
@@ -278,33 +301,33 @@ print(b.filter(solution='emcee_sol').twigs)
 # 
 # As was the case in the [Nelder-Mead optimizer](./nelder_mead.ipynb), the emcee solution contains an `adopt_parameters` parameter which dictates if a subset of the sampled parameters should be adopted.  By default, this is set to all of the sampled parameters.
 
-# In[25]:
+# In[27]:
 
 
 print(b.get_parameter('adopt_parameters', solution='emcee_sol'))
 
 
-# Changing this parameter (or passing as a kwarg to temporarily override) to a subset would affect the plotting, propagating, and adopt_solution that is discussed below.
+# Changing this parameter (or passing as a kwarg to any method to temporarily override) to a subset of the available parameters would affect the plotting, propagating, and adopt_solution that is discussed below.
 
 # ## burnin, thin, lnprob_cutoff
 # 
-# PHOEBE attempts to estimate the value that should be used for the `burnin` (number of iterations at the start of the MCMC run to be discarded), `thin` (only take every `thin` iterations after burnin has been discarded), and `lnprob_cutoff` (discard all samples with a log-probability *worse* than a prescribed value - useful for "cropping" out stuck branches and [resampling](./emcee_resampling.ipynb)).
+# PHOEBE attempts to estimate the value that should be used for the `burnin` (the number of iterations at the start of the MCMC run to be discarded), `thin` (which only takes every `thin` iterations after burnin has been discarded), and `lnprob_cutoff` (which discards all samples with a log-probability *worse* than a prescribed value - useful for "cropping" out stuck branches and [resampling](./emcee_resampling.ipynb)).
 # 
-# By default, these are estimated based on the `burnin_factor` and `thin_factor` in the solver options.
+# By default, these are estimated based on the `burnin_factor` and `thin_factor` in the solver options along with the returned `autocorr_times`.
 
-# In[26]:
+# In[28]:
 
 
 print(b.get_parameter('burnin_factor', solver='emcee_solver'))
 
 
-# In[27]:
+# In[29]:
 
 
 print(b.get_parameter(qualifier='thin_factor', solver='emcee_solver'))
 
 
-# In[28]:
+# In[30]:
 
 
 print(b.filter(qualifier=['burnin', 'thin', 'lnprob_cutoff', 'autocorr_times']))
@@ -314,13 +337,13 @@ print(b.filter(qualifier=['burnin', 'thin', 'lnprob_cutoff', 'autocorr_times']))
 
 # ### distributions_convert
 # 
-# The `distributions_convert` parameter dictates whether the distributions should internally be stored as the full underlying parameter samples (most *fair* representation of the posterior distributions, but also expensive to store) or on converted to another distribution type.
+# The `distributions_convert` parameter dictates whether the distributions should internally be stored as the full underlying parameter samples (most *fair* representation of the posterior distributions, but also expensive to store) or should be converted to another distribution type.
 # 
 # Converting to a multivariate gaussian ("mvgaussian"), for example, results in a very lightweight distribution object that can then easily be used for a future initializing or prior distribution.  However, it is important to manually check that the original distribution is well-represented by a multivariate gaussian first. **WITH GREAT POWER COMES GREAT RESPONSIBILITY!!**
 # 
 # Examples of this in action can be seen in [Advanced: convert posterior distributions from EMCEE](./emcee_distributions_convert.ipynb).
 
-# In[29]:
+# In[31]:
 
 
 print(b.get_parameter('distributions_convert', solution='emcee_sol'))
@@ -339,34 +362,43 @@ print(b.get_parameter('distributions_convert', solution='emcee_sol'))
 # 
 # Note that for each of these, the values for `adopt_parameters`, `burnin`, `thin`, and `lnprob_cutoff` are taken from the parameters in the solution if not overridden as a keyword argument.
 
-# It is usually a good idea to confirm that the values for `burnin` and `thin` are appropriate by plotting the lnprobability vs iteration.
+# It is usually a good idea to confirm that the values for `burnin` and `thin` are appropriate by plotting the lnprobability vs iteration.  If we plot with `style='lnprobability'`, we'll see the progression of the lnprobability with the parameter-values of `burnin`, `thin`, and `lnprob_cutoff`.
 
-# In[30]:
+# In[32]:
 
 
 _ = b.plot(solution='emcee_sol', style='lnprobability', show=True)
 
 
-# In[31]:
+# By passing `burnin=0, thin=1` (and `lnprob_cutoff=-np.inf` if it had since been changed to something else), we can view the entire chain and determine if these automated values are appropriate, or choose which values to set manually.
+
+# In[33]:
 
 
 _ = b.plot(solution='emcee_sol', style='lnprobability', burnin=0, thin=1, show=True)
 
 
-# In[32]:
-
-
-_ = b.plot(solution='emcee_sol', style='lnprobability', burnin=100, thin=1, show=True)
-
-
-# In[33]:
-
-
-b.set_value('burnin', 50)
-b.set_value('thin', 1)
-
+# Here it seems that a burnin of 100 iterations with no thinning results in a nice chain.  Note that here you would normally want to check for convergence and make sure that you have enough samples to proceed to creating posterior distributions.  In this example, we only ran for a small number of iterations to keep the run-time low.
 
 # In[34]:
+
+
+_ = b.plot(solution='emcee_sol', style='lnprobability', 
+           burnin=100, thin=1, lnprob_cutoff=3600, 
+           show=True)
+
+
+# We can now fix these values so that they will become the new defaults whenever calling a method that acts on the chains.
+
+# In[35]:
+
+
+b.set_value('burnin', 100)
+b.set_value('thin', 1)
+b.set_value('lnprob_cutoff', 3600)
+
+
+# In[36]:
 
 
 _ = b.plot(solution='emcee_sol', style='corner', show=True)
@@ -374,13 +406,17 @@ _ = b.plot(solution='emcee_sol', style='corner', show=True)
 
 # To change the latex representation of these parameter labels, see [Advanced: latex representation](./latex_repr.ipynb)
 
-# In[35]:
+# The `style='failed'` option shows the same corner plot, but also the location in the parameter space where samples failed and we rejected (along with a legend showing the reason).  This is a very helpful diagnostic plot to understand why posteriors may be "pushed against a wall" or to make sure that the choice of atmospheres are appropriate across the entire sampled parameter space.
+
+# In[37]:
 
 
 _ = b.plot(solution='emcee_sol', style='failed', show=True)
 
 
-# In[36]:
+# `style='trace'` shows the history of each sampled parameter value for all of the walkers.
+
+# In[38]:
 
 
 _ = b.plot(solution='emcee_sol', style='trace', show=True)
@@ -392,14 +428,14 @@ _ = b.plot(solution='emcee_sol', style='trace', show=True)
 # 
 # This is again important - we want posteriors that are representative of the spread (and uncertainties) in our observations.  **NOTE**: for the sake of this tutorial we ran an extremely limited number of iterations and did not check for convergence and therefore our posteriors are likely unreliable.
 
-# In[37]:
+# In[39]:
 
 
 b.run_compute(compute='fastcompute', sample_from='emcee_sol', 
               sample_num=20, model='emcee_sol_model')
 
 
-# In[38]:
+# In[40]:
 
 
 _ = b.plot(dataset='lc01', x='phases', 
@@ -407,7 +443,7 @@ _ = b.plot(dataset='lc01', x='phases',
            model='emcee_sol_model', show=True)
 
 
-# In[39]:
+# In[41]:
 
 
 _ = b.plot(dataset='lc01', x='phases', y='residuals',
@@ -419,29 +455,29 @@ _ = b.plot(dataset='lc01', x='phases', y='residuals',
 # 
 # When calling [adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution.md), we can decide whether we want to adopt the posterior distributions (given `burnin`, `thin`, `lnprob_cutoff`, and `distributions_convert`) as a distribution and/or the median values of each parameter as their face-values.  By default, both will be adopted, but this behavior can be changed by changing the values of the `adopt_values`/`adopt_distributions` parameters in the solution or overriding as keyword arguments to [adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution.md).
 # 
-# If `adopt_distributions` is True, then you can also optionally pass the `distribution` label to `adopt_solution`.
+# If `adopt_distributions` is True, then you can also optionally pass the `distribution` label to `adopt_solution` (otherwise the label will be created automatically).
 
-# In[40]:
+# In[42]:
 
 
 print(b.get_parameter('adopt_values', solution='emcee_sol'))
 
 
-# In[41]:
+# In[43]:
 
 
 print(b.get_parameter('adopt_distributions', solution='emcee_sol'))
 
 
-# As always, you can always pass `trial_run=True` to `adopt_solution` to see what *would* happen.
+# As always, you can always pass `trial_run=True` to `adopt_solution` to see what *would* happen, before actually adopting.
 
-# In[42]:
+# In[44]:
 
 
 print(b.adopt_solution(solution='emcee_sol', trial_run=True))
 
 
-# In[43]:
+# In[45]:
 
 
 b.adopt_solution(solution='emcee_sol', distribution='emcee_posteriors')
@@ -455,13 +491,13 @@ b.adopt_solution(solution='emcee_sol', distribution='emcee_posteriors')
 # * use as priors in any optimizer or sampler
 # * estimate n-sigma uncertainties
 
-# In[44]:
+# In[46]:
 
 
 print(b.filter(distribution='emcee_posteriors').twigs)
 
 
-# In[45]:
+# In[47]:
 
 
 _ = b.plot_distribution_collection(distribution='emcee_posteriors', show=True)
@@ -469,7 +505,7 @@ _ = b.plot_distribution_collection(distribution='emcee_posteriors', show=True)
 
 # To estimate 1-D n-sigma uncertainties from any distribution collection (in this case our posteriors), call [b.uncertainties_from_distribution_collection](../api/phoebe.frontend.bundle.Bundle.uncertainties_from_distribution_collection.md).
 
-# In[46]:
+# In[48]:
 
 
 b.uncertainties_from_distribution_collection(distribution='emcee_posteriors', sigma=3, tex=True)
@@ -479,7 +515,7 @@ b.uncertainties_from_distribution_collection(distribution='emcee_posteriors', si
 # 
 # For an ascii-friendly representation of the lower- middle- and upper- bounds of these uncertainties, use `tex=False`
 
-# In[47]:
+# In[49]:
 
 
 b.uncertainties_from_distribution_collection(distribution='emcee_posteriors', sigma=3, tex=False)
@@ -493,7 +529,7 @@ b.uncertainties_from_distribution_collection(distribution='emcee_posteriors', si
 # * [Advanced: resampling emcee from a previous run](./emcee_resample.ipynb)
 # * [Advanced: convert posterior distributions from EMCEE](./emcee_distributions_convert.ipynb)
 
-# In[48]:
+# In[50]:
 
 
 b.save('emcee_advanced_tutorials.bundle')

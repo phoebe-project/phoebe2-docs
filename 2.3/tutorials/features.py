@@ -67,7 +67,7 @@ b.get_feature('spot01')
 # Next
 # ----------
 # 
-# Next up: let's learn how to [compute observables](compute.ipynb) and create our first synthetic model.
+# That's it for the forward model!  Next we'll get started discussing the inverse problem by introducing [distributions](./distributions.ipynb).
 # 
 # Or see some of these advanced topics:
 # 
