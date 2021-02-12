@@ -169,7 +169,7 @@ afig, mplfig = b.plot(dataset='lc01', x='phases', z=0, show=True)
 # Next
 # ----------
 # 
-# That's it for the forward model!  Next we'll get started discussing the inverse problem by introducing [distributions](./distributions.ipynb).
+# Next up: let's learn how about [features](features.ipynb) (including spots, gaussian processes, etc).
 # 
 # Or look at any of these advanced plotting topics:
 # * [Advanced: Plotting Options](plotting_advanced.ipynb)

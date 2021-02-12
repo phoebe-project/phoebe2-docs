@@ -216,7 +216,7 @@ print(b.filter(qualifier='rvs', dataset='rv02', context='dataset'))
 # Next
 # ----------
 # 
-# Next up: let's learn how about [features](features.ipynb) (including spots, gaussian processes, etc).
+# Next up: let's learn how to [compute observables](compute.ipynb) and create our first synthetic model.
 # 
 # Or see some of these advanced topics:
 # 

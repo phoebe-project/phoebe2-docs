@@ -99,16 +99,18 @@ b.run_solver('emcee_solver', solution='emcee_sol_contd')
 print(b.filter(qualifier='niters', context='solution'))
 
 
-# In[12]:
+# In[15]:
 
 
-_ = b.plot(solution='emcee_sol', style='lnprobability', burnin=0, thin=1, show=True)
+_ = b.plot(solution='emcee_sol', style='lnprobability', 
+           burnin=0, thin=1, lnprob_cutoff=3600, show=True)
 
 
-# In[13]:
+# In[14]:
 
 
-_ = b.plot(solution='emcee_sol_contd', style='lnprobability', burnin=0, thin=1, show=True)
+_ = b.plot(solution='emcee_sol_contd', style='lnprobability', 
+           burnin=0, thin=1, lnprob_cutoff=3600, show=True)
 
 
 # ## See Also
