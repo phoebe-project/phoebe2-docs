@@ -40,3 +40,4 @@ Returns
 Raises
 --------
 * NotImplementedError: if the value of `solve_for` is not implemented.
+

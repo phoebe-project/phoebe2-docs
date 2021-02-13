@@ -67,7 +67,7 @@
 ### Distributions
 
 * [gaussian](api/phoebe.gaussian.md)
-* [guassian_around](api/phoebe.gaussian_around.md)
+* [gaussian_around](api/phoebe.gaussian_around.md)
 * [histogram_from_bins](api/phoebe.histogram_from_bins.md)
 * [histogram_from_data](api/phoebe.histogram_from_data.md)
 * [mvgaussian](api/phoebe.mvgaussian.md)
