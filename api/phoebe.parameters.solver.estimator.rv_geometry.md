@@ -46,7 +46,8 @@ Arguments
     dataset(s) to use to extract RV geometry.
 * `phase_bin` (bool, optional, default=True): Bin the input observations (
     see `phase_nbins`) if more than 2*phase_nbins.  NOTE: input observational
-    sigmas will be ignored during binning.
+    sigmas will be ignored during binning and replaced by per-bin standard
+    deviations if possible, or ignored entirely otherwise.
 * `phase_nbins` (int, optional, default=500): Number of bins to use during
     phase binning input observations
     (will only be applied if len(times) &gt; 2*`phase_nbins`).  Only applicable
