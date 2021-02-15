@@ -49,6 +49,8 @@ b.get_adjustable_parameters()
 # * [phoebe.uniform](../api/phoebe.uniform.md)
 # * [phoebe.uniform_around](../api/phoebe.uniform_around.md)
 # 
+# For an overview of the different available types as they apply in PHOEBE, see [Advanced: Distribution Types](distribution_types.ipynb).
+# 
 # Now let's attach a gaussian distribution on the temperature of the primary star.
 
 # In[4]:
@@ -206,6 +208,9 @@ _ = b.plot(show=True)
 # Next
 # ----------
 # 
-# To learn about how the parameter labels are created and how to override their representation, see [Advanced: Latex Representation](./latex_repr.ipynb).
-# 
 # Next up: let's learn about [solving the inverse problem](./solver.ipynb)
+# 
+# Or more about these advanced distributions topics:
+# * [Advanced: Distribution Types](./distribution_types.ipynb)
+# * [Advanced: Latex Representation](./latex_repr.ipynb)
+# 
