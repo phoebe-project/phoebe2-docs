@@ -31,6 +31,7 @@ For more specific use-cases, see the [example scripts](./examples.md).
     * [Advanced: Spots](tutorials/spots.ipynb)
     * [Example: Gaussian Processes](examples/minimal_GPs.ipynb)
 7. [Distributions](tutorials/distributions.ipynb)
+    * [Advanced: Distribution Types](tutorials/distribution_types.ipynb)
     * [Advanced: Latex Representations in Distribution Plots](tutorials/latex_repr.ipynb)
 8. [Solving the Inverse Problem](tutorials/solver.ipynb)
     * [Advanced: Solver Times](tutorials/solver_times.ipynb)
