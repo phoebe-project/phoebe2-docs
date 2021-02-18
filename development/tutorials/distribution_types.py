@@ -169,19 +169,33 @@ print(b.filter(context='distribution'))
 
 # Note that if we try to use any distribution-set with an "around" distribution as `priors` in a solver, a warning will be raised (as of PHOEBE 2.3.23).
 
+# Similar to [gaussian](../api/phoebe.gaussian.md) and [gaussian_around](../api/phoebe.gaussian_around.md), [uniform](../api/phoebe.uniform.md) takes a lower and upper bound, whereas [uniform_around](../api/uniform_around.md) only takes a *width*, with the central value adopted from the current face-value.
+
+# In[20]:
+
+
+help(phoebe.uniform)
+
+
+# In[21]:
+
+
+help(phoebe.uniform_around)
+
+
 # ## Multivariate distributions
 # 
 # Multivariate distributions allow for storing the covariance between the distributions of multiple parameters.  Although the creation functions are exposed at the top-level, these are most seen in PHOEBE after running an MCMC chain.  For more information on manipulating these multivariate posteriors, see [Advanced: Convert Posterior Distributions from EMCEE](./emcee_distributions_convert.ipynb).  
 # 
 # If, however, we had an MCMC chain or wanted to import a published covariance matrix, we could use [mvhistogram_from_data](../api/phoebe.mvhistogram_from_data.md) or [mvgaussian](../api/phoebe.mvgaussian.md), respectively.
 
-# In[20]:
+# In[22]:
 
 
 help(phoebe.mvhistogram_from_data)
 
 
-# In[21]:
+# In[23]:
 
 
 help(phoebe.mvgaussian)
@@ -191,14 +205,14 @@ help(phoebe.mvgaussian)
 # 
 # Here we will set labels, just to make it easier to track the dimensions of the distribution object.
 
-# In[22]:
+# In[24]:
 
 
 import numpy as np
 b = phoebe.default_binary()
 
 
-# In[23]:
+# In[25]:
 
 
 dist = phoebe.mvgaussian([6500, 6200, 0.9], 
@@ -209,7 +223,7 @@ dist = phoebe.mvgaussian([6500, 6200, 0.9],
                         labels=['T1', 'T2', 'q'])
 
 
-# In[24]:
+# In[26]:
 
 
 _ = dist.plot(show=True)
@@ -217,19 +231,19 @@ _ = dist.plot(show=True)
 
 # By calling [dist.slice](https://distl.readthedocs.io/en/latest/examples/multivariate_slice/), we get a distl object which retains the covariance matrix, but represents a single dimension, which can then be passed to PHOEBE.
 
-# In[25]:
+# In[27]:
 
 
 _ = dist.slice('T1').plot()
 
 
-# In[26]:
+# In[28]:
 
 
 dist.slice('T1')
 
 
-# In[27]:
+# In[29]:
 
 
 b.add_distribution({'teff@primary': dist.slice('T1'),
@@ -240,7 +254,7 @@ b.add_distribution({'teff@primary': dist.slice('T1'),
 
 # And we can see that the covariances (although stored three separate times) are maintained whenever sampling from the distributions within PHOEBE.
 
-# In[28]:
+# In[30]:
 
 
 _ = b.plot_distribution_collection('mydist', show=True)
