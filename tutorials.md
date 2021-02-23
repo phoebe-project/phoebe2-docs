@@ -45,7 +45,6 @@ For more specific use-cases, see the [example scripts](./examples.md).
     * [Advanced: Resampling EMCEE from a Previous Run](tutorials/emcee_resampling.ipynb)
     * [Advanced: Convert Posterior Distributions from EMCEE](tutorials/emcee_distributions_convert.ipynb)
     * [Advanced: Running Solvers on an External Machine](tutorials/export_solver.ipynb)
-    * [Advanced: Fitting Limb Darkening Coefficients](tutorials/fitting_ld_coeffs.ipynb)
 
 ## Migrating from PHOEBE 2.2 to PHOEBE 2.3
 
