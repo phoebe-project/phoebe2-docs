@@ -212,5 +212,6 @@ _ = b.plot(show=True)
 # 
 # Or more about these advanced distributions topics:
 # * [Advanced: Distribution Types](./distribution_types.ipynb)
+# * [Advanced: Distribution Propagation](./distribution_propagation.ipynb)
 # * [Advanced: Latex Representation](./latex_repr.ipynb)
 # 
