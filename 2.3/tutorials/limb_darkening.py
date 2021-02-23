@@ -181,14 +181,3 @@ print(b.filter(qualifier='ld*', dataset='lc01', component='primary'))
 
 print(b.get_parameter(qualifier='ld_coeffs', dataset='lc01', component='primary'))
 
-
-# Fitting Limb-Darkening
-# --------------------------------
-# 
-# See [Advanced: Fitting Limb Darkening Coefficients](./fitting_ld_coeffs.ipynb) for instructions on how to fit limb-darkening coefficients, if `ld_mode` is set to 'manual'.
-
-# In[ ]:
-
-
-
-
