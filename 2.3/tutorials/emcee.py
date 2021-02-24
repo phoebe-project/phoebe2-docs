@@ -2,6 +2,8 @@
 # coding: utf-8
 
 # # Advanced: Emcee Sampler
+# 
+# **NOTE**: if downloading or exporting this as a python script (not a notebook), you may need to rename it from `emcee.py` to avoid a circular import when phoebe imports the `emcee` package!
 
 # ## Setup
 # 
