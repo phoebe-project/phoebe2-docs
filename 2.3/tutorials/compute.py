@@ -67,7 +67,7 @@ print(b.filter(context='compute'))
 # In[6]:
 
 
-b.set_value('irrad_method', 'none')
+b.set_value(qualifier='irrad_method', value='none')
 
 
 # Adding Compute Options
@@ -180,21 +180,21 @@ print(b.models)
 # In[16]:
 
 
-b.set_value('incl@orbit', 90)
+b.set_value(qualifier='incl', kind='orbit', value=90)
 b.run_compute(compute='preview', model='run_with_incl_90') 
 
 
 # In[17]:
 
 
-b.set_value('incl@orbit', 85)
+b.set_value(qualifier='incl', kind='orbit', value=85)
 b.run_compute(compute='preview', model='run_with_incl_85')
 
 
 # In[18]:
 
 
-b.set_value('incl@orbit', 80)
+b.set_value(qualifier='incl', kind='orbit', value=80)
 b.run_compute(compute='preview', model='run_with_incl_80')
 
 

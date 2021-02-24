@@ -62,7 +62,7 @@ b.add_spot(component='secondary', feature='spot02')
 # In[5]:
 
 
-print(b['spot01'])
+print(b.filter(feature='spot01'))
 
 
 # In[6]:
@@ -117,7 +117,7 @@ afig, mplfig = b.filter(component='primary', time=0.75).plot(fc='teffs', show=Tr
 # In[13]:
 
 
-b.set_value('syncpar@primary', 1.5)
+b.set_value(qualifier='syncpar', component='primary', value=1.5)
 
 
 # In[14]:
@@ -131,7 +131,7 @@ b.run_compute(irrad_method='none')
 # In[15]:
 
 
-print("t0 = {}".format(b.get_value('t0', context='system')))
+print("t0 = {}".format(b.get_value(qualifier='t0', context='system')))
 
 
 # In[16]:

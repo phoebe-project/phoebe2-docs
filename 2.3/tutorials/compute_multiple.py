@@ -37,7 +37,10 @@ b = phoebe.default_binary()
 # In[3]:
 
 
-b.add_dataset(phoebe.dataset.orb, compute_times=np.linspace(0,10,10), dataset='orb01', component=['primary', 'secondary'])
+b.add_dataset(phoebe.dataset.orb, 
+              compute_times=np.linspace(0,10,10), 
+              dataset='orb01', 
+              component=['primary', 'secondary'])
 
 times, fluxes, sigmas = np.loadtxt('test.lc.in', unpack=True)
 
@@ -50,7 +53,7 @@ b.add_dataset(phoebe.dataset.lc, times=times, fluxes=fluxes, sigmas=sigmas, data
 # In[4]:
 
 
-b.set_value('irrad_method', 'none')
+b.set_value(qualifier='irrad_method', value='none')
 
 
 # In[5]:
@@ -78,15 +81,15 @@ b.add_compute('phoebe', compute='detailed', irrad_method='wilson')
 # In[7]:
 
 
-print(b['enabled@orb01'])
+print(b.filter(qualifier='enabled', dataset='orb01'))
 
 
 # In[8]:
 
 
-b.set_value_all('enabled@orb01@detailed', False)
-b.set_value_all('enabled@orb01@preview', True)
-print(b['enabled@orb01'])
+b.set_value_all(qualifier='enabled', dataset='orb01', compute='detailed', value=False)
+b.set_value_all(qualifier='enabled', dataset='orb01', compute='preview', value=True)
+print(b.filter(qualifier='enabled', dataset='orb01'))
 
 
 # We probably have the same problem with 'lc01', but just didn't get far enough to raise the error.  So let's fix that as well
@@ -94,15 +97,15 @@ print(b['enabled@orb01'])
 # In[9]:
 
 
-print(b['enabled@lc01'])
+print(b.filter(qualifier='enabled', dataset='lc01'))
 
 
 # In[10]:
 
 
-b.set_value_all('enabled@lc01@detailed', True)
-b.set_value_all('enabled@lc01@preview', False)
-print(b['enabled@lc01'])
+b.set_value_all(qualifier='enabled', dataset='lc01', compute='detailed', value=True)
+b.set_value_all(qualifier='enabled', dataset='lc01', compute='preview', value=False)
+print(b.filter(qualifier='enabled', dataset='lc01'))
 
 
 # So in this case, 'lc01' will be computed using the options in 'detailed' while 'orb01' will use the options in 'preview'.

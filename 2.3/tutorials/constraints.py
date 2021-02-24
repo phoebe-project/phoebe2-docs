@@ -49,7 +49,7 @@ b.filter(context='constraint')
 # In[4]:
 
 
-b['constraint']['primary']['mass']
+b.get_parameter(qualifier='mass', component='primary', context='constraint')
 
 
 # Here we see the equation used to derive the mass of the primary star
@@ -61,7 +61,7 @@ b['constraint']['primary']['mass']
 # In[5]:
 
 
-print(b.get_value('mass@primary@component'))
+print(b.get_value(qualifier='mass', component='primary', context='component'))
 
 
 # The parameter is aware that it's being constrained and has references to all the relevant linking parameters.
@@ -69,7 +69,7 @@ print(b.get_value('mass@primary@component'))
 # In[6]:
 
 
-print(b['mass@primary@component'])
+print(b.get_parameter(qualifier='mass', component='primary', context='component'))
 
 
 # If you change the hierarchy, built-in cross-object constraints (like mass
@@ -88,13 +88,16 @@ print(b['mass@primary@component'])
 # In[7]:
 
 
-print(b['mass@primary@component'].constrained_by)
+print(b.get_parameter(qualifier='mass', component='primary', context='component').constrained_by)
 
 
 # In[8]:
 
 
-print(b['value@mass@primary@component'], b['value@mass@secondary@component'], b['value@period@orbit@component'])
+print("mass@primary: {}, mass@secondary: {}, period: {}".format(
+        b.get_value(qualifier='mass', component='primary', context='component'),
+        b.get_value(qualifier='mass', component='secondary', context='component'),
+        b.get_value(qualifier='period', component='binary', context='component')))
 
 
 # In[9]:
@@ -106,35 +109,32 @@ b.flip_constraint('mass@primary', solve_for='period')
 # In[10]:
 
 
-b['mass@primary@component'] = 1.0
+b.set_value(qualifier='mass', component='primary', context='component', value=1.0)
 
 
 # In[11]:
 
 
-print(b['value@mass@primary@component'], b['value@mass@secondary@component'], b['value@period@orbit@component'])
+print("mass@primary: {}, mass@secondary: {}, period: {}".format(
+        b.get_value(qualifier='mass', component='primary', context='component'),
+        b.get_value(qualifier='mass', component='secondary', context='component'),
+        b.get_value(qualifier='period', component='binary', context='component')))
 
 
 # You'll see that when we set the primary mass, the secondary mass has also changed (because the masses are related through q) and the period has changed (based on resolving the Kepler's third law constraint).
 # 
-# Note that the tags for the constraint are based on those of the *constrained* parameter, so to switch the parameterization back, we'll have to use a slightly different twig.
+# Note that the tags for the constraint are based on those of the *constrained* parameter, so to switch the parameterization back, we'll have to use a different filter.
 
 # In[12]:
 
 
-print(b['constraint'])
+print(b.filter(context='constraint'))
 
 
 # In[13]:
 
 
-b['period@constraint@binary']
-
-
-# In[14]:
-
-
-b['period@constraint@binary'].meta
+b.get_parameter(qualifier='period', component='binary', context='constraint')
 
 
 # Notice that the qualifier tag has changed from 'mass' to 'period' and the 'component' tag has changed from 'primary' to 'binary' (since sma is in the binary).

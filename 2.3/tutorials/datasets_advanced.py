@@ -46,27 +46,26 @@ b = phoebe.default_binary()
 
 
 b.add_dataset('lc', 
-              times=[0,1], 
-              ld_func='logarithmic', 
+              times=[0,1],
               dataset='lc01', 
               overwrite=True)
 
 
-# In[4]:
+# In[6]:
 
 
-print(b['times@lc01'])
+print(b.get_parameter(qualifier='times', dataset='lc01'))
 
 
-# In[5]:
+# In[8]:
 
 
-print(b['ld_func@lc01'])
+print(b.filter(qualifier='ld_mode', dataset='lc01'))
 
 
 # As you might expect, if you want to pass different values to different components, simply provide them in a dictionary.
 
-# In[6]:
+# In[9]:
 
 
 b.add_dataset('lc', 
@@ -77,10 +76,10 @@ b.add_dataset('lc',
              overwrite=True)
 
 
-# In[7]:
+# In[10]:
 
 
-print(b['ld_func@lc01'])
+print(b.filter(qualifier='ld_func', dataset='lc01'))
 
 
 # Note here that we didn't explicitly override the defaults for '\_default', so they used the phoebe-wide defaults.  If you wanted to set a value for the ld_coeffs of any star added in the future, you would have to provide a value for '\_default' in the dictionary as well.
@@ -88,7 +87,7 @@ print(b['ld_func@lc01'])
 # In[8]:
 
 
-print(b.filter('ld_func@lc01', check_default=False))
+print(b.filter(qualifier'ld_func@lc01', check_default=False))
 
 
 # This syntax may seem a bit bulky - but alternatively you can add the dataset without providing values and then change the values individually using dictionary access or set_value.
