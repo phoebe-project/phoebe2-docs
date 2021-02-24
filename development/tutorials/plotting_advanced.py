@@ -74,13 +74,13 @@ b.add_dataset('lc', times=times, fluxes=fluxes, sigmas=sigmas, dataset='lc01')
 # In[7]:
 
 
-b.set_value('incl@orbit', 90)
+b.set_value(qualifier='incl', kind='orbit', value=90)
 b.run_compute(model='run_with_incl_90') 
 
-b.set_value('incl@orbit', 85)
+b.set_value(qualifier='incl', kind='orbit', value=85)
 b.run_compute(model='run_with_incl_85')
 
-b.set_value('incl@orbit', 80)
+b.set_value(qualifier='incl', kind='orbit', value=80)
 b.run_compute(model='run_with_incl_80')
 
 

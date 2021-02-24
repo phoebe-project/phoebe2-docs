@@ -50,8 +50,8 @@ b.set_value('q', 0.8)
 # In[4]:
 
 
-print("M1: {}, M2: {}".format(b.get_value('mass@primary@component'),
-                              b.get_value('mass@secondary@component')))
+print("M1: {}, M2: {}".format(b.get_value(qualifier='mass', component='primary', context='component'),
+                              b.get_value(qualifier='mass', component='secondary', context='component')))
 
 
 # Now let's flip the hierarchy so that the star with the 'primary' component tag is actually the secondary component in the system (and so takes the role of numerator in q = M2/M1).
@@ -85,8 +85,8 @@ print(b.get_value('q'))
 # In[9]:
 
 
-print("M1: {}, M2: {}".format(b.get_value('mass@primary@component'),
-                              b.get_value('mass@secondary@component')))
+print("M1: {}, M2: {}".format(b.get_value(qualifier='mass', component='primary', context='component'),
+                              b.get_value(qualifier='mass', component='secondary', context='component')))
 
 
 # Even though under-the-hood the constraints are being rebuilt from scratch, they will remember if you have flipped them to solve for some other parameter.
@@ -96,10 +96,10 @@ print("M1: {}, M2: {}".format(b.get_value('mass@primary@component'),
 # In[10]:
 
 
-print("M1: {}, M2: {}, period: {}, q: {}".format(b.get_value('mass@primary@component'),
-                                                 b.get_value('mass@secondary@component'),
-                                                 b.get_value('period@binary@component'),
-                                                 b.get_value('q@binary@component')))
+print("M1: {}, M2: {}, period: {}, q: {}".format(b.get_value(qualifier='mass', component='primary', context='component'),
+                                                 b.get_value(qualifier='mass', component='secondary', context='component'),
+                                                 b.get_value(qualifier='period', component='binary', context='component'),
+                                                 b.get_value(qualifier='q', component='binary', context='component')))
 
 
 # In[11]:
@@ -111,29 +111,23 @@ b.flip_constraint('mass@secondary@constraint', 'period')
 # In[12]:
 
 
-print("M1: {}, M2: {}, period: {}, q: {}".format(b.get_value('mass@primary@component'),
-                                                 b.get_value('mass@secondary@component'),
-                                                 b.get_value('period@binary@component'),
-                                                 b.get_value('q@binary@component')))
+print("M1: {}, M2: {}, period: {}, q: {}".format(b.get_value(qualifier='mass', component='primary', context='component'),
+                                                 b.get_value(qualifier='mass', component='secondary', context='component'),
+                                                 b.get_value(qualifier='period', component='binary', context='component'),
+                                                 b.get_value(qualifier='q', component='binary', context='component')))
 
 
 # In[13]:
 
 
-b.set_value('mass@secondary@component', 1.0)
+b.set_value(qualifier='mass', component='secondary', context='component', value=1.0)
 
 
 # In[14]:
 
 
-print("M1: {}, M2: {}, period: {}, q: {}".format(b.get_value('mass@primary@component'),
-                                                 b.get_value('mass@secondary@component'),
-                                                 b.get_value('period@binary@component'),
-                                                 b.get_value('q@binary@component')))
-
-
-# In[ ]:
-
-
-
+print("M1: {}, M2: {}, period: {}, q: {}".format(b.get_value(qualifier='mass', component='primary', context='component'),
+                                                 b.get_value(qualifier='mass', component='secondary', context='component'),
+                                                 b.get_value(qualifier='period', component='binary', context='component'),
+                                                 b.get_value(qualifier='q', component='binary', context='component')))
 

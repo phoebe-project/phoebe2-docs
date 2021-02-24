@@ -37,12 +37,18 @@ b = phoebe.default_binary()
 
 # ### asini
 # 
-# This constraint handles computing the projected semi-major axis along the line of sight and can be automatically inverted to solve for either 'asini', 'sma', or 'incl'.
+# These constraint handles computing the projected semi-major axis (either for an orbit or a star) along the line of sight and can be automatically inverted to solve for either 'asini', 'sma', or 'incl'.
 
 # In[3]:
 
 
-b['asini@constraint']
+b.filter(qualifier='asini', context='constraint')
+
+
+# In[4]:
+
+
+b.get_parameter(qualifier='asini', component='binary', context='constraint')
 
 
 # ### esinw, ecosw
@@ -51,16 +57,16 @@ b['asini@constraint']
 # 
 # Both can be inverted to also automatically solve for 'ecc' or 'per0'.
 
-# In[4]:
-
-
-b['esinw@constraint']
-
-
 # In[5]:
 
 
-b['ecosw@constraint']
+b.get_parameter(qualifier='esinw', context='constraint')
+
+
+# In[6]:
+
+
+b.get_parameter(qualifier='ecosw', context='constraint')
 
 
 # ### t0
@@ -69,50 +75,50 @@ b['ecosw@constraint']
 # 
 # Currently, this constraint only supports inverting to be solved for 't0_supconj' (ie you cannot *automatically* invert this constraint to constraint phshift or per0).
 
-# In[6]:
+# In[7]:
 
 
-b['t0_perpass@constraint']
+b.get_parameter(qualifier='t0_perpass', context='constraint')
 
 
 # ### freq
 # 
 # This constraint handles the simple conversion to frequency from period - whether that be rotational or orbital - and does support inversion to solve for 'period'.
 
-# In[7]:
-
-
-b['freq@constraint']
-
-
 # In[8]:
 
 
-b['freq@binary@constraint']
+b.filter(qualifier='freq', context='constraint')
 
 
 # In[9]:
 
 
-b['freq@primary@constraint']
+b.get_parameter(qualifier='freq', component='binary', context='constraint')
+
+
+# In[10]:
+
+
+b.get_parameter(qualifier='freq', component='primary', context='constraint')
 
 
 # ### mass
 # 
 # This constraint handles solving for the mass of a component by obeying Kepler's third law within the parent orbit.
 # 
-# It can be inverted to solve for 'sma' or 'period' (in addition to 'mass'), but **not** 'q'.
-
-# In[10]:
-
-
-b['mass@constraint']
-
+# It can be inverted to solve for 'sma', 'q', or 'period' (in addition to 'mass').
 
 # In[11]:
 
 
-b['mass@primary@constraint']
+b.filter(qualifier='mass', context='constraint')
+
+
+# In[12]:
+
+
+b.get_parameter(qualifier='mass', component='primary', context='constraint')
 
 
 # ### component sma
@@ -121,16 +127,16 @@ b['mass@primary@constraint']
 # 
 # This currently can be inverted to solve for 'sma' of the parent orbit, but **not** 'q'.
 
-# In[12]:
-
-
-b['sma@constraint']
-
-
 # In[13]:
 
 
-b['sma@primary@constraint']
+b.filter(qualifier='sma', context='constraint')
+
+
+# In[14]:
+
+
+b.get_parameter(qualifier='sma', component='primary', context='constraint')
 
 
 # ### component asini
@@ -139,32 +145,34 @@ b['sma@primary@constraint']
 # 
 # This currently can be inverted to solve for 'sma' of the parent orbit, but **not** 'q' or 'incl'.
 
-# In[14]:
-
-
-b['asini@component']
-
-
 # In[15]:
 
 
-b['asini@primary@constraint']
+b.filter(qualifier='asini', context='constraint')
+
+
+# In[16]:
+
+
+b.get_parameter(qualifier='asini', component='primary', context='constraint')
 
 
 # ### requiv_max
 # 
 # This constraint handles solving for the maxium equivalent radius (for a detached system).
-
-# In[16]:
-
-
-b['requiv_max@constraint']
-
+# 
+# For a [semi-detached system](./requiv_crit_semidetached.ipynb), the radius itself is constrained to be exactly this value.
 
 # In[17]:
 
 
-b['requiv_max@primary@constraint']
+b.filter(qualifier='requiv_max', context='constraint')
+
+
+# In[18]:
+
+
+b.get_parameter(qualifier='requiv_max', component='primary', context='constraint')
 
 
 # ### rotation period
@@ -173,42 +181,48 @@ b['requiv_max@primary@constraint']
 # 
 # It can be inverted to solve for any of the three parameters 'period' (both rotational and orbital) and 'syncpar'.
 
-# In[18]:
-
-
-b['period@constraint']
-
-
 # In[19]:
 
 
-b['period@primary@constraint']
+b.filter(qualifier='period', context='constraint')
+
+
+# In[20]:
+
+
+b.get_parameter(qualifier='period', component='primary', context='constraint')
 
 
 # ### pitch/yaw (incl/long_an)
 # 
 # pitch constrains the relation between the orbital and rotational inclination whereas yaw constrains the relation between the orbital and rotational long_an.  When pitch **and** yaw are set to 0, the system is aligned.
 
-# In[20]:
-
-
-b['incl@constraint']
-
-
 # In[21]:
 
 
-b['incl@primary@constraint']
+b.filter(qualifier='incl', context='constraint')
 
 
 # In[22]:
 
 
-b['long_an@constraint']
+b.get_parameter(qualifier='incl', component='primary', context='constraint')
 
 
 # In[23]:
 
 
-b['long_an@primary@constraint']
+b.filter(qualifier='long_an', context='constraint')
+
+
+# In[24]:
+
+
+b.get_parameter(qualifier='long_an', component='primary', context='constraint')
+
+
+# In[ ]:
+
+
+
 

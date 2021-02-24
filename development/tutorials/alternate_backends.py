@@ -125,13 +125,13 @@ print(b.get_compute('phoebebackend'))
 # In[11]:
 
 
-b.set_value_all('ld_mode', 'manual')
+b.set_value_all(qualifier='ld_mode', value='manual')
 
 
 # In[12]:
 
 
-b.set_value_all('ld_func', 'logarithmic')
+b.set_value_all(qualifier='ld_func', value='logarithmic')
 
 
 # In[13]:
@@ -150,8 +150,8 @@ b.run_compute('legacybackend', model='legacyresults')
 # In[14]:
 
 
-b.set_value_all('enabled@lc01@phoebebackend', False)
-#b.set_value_all('enabled@orb01@legacybackend', False)  # don't need this since legacy NEVER computes orbits
+b.set_value_all(qualifier='enabled', dataset='lc01', compute='phoebebackend', value=False)
+#b.set_value_all(qualifier='enabled', dataset='orb01', compute='legacybackend', value=False)  # don't need this since legacy NEVER computes orbits
 print(b.filter(qualifier='enabled'))
 
 
@@ -166,17 +166,17 @@ b.run_compute(['phoebebackend', 'legacybackend'], model='mixedresults')
 # In[16]:
 
 
-print(b['mixedresults'].computes)
+print(b.filter(model='mixedresults').computes)
 
 
 # In[17]:
 
 
-b['mixedresults@phoebebackend'].datasets
+b.filter(model='mixedresults', compute='phoebebackend').datasets
 
 
 # In[18]:
 
 
-b['mixedresults@legacybackend'].datasets
+b.filter(model='mixedresults', compute='legacybackend').datasets
 
