@@ -59,6 +59,7 @@ The following set of advanced tutorials follow the same format as the tutorials 
 These all assume comfort with the tutorials listed above, but should not need to be read in any particular order.
 
 * [Advanced: Running PHOEBE in MPI](tutorials/mpi.ipynb)
+* [Advanced: Running PHOEBE with Multiprocessing (**NEW SETTINGS in 2.3.26**)](tutorials/multiprocessing.ipynb)
 * [Advanced: Optimizing Performance](tutorials/optimizing.ipynb)
 * [Advanced: Environment Variables](tutorials/envars.ipynb)
 * [Advanced: Adding Custom Passband Tables](tutorials/passbands.ipynb)
