@@ -16,7 +16,7 @@ For more specific use-cases, see the [example scripts](./examples.md).
 2. [Constraints](tutorials/constraints.ipynb)
     * [Advanced: Constraints and Changing Hierarchies](tutorials/constraints_hierarchies.ipynb)
     * [Advanced: Built-In Constraints](tutorials/constraints_builtin.ipynb)
-    * [Advanced: Custom Constraints](tutorials/constraints_custom.ipynb)
+    * [Advanced: Custom Constraints (**requires 2.3.30+**)](tutorials/constraints_custom.ipynb)
 3. [Datasets](tutorials/datasets.ipynb)
     * [Advanced: Datasets (passband options, dealing with phases, removing datasets)](tutorials/datasets_advanced.ipynb)
 4. [Computing Observables](tutorials/compute.ipynb)
@@ -45,7 +45,7 @@ For more specific use-cases, see the [example scripts](./examples.md).
     * [Advanced: Resampling EMCEE from a Previous Run](tutorials/emcee_resampling.ipynb)
     * [Advanced: Convert Posterior Distributions from EMCEE](tutorials/emcee_distributions_convert.ipynb)
     * [Advanced: Running Solvers on an External Machine](tutorials/export_solver.ipynb)
-    * [Advanced: Fitting Limb Darkening Coefficients](tutorials/fitting_ld_coeffs.ipynb)
+    * [Advanced: Fitting Limb Darkening Coefficients (**requires 2.3.30+**)](tutorials/fitting_ld_coeffs.ipynb)
 
 ## Migrating from PHOEBE 2.2 to PHOEBE 2.3
 
