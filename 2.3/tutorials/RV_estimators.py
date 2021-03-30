@@ -7,13 +7,13 @@
 # 
 # Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
-# In[ ]:
+# In[1]:
 
 
 #!pip install -I "phoebe>=2.3,<2.4"
 
 
-# In[1]:
+# In[2]:
 
 
 import phoebe
@@ -27,7 +27,7 @@ logger = phoebe.logger()
 
 # Let's first initialize a bundle and change some of the parameter values. We'll then export the computed models as "observables" to use with the rv_geometry estimator.
 
-# In[2]:
+# In[3]:
 
 
 b = phoebe.default_binary()
@@ -57,7 +57,7 @@ sigmas_rv = np.ones_like(times) * 2
 
 # To showcase the rv_estimator, we'll start with a fresh default bundle.
 
-# In[3]:
+# In[4]:
 
 
 b = phoebe.default_binary()
@@ -68,74 +68,74 @@ b.set_value('rvs', component='secondary', dataset='rv01', value = rvs2)
 b.set_value_all('sigmas', dataset='rv01', value = sigmas_rv)
 
 b.run_compute()
-b.plot(legend=True, show=True)
+_ = b.plot(legend=True, show=True)
 
 
 # ## rv_geometry
 
 # The [rv_geometry estimator](../api/phoebe.parameters.solver.estimator.rv_geometry.md) is meant to provide an efficient starting point for q, vgamma, asini, esinw and ecosw. Similar to the [light curve estimators](./LC_estimators.ipynb), it will by default bin the input data if the number of data points is larger than `phase_nbins` and will expose the analytical (in this case, Keplerian orbit) models that were fit to the data.First we add the solver options via [add_solver](../api/phoebe.frontend.bundle.Bundle.add_solver.md):
 
-# In[4]:
-
-
-b.add_solver('estimator.rv_geometry', solver='rvgeom')
-print(b['rvgeom'])
-
-
 # In[5]:
 
 
-b.run_solver('rvgeom', solution='rvgeom_solution')
-print(b['rvgeom_solution'])
+b.add_solver('estimator.rv_geometry', solver='rvgeom')
+print(b.filter(solver='rvgeom'))
 
-
-# The solution, as expected returns the fitted values and the analytic models we fit to get them, which can be turned off by setting `expose_model` to False. Let's inspect the fitted twigs and values before adopting the solution:
 
 # In[6]:
 
 
-print(b['value@fitted_twigs@rvgeom_solution'])
-print(b['value@fitted_values@rvgeom_solution'])
+b.run_solver('rvgeom', solution='rvgeom_solution')
+print(b.filter(solution='rvgeom_solution'))
+
+
+# The solution, as expected returns the fitted values and the analytic models we fit to get them, which can be turned off by setting `expose_model` to False. Let's inspect the fitted twigs and values before adopting the solution:
+
+# In[7]:
+
+
+print(b.get_value('fitted_twigs', solution='rvgeom_solution'))
+print(b.get_value('fitted_values', solution='rvgeom_solution'))
 
 
 # As we can see all values look okay, and we have *asini@binary* in the twigs, which means we'll need to flip the *asini* constraint to be able to set it with [adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution.md):
 
-# In[7]:
+# In[8]:
 
 
 b.flip_constraint('asini@binary', solve_for='sma@binary')
 b.adopt_solution('rvgeom_solution')
 
 b.run_compute()
-b.plot(x='phase', show=True)
+_ = b.plot(x='phases', show=True)
 
 
 # ## single-lined RVs
 
 # In some cases, only one RV is available, in which case not all parameters can be estimated with rv_geometry. Let's recreate the above example with only providing the primary RV and see how the solution differs.
 
-# In[8]:
+# In[9]:
 
 
 b = phoebe.default_binary()
 b.add_dataset('rv', component='primary', times=times, rvs = rvs1, sigmas=sigmas_rv)
 
 b.run_compute()
-b.plot(legend=True, show=True)
+_ = b.plot(legend=True, show=True)
 
 
-# In[9]:
+# In[10]:
 
 
 b.add_solver('estimator.rv_geometry', solver='rvgeom')
 b.run_solver('rvgeom', solution='rvgeom_solution')
 
 
-# In[10]:
+# In[11]:
 
 
-print(b['value@fitted_twigs@rvgeom_solution'])
-print(b['value@fitted_values@rvgeom_solution'])
+print(b.get_value('fitted_twigs', solution='rvgeom_solution'))
+print(b.get_value('fitted_values', solution='rvgeom_solution'))
 
 
 # If we compare the *fitted_twigs* from this solution with our two-RV solution, we'll notice two things:
@@ -145,14 +145,14 @@ print(b['value@fitted_values@rvgeom_solution'])
 
 # We still need to flip the *asini@primary* before adopting the solution, with [flip_constraint](../api/phoebe.fronend.bundle.Bundle.flip_constraint.md):
 
-# In[15]:
+# In[12]:
 
 
 b.flip_constraint('asini@primary', solve_for='sma@binary')
 b.adopt_solution('rvgeom_solution')
 
 b.run_compute()
-b.plot(x='phase', show=True)
+_ = b.plot(x='phases', show=True)
 
 
 # As can be expected, the resulting model RV is not as close to the data as in the case of two RVs because of the lack of information to properly analytically estimate some of the key parameters.
