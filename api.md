@@ -22,6 +22,8 @@
 * [multiprocessing_off](api/phoebe.multiprocessing_off.md)
 * [multiprocessing_get_nprocs](api/phoebe.multiprocessing_get_nprocs.md)
 * [multiprocessing_set_nprocs](api/phoebe.multiprocessing_set_nprocs.md)
+* [progressbars_on](api/phoebe.progressbars_on.md)
+* [progressbars_off](api/phoebe.progressbars_off.md)
 * [interactive_on](api/phoebe.interactive_on.md)
 * [interactive_off](api/phoebe.interactive_off.md)
 * [interactive_checks_on](api/phoebe.interactive_checks_on.md)
