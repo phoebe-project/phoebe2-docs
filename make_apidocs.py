@@ -142,7 +142,8 @@ if __name__ == '__main__':
                        'np', 'nparray', 'os', 'parameter_from_json', 'parse_json',
                        'random', 're', 'readline', 'requests', 'string', 'sympy',
                        'sys', 'tabcomplete', 'time', 'twighelpers', 'types', 'u',
-                       'json', 'ujson', 'webbrowser', 'OrderedDict', 'corner']
+                       'json', 'ujson', 'webbrowser', 'OrderedDict', 'corner',
+                       'dyplot', 'distl']
 
     skip_passbands = ['c', 'cfit', 'glob', 'h', 'integrate',
                       'interpolate', 'json', 'k_B', 'libphoebe', 'logger', 'logging',
