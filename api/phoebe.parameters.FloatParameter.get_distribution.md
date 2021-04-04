@@ -3,7 +3,7 @@
 
 ```py
 
-def get_distribution(self, distribution=None, follow_constraints=True, resolve_around_distributions=False, distribution_uniqueids=None)
+def get_distribution(self, distribution=None, follow_constraints=True, resolve_around_distributions=False, distribution_uniqueids=None, delta_if_none=False)
 
 ```
 
@@ -49,6 +49,9 @@ Arguments
     (from [phoebe.frontend.bundle.Bundle.get_distribution_collection](phoebe.frontend.bundle.Bundle.get_distribution_collection.md))
     is necessary to slice appropriately.  If `distribution` is not a
     DistributionCollection, `distribution_uniqueids` is ignored.
+* `delta_if_none` (bool, optional, default=False): whether to return
+    a delta distribution around the parameter face-value if no distribution
+    is found.
 
 Returns
 ----------

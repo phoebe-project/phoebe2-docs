@@ -58,6 +58,11 @@ The endpoint of the interval can optionally be excluded.
 .. versionchanged:: 1.16.0
 Non-scalar `start` and `stop` are now supported.
 
+.. versionchanged:: 1.20.0
+Values are rounded towards ``-inf`` instead of ``0`` when an
+integer ``dtype`` is specified. The old behavior can
+still be obtained with ``np.linspace(start, stop, num).astype(int)``
+
 Parameters
 ----------
 start : array_like
@@ -76,8 +81,10 @@ retstep : bool, optional
 If True, return (`samples`, `step`), where `step` is the spacing
 between samples.
 dtype : dtype, optional
-The type of the output array.  If `dtype` is not given, infer the data
-type from the other input arguments.
+The type of the output array.  If `dtype` is not given, the data type
+is inferred from `start` and `stop`. The inferred dtype will never be
+an integer; `float` is chosen even if the arguments would produce an
+array of integers.
 
 .. versionadded:: 1.9.0
 

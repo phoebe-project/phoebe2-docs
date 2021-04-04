@@ -62,6 +62,11 @@ Arguments
     with the full list being passed to the 2D contours.  So to plot
     1-, 2-, and 3-sigma uncertainties in the contours but quote 3-sigma
     uncertainties in the title and histograms, pass `[3,1,2]`.
+* `sample_size` (int, optional, default=None): number of samples to draw for
+    the underlying distribution.  Defaults to 1e5 for most cases, or 1e3
+    for expensive function calls.  If propagating through non-analytic
+    constraints, setting a lower `sample_size` will significantly speed up
+    plotting time.  Passed to distl as `size` argument
 * `show` (boolean, optional, default=False): whether to call show on the
     resulting figure object
 * `**kwargs`: all additional keyword arguments are passed directly to

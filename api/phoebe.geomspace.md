@@ -75,8 +75,10 @@ endpoint : boolean, optional
 If true, `stop` is the last sample. Otherwise, it is not included.
 Default is True.
 dtype : dtype
-The type of the output array.  If `dtype` is not given, infer the data
-type from the other input arguments.
+The type of the output array.  If `dtype` is not given, the data type
+is inferred from `start` and `stop`. The inferred dtype will never be
+an integer; `float` is chosen even if the arguments would produce an
+array of integers.
 axis : int, optional
 The axis in the result to store the samples.  Relevant only if start
 or stop are array-like.  By default (0), the samples will be along a

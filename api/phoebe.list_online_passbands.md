@@ -3,7 +3,7 @@
 
 ```py
 
-def list_online_passbands(refresh=False, full_dict=False, skip_keys=[])
+def list_online_passbands(refresh=False, full_dict=False, skip_keys=[], repeat_errors=True)
 
 ```
 
@@ -27,6 +27,10 @@ Arguments
     of names.
 * `skip_keys` (list, optional, default=[]): keys to exclude from the returned
     dictionary.  Only applicable if `full_dict` is True.
+* `repeat_errors` (bool, optional, default=True): whether to continue to show
+    errors if online passbands are unavailable.  (Internally this is passed
+    as False so that the error message does not spam the log, but defaults
+    to True so if calling manually the error message is shown).
 
 Returns
 --------

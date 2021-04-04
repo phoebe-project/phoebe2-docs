@@ -78,13 +78,15 @@ Number of samples to generate.  Default is 50.
 endpoint : boolean, optional
 If true, `stop` is the last sample. Otherwise, it is not included.
 Default is True.
-base : float, optional
+base : array_like, optional
 The base of the log space. The step size between the elements in
 ``ln(samples) / ln(base)`` (or ``log_base(samples)``) is uniform.
 Default is 10.0.
 dtype : dtype
-The type of the output array.  If `dtype` is not given, infer the data
-type from the other input arguments.
+The type of the output array.  If `dtype` is not given, the data type
+is inferred from `start` and `stop`. The inferred type will never be
+an integer; `float` is chosen even if the arguments would produce an
+array of integers.
 axis : int, optional
 The axis in the result to store the samples.  Relevant only if start
 or stop are array-like.  By default (0), the samples will be along a

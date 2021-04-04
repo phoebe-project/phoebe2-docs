@@ -4,5 +4,6 @@
 * [get_dynesty_object_from_solution](phoebe.helpers.get_dynesty_object_from_solution.md)
 * [get_emcee_object](phoebe.helpers.get_emcee_object.md)
 * [get_emcee_object_from_solution](phoebe.helpers.get_emcee_object_from_solution.md)
+* [get_unit_in_system](phoebe.helpers.get_unit_in_system.md)
 * [process_mcmc_chains](phoebe.helpers.process_mcmc_chains.md)
 * [process_mcmc_chains_from_solution](phoebe.helpers.process_mcmc_chains_from_solution.md)
