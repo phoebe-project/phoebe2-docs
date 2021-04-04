@@ -21,7 +21,6 @@
 * [compute](phoebe.parameters.compute.md)
 * [constraint](phoebe.parameters.constraint.md)
 * [dataset](phoebe.parameters.dataset.md)
-* [distl](phoebe.parameters.distl.md)
 * [feature](phoebe.parameters.feature.md)
 * [hierarchy](phoebe.parameters.hierarchy.md)
 * [phase_mask_inds](phoebe.parameters.phase_mask_inds.md)

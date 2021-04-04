@@ -16,6 +16,10 @@ distribution collection corresponds to 'priors', then this is effectively
 lnpriors, and if the distribution collection refers to 'posteriors'
 (or a solution), then this is effectively lnposteriors.
 
+This will attempt to compute the log-probability respecting covariances,
+but will fallback on dropping covariances if necessary, with a message
+raise in the error [phoebe.logger](phoebe.logger.md).
+
 Only parameters (or distribution parameters) included in the ParameterSet
 (after filtering with `**kwargs`) will be included in the summed
 log-probability.
@@ -41,10 +45,10 @@ Arguments
     Defaults to 'first' if `twig` and `**kwargs` point to distributions,
     otherwise will default to the value of the relevant parameter in the
     solver options.
-* `include_constrained` (bool, optional): whether to
-    include constrained parameters.  Defaults to False if `twig` and
-    `**kwargs` point to distributions, otherwise will default to the
-    value necessary for the solver backend.
+* `include_constrained` (bool, optional, default=True): whether to
+    include constrained parameters.  **PRIOR TO 2.3.33**: defaults to False
+    if `twig` and `**kwargs` point to distributions, otherwise will default
+    to the value of the relevant parameter in the solver options.
 * `to_univariates` (bool, optional): whether to convert any multivariate
     distributions to univariates before adding to the collection.  Defaults
     to False if `twig` and `**kwargs` point to distributions, otherwise
@@ -65,4 +69,3 @@ Arguments
 Returns
 -----------
 * (float) log-prior value
-

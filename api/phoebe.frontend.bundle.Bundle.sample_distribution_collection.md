@@ -3,7 +3,7 @@
 
 ```py
 
-def sample_distribution_collection(self, twig=None, N=None, as_quantity=False, set_value=False, keys='twig', parameters=None, **kwargs)
+def sample_distribution_collection(self, twig=None, sample_size=None, as_quantity=False, set_value=False, keys='twig', parameters=None, **kwargs)
 
 ```
 
@@ -30,9 +30,9 @@ Arguments
     `twig` and `**kwargs` must result in either a single supported
     parameter in a solver ParameterSet, or a ParameterSet of distribution
     parameters.
-* `N` (int, optional, default=None): number of samples to draw from
+* `sample_size` (int, optional, default=None): number of samples to draw from
     each distribution.  Note that this must be None if `set_value` is
-    set to True.
+    set to True. **NOTE**: prior to 2.3.25, this argument was name `N`.
 * `combine`: (str, optional) how to combine multiple distributions for the same parameter.
     first: ignore duplicate entries and take the first entry.
     and: combine duplicate entries via AND logic, dropping covariances.

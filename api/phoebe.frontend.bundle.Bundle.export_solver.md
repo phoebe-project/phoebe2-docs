@@ -3,7 +3,7 @@
 
 ```py
 
-def export_solver(self, script_fname, out_fname=None, solver=None, solution=None, pause=False, import_from_older=False, log_level=None, **kwargs)
+def export_solver(self, script_fname, out_fname=None, solver=None, solution=None, pause=False, autocontinue=False, import_from_older=False, log_level=None, **kwargs)
 
 ```
 
@@ -32,6 +32,13 @@ Arguments
     with instructions for running the exported script and calling
     [phoebe.frontend.bundle.Bundle.import_solution](phoebe.frontend.bundle.Bundle.import_solution.md).  Particularly
     useful if running in an interactive notebook or a script.
+* `autocontinue` (bool, optional, default=False): **NEW IN 2.3.33** override `continue_from`
+    in `solver` to continue from `out_fname` (or `script_fname`.out or
+    .progress files) if those files exist.  This is useful to set to True
+    and then resubmit the same script if not converged (although care should
+    be taken to ensure multiple scripts aren't reading/writing from the
+    same filenames).  `continue_from` must be a parameter in `solver` options,
+    or an error will be raised if `autocontinue=True`
 * `import_from_older` (boolean, optional, default=False): whether to allow
     the script to run on a newer version of PHOEBE.  If True and executing
     the outputed script (`script_fname`) on a newer version of PHOEBE,
@@ -56,4 +63,3 @@ Returns
 -----------
 * `script_fname`, `out_fname`.  Where running `script_fname` will result
   in the model being written to `out_fname`.
-
