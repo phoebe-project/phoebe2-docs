@@ -35,7 +35,7 @@ Arguments
 * `compute` (string, optional): compute options to use for the forward
     model.
 * `expose_lnprobabilities` (bool, optional, default=False): whether to expose
-    the initial and final lnlikelihoods in the solution (will result in 2
+    the initial and final lnprobabilities in the solution (will result in 2
     additional forward model calls)
 * `fit_parameters` (list, optional, default=[]): parameters (as twigs) to
     optimize.
@@ -67,4 +67,3 @@ Returns
 --------
 * ([phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md)): ParameterSet of all newly created
     [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) objects.
-
