@@ -49,8 +49,8 @@ Arguments
     logger in the exported script.  See [phoebe.logger](phoebe.logger.md).
 * `custom_lnprobability_callable` (callable, optional, default=None):
     custom callable function which takes the following arguments:
-    `b, model, lnpriors, priors, priors_combine` and returns the lnlikelihood
-    to override the built-in lnlikelihood of [phoebe.frontend.bundle.Bundle.calculate_lnp](phoebe.frontend.bundle.Bundle.calculate_lnp.md) (on priors)
+    `b, model, lnpriors, priors, priors_combine` and returns the lnprobability
+    to override the built-in lnprobability of [phoebe.frontend.bundle.Bundle.calculate_lnp](phoebe.frontend.bundle.Bundle.calculate_lnp.md) (on priors)
     + [phoebe.parameters.ParameterSet.calculate_lnlikelihood](phoebe.parameters.ParameterSet.calculate_lnlikelihood.md).  For
     optimizers that minimize, the negative returned values will be minimized.
     NOTE: if defined in an interactive session and inspect.getsource fails,
