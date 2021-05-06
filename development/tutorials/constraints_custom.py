@@ -3,8 +3,6 @@
 
 # # Advanced: Custom Constraints
 # 
-# **NOTE**: support for custom constraints was fixed in PHOEBE 2.3.25.  This notebook will fail to run on earlier versions.
-# 
 # [Built-in Constraints](./constraints_builtin.ipynb) are convenient as they automatically determine the correct expression and include support for multiple parameterizations via [b.flip_constraint](../api/phoebe.frontend.bundle.Bundle.flip_constraint.md).  However, for cases where a built-in constraint does not exist, PHOEBE provides a framework for easily creating your own expression to link multiple parameters via [b.add_constraint](../api/phoebe.frontend.bundle.Bundle.add_constraint.md).
 
 # In[1]:

@@ -213,9 +213,10 @@ b.calculate_lnp('priors@myemceesolver')
 # Next
 # ----------
 # 
-# That's it!! You've completed all the basic tutorials.  Now give PHOEBE a try or dig into some of the [advanced tutorials](../tutorials.md) and [example scripts](../examples.md).
+# Solver jobs can be quite computationally expensive, and so you may wish to set up the job locally and then [submit it on external compute resources](./server.ipynb).
 # 
-# Or look at any of these advanced topics related to computing observables:
+# 
+# Or look at any of these advanced topics related to running solvers:
 # * [Advanced: Solver Times](./solver_times.ipynb)
 # * [Advanced: LC Estimators](./LC_estimators.ipynb)
 # * [Advanced: RV Estimators](./RV_estimators.ipynb)

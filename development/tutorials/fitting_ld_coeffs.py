@@ -3,7 +3,6 @@
 
 # # Advanced: Fitting Limb Darkening Coefficients
 # 
-# **NOTE**: support for fitting `ld_coeffs` as well as custom constraints was fixed in PHOEBE 2.3.25.  This notebook will fail to run on earlier versions.
 
 # ## Create Fake Example Observations
 # 
@@ -31,7 +30,6 @@ b.set_value_all('ld_coeffs', dataset='Vband1', value=[0.3, 0.7])
 b.set_value_all('ld_coeffs', dataset='Bband*', value=[0.4, 0.6])
 
 b.set_value_all('irrad_method', 'none')
-#b.set_value('incl@binary', 89.6)
 
 b.run_compute()
 
