@@ -530,6 +530,7 @@ b.uncertainties_from_distribution_collection(distribution='emcee_posteriors', si
 # * [Advanced: continuing emcee from a previous run](./emcee_continue_from.ipynb)
 # * [Advanced: resampling emcee from a previous run](./emcee_resample.ipynb)
 # * [Advanced: convert posterior distributions from EMCEE](./emcee_distributions_convert.ipynb)
+# * [Advanced: custom cost function (with emcee)](./emcee_custom_lnprob.ipynb)
 
 # In[50]:
 
