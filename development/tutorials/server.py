@@ -81,15 +81,6 @@ b.add_server('localthread', crimpl_name='local',
              server='mylocalserver', overwrite=True)
 
 
-# In[8]:
-
-
-#b.add_server('remoteslurm', crimpl_name='clusty',
-#             use_conda=True, conda_env='phoebe',
-#             install_deps=False,
-#             server='mylocalserver')
-
-
 # In[9]:
 
 
