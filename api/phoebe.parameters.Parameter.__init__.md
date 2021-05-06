@@ -42,6 +42,7 @@ Arguments
 * `component` (string, optional): label for the component tag
 * `dataset` (string, optional): label for the dataset tag
 * `figure` (string, optional): label for the figure tag
+* `server` (string, optional): label for the server tag
 * `constraint` (string, optional): label for the constraint tag
 * `compute` (string, optional): label for the compute tag
 * `model` (string, optional): label for the model tag

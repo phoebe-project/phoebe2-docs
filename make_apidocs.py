@@ -166,6 +166,7 @@ if __name__ == '__main__':
     skip_parameters_setting = skip_parameters_type + []
     skip_parameters_solver = skip_parameters_type + ['phase_mask_inds', 'differential_evolution']
     skip_parameters_system = skip_parameters_type + []
+    skip_parameters_server = skip_parameters_type + []
 
     skip_units = ['add_enabled_equivalencies', 'add_enabled_units', 'def_physical_type', 'def_unit']
 
@@ -210,6 +211,7 @@ if __name__ == '__main__':
     fms_hierarchy = api_docs(phoebe.parameters.hierarchy, skip=skip_parameters_hierarchy, prefix='phoebe.parameters')
     fms_setting = api_docs(phoebe.parameters.setting, skip=skip_parameters_setting, prefix='phoebe.parameters')
     fms_system = api_docs(phoebe.parameters.system, skip=skip_parameters_system, prefix='phoebe.parameters')
+    fms_system = api_docs(phoebe.parameters.server, skip=skip_parameters_server, prefix='phoebe.parameters')
 
     fms_ps = api_docs(phoebe.parameters.ParameterSet, skip=skip_ps, prefix='phoebe.parameters')
     fms_rci = api_docs(phoebe.frontend.bundle.RunChecksItem, skip=['__init__'], prefix='phoebe.frontend.bundle')

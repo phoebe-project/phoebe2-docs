@@ -1,0 +1,99 @@
+Traceback (most recent call last):
+  File "_XMkRdiEylBsDUNkciZFwdTpOKAPRkM.py", line 2, in <module>
+    import phoebe; import json;
+  File "/home/users/kyle/.local/lib/python3.7/site-packages/phoebe/__init__.py", line 343, in <module>
+    from .dependencies.unitsiau2015 import u,c
+  File "/home/users/kyle/.local/lib/python3.7/site-packages/phoebe/dependencies/__init__.py", line 9, in <module>
+    from . import nparray
+  File "/home/users/kyle/.local/lib/python3.7/site-packages/phoebe/dependencies/nparray/__init__.py", line 1, in <module>
+    from . import nparray as _wrappers
+  File "/home/users/kyle/.local/lib/python3.7/site-packages/phoebe/dependencies/nparray/nparray.py", line 1, in <module>
+    import numpy as np
+  File "/usr/lib/python3/dist-packages/numpy/__init__.py", line 180, in <module>
+    from . import add_newdocs
+  File "/usr/lib/python3/dist-packages/numpy/add_newdocs.py", line 13, in <module>
+    from numpy.lib import add_newdoc
+  File "/usr/lib/python3/dist-packages/numpy/lib/__init__.py", line 8, in <module>
+    from .type_check import *
+  File "/usr/lib/python3/dist-packages/numpy/lib/type_check.py", line 11, in <module>
+    import numpy.core.numeric as _nx
+  File "/usr/lib/python3/dist-packages/numpy/core/__init__.py", line 14, in <module>
+    from . import multiarray
+ImportError: cannot import name 'multiarray' from 'numpy.core' (/usr/lib/python3/dist-packages/numpy/core/__init__.py)
+Traceback (most recent call last):
+  File "_XMkRdiEylBsDUNkciZFwdTpOKAPRkM.py", line 2, in <module>
+    import phoebe; import json;
+  File "/home/users/kyle/.local/lib/python3.7/site-packages/phoebe/__init__.py", line 343, in <module>
+    from .dependencies.unitsiau2015 import u,c
+  File "/home/users/kyle/.local/lib/python3.7/site-packages/phoebe/dependencies/__init__.py", line 9, in <module>
+    from . import nparray
+  File "/home/users/kyle/.local/lib/python3.7/site-packages/phoebe/dependencies/nparray/__init__.py", line 1, in <module>
+    from . import nparray as _wrappers
+  File "/home/users/kyle/.local/lib/python3.7/site-packages/phoebe/dependencies/nparray/nparray.py", line 1, in <module>
+    import numpy as np
+  File "/usr/lib/python3/dist-packages/numpy/__init__.py", line 180, in <module>
+    from . import add_newdocs
+  File "/usr/lib/python3/dist-packages/numpy/add_newdocs.py", line 13, in <module>
+    from numpy.lib import add_newdoc
+  File "/usr/lib/python3/dist-packages/numpy/lib/__init__.py", line 8, in <module>
+    from .type_check import *
+  File "/usr/lib/python3/dist-packages/numpy/lib/type_check.py", line 11, in <module>
+    import numpy.core.numeric as _nx
+  File "/usr/lib/python3/dist-packages/numpy/core/__init__.py", line 14, in <module>
+    from . import multiarray
+ImportError: cannot import name 'multiarray' from 'numpy.core' (/usr/lib/python3/dist-packages/numpy/core/__init__.py)
+Traceback (most recent call last):
+  File "_XMkRdiEylBsDUNkciZFwdTpOKAPRkM.py", line 2, in <module>
+    import phoebe; import json;
+  File "/home/users/kyle/.local/lib/python3.7/site-packages/phoebe/__init__.py", line 343, in <module>
+    from .dependencies.unitsiau2015 import u,c
+  File "/home/users/kyle/.local/lib/python3.7/site-packages/phoebe/dependencies/__init__.py", line 9, in <module>
+    from . import nparray
+  File "/home/users/kyle/.local/lib/python3.7/site-packages/phoebe/dependencies/nparray/__init__.py", line 1, in <module>
+    from . import nparray as _wrappers
+  File "/home/users/kyle/.local/lib/python3.7/site-packages/phoebe/dependencies/nparray/nparray.py", line 1, in <module>
+    import numpy as np
+  File "/usr/lib/python3/dist-packages/numpy/__init__.py", line 180, in <module>
+    from . import add_newdocs
+  File "/usr/lib/python3/dist-packages/numpy/add_newdocs.py", line 13, in <module>
+    from numpy.lib import add_newdoc
+  File "/usr/lib/python3/dist-packages/numpy/lib/__init__.py", line 8, in <module>
+    from .type_check import *
+  File "/usr/lib/python3/dist-packages/numpy/lib/type_check.py", line 11, in <module>
+    import numpy.core.numeric as _nx
+  File "/usr/lib/python3/dist-packages/numpy/core/__init__.py", line 14, in <module>
+    from . import multiarray
+ImportError: cannot import name 'multiarray' from 'numpy.core' (/usr/lib/python3/dist-packages/numpy/core/__init__.py)
+Traceback (most recent call last):
+  File "_XMkRdiEylBsDUNkciZFwdTpOKAPRkM.py", line 2, in <module>
+    import phoebe; import json;
+  File "/home/users/kyle/.local/lib/python3.7/site-packages/phoebe/__init__.py", line 343, in <module>
+    from .dependencies.unitsiau2015 import u,c
+  File "/home/users/kyle/.local/lib/python3.7/site-packages/phoebe/dependencies/__init__.py", line 9, in <module>
+    from . import nparray
+  File "/home/users/kyle/.local/lib/python3.7/site-packages/phoebe/dependencies/nparray/__init__.py", line 1, in <module>
+    from . import nparray as _wrappers
+  File "/home/users/kyle/.local/lib/python3.7/site-packages/phoebe/dependencies/nparray/nparray.py", line 1, in <module>
+    import numpy as np
+  File "/usr/lib/python3/dist-packages/numpy/__init__.py", line 180, in <module>
+    from . import add_newdocs
+  File "/usr/lib/python3/dist-packages/numpy/add_newdocs.py", line 13, in <module>
+    from numpy.lib import add_newdoc
+  File "/usr/lib/python3/dist-packages/numpy/lib/__init__.py", line 8, in <module>
+    from .type_check import *
+  File "/usr/lib/python3/dist-packages/numpy/lib/type_check.py", line 11, in <module>
+    import numpy.core.numeric as _nx
+  File "/usr/lib/python3/dist-packages/numpy/core/__init__.py", line 14, in <module>
+    from . import multiarray
+ImportError: cannot import name 'multiarray' from 'numpy.core' (/usr/lib/python3/dist-packages/numpy/core/__init__.py)
+-------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code.. Per user-direction, the job has been aborted.
+-------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[57609,1],3]
+  Exit code:    1
+--------------------------------------------------------------------------

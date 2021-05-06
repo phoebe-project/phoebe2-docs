@@ -11,12 +11,15 @@ def attach_job(self, *args, **kwargs)
 
 Attach the results from an existing [phoebe.parameters.JobParameter](phoebe.parameters.JobParameter.md).
 
-Jobs are created when passing `detach=True` to
-[phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md) or
+Jobs are created when passing `detach=True` or setting or passing
+`use_server` to [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md) or
 [phoebe.frontend.bundle.Bundle.run_solver](phoebe.frontend.bundle.Bundle.run_solver.md).
 
 See also:
+* [phoebe.frontend.bundle.Bundle.get_job_status](phoebe.frontend.bundle.Bundle.get_job_status.md)
+* [phoebe.frontend.bundle.Bundle.load_job_progress](phoebe.frontend.bundle.Bundle.load_job_progress.md)
 * [phoebe.frontend.bundle.Bundle.kill_job](phoebe.frontend.bundle.Bundle.kill_job.md)
+* [phoebe.frontend.bundle.Bundle.resubmit_job](phoebe.frontend.bundle.Bundle.resubmit_job.md)
 * [phoebe.parameters.JobParameter.attach](phoebe.parameters.JobParameter.attach.md)
 
 Arguments

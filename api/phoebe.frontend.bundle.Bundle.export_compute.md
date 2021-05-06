@@ -3,7 +3,7 @@
 
 ```py
 
-def export_compute(self, script_fname, out_fname=None, compute=None, model=None, dataset=None, pause=False, log_level=None, import_from_older=False, **kwargs)
+def export_compute(self, script_fname, out_fname=None, compute=None, model=None, dataset=None, pause=False, log_level=None, import_from_older=True, **kwargs)
 
 ```
 
@@ -50,7 +50,7 @@ Arguments
     useful if running in an interactive notebook or a script.
 * `log_level` (string, optional, default=None): `clevel` to set in the
     logger in the exported script.  See [phoebe.logger](phoebe.logger.md).
-* `import_from_older` (boolean, optional, default=False): whether to allow
+* `import_from_older` (boolean, optional, default=True): whether to allow
     the script to run on a newer version of PHOEBE.  If True and executing
     the outputed script (`script_fname`) on a newer version of PHOEBE,
     the bundle will attempt to migrate to the newer version.  If False,

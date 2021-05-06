@@ -48,12 +48,14 @@ Arguments
     (see [phoebe.frontend.bundle.Bundle.parse_solver_times](phoebe.frontend.bundle.Bundle.parse_solver_times.md)) unless
     `times` is also passed.  `compute` must be None (not passed) or an
     error will be raised.
-* `detach` (bool, optional, default=False, EXPERIMENTAL):
+* `detach` (bool, optional, default=False):
     whether to detach from the computation run,
     or wait for computations to complete.  If detach is True, see
     [phoebe.frontend.bundle.Bundle.get_model](phoebe.frontend.bundle.Bundle.get_model.md) and
     [phoebe.parameters.JobParameter](phoebe.parameters.JobParameter.md)
     for details on how to check the job status and retrieve the results.
+* `sleep` (int, optional, default=10): amount of time to sleep between
+    checking the job status if running externally and `detach=False`.
 * `dataset` (list, dict, or string, optional, default=None): filter for which datasets
     should be computed.  If provided as a dictionary, keys should be compute
     labels provided in `compute`.  If None, will use the `enabled` parameters in the

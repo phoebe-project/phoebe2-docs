@@ -59,6 +59,7 @@
 * [list_available_figures](api/phoebe.list_available_figures.md)
 * [list_available_computes](api/phoebe.list_available_computes.md)
 * [list_available_solvers](api/phoebe.list_available_solvers.md)
+* [list_available_servers](api/phoebe.list_available_servers.md)
 
 
 ### Arrays
@@ -80,6 +81,7 @@
 * [mvhistogram_from_data](api/phoebe.mvhistogram_from_data.md)
 * [uniform](api/phoebe.uniform.md)
 * [uniform_around](api/phoebe.uniform_around.md)
+
 
 ## Bundle & ParameterSets
 
@@ -121,13 +123,17 @@ Importing/exporting from other codes:
 ### System Checks & References
 
 * [run_checks](api/phoebe.frontend.bundle.Bundle.run_checks.md)
-* [run_checks_system](api/phoebe.frontend.bundle.Bundle.run_checks_system.md)
 * [run_checks_compute](api/phoebe.frontend.bundle.Bundle.run_checks_compute.md)
-* [run_checks_solver](api/phoebe.frontend.bundle.Bundle.run_checks_solver.md)
+* [run_checks_figure](api/phoebe.frontend.bundle.Bundle.run_checks_figure.md)
 * [run_checks_solution](api/phoebe.frontend.bundle.Bundle.run_checks_solution.md)
+* [run_checks_server](api/phoebe.frontend.bundle.Bundle.run_check_server.md)
+* [run_checks_solver](api/phoebe.frontend.bundle.Bundle.run_checks_solver.md)
+* [run_checks_system](api/phoebe.frontend.bundle.Bundle.run_checks_system.md)
 * [run_delayed_constraints](api/phoebe.frontend.bundle.Bundle.run_delayed_constraints.md)
 * [run_failed_constraints](api/phoebe.frontend.bundle.Bundle.run_failed_constraints.md)
+* [dependencies](api/phoebe.frontend.bundle.Bundle.dependencies.md)
 * [references](api/phoebe.frontend.bundle.Bundle.references.md)
+
 
 ### Clients / UI
 
@@ -135,6 +141,27 @@ Importing/exporting from other codes:
 * [is_client](api/phoebe.frontend.bundle.Bundle.is_client.md)
 * [ui](api/phoebe.parameters.ParameterSet.ui.md)
 * [ui_figures](api/phoebe.frontend.bundle.Bundle.ui_figures.md)
+
+### Servers / Jobs
+
+* [add_server](api/phoebe.frontend.bundle.Bundle.add_server.md)
+* [get_server](api/phoebe.frontend.bundle.Bundle.get_server.md)
+* [get_server_crimpl_object](api/phoebe.frontend.bundle.Bundle.get_server_crimpl_object.md)
+* [remove_server](api/phoebe.frontend.bundle.Bundle.remove_server.md)
+* [rename_server](api/phoebe.frontend.bundle.Bundle.rename_server.md)
+* [get_job_status](api/phoebe.frontend.bundle.Bundle.get_job_status.md)
+* [get_job_crimpl_object](api/phoebe.frontend.bundle.Bundle.get_job_crimpl_object.md)
+* [attach_job](api/phoebe.frontend.bundle.Bundle.attach_job.md)
+* [load_job_progress](api/phoebe.frontend.bundle.Bundle.load_job_progress.md)
+* [kill_job](api/phoebe.frontend.bundle.Bundle.kill_job.md)
+* [resubmit_job](api/phoebe.frontend.bundle.Bundle.resubmit_job.md)
+
+Available servers ([see all](api/phoebe.parameters.server.md)):
+
+* [localthread](api/phoebe.parameters.server.localthread.md)
+* [remoteslurm](api/phoebe.parameters.server.remoteslurm.md)
+* [awsec2](api/phoebe.parameters.server.awsec2.md)
+
 
 ### Hierarchy
 
@@ -317,6 +344,7 @@ Access to merit-function values:
 
 * [run_solver](api/phoebe.frontend.bundle.Bundle.run_solver.md)
 * [attach_job](api/phoebe.frontend.bundle.Bundle.attach_job.md)
+* [load_job_progress](api/phoebe.frontend.bundle.Bundle.load_job_progress.md)
 * [import_solution](api/phoebe.frontend.bundle.Bundle.import_solution.md)
 * [get_solution](api/phoebe.frontend.bundle.Bundle.get_solution.md)
 * [adopt_solution](api/phoebe.frontend.bundle.Bundle.adopt_solution.md)
@@ -355,6 +383,7 @@ and rebuild them by calling [run_figure](api/phoebe.frontend.bundle.Bundle.run_f
 * [phoebe.parameters.figure.distribution](api/phoebe.parameters.figure.distribution.md)
 * [phoebe.parameters.figure.solution](api/phoebe.parameters.figure.solution.md)
 * [phoebe.parameters.hierarchy](api/phoebe.parameters.hierarchy.md)
+* [phoebe.parameters.server](api/phoebe.parameters.server.md)
 * [phoebe.parameters.solver.estimator](api/phoebe.parameters.solver.estimator.md)
 * [phoebe.parameters.solver.optimizer](api/phoebe.parameters.solver.optimizer.md)
 * [phoebe.parameters.solver.sampler](api/phoebe.parameters.solver.sampler.md)

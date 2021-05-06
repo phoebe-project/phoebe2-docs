@@ -10,7 +10,7 @@ def references(self, compute=None, dataset=None, solver=None)
 
 
 Provides a list of used references from the given bundle based on the
-current parameter values and attached datasets/compute options.
+current parameter values and attached datasets/compute/solver options.
 
 This list is not necessarily complete, but can be useful to find
 publications for various features/models used as well as to make sure
@@ -25,6 +25,9 @@ Included citations:
 * Passband table citations, when available/applicable.
 * Dependency (astropy, numpy, etc) citations, when available/applicable.
 * Alternate compute and/or solver backends, when applicable.
+
+See also:
+* [phoebe.frontend.bundle.Bundle.dependencies](phoebe.frontend.bundle.Bundle.dependencies.md)
 
 Arguments
 ------------

@@ -17,6 +17,7 @@ This calls and appends the output from each of the following, as applicable:
 * [phoebe.frontend.bundle.Bundle.run_checks_solver](phoebe.frontend.bundle.Bundle.run_checks_solver.md)
 * [phoebe.frontend.bundle.Bundle.run_checks_solution](phoebe.frontend.bundle.Bundle.run_checks_solution.md)
 * [phoebe.frontend.bundle.Bundle.run_checks_figure](phoebe.frontend.bundle.Bundle.run_checks_figure.md)
+* [phoebe.frontend.bundle.Bundle.run_checks_server](phoebe.frontend.bundle.Bundle.run_checks_server.md)
 
 Arguments
 -----------

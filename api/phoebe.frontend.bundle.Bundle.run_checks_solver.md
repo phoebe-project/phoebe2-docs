@@ -3,7 +3,7 @@
 
 ```py
 
-def run_checks_solver(self, solver=None, compute=None, solution=None, figure=None, raise_logger_warning=False, raise_error=False, **kwargs)
+def run_checks_solver(self, solver=None, compute=None, solution=None, figure=None, raise_logger_warning=False, raise_error=False, run_checks_compute=True, run_checks_server=True, **kwargs)
 
 ```
 
@@ -28,6 +28,7 @@ See also:
 * [phoebe.frontend.bundle.Bundle.run_checks_compute](phoebe.frontend.bundle.Bundle.run_checks_compute.md)
 * [phoebe.frontend.bundle.Bundle.run_checks_solution](phoebe.frontend.bundle.Bundle.run_checks_solution.md)
 * [phoebe.frontend.bundle.Bundle.run_checks_figure](phoebe.frontend.bundle.Bundle.run_checks_figure.md)
+* [phoebe.frontend.bundle.Bundle.run_checks_server](phoebe.frontend.bundle.Bundle.run_checks_server.md)
 
 Arguments
 -----------
@@ -36,8 +37,11 @@ Arguments
     the compute options in the 'run_checks_solver@setting' parameter
     will be used (which defaults to all available solver options).
 * `run_checks_compute` (bool, optional, default=True): whether to also
-    call [phoebe.frontend.bundle.run_checks_compute](phoebe.frontend.bundle.run_checks_compute.md) on any `compute`
-    listed in the solver options in `solver`.
+    call [phoebe.frontend.bundle.run_checks_compute](phoebe.frontend.bundle.run_checks_compute.md) on any referenced
+    computes in the matched solver options.
+* `run_checks_server` (bool, optional, default=True): whether to also
+    call (and include the output from) [phoebe.frontend.bundle.run_checks_server](phoebe.frontend.bundle.run_checks_server.md)
+    for any referenced servers in the matched compute options.
 * `allow_skip_constraints` (bool, optional, default=False): whether
     to allow skipping running delayed constraints if interactive
     constraints are disabled.  See [phoebe.interactive_constraints_off](phoebe.interactive_constraints_off.md).

@@ -10,7 +10,7 @@ def add_figure(self, *args, **kwargs)
 
 
 Add a new figure to the bundle.  If not provided,
-figure` (the name of the new figure) will be created for
+`figure` (the name of the new figure) will be created for
 you and can be accessed by the `figure` attribute of the returned
 [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md).
 

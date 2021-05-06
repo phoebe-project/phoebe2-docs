@@ -21,9 +21,7 @@ an error if failing.
 To manually run system checks at any time, you can call
 [phoebe.frontend.bundle.Bundle.run_checks](phoebe.frontend.bundle.Bundle.run_checks.md).
 
-By default, interactive checks is ON if running PHOEBE in an interactive
-console (or Jupyter notebook), but OFF if running in a script (to save
-time but also save confusing logger messages).
+By default, interactive checks is OFF (new in 2.4).
 
 See also:
 * [phoebe.interactive_checks_on](phoebe.interactive_checks_on.md)

@@ -19,9 +19,7 @@ Whether interactive checks is on or off, system checks will be run when
 calling [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md) and will raise
 an error if failing.
 
-By default, interactive checks is ON if running PHOEBE in an interactive
-console (or Jupyter notebook), but OFF if running in a script (to save
-time but also save confusing logger messages).
+By default, interactive checks is OFF (in 2.4).
 
 See also:
 * [phoebe.interactive_checks_off](phoebe.interactive_checks_off.md)

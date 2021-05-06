@@ -44,13 +44,18 @@ For more specific use-cases, see the [example scripts](./examples.md).
     * [Advanced: Continuing EMCEE from a Previous Run](tutorials/emcee_continue_from.ipynb)
     * [Advanced: Resampling EMCEE from a Previous Run](tutorials/emcee_resampling.ipynb)
     * [Advanced: Convert Posterior Distributions from EMCEE](tutorials/emcee_distributions_convert.ipynb)
-    * [Advanced: Running Solvers on an External Machine](tutorials/export_solver.ipynb)
+    * [Advanced: Exporting Solver to an External Machine](tutorials/export_solver.ipynb)
     * [Advanced: Fitting Limb Darkening Coefficients](tutorials/fitting_ld_coeffs.ipynb)
     * [Advanced: Custom Cost Function](tutorials/emcee_custom_lnprob.ipynb)
+9. [Running Jobs on External Compute Resources](tutorials/server.ipynb)
 
 ## Migrating from PHOEBE 2.3 to PHOEBE 2.4
 
 These tutorials highlight the major changes between versions 2.3.x and 2.4+ in the following topics:
+
+* Interactive Constraints Default Behavior
+* **NEW**: b.export_mesh
+* **NEW**: servers
 
 
 ## Advanced Tutorials

@@ -50,12 +50,14 @@ Arguments
     of `overwrite` (see below).   See also
     [phoebe.frontend.bundle.Bundle.rename_solution](phoebe.frontend.bundle.Bundle.rename_solution.md) to rename a solution after
     creation.
-* `detach` (bool, optional, default=False, EXPERIMENTAL):
+* `detach` (bool, optional, default=False):
     whether to detach from the solver run,
     or wait for computations to complete.  If detach is True, see
     [phoebe.frontend.bundle.Bundle.get_solution](phoebe.frontend.bundle.Bundle.get_solution.md) and
     [phoebe.parameters.JobParameter](phoebe.parameters.JobParameter.md)
     for details on how to check the job status and retrieve the results.
+* `sleep` (int, optional, default=10): amount of time to sleep between
+    checking the job status if running externally and `detach=False`.
 * `overwrite` (boolean, optional, default=solution=='latest'): whether to overwrite
     an existing model with the same `model` tag.  If False,
     an error will be raised.  This defaults to True if `model` is not provided

@@ -32,6 +32,9 @@ Arguments
 * `run_checks_figure` (list or string, optional, default='*'): Figures
     to use when calling run_checks/run_checks_figure or within
     interactive checks.
+* `run_checks_server` (list or string, optional, default='*'): Servers
+    to use when calling run_checks/run_checks_server or within
+    interactive checks.
 * `auto_add_figure` (bool, optional, default=False): Whether to automatically
     add figure parameters when a dataset is added with a new dataset type,
     or a solution is added.

@@ -36,6 +36,7 @@
 * [readonly](phoebe.parameters.Parameter.readonly.md)
 * [related_to](phoebe.parameters.Parameter.related_to.md)
 * [save](phoebe.parameters.Parameter.save.md)
+* [server](phoebe.parameters.Parameter.server.md)
 * [set_value](phoebe.parameters.Parameter.set_value.md)
 * [solution](phoebe.parameters.Parameter.solution.md)
 * [solver](phoebe.parameters.Parameter.solver.md)

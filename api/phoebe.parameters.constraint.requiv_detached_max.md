@@ -27,8 +27,7 @@ Arguments
     constraint should be built.
 * `solve_for` ([phoebe.parameters.Parameter](phoebe.parameters.Parameter.md), optional, default=None): if
     'requiv_max' should not be the derived/constrained parameter, provide which
-    other parameter should be derived (ie 'q', 'syncpar', 'ecc', 'sma'
-    'incl@star', 'long_an@star', 'incl@orbit', 'long_an@orbit').
+    other parameter should be derived.
 
 Returns
 ----------

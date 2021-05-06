@@ -24,6 +24,7 @@ See also:
 * [phoebe.frontend.bundle.Bundle.run_checks_compute](phoebe.frontend.bundle.Bundle.run_checks_compute.md)
 * [phoebe.frontend.bundle.Bundle.run_checks_solver](phoebe.frontend.bundle.Bundle.run_checks_solver.md)
 * [phoebe.frontend.bundle.Bundle.run_checks_solution](phoebe.frontend.bundle.Bundle.run_checks_solution.md)
+* [phoebe.frontend.bundle.Bundle.run_checks_server](phoebe.frontend.bundle.Bundle.run_checks_server.md)
 
 Arguments
 -----------

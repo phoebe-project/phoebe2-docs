@@ -53,6 +53,8 @@
 * [remove_parameters_all](phoebe.parameters.ParameterSet.remove_parameters_all.md)
 * [save](phoebe.parameters.ParameterSet.save.md)
 * [savefig](phoebe.parameters.ParameterSet.savefig.md)
+* [server](phoebe.parameters.ParameterSet.server.md)
+* [servers](phoebe.parameters.ParameterSet.servers.md)
 * [set](phoebe.parameters.ParameterSet.set.md)
 * [set_default_unit](phoebe.parameters.ParameterSet.set_default_unit.md)
 * [set_default_unit_all](phoebe.parameters.ParameterSet.set_default_unit_all.md)
