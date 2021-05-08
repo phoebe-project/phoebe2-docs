@@ -125,7 +125,7 @@ print(b.filter(qualifier='compute'))
 # 
 # ### 1. wait and load results automatically
 # 
-# As always, we can send kwargs to `run_compute` or `run_solver` to override any compute/solver options.  Here we can pass the solver tag (note: this is the PHOEBE solver tag, not the crimpl server name) to `run_compute`, which then looks up the solver options, loads the corresponding crimpl object, and passes the job to the remote (albeit not so remote in this case) machine.
+# As always, we can send kwargs to `run_compute` or `run_solver` to override any compute/solver options.  Here we can pass the server tag (note: this is the PHOEBE server tag, not the crimpl server name) to `run_compute` overriding the `use_server` parameter, which then looks up the server options, loads the corresponding crimpl object, and passes the job to the remote (albeit not so remote in this case) machine.
 
 # In[13]:
 
