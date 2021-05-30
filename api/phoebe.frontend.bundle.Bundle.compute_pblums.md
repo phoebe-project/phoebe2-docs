@@ -3,7 +3,7 @@
 
 ```py
 
-def compute_pblums(self, compute=None, model=None, pblum=True, pblum_abs=False, pblum_scale=False, pbflux=False, set_value=False, **kwargs)
+def compute_pblums(self, compute=None, model=None, pblum=True, pblum_abs=False, pblum_scale=False, pbflux=False, set_value=False, unit=None, **kwargs)
 
 ```
 
@@ -103,6 +103,9 @@ Arguments
     various options for pblum_mode for alternate backends that require
     passband luminosities or surface brightnesses as input, but is not
     ever required to be called manually.
+* `unit` (astropy unit or string, optional, default=None): unit to convert
+    exposed luminosities.  If not provided or None, will default to
+    the default units on pblum.
 * `skip_checks` (bool, optional, default=False): whether to skip calling
     [phoebe.frontend.bundle.Bundle.run_checks_compute](phoebe.frontend.bundle.Bundle.run_checks_compute.md) before computing the model.
     NOTE: some unexpected errors could occur for systems which do not

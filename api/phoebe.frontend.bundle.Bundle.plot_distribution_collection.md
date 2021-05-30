@@ -55,6 +55,38 @@ Arguments
     constraints).  An error may be raised if any matching parameters
     are not included in the original DistributionCollection or available
     through propagated constraints.
+* `require_limits` (bool, optional): whether to
+    require samples from the distibution(s) to be within parameter limits
+    (by including `&amp;` with a uniform distribution if otherwise would extend
+    beyond limits).  If `twig` points to `init_from@emcee` or `priors@dynesty`,
+    will default to whether 'limits' is in the `init_from_requires` or `priors_requires`
+    parameter, respectively.  Otherwise will default to False.
+* `require_checks` (bool or string, optional): whether to require samples
+    from the distribution(s) to pass compute and system checks.  Any
+    drawn value that does not pass checks will be redrawn.  If True, will
+    run for all attached compute options.  If a string, will run for the
+    passed compute label.  Will default to the relevant compute label if
+    `twig` points to `init_from@emcee` or `priors@dynesty` and 'checks'
+    or 'compute' is in `init_from_requires` or `priors_requires` parameter,
+    respectively.  Otherwise will default to False.
+* `require_compute` (bool or string, optional): whether to require samples
+    from the distribution(s) to succesfully run a forward model (and
+    therefore includes `require_checks` and `require_limits`).  Any drawn
+    value that results in an error will be redrawn.  If a string, will
+    run for the passed compute label.  True will only be allowed if a
+    single set of compute options exist.  Will default to the relevant
+    compute label if `twig` points to `init_from@emcee` or `priors@dynesty`
+    and 'compute' is in `init_from_requires` or `priors_requires` parameter,
+    respectively.  Otherwise will default to False.
+* `require_priors` (string, list, or False, optional): whether to
+    require samples from the distribution(s) to result in a finite
+    probability from a set of priors.  If not False, `require_priors`
+    will be passed directly as `twig` to [phoebe.frontend.bundle.Bundle.get_distribution_collection](phoebe.frontend.bundle.Bundle.get_distribution_collection.md)
+    and any uniform distributions in the resulting distribution collection
+    will be combined with `&amp;` logic, if possible, or require a finite
+    probability during sampling.  Will default to the relevant
+    priors if `twig` points to `init_from@ecmee` and 'priors' is
+    in `init_from_requires`.  Otherwise will default to False.
 * `plot_uncertainties` (bool or list, optional, default=True): whether
     to plot uncertainties (as contours on 2D plots, vertical lines
     on histograms, and in the axes titles).  If True, defaults to `[1,2,3]`.

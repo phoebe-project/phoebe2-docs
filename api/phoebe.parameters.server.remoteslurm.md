@@ -43,8 +43,8 @@ Arguments
     overhead)
 * `slurm_job_name` (string, optional): Job name to use within slurm on the
     remote machine
-* `walltime` (string, optional, default='00:10:00'): Walltime to allocate to
-    each job
+* `walltime` (float, optional, default=0.5): Walltime to allocate to
+    each job.  Default units are in hours.
 * `mail_user` (string, optional): Email to have slurm notify about events
     matching mail_type
 * `mail_type` (list, optional, default=['END', 'FAIL']): Scenarios in which

@@ -3,7 +3,7 @@
 
 ```py
 
-def uniform_around(width, value=None, unit=None, label=None, label_latex=None, wrap_at=None)
+def uniform_around(width, value=None, unit=None, frac=False, label=None, label_latex=None, wrap_at=None)
 
 ```
 
@@ -23,6 +23,8 @@ Arguments
 and Uniform.high will be set based on the current value and `width`).
 * `value` (float, optional, default=None): the current face-value.
 * `unit` (astropy.units object, optional): the units of the provided values.
+* `frac` (bool, optional, default=False): whether `width` is provided as
+a fraction of `value` rather than in `unit`.
 * `label` (string, optional): a label for the distribution.  This is used
 for the x-label while plotting the distribution if `label_latex` is not provided,
 as well as a shorthand notation when creating a Composite distribution.

@@ -62,6 +62,27 @@ Arguments
     constraints).  An error may be raised if any matching parameters
     are not included in the original DistributionCollection or available
     through propagated constraints.
+* `require_limits` (bool, optional): whether to
+    require samples from the distibution(s) to be within parameter limits
+    (by including `&amp;` with a uniform distribution if otherwise would extend
+    beyond limits).  If `twig` points to `init_from@emcee` or `priors@dynesty`,
+    will default to whether 'limits' is in the `init_from_requires` or `priors_requires`
+    parameter, respectively.  Otherwise will default to False.  Will raise
+    an error if underlying distribution is multivariate and `to_univariates=False`
+    (note: can instead pass `require_limits` to [phoebe.frontend.bundle.Bundle.sample_distribution_collection](phoebe.frontend.bundle.Bundle.sample_distribution_collection.md)
+    or [phoebe.frontend.bundle.Bundle.plot_distribution_collection](phoebe.frontend.bundle.Bundle.plot_distribution_collection.md))
+* `require_priors` (string, list, or False, optional): whether to
+    require samples from the distribution(s) to result in a finite
+    probability from a set of priors.  If not False, `require_priors`
+    will be passed directly as `twig` to [phoebe.frontend.bundle.Bundle.get_distribution_collection](phoebe.frontend.bundle.Bundle.get_distribution_collection.md)
+    and any uniform distributions in the resulting distribution collection
+    will be combined with `&amp;` logic (on the prior distribution itself if
+    uniform, otherwise the 1e-6 ppf of the combine prior distribution).
+    Will default to the relevant priors if `twig` points to `init_from@ecmee` and 'priors' is
+    in `init_from_requires`.  Otherwise will default to False.  Will raise
+    an error if underlying distribution is multivariate and `to_univariates=False`.
+    (note: can instead pass `require_priors` to [phoebe.frontend.bundle.Bundle.sample_distribution_collection](phoebe.frontend.bundle.Bundle.sample_distribution_collection.md)
+    or [phoebe.frontend.bundle.Bundle.plot_distribution_collection](phoebe.frontend.bundle.Bundle.plot_distribution_collection.md))
 * `**kwargs`: additional keyword arguments are used for filtering.
     `twig` and `**kwargs` must result in either a single supported
     parameter in a solver ParameterSet, or a ParameterSet of distribution

@@ -37,11 +37,15 @@ Arguments
 * `expose_lnprobabilities` (bool, optional, default=False): whether to expose
     the initial and final lnprobabilities in the solution (will result in 2
     additional forward model calls)
+* `continue_from` (string, optional, default='none'): continue the optimization
+    run from an existing solution  by starting each parameter at its final
+    position in the solution.
 * `fit_parameters` (list, optional, default=[]): parameters (as twigs) to
-    optimize.
+    optimize.  Only applicable if `continue_from` is 'None'.
 * `initial_values` (dict, optional, default={}): twig-value pairs to
     (optionally) override the current values in the bundle.  Any items not
-    in `fit_parameters` will be silently ignored.
+    in `fit_parameters` will be silently ignored.  Only applicable if
+    `continue_from` is 'None'.
 * `priors` (list, optional, default=[]): distribution(s) to use for priors
     (constrained and unconstrained parameters will be included, covariances
     will be respected except for distributions merge via `priors_combine`).
@@ -52,9 +56,6 @@ Arguments
     or: combine duplicate entries via OR logic, dropping covariances.
 * `maxiter` (int, optional, default=1e6): passed directly to
     scipy.optimize.minimize.  Maximum allowed number of iterations.
-* `maxfev` (int, optional, default=1e6): passed directly to
-    scipy.optimize.minimize.  Maximum allowed number of function evaluations
-    (forward models).
 * `xtol` (float, optional, default=1e-4): passed directly to
     scipy.optimize.minimize.  Relative error in xopt (input parameters)
     between iterations that is acceptable for convergence.
@@ -62,6 +63,16 @@ Arguments
     scipy.optimize.minimize.  Relative error in func(xopt)
     (lnlikelihood + lnp(priors)) between iterations that is acceptable for
     convergence.
+* `progress_every_niters` (int, optional, default=0): Save the progress of
+    the solution every n iterations.  The solution can only be recovered
+    from an early termination by loading the bundle from a saved file and
+    then calling [phoebe.frontend.bundle.Bundle.import_solution](phoebe.frontend.bundle.Bundle.import_solution.md)(filename).
+    The filename of the saved file will default to solution.ps.progress within
+    [phoebe.frontend.bundle.Bundle.run_solver](phoebe.frontend.bundle.Bundle.run_solver.md), or the output filename provided
+    to [phoebe.frontend.bundle.Bundle.export_solver](phoebe.frontend.bundle.Bundle.export_solver.md) suffixed with .progress.
+    If using detach=True within run_solver, attach job will load the progress
+    and allow re-attaching until the job is completed.  If 0 will not save
+    and will only return after completion.
 
 Returns
 --------

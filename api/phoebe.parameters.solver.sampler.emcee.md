@@ -75,6 +75,11 @@ Arguments
     first: ignore duplicate entries and take the first in the init_from parameter.
     and: combine duplicate entries via AND logic, dropping covariances.
      or: combine duplicate entries via OR logic, dropping covariances.
+* `init_from_requires` (string or list, optional, default=['limits', 'priors']):
+    Requirements to apply to the initializing distribution.  Including all
+    checks prevents walkers from initializing at `lnprob=-inf`, but does add
+    overhead.  See [phoebe.frontend.bundle.Bundle.sample_distribution_collection](phoebe.frontend.bundle.Bundle.sample_distribution_collection.md)
+    for explanation of each option.
 * `priors` (list, optional, default=[]): distribution(s) to use for priors
     (constrained and unconstrained parameters will be included, covariances
     will be respected except for distributions merge via `priors_combine`)

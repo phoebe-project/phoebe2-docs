@@ -74,6 +74,11 @@ Arguments
     first: ignore duplicate entries and take the first in the priors parameter.
     and: combine duplicate entries via AND logic, dropping covariances.
     or: combine duplicate entries via OR logic, dropping covariances.
+* `priors_requires` (string or list, optional, default=['limits']):
+    Requirements to apply to the initializing distribution.  Including all
+    checks prevents walkers from initializing at `lnprob=-inf`, but does add
+    overhead.  See [phoebe.frontend.bundle.Bundle.sample_distribution_collection](phoebe.frontend.bundle.Bundle.sample_distribution_collection.md)
+    for explanation of each option.
 * `nlive` (int, optional, default=100): number of live points.   Larger
     numbers result in a more finely sampled posterior (more accurate evidence),
     but also a larger number of iterations required to converge.
