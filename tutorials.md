@@ -41,6 +41,7 @@ For more specific use-cases, see the [example scripts](./examples.md).
     * [Advanced: RV Geometry Estimator](tutorials/RV_estimators.ipynb)
     * [Advanced: Nelder-Mead Optimizer](tutorials/nelder_mead.ipynb)
     * [Advanced: EMCEE Sampler](tutorials/emcee.ipynb)
+    * [Advanced: EMCEE Initializing Distribution Requirements](tutorials/emcee_init_from_requires.ipynb)
     * [Advanced: Continuing EMCEE from a Previous Run](tutorials/emcee_continue_from.ipynb)
     * [Advanced: Resampling EMCEE from a Previous Run](tutorials/emcee_resampling.ipynb)
     * [Advanced: Convert Posterior Distributions from EMCEE](tutorials/emcee_distributions_convert.ipynb)
