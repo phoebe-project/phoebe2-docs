@@ -136,6 +136,7 @@ _ = b.plot_distribution_collection('init_from@emcee_solver', show=True)
 # 
 # See the following for even more advanced use cases of emcee.
 # 
+# * [Advanced: EMCEE Initializing Distribution Requirements](./emcee_init_from_requires.ipynb)
 # * [Advanced: continue emcee from a previous run](./emcee_continue_from.ipynb)
 # * [Advanced: convert posterior distributions from EMCEE](./emcee_distributions_convert.ipynb)
 

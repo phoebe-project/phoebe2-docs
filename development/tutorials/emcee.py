@@ -199,6 +199,8 @@ _ = b.plot(dataset='lc01', x='phases', y='residuals',
 
 
 # Creating distributions alone does *nothing*.  In order to use this distribution-set as our initializing distribution within emcee, we need to set `init_from` in the solver options.
+# 
+# Note that the distribution assigned to `init_from` will undergo further requirements when sampling for the intial positions of the walkers.  By default these will be to require all sampled values to be within the parameter limits and result in a finite log probability from the selected priors.  For more details, see [Advanced: EMCEE Initializing Distribution Requirements](./emcee_init_from_requires.ipynb).
 
 # In[16]:
 
@@ -527,6 +529,7 @@ b.uncertainties_from_distribution_collection(distribution='emcee_posteriors', si
 # 
 # See the following for even more advanced use cases of emcee.  For these, we'll pickup with the bundle from here, so we'll save it to disk first so we don't have to repeat all these steps.
 # 
+# * [Advanced: EMCEE Initializing Distribution Requirements](./emcee_init_from_requires.ipynb)
 # * [Advanced: continuing emcee from a previous run](./emcee_continue_from.ipynb)
 # * [Advanced: resampling emcee from a previous run](./emcee_resample.ipynb)
 # * [Advanced: convert posterior distributions from EMCEE](./emcee_distributions_convert.ipynb)

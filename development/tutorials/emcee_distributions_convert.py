@@ -136,5 +136,6 @@ print(dc.dists)
 # 
 # See the following for even more advanced use cases of emcee.
 # 
+# * [Advanced: EMCEE Initializing Distribution Requirements](./emcee_init_from_requires.ipynb)
 # * [Advanced: continuing emcee from a previous run](./emcee_continue_from.ipynb)
 # * [Advanced: resampling emcee from a previous run](./emcee_resample.ipynb)
