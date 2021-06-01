@@ -19,6 +19,7 @@ These example scripts are generally focused to show a single advanced feature or
 * [Binary with Spots](examples/binary_spots.ipynb)
 * [Misaligned Binary System: DI Her](examples/diher_misaligned.ipynb)
 * [Eccentric Ellipsoidal (Heartbeat)](examples/eccentric_ellipsoidal.ipynb)
+* [Black Hole Binary (distortion_method='none')](examples/distortion_method_none.pynb)
 
 
 ## Contact Binary Stars
