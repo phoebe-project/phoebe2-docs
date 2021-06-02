@@ -93,6 +93,14 @@ Arguments
     from `t0`, this may result in a different mapping between
     `phase` and `time`.
 
+* `style` (string, optional): applicable for plotting solutions only,
+    which style to use when plotting.  Valid styles for emcee include:
+    `lnprobabilities`, `trace`, `lnprobablities_spread` (also accepts
+    a `spread_sigma` which defaults to 1), `trace_spread` (also accepts
+    a `spread_sigma` which defaults to 1), `lnprobabilities_acf`, `trace_acf`,
+    `corner`, and `failed`.  Valid  styles for dynesty include: `trace`,
+    `run`, `corner`, and `failed`.
+
 * `x` (string/float/array, optional): qualifier/twig of the array to plot on the
     x-axis (will default based on the dataset-kind if not provided).
     With the exception of phase, `b.get_value(x)` needs to provide a
