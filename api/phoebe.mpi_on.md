@@ -26,7 +26,7 @@ When MPI is enabled, PHOEBE will do the following:
     using `nprocs` processors.  This separate thread will be detached
     from the main thread if sending `detach=True` to
     [phoebe.frontend.bundle.Bundle.run_compute](phoebe.frontend.bundle.Bundle.run_compute.md) or
-    [phoebe.frontend.bundle.Bundle.run_solver](phoebe.frontend.bundle.Bundle.run_solver.md).
+    [phoebe.frontend.bundle.Bundle.run_solver](phoebe.frontend.bundle.Bundle.run_solver.md).  NOTE: progressbars will not be shown from the spawned threads.
 
 See also:
 * [phoebe.mpi_off](phoebe.mpi_off.md)
@@ -35,4 +35,3 @@ Arguments
 ----------
 * `nprocs` (int, optional): number of processors.  Only applicable if **NOT**
     within mpirun (see above).
-
