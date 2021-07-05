@@ -7,23 +7,17 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
-
-# In[ ]:
-
-
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
-
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+#!pip install -I "phoebe>=2.3,<2.4"
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.ipynb) for more details.
+# As always, let's do imports and initialize a logger and a new bundle.
 
-# In[1]:
+# In[2]:
 
 
 import phoebe
@@ -34,7 +28,7 @@ b = phoebe.default_binary()
 
 # Now we'll try to exaggerate the effect by spinning up the secondary component.
 
-# In[2]:
+# In[3]:
 
 
 b.set_value('q', value=0.7)
@@ -49,7 +43,7 @@ b.set_value('syncpar', component='secondary', value=1.5)
 # 
 # We'll add radial velocity, line profile, and mesh datasets.  We'll compute the rvs through the whole orbit, but the mesh and line profiles right around the eclipse - just at the times that we want to plot for an animation.
 
-# In[3]:
+# In[4]:
 
 
 anim_times = phoebe.arange(0.44, 0.56, 0.002)
@@ -57,7 +51,7 @@ anim_times = phoebe.arange(0.44, 0.56, 0.002)
 
 # We'll add two identical datasets, one where we compute only dynamical RVs (won't include Rossiter-McLaughlin) and another where we compute flux-weighted RVs (will include Rossiter-McLaughlin).
 
-# In[4]:
+# In[5]:
 
 
 b.add_dataset('rv', 
@@ -67,7 +61,7 @@ b.add_dataset('rv',
 b.set_value_all('rv_method', dataset='dynamicalrvs', value='dynamical')
 
 
-# In[5]:
+# In[6]:
 
 
 b.add_dataset('rv', 
@@ -79,7 +73,7 @@ b.set_value_all('rv_method', dataset='numericalrvs', value='flux-weighted')
 
 # For the mesh, we'll save some time by only exposing plane-of-sky coordinates and the 'rvs' column.
 
-# In[6]:
+# In[7]:
 
 
 b.add_dataset('mesh', 
@@ -91,7 +85,7 @@ b.add_dataset('mesh',
 
 # And for the line-profile, we'll expose the line-profile for both of our stars separately, instead of for the entire system.
 
-# In[7]:
+# In[8]:
 
 
 b.add_dataset('lp', 
@@ -104,7 +98,7 @@ b.add_dataset('lp',
 # Running Compute
 # --------------------
 
-# In[8]:
+# In[9]:
 
 
 b.run_compute(irrad_method='none')
@@ -115,7 +109,7 @@ b.run_compute(irrad_method='none')
 # 
 # Throughout all of these plots, we'll color the components green and magenta (to differentiate them from the red and blue of the RV mapping).
 
-# In[9]:
+# In[10]:
 
 
 colors = {'primary': 'green', 'secondary': 'magenta'}
@@ -125,7 +119,7 @@ colors = {'primary': 'green', 'secondary': 'magenta'}
 # 
 # The dynamical RVs show the velocity of the center of each star along the line of sight.  But the numerical method integrates over the visible surface elements, giving us what we'd observe if deriving RVs from observed spectra of the binary.  Here we do see the Rossiter McLaughlin effect.  You'll also notice that RVs are not available for the secondary star when its completely occulted (they're nans in the array).
 
-# In[10]:
+# In[11]:
 
 
 afig, mplfig = b.plot(kind='rv',
@@ -147,7 +141,7 @@ afig, mplfig = b.plot(kind='rv',
 # * `xlim`: "zoom-in" on the RM effect in the RVs, allow the others to fallback on automatic limits.
 # * `tight_layout`: use matplotlib's tight layout to ensure we have enough padding between axes to see the labels.
 
-# In[11]:
+# In[12]:
 
 
 afig, mplfig= b.plot(time=0.46,
@@ -171,7 +165,7 @@ afig, mplfig= b.plot(time=0.46,
 # * `save`: we could use `show=True`, but that doesn't always play nice with jupyter notebooks
 # * `save_kwargs`: may need to change these for your setup, to create a gif, passing {'writer': 'imagemagick'} is often useful.
 
-# In[12]:
+# In[13]:
 
 
 afig, mplanim = b.plot(times=anim_times,
@@ -179,7 +173,7 @@ afig, mplanim = b.plot(times=anim_times,
                        c=colors,
                        ls={'numericalrvs': 'solid', 'dynamicalrvs': 'dotted'},
                        highlight={'numericalrvs': True, 'dynamicalrvs': False},
-                       tight_layout=True, pad_aspect=False,
+                       pad_aspect=False,
                        axpos={'mesh': 211, 'rv': 223, 'lp': 224},
                        xlim={'rv': (0.4, 0.6)}, ylim={'rv': (-80, 80)},
                        animate=True, 

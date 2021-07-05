@@ -752,12 +752,12 @@ print(ps['description@context1@kind1'])
 # 
 # The [Bundle](../api/phoebe.frontend.bundle.Bundle.md) is nothing more than a glorified [ParameterSet](../api/phoebe.parameters.ParameterSet.md) with some extra methods to compute models, add new components and datasets, etc.
 # 
-# You can initialize an empty Bundle as follows:
+# You can initialize a bundle for a default detached binary system as follows:
 
 # In[81]:
 
 
-b = phoebe.Bundle()
+b = phoebe.default_binary()
 print(b)
 
 
@@ -773,83 +773,66 @@ print(b.filter(context='system'))
 # 
 # As promised earlier, the 'visible_if' attribute of a Parameter controls whether its visible to a ParameterSet... but it only does anything if the Parameter belongs to a Bundle.
 # 
-# Let's make a new ParameterSet in which the visibility of one parameter is dependent on the value of another.
+# Let's look at an example:
 
 # In[83]:
 
 
-param1 = phoebe.parameters.ChoiceParameter(qualifier='what_is_this',
-                                           choices=['matter', 'aether'],
-                                           value='matter',
-                                           context='context1')
-param2 = phoebe.parameters.FloatParameter(qualifier='mass',
-                                          default_unit=u.kg,
-                                          value=5,
-                                          visible_if='what_is_this:matter',
-                                          context='context1')
+print(b.filter(qualifier='ld*', component='primary'))
 
-b = phoebe.Bundle([param1, param2])
 
+# If we change `ld_mode_bol` from `lookup` to `manual`, the same filter will uncover another `ld_coeffs_bol` parameter that was previously hidden (and hide the `ld_coeffs_source_bol` parameter).
 
 # In[84]:
 
 
-print(b)
+b.set_value('ld_mode_bol', component='primary', value='manual')
 
-
-# It doesn't make much sense to need to define a mass if this thing isn't baryonic.  So if we change the value of 'what_is_this' to 'aether' then the 'mass' Parameter will temporarily hide itself.
 
 # In[85]:
 
 
-b.set_value('what_is_this', 'aether')
-print(b)
+print(b.filter(qualifier='ld*', component='primary'))
+
+
+# We can see the "rule" that dictates the parameter's visibility
+
+# In[86]:
+
+
+print(b.get_parameter(qualifier='ld_coeffs_bol', component='primary'))
+
+
+# In[87]:
+
+
+print(b.get_parameter(qualifier='ld_coeffs_bol', component='primary').visible_if)
 
 
 # ### FloatArrayParameters: interpolation
 # 
-# As mentioned earlier, when a part of a Bundle, FloatArrayParameters can handle simple linear interpolation with respect to another FloatArrayParameter in the same Bundle.
+# As mentioned earlier, when a part of a Bundle, FloatArrayParameters can handle simple linear interpolation with respect to another FloatArrayParameter in the same ParameterSet.
+# 
+# To see this in action, we'll add a dataset with entirely unrealistic times and fluxes.
 
-# In[ ]:
-
-
-xparam = phoebe.parameters.FloatArrayParameter(qualifier='xs',
-                                               default_unit=u.d,
-                                               value=np.linspace(0,1,10),
-                                               context='context1')
-
-yparam = phoebe.parameters.FloatArrayParameter(qualifier='ys',
-                                               default_unit=u.m,
-                                               value=np.linspace(0,1,10)**2,
-                                               context='context1')
-
-b = phoebe.Bundle([xparam, yparam])
+# In[88]:
 
 
-# In[ ]:
+b.add_dataset('lc', times=[0, 1, 2, 3], fluxes=[0.5, 0.6, 0.7, 0.8])
 
 
-print(b.filter('ys').get().twig)
+# In[89]:
 
 
-# In[ ]:
+print(b.filter(qualifier=['times', 'fluxes']))
 
 
-print(b['ys'].get_value())
+# Now we can interpolate the 'fluxes' param for any given value of 'times'
+
+# In[90]:
 
 
-# Now we can interpolate the 'ys' param for any given value of 'xs'
-
-# In[ ]:
-
-
-print(b['ys'].interp_value(xs=0))
-
-
-# In[ ]:
-
-
-print(b['ys'].interp_value(xs=0.2))
+b.get_parameter('fluxes').interp_value(times=[0.1])
 
 
 # **NOTE**: interp_value does not (yet) support passing a unit.. it will always return a value (not a quantity) and will always be in the default_unit.

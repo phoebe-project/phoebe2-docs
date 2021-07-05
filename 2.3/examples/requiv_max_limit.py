@@ -4,15 +4,23 @@
 # # jktebop: requiv_max_limit
 # 
 # Here we'll examine how well [jktebop](../api/phoebe.parameters.compute.jktebop.md) agrees with PHOEBE with increased distortion.
+# 
+# 
+# Setup
+# -------------------
+# 
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-import phoebe
+#!pip install -I "phoebe>=2.3,<2.4"
 
 
 # In[2]:
 
+
+import phoebe
 
 b = phoebe.default_binary()
 
