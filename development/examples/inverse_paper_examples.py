@@ -127,7 +127,7 @@ afig, mplfig = b.plot(x='phases', show=True)
 
 
 b.add_solver('estimator.rv_geometry',
-             rv='rv01')
+             rv_datasets='rv01')
 
 
 # In[8]:
@@ -165,7 +165,7 @@ afig, mplfig = b.plot(solution='rv_geom_sol',
 
 
 b.add_solver('estimator.lc_geometry',
-             lc='lc01')
+             lc_datasets='lc01')
 
 
 # In[12]:
@@ -224,7 +224,7 @@ b.set_value('mask_enabled@lc01', False)
 
 
 b.add_solver('estimator.ebai',
-             lc='lc01')
+             lc_datasets='lc01')
 
 
 # In[19]:

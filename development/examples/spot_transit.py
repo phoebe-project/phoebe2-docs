@@ -7,23 +7,17 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.2 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
-
-# In[ ]:
-
-
-get_ipython().system('pip install -I "phoebe>=2.2,<2.3"')
-
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+#!pip install -I "phoebe>=2.3,<2.4"
 
 
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.ipynb) for more details.
+# As always, let's do imports and initialize a logger and a new bundle.
 
-# In[1]:
+# In[2]:
 
 
 import phoebe
@@ -34,7 +28,7 @@ b = phoebe.default_binary()
 
 # Let's set reasonable (although not necessarily physical) values for the secondary component.
 
-# In[2]:
+# In[3]:
 
 
 b.flip_constraint('mass@secondary', solve_for='q')
@@ -45,7 +39,7 @@ b.set_value(qualifier='teff', component='secondary', value=300)
 
 # We'll add a spot to the primary component.
 
-# In[3]:
+# In[4]:
 
 
 b.add_spot(component='primary', 
@@ -59,7 +53,7 @@ b.add_spot(component='primary',
 # Adding Datasets
 # -------------------
 
-# In[4]:
+# In[5]:
 
 
 b.add_dataset('lc', compute_times=phoebe.linspace(-0.1, 0.1, 201))
@@ -146,3 +140,9 @@ afig, mplfig = b.plot(times=anim_times,
 
 
 # ![gif](spot_transit.gif)
+
+# In[ ]:
+
+
+
+

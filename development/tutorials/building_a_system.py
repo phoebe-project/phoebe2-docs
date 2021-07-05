@@ -74,6 +74,8 @@ print(b.hierarchy)
 # Adding Components Manually
 # --------------------
 # 
+# **IMPORTANT**: in the vast majority of cases, starting with one of the default systems is sufficient.  Below we will discuss the alternative method of building a system from scratch.
+# 
 # By default, an empty [Bundle](../api/phoebe.frontend.bundle.Bundle.md) does not contain any information about our system.
 # 
 # So, let's first start by adding a few stars.  Here we'll call the generic [add_component](../api/phoebe.frontend.bundle.Bundle.add_component.md) method.  This method works for any type of component in the system - stars, orbits, planets, disks, rings, spots, etc.  The first argument needs to be a callable or the name of a callable in [phoebe.parameters.component](../api/phoebe.parameters.component.md) which include the following options:
@@ -124,8 +126,8 @@ b.add_star('extrastarforfun', teff=6000)
 b.add_orbit('binary')
 
 
-# Defining the Hierarchy
-# ---------------------------------
+# ## Defining the Hierarchy
+# 
 # 
 # At this point all we've done is add a bunch of Parameters to our Bundle, but 
 # we still need to specify the hierarchical setup of our system.

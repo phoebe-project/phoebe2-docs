@@ -26,9 +26,37 @@ import numpy as np
 logger = phoebe.logger()
 
 
-# For the sake of a simple crude example, we'll just use the synthetic light curve of a default binary with a bit of noise as our "observations".   See the [inverse problem example scripts](../examples.md) for more realistic examples.
+# General "Fitting" Workflow
+# ---------------------------------------
+# 
+# PHOEBE includes wrappers around several different inverse-problem "algorithms" with a common interface.  These available "algorithms" are divided into three categories:
+# 
+# * estimators: provides proposed values for a number of parameters from the datasets as input alone, not requiring full forward-models via [run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md).
+# * optimizers: runs off-the-shelf optimizers to attempt to find the local (or global) solution.
+# * samplers: samples the local parameter space to estimate uncertainties and correlations.
+# 
+# To see the currently implemented set of solvers, we can call [phoebe.list_available_solvers](../api/phoebe.list_available_solvers.md)
 
 # In[3]:
+
+
+print(phoebe.list_available_solvers())
+
+
+# Solving an eclipsing binary is a very time-intensive task (both for you as well as your computer).  There is no one-size-fits-all recipe to follow, but in general you might find the following workflow useful:
+# 
+# 1. Create a bundle with the appropriate configuration (single star, detached binary, semi-detached, contact, etc).
+# 2. Attach observational datasets
+# 3. Flip constraints as necessary to parameterize the system in the way that makes sense for any information you know in advance, types of data, and scientific goals.  For example: if you have an SB2 system with RVs, it might make sense to reparameterize to "fit" for `asini` instead of `sma` and `incl`.
+# 4. Manually set known or approximate values for parameters wherever possible.
+# 5. Run the appropriate estimators, checking to see if the proposed values make sense before adopting them.
+# 6. Try to optimize the forward model.  See which expensive effects can be disabled without affecting the synthetic model (to some precision tolerance).  Make sure to revisit these assumptions as optimizers may move the system to different areas of parameter space where they are no longer valid.
+# 7. Run optimizers to find (what you hope and assume to be) the global solution.  Start with just a few parameters that are most sensitive to the remaining residuals and add more until the residuals are flat (no systematics).  Check all read-only constrained parameters to make sure that they make sense, are consistent with known information, and are physical.
+# 8. Run samplers around the global solution found by the optimizers to explore that local parameter space and the correlations between parameters.  Check for convergence before interpreting the resulting posteriors.
+
+# For the sake of a simple crude example, we'll just use the synthetic light curve of a default binary with a bit of noise as our "observations".   See the [inverse problem example scripts](../examples.md) for more realistic examples.
+
+# In[4]:
 
 
 b = phoebe.default_binary()
@@ -43,24 +71,10 @@ b = phoebe.default_binary()
 b.add_dataset('lc', times=times, fluxes=fluxes, sigmas=np.full_like(fluxes, fill_value=0.1))
 
 
-# Available Solvers
+# Adding Solver Options
 # ----------------------------------
 # 
-# PHOEBE includes wrappers around several different inverse-problem "algorithms" with a common interface.  These available "algorithms" are divided into three categories:
-# 
-# * estimators: provides proposed values for a number of parameters from the datasets as input alone, not requiring full forward-models via [run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md).
-# * optimizers: runs off-the-shelf optimizers to attempt to find the local (or global) solution.
-# * samplers: samples the local parameter space to estimate uncertainties and correlations.
-# 
-# To see the currently implemented set of solvers, we can call [phoebe.list_available_solvers](../api/phoebe.list_available_solvers.md)
-
-# In[4]:
-
-
-print(phoebe.list_available_solvers())
-
-
-# As there are quite a few and each have their own available options, we won't get in to the details here.  See [LC esimators](./LC_estimators.ipynb), [RV estimators](./RV_estimators.ipynb), [Nelder-Mead Optimizer](./nelder_mead.ipynb), and [emcee sampler](./emcee.ipynb) for details on some of the most commonly-used solver.  The [solver API docs](../api/phoebe.parameters.solver.md) or [solver example scripts](../examples.md) may also help.
+# As there are quite a few different solvers implemented in PHOEBE and each have their own available options, we won't get in to the details here.  See [LC esimators](./LC_estimators.ipynb), [RV estimators](./RV_estimators.ipynb), [Nelder-Mead Optimizer](./nelder_mead.ipynb), and [emcee sampler](./emcee.ipynb) for details on some of the most commonly-used solver.  The [solver API docs](../api/phoebe.parameters.solver.md) or [solver example scripts](../examples.md) may also help.
 # 
 # As you may expect, to use a solver you must first call [b.add_solver](../api/phoebe.frontend.bundle.Bundle.add_solver.md), set the desired options, and then call [b.run_solver](../api/phoebe.frontend.bundle.Bundle.run_solver.md) (or [b.export_solver](../api/phoebe.frontend.bundle.Bundle.export_solver.md) and [b.import_solution](../api/phoebe.frontend.bundle.Bundle.import_solution.md)).
 

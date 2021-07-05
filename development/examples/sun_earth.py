@@ -9,21 +9,15 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.1 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
-
-# In[ ]:
-
-
-get_ipython().system('pip install -I "phoebe>=2.1,<2.2"')
-
-
-# As always, let's do imports and initialize a logger and a new bundle.  See [Building a System](../tutorials/building_a_system.html) for more details.
+# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+#!pip install -I "phoebe>=2.3,<2.4"
 
+
+# As always, let's do imports and initialize a logger and a new bundle.
 
 # In[2]:
 
@@ -63,7 +57,7 @@ b.flip_constraint('period@earth', solve_for='syncpar')
 b.set_value('period@earth', 1*u.d)
 
 
-# In[5]:
+# In[ ]:
 
 
 b.set_value('sma@earthorbit', 1*u.AU)
@@ -73,7 +67,7 @@ b.set_value('q@earthorbit', c.M_earth/c.M_sun)
 #b.set_value('ecc@earthorbit')
 
 
-# In[6]:
+# In[ ]:
 
 
 print("Msun: {}".format(b.get_quantity('mass@sun@component', unit=u.solMass)))
@@ -83,19 +77,19 @@ print("Mearth: {}".format(b.get_quantity('mass@earth@component', unit=u.solMass)
 # Running Compute
 # --------------------
 
-# In[7]:
+# In[ ]:
 
 
 b.add_dataset('mesh', times=[0.5], dataset='mesh01')
 
 
-# In[8]:
+# In[ ]:
 
 
 b.add_dataset('lc', times=np.linspace(-0.5,0.5,51), dataset='lc01')
 
 
-# In[9]:
+# In[ ]:
 
 
 b.set_value('ld_func@earth', 'logarithmic')
@@ -106,7 +100,7 @@ b.set_value('ld_coeffs@earth', [0.0, 0.0])
 # 
 # **NOTE**: this doesn't work yet because the rpole<->potential is still being defined by roche, giving the earth a polar radius way too small.
 
-# In[10]:
+# In[ ]:
 
 
 b['distortion_method@earth'] = 'rotstar'
@@ -114,7 +108,7 @@ b['distortion_method@earth'] = 'rotstar'
 
 # The temperatures of earth will fall far out of bounds for any atmosphere model, so let's set the earth to be a blackbody and use a supported limb-darkening model (the default 'interp' is not valid for blackbody atmospheres).
 
-# In[11]:
+# In[ ]:
 
 
 b['atm@earth'] = 'blackbody'
@@ -122,37 +116,37 @@ b.set_value_all('ld_func@earth', 'logarithmic')
 b.set_value_all('ld_coeffs@earth', [0, 0])
 
 
-# In[12]:
+# In[ ]:
 
 
 b.run_compute()
 
 
-# In[13]:
+# In[ ]:
 
 
 axs, artists = b.plot(dataset='mesh01', show=True)
 
 
-# In[14]:
+# In[ ]:
 
 
 axs, artists = b.plot(dataset='mesh01', component='sun', show=True)
 
 
-# In[15]:
+# In[ ]:
 
 
 axs, artists = b.plot(dataset='mesh01', component='earth', show=True)
 
 
-# In[16]:
+# In[ ]:
 
 
 b['requiv@earth@component']
 
 
-# In[17]:
+# In[ ]:
 
 
 axs, artists = b.plot(dataset='lc01', show=True)
