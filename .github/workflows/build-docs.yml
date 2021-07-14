@@ -15,10 +15,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Git branch name
+      id: git-branch-name
+      uses: EthanSK/git-branch-name-action@v1
+
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
+
     - name: Install pip requirements
       run: |
         python -m pip install --upgrade pip
@@ -26,19 +32,18 @@ jobs:
 
     - name: Build docs
       run: |
-        BRANCH=`echo ${{ github.ref }} | cut -d "/" -f 3`
         git clone --depth 1 git://github.com/phoebe-project/phoebe2-docs.git ../phoebe2-docs-master
-        mkdir -p ../phoebe2-docs-master/${{ BRANCH }}/tutorials
-        mkdir -p ../phoebe2-docs-master/${{ BRANCH }}/examples
-        jupyter nbconvert --to python tutorials/*ipynb --output-dir=../phoebe2-docs-master/${{ BRANCH }}/tutorials
-        jupyter nbconvert --to python examples/*ipynb --output-dir=../phoebe2-docs-master/${{ BRANCH }}/examples
-        cp tutorials/*ipynb ../phoebe2-docs-master/${{ BRANCH }}/tutorials/
-        cp examples/*ipynb ../phoebe2-docs-master/${{ BRANCH }}/examples/
+        mkdir -p ../phoebe2-docs-master/${ GIT_BRANCH_NAME }/tutorials
+        mkdir -p ../phoebe2-docs-master/${ GIT_BRANCH_NAME }/examples
+        jupyter nbconvert --to python tutorials/*ipynb --output-dir=../phoebe2-docs-master/${ GIT_BRANCH_NAME }/tutorials
+        jupyter nbconvert --to python examples/*ipynb --output-dir=../phoebe2-docs-master/${ GIT_BRANCH_NAME }/examples
+        cp tutorials/*ipynb ../phoebe2-docs-master/${ GIT_BRANCH_NAME }/tutorials/
+        cp examples/*ipynb ../phoebe2-docs-master/${ GIT_BRANCH_NAME }/examples/
         cd ../phoebe2-docs-master
         git config --global user.email "gh-actions"
         git config --global user.name "gh-actions"
         git config -l | grep 'http\..*\.extraheader' | cut -d= -f1 | xargs -L1 git config --unset-all
-        git add $BRANCH/tutorials/*
-        git add $BRANCH/examples/*
-        git commit -m 'building ${{ BRANCH }} docs'
+        git add ${ GIT_BRANCH_NAME }/tutorials/*
+        git add ${ GIT_BRANCH_NAME }/examples/*
+        git commit -m 'building ${ GIT_BRANCH_NAME } docs'
         git push -q -f https://kecnry:${{ secrets.GH_API_KEY }}@github.com/phoebe-project/phoebe2-docs master
