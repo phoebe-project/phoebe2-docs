@@ -16,10 +16,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Git branch name
-      id: git-branch-name
-      uses: EthanSK/git-branch-name-action@v1
-
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
@@ -33,17 +29,17 @@ jobs:
     - name: Build docs
       run: |
         git clone --depth 1 git://github.com/phoebe-project/phoebe2-docs.git ../phoebe2-docs-master
-        mkdir -p ../phoebe2-docs-master/${ GIT_BRANCH_NAME }/tutorials
-        mkdir -p ../phoebe2-docs-master/${ GIT_BRANCH_NAME }/examples
-        jupyter nbconvert --to python tutorials/*ipynb --output-dir=../phoebe2-docs-master/${ GIT_BRANCH_NAME }/tutorials
-        jupyter nbconvert --to python examples/*ipynb --output-dir=../phoebe2-docs-master/${ GIT_BRANCH_NAME }/examples
-        cp tutorials/*ipynb ../phoebe2-docs-master/${ GIT_BRANCH_NAME }/tutorials/
-        cp examples/*ipynb ../phoebe2-docs-master/${ GIT_BRANCH_NAME }/examples/
+        mkdir -p ../phoebe2-docs-master/${GITHUB_HEAD_REF##*/}/tutorials
+        mkdir -p ../phoebe2-docs-master/${GITHUB_HEAD_REF##*/}/examples
+        jupyter nbconvert --to python tutorials/*ipynb --output-dir=../phoebe2-docs-master/${GITHUB_HEAD_REF##*/}/tutorials
+        jupyter nbconvert --to python examples/*ipynb --output-dir=../phoebe2-docs-master/${GITHUB_HEAD_REF##*/}/examples
+        cp tutorials/*ipynb ../phoebe2-docs-master/${GITHUB_HEAD_REF##*/}/tutorials/
+        cp examples/*ipynb ../phoebe2-docs-master/${GITHUB_HEAD_REF##*/}/examples/
         cd ../phoebe2-docs-master
         git config --global user.email "gh-actions"
         git config --global user.name "gh-actions"
         git config -l | grep 'http\..*\.extraheader' | cut -d= -f1 | xargs -L1 git config --unset-all
-        git add ${ GIT_BRANCH_NAME }/tutorials/*
-        git add ${ GIT_BRANCH_NAME }/examples/*
-        git commit -m 'building ${ GIT_BRANCH_NAME } docs'
+        git add ${GITHUB_HEAD_REF##*/}/tutorials/*
+        git add ${GITHUB_HEAD_REF##*/}/examples/*
+        git commit -m 'building ${GITHUB_HEAD_REF##*/} docs'
         git push -q -f https://kecnry:${{ secrets.GH_API_KEY }}@github.com/phoebe-project/phoebe2-docs master
