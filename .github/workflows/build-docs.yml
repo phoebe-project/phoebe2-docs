@@ -26,20 +26,25 @@ jobs:
         python -m pip install --upgrade pip
         pip install jupyter
 
+    - name: Checkout phoebe2-docs master
+      uses: actions/checkout@v2
+      with:
+        repository: phoebe-project/phoebe2-docs
+        path: phoebe2-docs-master
+
     - name: Build docs
       run: |
-        git clone --depth 1 git://github.com/phoebe-project/phoebe2-docs.git ../phoebe2-docs-master
-        mkdir -p ../phoebe2-docs-master/${GITHUB_HEAD_REF##*/}/tutorials
-        mkdir -p ../phoebe2-docs-master/${GITHUB_HEAD_REF##*/}/examples
+        mkdir -p phoebe2-docs-master/${GITHUB_HEAD_REF##*/}/tutorials
+        mkdir -p phoebe2-docs-master/${GITHUB_HEAD_REF##*/}/examples
         jupyter nbconvert --to python tutorials/*ipynb --output-dir=../phoebe2-docs-master/${GITHUB_HEAD_REF##*/}/tutorials
         jupyter nbconvert --to python examples/*ipynb --output-dir=../phoebe2-docs-master/${GITHUB_HEAD_REF##*/}/examples
-        cp tutorials/*ipynb ../phoebe2-docs-master/${GITHUB_HEAD_REF##*/}/tutorials/
-        cp examples/*ipynb ../phoebe2-docs-master/${GITHUB_HEAD_REF##*/}/examples/
-        cd ../phoebe2-docs-master
+        cp tutorials/*ipynb phoebe2-docs-master/${GITHUB_HEAD_REF##*/}/tutorials/
+        cp examples/*ipynb phoebe2-docs-master/${GITHUB_HEAD_REF##*/}/examples/
+        cd phoebe2-docs-master
         git config --global user.email "gh-actions"
         git config --global user.name "gh-actions"
         git config -l | grep 'http\..*\.extraheader' | cut -d= -f1 | xargs -L1 git config --unset-all
         git add ${GITHUB_HEAD_REF##*/}/tutorials/*
         git add ${GITHUB_HEAD_REF##*/}/examples/*
-        git commit -m 'building ${GITHUB_HEAD_REF##*/} docs'
+        git commit -m "building ${GITHUB_HEAD_REF##*/} docs"
         git push -q -f https://kecnry:${{ secrets.GH_API_KEY }}@github.com/phoebe-project/phoebe2-docs master
