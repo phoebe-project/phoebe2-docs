@@ -33,18 +33,19 @@ jobs:
         path: phoebe2-docs-master
 
     - name: Build docs
+      env: `echo ${{ github.ref }} | cut -d "/" -f 3`
       run: |
-        mkdir -p phoebe2-docs-master/${{ github.ref##*/ }}/tutorials
-        mkdir -p phoebe2-docs-master/${{ github.ref##*/ }}/examples
-        jupyter nbconvert --to python tutorials/*ipynb --output-dir=phoebe2-docs-master/${{ github.ref##*/ }}/tutorials
-        jupyter nbconvert --to python examples/*ipynb --output-dir=phoebe2-docs-master/${{ github.ref##*/ }}/examples
-        cp tutorials/*ipynb phoebe2-docs-master/${{ github.ref##*/ }}/tutorials/
-        cp examples/*ipynb phoebe2-docs-master/${{ github.ref##*/ }}/examples/
+        mkdir -p phoebe2-docs-master/${{ env.branch }}/tutorials
+        mkdir -p phoebe2-docs-master/${{ env.branch }}/examples
+        jupyter nbconvert --to python tutorials/*ipynb --output-dir=phoebe2-docs-master/${{ env.branch }}/tutorials
+        jupyter nbconvert --to python examples/*ipynb --output-dir=phoebe2-docs-master/${{ env.branch }}/examples
+        cp tutorials/*ipynb phoebe2-docs-master/${{ env.branch }}/tutorials/
+        cp examples/*ipynb phoebe2-docs-master/${{ env.branch }}/examples/
         cd phoebe2-docs-master
         git config --global user.email "gh-actions"
         git config --global user.name "gh-actions"
         git config -l | grep 'http\..*\.extraheader' | cut -d= -f1 | xargs -L1 git config --unset-all
-        git add ${{ github.ref##*/ }}/tutorials/*
-        git add ${{ github.ref##*/ }}/examples/*
-        git commit -m "building ${{ github.ref##*/ }} docs"
+        git add ${{ env.branch }}/tutorials/*
+        git add ${{ env.branch }}/examples/*
+        git commit -m "building ${{ env.branch }} docs"
         git push -q -f https://kecnry:${{ secrets.GH_API_KEY }}@github.com/phoebe-project/phoebe2-docs master
