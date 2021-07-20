@@ -32,9 +32,13 @@ jobs:
         repository: phoebe-project/phoebe2-docs
         path: phoebe2-docs-master
 
-    - name: Build docs
+    - name: Set branch env var
       run: |
         echo "branch=`echo ${{ github.ref }} | cut -d "/" -f 3`" >> $GITHUB_ENV
+
+    - name: Build docs
+      run: |
+        echo ${{ env.branch }}
         mkdir -p phoebe2-docs-master/${{ env.branch }}/tutorials
         mkdir -p phoebe2-docs-master/${{ env.branch }}/examples
         jupyter nbconvert --to python tutorials/*ipynb --output-dir=phoebe2-docs-master/${{ env.branch }}/tutorials
