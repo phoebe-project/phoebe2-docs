@@ -33,7 +33,7 @@ jobs:
         path: phoebe2-docs-master
 
     - name: Build docs
-      env: `echo ${{ github.ref }} | cut -d "/" -f 3`
+      env: echo ${{ github.ref }} | cut -d "/" -f 3
       run: |
         mkdir -p phoebe2-docs-master/${{ env.branch }}/tutorials
         mkdir -p phoebe2-docs-master/${{ env.branch }}/examples
