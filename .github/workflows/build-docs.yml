@@ -14,7 +14,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout phoebe2-docs (current branch)
+      uses: actions/checkout@v2
+      path: phoebe2-docs-branch
+
+    - name: Checkout phoebe2-docs master
+      uses: actions/checkout@v2
+      with:
+        repository: phoebe-project/phoebe2-docs
+        path: phoebe2-docs-master
 
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
@@ -26,25 +34,23 @@ jobs:
         python -m pip install --upgrade pip
         pip install jupyter
 
-    - name: Checkout phoebe2-docs master
-      uses: actions/checkout@v2
-      with:
-        repository: phoebe-project/phoebe2-docs
-        path: phoebe2-docs-master
-
     - name: Set branch env var
       run: |
         echo "branch=`echo ${{ github.ref }} | cut -d "/" -f 3`" >> $GITHUB_ENV
 
     - name: Build docs
       run: |
-        mkdir -p phoebe2-docs-master/${{ env.branch }}/tutorials
-        mkdir -p phoebe2-docs-master/${{ env.branch }}/examples
-        jupyter nbconvert --to python tutorials/*ipynb --output-dir=phoebe2-docs-master/${{ env.branch }}/tutorials
-        jupyter nbconvert --to python examples/*ipynb --output-dir=phoebe2-docs-master/${{ env.branch }}/examples
-        cp tutorials/*ipynb phoebe2-docs-master/${{ env.branch }}/tutorials/
-        cp examples/*ipynb phoebe2-docs-master/${{ env.branch }}/examples/
-        cd phoebe2-docs-master
+        cd phoebe2-docs-branch
+        mkdir -p ../phoebe2-docs-master/${{ env.branch }}/tutorials
+        mkdir -p ../phoebe2-docs-master/${{ env.branch }}/examples
+        jupyter nbconvert --to python tutorials/*ipynb --output-dir=../phoebe2-docs-master/${{ env.branch }}/tutorials
+        jupyter nbconvert --to python examples/*ipynb --output-dir=../phoebe2-docs-master/${{ env.branch }}/examples
+        cp tutorials/*ipynb ../phoebe2-docs-master/${{ env.branch }}/tutorials/
+        cp examples/*ipynb ../phoebe2-docs-master/${{ env.branch }}/examples/
+        cd ../phoebe2-docs-master
+
+    - name: Commit to master branch
+      run: |
         git config --global user.email "gh-actions"
         git config --global user.name "gh-actions"
         git config -l | grep 'http\..*\.extraheader' | cut -d= -f1 | xargs -L1 git config --unset-all
