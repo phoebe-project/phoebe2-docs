@@ -82,7 +82,7 @@ b = phoebe.default_binary()
 b.set_value(qualifier='teff', component='primary', value=6500)
 
 
-# Next, we need to define our datasets via [b.add_dataset](../api/phoebe.frontend.bundle.Bundle.add_dataset.md).  This will be the topic of the following tutorial on [datasets](datasets.ipynb).
+# Next, we need to define our datasets via [b.add_dataset](../api/phoebe.frontend.bundle.Bundle.add_dataset.md).  This will be the topic of the following tutorial on [datasets](datasets.ipynb).  Datasets store observations to compare against the model, but also tell PHOEBE at what times to compute the forward model and store passband-dependent options.
 
 # In[6]:
 
@@ -90,7 +90,7 @@ b.set_value(qualifier='teff', component='primary', value=6500)
 b.add_dataset('lc', compute_times=phoebe.linspace(0,1,101))
 
 
-# We'll then want to run our forward model to create a synthetic model of the observables defined by these datasets using [b.run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md), which will be the topic of the [computing observables](compute.ipynb) tutorial.
+# We'll then want to run our forward model to create a synthetic model of the observables defined by these datasets using [b.run_compute](../api/phoebe.frontend.bundle.Bundle.run_compute.md), which will be the topic of the [computing observables](compute.ipynb) tutorial.  The compute options tell PHOEBE how to create a synthetic model from the system parameters for the added datasets.
 
 # In[7]:
 
