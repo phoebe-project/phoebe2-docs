@@ -16,7 +16,8 @@ jobs:
     steps:
     - name: Checkout phoebe2-docs (current branch)
       uses: actions/checkout@v2
-      path: phoebe2-docs-branch
+      with:
+        path: phoebe2-docs-branch
 
     - name: Checkout phoebe2-docs master
       uses: actions/checkout@v2
