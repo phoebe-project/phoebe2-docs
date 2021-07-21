@@ -52,6 +52,7 @@ jobs:
 
     - name: Commit to master branch
       run: |
+        cd phoebe2-docs-master
         git config --global user.email "gh-actions"
         git config --global user.name "gh-actions"
         git config -l | grep 'http\..*\.extraheader' | cut -d= -f1 | xargs -L1 git config --unset-all
