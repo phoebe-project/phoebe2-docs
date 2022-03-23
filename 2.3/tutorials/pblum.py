@@ -340,7 +340,7 @@ afig, mplfig = b.plot(show=True)
 # pblum_mode = 'dataset-scaled'
 # ----------------------------------
 # 
-# Setting `pblum_mode` to 'dataset-sclaed' is only allowed if fluxes are attached to the dataset itself.  Let's use our existing model to generate "fake" data and then populate the dataset.
+# Setting `pblum_mode` to 'dataset-scaled' is only allowed if fluxes are attached to the dataset itself.  Let's use our existing model to generate "fake" data and then populate the dataset.
 
 # In[43]:
 
