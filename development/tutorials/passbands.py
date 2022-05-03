@@ -46,8 +46,8 @@ pb = phoebe.atmospheres.passbands.Passband(
 pb.compute_blackbody_response()
 
 # Castelli & Kurucz (2004) response:
-pb.compute_ck2004_response(path='ck2004i')
-pb.compute_ck2004_intensities(path='ck2004i')
+pb.compute_ck2004_response(path='ck2004')
+pb.compute_ck2004_intensities(path='ck2004')
 pb.compute_ck2004_ldcoeffs()
 pb.compute_ck2004_ldints()
 
@@ -147,7 +147,7 @@ pb = phoebe.atmospheres.passbands.Passband(
 # In[6]:
 
 
-print pb.content
+pb.content
 
 
 # Since we have not computed any tables yet, the list is empty for now. Blackbody functions for computing the lookup tables are built into PHOEBE and you do not need any auxiliary files to generate them. The lookup tables are defined for effective temperatures between 300K and 500,000K. To compute the blackbody response, issue:
@@ -163,7 +163,7 @@ pb.compute_blackbody_response()
 # In[8]:
 
 
-print pb.content
+pb.content
 
 
 # We can now test-drive the blackbody lookup table we just created. For this we will use a low-level `Passband` class method that computes normal emergent passband intensity, `Inorm()`. For the sake of simplicity, we will turn off limb darkening by setting `ld_func` to `'linear'` and `ld_coeffs` to `'[0.0]'`:
@@ -171,7 +171,7 @@ print pb.content
 # In[9]:
 
 
-print pb.Inorm(Teff=5772, atm='blackbody', ld_func='linear', ld_coeffs=[0.0])
+pb.Inorm(Teff=5772, atm='blackbody', ld_func='linear', ld_coeffs=[0.0])
 
 
 # Let us now plot a range of temperatures, to make sure that normal emergent passband intensities do what they are supposed to do. While at it, let us compare what we get for the Johnson:V passband.
@@ -200,8 +200,8 @@ plt.show()
 # 
 # ```
 # [cd into a parent directory that will hold the database]
-# wget http://phoebe-project.org/static/ck2004i.tgz
-# tar xzf ck2004i.tgz
+# wget http://phoebe-project.org/static/ck2004.tgz
+# tar xzf ck2004.tgz
 # ```
 # 
 # Keep in mind that this will take a long time. Plan to go for lunch or leave it overnight. The good news is that this needs to be done only once.
@@ -211,7 +211,7 @@ plt.show()
 # In[11]:
 
 
-pb.compute_ck2004_response(path='ck2004i', verbose=False)
+pb.compute_ck2004_response(path='ck2004', verbose=False)
 
 
 # Note, of course, that you will need to change the `path` to point to the directory where you unpacked the ck2004 database. The verbosity parameter `verbose` will report on the progress as computation is being done. Depending on your computer speed, this step will take ~10 minutes to complete. We can now check the passband's `content` attribute again:
@@ -219,7 +219,7 @@ pb.compute_ck2004_response(path='ck2004i', verbose=False)
 # In[12]:
 
 
-print pb.content
+pb.content
 
 
 # Let us now use the same low-level function as before to compare normal emergent passband intensity for our custom passband for blackbody and ck2004 model atmospheres. One other complication is that, unlike blackbody model that depends only on the temperature, the ck2004 model depends on surface gravity (log g) and heavy metal abundances as well, so we need to pass those arrays.
@@ -237,12 +237,12 @@ plt.legend(loc='lower right')
 plt.show()
 
 
-# Quite a difference. That is why using model atmospheres is superior when accuracy is of importance. Next, we need to compute direction-dependent intensities for all our limb darkening and boosting needs. This is a step that takes a long time; depending on your computer speed, it can take a few hours to complete.
+# Quite a difference. That is why using model atmospheres is superior when accuracy is of importance. Next, we need to compute direction-dependent intensities for all our limb darkening and boosting needs. This is a step that takes a long time; depending on your computer speed, it can take a few minutes to complete.
 
 # In[14]:
 
 
-pb.compute_ck2004_intensities(path='ck2004i', verbose=False)
+pb.compute_ck2004_intensities(path='ck2004', verbose=False)
 
 
 # This step will allow PHOEBE to compute all direction-dependent intensities on the fly, including the interpolation of the limb darkening coefficients that is model-independent. When limb darkening models are preferred (for example, when you don't quite trust direction-dependent intensities from the model atmosphere), we need to calculate two more tables: one for limb darkening coefficients and the other for the integrated limb darkening. That is done by two methods that do not take appreciable time to complete:
@@ -274,7 +274,7 @@ pb.import_wd_atmcof('atmcofplanck.dat', 'atmcof.dat', 22)
 # In[17]:
 
 
-print pb.content
+pb.content
 
 
 # In[18]:

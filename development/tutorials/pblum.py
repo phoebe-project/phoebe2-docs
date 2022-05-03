@@ -73,6 +73,16 @@ print(b.compute_pblums())
 
 # For more details, see the section below on "Accessing Model Luminosities" as well as the [b.compute_pblums API docs](../api/phoebe.frontend.bundle.Bundle.compute_pblums.md)
 
+# The table below provides a brief summary of all available `pblum_mode` options. Details are given in the remainder of the tutorial.
+# 
+# | pblum_mode        | intent |
+# |-------------------|--------|
+# | component-coupled | provide pblum for one star (by default L1), compute pblums for other stars from atmosphere tables |
+# | decoupled         | provide pblums for each star independently |
+# | absolute          | obtain unscaled pblums, in passband watts, computed from atmosphere tables |
+# | dataset-scaled    | calculate each pblum from the scaling factor between absolute fluxes and each dataset |
+# | dataset-coupled   | same as above, but all datasets are scaled with the same scaling factor |
+
 # pblum_mode = 'component-coupled'
 # -----------------------
 # 
@@ -340,7 +350,7 @@ afig, mplfig = b.plot(show=True)
 # pblum_mode = 'dataset-scaled'
 # ----------------------------------
 # 
-# Setting `pblum_mode` to 'dataset-sclaed' is only allowed if fluxes are attached to the dataset itself.  Let's use our existing model to generate "fake" data and then populate the dataset.
+# Setting `pblum_mode` to 'dataset-scaled' is only allowed if fluxes are attached to the dataset itself.  Let's use our existing model to generate "fake" data and then populate the dataset.
 
 # In[43]:
 
