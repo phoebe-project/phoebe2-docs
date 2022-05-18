@@ -113,6 +113,7 @@ Bundle is a subclass of phoebe.parameters.ParameterSet and therefore also includ
 * [rerun_model](phoebe.frontend.bundle.Bundle.rerun_model.md)
 * [rerun_solution](phoebe.frontend.bundle.Bundle.rerun_solution.md)
 * [resubmit_job](phoebe.frontend.bundle.Bundle.resubmit_job.md)
+* [run_all_constraints](phoebe.frontend.bundle.Bundle.run_all_constraints.md)
 * [run_checks](phoebe.frontend.bundle.Bundle.run_checks.md)
 * [run_checks_compute](phoebe.frontend.bundle.Bundle.run_checks_compute.md)
 * [run_checks_figure](phoebe.frontend.bundle.Bundle.run_checks_figure.md)

@@ -9,5 +9,5 @@ def rename_gaussian_process(self, old_feature, new_feature, overwrite=False, ret
 
 
 
-Shortcut to [phoebe.frontend.bundle.Bundle.rename_feature](phoebe.frontend.bundle.Bundle.rename_feature.md) but with kind='gaussian_process'.
+Shortcut to [phoebe.frontend.bundle.Bundle.rename_feature](phoebe.frontend.bundle.Bundle.rename_feature.md).
 

@@ -10,6 +10,7 @@ FloatParameter is a subclass of phoebe.parameters.Parameter and therefore also i
 * [get_limits](phoebe.parameters.FloatParameter.get_limits.md)
 * [get_quantity](phoebe.parameters.FloatParameter.get_quantity.md)
 * [get_timederiv](phoebe.parameters.FloatParameter.get_timederiv.md)
+* [get_valid_units](phoebe.parameters.FloatParameter.get_valid_units.md)
 * [get_value](phoebe.parameters.FloatParameter.get_value.md)
 * [in_distributions](phoebe.parameters.FloatParameter.in_distributions.md)
 * [limits](phoebe.parameters.FloatParameter.limits.md)
@@ -20,4 +21,5 @@ FloatParameter is a subclass of phoebe.parameters.Parameter and therefore also i
 * [set_quantity](phoebe.parameters.FloatParameter.set_quantity.md)
 * [set_timederiv](phoebe.parameters.FloatParameter.set_timederiv.md)
 * [timederiv](phoebe.parameters.FloatParameter.timederiv.md)
+* [valid_units](phoebe.parameters.FloatParameter.valid_units.md)
 * [within_limits](phoebe.parameters.FloatParameter.within_limits.md)

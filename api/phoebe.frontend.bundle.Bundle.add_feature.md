@@ -28,7 +28,8 @@ b.add_feature('spot', 'mystar', colat=90)
 Available kinds can be found in [phoebe.parameters.feature](phoebe.parameters.feature.md) or by calling
 [phoebe.list_available_features](phoebe.list_available_features.md) and include:
 * [phoebe.parameters.feature.spot](phoebe.parameters.feature.spot.md)
-* [phoebe.parameters.feature.gaussian_process](phoebe.parameters.feature.gaussian_process.md)
+* [phoebe.parameters.feature.gp_sklearn](phoebe.parameters.feature.gp_sklearn.md)
+* [phoebe.parameters.feature.gp_celerite2](phoebe.parameters.feature.gp_celerite2.md)
 
 See the entries above to see the valid kinds for `component` and `dataset`
 based on the type of feature.  An error will be raised if the passed value

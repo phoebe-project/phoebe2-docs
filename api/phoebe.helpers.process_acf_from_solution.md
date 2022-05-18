@@ -36,6 +36,6 @@ Returns
     (or 'lnprobabilities') and values being the output of [phoebe.helpers.acf](phoebe.helpers.acf.md)
     (array with shape (nwalkers, nlags)), dictionary with keys being the
     parameter twigs (or 'lnprobabilities') and values being the output
-    of &lt;phoebe.helpers.acf_ci_bartlett), and float being the
+    of [phoebe.helpers.acf_ci_bartlett](phoebe.helpers.acf_ci_bartlett.md), and float being the
     confidence intervale from [phoebe.helpers.acf_ci](phoebe.helpers.acf_ci.md).
 

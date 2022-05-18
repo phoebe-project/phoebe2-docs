@@ -9,7 +9,7 @@ def get_gaussian_process(self, feature=None, **kwargs)
 
 
 
-Shortcut to [phoebe.frontend.bundle.Bundle.get_feature](phoebe.frontend.bundle.Bundle.get_feature.md) but with kind='gaussian_process'.
+Shortcut to [phoebe.frontend.bundle.Bundle.get_feature](phoebe.frontend.bundle.Bundle.get_feature.md) but with kind='gp_*'.
 
 Arguments
 ----------

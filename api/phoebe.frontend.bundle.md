@@ -2,6 +2,7 @@
 
 * [Bundle](phoebe.frontend.bundle.Bundle.md)
 * [DistributionParameter](phoebe.frontend.bundle.DistributionParameter.md)
+* [GaussianProcessRegressor](phoebe.frontend.bundle.GaussianProcessRegressor.md)
 * [IOBase](phoebe.frontend.bundle.IOBase.md)
 * [JupyterUI](phoebe.frontend.bundle.JupyterUI.md)
 * [RunChecksItem](phoebe.frontend.bundle.RunChecksItem.md)

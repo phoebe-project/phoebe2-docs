@@ -24,6 +24,7 @@ phase-space otherwise. See
 
 See also:
 * [phoebe.parameters.ParameterSet.calculate_chi2](phoebe.parameters.ParameterSet.calculate_chi2.md)
+* [phoebe.parameters.ParameterSet.calculate_lnf](phoebe.parameters.ParameterSet.calculate_lnf.md)
 * [phoebe.parameters.ParameterSet.calculate_lnlikelihood](phoebe.parameters.ParameterSet.calculate_lnlikelihood.md)
 
 Arguments
