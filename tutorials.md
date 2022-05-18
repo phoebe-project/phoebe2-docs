@@ -55,6 +55,7 @@ For more specific use-cases, see the [example scripts](./examples.md).
 These tutorials highlight the major changes between versions 2.3.x and 2.4+ in the following topics:
 
 * **NEW**: servers
+* merit function: chi2 vs mle
 * **NEW**: init_from_requires/priors_requires
 * **NEW** emcee plotting styles: acf, lnprobabilities_spread, trace_spread
 * emcee: thin_factor default changed to 0 (thin=1)
