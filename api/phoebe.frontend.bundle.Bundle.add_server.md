@@ -27,7 +27,6 @@ b.add_server('remoteslurm', nprocs=4)
 Available kinds can be found in [phoebe.parameters.server](phoebe.parameters.server.md) and include:
 * [phoebe.parameters.server.localthread](phoebe.parameters.server.localthread.md)
 * [phoebe.parameters.server.remoteslurm](phoebe.parameters.server.remoteslurm.md)
-* [phoebe.parameters.server.awsec2](phoebe.parameters.server.awsec2.md)
 
 See also:
 * [phoebe.frontend.bundle.Bundle.get_server](phoebe.frontend.bundle.Bundle.get_server.md)
