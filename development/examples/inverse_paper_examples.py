@@ -14,12 +14,12 @@
 # # Setup
 # 
 
-# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
+# Let's first make sure we have the latest version of PHOEBE 2.4 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-#!pip install -I "phoebe>=2.3,<2.4"
+#!pip install -I "phoebe>=2.4,<2.5"
 
 
 # First we'll import, set our plotting options, and set a fixed random seed so that our noise model is reproducible between runs.

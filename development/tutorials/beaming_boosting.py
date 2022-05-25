@@ -28,12 +28,12 @@
 # 
 # In what follows we will code up these steps and demonstrate the inherent difficulty of realizing a robust, reliable treatment of boosting.
 
-# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
+# Let's first make sure we have the latest version of PHOEBE 2.4 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-#!pip install -I "phoebe>=2.3,<2.4"
+#!pip install -I "phoebe>=2.4,<2.5"
 
 
 # Import all python modules that we'll need:

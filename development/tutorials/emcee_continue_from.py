@@ -5,16 +5,15 @@
 # 
 # **IMPORTANT**: this tutorial assumes basic knowledge (and uses a file resulting from) the [emcee tutorial](./emcee.ipynb).
 # 
-# **NOTE**: support for `continue_from` was fixed in PHOEBE 2.3.11.  Earlier version may raise an error while running this notebook.
 
 # ## Setup
 # 
-# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
+# Let's first make sure we have the latest version of PHOEBE 2.4 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-#!pip install -I "phoebe>=2.3,<2.4"
+#!pip install -I "phoebe>=2.4,<2.5"
 
 
 # In[2]:

@@ -4,12 +4,12 @@
 # Advanced: passband versioning & updates
 # ==============================
 
-# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
+# Let's first make sure we have the latest version of PHOEBE 2.4 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-#!pip install -I "phoebe>=2.3,<2.4"
+#!pip install -I "phoebe>=2.4,<2.5"
 
 
 # PHOEBE allows you to check for online updates to local install passbands.  If we add a new atmosphere table or feature (extinction as in this release, for example) to a passband table, you can now update directly from the python interface of PHOEBE.

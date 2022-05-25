@@ -5,12 +5,12 @@
 
 # ## Setup
 # 
-# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
+# Let's first make sure we have the latest version of PHOEBE 2.4 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-#!pip install -I "phoebe>=2.3,<2.4"
+#!pip install -I "phoebe>=2.4,<2.5"
 
 
 # In[2]:
@@ -167,7 +167,7 @@ b.set_value('teff', component='primary', context='component', value=6123)
 print(b.filter(context='distribution'))
 
 
-# Note that if we try to use any distribution-set with an "around" distribution as `priors` in a solver, a warning will be raised (as of PHOEBE 2.3.23).
+# Note that if we try to use any distribution-set with an "around" distribution as `priors` in a solver, a warning will be raised.
 
 # Similar to [gaussian](../api/phoebe.gaussian.md) and [gaussian_around](../api/phoebe.gaussian_around.md), [uniform](../api/phoebe.uniform.md) takes a lower and upper bound, whereas [uniform_around](../api/uniform_around.md) only takes a *width*, with the central value adopted from the current face-value.
 

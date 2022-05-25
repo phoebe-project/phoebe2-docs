@@ -3,16 +3,15 @@
 
 # # Advanced: Distribution Propagation
 # 
-# **NOTE**: support for distribution propagation was improved in the 2.3.25 release.  Please make sure you have at least 2.3.25 installed.
 
 # ## Setup
 # 
-# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
+# Let's first make sure we have the latest version of PHOEBE 2.4 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-#!pip install -I "phoebe>=2.3,<2.4"
+#!pip install -I "phoebe>=2.4,<2.5"
 
 
 # In[2]:

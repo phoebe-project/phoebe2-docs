@@ -7,12 +7,12 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
+# Let's first make sure we have the latest version of PHOEBE 2.4 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-#!pip install -I "phoebe>=2.3,<2.4"
+#!pip install -I "phoebe>=2.4,<2.5"
 
 
 # As always, let's do imports and initialize a logger and a new Bundle.
@@ -79,8 +79,6 @@ print(b.get_parameter(qualifier='compute_times'))
 
 print(b.get_parameter(qualifier='compute_phases', context='dataset'))
 
-
-# **NOTE**: `phases_t0` was called `compute_phases_t0` before the 2.3 release.
 
 # In[9]:
 

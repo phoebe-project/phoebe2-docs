@@ -7,12 +7,12 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
+# Let's first make sure we have the latest version of PHOEBE 2.4 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[ ]:
 
 
-#!pip install -I "phoebe>=2.3,<2.4"
+#!pip install -I "phoebe>=2.4,<2.5"
 
 
 # ## Setting Environment Variables
@@ -73,7 +73,7 @@
 
 # ## Multiprocessing Options
 # 
-# ### PHOEBE_MULTIPROCESSING_NPROCS  (NEW IN 2.3.26)
+# ### PHOEBE_MULTIPROCESSING_NPROCS
 # 
 # PHOEBE_MULTIPROCESSING_NPROCS (defaults to using all available CPUs, when supported, and only if not within MPI): number of processors to expose to multiprocessing.  See also [phoebe.multiprocessing_on](../api/phoebe.multiprocessing_on.md), [phoebe.multiprocessing_off](../api/phoebe.multiprocessing_off.md), and [phoebe.multiprocessing_set_nprocs](../api/phoebe.multiprocessing_set_nprocs.md).
 

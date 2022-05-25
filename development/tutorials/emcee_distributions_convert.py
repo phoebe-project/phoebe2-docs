@@ -5,16 +5,15 @@
 # 
 # **IMPORTANT**: this tutorial assumes basic knowledge (and uses a file resulting from) the [emcee tutorial](./emcee.ipynb).
 # 
-# **NOTE**: a bug in the latex labels when *converting to univariate distributions* was fixed in 2.3.12.  Running this notebook on earlier versions will raise an error near the end.
 
 # ## Setup
 # 
-# Let's first make sure we have the latest version of PHOEBE 2.3 installed (uncomment this line if running in an online notebook session such as colab).
+# Let's first make sure we have the latest version of PHOEBE 2.4 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-#!pip install -I "phoebe>=2.3,<2.4"
+#!pip install -I "phoebe>=2.4,<2.5"
 
 
 # In[2]:
@@ -103,7 +102,6 @@ _ = b.plot(solution='emcee_sol', style='corner',
 
 # Even cheaper yet, we can convert to non-multivariate distribution types and drop information about the covariances between parameters.  Here if we convert to a collection of [Gaussian](https://distl.readthedocs.io/en/latest/api/Gaussian/) distributions, only the means and sigmas are stored.
 # 
-# **NOTE**: a bug in the latex labels when *converting to univariate distributions* was fixed in 2.3.12.  Running this notebook on earlier versions will raise an error near the end
 
 # In[11]:
 
