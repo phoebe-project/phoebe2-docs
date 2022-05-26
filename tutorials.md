@@ -54,15 +54,15 @@ For more specific use-cases, see the [example scripts](./examples.md).
 
 These tutorials highlight the major changes between versions 2.3.x and 2.4+ in the following topics:
 
-* **NEW**: servers
-* merit function: chi2 vs mle
-* **NEW**: init_from_requires/priors_requires
-* **NEW** emcee plotting styles: acf, lnprobabilities_spread, trace_spread
-* emcee: thin_factor default changed to 0 (thin=1)
-* **NEW** emcee: continue_from_iter
-* **NEW** optimizers: continue_from
-* Interactive Constraints Default Behavior
-* **NEW**: b.export_mesh
+* Coming Soon: chi2 vs mle in merit functions
+* Coming Soon: servers introduced in PHOEBE 2.4
+* Coming Soon: init_from_requires and priors_requires
+* Coming Soon: new emcee plotting styles - acf, lnprobabilities_spread, trace_spread
+* Coming Soon: emcee: thin_factor default changed to 0 (thin=1)
+* Coming Soon: continue_from_iter support in emcee
+* Coming Soon: continue_from support for optimizers
+* Coming Soon: changed default behavior for interactive constraints
+* Coming Soon: new support to export_mesh
 
 
 ## Advanced Tutorials
@@ -72,7 +72,7 @@ The following set of advanced tutorials follow the same format as the tutorials 
 These all assume comfort with the tutorials listed above, but should not need to be read in any particular order.
 
 * [Advanced: Running PHOEBE in MPI](tutorials/mpi.ipynb)
-* [Advanced: Running PHOEBE with Multiprocessing (**NEW SETTINGS in 2.3.26**)](tutorials/multiprocessing.ipynb)
+* [Advanced: Running PHOEBE with Multiprocessing](tutorials/multiprocessing.ipynb)
 * [Advanced: Optimizing Performance](tutorials/optimizing.ipynb)
 * [Advanced: Environment Variables](tutorials/envars.ipynb)
 * [Advanced: Adding Custom Passband Tables](tutorials/passbands.ipynb)
