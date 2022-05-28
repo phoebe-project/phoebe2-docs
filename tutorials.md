@@ -56,10 +56,8 @@ These tutorials highlight the major changes between versions 2.3.x and 2.4+ in t
 
 * Coming Soon: chi2 vs mle in merit functions
 * Coming Soon: servers introduced in PHOEBE 2.4
-* Coming Soon: init_from_requires and priors_requires
 * Coming Soon: new emcee plotting styles - acf, lnprobabilities_spread, trace_spread
 * Coming Soon: emcee: thin_factor default changed to 0 (thin=1)
-* Coming Soon: continue_from_iter support in emcee
 * Coming Soon: continue_from support for optimizers
 * Coming Soon: changed default behavior for interactive constraints
 * Coming Soon: new support to export_mesh
