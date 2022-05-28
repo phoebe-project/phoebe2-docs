@@ -64,6 +64,8 @@ print(b.get_parameter(qualifier='continue_from', solver='emcee_solver'))
 b.set_value(qualifier='continue_from', value='emcee_sol')
 
 
+# Note that this also exposes a new `continue_from_iter` parameter which defaults to `-1` (the last iteration from the continued run).  If you want to continue a run from anywhere other than the last iteration, you can override this value (using either a positive or negative index).
+
 # In[8]:
 
 
