@@ -17,3 +17,7 @@
 *.pdf
 *.py.out.progress
 TEST*.ipynb
+
+.DS_Store
+
+examples/lc.png
