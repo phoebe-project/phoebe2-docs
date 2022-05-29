@@ -29,7 +29,7 @@ logger = phoebe.logger()
 # 
 # We'll use blackbody atmospheres with manual limb-darkening just to avoid any out-of-bounds errors if the estimates aren't perfectly physical.  Normally we would check these values to make sure they're reasonable before adopting and would definitely want to revert to physical atmospheres and appropriate limb-darkening when optimizing.
 
-# In[4]:
+# In[3]:
 
 
 b = phoebe.default_binary()
@@ -63,7 +63,7 @@ sigmas_lc = np.ones_like(times) * 0.04
 
 # To showcase the estimators, we'll start with a fresh default bundle and set the `pblum_mode` to 'dataset-scaled' to simplify the comparison between the light curves.  Fore more information, see the [pblum tutorial](./pblum.ipynb).
 
-# In[5]:
+# In[4]:
 
 
 b = phoebe.default_binary()
@@ -87,7 +87,7 @@ _ = b.plot(x='phase', show=True)
 
 # Let's first add the solver options via [add_solver](../api/phoebe.frontend.bundle.Bundle.add_solver.md) and set ebai_method to 'mlp'. This should result in the same solution as using the EBAI estimator for PHOEBE < 2.4:
 
-# In[6]:
+# In[5]:
 
 
 b.add_solver('estimator.ebai', ebai_method='mlp', solver='ebai_mlp')
@@ -96,14 +96,14 @@ print(b.filter(solver='ebai_mlp'))
 
 # As we can see, by default it selects all available LC datasets and bins the light curves to 500 bins. We can change any of these in the 'ebai01' object or in the call to [run_solver](../api/phoebe.frontend.bundle.Bundle.run_solver.md). If there are less points that bins, the phase binning is skipped. Just in case, let's turn off the phase binning for this example, since we already have only 100 data points.
 
-# In[7]:
+# In[6]:
 
 
 b['phase_bin@ebai_mlp'] = False
 print(b.filter(solver='ebai_mlp'))
 
 
-# In[8]:
+# In[7]:
 
 
 b.run_solver('ebai_mlp', solution='ebai_mlp_solution')
@@ -111,7 +111,7 @@ b.run_solver('ebai_mlp', solution='ebai_mlp_solution')
 
 # Some of the parameters that the EBAI estimator returns are constrained, so to properly set their values through [adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution.md), we need to flip the relevant constraints first. Note that simply running `b.adopt_solution()` without this step will result in an error.
 
-# In[9]:
+# In[8]:
 
 
 try:
@@ -120,7 +120,7 @@ except Exception as e:
     print(e)
 
 
-# In[10]:
+# In[9]:
 
 
 b.flip_constraint('requivsumfrac', solve_for='requiv@secondary')
@@ -132,13 +132,13 @@ b.flip_constraint('ecosw', solve_for='per0')
 
 # Finally, we can adopt the EBAI solution and see how it has improved the model light curve:
 
-# In[11]:
+# In[10]:
 
 
 print(b.adopt_solution('ebai_mlp_solution'))
 
 
-# In[12]:
+# In[11]:
 
 
 b.run_compute(model='ebai_mlp_model')
@@ -149,20 +149,20 @@ _ = b.plot(x='phase', ls='-', legend=True, show=True)
 
 # Let's now compare to the solution obtained with the alternative method:
 
-# In[13]:
+# In[12]:
 
 
 b.add_solver('estimator.ebai', ebai_method='knn', solver='ebai_knn')
 
 
-# In[14]:
+# In[13]:
 
 
 b['phase_bin@ebai_knn'] = False
 print(b.filter(solver='ebai_knn'))
 
 
-# In[15]:
+# In[14]:
 
 
 b.run_solver('ebai_knn', solution='ebai_knn_solution')
@@ -170,13 +170,13 @@ b.run_solver('ebai_knn', solution='ebai_knn_solution')
 
 # We have already flipped all the necessary constraints, so we can simply adopt the new solution and compute the resulting model light curve:
 
-# In[16]:
+# In[15]:
 
 
 print(b.adopt_solution('ebai_knn_solution'))
 
 
-# In[17]:
+# In[16]:
 
 
 b.run_compute(model='ebai_knn_model')
@@ -189,13 +189,13 @@ _ = b.plot(x='phase', ls='-', legend=True, show=True)
 # 
 # Also, as of PHOEBE 2.4, the user has two choices of analytical model to use with lc_geometry: 'two-gaussian' and 'polyfit'. Here we'll use the default, two-Gaussian model. For more on these models, see the [ligeor README](https://github.com/gecheline/ligeor#readme).
 
-# In[21]:
+# In[17]:
 
 
 b.add_solver('estimator.lc_geometry', solver='lcgeom')
 
 
-# In[22]:
+# In[18]:
 
 
 print(b.filter(solver='lcgeom'))
@@ -203,7 +203,7 @@ print(b.filter(solver='lcgeom'))
 
 # The lc_geometry estimator takes similar inputs as EBAI, with two additions: `t0_near_times`, which will return the value of t0_supconj such that it falls within or near the provided times array (otherwise it will be a value in the range [0, period]) and `expose_model`, which if true returns the analytical model fit that's used to determine the eclipse parameters.
 
-# In[23]:
+# In[19]:
 
 
 b.run_solver('lcgeom', solution='lcgeom_solution')
@@ -211,7 +211,7 @@ b.run_solver('lcgeom', solution='lcgeom_solution')
 
 # The resulting solution returns our values of interest (t0, ecc, per0, requivsumfrac, teffratio), as well as the analytical fluxes of all two-Gaussian models (since `expose_model = True`) and the eclipse parameters determined from the best fit:
 
-# In[24]:
+# In[20]:
 
 
 print(b.filter(solution='lcgeom_solution'))
@@ -219,20 +219,20 @@ print(b.filter(solution='lcgeom_solution'))
 
 # To update the values in the bundle, we need to reverse-flip the constraints for esinw and ecosw and adopt the solution.
 
-# In[25]:
+# In[21]:
 
 
 b.flip_constraint('per0', solve_for='ecosw')
 b.flip_constraint('ecc', solve_for='esinw')
 
 
-# In[26]:
+# In[22]:
 
 
 print(b.adopt_solution('lcgeom_solution'))
 
 
-# In[27]:
+# In[23]:
 
 
 b.run_compute(model='lcgeom_model')
@@ -247,7 +247,7 @@ _ = b.plot(x='phases', ls='-', legend=True, show=True)
 # 
 # lc_geometry also returns suggested `mask_phases` computed from the eclipse widths, which we can notice in the list of `fitted_twigs`. However, by default it is excluded from the `adopt_parameters` list:
 
-# In[28]:
+# In[24]:
 
 
 print(b.get_value('fitted_twigs', solution='lcgeom_solution'))
@@ -256,7 +256,7 @@ print(b.get_value('adopt_parameters', solution='lcgeom_solution'))
 
 # Therefore, we can set them in the bundle by either adding `mask_phases` the to the `adopt_parameters` list before calling `adopt_solution()`, or after, as:
 
-# In[29]:
+# In[25]:
 
 
 b.set_value('mask_phases', b.get_value('fitted_values', solution='lcgeom_solution')[-1])
@@ -264,7 +264,7 @@ b.set_value('mask_phases', b.get_value('fitted_values', solution='lcgeom_solutio
 
 # If we now plot the light curves, we'll see only the eclipses have been "masked out" of the data.
 
-# In[30]:
+# In[26]:
 
 
 _ = b.plot(x='phases', ls='-', legend=True, show=True)

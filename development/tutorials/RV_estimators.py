@@ -156,3 +156,9 @@ _ = b.plot(x='phases', show=True)
 
 
 # As can be expected, the resulting model RV is not as close to the data as in the case of two RVs because of the lack of information to properly analytically estimate some of the key parameters.
+
+# In[ ]:
+
+
+
+
