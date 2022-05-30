@@ -40,6 +40,7 @@ For more specific use-cases, see the [example scripts](./examples.md).
     * [Advanced: LC Estimators](tutorials/LC_estimators.ipynb)
     * [Advanced: RV Geometry Estimator](tutorials/RV_estimators.ipynb)
     * [Advanced: Nelder-Mead Optimizer](tutorials/nelder_mead.ipynb)
+    * [Advanced: Differential Evolution Optimizer](tutorials/differential_evolution.ipynb)
     * [Advanced: EMCEE Sampler](tutorials/emcee.ipynb)
     * [Advanced: EMCEE Initializing Distribution Requirements](tutorials/emcee_init_from_requires.ipynb)
     * [Advanced: Continuing EMCEE from a Previous Run](tutorials/emcee_continue_from.ipynb)
@@ -53,7 +54,9 @@ For more specific use-cases, see the [example scripts](./examples.md).
 ## Migrating from PHOEBE 2.3 to PHOEBE 2.4
 
 These tutorials highlight the major changes between versions 2.3.x and 2.4+ in the following topics:
-
+* [Updates to EBAI with a kNN model and support for contacts](tutorials/23_24_ebai.ipynb)
+* [lc_geometry: using ligeor as new built-in dependency](tutorials/23_24_lc_geometry.ipynb)
+* [Gaussian Processes: using celerite2 or scikit-learn](tutorials/23_24_gaussian_processes.ipynb)
 * Coming Soon: chi2 vs mle in merit functions
 * Coming Soon: servers introduced in PHOEBE 2.4
 * Coming Soon: new emcee plotting styles - acf, lnprobabilities_spread, trace_spread
