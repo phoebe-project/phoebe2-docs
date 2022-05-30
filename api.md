@@ -328,6 +328,8 @@ Available solver backends ([see all](api/phoebe.parameters.solver.md)):
 * [estimator.rv_geometry](api/phoebe.parameters.solver.estimator.rv_geometry.md)
 * [estimator.ebai](api/phoebe.parameters.solver.estimator.ebai.md)
 * [optimizer.cg](api/phoebe.parameters.solver.optimizer.cg.md)
+* [optimizer.differential_corrections](api/phoebe.parameters.solver.optimizer.differential_corrections.md)
+* [optimizer.differential_evolution](api/phoebe.parameters.solver.optimizer.differential_evolution.md)
 * [optimizer.nelder_mead](api/phoebe.parameters.solver.optimizer.nelder_mead.md)
 * [optimizer.powell](api/phoebe.parameters.solver.optimizer.powell.md)
 * [sampler.dynesty](api/phoebe.parameters.solver.sampler.dynesty.md)

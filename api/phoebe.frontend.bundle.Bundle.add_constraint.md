@@ -23,10 +23,7 @@ For a list of optional built-in constraints, see [phoebe.parameters.constraint](
 including:
 * [phoebe.parameters.constraint.semidetached](phoebe.parameters.constraint.semidetached.md)
 * [phoebe.parameters.constraint.requivfrac](phoebe.parameters.constraint.requivfrac.md)
-* [phoebe.parameters.constraint.requivratio](phoebe.parameters.constraint.requivratio.md)
-* [phoebe.parameters.constraint.requivsumfrac](phoebe.parameters.constraint.requivsumfrac.md)
 * [phoebe.parameters.constraint.impact_param](phoebe.parameters.constraint.impact_param.md)
-* [phoebe.parameters.constraint.teffratio](phoebe.parameters.constraint.teffratio.md)
 * [phoebe.parameters.constraint.parallax](phoebe.parameters.constraint.parallax.md)
 
 The following are automatically included for all orbits, during
@@ -60,6 +57,9 @@ system.  The following are automatically included for a
 * [phoebe.parameters.constraint.mass](phoebe.parameters.constraint.mass.md)
 * [phoebe.parameters.constraint.comp_sma](phoebe.parameters.constraint.comp_sma.md)
 * [phoebe.parameters.constraint.comp_asini](phoebe.parameters.constraint.comp_asini.md)
+* [phoebe.parameters.constraint.teffratio](phoebe.parameters.constraint.teffratio.md)
+* [phoebe.parameters.constraint.requivratio](phoebe.parameters.constraint.requivratio.md)
+* [phoebe.parameters.constraint.requivsumfrac](phoebe.parameters.constraint.requivsumfrac.md)
 * [phoebe.parameters.constraint.rotation_period](phoebe.parameters.constraint.rotation_period.md) (detached only)
 * [phoebe.parameters.constraint.pitch](phoebe.parameters.constraint.pitch.md) (detached only)
 * [phoebe.parameters.constraint.yaw](phoebe.parameters.constraint.yaw.md) (detached only)
