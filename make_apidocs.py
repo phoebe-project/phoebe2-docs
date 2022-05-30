@@ -164,7 +164,7 @@ if __name__ == '__main__':
     skip_parameters_feature = skip_parameters_type + ['phase_mask_inds', 'pulsation']
     skip_parameters_hierarchy = skip_parameters_type + []
     skip_parameters_setting = skip_parameters_type + []
-    skip_parameters_solver = skip_parameters_type + ['phase_mask_inds', 'differential_evolution']
+    skip_parameters_solver = skip_parameters_type + ['phase_mask_inds']
     skip_parameters_system = skip_parameters_type + []
     skip_parameters_server = skip_parameters_type + []
 
