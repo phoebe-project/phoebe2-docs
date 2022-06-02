@@ -108,7 +108,9 @@ afig, mplanim = b.plot(y={'orb': 'ws'},
 # In[10]:
 
 
-afig, mplanim = b['lc01@model'].plot(times=times[:-1], uncover=True,                                     c='r', linestyle=':',                                     highlight_marker='s', highlight_color='g',
+afig, mplanim = b['lc01@model'].plot(times=times[:-1], uncover=True,\
+                                     c='r', linestyle=':',\
+                                     highlight_marker='s', highlight_color='g',
                                      animate=True, save='animations_3.gif', save_kwargs={'writer': 'imagemagick'})
 
 
