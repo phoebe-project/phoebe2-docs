@@ -127,7 +127,8 @@ afig, mplfig = b.plot(x='phases', show=True)
 
 
 b.add_solver('estimator.rv_geometry',
-             rv_datasets='rv01')
+             rv_datasets='rv01',
+             solver='rvgeom_solver')
 
 
 # In[8]:
@@ -165,13 +166,14 @@ afig, mplfig = b.plot(solution='rv_geom_sol',
 
 
 b.add_solver('estimator.lc_geometry',
-             lc_datasets='lc01')
+             lc_datasets='lc01',
+             solver='lcgeom_solver')
 
 
 # In[12]:
 
 
-b.run_solver(kind='lc_geometry', solution='lc_geom_sol')
+b.run_solver(solver='lcgeom_solver', solution='lc_geom_sol')
 
 
 # Again, calling [b.adopt_solution](../api/phoebe.frontend.bundle.Bundle.adopt_solution.md) with `trial_run=True` shows the proposed values.
@@ -224,6 +226,7 @@ b.set_value('mask_enabled@lc01', False)
 
 
 b.add_solver('estimator.ebai',
+             ebai_method='mlp',
              lc_datasets='lc01')
 
 
@@ -264,6 +267,8 @@ b.adopt_solution('rv_geom_sol')
 # In[23]:
 
 
+b.flip_constraint('requivsumfrac', solve_for='requiv@primary')
+b.flip_constraint('teffratio', solve_for='teff@primary')
 b.adopt_solution('lc_geom_sol')
 
 
@@ -272,8 +277,6 @@ b.adopt_solution('lc_geom_sol')
 # In[24]:
 
 
-b.flip_constraint('teffratio', solve_for='teff@primary')
-b.flip_constraint('requivsumfrac', solve_for='requiv@primary')
 b.adopt_solution('ebai_sol', adopt_parameters=['teffratio', 'requivsumfrac', 'incl'])
 
 
