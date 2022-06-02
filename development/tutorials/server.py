@@ -35,7 +35,6 @@ b.add_solver('optimizer.nelder_mead', solver='nm_solver')
 # The available server types include:
 # * [LocalThread](https://crimpl.readthedocs.io/en/latest/LocalThread/)
 # * [RemoteSlurm](https://crimpl.readthedocs.io/en/latest/RemoteSlurm/)
-# * [AWSEC2](https://crimpl.readthedocs.io/en/latest/AWSEC2/)
 # 
 # As the configuration for remote servers can differ significantly and to keep this example working for all users, we'll initialize a [LocalThread](https://crimpl.readthedocs.io/en/latest/LocalThread/) server in order to run our compute and solver jobs within MPI while running the rest of the commands in this notebook on a single processor.  Besides the crimpl configuration itself and a few different exposed options in the bundle (which we will briefly overview), the servers can essentially be swapped.
 
@@ -72,7 +71,6 @@ s.save('local', overwrite=True)
 # 
 # * [localthread](../api/phoebe.parameters.server.localthread.md)
 # * [remoteslurm](../api/phoebe.parameters.server.remoteslurm.md)
-# * [awsec2](../api/phoebe.parameters.server.awsec2.md)
 
 # In[7]:
 
