@@ -33,7 +33,9 @@ These can then be passed as the `kind` argument to [b.add_solver](api/phoebe.fro
 ### Optimizers
 
 * [Tutorial: Nelder-Mead optimizer](tutorials/nelder_mead.ipynb)
+* [Tutorial: Differential Evolution Optimizer](tutorials/differential_evolution.ipynb)
 * [optimizer.cg](api/phoebe.parameters.solver.optimizer.cg.md)
+* [optimizer.differential_corrections](api/phoebe.parameters.solver.optimizer.differential_corrections.md)
 * [optimizer.nelder_mead](api/phoebe.parameters.solver.optimizer.nelder_mead.md)
 * [optimizer.powell](api/phoebe.parameters.solver.optimizer.powell.md)
 
