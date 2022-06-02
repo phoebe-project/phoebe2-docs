@@ -99,23 +99,19 @@ b.run_compute(model='withoutGPs')
 # # Add GPs
 # 
 # See the API docs for [b.add_gaussian_process](../api/phoebe.frontend.bundle.Bundle.add_gaussian_process.md) and [gaussian_process](../api/phoebe.parameters.feature.gaussian_process.md).
+# 
+# Note that the original Figure 7 from the fitting release paper ([Conroy et al. 2020](http://phoebe-project.org/publications/2020Conroy+)) used PHOEBE 2.3, which made use of `celerite` instead of `celerite2` and `sklearn` introduced in PHOEBE 2.4.
 
 # In[13]:
 
 
-b.add_gaussian_process(dataset='lc01', kernel='sho')
+b.add_gaussian_process('celerite2', dataset='lc01', kernel='sho')
 
 
 # In[14]:
 
 
-b.add_gaussian_process(dataset='lc01', kernel='matern32')
-
-
-# In[15]:
-
-
-print(b.get_gaussian_process())
+b.add_gaussian_process('celerite2', dataset='lc01', kernel='matern32')
 
 
 # # Run Forward Model
@@ -124,32 +120,32 @@ print(b.get_gaussian_process())
 # 
 # If the model were time-dependent, then using `compute_times` or `compute_phases` without covering a sufficient time-span will raise an error.
 
-# In[16]:
+# In[15]:
 
 
 print(b.run_checks_compute())
 
 
-# In[17]:
+# In[16]:
 
 
 b.flip_constraint('compute_phases', solve_for='compute_times')
 b.set_value('compute_phases', phoebe.linspace(0,1,101))
 
 
-# In[18]:
+# In[17]:
 
 
 print(b.run_checks_compute())
 
 
-# In[19]:
+# In[18]:
 
 
 b.run_compute(model='withGPs')
 
 
-# In[20]:
+# In[19]:
 
 
 afig, mplfig = b.plot(c={'withoutGPs': 'red', 'withGPs': 'green'},
@@ -159,7 +155,7 @@ afig, mplfig = b.plot(c={'withoutGPs': 'red', 'withGPs': 'green'},
                       show=True)
 
 
-# In[21]:
+# In[20]:
 
 
 afig, mplfig = b.plot(c={'withoutGPs': 'red', 'withGPs': 'green'},
