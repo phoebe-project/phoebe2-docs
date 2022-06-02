@@ -20,7 +20,7 @@
 # In[ ]:
 
 
-#!pip install -I "phoebe>=2.4,<2.5"
+#!pip install -I "phoebe>=2.2,<2.3"
 
 
 # If you plan on computing model atmosphere intensities (as opposed to only blackbody intensities), you will need to download atmosphere tables and unpack them into a local directory of your choice. Keep in mind that this will take a long time. Plan to go for lunch or leave it overnight. The good news is that this needs to be done only once. For the purpose of this document, we will use a local `tables/` directory and assume that we are computing intensities for all available model atmospheres:
@@ -50,7 +50,7 @@
 
 # ## I don't care about the details, just show/remind me how it's done
 # 
-# Makes sense, and we don't judge: you want to get to science. Provided that you have the [passband transmission file](https://raw.githubusercontent.com/phoebe-project/phoebe2-docs/2.4/tutorials/my_passband.ptf) available and the atmosphere tables already downloaded, the sequence that will generate/register a new passband is:
+# Makes sense, and we don't judge: you want to get to science. Provided that you have the [passband transmission file](https://raw.githubusercontent.com/phoebe-project/phoebe2-docs/2.2/tutorials/my_passband.ptf) available and the atmosphere tables already downloaded, the sequence that will generate/register a new passband is:
 
 # In[ ]:
 
@@ -375,7 +375,7 @@ plt.show()
 # 
 # The final step of all this (computer's) hard work is to save the passband file so that these steps do not need to be ever repeated. From now on you will be able to load the passband file explicitly and PHOEBE will have full access to all of its tables. Your new passband will be identified as `'Custom:mypb'`.
 # 
-# To make PHOEBE automatically load the passband, it needs to be added to one of the [passband directories](http://phoebe-project.org/docs/2.4/api/phoebe.atmospheres.passbands.list_passband_directories) that PHOEBE recognizes. If there are no proprietary aspects that hinder the dissemination of the tables, please consider contributing them to PHOEBE so that other users can use them.
+# To make PHOEBE automatically load the passband, it needs to be added to one of the [passband directories](http://phoebe-project.org/docs/2.2/api/phoebe.atmospheres.passbands.list_passband_directories) that PHOEBE recognizes. If there are no proprietary aspects that hinder the dissemination of the tables, please consider contributing them to PHOEBE so that other users can use them.
 
 # In[22]:
 
