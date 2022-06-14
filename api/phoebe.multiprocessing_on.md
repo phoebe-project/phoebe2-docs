@@ -9,8 +9,6 @@ def multiprocessing_on()
 
 
 
-**NEW IN 2.3.26**
-
 Enable multiprocessing to use all CPUs available (this is the state by default).
 MPI will always take preference over multiprocessing.  See [phoebe.mpi_on](phoebe.mpi_on.md)
 and [phoebe.mpi_off](phoebe.mpi_off.md).
@@ -23,4 +21,3 @@ See also:
 * [phoebe.multiprocessing_off](phoebe.multiprocessing_off.md)
 * [phoebe.multiprocessing_get_nprocs](phoebe.multiprocessing_get_nprocs.md)
 * [phoebe.multiprocessing_set_nprocs](phoebe.multiprocessing_set_nprocs.md)
-
