@@ -9,8 +9,6 @@ def multiprocessing_get_nprocs()
 
 
 
-**NEW IN 2.3.26**
-
 Get the number of processors used within multiprocessing.
 
 MPI will always take preference over multiprocessing.  See [phoebe.mpi_on](phoebe.mpi_on.md)
@@ -24,4 +22,3 @@ See also:
 * [phoebe.multiprocessing_on](phoebe.multiprocessing_on.md)
 * [phoebe.multiprocessing_off](phoebe.multiprocessing_off.md)
 * [phoebe.multiprocessing_set_nprocs](phoebe.multiprocessing_set_nprocs.md)
-

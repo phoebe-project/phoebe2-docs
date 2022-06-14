@@ -12,8 +12,6 @@ def requiv_single_max(b, component, solve_for=None, **kwargs)
 Create a constraint to determine the critical value of requiv for a single
 star.
 
-**NEW IN 2.3.31**
-
 This constraint is automatically created and attached for all single stars
 via [phoebe.frontend.bundle.Bundle.set_hierarchy](phoebe.frontend.bundle.Bundle.set_hierarchy.md).
 
@@ -41,4 +39,3 @@ Returns
 Raises
 --------
 * NotImplementedError: if the value of `solve_for` is not implemented.
-
