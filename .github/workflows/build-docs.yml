@@ -39,7 +39,7 @@ jobs:
 
     - name: Set branch env var
       run: |
-        echo "branch=`echo ${{ github.ref }} | cut -d "/" -f 3`" >> $GITHUB_ENV
+        echo "branch=`echo ${{ github.ref }} | cut -d "/" -f 3 | grep -v '^release-' || echo 'development'`" >> $GITHUB_ENV
 
     - name: Build docs
       run: |
