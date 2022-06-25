@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - '2.*'
-      - 'development'
+      - 'release-*'
+      - 'feature-*'
       - '!2.0b'
 
 
