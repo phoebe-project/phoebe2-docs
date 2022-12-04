@@ -62,6 +62,7 @@ These example scripts are generally focused to show a single advanced feature or
 
 * [Inverse Problem: General Examples](examples/inverse_paper_examples.ipynb) ([Conroy+ 2020](http://phoebe-project.org/publications/2020Conroy+), Figures 1-3, 5, 8-12)
 * [Propagating Distributions through Constraints](examples/distribution_constraints.ipynb) ([Conroy+ 2020](http://phoebe-project.org/publications/2020Conroy+) Figure 4)
+* [Propagating Distributions through Coupled Luminosities](examples/distribution_pblum.ipynb)
 
 
 ## Advanced Plotting & Animations
