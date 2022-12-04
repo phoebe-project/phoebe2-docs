@@ -75,7 +75,7 @@ _ = b.plot_distribution_collection(distribution='mydist',
                                    show=True)
 
 
-# Parameters that are related but cannot be computed through constraints (passband luminosities when using component-coupled or dataset-coupled [pblum_mode](./pblum.ipynb), or converting between [flux and fractional third light](./l3.ipynb), for example) cannot have distributions directly propagated.  However, it is possible to write a [custom distl function distribution](../examples/distributions_pblum.ipynb) to propagate these distributions through [b.compute_pblums](../api/phoebe.frontend.bundle.Bundle.compute_pblums.md) or [b.calculate_l3s](../api/phoebe.frontend.bundle.Bundle.compute_l3s.md).
+# Parameters that are related but cannot be computed through constraints (passband luminosities when using component-coupled or dataset-coupled [pblum_mode](./pblum.ipynb), or converting between [flux and fractional third light](./l3.ipynb), for example) cannot have distributions directly propagated.  However, it is possible to write a [custom distl function distribution](../examples/distribution_pblum.ipynb) to propagate these distributions through [b.compute_pblums](../api/phoebe.frontend.bundle.Bundle.compute_pblums.md) or [b.calculate_l3s](../api/phoebe.frontend.bundle.Bundle.compute_l3s.md).
 
 # ## Accessing Uncertainties from Distributions
 # 
