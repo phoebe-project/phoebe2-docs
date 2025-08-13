@@ -52,6 +52,8 @@ Arguments
     if `phase_bin` is True.
 * `orbit` (string, optional, default=top-level orbit): Orbit to use for
     phasing the light curve referenced in the `lc_datasets` parameter
+* `analytical_model` (string, optional, default='two-gaussian): Analytical
+    model to fit the light curve with ('two-gaussian' or 'polyfit').
 * `t0_near_times` (bool, optional, default=True): Whether the returned value
     for t0_supconj should be forced to be in the range of the referenced
     observations.
@@ -62,4 +64,3 @@ Returns
 --------
 * ([phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md)): ParameterSet of all newly created
     [phoebe.parameters.Parameter](phoebe.parameters.Parameter.md) objects.
-
