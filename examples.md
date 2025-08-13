@@ -71,6 +71,7 @@ These example scripts are generally focused to show a single advanced feature or
 * [Rossiter-McLaughlin Effect (RVs)](examples/rossiter_mclaughlin.ipynb)
 * [Spot Transit](examples/spot_transit.ipynb)
 * [Eccentric Ellipsoidal (Heartbeat)](examples/eccentric_ellipsoidal.ipynb)
+* [Modifying Axes with Animation Callbacks](examples/animations_change_axes.ipynb)
 
 
 ## Alternate Backends
