@@ -193,7 +193,7 @@ afig, mplanim = b.savefig('spot_aligned.gif', fig=fig, draw_sidebars=False,
                           animate_callback=edit_axes, animate=True)
 
 
-# ![animation](./spot_aligned.gif)
+# ![animation](spot_aligned.gif)
 
 # In[ ]:
 
