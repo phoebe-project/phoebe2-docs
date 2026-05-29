@@ -7,12 +7,12 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.4 installed (uncomment this line if running in an online notebook session such as colab).
+# ##### Let's first make sure we have the latest version of PHOEBE 2.5 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-#!pip install -I "phoebe>=2.4,<2.5"
+#!pip install -I "phoebe>=2.5"
 
 
 # As always, let's do imports and initialize a logger and a new bundle.
@@ -43,7 +43,7 @@ b.add_dataset('lc', times=np.linspace(0,1,101), dataset='lc01')
 # 
 # An 'atm' parameter exists for each of the components in the system (for each set of compute options) and defines which atmosphere table should be used.
 # 
-# By default, these are set to 'ck2004' (Castelli-Kurucz) but can be set to 'blackbody' as well as 'extern_atmx' and 'extern_planckint' (which are included primarily for direct comparison with PHOEBE legacy).
+# By default, these are set to 'ck2004' (Castelli-Kurucz) but can be set to various other model atmospheres ('phoenix', 'tmap_DA', 'tmap_DAO', 'tmap_DO', 'tmap_sdO', 'tremblay') or 'blackbody', as well as 'extern_atmx' and 'extern_planckint' (which are included primarily for direct comparison with PHOEBE legacy).
 
 # In[4]:
 
@@ -69,7 +69,7 @@ b['atm@primary'].description
 b['atm@primary'].choices
 
 
-# Note that if you change the value of 'atm' to anything other than 'ck2004', the corresponding 'ld_func' will need to be changed to something other than 'interp' (warnings and errors will be raised to remind you of this).
+# Note that if you change the value of 'atm' to anything other than a calculated model atmosphere ('ck2004', 'phoenix','tmap_*' or 'tremblay'), the corresponding 'ld_func' will need to be changed to something other than 'interp' (warnings and errors will be raised to remind you of this).
 
 # In[8]:
 

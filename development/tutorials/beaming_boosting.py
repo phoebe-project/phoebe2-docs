@@ -4,162 +4,101 @@
 # Beaming and Boosting
 # ============================
 # 
-# Due to concerns about accuracy, support for Beaming & Boosting has been disabled as of the 2.2 release of PHOEBE (although we hope to bring it back in a future release).
+# Due to concerns about accuracy, support for interpolated Beaming & Boosting was disabled in the version 2.2 release of PHOEBE (for details of why, please see previous versions of this tutorial page). In version 2.5, we return support for boosting with manual boosting factors.
 
-# It may come as surprise that support for Doppler boosting has been dropped in PHOEBE 2.2. This document details the underlying causes for that decision and explains the conditions that need to be met for boosting to be re-incorporated into PHOEBE.
+# Setup
+# -----------------------------
 # 
-# Let's start by reviewing the theory behind Doppler boosting. The motion of the stars towards or away from the observer changes the amount of received flux due to three effects:
-# 
-# * the spectrum is Doppler-shifted, so the flux, being the passband-weighted integral of the spectrum, changes;
-# * the photons' arrival rate changes due to time dilation; and
-# * radiation is beamed in the direction of motion due to light aberration.
-# 
-# It turns out that the combined boosting signal can be written as:
-# 
-# $$ I_\lambda = I_{\lambda,0} \left( 1 - B(\lambda) \frac{v_r}c \right), $$
-# 
-# where $I_{\lambda,0}$ is the intrinsic (rest-frame) passband intensity, $I_\lambda$ is the boosted passband intensity, $v_r$ is radial velocity, $c$ is the speed of light and $B(\lambda)$ is the boosting index:
-# 
-# $$ B(\lambda) = 5 + \frac{\mathrm{d}\,\mathrm{ln}\, I_\lambda}{\mathrm{d}\,\mathrm{ln}\, \lambda}. $$
-# 
-# The term $\mathrm{d}(\mathrm{ln}\, I_\lambda) / \mathrm{d}(\mathrm{ln}\, \lambda)$ is called spectral index. As $I_\lambda$ depends on $\lambda$, we average it across the passband:
-# 
-# $$ B_\mathrm{pb} = \frac{\int_\lambda \mathcal{P}(\lambda) \mathcal S(\lambda) B(\lambda) \mathrm d\lambda}{\int_\lambda \mathcal{P}(\lambda) \mathcal S(\lambda) \mathrm d\lambda}. $$
-# 
-# In what follows we will code up these steps and demonstrate the inherent difficulty of realizing a robust, reliable treatment of boosting.
-
-# Let's first make sure we have the latest version of PHOEBE 2.4 installed (uncomment this line if running in an online notebook session such as colab).
+# Let's first make sure we have the latest version of PHOEBE 2.5 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-#!pip install -I "phoebe>=2.4,<2.5"
+#!pip install -I "phoebe>=2.5"
 
 
 # Import all python modules that we'll need:
 
-# In[63]:
+# In[2]:
 
 
 import phoebe
 import numpy as np
 import matplotlib.pyplot as plt
-from astropy.io import fits
 
 
-# Pull a set of Sun-like emergent intensities as a function of $\mu = \cos \theta$ from the Castelli and Kurucz database of model atmospheres (the necessary file can be [downloaded from here](http://phoebe-project.org/static/T06000G40P00.fits)):
+# Set-up a binary that will have different boosting factors (in order to see the impact)
+
+# In[3]:
+
+
+b=phoebe.default_binary()
+b.set_value(qualifier='sma', component='binary', value=9.)
+b.set_value(qualifier='q', component='binary', value=0.5)
+b.set_value(qualifier='requiv', component='primary', value=3.8)
+b.set_value(qualifier='requiv', component='secondary', value=2.5)
+b.set_value(qualifier='teff', component='primary', value=16000)
+b.set_value(qualifier='teff', component='secondary', value=11000)
+
+
+# Now let's add a light curve dataset (boosting factors are per dataset, so we need to add a dataset before setting the boosting factors)
+
+# In[4]:
+
+
+b.add_dataset('lc',times=np.linspace(0,1,101))
+
+
+# These stars are roughly B5 and A0 main sequence stars. With logg of about 4 and 5 respectively, so let's set the boosting m factors based on the tables of Claret et al. (2020). https://vizier.cds.unistra.fr/viz-bin/VizieR?-source=J/A%2BA/641/A157
+
+# In[5]:
+
+
+b.set_value_all('boosting_method','manual')
+b.set_value(qualifier='boosting_index', component='primary', value=1.7332)
+b.set_value(qualifier='boosting_index', component='secondary', value=2.2841)
+
+
+# Run the model
 
 # In[6]:
 
 
-wl = np.arange(900., 39999.501, 0.5)/1e10
-with fits.open('T06000G40P00.fits') as hdu:
-    Imu = 1e7*hdu[0].data
+b.run_compute(model='boosting')
 
 
-# Grab only the normal component for testing purposes:
+# In[7]:
+
+
+afig, mplfig = b.plot(show=True)
+
+
+# and now without boosting
+
+# In[8]:
+
+
+b.set_value_all('boosting_method','none')
+b.run_compute(model='noboosting')
+
+
+# In[9]:
+
+
+afig, mplfig = b.plot(show=True)
+
+
+# Let's plot the difference to make it clearer.
 
 # In[10]:
 
 
-Inorm = Imu[-1,:]
+plt.plot(b['times@model@boosting'].value,b['fluxes@model@boosting'].value-b['fluxes@model@noboosting'].value)
+plt.xlabel('Phase')
+plt.ylabel(r'Flux difference [W/m$^2$]')
 
 
-# Now let's load a Johnson V passband and the transmission function $P(\lambda)$ contained within:
-
-# In[14]:
-
-
-pb = phoebe.get_passband('Johnson:V')
-
-
-# Tesselate the wavelength interval to the range covered by the passband:
-
-# In[17]:
-
-
-keep = (wl >= pb.ptf_table['wl'][0]) & (wl <= pb.ptf_table['wl'][-1])
-Inorm = Inorm[keep]
-wl = wl[keep]
-
-
-# Calculate $S(\lambda) P(\lambda)$ and plot it, to make sure everything so far makes sense:
-
-# In[21]:
-
-
-plt.plot(wl, Inorm*pb.ptf(wl), 'b-')
-plt.show()
-
-
-# Now let's compute the term $\mathrm{d}(\mathrm{ln}\, I_\lambda) / \mathrm{d}(\mathrm{ln}\, \lambda)$. First we will compute $\mathrm{ln}\,\lambda$ and $\mathrm{ln}\,I_\lambda$ and plot them:
-
-# In[22]:
-
-
-lnwl = np.log(wl)
-lnI = np.log(Inorm)
-
-
-# In[24]:
-
-
-plt.xlabel(r'$\mathrm{ln}\,\lambda$')
-plt.ylabel(r'$\mathrm{ln}\,I_\lambda$')
-plt.plot(lnwl, lnI, 'b-')
-plt.show()
-
-
-# Per equation above, $B(\lambda)$ is then the slope of this curve (plus 5). Herein lies the problem: what part of this graph do we fit a line to? In versions 2 and 2.1, PHOEBE used a 5th order Legendre polynomial to fit the spectrum and then sigma-clipping to get to the continuum. Finally, it computed an average derivative of that Legendrian and proclaimed that $B(\lambda)$. The order of the Legendre polynomial and the values of sigma for sigma-clipping have been set ad-hoc and kept fixed for every single spectrum.
-
-# In[69]:
-
-
-envelope = np.polynomial.legendre.legfit(lnwl, lnI, 5)
-continuum = np.polynomial.legendre.legval(lnwl, envelope)
-diff = lnI-continuum
-sigma = np.std(diff)
-clipped = (diff > -sigma)
-while True:
-    Npts = clipped.sum()
-    envelope = np.polynomial.legendre.legfit(lnwl[clipped], lnI[clipped], 5)
-    continuum = np.polynomial.legendre.legval(lnwl, envelope)
-    diff = lnI-continuum
-    clipped = clipped & (diff > -sigma)
-    if clipped.sum() == Npts:
-        break
-
-
-# In[70]:
-
-
-plt.xlabel(r'$\mathrm{ln}\,\lambda$')
-plt.ylabel(r'$\mathrm{ln}\,I_\lambda$')
-plt.plot(lnwl, lnI, 'b-')
-plt.plot(lnwl, continuum, 'r-')
-plt.show()
-
-
-# It is clear that there is a pretty strong systematics here that we sweep under the rug. Thus, we need to revise the way we compute the spectral index and make it robust before we claim that we support boosting.
-
-# For fun, this is what would happen if we tried to estimate $B(\lambda)$ at each $\lambda$:
-
-# In[72]:
-
-
-dlnwl = lnwl[1:]-lnwl[:-1]
-dlnI = lnI[1:]-lnI[:-1]
-B = dlnI/dlnwl
-
-
-# In[74]:
-
-
-plt.plot(0.5*(wl[1:]+wl[:-1]), B, 'b-')
-plt.show()
-
-
-# Numerical artifacts dominate and there is little hope to get a sensible (let alone robust) value using this method.
+# A small effect which can be much larger for compact binaries not covered by the standard CK2004 atmosphere table!
 
 # In[ ]:
 

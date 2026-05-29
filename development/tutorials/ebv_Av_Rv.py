@@ -7,12 +7,12 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.4 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
+# ###### Let's first make sure we have the latest version of PHOEBE 2.5 installed. (You can comment out this line if you don't use pip for your installation or don't want to update to the latest release).
 
 # In[ ]:
 
 
-#!pip install -I "phoebe>=2.4,<2.5"
+#!pip install -I "phoebe>=2.5"
 
 
 # As always, let's do imports and initialize a logger and a new Bundle.

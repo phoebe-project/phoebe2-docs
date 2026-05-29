@@ -11,12 +11,12 @@
 # Setup
 # -----------------------------
 
-# Let's first make sure we have the latest version of PHOEBE 2.4 installed (uncomment this line if running in an online notebook session such as colab).
+# Let's first make sure we have the latest version of PHOEBE 2.5 installed (uncomment this line if running in an online notebook session such as colab).
 
 # In[1]:
 
 
-#!pip install -I "phoebe>=2.4,<2.5"
+#!pip install -I "phoebe>=2.5"
 
 
 # This first line is only necessary for ipython noteboooks - it allows the plots to be shown on this page instead of in interactive mode.  Depending on your version of Jupyter, Python, and matplotlib - you may or may not need this line in order to see plots in the notebook.
