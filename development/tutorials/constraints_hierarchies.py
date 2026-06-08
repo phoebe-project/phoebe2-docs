@@ -35,7 +35,7 @@ b = phoebe.default_binary()
 # 
 # Some of the built-in constraints depend on the system hierarchy, and will automatically adjust to reflect changes to the hierarchy.
 # 
-# For example, the masses depend on the period and semi-major axis of the parent orbit but also depend on the mass-ratio (q) which is defined as the primary mass over secondary mass.  For this reason, changing the roles of the primary and secondary components should be reflected in the masses (so long as q remains fixed).
+# For example, the masses depend on the period and semi-major axis of the parent orbit but also depend on the mass-ratio (q) which is defined as the secondary mass over primary mass.  For this reason, changing the roles of the primary and secondary components should be reflected in the masses (so long as q remains fixed).
 # 
 # In order to show this example, let's set the mass-ratio to be non-unity.
 
