@@ -87,7 +87,7 @@ print(b.filter(qualifier='ld_func', dataset='lc01'))
 # In[8]:
 
 
-print(b.filter(qualifier'ld_func@lc01', check_default=False))
+print(b.filter(qualifier='ld_func@lc01', check_default=False))
 
 
 # This syntax may seem a bit bulky - but alternatively you can add the dataset without providing values and then change the values individually using dictionary access or set_value.
