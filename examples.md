@@ -64,6 +64,16 @@ These example scripts are generally focused to show a single advanced feature or
 * [Propagating Distributions through Constraints](examples/distribution_constraints.ipynb) ([Conroy+ 2020](http://phoebe-project.org/publications/2020Conroy+) Figure 4)
 * [Propagating Distributions through Coupled Luminosities](examples/distribution_pblum.ipynb)
 
+## Hot, compact stars and user-defined features (2.5 release)
+
+* [WDs: DA WD normal intensities](examples/DA_WD_I0.ipynb) ([Jones+ 2026](http://phoebe-project.org/publications/2026Jones+), Figure 1)
+* [WDs: sdO limb-darkening](examples/sdO_LD.ipynb) ([Jones+ 2026](http://phoebe-project.org/publications/2026Jones+), Figure 2)
+* [WDs: Four TMAP grids](examples/TMAP_grids.ipynb) ([Jones+ 2026](http://phoebe-project.org/publications/2026Jones+), Figure 3)
+* [WDs: TMAP vs Tremblay](examples/TMAP_vs_Tremblay.ipynb) ([Jones+ 2026](http://phoebe-project.org/publications/2026Jones+), Figure 4)
+* [WDs: Four TMAP vs blackbody](examples/TMAP_vs_BB.ipynb) ([Jones+ 2026](http://phoebe-project.org/publications/2026Jones+), Figure 7)
+* [User-defined features: Migrating spot](examples/Migrating_spot.ipynb) ([Jones+ 2026](http://phoebe-project.org/publications/2026Jones+), Figure 8)
+
+
 
 ## Advanced Plotting & Animations
 
