@@ -1,6 +1,18 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# # Minimal Example: Comparing the properties of the four TMAP grids
+# 
+# In this example script, we'll reproduce Figure 3 from the v2.5 release paper ([Jones et al. 2026](http://phoebe-project.org/publications/2026Jones+)).
+
+# Let's first make sure we have the latest version of PHOEBE 2.5 installed (uncomment this line if running in an online notebook session such as colab).
+
+# In[1]:
+
+
+#!pip install -I "phoebe>=2.5"
+
+
 # In[1]:
 
 
