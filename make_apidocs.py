@@ -4,7 +4,7 @@ import re
 
 def md_internal_link(matchobj):
     text = matchobj.group(0)
-    path = text[4:-4]
+    path = text[1:-1]
     return "[{}]({}.md)".format(path, path)
 
 def get_kind(item):
@@ -52,14 +52,24 @@ def api_docs(item, skip=[], prefix='', subclass_of=None, write=True, members=[py
         # Get the signature
         if pydoc.inspect.ismethod(fm[1]) or pydoc.inspect.isfunction(fm[1]):
             output.append ('```py\n')
-            output.append('def %s%s\n' % (fm[0], pydoc.inspect.formatargspec(*pydoc.inspect.getargspec(fm[1]))))
+            try:
+                sig = str(pydoc.inspect.signature(fm[1]))
+            except (ValueError, TypeError):
+                sig = '(...)'
+            output.append('def %s%s\n' % (fm[0], sig))
             output.append ('```\n')
 
         # get the docstring
         if pydoc.inspect.getdoc(fm[1]):
             output.append('\n')
-            docstring = pydoc.HTMLDoc().markup(pydoc.inspect.getdoc(fm[1]))
-            docstring = re.sub(r"(?P<name>&lt;[0-9a-zA-Z_\.]*&gt;)", md_internal_link, docstring)
+            docstring = pydoc.inspect.getdoc(fm[1])
+            class_name = item.__name__.split(".")[-1]
+            class_path = ".".join([p for p in prefix.split(".")+[class_name] if len(p)])
+            docstring = docstring.replace('<<class>>', '[{}]({}.md)'.format(class_name, class_path))
+            docstring = re.sub(r"(?P<name><[0-9a-zA-Z_\.]+>)", md_internal_link, docstring)
+            docstring = docstring.replace('&', '&amp;')
+            docstring = docstring.replace('<=', '&lt;=').replace('>=', '&gt;=')
+            docstring = docstring.replace('<', '&lt;').replace('>', '&gt;')
             output.append(docstring)
 
         output.append('\n')
