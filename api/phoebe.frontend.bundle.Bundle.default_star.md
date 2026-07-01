@@ -3,7 +3,7 @@
 
 ```py
 
-def default_star(cls, starA='starA', force_build=False)
+def default_star(starA='starA', force_build=False)
 
 ```
 

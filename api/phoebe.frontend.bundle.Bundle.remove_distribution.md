@@ -3,7 +3,7 @@
 
 ```py
 
-def remove_distribution(self, *args, **kwargs)
+def remove_distribution(self, distribution, return_changes=False, **kwargs)
 
 ```
 

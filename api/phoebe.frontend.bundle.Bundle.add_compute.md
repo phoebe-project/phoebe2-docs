@@ -3,7 +3,7 @@
 
 ```py
 
-def add_compute(self, *args, **kwargs)
+def add_compute(self, kind='phoebe', return_changes=False, **kwargs)
 
 ```
 

@@ -3,7 +3,7 @@
 
 ```py
 
-def add_component(self, *args, **kwargs)
+def add_component(self, kind, return_changes=False, **kwargs)
 
 ```
 

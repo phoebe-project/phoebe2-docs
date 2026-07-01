@@ -3,7 +3,7 @@
 
 ```py
 
-def rename_model(self, *args, **kwargs)
+def rename_model(self, old_model, new_model, overwrite=False, return_changes=False)
 
 ```
 

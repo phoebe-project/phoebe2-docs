@@ -3,7 +3,7 @@
 
 ```py
 
-def set_quantity(self, *args, **kwargs)
+def set_quantity(self, value, unit=None, force=False, run_checks=None, run_constraints=None, **kwargs)
 
 ```
 

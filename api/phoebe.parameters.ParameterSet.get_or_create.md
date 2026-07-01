@@ -39,7 +39,7 @@ Arguments
 
 Returns
 ---------
-* (&lt;phoebe.parameters.Parameter, bool): the Parameter object (either
+* ([phoebe.parameters.Parameter](phoebe.parameters.Parameter.md), bool): the Parameter object (either
     from filtering or newly created) and a boolean telling whether the
     Parameter was created or not.
 

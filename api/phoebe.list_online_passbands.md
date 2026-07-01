@@ -14,7 +14,7 @@ For convenience, this function is available at the top-level as
 [phoebe.atmospheres.passbands.list_online_passbands](phoebe.atmospheres.passbands.list_online_passbands.md).
 
 List all passbands available for download from
-<a href="http://tables.phoebe-project.org">http://tables.phoebe-project.org</a>.
+the tables server (https://tables.phoebe-project.org by default).
 
 Arguments
 ---------

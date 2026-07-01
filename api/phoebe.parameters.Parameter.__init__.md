@@ -26,8 +26,8 @@ Any subclass of Parameter must (at the minimum):
 - method for get_value
 - method for set_value,
 - call to set_value in the overload of __init__
-- self.<strong>_dict_fields_other</strong> defined in __init__
-- self.<strong>_dict_fields</strong> = _meta_fields_all + self.<strong>_dict_fields_other</strong> in __init__
+- self._dict_fields_other defined in __init__
+- self._dict_fields = _meta_fields_all + self._dict_fields_other in __init__
 
 Arguments
 ------------

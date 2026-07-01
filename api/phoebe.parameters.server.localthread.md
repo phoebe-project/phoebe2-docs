@@ -12,7 +12,7 @@ def localthread(server, **kwargs)
 Create a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) for a localthread server.
 
 The server referenced by `crimpl_name` must be configured on the local
-machine with [crimpl](<a href="http://crimpl.readthedocs.io">http://crimpl.readthedocs.io</a>).
+machine with [crimpl](http://crimpl.readthedocs.io).
 
 Generally, this will be used as an input to the kind argument in
 [phoebe.frontend.bundle.Bundle.add_server](phoebe.frontend.bundle.Bundle.add_server.md).  If attaching through

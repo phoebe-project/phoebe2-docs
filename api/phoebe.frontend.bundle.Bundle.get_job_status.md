@@ -3,7 +3,7 @@
 
 ```py
 
-def get_job_status(self, *args, **kwargs)
+def get_job_status(self, twig=None, **kwargs)
 
 ```
 

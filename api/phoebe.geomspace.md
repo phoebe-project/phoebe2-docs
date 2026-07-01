@@ -99,6 +99,7 @@ linspace : Similar to geomspace, but with arithmetic instead of geometric
 progression.
 arange : Similar to linspace, with the step size specified instead of the
 number of samples.
+:ref:`how-to-partition`
 
 Notes
 -----
@@ -137,7 +138,7 @@ array([-1.00000000e+00+1.22464680e-16j, -7.07106781e-01+7.07106781e-01j,
 6.12323400e-17+1.00000000e+00j,  7.07106781e-01+7.07106781e-01j,
 1.00000000e+00+0.00000000e+00j])
 
-Graphical illustration of ``endpoint`` parameter:
+Graphical illustration of `endpoint` parameter:
 
 &gt;&gt;&gt; import matplotlib.pyplot as plt
 &gt;&gt;&gt; N = 10

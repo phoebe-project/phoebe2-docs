@@ -3,7 +3,7 @@
 
 ```py
 
-def add_dataset(self, *args, **kwargs)
+def add_dataset(self, kind, component=None, return_changes=False, **kwargs)
 
 ```
 

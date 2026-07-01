@@ -3,7 +3,7 @@
 
 ```py
 
-def rename_component(self, *args, **kwargs)
+def rename_component(self, old_component, new_component, return_changes=False)
 
 ```
 

@@ -3,7 +3,7 @@
 
 ```py
 
-def add_server(self, *args, **kwargs)
+def add_server(self, kind, return_changes=False, **kwargs)
 
 ```
 

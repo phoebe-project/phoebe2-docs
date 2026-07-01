@@ -17,7 +17,7 @@ Access a passband object by name.  If the passband isn't installed, it
 will be downloaded and installed locally.  If the installed passband does
 not have the necessary tables to match `content` then an attempt will be
 made to download the necessary additional tables from
-<a href="http://tables.phoebe-project.org">http://tables.phoebe-project.org</a>
+the tables server (https://tables.phoebe-project.org by default)
 as long as the timestamps match the local version.  If the online version
 includes other version updates, then an error will be
 raised suggesting to call [phoebe.atmospheres.passbands.update_passband](phoebe.atmospheres.passbands.update_passband.md)

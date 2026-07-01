@@ -3,7 +3,7 @@
 
 ```py
 
-def rename_dataset(self, *args, **kwargs)
+def rename_dataset(self, old_dataset, new_dataset, overwrite=False, return_changes=False)
 
 ```
 

@@ -3,7 +3,7 @@
 
 ```py
 
-def rename_distribution(self, *args, **kwargs)
+def rename_distribution(self, old_distribution, new_distribution, overwrite=False, return_changes=False)
 
 ```
 

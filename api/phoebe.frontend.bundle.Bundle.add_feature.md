@@ -3,7 +3,7 @@
 
 ```py
 
-def add_feature(self, *args, **kwargs)
+def add_feature(self, kind, component=None, dataset=None, return_changes=False, **kwargs)
 
 ```
 

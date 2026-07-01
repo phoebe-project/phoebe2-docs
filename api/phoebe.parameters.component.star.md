@@ -36,7 +36,10 @@ Arguments
 * `requiv_min` (float/quantity, optional): critical (minimum) value of the
     equivalent radius for the given morphology.
 * `teff` (float/quantity, optional): mean effective temperature.
-* `abun` (float, optional): abundance/metallicity
+* `abun` (float, optional): abundance/metallicity.
+    Not applicable for all atmosphere models.
+* `loghefrac` (float, optional): helium fraction, log(He/H) abundance by number.
+    Not applicable for all atmosphere models.
 * `syncpar` (float, optional): synchronicity parameter.
 * `period` (float/quantity, optional): rotation period (wrt the sky).
 * `freq` (float/quantity, optional): rotation frequency (wrt the sky).

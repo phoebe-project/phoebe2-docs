@@ -3,7 +3,7 @@
 
 ```py
 
-def flip_for(self, *args, **kwargs)
+def flip_for(self, twig=None, expression=None, **kwargs)
 
 ```
 

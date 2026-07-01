@@ -23,7 +23,7 @@ will remain in client mode until manually passing `False` to
 [phoebe.frontend.bundle.Bundle.as_client](phoebe.frontend.bundle.Bundle.as_client.md)
 
 If the UI is not installed, pass a URL to `web_client`
-(ie. <a href="http://ui.phoebe-project.org">http://ui.phoebe-project.org</a>) to launch the web-client in the
+(ie. http://ui.phoebe-project.org) to launch the web-client in the
 default system browser. Note that this requires the bundle to already be in client mode.
 Call [phoebe.frontend.bundle.Bundle.as_client](phoebe.frontend.bundle.Bundle.as_client.md) first to use `web_client`.
 
@@ -32,7 +32,7 @@ that instance of the client (if not blocking) or to disconnect and "continue"
 the notebook execution if blocking.
 
 To more information or to install the desktop-client, see
-<a href="http://phoebe-project.org/clients">http://phoebe-project.org/clients</a>
+https://phoebe-project.org/clients
 
 See also:
 * [phoebe.frontend.bundle.Bundle.ui_figures](phoebe.frontend.bundle.Bundle.ui_figures.md)

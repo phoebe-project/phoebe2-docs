@@ -3,7 +3,7 @@
 
 ```py
 
-def add_figure(self, *args, **kwargs)
+def add_figure(self, kind, return_changes=False, **kwargs)
 
 ```
 

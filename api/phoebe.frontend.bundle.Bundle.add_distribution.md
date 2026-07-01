@@ -3,7 +3,7 @@
 
 ```py
 
-def add_distribution(self, *args, **kwargs)
+def add_distribution(self, arg1=None, value=None, return_changes=False, **kwargs)
 
 ```
 

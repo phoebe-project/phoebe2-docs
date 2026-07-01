@@ -3,7 +3,7 @@
 
 ```py
 
-def rename_compute(self, *args, **kwargs)
+def rename_compute(self, old_compute, new_compute, overwrite=False, return_changes=False)
 
 ```
 
