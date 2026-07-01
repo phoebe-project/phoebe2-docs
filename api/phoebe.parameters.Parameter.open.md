@@ -3,7 +3,7 @@
 
 ```py
 
-def open(cls, filename)
+def open(filename)
 
 ```
 

@@ -3,7 +3,7 @@
 
 ```py
 
-def run_solver(self, *args, **kwargs)
+def run_solver(self, solver=None, solution=None, detach=False, return_changes=False, **kwargs)
 
 ```
 

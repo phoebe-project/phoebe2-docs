@@ -28,7 +28,7 @@ See also:
 
 Arguments
 ----------
-* `fname` (string) the filename of the local passband.
+* `fname` (string) the basename of the local passband.
 * `local` (bool, optional, default=True): whether to install to the local/user
     directory or the PHOEBE installation directory.  If `local=False`, you
     must have the necessary permissions to write to the installation

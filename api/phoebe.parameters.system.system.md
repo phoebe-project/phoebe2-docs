@@ -27,5 +27,5 @@ Arguments
 
 Returns
 --------
-* (&lt;phoebe.parameters.ParameterSet) ParameterSet of all created Parameters.
+* ([phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md)) ParameterSet of all created Parameters.
 

@@ -3,7 +3,7 @@
 
 ```py
 
-def add_solver(self, *args, **kwargs)
+def add_solver(self, kind, return_changes=False, **kwargs)
 
 ```
 

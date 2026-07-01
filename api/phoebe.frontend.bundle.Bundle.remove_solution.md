@@ -3,7 +3,7 @@
 
 ```py
 
-def remove_solution(self, *args, **kwargs)
+def remove_solution(self, solution, return_changes=False, **kwargs)
 
 ```
 

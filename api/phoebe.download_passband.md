@@ -14,7 +14,7 @@ For convenience, this function is available at the top-level as
 [phoebe.atmospheres.passbands.download_passband](phoebe.atmospheres.passbands.download_passband.md).
 
 Download and install a given passband from
-<a href="http://tables.phoebe-project.org">http://tables.phoebe-project.org</a>.
+the tables server (https://tables.phoebe-project.org by default).
 
 The local and global installation directories can be listed by calling
 [phoebe.atmospheres.passbands.list_passband_directories](phoebe.atmospheres.passbands.list_passband_directories.md).  The local

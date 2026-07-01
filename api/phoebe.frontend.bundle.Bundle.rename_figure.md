@@ -3,7 +3,7 @@
 
 ```py
 
-def rename_figure(self, *args, **kwargs)
+def rename_figure(self, old_figure, new_figure, overwrite=False, return_changes=False)
 
 ```
 

@@ -3,7 +3,7 @@
 
 ```py
 
-def open(cls, filename, import_from_older=True, import_from_newer=False)
+def open(filename, import_from_older=True, import_from_newer=False)
 
 ```
 

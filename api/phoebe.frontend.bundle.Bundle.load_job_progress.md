@@ -3,7 +3,7 @@
 
 ```py
 
-def load_job_progress(self, *args, **kwargs)
+def load_job_progress(self, twig=None, return_changes=False, **kwargs)
 
 ```
 

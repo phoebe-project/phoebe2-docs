@@ -3,7 +3,7 @@
 
 ```py
 
-def rename_solution(self, *args, **kwargs)
+def rename_solution(self, old_solution, new_solution, overwrite=False, return_changes=False)
 
 ```
 

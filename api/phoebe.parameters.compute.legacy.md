@@ -10,7 +10,7 @@ def legacy(**kwargs)
 
 
 Create a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) for compute options for the
-[PHOEBE 1.0 legacy](<a href="http://phoebe-project.org/1.0">http://phoebe-project.org/1.0</a>) backend.
+[PHOEBE 1.0 legacy](https://phoebe-project.org/1.0) backend.
 
 See also:
 * [phoebe.frontend.bundle.Bundle.export_legacy](phoebe.frontend.bundle.Bundle.export_legacy.md)
@@ -20,7 +20,7 @@ Use PHOEBE 1.0 (legacy) which is based on the Wilson-Devinney code
 to compute radial velocities and light curves for binary systems
 (&gt;2 stars not supported).  The code is available here:
 
-<a href="http://phoebe-project.org/1.0">http://phoebe-project.org/1.0</a>
+https://phoebe-project.org/1.0
 
 PHOEBE 1.0 and the 'phoebeBackend' python interface must be installed
 and available on the system in order to use this plugin.

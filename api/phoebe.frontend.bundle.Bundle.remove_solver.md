@@ -3,7 +3,7 @@
 
 ```py
 
-def remove_solver(self, *args, **kwargs)
+def remove_solver(self, solver, return_changes=False, **kwargs)
 
 ```
 

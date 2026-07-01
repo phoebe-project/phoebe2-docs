@@ -3,7 +3,7 @@
 
 ```py
 
-def save(self, archive, overwrite=True, update_timestamp=True, history_entry='')
+def save(self, archive, overwrite=True, update_timestamp=True, export_to_pre25=False)
 
 ```
 
@@ -18,7 +18,9 @@ Arguments
     existing file with the same filename as provided in `archive`
 * `update_timestamp` (bool, optional, default=True): whether to update
     the stored timestamp with the current time.
-* `history_entry` (string, optional): history entry to append to the
-    fits file.  Note that previous entries will be maintained if
-    (and only if) overwriting an existing file with `overwrite=True`.
+* `export_to_pre25` (bool, optional, default=False): whether to export
+    the passband file to a pre-2.5 format. This includes renaming the
+    columns in the tables to match the old passband files, exporting
+    Inorm tables for model atmospheres, exporting blackbody functions
+    and exporting legacy comments.
 

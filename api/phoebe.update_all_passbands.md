@@ -14,7 +14,7 @@ For convenience, this function is available at the top-level as
 [phoebe.atmospheres.passbands.update_all_passbands](phoebe.atmospheres.passbands.update_all_passbands.md).
 
 Download and install updates for all passbands from
-<a href="http://tables.phoebe-project.org">http://tables.phoebe-project.org</a>, retrieving
+the tables server (https://tables.phoebe-project.org by default), retrieving
 the same content as in the installed passbands.
 
 This will install into the directory dictated by `local`, regardless of the

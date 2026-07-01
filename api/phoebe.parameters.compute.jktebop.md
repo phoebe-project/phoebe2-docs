@@ -17,7 +17,7 @@ jktebop must be installed and available on the system in order to use
 this plugin.  The code is available here (currently tested with v40, requires
 v40+):
 
-<a href="http://www.astro.keele.ac.uk/jkt/codes/jktebop.html">http://www.astro.keele.ac.uk/jkt/codes/jktebop.html</a>
+http://www.astro.keele.ac.uk/jkt/codes/jktebop.html
 
 Please see the link above for a list of publications to cite when using this
 code.

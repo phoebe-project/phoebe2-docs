@@ -50,6 +50,8 @@ Parameters
 object : array_like
 An array, any object exposing the array interface, an object whose
 __array__ method returns an array, or any (nested) sequence.
+If object is a scalar, a 0-dimensional array containing object is
+returned.
 dtype : data-type, optional
 The desired data-type for the array.  If not given, then the type will
 be determined as the minimum type required to hold the objects in the
@@ -75,25 +77,21 @@ order  no copy                     copy=True
 ===== ========= ===================================================
 
 When ``copy=False`` and a copy is made for other reasons, the result is
-the same as if ``copy=True``, with some exceptions for `A`, see the
+the same as if ``copy=True``, with some exceptions for 'A', see the
 Notes section. The default order is 'K'.
 subok : bool, optional
 If True, then sub-classes will be passed-through, otherwise
 the returned array will be forced to be a base-class array (default).
 ndmin : int, optional
 Specifies the minimum number of dimensions that the resulting
-array should have.  Ones will be pre-pended to the shape as
+array should have.  Ones will be prepended to the shape as
 needed to meet this requirement.
-like : array_like
+like : array_like, optional
 Reference object to allow the creation of arrays which are not
 NumPy arrays. If an array-like passed in as ``like`` supports
 the ``__array_function__`` protocol, the result will be defined
 by it. In this case, it ensures the creation of an array object
 compatible with that passed in via this argument.
-
-.. note::
-The ``like`` keyword is an experimental feature pending on
-acceptance of :ref:`NEP 35 NEP35`.
 
 .. versionadded:: 1.20.0
 

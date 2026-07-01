@@ -115,6 +115,7 @@ geomspace : Similar to `linspace`, but with numbers spaced evenly on a log
 scale (a geometric progression).
 logspace : Similar to `geomspace`, but with the end points specified as
 logarithms.
+:ref:`how-to-partition`
 
 Examples
 --------

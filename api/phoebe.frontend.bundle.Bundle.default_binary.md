@@ -3,7 +3,7 @@
 
 ```py
 
-def default_binary(cls, starA='primary', starB='secondary', orbit='binary', semidetached=False, contact_binary=False, force_build=False)
+def default_binary(starA='primary', starB='secondary', orbit='binary', semidetached=False, contact_binary=False, force_build=False)
 
 ```
 

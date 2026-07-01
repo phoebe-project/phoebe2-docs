@@ -3,7 +3,7 @@
 
 ```py
 
-def remove_compute(self, *args, **kwargs)
+def remove_compute(self, compute, return_changes=False, **kwargs)
 
 ```
 

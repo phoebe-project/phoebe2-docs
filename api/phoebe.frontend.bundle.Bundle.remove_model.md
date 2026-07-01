@@ -3,7 +3,7 @@
 
 ```py
 
-def remove_model(self, *args, **kwargs)
+def remove_model(self, model, return_changes=False, **kwargs)
 
 ```
 

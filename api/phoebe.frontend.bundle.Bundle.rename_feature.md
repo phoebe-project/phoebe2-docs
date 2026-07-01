@@ -3,7 +3,7 @@
 
 ```py
 
-def rename_feature(self, *args, **kwargs)
+def rename_feature(self, old_feature, new_feature, overwrite=False, return_changes=False)
 
 ```
 

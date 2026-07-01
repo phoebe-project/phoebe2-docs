@@ -3,7 +3,7 @@
 
 ```py
 
-def flip_constraint(self, *args, **kwargs)
+def flip_constraint(self, twig=None, solve_for=None, **kwargs)
 
 ```
 

@@ -3,7 +3,7 @@
 
 ```py
 
-def compute_l3s(self, compute=None, use_pbfluxes={}, set_value=False, **kwargs)
+def compute_l3s(self, compute=None, model=None, use_pbfluxes={}, set_value=False, **kwargs)
 
 ```
 
@@ -23,6 +23,9 @@ Arguments
 ------------
 * `compute` (string, optional, default=None): label of the compute
     options (not required if only one is attached to the bundle).
+* `model` (string, optional, default=None): label of the model to use
+    for scaling fluxes for any cases where `pblum_mode='dataset-scaled'`.
+    Required if any dataset has `pblum_mode='dataset-scaled'`.
 * `dataset` (string or list of strings, optional): label of the
     dataset(s) requested.  If not provided, will be provided for all
     datasets in which an `l3_mode` Parameter exists.
@@ -46,4 +49,9 @@ Returns
 * (dict) computed l3s in a dictionary with keys formatted as
     l3@dataset or l3_frac@dataset and the l3 (as quantity objects
     with units of W/m**2) or l3_frac (as unitless floats).
+
+Raises
+----------
+* ValueError: if any dataset has `pblum_mode='dataset-scaled'` and
+    `model` is not provided.
 

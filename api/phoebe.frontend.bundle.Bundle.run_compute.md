@@ -3,7 +3,7 @@
 
 ```py
 
-def run_compute(self, *args, **kwargs)
+def run_compute(self, compute=None, model=None, solver=None, detach=False, dataset=None, times=None, return_changes=False, **kwargs)
 
 ```
 

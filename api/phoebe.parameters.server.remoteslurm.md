@@ -12,7 +12,7 @@ def remoteslurm(server, **kwargs)
 Create a [phoebe.parameters.ParameterSet](phoebe.parameters.ParameterSet.md) for a remoteslurm server.
 
 The server referenced by `crimpl_name` must be configured on the local
-machine with [crimpl](<a href="http://crimpl.readthedocs.io">http://crimpl.readthedocs.io</a>).
+machine with [crimpl](http://crimpl.readthedocs.io).
 
 Generally, this will be used as an input to the kind argument in
 [phoebe.frontend.bundle.Bundle.add_server](phoebe.frontend.bundle.Bundle.add_server.md).  If attaching through
@@ -49,7 +49,11 @@ Arguments
     matching mail_type
 * `mail_type` (list, optional, default=['END', 'FAIL']): Scenarios in which
     to request slurm to notify mail_user by email
-
+* `addl_slurm_kwargs` (dict, optional): additional kwargs
+    to pass to slurm.  Entries will be prepended to `script` as
+    "#SBATCH -[k](k.md) [v](v.md)" or "#SBATCH --[k](k.md)=[v](v.md)" depending on whether the
+    key (`k`) is a single character or multiple characters, respectively.
+    NEW IN PHOEBE 2.4.3.
 
 Returns
 --------

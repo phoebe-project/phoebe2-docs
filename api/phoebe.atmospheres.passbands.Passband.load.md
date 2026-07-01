@@ -3,7 +3,7 @@
 
 ```py
 
-def load(cls, archive, load_content=True)
+def load(archive, load_content=True)
 
 ```
 

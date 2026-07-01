@@ -2,11 +2,10 @@
 
 * [Bundle](phoebe.frontend.bundle.Bundle.md)
 * [DistributionParameter](phoebe.frontend.bundle.DistributionParameter.md)
-* [GaussianProcessRegressor](phoebe.frontend.bundle.GaussianProcessRegressor.md)
-* [IOBase](phoebe.frontend.bundle.IOBase.md)
 * [JupyterUI](phoebe.frontend.bundle.JupyterUI.md)
 * [RunChecksItem](phoebe.frontend.bundle.RunChecksItem.md)
 * [RunChecksReport](phoebe.frontend.bundle.RunChecksReport.md)
 * [SelectTwigParameter](phoebe.frontend.bundle.SelectTwigParameter.md)
 * [UnitParameter](phoebe.frontend.bundle.UnitParameter.md)
+* [parse](phoebe.frontend.bundle.parse.md)
 * [phase_mask_inds](phoebe.frontend.bundle.phase_mask_inds.md)

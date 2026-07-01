@@ -3,7 +3,7 @@
 
 ```py
 
-def remove_dataset(self, *args, **kwargs)
+def remove_dataset(self, dataset=None, return_changes=False, **kwargs)
 
 ```
 

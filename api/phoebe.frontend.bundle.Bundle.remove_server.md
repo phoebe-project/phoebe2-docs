@@ -3,7 +3,7 @@
 
 ```py
 
-def remove_server(self, *args, **kwargs)
+def remove_server(self, server, return_changes=False, **kwargs)
 
 ```
 

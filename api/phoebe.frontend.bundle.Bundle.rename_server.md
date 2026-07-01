@@ -3,7 +3,7 @@
 
 ```py
 
-def rename_server(self, *args, **kwargs)
+def rename_server(self, old_server, new_server, overwrite=False, return_changes=False)
 
 ```
 

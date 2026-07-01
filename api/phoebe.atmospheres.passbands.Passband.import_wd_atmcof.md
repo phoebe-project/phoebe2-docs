@@ -22,7 +22,7 @@ Arguments
     atmcof.dat. For the 2003 version the number of nodes is 19.
 * `Nlogg` (int, optional, default=11): number of logg nodes in
     atmcof.dat. For the 2003 version the number of nodes is 11.
-* `Nbp` (int, optional, default=25): number of passbands in atmcof.dat.
+* `Npb` (int, optional, default=25): number of passbands in atmcof.dat.
     For the 2003 version the number of passbands is 25.
 * `Nints` (int, optional, default=4): number of temperature intervals
     (input lines) per entry. For the 2003 version the number of lines

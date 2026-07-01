@@ -3,7 +3,7 @@
 
 ```py
 
-def remove_component(self, *args, **kwargs)
+def remove_component(self, component, return_changes=False, **kwargs)
 
 ```
 

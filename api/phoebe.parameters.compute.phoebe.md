@@ -14,7 +14,7 @@ PHOEBE 2 backend.  This is the default built-in backend so no other
 pre-requisites are required.
 
 When using this backend, please see the
-<a href="http://phoebe-project.org/publications">http://phoebe-project.org/publications</a> and cite
+https://phoebe-project.org/publications and cite
 the appropriate references.
 
 See also:
@@ -45,10 +45,15 @@ Arguments
     use to determine the dynamics of components.
 * `ltte` (bool, optional, default=False): whether to correct for light
     travel time effects.
-* `atm` (string, optional, default='ck2004'): atmosphere tables.
+* `atm` (string, optional, default='ck2004'): atmosphere table
 * `irrad_method` (string, optional, default='horvat'): which method to use
     to handle irradiation.
-* `boosting_method` (string, optional, default='none'): type of boosting method.
+* `atm_extrapolation_method` (string, optional, default='linear'): method
+    of extrapolating intensities outside of the atmosphere grid.
+* `ld_extrapolation_method` (string, optional, default='nearest'): method
+    of extrapolating limb-darkening intensities outside of the atmosphere grid.
+* `blending_method` (string, optional, default='blackbody'): method to use
+    for blending model atmosphere and blackbody intensities off the atmosphere grid.
 * `mesh_method` (string, optional, default='marching'): which method to use
     for discretizing the surface.
 * `ntriangles` (int, optional, default=1500): target number of triangles

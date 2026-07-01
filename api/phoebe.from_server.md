@@ -25,7 +25,7 @@ Arguments
 ----------
 * `bundleid` (string): the identifier given to the bundle by the
     server.
-* `server` (string, optional, default='<a href="http://localhost:5555">http://localhost:5555</a>'): the
+* `server` (string, optional, default='http://localhost:5555'): the
     host (and port) of the server.
 * `as_client` (bool, optional, default=True):  whether to attach in
     client mode.  If True, `server` will be passed to

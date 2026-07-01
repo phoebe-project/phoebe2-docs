@@ -3,29 +3,31 @@
 
 ```py
 
-def interpolate_extinct(self, Teff=5772.0, logg=4.43, abun=0.0, atm='blackbody', extinct=0.0, Rv=3.1, photon_weighted=False)
+def interpolate_extinct(self, query, atm=<class 'phoebe.atmospheres.models.CK2004ModelAtmosphere'>, intens_weighting='photon', extrapolation_method='none')
 
 ```
 
 
 
-Interpolates the passband-stored tables of extinction corrections
+Interpolates the passband-stored tables of extinction corrections.
 
 Arguments
 ----------
-* `Teff` (float, optional, default=5772): effective temperature.
-* `logg` (float, optional, default=4.43): log surface gravity
-* `abun` (float, optional, default=0.0): abundance
-* `atm` (string, optional, default='blackbody'): atmosphere model.
-* `extinct` (float, optional, default=0.0)
-* `Rv` (float, optional, default=3.1)
-* `photon_weighted` (bool, optional, default=False)
+* `query` ([InterpQuery](InterpQuery.md), required): the interpolation query object.
+  Must contain columns for the atmosphere's basic axes plus 'ebvs'
+  (color excess E(B-V)) and 'rvs' (extinction factor Rv).
+* `atm` ([models.ModelAtmosphere](models.ModelAtmosphere.md), optional, default=CK2004ModelAtmosphere):
+  model atmosphere to use for extinction lookup.
+* `intens_weighting` (string, optional, default='photon'): intensity
+  weighting mode ('photon' or 'energy').
+* `extrapolation_method` (string, optional, default='none'): extrapolation
+  method for off-grid points ('none', 'nearest', 'linear').
 
 Returns
 ---------
-* extinction factor
+* ([InterpResult](InterpResult.md)) extinction correction factors.
 
 Raises
 --------
-* NotImplementedError if `atm` is not supported.
+* ValueError: if extinction tables for `atm` are not available.
 

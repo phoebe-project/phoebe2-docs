@@ -3,7 +3,7 @@
 
 ```py
 
-def from_legacy(cls, filename, add_compute_legacy=True, add_compute_phoebe=True, ignore_errors=False, passband_map={})
+def from_legacy(filename, add_compute_legacy=True, add_compute_phoebe=True, ignore_errors=False, passband_map={})
 
 ```
 

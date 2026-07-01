@@ -9,5 +9,5 @@ def copy(self)
 
 
 
-Deepcopy the &lt;[class](class.md)&gt;.
+Deepcopy the [ParameterSet](phoebe.parameters.ParameterSet.md).
 
