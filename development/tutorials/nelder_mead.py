@@ -140,7 +140,6 @@ b.set_value('compute', solver='nm_solver', value='fastcompute')
 
 
 b.set_value('maxiter', 1000)
-b.set_value('maxfev', 1000)
 
 
 # The `fit_parameters` parameter takes a list of twigs (see the [general concepts tutorial](./general_concepts.ipynb) for a refresher).  These parameters will be those that are optimized.  By default, each parameter will start at its current face-value.  To change the starting positions, you can either change the face-values in the bundle, or pass alternate starting positions to `initial_values` (as a dictionary of twig-value pairs).

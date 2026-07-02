@@ -91,7 +91,7 @@ print("M1: {}, M2: {}".format(b.get_value(qualifier='mass', component='primary',
 
 # Even though under-the-hood the constraints are being rebuilt from scratch, they will remember if you have flipped them to solve for some other parameter.
 # 
-# To show this, let's flip the constraint for the secondary mass to solve for 'period' and then change the hierarchy back to its original value.
+# To show this, let's flip the constraint for the secondary mass to solve for 'period'.  To do this we need to change the hierarchy back to its original state first.
 
 # In[10]:
 
@@ -105,10 +105,16 @@ print("M1: {}, M2: {}, period: {}, q: {}".format(b.get_value(qualifier='mass', c
 # In[11]:
 
 
-b.flip_constraint('mass@secondary@constraint', 'period')
+b.set_hierarchy('orbit:binary(star:primary, star:secondary)')
 
 
 # In[12]:
+
+
+b.flip_constraint('mass@secondary@constraint', 'period')
+
+
+# In[13]:
 
 
 print("M1: {}, M2: {}, period: {}, q: {}".format(b.get_value(qualifier='mass', component='primary', context='component'),
@@ -117,13 +123,13 @@ print("M1: {}, M2: {}, period: {}, q: {}".format(b.get_value(qualifier='mass', c
                                                  b.get_value(qualifier='q', component='binary', context='component')))
 
 
-# In[13]:
+# In[14]:
 
 
 b.set_value(qualifier='mass', component='secondary', context='component', value=1.0)
 
 
-# In[14]:
+# In[15]:
 
 
 print("M1: {}, M2: {}, period: {}, q: {}".format(b.get_value(qualifier='mass', component='primary', context='component'),

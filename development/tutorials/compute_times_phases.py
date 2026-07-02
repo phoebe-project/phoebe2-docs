@@ -109,7 +109,7 @@ print("dataset times: {}\ndataset compute_times: {}\nmodel times: {}".format(
 # In[12]:
 
 
-print(b.filter(qualifier=['times', 'compute_times', 'compute_phases', 'compute_phases_t0'], context='dataset'))
+print(b.filter(qualifier=['times', 'compute_times', 'compute_phases', 'phases_t0'], context='dataset'))
 
 
 # Essentially, this constraint does the same thing as [b.to_phase](../api/phoebe.frontend.bundle.Bundle.to_phase.md) or [b.to_time](../api/phoebe.frontend.bundle.Bundle.to_time.md), using the appropriate t0 according to `phases_t0` from the **top-level** orbit in the hierarchy.
@@ -267,7 +267,7 @@ afig, mplfig = b.plot(show=True)
 # In[32]:
 
 
-afig, mplfig = b.plot(y='residuals', show=True)
+afig, mplfig = b.plot(y='residuals', marker="*", show=True)
 
 
 # ## See Also

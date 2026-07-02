@@ -13,13 +13,13 @@
 
 # ##### Let's first make sure we have the latest version of PHOEBE 2.5 installed (uncomment this line if running in an online notebook session such as colab).
 
-# In[1]:
+# In[18]:
 
 
 #!pip install -I "phoebe>=2.5"
 
 
-# In[2]:
+# In[19]:
 
 
 import phoebe
@@ -47,7 +47,7 @@ b = phoebe.default_binary()
 # 
 # which can always be listed via [phoebe.list_available_datasets](../api/phoebe.list_available_datasets.md)
 
-# In[17]:
+# In[20]:
 
 
 phoebe.list_available_datasets()
@@ -61,7 +61,7 @@ phoebe.list_available_datasets()
 # 
 # Unlike other datasets, the mesh and orb dataset cannot accept actual observations, so there is no `times` parameter, only the `compute_times` and `compute_phases` parameters.  For more details on these, see the [Advanced: Compute Times & Phases tutorial](compute_times_phases.ipynb).
 
-# In[3]:
+# In[21]:
 
 
 b.add_dataset(phoebe.dataset.orb, 
@@ -82,7 +82,7 @@ b.add_dataset(phoebe.dataset.orb,
 
 # [b.add_dataset](../api/phoebe.frontend.bundle.Bundle.add_dataset.md) can either take a function or the name of a function in [phoebe.parameters.dataset](../api/phoebe.parameters.dataset.md) as its first argument.  The following line would do the same thing (and we'll pass `overwrite=True` to avoid the error of overwriting `dataset='orb01'`).
 
-# In[4]:
+# In[22]:
 
 
 b.add_dataset('orb', 
@@ -96,13 +96,13 @@ b.add_dataset('orb',
 
 # If you do not provide a list of component(s), they will be assumed for you based on the dataset method.  [LCs](LC.ipynb) (light curves) and [meshes](MESH.ipynb) can only attach at the system level (component=None), for instance, whereas [RVs](RV.ipynb) and [ORBs](ORB.ipynb) can attach for each star.
 
-# In[5]:
+# In[23]:
 
 
 b.add_dataset('rv', times=phoebe.linspace(0,10,20), dataset='rv01')
 
 
-# In[6]:
+# In[24]:
 
 
 print(b.filter(qualifier='times', dataset='rv01').components)
@@ -112,13 +112,13 @@ print(b.filter(qualifier='times', dataset='rv01').components)
 # 
 # Since we did not explicitly state that we only wanted the primary and secondary components, the time array on '\_default' is filled as well.  If we were then to add a tertiary component, its RVs would automatically be computed because of this replicated time array.
 
-# In[7]:
+# In[25]:
 
 
 print(b.filter(qualifier='times', dataset='rv01', check_default=False).components)
 
 
-# In[8]:
+# In[26]:
 
 
 print(b.get('times@_default@rv01', check_default=False))
@@ -130,13 +130,13 @@ print(b.get('times@_default@rv01', check_default=False))
 # 
 # Passing arrays to any of the dataset columns will apply it to all of the same components in which the time will be applied (see the 'Without Observations' section above for more details).  This make perfect sense for fluxes in light curves where the time and flux arrays are both at the system level:
 
-# In[9]:
+# In[27]:
 
 
 b.add_dataset('lc', times=[0,1], fluxes=[1,0.5], dataset='lc01')
 
 
-# In[10]:
+# In[28]:
 
 
 print(b.get_parameter(qualifier='fluxes', dataset='lc01', context='dataset'))
@@ -146,7 +146,7 @@ print(b.get_parameter(qualifier='fluxes', dataset='lc01', context='dataset'))
 # 
 # For a single-lined RV where we only attach to one component, everything is as expected.
 
-# In[11]:
+# In[29]:
 
 
 b.add_dataset('rv', 
@@ -157,7 +157,7 @@ b.add_dataset('rv',
               overwrite=True)
 
 
-# In[12]:
+# In[30]:
 
 
 print(b.get_parameter(qualifier='rvs', dataset='rv01', context='dataset'))
@@ -165,16 +165,16 @@ print(b.get_parameter(qualifier='rvs', dataset='rv01', context='dataset'))
 
 # However, for a double-lined RV we probably **don't** want to do the following:
 
-# In[13]:
+# In[31]:
 
 
 b.add_dataset('rv', 
-              times=[0,0.5,1], 
+              times=[0,1], 
               rvs=[-3,3], 
               dataset='rv02')
 
 
-# In[14]:
+# In[32]:
 
 
 print(b.filter(qualifier='rvs', dataset='rv02', context='dataset'))
@@ -182,17 +182,17 @@ print(b.filter(qualifier='rvs', dataset='rv02', context='dataset'))
 
 # Instead we want to pass different arrays to the 'rvs@primary' and 'rvs@secondary'.  This can be done by explicitly stating the components in a dictionary sent to that argument:
 
-# In[15]:
+# In[33]:
 
 
 b.add_dataset('rv', 
-              times=[0,0.5,1], 
+              times=[0,1], 
               rvs={'primary': [-3,3], 'secondary': [4,-4]}, 
               dataset='rv02',
               overwrite=True)
 
 
-# In[16]:
+# In[34]:
 
 
 print(b.filter(qualifier='rvs', dataset='rv02', context='dataset'))
@@ -200,7 +200,7 @@ print(b.filter(qualifier='rvs', dataset='rv02', context='dataset'))
 
 # Alternatively, you could of course not pass the values while calling add_dataset and instead call the [set_value](../api/phoebe.parameters.ParameterSet.set_value.md) method after and explicitly state the components at that time.  For more details see the [add_dataset API docs](../api/phoebe.frontend.bundle.Bundle.add_dataset.md).
 # 
-# PHOEBE doesn't come with any built-in file parsing, but using common file parsers such as [np.loadtxt](https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html) or [np.genfromtxt](https://numpy.org/doc/stable/reference/generated/numpy.genfromtxt.html) to extract arrays from an external data file.
+# PHOEBE doesn't come with any built-in file parsing, but using common file parsers such as [np.loadtxt](https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html) or [np.genfromtxt](https://numpy.org/doc/stable/reference/generated/numpy.genfromtxt.html) to extract arrays from an external data file and then pass those arrays into PHOEBE.
 
 # Dataset Types
 # ------------------------

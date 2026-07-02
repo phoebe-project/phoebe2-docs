@@ -203,7 +203,7 @@ b.run_compute(compute='preview', model='run_with_incl_80')
 # In[19]:
 
 
-print(b.models)
+print(b.filter(context='model').models)
 
 
 # To remove a model, call [remove_model](../api/phoebe.frontend.bundle.Bundle.remove_model).
@@ -214,10 +214,10 @@ print(b.models)
 b.remove_model('latest')
 
 
-# In[21]:
+# In[22]:
 
 
-print(b.models)
+print(b.filter(context='model').models)
 
 
 # Accessing Synthetics from Models
@@ -225,25 +225,25 @@ print(b.models)
 # 
 # The synthetics can be accessed by their dataset and model tags.
 
-# In[22]:
+# In[23]:
 
 
 b.filter(model='run_with_incl_90')
 
 
-# In[23]:
+# In[24]:
 
 
 b.filter(component='primary', model='run_with_incl_90')
 
 
-# In[24]:
+# In[25]:
 
 
 b.get_parameter(qualifier='us', component='primary', model='run_with_incl_90')
 
 
-# In[25]:
+# In[26]:
 
 
 b.get_value(qualifier='us', dataset='orb01', component='primary', model='run_with_incl_90')[:10]

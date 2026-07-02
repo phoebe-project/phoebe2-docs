@@ -6,7 +6,7 @@
 # 
 # This tutorial explains the high-level interface to plotting provided by the Bundle.  You are of course always welcome to access arrays and plot manually.
 # 
-# PHOEBE 2.4 uses [autofig 1.2](https://autofig.readthedocs.io/en/1.2.0) as an intermediate layer for highend functionality to [matplotlib](http://matplotlib.org).
+# PHOEBE uses [autofig 1.2](https://autofig.readthedocs.io/en/1.2.0) as an intermediate layer for highend functionality to [matplotlib](http://matplotlib.org).
 # 
 # Setup
 # -----------------------------
@@ -155,8 +155,7 @@ b.filter(context='model', dataset='orb01').qualifiers
 # And to plot in phase we just send x='phases' or x='phases:binary'.
 # 
 # Setting x='phases' will use the ephemeris from the top-level of the hierarchy
-# (as if you called b.get_ephemeris()), whereas passing a string after the colon, 
-# will use the ephemeris of that component.
+# (as if you called b.get_ephemeris()), whereas passing a string after the colon (x='phases:primary' or x='phases:secondary'), will use the ephemeris of that component.
 
 # In[13]:
 

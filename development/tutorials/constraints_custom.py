@@ -73,7 +73,7 @@ print(b.filter(qualifier='teff'))
 
 
 b = phoebe.default_binary()
-b.filter(qualifier='teffratio')
+b.filter(qualifier='teff_ratio')
 
 
 # First we need to create all the parameters that we need that do not already exist, and attach them to the bundle with appropriate tags.  Ultimately the choice of tags is inconsequential, but here it makes some sense to apply our new `teffratio` to the parent orbit that contains both stars.
@@ -83,7 +83,7 @@ b.filter(qualifier='teffratio')
 # In[10]:
 
 
-teffratio_def = phoebe.parameters.FloatParameter(qualifier='teffratio',
+teff_ratio_def = phoebe.parameters.FloatParameter(qualifier='teff_ratio',
                                                  default_unit=u.dimensionless_unscaled,
                                                  value=1, 
                                                  description='effective temperature ratio')
@@ -96,7 +96,7 @@ teffratio_def = phoebe.parameters.FloatParameter(qualifier='teffratio',
 # In[11]:
 
 
-teffratio_param, created = b.get_or_create('teffratio', teffratio_def, context='component', component='binary')
+teff_ratio_param, created = b.get_or_create('teff_ratio', teff_ratio_def, context='component', component='binary')
 
 
 # Our new parameter is available through filtering as is any other parameter.
@@ -104,22 +104,22 @@ teffratio_param, created = b.get_or_create('teffratio', teffratio_def, context='
 # In[12]:
 
 
-print(b.filter(qualifier='teffratio'))
+print(b.filter(qualifier='teff_ratio'))
 
 
 # In[13]:
 
 
-print(b.get_parameter(qualifier='teffratio').tags)
+print(b.get_parameter(qualifier='teff_ratio').tags)
 
 
-# We can now define our constraint as before, but replace the hardcoded `0.5` with the `teffratio` parameter.
+# We can now define our constraint as before, but replace the hardcoded `0.5` with the `teff_ratio` parameter.
 
 # In[14]:
 
 
 lhs = b.get_parameter(qualifier='teff', component='secondary')
-rhs = teffratio_param * b.get_parameter(qualifier='teff', component='primary')
+rhs = teff_ratio_param * b.get_parameter(qualifier='teff', component='primary')
 
 
 # In[15]:
@@ -137,17 +137,23 @@ b.add_constraint(lhs, rhs)
 # In[17]:
 
 
-print(b.filter(qualifier=['teff', 'teffratio']))
+print(b.filter(qualifier=['teff', 'teff_ratio']))
 
 
 # In[18]:
 
 
-b.set_value('teffratio', 0.5)
+b.set_value('teff_ratio', 0.5)
 
 
 # In[19]:
 
 
-print(b.filter(qualifier=['teff', 'teffratio']))
+print(b.filter(qualifier=['teff', 'teff_ratio']))
+
+
+# In[ ]:
+
+
+
 
