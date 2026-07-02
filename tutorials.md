@@ -51,20 +51,6 @@ For more specific use-cases, see the [example scripts](./examples.md).
     * [Advanced: Custom Cost Function](tutorials/emcee_custom_lnprob.ipynb)
 9. [Running Jobs on External Compute Resources](tutorials/server.ipynb)
 
-## Migrating from PHOEBE 2.3 to PHOEBE 2.4
-
-These tutorials highlight the major changes between versions 2.3.x and 2.4+ in the following topics:
-* [Updates to EBAI with a kNN model and support for contacts](tutorials/23_24_ebai.ipynb)
-* [lc_geometry: using ligeor as new built-in dependency](tutorials/23_24_lc_geometry.ipynb)
-* [Gaussian Processes: using celerite2 or scikit-learn](tutorials/23_24_gaussian_processes.ipynb)
-* Coming Soon: chi2 vs mle in merit functions
-* Coming Soon: servers introduced in PHOEBE 2.4
-* Coming Soon: new emcee plotting styles - acf, lnprobabilities_spread, trace_spread
-* Coming Soon: emcee: thin_factor default changed to 0 (thin=1)
-* Coming Soon: continue_from support for optimizers
-* Coming Soon: changed default behavior for interactive constraints
-* Coming Soon: new support to export_mesh
-
 
 ## Advanced Tutorials
 
