@@ -1,0 +1,10 @@
+## [phoebe](phoebe.md).[features](phoebe.features.md).DatasetFeature (class)
+
+* [__init__](phoebe.features.DatasetFeature.__init__.md)
+* [create_feature_parameters](phoebe.features.DatasetFeature.create_feature_parameters.md)
+* [get_parameters](phoebe.features.DatasetFeature.get_parameters.md)
+* [modify_data_for_estimators](phoebe.features.DatasetFeature.modify_data_for_estimators.md)
+* [modify_model](phoebe.features.DatasetFeature.modify_model.md)
+* [parse_bundle](phoebe.features.DatasetFeature.parse_bundle.md)
+* [parse_from_feature_ps](phoebe.features.DatasetFeature.parse_from_feature_ps.md)
+* [run_checks_compute](phoebe.features.DatasetFeature.run_checks_compute.md)

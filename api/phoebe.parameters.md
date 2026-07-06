@@ -3,6 +3,7 @@
 * [ArrayParameter](phoebe.parameters.ArrayParameter.md)
 * [BoolParameter](phoebe.parameters.BoolParameter.md)
 * [ChoiceParameter](phoebe.parameters.ChoiceParameter.md)
+* [CodeParameter](phoebe.parameters.CodeParameter.md)
 * [ConstraintParameter](phoebe.parameters.ConstraintParameter.md)
 * [DistributionParameter](phoebe.parameters.DistributionParameter.md)
 * [FloatArrayParameter](phoebe.parameters.FloatArrayParameter.md)

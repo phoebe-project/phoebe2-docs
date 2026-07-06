@@ -117,7 +117,8 @@ if __name__ == '__main__':
     skip_ps = ['default_triple',
                'set_meta',
                'get_plotting_info',
-               'URLError']
+               'URLError',
+               'isclass']
 
     skip_param = ['set_uniqueid']
 
@@ -248,3 +249,7 @@ if __name__ == '__main__':
     fms = api_docs(phoebe.distortions, prefix='phoebe', members=[pydoc.inspect.ismodule])
     fms = api_docs(phoebe.distortions.roche, skip=skip_distortions_roche, prefix='phoebe.distortions', members=[pydoc.inspect.isfunction])
     fms = api_docs(phoebe.distortions.rotstar, skip=skip_distortions_rotstar, prefix='phoebe.distortions', members=[pydoc.inspect.isfunction])
+
+    fms_features = api_docs(phoebe.features, prefix='phoebe', members=[pydoc.inspect.isclass])
+    fms = api_docs(phoebe.features.DatasetFeature, skip=[], prefix='phoebe.features')
+    fms = api_docs(phoebe.features.ComponentFeature, skip=[], prefix='phoebe.features')

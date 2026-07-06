@@ -3,7 +3,7 @@
 
 ```py
 
-def freq(b, component, solve_for=None, **kwargs)
+def freq(b, component, context='component', solve_for=None, **kwargs)
 
 ```
 

@@ -51,6 +51,7 @@ Bundle is a subclass of phoebe.parameters.ParameterSet and therefore also includ
 * [get_envelope](phoebe.frontend.bundle.Bundle.get_envelope.md)
 * [get_ephemeris](phoebe.frontend.bundle.Bundle.get_ephemeris.md)
 * [get_feature](phoebe.frontend.bundle.Bundle.get_feature.md)
+* [get_feature_code](phoebe.frontend.bundle.Bundle.get_feature_code.md)
 * [get_figure](phoebe.frontend.bundle.Bundle.get_figure.md)
 * [get_gaussian_process](phoebe.frontend.bundle.Bundle.get_gaussian_process.md)
 * [get_hierarchy](phoebe.frontend.bundle.Bundle.get_hierarchy.md)
