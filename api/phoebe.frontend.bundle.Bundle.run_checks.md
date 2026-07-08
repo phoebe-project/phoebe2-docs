@@ -22,19 +22,20 @@ This calls and appends the output from each of the following, as applicable:
 Arguments
 -----------
 * `compute` (string or list of strings, optional, default=None): the
-    compute options to use  when running checks.  If None (or not provided),
+    compute options to use when running checks.  If None (or not provided),
     the compute options in the 'run_checks_compute@setting' parameter
     will be used (which defaults to all available compute options).
+    All enabled features in `compute` will also be checked.
 * `solver` (string or list of strings, optional, default=None): the
-    solver options to use  when running checks.  If None (or not provided),
+    solver options to use when running checks.  If None (or not provided),
     the compute options in the 'run_checks_solver@setting' parameter
     will be used (which defaults to all available solver options).
 * `solution` (string or list of strings, optional, default=None): the
-    solutions to use  when running checks.  If None (or not provided),
+    solutions to use when running checks.  If None (or not provided),
     the compute options in the 'run_checks_solution@setting' parameter
     will be used (which defaults to no solutions, if not set).
 * `figure` (string or list of strings, optional, default=None): the
-    figures to use  when running checks.  If None (or not provided),
+    figures to use when running checks.  If None (or not provided),
     the compute options in the 'run_checks_figure@setting' parameter
     will be used (which defaults to no figures, if not set).
 * `allow_skip_constraints` (bool, optional, default=False): whether

@@ -1,4 +1,4 @@
-### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[feature](phoebe.parameters.feature.md).gp_sklearn (function)
+### [phoebe](phoebe.md).[parameters](phoebe.parameters.md).[feature](phoebe.parameters.feature.md).gp_sklearn (method)
 
 
 ```py

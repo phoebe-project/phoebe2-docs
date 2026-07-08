@@ -37,6 +37,8 @@ These example scripts are generally focused to show a single advanced feature or
 * [Spot Transit](examples/spot_transit.ipynb)
 * [Single Star with Spots](examples/single_spots.ipynb)
 * [Comparing Spots in PHOEBE 2 vs PHOEBE Legacy](examples/legacy_spots.ipynb)
+* [User-defined features: Migrating spot](examples/user_defined_features_migrating_spot.ipynb)
+* [User-defined features: Aysnchronous spot (ComponentFeature)](examples/user_defined_features_async_spot.ipynb)
 
 
 ## Gaussian Processes
@@ -58,20 +60,27 @@ These example scripts are generally focused to show a single advanced feature or
 * [Extinction: White Dwarf - Subdwarf Binary](examples/extinction_wd_subdwarf.ipynb) ([Jones+ 2020](http://phoebe-project.org/publications/2020Jones+), Figure 4)
 
 
-## Inverse Problem (2.3 release)
+## Inverse Problem (2.3, 2.4 release)
 
 * [Inverse Problem: General Examples](examples/inverse_paper_examples.ipynb) ([Conroy+ 2020](http://phoebe-project.org/publications/2020Conroy+), Figures 1-3, 5, 8-12)
 * [Propagating Distributions through Constraints](examples/distribution_constraints.ipynb) ([Conroy+ 2020](http://phoebe-project.org/publications/2020Conroy+) Figure 4)
 * [Propagating Distributions through Coupled Luminosities](examples/distribution_pblum.ipynb)
 
-## Hot, compact stars and user-defined features (2.5 release)
+## Hot, compact stars and user-defined features
 
 * [WDs: DA WD normal intensities](examples/DA_WD_I0.ipynb) ([Jones+ 2026](http://phoebe-project.org/publications/2026Jones+), Figure 1)
 * [WDs: sdO limb-darkening](examples/sdO_LD.ipynb) ([Jones+ 2026](http://phoebe-project.org/publications/2026Jones+), Figure 2)
 * [WDs: Four TMAP grids](examples/TMAP_grids.ipynb) ([Jones+ 2026](http://phoebe-project.org/publications/2026Jones+), Figure 3)
 * [WDs: TMAP vs Tremblay](examples/TMAP_vs_Tremblay.ipynb) ([Jones+ 2026](http://phoebe-project.org/publications/2026Jones+), Figure 4)
 * [WDs: Four TMAP vs blackbody](examples/TMAP_vs_BB.ipynb) ([Jones+ 2026](http://phoebe-project.org/publications/2026Jones+), Figure 7)
-* [User-defined features: Migrating spot](examples/Migrating_spot.ipynb) ([Jones+ 2026](http://phoebe-project.org/publications/2026Jones+), Figure 8)
+
+## User-Defined Features (2.5 release)
+* [User-defined features: Sinusoidal Third Light (DatasetFeature)](examples/user_defined_features_sinusoidal_l3.ipynb)
+* [User-defined features: Sinusoidal Intensities (ComponentFeature)](examples/user_defined_features_sinusoidal_intens.ipynb)
+* [User-defined-featrures: Differential Rotation (ComponentFeature)](examples/user_defined_features_diff_rotation.ipynb)
+* [User-defined features: Migrating spot (ComponentFeature)](examples/user_defined_features_migrating_spot.ipynb) ([Jones+ 2026](http://phoebe-project.org/publications/2026Jones+), Figure 8)
+* [User-defined features: Aysnchronous spot (ComponentFeature)](examples/user_defined_features_async_spot.ipynb)
+* [User-defined features: Dark disk (ComponentFeature)](examples/user_defined_features_dark_disk.ipynb)
 
 
 

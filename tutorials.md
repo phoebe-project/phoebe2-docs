@@ -31,6 +31,7 @@ For more specific use-cases, see the [example scripts](./examples.md).
 6. [Features](tutorials/features.ipynb)
     * [Spots](tutorials/spots.ipynb)
     * [Example: Gaussian Processes](examples/minimal_GPs.ipynb)
+    * [User-Defined Features](tutorials/user_defined_features.ipynb)
 7. [Distributions](tutorials/distributions.ipynb)
     * [Distribution Types](tutorials/distribution_types.ipynb)
     * [Distribution Propagation](tutorials/distribution_propagation.ipynb)
