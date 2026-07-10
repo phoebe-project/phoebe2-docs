@@ -22,6 +22,7 @@ For more specific use-cases, see the [example scripts](./examples.md).
 4. [Computing Observables](tutorials/compute.ipynb)
     * [Compute Times & Phases](tutorials/compute_times_phases.ipynb)
     * [Phase Masking](tutorials/mask_phases.ipynb)
+    * [Extrapolation and Blending](tutorials/blending.ipynb)
     * [Running Multiple Compute Options Simultaneously](tutorials/compute_multiple.ipynb)
     * [Alternate Backends](tutorials/alternate_backends.ipynb)
 5. [Plotting](tutorials/plotting.ipynb)
