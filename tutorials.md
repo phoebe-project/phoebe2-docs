@@ -66,5 +66,6 @@ These all assume comfort with the tutorials listed above, but should not need to
 * [Advanced: Environment Variables](tutorials/envars.ipynb)
 * [Advanced: Adding Custom Passband Tables](tutorials/passbands.ipynb)
 * [Advanced: Passband Versioning & Updates](tutorials/passband_updates.ipynb)
+* [Advanced: Model Atmospheres](tutorials/atm_advanced.ipynb)
 * [Advanced: Settings](tutorials/settings.ipynb)
 * [Advanced: Launching the UI from Jupyter](tutorials/ui_jupyter.ipynb)

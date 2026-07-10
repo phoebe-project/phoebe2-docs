@@ -37,6 +37,7 @@ The following tutorials aim to explain the implementation and usage of some of t
 ## Passband/Atmosphere/Dataset Effects:
 * [Passbands & Atmospheres (passband & atm)](tutorials/atm_passbands.ipynb)
 * [Passband Luminosity (pblum_mode, pblum_component, pblum_dataset, pblum, pbflux)](tutorials/pblum.ipynb)
+* [Model Atmospheres](tutorials/atm_advanced.ipynb)
 * [Limb Darkening (ld_mode, ld_func, ld_coeffs_source, ld_coeffs)](tutorials/limb_darkening.ipynb)
 * [Third Light (l3_mode, l3, l3_frac)](tutorials/l3.ipynb)
 * [Gravitational Redshift (rv_grav)](tutorials/grav_redshift.ipynb)
