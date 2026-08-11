@@ -312,10 +312,10 @@ print(b2.filter(feature='my_custom_component_feature'))
 # ## Examples
 # 
 # In order to better understand the functionality and flexibility of user-defined features, see some of the following examples (and _please_ consider reaching out if you create a feature yourself that you would be willing to have featured here for others to learn):
-# * [Example: Sinusoidal Third Light (DatasetFeature)](examples/user_defined_features_sinusoidal_l3.ipynb)
-# * [Example: Sinusoidal Intensities (ComponentFeature)](examples/user_defined_features_sinusoidal_intens.ipynb)
-# * [Example: Differential Rotation (ComponentFeature)](examples/user_defined_features_diff_rotation.ipynb)
-# * [Example: Migrating Spot (ComponentFeature)](examples/user_defined_features_migrating_spot.ipynb)
+# * [Example: Sinusoidal Third Light (DatasetFeature)](../examples/user_defined_features_sinusoidal_l3.ipynb)
+# * [Example: Sinusoidal Intensities (ComponentFeature)](../examples/user_defined_features_sinusoidal_intens.ipynb)
+# * [Example: Differential Rotation (ComponentFeature)](../examples/user_defined_features_diff_rotation.ipynb)
+# * [Example: Migrating Spot (ComponentFeature)](../examples/user_defined_features_migrating_spot.ipynb)
 
 # In[ ]:
 
